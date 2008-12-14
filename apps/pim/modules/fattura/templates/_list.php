@@ -59,31 +59,32 @@
 <!--th>Elimina</th-->
 <?php foreach ($fatture_results as $fattura):$fattura->calcolaFattura();?>
 
-
 <tr>
 <?php if($checkbox):?><td><?php echo checkbox_tag('ids[]',$fattura->getID())?></td><?php endif?>
 <td>
+
 <?php if($fattura->isProForma()):?>
-<?php echo link_to('Pro-Forma','fattura/show?id='.$fattura->getID())?>
+  <?php echo link_to('Pro-Forma','fattura/show?id='.$fattura->getID())?>
 <?php else:?>
-<?php echo link_to($fattura->getNumFattura(),'fattura/show?id='.$fattura->getID())?>
+  <?php echo link_to($fattura->getNumFattura(),'fattura/show?id='.$fattura->getID())?>
 <?php endif?>
 </td>
 
 <?php if($customer):?>
-<td class="cliente"><?php echo link_to($fattura->getCliente()->toString(),'cliente/show?id='.$fattura->getClienteID())?></td>
+  <td class="cliente"><?php echo link_to($fattura->getCliente()->toString(),'cliente/show?id='.$fattura->getClienteID())?></td>
 <?php endif ?>
+
 <td><?php echo format_date($fattura->getData())?></td>
 <!--td><?php echo format_date($fattura->getDataPagamento())?></td-->
 <td><?php echo format_currency($fattura->getImponibile(), 'EUR')?> (<?php echo format_currency($fattura->getTotale(), 'EUR')?>)</td>
 <td style="font-weight: bold;background-color:<?php echo $fattura->getColorStato()?>;color: <?php echo $fattura->getFontColorStato()?>"><?php echo $fattura->getStato(true)?></td>
 
 <?php if(UtentePeer::getImpostazione()->getBoolConsegnaCommercialista()):?>
-<td><?php echo link_to($fattura->getCommercialista()=='s'?'si':'no','fattura/consegnaCommercialista?id='.$fattura->getID().'&redirect=list')?></td>
+  <td><?php echo link_to($fattura->getCommercialista()=='s'?'si':'no','fattura/consegnaCommercialista?id='.$fattura->getID().'&redirect=list')?></td>
 <?php endif?>
 
 <?php if(UtentePeer::getImpostazione()->getBoolDepositaIva()):?>
-<td><?php echo link_to($fattura->getIvaDepositata()=='s'?'si':'no','fattura/depositaIva?id='.$fattura->getID().'&redirect=list')?></td>
+  <td><?php echo link_to($fattura->getIvaDepositata()=='s'?'si':'no','fattura/depositaIva?id='.$fattura->getID().'&redirect=list')?></td>
 <?php endif?>
 
 <td class="<?php echo $fattura->checkInRitardo()?'red':'none'?>"><?php echo $fattura->checkInRitardo()?'<strong>si</strong>':'no'?></td>

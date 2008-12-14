@@ -84,13 +84,13 @@ class Fattura extends BaseFattura {
 	{
 		$data_pagamento = $this->getData();
 		$data = explode('-',$data_pagamento);
-		$data = date($format,mktime(0,0,0,$data[0],$data[1]+(is_object($this->getModoPagamento())?$this->getModoPagamento()->getNumGiorni():0),$data[2]));
+		$data = date($format, mktime(0, 0, 0, $data[1], $data[2] + (is_object($this->getModoPagamento())?$this->getModoPagamento()->getNumGiorni():0), $data[0]));
 		return strftime($data);
 	}
 
 	public function checkInRitardo()
 	{
-		if(strtotime($this->getDataPagamento()) < time() && $this->getStato()==INVIATA)
+		if(strtotime($this->getDataPagamento()) < time() && $this->getStato() == INVIATA)
 		{
 			return true;
 		}
