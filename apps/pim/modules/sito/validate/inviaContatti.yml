@@ -1,0 +1,28 @@
+
+methods:
+  post:           [nome, email, oggetto, messaggio]
+  get:           [nome, email, oggetto, messaggio]
+
+names:
+  nome:
+    required:     Yes
+    required_msg: Il nome non pu&ograve; essere vuoto
+  email:
+    required:     Yes
+    required_msg: L'email non pu&ograve; essere vuota
+    validators: emailValidator
+  oggetto:
+    required:     Yes
+    required_msg: L'oggetto non pu&ograve; essere vuoto
+  messaggio:
+    required:     Yes
+    required_msg: Il messaggio non pu&ograve; essere vuoto
+
+emailValidator:
+  class:          sfEmailValidator
+  param:
+    email_error: L'email inserita non è valida
+
+fillin:
+  enabled:  off
+												      

@@ -1,0 +1,11 @@
+body > #content{
+	min-height: 100px;
+}
+
+div.content_left{
+	display: none;
+}
+
+div.content_right{
+	width: 100%;
+}

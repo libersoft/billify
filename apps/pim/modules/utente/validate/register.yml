@@ -1,0 +1,99 @@
+methods:
+  post:           [username, nome, cognome, ragione_sociale, partita_iva, codice_fiscale, email, password, verifica_password, privacy, contratto]
+
+names:
+  username:
+    required:     Yes
+    required_msg: Lo username non pu&ograve; essere vuoto
+    validators:   loginValidator
+  nome:
+    required:     Yes
+    required_msg: Il nome non pu&ograve; essere vuoto
+  cognome:
+    required:     Yes
+    required_msg: Il cognome non pu&ograve; essere vuoto
+  ragione_sociale:
+    required:     No
+    required_msg: La ragione sociale non pu&ograve; essere vuoto
+  partita_iva:
+    required:     No
+    required_msg: La partita iva non pu&ograve; essere vuota
+    validators:   partitaIvaValidator
+  codice_fiscale:
+    required:     No
+    required_msg: Il codice fiscale non pu&ograve; essere vuoto
+    validators:   codiceFiscaleValidator
+  email:
+    required:     Yes
+    required_msg: La email non pu&ograve; essere vuota
+    validators:   emailValidator
+  password:
+    required:     Yes
+    required_msg: La password non pu&ograve; essere vuota
+  verifica_password:
+    required:     Yes
+    required_msg: La verifica password non pu&ograve; essere vuota
+    validators:   passwordValidator, passwordStringValidator
+  contratto:
+    required:     Yes
+    required_msg: Devi accettare il contratto per poterti registrare
+  privacy:
+    required:     Yes
+    required_msg: Devi accettare i termini sulla privacy per poterti registrare
+        
+loginValidator:
+  class:          sfPropelUniqueValidator
+  param:
+    class:        Utente
+    column:       username
+    unique_error: Questo username esiste gi&agrave;, scegli un altro username.
+  class:		  sfStringValidator
+  param:
+    min:          3
+    min_error:    Lo username deve essere almeno di 3 caratteri.
+    
+partitaIvaValidator:
+  class:          sfStringValidator
+  param:
+    min:          11
+    min_error:    Partita iva non valida.
+    max:          11
+    max_error:    Partita iva non valida. 
+    		 
+codiceFiscaleValidator:
+  class:          sfStringValidator
+  param:
+    min:          16
+    min_error:    Codice fiscale non valido.
+    max:          16
+    max_error:    Codice fiscale non valido. 
+
+emailValidator:
+  class:          sfEmailValidator
+  param:
+    email_error:  E-mail non valida
+    
+passwordValidator:
+  class:          sfCompareValidator
+  param:
+    check:        password
+    compare_error: La verifica della password non corrisponde, inserisci di nuovo la password.
+    
+passwordStringValidator:
+  class:		 sfStringValidator
+  param:
+    min:          3
+    min_error:    La password deve essere almeno di 5 caratteri.
+    
+captchaValidator:
+  class: myCharactersValidator
+  param:
+    characters_error: Il codice di sicurezza &egrave; errato;
+    
+invitationCodeValidator:
+  class: invitationCodeValidator
+  param:
+    error: Codice d'invito non valido;
+    
+fillin:
+  enabled:  on

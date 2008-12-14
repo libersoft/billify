@@ -1,0 +1,238 @@
+div#hormenu { 
+	margin-left: 25px;
+}
+
+div#hormenu ul {
+margin: 0;
+padding: 0;
+list-style-type: none;
+border-left: 1px solid #fff;
+}
+
+div#hormenu ul li  {
+font-family: Verdana, Tahome;
+float: left;
+border-right: 1px solid #fff;
+font-weight: normal;
+font-size: 95%;
+}
+
+div#hormenu ul li.home{
+	border-left: 1px solid #fff;
+}
+
+div#hormenu a {
+display: block;
+padding: 9px;
+color: #fff;
+text-decoration: none;
+}
+
+div#hormenu a:hover {
+background-color: #25778F;
+color: #fff;
+text-decoration: none;
+}
+
+div#hormenu li ul{display: none}
+
+div#hormenu li:hover li ul{display: none}
+
+div#hormenu li:hover ul{
+position: absolute;
+display: block;
+z-index:1;
+width:110px;
+padding: 0;
+margin: 0 0 0 -1px;
+border:1px solid black;
+background: white;
+}
+
+div#hormenu li li:hover ul{
+	position: absolute;
+	display: block;
+	z-index:1;
+	width: 110px;
+	padding: 0;
+	margin: -22px 0px 0px 110px;
+	border:1px solid black;
+}
+
+div#hormenu li li, div#hormenu li li li {border: none; width: 110px;background-color: #003240;margin: 0px;font-weight: normal}	
+
+div#hormenu li li a, div#hormenu li li li a {padding: 2px 2px 2px 10px;}
+
+/*************************************/
+
+div#hormenu1 {
+width: 100%; 
+margin: 0; 
+padding: 0;
+position:relative;
+}
+
+div#hormenu1 ul {
+margin: 0;
+padding: 0;
+list-style-type: none;
+height: 20px;
+}
+
+div#hormenu1 li  {
+font-family: Verdana, Tahome;
+font-size: 70%;
+float:left;
+margin: 1px;
+color:black;
+background-color: #f4f4f4;
+border-top: 1px solid #000;
+border-right: 1px solid #000;
+border-left: 1px solid #000;
+border-bottom: 0px;
+}
+
+div#hormenu1 a {
+display: block;
+padding: 2px;
+padding-left: 4px;
+color: #000;
+text-decoration: none;
+}
+
+div#hormenu1 a:hover {
+background-color: #000000;
+color: #FFFFFF;
+text-decoration: none;
+}
+
+div#hormenu1 li ul{display: none}
+
+div#hormenu1 li:hover li ul{display: none}
+
+div#hormenu1 li:hover ul{
+position: absolute;
+display: block;
+z-index:1;
+width:120px;
+padding: 0;
+margin: 0 0 0 -1px;
+border:1px solid black;
+background: white;
+}
+
+div#hormenu1 li li:hover ul{
+	position: absolute;
+	display: block;
+	z-index:1;
+	width:120px;
+	padding: 0;
+	margin: -19px 0px 0px 100px;
+	border:1px solid black;
+}
+
+div#hormenu1 li li, div#hormenu1 li li li {border: none; width: 120px;background-color: #f4f4f4;margin: 0px;}	
+
+div#hormenu1 li li a, div#hormenu1 li li li a {padding: 2px 2px 2px 10px;}
+
+/**************************/
+
+div#tabscheda{
+	margin-top: 10px;
+	margin-bottom: 0px;
+	height: 18px;
+	/*border: 1px solid #000;*/
+}
+
+div#tabscheda ul{
+	height: 10px;
+}
+
+div#tabscheda ul li{
+	float: left;
+	display: inline;
+	margin-right: 2px;
+	border: 1px solid #003240;
+	font-size: 90%;
+	background-color: #CEE0E6;
+	padding: 5px;
+	margin-top: -3px;
+}
+
+div#tabscheda ul li.select{
+	border-bottom: 0px;
+	margin-top: -2px;
+}
+
+div#menu{
+	margin-bottom: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+	margin-bottom: 10px;
+}
+
+div#menu ul{
+	/*border: 1px solid #aaa;*/
+	/*background-color: #f4f4f4;*/
+	height: 25px;
+	margin: 0px;
+}
+
+div#menu ul li{
+	display: inline;
+	float:left;
+	margin-right: 2px;
+	font-size: 80%;
+	border: 0px;
+	padding: 2px;
+}
+
+div#menu ul li h2{
+	margin-top: 0px;
+	font-size: 150%;
+	padding-right: 10px;
+}
+
+.border_title_menu{
+	margin-right: 0px;
+	margin-top: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+	border-left: 1px solid #aaa;
+	border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	border-right: 0px;
+	background-color: #f4f4f4;
+}
+
+.border_title_menu1{
+	margin-right: 0px;
+	margin-top: 5px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 5px;
+	border-left: 1px solid #aaa;
+	border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+	border-right: 0px;
+	background-color: #f4f4f4;
+	padding-bottom: 6px;
+}
+
+div#hormenu ul li.segnala-bug{
+	border: 0px;
+	font-size: 90%;
+	font-style: italic;
+	margin-left: 20px;
+	padding-top: 2px;
+	font-weight: bold;
+}
+
+div#hormenu ul li.segnala-bug a:hover{
+	background-color: transparent;
+}
+
+div#hormenu ul li.segnala-bug a{
+	color: yellow;
+}

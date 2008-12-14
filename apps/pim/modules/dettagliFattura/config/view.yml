@@ -1,0 +1,8 @@
+all:
+  has_layout: on
+  
+editSuccess:
+  has_layout: off
+  
+showSuccess:
+  has_layout: off

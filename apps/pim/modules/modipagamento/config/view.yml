@@ -1,0 +1,11 @@
+editSuccess:
+  components:
+    breadcrumps: [modipagamento, editBread]
+    
+createSuccess:
+  components:
+    breadcrumps: [modipagamento, createBread]
+    
+listSuccess:
+  components:
+    breadcrumps: [modipagamento, bread]

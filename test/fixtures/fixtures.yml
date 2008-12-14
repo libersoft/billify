@@ -1,0 +1,379 @@
+---
+Utente:
+  Utente_1: 
+    id_invitation_code: 
+    username: user
+    nome: User
+    cognome: User
+    ragione_sociale: Company
+    partita_iva: 03727570404
+    codice_fiscale: 03727570404
+    email: ff@ideato.it
+    password: user
+    data_attivazione: 2008-03-26
+    data_rinnovo: 2008-03-26
+    tipo: pro
+    stato: attivo
+    fattura: n
+    lastlogin: 2008-12-13 22:04:22
+    approva_contratto: 1
+    approva_policy: 1
+    sconto: 0
+
+ModoPagamento: 
+  ModoPagamento_1: 
+    id_utente: Utente_1
+    num_giorni: 0
+    descrizione: Rimessa diretta
+  ModoPagamento_2: 
+    id_utente: Utente_1
+    num_giorni: 10
+    descrizione: 10 Giorni
+
+TemaFattura: 
+  TemaFattura_1: 
+    id_utente: Utente_1
+    nome: ideato srl
+    template: |
+      <table width="100%" style="font-size: 10px;" cellpadding="5" cellspacing="0">
+      <tr class="intestazione">
+      <td>[LOGO]</td>
+      <td rowspan="2" class="cliente">
+      Destinatario<br/>
+      <strong>[CLIENTE_INTESTAZIONE]</strong><br/>
+      [CLIENTE_VIA]<br/>
+      [CLIENTE_CAP] - [CLIENTE_CITTA] - ([CLIENTE_PROVINCIA])<br/>
+      [CLIENTE_PIVA_OR_CF]
+      </td>
+      <td rowspan="2" class="fattura" align="right">
+      [NOTA_CREDITO_OR_FATTURA] n. <strong>[PROFORMA_OR_NUM]</strong><br/>
+      del <strong>[FATTURA_DATA]</strong>
+      </td>
+      </tr>
+      <tr>
+      <td class="ragione-sociale"><b>[RAGIONE_SOCIALE]</b><br/>
+      via Quinto Bucci, 205 <br/>
+      47023 Cesena (FC)<br/>
+      P.Iva/CF [PIVA]
+      </td>
+      </tr>
+      </table>
+      
+      
+      <div class="dettaglioFattura">
+      <h2 style="width:100%; background-color: #fefefe">Oggetto:</h2>
+      <table width="100%" cellspacing="0">
+      <tr>
+      <th style="border-bottom: 1px solid black" >Descrizione</th>
+      <th class="pari" style="border-bottom: 1px solid black" width="5%">Q.ta'</th>
+      <th style="border-bottom: 1px solid black" width="20%">Prezzo Singolo</th>
+      <th class="pari" style="border-bottom: 1px solid black" width="5%">Sconto</th>
+      <th style="border-bottom: 1px solid black" width="20%">Prezzo Totale</th>
+      <th class="pari" style="border-bottom: 1px solid black" width="5%">Iva</th>
+      </tr>
+      <FOREACHDETTAGLI>
+      <tr>
+      <td style="font-size: 10px">[DETTAGLIO_FATTURA_DESCRIZIONE]</td>
+      <td align="center" class="pari">[DETTAGLIO_FATTURA_QTY]</td>
+      <td align="center">[DETTAGLIO_FATTURA_PREZZO_SINGOLO]</td>
+      <td align="center" class="pari">[DETTAGLIO_FATTURA_SCONTO]%</td>
+      <td align="center">[DETTAGLIO_FATTURA_PREZZO_TOTALE]</td>
+      <td align="center" class="pari">[IVA]%</td>
+      </tr>
+      </FOREACHDETTAGLI>
+      </table>
+      
+      <div>
+      <table class="calcola_fattura" width="100%" cellspacing="0" cellpadding="5">
+      <tr id="imponibile">
+      <th>Imponibile:</th>
+      <td align="right">[FATTURA_IMPONIBILE]</td>
+      </tr>
+      <tr id="sconto">
+      <th>Sconto del [FATTURA_VAL_SCONTO]%:</th>
+      <td align="right">-[FATTURA_SCONTO]</td>
+      </tr>
+      <tr id="spese_anticipate">
+      <th>Spese Anticipate</th>
+      <td align="right">[FATTURA_SPESE_ANTICIPATE]</td>
+      </tr>
+      <FOREACHTASSE>
+      <tr id="tassa">
+      <th>[TASSA_LABEL]:</th>
+      <td align="right">[TASSA_VALUE]</td>
+      </tr>
+      </FOREACHTASSE>
+      <tr>
+      <th style="border-bottom: 1px solid #000;color: red">Imponibile ai fini iva:</th>
+      <td align="right" style="border-bottom: 1px solid #000;">[FATTURA_IMPONIBILE_IVA]</td>
+      </tr>
+      <tr id="iva">
+      <th>Iva:</th>
+      <td align="right">[FATTURA_IVA]</td>
+      </tr>
+      <tr id="totale">
+      <th>Totale Fattura:</th>
+      <td align="right">[FATTURA_TOTALE]</td>
+      </tr>
+      
+      <tr id="ritenuta_acconto">
+      <th>Ritenuta d'acconto:</th>
+      <td align="right">[FATTURA_RITENUTA_ACCONTO]</td>
+      </tr>
+      <tr style="font-weight:bold;" class="font_bigger" >
+      <td class="left-border">NETTO A PAGARE</td>
+      <td align="right" class="right-border">[FATTURA_NETTO_LIQUIDARE]</td>
+      </tr>
+      </table>
+      </div>
+      </div>
+      
+      <div id="proforma_art_21" style="font-size:10px;">
+      <em>[PROFORMA_ART_21]</em>
+      <em>[PROFORMA_PAGAMENTO]</em>
+      </div>
+      
+      <h2>Modalita' di pagamento:</h2>
+      Pagamento: [FATTURA_PAGAMENTO]
+      
+      <div class="coor_banca">
+      <strong>Nome Banca:</strong> [NOME_BANCA]<br/>
+      <strong>ABI:</strong> [ABI] - <strong>CAB:</strong> [CAB] - <strong>CIN:</strong> [CIN] - <strong>C/C.:</strong> [NUM_CONTO]<br/>
+      <strong>IBAN:</strong> [IBAN]<br/>
+      </div>
+      
+      <div class="footer">
+      ideato srl <info@ideato.it> - http://www.ideato.it - info@ideato.it
+      </div>
+    css: |
+      body{
+      font-size: 12px;
+      font-family: helvetica;
+      padding: 10px;
+      }
+      table{
+      font-size: 12px;
+      }
+      .intestazione{
+      
+      }
+      .cliente{
+      text-align: left;
+      border-left: 1px solid black;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      background-color: #efefef;
+      }
+      .fattura{
+      background-color: #efefef;
+      border-right: 1px solid black;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      font-size: 14px;
+      }
+      .font_bigger{
+      font-size: 18px;
+      }
+      .dettaglioFattura{
+      margin-top: 30px;
+      }
+      .dettaglioFattura table{
+      margin-top: 20px;
+      }
+      .dettaglioFattura table td {
+      font-size: 10px;
+      }
+      table.calcola_fattura th{text-align: left;}
+      table.calcola_fattura{margin-bottom: 30px;}
+      .footer{
+      border-top: 1px solid #000;
+      padding-top: 3px;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      }
+      div.coor_banca, table.coor_banca{
+      font-size: 12px;
+      clear: both;
+      }
+      
+      .left-border {
+      border-left: 1px solid black;
+      border-top: 1px solid black;
+      background-color: #efefef;
+      border-bottom: 1px solid black;
+      padding: 5px;
+      }
+      
+      .right-border {
+      border-right: 1px solid black;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      background-color: #efefef;
+      padding: 5px;
+      }
+      .pari {
+      background-color: #efefef;
+      }
+      
+      #proforma_art_21{
+      margin-top: 20px;
+      }
+      
+      .footer{
+      font-size: 10px;
+      font-weight: bold;
+      margin-top: 20px;
+      }
+      
+Banca: 
+  Banca_1: 
+    id_utente: Utente_1
+    abi: 01234
+    cab: 22000
+    cin: O
+    iban: IT00 O011 7777 9999 0000 0001 111
+    numero_conto: 000000112209
+    nome_banca: Credito di PIM 
+
+Cliente:
+<?php for($i = 0; $i < 20; $i++):?> 
+  Cliente_<?php echo $i ?>: 
+    id_utente: Utente_1
+    azienda: s
+    ragione_sociale: '<?php echo $i<=9?'0'.$i:$i ?> Azienda'
+    via: via degli ulivi, 19
+    citta: Milano
+    provincia: MI
+    cap: 60100
+    piva: 02437420405
+    cf: 02437420405
+    telefono: 0211224455
+    fax: 0211445577
+    email: azienda@example.it
+    modo_pagamento_id: ModoPagamento_1
+    stato: a
+    id_tema_fattura: TemaFattura_1
+    id_banca: Banca_1
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+<?php endfor?>
+  
+CodiceIva: 
+  CodiceIva_1: 
+    id_utente: Utente_1
+    nome: 20%
+    valore: 20
+    descrizione: Iva al 20%
+  CodiceIva_2: 
+    id_utente: Utente_1
+    nome: 3%
+    valore: 3
+    descrizione: Iva al 3%
+  CodiceIva_3: 
+    id_utente: Utente_1
+    nome: esente
+    valore: 0
+    descrizione: Esente Iva 
+    
+Fattura:
+<?php for($i = 1; $i <= 3; $i++):?>
+  Fattura_<?php echo $i?>: 
+    id_utente: Utente_1
+    num_fattura: '<?php echo $i?>'
+    cliente_id: Cliente_1
+    data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'')))?>'
+    modo_pagamento_id: ModoPagamento_1
+    calcola_ritenuta_acconto: n
+    sconto: 0
+    vat: 20
+<?php endfor?>
+<?php for($i = 4; $i <= 7; $i++):?>
+  Fattura_<?php echo $i?>: 
+    id_utente: Utente_1
+    num_fattura: '<?php echo $i?>'
+    cliente_id: Cliente_2
+    data: '<?php echo date('Y-m-d', strtotime('+3 days'))?>'
+    modo_pagamento_id: ModoPagamento_2
+    calcola_ritenuta_acconto: n
+    sconto: 0
+    stato: i
+    vat: 20
+<?php endfor?>
+  Fattura_a: 
+    id_utente: Utente_1
+    num_fattura: 100
+    cliente_id: Cliente_2
+    data: '<?php echo date('Y-m-d', strtotime('-1 month'))?>'
+    modo_pagamento_id: ModoPagamento_2
+    calcola_ritenuta_acconto: n
+    sconto: 0
+    stato: p
+    vat: 20
+    
+DettagliFattura: 
+<?php for($i = 1; $i <= 3; $i++):?>
+  DettagliFattura_<?php echo $i?>: 
+    fattura_id: 'Fattura_<?php echo $i?>'
+    descrizione: >
+      Consulenza e realizzazione sito web
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1000
+<?php endfor?>
+<?php for($i = 4; $i <= 7; $i++):?>
+  DettagliFattura_<?php echo $i?>: 
+    fattura_id: 'Fattura_<?php echo $i?>'
+    descrizione: >
+      Consulenza e realizzazione sito web
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 2000
+<?php endfor?>
+  DettagliFattura_a: 
+    fattura_id: Fattura_a
+    descrizione: >
+      Consulenza e realizzazione sito web
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1000
+  
+Impostazione: 
+  Impostazione_1: 
+    num_clienti: 10
+    num_fatture: 20
+    righe_dettagli: 5
+    ritenuta_acconto: 0/100
+    tipo_ritenuta: debito
+    riepilogo_home: s
+    consegna_commercialista: n
+    deposita_iva: n
+    fattura_automatica: s
+    codice_cliente: n
+    label_imponibile: Imponibile
+    label_spese: Spese Anticipate
+    label_imponibile_iva: Imponibile ai fini iva
+    label_iva: Iva
+    label_totale_fattura: Totale Fattura
+    label_ritenuta_acconto: Ritenuta d'acconto
+    label_netto_liquidare: Netto da liquidare
+    label_quantita: Qty
+    label_descrizione: Descrizione
+    label_prezzo_singolo: Prezzo Singolo
+    label_prezzo_totale: Prezzo Totale
+    label_sconto: Sconto
+    id_utente: Utente_1
+    
+TagsFattura: 
+  TagsFattura_1: 
+    id_fattura: Fattura_1
+    id_utente: Utente_1
+    tag: mdg
+    tag_normalizzato: mdg
+    data: 2008-04-01
+
+Tassa: 

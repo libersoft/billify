@@ -1,0 +1,12 @@
+all:
+  has_layout: on
+  
+riepilogoSuccess:
+  components:
+    breadcrumps: [main, breadRiepilogo]
+    
+updateProfileSuccess:
+  has_layout: off
+    
+timeSuccess:
+  has_layout: off

@@ -1,0 +1,936 @@
+---
+propel: 
+  banca: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_utente: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    abi: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    cab: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    cin: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    iban: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    numero_conto: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    nome_banca: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    _indexes: 
+      id_utente: 
+        - id_utente
+  bug: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_utente: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    priorita: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    modulo: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    testo: 
+      type: LONGVARCHAR
+      required: true
+    data: 
+      type: DATE
+      required: true
+      default: 0000-00-00
+    stato: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    _indexes: 
+      id_utente: 
+        - id_utente
+  cliente: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_utente: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    azienda: 
+      type: CHAR
+      required: true
+      default: n
+    ragione_sociale: 
+      type: VARCHAR
+      size: 255
+    via: 
+      type: VARCHAR
+      size: 255
+    citta: 
+      type: VARCHAR
+      size: 100
+    provincia: 
+      type: VARCHAR
+      size: 5
+    cap: 
+      type: VARCHAR
+      size: 5
+    piva: 
+      type: VARCHAR
+      size: 20
+    cf: 
+      type: VARCHAR
+      size: 50
+    cognome: 
+      type: VARCHAR
+      size: 50
+      index: true
+    nome: 
+      type: VARCHAR
+      size: 50
+    telefono: 
+      type: VARCHAR
+      size: 20
+    fax: 
+      type: VARCHAR
+      size: 20
+    cellulare: 
+      type: VARCHAR
+      size: 20
+    email: 
+      type: VARCHAR
+      size: 100
+    modo_pagamento_id: 
+      type: INTEGER
+      foreignTable: modo_pagamento
+      foreignReference: id
+      onDelete: SET NULL
+      onUpdate: CASCADE
+    stato: 
+      type: CHAR
+      required: true
+      default: a
+    note: 
+      type: LONGVARCHAR
+    id_tema_fattura: 
+      type: INTEGER
+      foreignTable: tema_fattura
+      foreignReference: id
+      onDelete: SET NULL
+      onUpdate: CASCADE
+    id_banca: 
+      type: INTEGER
+      foreignTable: banca
+      foreignReference: id
+      onDelete: SET NULL
+      onUpdate: CASCADE
+      index: true
+    calcola_ritenuta_acconto: 
+      type: CHAR
+      required: true
+      default: a
+    includi_tasse: 
+      type: CHAR
+      required: true
+      default: n
+    calcola_tasse: 
+      type: CHAR
+      required: true
+      default: s
+    cod: 
+      type: VARCHAR
+      size: 255
+    _indexes: 
+      cliente_FI_1: 
+        - modo_pagamento_id
+      id_utente: 
+        - id_utente
+      piva: 
+        - piva
+      id_tema_fattura: 
+        - id_tema_fattura
+  codice_iva: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_utente: 
+      type: INTEGER
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    nome: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    valore: 
+      type: INTEGER
+      required: true
+      default: 0
+    descrizione: 
+      type: LONGVARCHAR
+      required: true
+    _indexes: 
+      id_utente: 
+        - id_utente
+  dettagli_fattura: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    fattura_id: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: fattura
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    descrizione: 
+      type: LONGVARCHAR
+    qty: 
+      type: VARCHAR
+      size: 10
+      required: true
+      default: 0
+    sconto: 
+      type: VARCHAR
+      size: 10
+      required: true
+      default: 0
+    iva: 
+      type: INTEGER
+      required: true
+      default: 0
+    prezzo: 
+      type: VARCHAR
+      size: 50
+      required: true
+      default: 0
+    _indexes: 
+      dettagli_fattura_FI_1: 
+        - fattura_id
+  fattura: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_utente: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    num_fattura: 
+      type: INTEGER
+      required: true
+      default: 0
+      index: true
+    cliente_id: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: cliente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    data: 
+      type: DATE
+      required: true
+      default: 0000-00-00
+    data_stato: 
+      type: DATE
+    modo_pagamento_id: 
+      type: INTEGER
+      foreignTable: modo_pagamento
+      foreignReference: id
+      onDelete: SET NULL
+      onUpdate: CASCADE
+    sconto: 
+      type: INTEGER
+      required: true
+      default: 0
+    vat: 
+      type: INTEGER
+      required: true
+      default: 20
+    spese_anticipate: 
+      type: FLOAT
+      required: true
+      default: 0
+    totale_mem: 
+      type: FLOAT
+    imponibile_mem: 
+      type: FLOAT
+    stato: 
+      type: CHAR
+      required: true
+      default: n
+    iva_pagata: 
+      type: CHAR
+      required: true
+      default: n
+    iva_depositata: 
+      type: CHAR
+      required: true
+      default: n
+    commercialista: 
+      type: CHAR
+      required: true
+      default: n
+    note: 
+      type: LONGVARCHAR
+    calcola_ritenuta_acconto: 
+      type: CHAR
+      required: true
+      default: a
+    includi_tasse: 
+      type: CHAR
+      required: true
+      default: n
+    calcola_tasse: 
+      type: CHAR
+      required: true
+      default: s
+    _indexes: 
+      fattura_FI_1: 
+        - cliente_id
+      fattura_FI_2: 
+        - modo_pagamento_id
+      id_utente: 
+        - id_utente
+  impostazione: 
+    id_utente: 
+      type: INTEGER
+      required: true
+      primaryKey: true
+      default: 0
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    num_clienti: 
+      type: INTEGER
+      required: true
+      default: 20
+    num_fatture: 
+      type: INTEGER
+      required: true
+      default: 20
+    righe_dettagli: 
+      type: INTEGER
+      required: true
+      default: 5
+    ritenuta_acconto: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 20/100
+    tipo_ritenuta: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: debito
+    riepilogo_home: 
+      type: CHAR
+      required: true
+      default: n
+    consegna_commercialista: 
+      type: CHAR
+      required: true
+      default: n
+    deposita_iva: 
+      type: CHAR
+      required: true
+      default: n
+    fattura_automatica: 
+      type: CHAR
+      required: true
+      default: s
+    codice_cliente: 
+      type: CHAR
+      required: true
+      default: n
+    label_imponibile: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Imponibile
+    label_spese: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Spese Anticipate
+    label_imponibile_iva: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Imponibile ai fini iva
+    label_iva: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Iva
+    label_totale_fattura: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Totale Fattura
+    label_ritenuta_acconto: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Ritenuta d'acconto
+    label_netto_liquidare: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Netto da liquidare
+    label_quantita: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Qty
+    label_descrizione: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Descrizione
+    label_prezzo_singolo: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Prezzo Singolo
+    label_prezzo_totale: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Prezzo Totale
+    label_sconto: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: Sconto
+  invitation_code: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    codice: 
+      type: VARCHAR
+      size: 10
+      required: true
+      default: 
+    inviato: 
+      type: CHAR
+      required: true
+      default: n
+    email: 
+      type: VARCHAR
+      size: 255
+    _uniques: 
+      codice: 
+        - codice
+  modo_pagamento: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_utente: 
+      type: INTEGER
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    num_giorni: 
+      type: INTEGER
+      required: true
+      default: 0
+    descrizione: 
+      type: VARCHAR
+      size: 50
+    _indexes: 
+      id_utente: 
+        - id_utente
+  pagina: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    titolo: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    corpo: 
+      type: LONGVARCHAR
+      required: true
+  paypal: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: BIGINT
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    date: 
+      type: TIMESTAMP
+    item_name: 
+      type: VARCHAR
+      size: 130
+    receiver_email: 
+      type: VARCHAR
+      size: 125
+    item_number: 
+      type: VARCHAR
+      size: 130
+    quantity: 
+      type: SMALLINT
+    id_utente: 
+      type: INTEGER
+    payment_status: 
+      type: CHAR
+    pending_reason: 
+      type: CHAR
+    payment_gross: 
+      type: FLOAT
+    payment_fee: 
+      type: FLOAT
+    payment_type: 
+      type: CHAR
+    payment_date: 
+      type: VARCHAR
+      size: 50
+      required: true
+      default: 0
+    txn_id: 
+      type: VARCHAR
+      size: 20
+    payer_email: 
+      type: VARCHAR
+      size: 125
+    payer_status: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: unverified
+    txn_type: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: subscr_payment
+    first_name: 
+      type: VARCHAR
+      size: 35
+    last_name: 
+      type: VARCHAR
+      size: 60
+    address_city: 
+      type: VARCHAR
+      size: 60
+    address_street: 
+      type: VARCHAR
+      size: 60
+    address_state: 
+      type: VARCHAR
+      size: 60
+    address_zip: 
+      type: VARCHAR
+      size: 15
+    address_country: 
+      type: VARCHAR
+      size: 60
+    address_status: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: unconfirmed
+    subscr_date: 
+      type: VARCHAR
+      size: 50
+    period1: 
+      type: VARCHAR
+      size: 20
+      required: true
+      default: UNK
+    period2: 
+      type: VARCHAR
+      size: 20
+      required: true
+      default: UNK
+    period3: 
+      type: VARCHAR
+      size: 20
+      required: true
+      default: UNK
+    amount1: 
+      type: FLOAT
+      required: true
+      default: 0
+    amount2: 
+      type: FLOAT
+      required: true
+      default: 0
+    amount3: 
+      type: FLOAT
+      required: true
+      default: 0
+    recurring: 
+      type: TINYINT
+      required: true
+      default: 1
+    reattempt: 
+      type: TINYINT
+      required: true
+      default: 0
+    retry_at: 
+      type: VARCHAR
+      size: 50
+    recur_times: 
+      type: SMALLINT
+      required: true
+      default: 0
+    subscr_id: 
+      type: VARCHAR
+      size: 20
+    entirepost: 
+      type: LONGVARCHAR
+    paypal_verified: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: INVALID
+    verify_sign: 
+      type: VARCHAR
+      size: 125
+    _indexes: 
+      txn_type: 
+        - txn_type
+      payment_status: 
+        - payment_status
+      pending_reason: 
+        - pending_reason
+      payer_status: 
+        - payer_status
+      payment_type: 
+        - payment_type
+      retry_at: 
+        - retry_at
+      receiver_email: 
+        - receiver_email
+      date: 
+        - date
+      id_utente: 
+        - id_utente
+  prodotto: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_utente: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    codice: 
+      type: VARCHAR
+      size: 255
+    nome: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    prezzo: 
+      type: FLOAT
+      required: true
+      default: 0
+    _indexes: 
+      codice: 
+        - codice
+      id_utente: 
+        - id_utente
+  tags_fattura: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_fattura: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: fattura
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    id_utente: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    tag: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    tag_normalizzato: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    data: 
+      type: DATE
+      required: true
+      default: 0000-00-00
+    _indexes: 
+      id_utente: 
+        - id_utente
+    _uniques: 
+      id_fattura_2: 
+        - id_fattura
+        - id_utente
+        - tag_normalizzato
+  tassa: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_utente: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    nome: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    valore: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    descrizione: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    _indexes: 
+      id_utente: 
+        - id_utente
+  tema_fattura: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_utente: 
+      type: INTEGER
+      required: true
+      default: 0
+      foreignTable: utente
+      foreignReference: id
+      onDelete: CASCADE
+      onUpdate: CASCADE
+    nome: 
+      type: VARCHAR
+      size: 100
+      required: true
+      default: 
+    template: 
+      type: LONGVARCHAR
+      required: true
+    css: 
+      type: LONGVARCHAR
+      required: true
+    logo: 
+      type: VARCHAR
+      size: 255
+    _indexes: 
+      id_utente: 
+        - id_utente
+  utente: 
+    _attributes: 
+      idMethod: native
+    id: 
+      type: INTEGER
+      required: true
+      autoIncrement: true
+      primaryKey: true
+    id_invitation_code: 
+      type: INTEGER
+    username: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    nome: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    cognome: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    ragione_sociale: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    partita_iva: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    codice_fiscale: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    email: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    password: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: 
+    data_attivazione: 
+      type: DATE
+      required: true
+      default: 0000-00-00
+    data_rinnovo: 
+      type: DATE
+      required: true
+      default: 0000-00-00
+    tipo: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: demo
+    stato: 
+      type: VARCHAR
+      size: 255
+      required: true
+      default: attivo
+    fattura: 
+      type: CHAR
+      required: true
+      default: n
+    lastlogin: 
+      type: TIMESTAMP
+      required: true
+      default: 0000-00-00 00:00:00
+    approva_contratto: 
+      type: INTEGER
+      required: true
+      default: 0
+    approva_policy: 
+      type: INTEGER
+      required: true
+      default: 0
+    sconto: 
+      type: INTEGER
+      required: true
+      default: 0
+    _indexes: 
+      id_invitation_code: 
+        - id_invitation_code
+    _uniques: 
+      username: 
+        - username

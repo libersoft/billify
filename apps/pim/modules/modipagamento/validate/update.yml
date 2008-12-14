@@ -1,0 +1,20 @@
+methods:
+  post:           [num_giorni, descrizione]
+
+names:
+  num_giorni:
+    required:     Yes
+    required_msg: Il numero dei giorni non pu&ograve; essere vuoto
+    validators: valoreValidator
+    
+  descrizione:
+    required:     Yes
+    required_msg: La descrizione non pu&ograve; essere vuota
+    
+valoreValidator:
+  class:          sfNumberValidator
+  param:
+    nan_error:    Questo valore deve essere intero
+    
+fillin:
+  enabled:  on

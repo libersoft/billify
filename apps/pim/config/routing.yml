@@ -1,0 +1,36 @@
+# default rules
+
+statistiche:
+  url: /statistiche
+  param: { module: stats, action: index }
+
+statistiche_mod:
+  url: /statistiche/:action/*
+  param: { module: stats }
+
+contatti:
+  url: /content/contatti
+  param: {module: sito, action: contatti}
+
+pagina:
+  url:   /content/:titolo
+  param: { module: sito, action: permalink }
+
+homepage:
+  url:   /
+  param: { module: main, action: index}
+
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default_symfony:
+  url:   /symfony/:action/*
+  param: { module: default }
+
+default:
+  url:   /:module/:action/*
+
+popular_tags:
+  url:   /popular_tags
+  param: { module: tag, action: popular }

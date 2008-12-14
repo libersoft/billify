@@ -1,0 +1,20 @@
+dev:
+  propel:
+    param:
+      hostspec: localhost
+      username: root
+      password:
+      database: pim
+
+all:
+  propel:
+    class: sfPropelDatabase
+    param:
+      datasource:   propel
+      phptype:      mysql
+      hostspec: localhost
+      database: pim
+      username: root
+      password:
+      compat_assoc_lower:  true
+      compat_rtrim_string: true

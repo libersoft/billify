@@ -1,0 +1,21 @@
+methods:
+  post:           [nome, valore]
+
+names:
+  nome:
+    required:     Yes
+    required_msg: Il nome della tassa non pu&ograve; essere vuoto
+  valore:
+    required:     Yes
+    required_msg: Il valore della tassa non pu&ograve; essere vuoto
+    validators: tassaValidator
+    
+tassaValidator:
+  class:          sfNumberValidator
+  param:
+    nan_error:    Questo valore deve essere intero
+    min:          1
+    min_error:    Il valore minimo deve essere 1
+    
+fillin:
+  enabled:  on

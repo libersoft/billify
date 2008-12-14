@@ -1,0 +1,1 @@
+<?php echo format_date((time()+(9*3600)),'dd MMMM yyyy - HH:mm'); ?>

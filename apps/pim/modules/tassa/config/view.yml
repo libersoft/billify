@@ -1,0 +1,11 @@
+editSuccess:
+  components:
+    breadcrumps: [tassa, editBread]
+    
+createSuccess:
+  components:
+    breadcrumps: [tassa, createBread]
+    
+listSuccess:
+  components:
+    breadcrumps: [tassa, bread]

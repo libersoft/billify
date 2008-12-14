@@ -1,0 +1,6 @@
+<ul>
+<li><em>Sei in:</em></li>
+<li><?php echo link_to('Home','main/index')?> &raquo;</li>
+<li><?php echo link_to('Tasse','tasse/list')?> &raquo;</li>
+<li>Nuova Tassa</li>
+</ul>

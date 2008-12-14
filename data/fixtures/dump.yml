@@ -1,0 +1,3962 @@
+---
+InvitationCode: 
+  InvitationCode_3: 
+    codice: 1234-aabb-
+    inviato: n
+    email: 
+  InvitationCode_50: 
+    codice: vb!2?8wq1c
+    inviato: n
+    email: 
+Pagina: 
+  Pagina_1: 
+    titolo: Chi Siamo
+    corpo: Area in allestimento.<br />
+  Pagina_2: 
+    titolo: Contatti
+    corpo: |
+      <p>Per qualsiasi informazione, bug o assistenza non esitare a contattarci.</p>
+      <p> </p>
+      <p><strong>PIM Staff</strong><br/><br/><strong>E-Mail:</strong> <a href="mailto:info@personal-invoice-manager.net">info[at]personal-invoice-manager.net</a></p>
+  Pagina_3: 
+    titolo: Termini del Servizio
+    corpo: Area in allestimento.
+  Pagina_4: 
+    titolo: Privacy Policy
+    corpo: Area in allestimento.<br />
+  Pagina_5: 
+    titolo: FAQ
+    corpo: |
+      <div class="home">
+      <ol style="margin-left: 20px">
+      <li><a href="#che-cose">Che cos'ÃƒÂ¨ PIM On-line?</a></li>
+      <li><a href="#costo">Quanto costa?</a></li>
+      <li><a href="#registrazione">Come faccio a registrarmi?</a></li>
+      <li><a href="#cod-invito">Che cos'ÃƒÂ¨ il Codice d'Invito?</a></li>
+      <li><a href="#paypal">Come funziona l'iscrizione al servizio con PayPal?</a></li>
+      <li><a href="#canc">Come posso cancellarmi dal servizio?</a></li>
+      <li><a href="#adsense">Se mi iscrivo al servizio il banner pubblicitario resta?</a></li>
+      </ol>
+      </div>
+      <p> </p>
+      
+      <p><a name="che-cose" ></a><strong>Che cos'ÃƒÂ¨ PIM On-line?</strong></p>
+      <p>Pim-Online ÃƒÂ¨ il primo servizio web che vi offre tutte le funzionalitÃƒÂ  per gestire in modo semplice, intuitivo e rapido le vostre fatture.</p>
+      <p>Il servizio ÃƒÂ¨ rivolto a liberi professionisti e piccole imprese che non avendo bisogno di un vero e proprio gestionale, sentono, tuttavia, l'esigenza di dover gestire le proprie fatture in maniera ordinata e dovunque essi siano.</p>
+      <p>Il servizio ÃƒÂ¨ usufruibile da qualsiasi punto si voglia (casa, ufficio, auto, ecc.) ÃƒÂ¨ sufficente solo una connessione internet.</p>
+      <p>Attravero PIM On-line ÃƒÂ¨ possibile gestire l'anagrafica clienti, i vostri prodotti, la lista delle vostre fatture e molte altro.</p>
+      
+      <p><a name="costo" ></a><strong>Quanto costa?</strong></p>
+      <p>Registrarsi a PIM On-line ÃƒÂ¨ gratutito, dopo essersi registrati ÃƒÂ¨ possibile usufruire di tutte le funzionalitÃƒÂ  del sistema per 30gg.</p>
+      <p>Scaduto il periodo di provo ÃƒÂ¨ possibile aggiornare il proprio servizio dalla versione demo alla versione base con soli 5,9 euro + iva al mese, oppure continuare ad accedere ai propri dati, senza perÃƒÂ² l'opportunitÃƒÂ  di eseguire determinate operazioni.</p>
+      <p>L'iscrizione al servizio avviene attraverso il circuito PayPal e il pagamento ÃƒÂ¨ ricorrente ogni 30gg, in questo modo, in qualsiasi momento, potete cancellarvi dal servizio, pagando solo quello che avete consumato.</p>
+      <p>Per maggiori informazioni sui pagamenti ricorrenti con PayPal, <a href="https://www.paypal.com/it/cgi-bin/webscr?cmd=p/xcl/rec/subscr-intro-outside">visitate il sito ufficiale</a>.</p>
+      
+      <p><a name="registrazione" ></a><strong>Come faccio a registrarmi?</strong></p>
+      <p>Registrarsi ÃƒÂ¨ semplicissimo, basta <a href="/utente/askcode">richiedere un codice d'invito</a> e una volta ricevuto <a href="/utente/register">registrarsi</a> inserendo i proprio dati nell'apposita form di registrazione.</p>
+      <p>La registrazione ÃƒÂ¨ gratutita e vi offre 30gg di prova gratutiti per l'utilizzo del sitema.</p>
+      
+      <p><a name="cod-invito" ></a><strong>Che cos'ÃƒÂ¨ il Codice d'Invito?</strong></p>
+      <p>Il Codice d'Invito ÃƒÂ¨ un codice di sicurezza che deve essere <a href="/utente/askcode">richiesto attraverso l'apposita form</a> e, una volta ricevuto nella propria casella di posta, <a href="/utente/register">inserito in fase di registrazione</a>.</p>
+      <p>Il sistema adotta questo metodo per monitorare e controllare le registrazioni in questa prima fase di seprimentazione.</p>
+      
+      <p><a name="paypal" ></a><strong>Come funziona l'iscrizione al servizio con PayPal?</strong></p>
+      <p>PayPal ÃƒÂ¨ un circuito leader, a livello mondiale, sui pagamenti on-line. L'iscrizione attraverso questo circuito ÃƒÂ¨ molto semplice: <a href="/utente/register">ti devi registrare su PIM On-line</a>, devi aggiornare la tua iscrizione, clikkando nel menÃƒÂ¹ in alto a destra sulla voce <strong>aggiorna servizio</strong>, devi clikkare nel bottone PayPal Iscriviti, a questo punto se hai giÃƒÂ  un account PayPal puoi direttamente iscriverti, altrimenti puoi creare un tuo nuovo account, registrando la tua carta di credito, ed infine puoi iscriverti. </p>
+      
+      <p><a name="canc" ></a><strong>Come posso cancellarmi dal servizio?</strong></p>
+      <p>L'iscrizione al servizio ÃƒÂ¨ completamente gestibile dal proprio <a href="https://www.paypal.com/it/cgi-bin/webscr?cmd=p/xcl/rec/subscr-intro-outside">pannello personale su PayPal</a>, in questo modo in qualsiasi momento ÃƒÂ¨ possibile annullare l'iscrizione al servizio.</p>
+      
+      <p><a name="adsense" ></a><strong>Se mi iscrivo al servizio il banner pubblicitario resta?</strong></p>
+      <p>No, la pubblicitÃƒÂ  ÃƒÂ¨ presenta solo durante i primi 30 giorni di prova, poi con l'iscrizione al servizio e quindi con l'acquisto del servizio base il banner pubblicitario scompare.</p>
+  Pagina_6: 
+    titolo: Home Page
+    corpo: |
+      <h2>Il Software Web per la gestione delle tue fatture</h2>
+      
+      <div class="home">
+      <p align="justify"><strong>PIM On-Line</strong> ÃƒÂ¨ il nuovo servizio web basato su <a href="http://www.personal-invoice-manager.net/"><strong><acronym title="Personal Invoice Manager">PIM</acronym></strong></a>, il software open source per la gestione delle tue fatture.</p>
+      
+      <table width="100%">
+      <tr>
+      <td valign="top">
+      <ul>
+      <li>Gestione Fatture
+      </li>
+      <li>Gestione Anagrafica Clienti
+      </li>
+      <li>Gestione Prodotti
+      </li>
+      <li>Gestione Pagamenti Iva</li>
+      <li>Gestione Imposte</li>
+      <li>Gestione Banche</li>
+      <li>Temi Fatture Personalizzati</li>
+      <li>Esportazione Fattura</li>
+      <li>Statistiche</li>
+      </ul>
+      </td>
+      <td align="center">
+      <a href="/images/screenshot/home_page.jpg" target="_blank">
+      <img class="home" src="/images/screenshot/thumb/home_page_medium.jpg" /></a></td>
+      </tr>
+      </table>
+      
+      
+      <p class="home">
+      Nessuna installazione, nessun aggiornamento, sempre on-line!!!
+      </p>
+      
+      <div class="screenshot">
+      <table align="center">
+      <tr><td>
+      <a href="/images/screenshot/gestione_fatture_1.jpg" target="_blank">
+      <img src="/images/screenshot/thumb/gestione_fatture_1_thumb.jpg" height="70" width="83" /></a>
+      </td><td>
+      <a href="/images/screenshot/gestione_fatture_2.jpg" target="_blank">
+      <img src="/images/screenshot/thumb/gestione_fatture_2_thumb.jpg" height="70" width="83" /></a>
+      </td>
+      <td>
+      <a href="/images/screenshot/gestione_clienti_1.jpg" target="_blank">
+      <img src="/images/screenshot/thumb/gestione_clienti_1_thumb.jpg" height="70" width="83" /></a>
+      </td><td>
+      <a href="/images/screenshot/gestione_clienti_2.jpg" target="_blank">
+      <img src="/images/screenshot/thumb/gestione_clienti_2_thumb.jpg" height="70" width="83" /></a>
+      </td><td>
+      <a href="/images/screenshot/gestione_prodotti.jpg" target="_blank">
+      <img src="/images/screenshot/thumb/gestione_prodotti_thumb.jpg" height="70" width="83" /></a>
+      </td></tr></table>
+      </div>
+      
+      </div>
+  Pagina_7: 
+    titolo: Promozione Bug
+    corpo: |
+      <p>Chiunque segnali un bug attraverso l'apposita form, ha diritto alla <strong>sconto del 20%</strong> sull'acquisto del servizio.</p>
+      <p>Per segnalare il bug ÃƒÂ¨ sufficente autenticarsi e clikkare sul link <strong>"Segnala il Bug"</strong>.</p>
+      <p>Il bug verrÃƒÂ  visionato e, se approvato, verrÃƒÂ  automaticamente associato all'utente lo sconto del 20% in fase di acquisto del servizio.</p>
+Paypal: 
+Utente: 
+  Utente_17: 
+    id_invitation_code: 
+    username: ciccio
+    nome: Guest
+    cognome: Guest
+    ragione_sociale: Francesco Trucchia
+    partita_iva: 12345678911
+    codice_fiscale: FLLFNC77B02F202M
+    email: francesco@cphp.it
+    password: 27b4b5b01b0d1fcab2046369720ff75e
+    data_attivazione: 2006-08-22
+    data_rinnovo: 2006-08-22
+    tipo: demo
+    stato: disattivo
+    fattura: n
+    lastlogin: 2007-06-02 19:56:32
+    approva_contratto: 0
+    approva_policy: 0
+    sconto: 0
+  Utente_23: 
+    id_invitation_code: 3
+    username: admin
+    nome: Administrator
+    cognome: Administrator
+    ragione_sociale: 
+    partita_iva: 
+    codice_fiscale: TRCFNC79E31G157Z
+    email: francesco@cphp.it
+    password: a6d5adaf41d624e9d1601d39c7733c53
+    data_attivazione: 2006-08-28
+    data_rinnovo: 2006-08-28
+    tipo: pro
+    stato: attivo
+    fattura: n
+    lastlogin: 2007-05-06 18:49:59
+    approva_contratto: 0
+    approva_policy: 0
+    sconto: 0
+  Utente_29: 
+    id_invitation_code: 
+    username: ideato
+    nome: Francesco
+    cognome: Fullone
+    ragione_sociale: ideato srl
+    partita_iva: 03727570404
+    codice_fiscale: 03727570404
+    email: ff@ideato.it
+    password: 7904aad74dc9dacbd9792c66698f10b1
+    data_attivazione: 2008-03-26
+    data_rinnovo: 2008-03-26
+    tipo: pro
+    stato: attivo
+    fattura: n
+    lastlogin: 2008-12-13 22:04:22
+    approva_contratto: 1
+    approva_policy: 1
+    sconto: 0
+Banca: 
+  Banca_16: 
+    id_utente: Utente_29
+    abi: 03273
+    cab: 23900
+    cin: O
+    iban: IT61 O032 7323 9000 0020 0103 209
+    numero_conto: 000200103209
+    nome_banca: Credito di Romagna
+Bug: 
+Cliente: 
+  Cliente_57: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Biesse Spa
+    via: via antico acquedotto, 19
+    citta: Forli'
+    provincia: FC
+    cap: 47100
+    piva: 02437420405
+    cf: 02437420405
+    cognome: 
+    nome: biesse
+    telefono: 05437923415
+    fax: 05437923499
+    cellulare: 
+    email: sonia.cimatti@balducciesparagi.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: a
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_58: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Mondo del Gusto s.r.l.
+    via: Via Crescenzio 74
+    citta: Roma
+    provincia: RM
+    cap: 00193
+    piva: 09052671006
+    cf: 09052671006
+    cognome: Soverini
+    nome: Maurizio
+    telefono: 
+    fax: 
+    cellulare: 
+    email: maurizio.soverini@gmail.com
+    modo_pagamento_id: ModoPagamento_94
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_59: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Pivetta Partners Srl
+    via: Largo Repubblica, 7
+    citta: Vedano al Lambro
+    provincia: MI
+    cap: 20057
+    piva: 03224370969
+    cf: 03224370969
+    cognome: 
+    nome: 
+    telefono: 
+    fax: 
+    cellulare: 
+    email: cristiana.ceruti@pivettapartners.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: a
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_60: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: De Stefani Spa
+    via: via dismano 2
+    citta: Ravenna
+    provincia: RA
+    cap: 48100
+    piva: 00449030394
+    cf: 00449030394
+    cognome: Ingrosso
+    nome: Domenico
+    telefono: 0544479611
+    fax: 0544479660
+    cellulare: 
+    email: info@destefani.net
+    modo_pagamento_id: ModoPagamento_94
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_61: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Bookerang S.r.l
+    via: v.le dell'industria 303
+    citta: Corridonia
+    provincia: MC
+    cap: 62014
+    piva: 01639560430
+    cf: 01639560430
+    cognome: Zippilli
+    nome: Emanuele
+    telefono: 
+    fax: 
+    cellulare: 
+    email: info@bookerang.it
+    modo_pagamento_id: ModoPagamento_94
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_62: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Gotuneed srl
+    via: via Levico, 13
+    citta: Cervia
+    provincia: RA
+    cap: 48015
+    piva: 02252090390
+    cf: 02252090390
+    cognome: Rubboli
+    nome: Luigi
+    telefono: 05441889179
+    fax: 
+    cellulare: 348.5313627
+    email: 
+    modo_pagamento_id: ModoPagamento_94
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_63: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: S.E.C.S. Srl
+    via: corso Umberto I 158
+    citta: Cava de'Tirreni
+    provincia: SA
+    cap: 84013
+    piva: 04330590656
+    cf: 04330590656
+    cognome: Pallera
+    nome: Mirko
+    telefono: 
+    fax: 
+    cellulare: 
+    email: mirko@ninjamarketing.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: a
+    includi_tasse: s
+    calcola_tasse: s
+    cod: 
+  Cliente_64: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: >
+      Websushi di Comoglio Laura e Fusi
+      Christian
+    via: Corso Cavallotti 19
+    citta: Novara
+    provincia: NO
+    cap: 28100
+    piva: 06030500968
+    cf: 06030500968
+    cognome: 
+    nome: 
+    telefono: 
+    fax: 
+    cellulare: 
+    email: info@websushi.it
+    modo_pagamento_id: ModoPagamento_96
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_65: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: LF S.p.a.
+    via: via Parri, 111
+    citta: Torre del Moro, Cesena
+    provincia: FC
+    cap: 47023
+    piva: 00958880403
+    cf: 00958880403
+    cognome: 
+    nome: 
+    telefono: +390547341111
+    fax: +390547341110
+    cellulare: 
+    email: 
+    modo_pagamento_id: ModoPagamento_96
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_66: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: CPL Concordia Group
+    via: via Achille Grandi, 39
+    citta: Concordia sulla Secchia
+    provincia: MO
+    cap: 41033
+    piva: 00154950364
+    cf: 00154950364
+    cognome: Greco
+    nome: Gabriele
+    telefono: 0535616111
+    fax: 0535616300
+    cellulare: 
+    email: info@cpl.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: a
+    includi_tasse: s
+    calcola_tasse: s
+    cod: 
+  Cliente_67: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Mikamai srl
+    via: via Ceradini, 12
+    citta: Milano
+    provincia: MI
+    cap: 20129
+    piva: 06084820965
+    cf: 06084820965
+    cognome: Vaghi
+    nome: Ivan
+    telefono: 
+    fax: 
+    cellulare: 
+    email: ivan@mikamai.com
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: s
+    cod: 
+  Cliente_68: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Aweta Sistemi S.p.A.
+    via: A. Olivetti, 79
+    citta: Pievesistina
+    provincia: FC
+    cap: 47020
+    piva: 01075420404
+    cf: 
+    cognome: Berti
+    nome: Paolo
+    telefono: 0547316900
+    fax: 0547316927
+    cellulare: 
+    email: p.berti@aweta.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: a
+    includi_tasse: s
+    calcola_tasse: s
+    cod: 
+  Cliente_69: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Daimon srl
+    via: Via Mercantini 16
+    citta: Milano
+    provincia: mi
+    cap: 20154
+    piva: 13154200151
+    cf: 
+    cognome: De Baggis
+    nome: Mafe
+    telefono: 
+    fax: 
+    cellulare: 
+    email: mafe@daimon.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+    cod: 
+  Cliente_70: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: >
+      Digital Natives snc di Bonanno e
+      Montersino
+    via: Via Borgo del Majno, 22
+    citta: Basiglio
+    provincia: MI
+    cap: 20080
+    piva: 05908880965
+    cf: 05908880965
+    cognome: Bonanno
+    nome: Antonio
+    telefono: 
+    fax: 0236549849
+    cellulare: 
+    email: web@digitalnatives.eu
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+    cod: 
+  Cliente_71: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Test
+    via: 
+    citta: 
+    provincia: 
+    cap: 
+    piva: 
+    cf: 
+    cognome: 
+    nome: 
+    telefono: 
+    fax: 
+    cellulare: 
+    email: 
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: a
+    includi_tasse: s
+    calcola_tasse: s
+    cod: 
+  Cliente_72: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Evolution Travel - Dodotour S.r.l.
+    via: Galleria Sopraelevata Manzoni, 12-13
+    citta: Montegrotto Terme
+    provincia: PD
+    cap: 35036
+    piva: 03517530287 
+    cf: 03517530287 
+    cognome: Romanello
+    nome: Massimo
+    telefono: +39 049 8912509
+    fax: +39 049 8912505
+    cellulare: 
+    email: massimo.romanello@evolutiontravel.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_73: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Gruner+Jahr/Mondadori S.p.A
+    via: Corso Monforte 54
+    citta: Milano
+    provincia: MI
+    cap: 20122
+    piva: 09440000157
+    cf: 09440000157
+    cognome: Ruess
+    nome: An Fu
+    telefono: ++39 02 76210233 
+    fax: ++39 02 76013439 
+    cellulare: ++39 331 6090937
+    email: aruess@gujm.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_74: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: TXT Polymedia S.p.a.
+    via: Via Frigia, 27
+    citta: Milano
+    provincia: Mi
+    cap: 20126
+    piva: 03316040967
+    cf: 03316040967
+    cognome: 
+    nome: 
+    telefono: +39 02 257711
+    fax: +39 02 2578994
+    cellulare: 
+    email: roberto.lucchini@txtgroup.com
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_75: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: U.I.L. - C.S.P.
+    via: via Natale dell'amore 42/a
+    citta: cesena
+    provincia: FC
+    cap: 47023
+    piva: 90005440400
+    cf: 90005440400
+    cognome: Borghetti
+    nome: Marcello
+    telefono: 
+    fax: 
+    cellulare: 
+    email: fpl@uilcesena.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_76: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Harlequin Mondadori S.P.A.
+    via: via Marco D'Aviano, 2
+    citta: Milano
+    provincia: MI
+    cap: 20131
+    piva: 05946780151
+    cf: 05946780151
+    cognome: 
+    nome: 
+    telefono: 02280381
+    fax: 0228901398
+    cellulare: 
+    email: harmony@ml.ideato.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_77: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: >
+      Ordine Tecnologi alimentari dell' Emilia
+      Romagna, Toscana Marche e Umbria
+    via: >
+      C/O Studio Ass Diegoli Gianotti Via
+      Rubbiani 5
+    citta: Bologna
+    provincia: BO
+    cap: 40125
+    piva: 
+    cf: 91199120378
+    cognome: Rossi
+    nome: Emanuele
+    telefono: 
+    fax: 
+    cellulare: 
+    email: 
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_78: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: TripShake Limited
+    via: 35 Vine Street  
+    citta: London - EC3N 2AA - United Kingdom
+    provincia: 
+    cap: 
+    piva: 00000000000
+    cf: 
+    cognome: Bonanno
+    nome: Antonio
+    telefono: 
+    fax: 
+    cellulare: 
+    email: antonio@digitalnatives.eu
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_79: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: AUTOPLAYA S.n.c.
+    via: Via Litorale Marina, 91
+    citta: VILLAMARINA DI CESENATICO
+    provincia: FC
+    cap: 47042
+    piva: 01671120408
+    cf: 01671120408
+    cognome: 
+    nome: 
+    telefono: 0547 85733
+    fax: 0547 681336
+    cellulare: 
+    email: AUTOPLAYA@TIN.IT
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_80: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: H-art S.r.l.
+    via: via Sile, 51
+    citta: Roncade
+    provincia: TV
+    cap: 31056
+    piva: 03975650262
+    cf: 
+    cognome: Pagani
+    nome: Daniele
+    telefono: 0422789611
+    fax: 
+    cellulare: 
+    email: amministrazione@h-farm.it
+    modo_pagamento_id: ModoPagamento_91
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+  Cliente_81: 
+    id_utente: Utente_29
+    azienda: s
+    ragione_sociale: Testawebedv srl
+    via: via Luisa del Carretto 58
+    citta: Torino
+    provincia: TO
+    cap: 10131
+    piva: 07088390013
+    cf: 
+    cognome: Conte
+    nome: Erminia
+    telefono: +39 01188107048
+    fax: +39 0118810610
+    cellulare: 
+    email: erminia.conte@testawebedv.it
+    modo_pagamento_id: ModoPagamento_93
+    stato: a
+    note: 
+    id_tema_fattura: TemaFattura_37
+    id_banca: Banca_16
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+    cod: 
+CodiceIva: 
+  CodiceIva_11: 
+    id_utente: Utente_
+    nome: 20%
+    valore: 20
+    descrizione: Iva al 20%
+  CodiceIva_12: 
+    id_utente: Utente_
+    nome: 3%
+    valore: 3
+    descrizione: Iva al 3%
+  CodiceIva_38: 
+    id_utente: Utente_29
+    nome: 20%
+    valore: 20
+    descrizione: Iva al 20%
+  CodiceIva_39: 
+    id_utente: Utente_29
+    nome: 3%
+    valore: 3
+    descrizione: Iva al 3%
+  CodiceIva_40: 
+    id_utente: Utente_29
+    nome: esente
+    valore: 0
+    descrizione: 
+DettagliFattura: 
+  DettagliFattura_85: 
+    fattura_id: Fattura_83
+    descrizione: >
+      Consulenza e realizzazione sito dei
+      promotori territoriali
+      promotori.mondodelgusto.it
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1530
+  DettagliFattura_86: 
+    fattura_id: Fattura_83
+    descrizione: >
+      Consulenza e supporto sviluppo nuove
+      funzionalità dei siti mondodelgusto.it,
+      mesi di febbraio e marzo
+    qty: 47
+    sconto: 0
+    iva: 20
+    prezzo: 20
+  DettagliFattura_88: 
+    fattura_id: Fattura_84
+    descrizione: >
+      Anticipo per la consulenza e la
+      realizzazione del sito web aziendale su
+      piattaforma eZ Publish ed integrazione
+      con gestionale aziendale
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1800
+  DettagliFattura_89: 
+    fattura_id: Fattura_85
+    descrizione: >
+      Configurazione e messa in sicurezza del
+      server bookerang.it (151.1.162.57)
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 200
+  DettagliFattura_90: 
+    fattura_id: Fattura_86
+    descrizione: >
+      Assistenza e supporto sistemistico
+      giornaliero mese di Febbraio e Marzo
+    qty: 4.5
+    sconto: 0
+    iva: 20
+    prezzo: 400
+  DettagliFattura_92: 
+    fattura_id: Fattura_87
+    descrizione: cons-26h - consulenza oraria
+    qty: 104.5
+    sconto: 0
+    iva: 20
+    prezzo: 26
+  DettagliFattura_93: 
+    fattura_id: Fattura_88
+    descrizione: Aggiornamento funzionalità WordPress
+    qty: 16
+    sconto: 0
+    iva: 20
+    prezzo: 30
+  DettagliFattura_94: 
+    fattura_id: Fattura_89
+    descrizione: >
+      assistenza sistemistica ed installazione
+      wordpress 2.3.1
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 500
+  DettagliFattura_95: 
+    fattura_id: Fattura_89
+    descrizione: sviluppo shop locator
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 300
+  DettagliFattura_96: 
+    fattura_id: Fattura_90
+    descrizione: Consulenza mese di Aprile/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1904
+  DettagliFattura_97: 
+    fattura_id: Fattura_91
+    descrizione: >
+      Assistenza e supporto sistemistico
+      giornaliero mese di Aprile
+    qty: 5
+    sconto: 0
+    iva: 20
+    prezzo: 200
+  DettagliFattura_98: 
+    fattura_id: Fattura_92
+    descrizione: >
+      giornate consulenza analisi workflow
+      rif. doc. 08010
+    qty: 2
+    sconto: 0
+    iva: 20
+    prezzo: 600
+  DettagliFattura_99: 
+    fattura_id: Fattura_93
+    descrizione: cons-26h - consulenza oraria
+    qty: 93
+    sconto: 0
+    iva: 20
+    prezzo: 26
+  DettagliFattura_100: 
+    fattura_id: Fattura_93
+    descrizione: rimborso spesa trasferta rimini
+    qty: 75
+    sconto: 0
+    iva: 20
+    prezzo: 0.34
+  DettagliFattura_101: 
+    fattura_id: Fattura_93
+    descrizione: rimborso spesa trasferta milano
+    qty: 545
+    sconto: 0
+    iva: 20
+    prezzo: 0.34
+  DettagliFattura_102: 
+    fattura_id: Fattura_94
+    descrizione: consulenza e sviluppo applicazioni web
+    qty: 20
+    sconto: 0
+    iva: 20
+    prezzo: 220
+  DettagliFattura_103: 
+    fattura_id: Fattura_95
+    descrizione: >
+      rif doc 08001 - pacchetto consulenza
+      giornaliero sistemistica
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 600
+  DettagliFattura_104: 
+    fattura_id: Fattura_95
+    descrizione: >
+      rif doc 08001 - pacchetto consulenza
+      giornaliero web
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 600
+  DettagliFattura_105: 
+    fattura_id: Fattura_95
+    descrizione: >
+      rif doc 08016 - Sviluppo web - voce
+      "aggiornamento sito"
+    qty: 4
+    sconto: 0
+    iva: 20
+    prezzo: 480
+  DettagliFattura_106: 
+    fattura_id: Fattura_95
+    descrizione: >
+      rif doc 08021 - Sviluppo web - voce
+      "geolocalizzazione"
+    qty: 4
+    sconto: 0
+    iva: 20
+    prezzo: 480
+  DettagliFattura_107: 
+    fattura_id: Fattura_96
+    descrizione: consulenza oraria sistemistica
+    qty: 24
+    sconto: 0
+    iva: 20
+    prezzo: 26
+  DettagliFattura_110: 
+    fattura_id: Fattura_99
+    descrizione: >
+      aggiornamento wordpress alla versione
+      2.5.1 - rif. doc. 08028
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 637
+  DettagliFattura_111: 
+    fattura_id: Fattura_100
+    descrizione: >
+      wp1y - mantenimento CMS Wordpress per 1
+      anno -  rif. doc. 08028
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 550
+  DettagliFattura_114: 
+    fattura_id: Fattura_103
+    descrizione: Consulenza mese di Maggio/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1820
+  DettagliFattura_116: 
+    fattura_id: Fattura_101
+    descrizione: attivazione sito promotore territoriale
+    qty: 3
+    sconto: 0
+    iva: 20
+    prezzo: 250
+  DettagliFattura_117: 
+    fattura_id: Fattura_104
+    descrizione: Consulenza mese di Giugno/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1344
+  DettagliFattura_118: 
+    fattura_id: Fattura_105
+    descrizione: Consulenza oraria mese Maggio/2008
+    qty: 20
+    sconto: 0
+    iva: 20
+    prezzo: 35
+  DettagliFattura_120: 
+    fattura_id: Fattura_106
+    descrizione: >
+      Pacchetto supporto sistemistico 4h mese
+      di Maggio/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 200
+  DettagliFattura_121: 
+    fattura_id: Fattura_106
+    descrizione: >
+      Pacchetto supporto sistemistico 4h mese
+      di Giugno/2008
+    qty: 3
+    sconto: 0
+    iva: 20
+    prezzo: 200
+  DettagliFattura_122: 
+    fattura_id: Fattura_107
+    descrizione: consulenza e sviluppo applicazioni web
+    qty: 20
+    sconto: 0
+    iva: 20
+    prezzo: 187.5
+  DettagliFattura_123: 
+    fattura_id: Fattura_108
+    descrizione: formazione giornaliera ez Publish
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 500
+  DettagliFattura_124: 
+    fattura_id: Fattura_108
+    descrizione: realizzazione sito eHarmony.it
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 7900
+  DettagliFattura_125: 
+    fattura_id: Fattura_108
+    descrizione: >
+      ore consulenza e sviluppo
+      extra-progettuale
+    qty: 11
+    sconto: 0
+    iva: 20
+    prezzo: 40
+  DettagliFattura_126: 
+    fattura_id: Fattura_109
+    descrizione: sviluppo web per GQ
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1800
+  DettagliFattura_127: 
+    fattura_id: Fattura_109
+    descrizione: >
+      installazione, configurazione e
+      personalizzazione WordPress per Tabata
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 600
+  DettagliFattura_130: 
+    fattura_id: Fattura_105
+    descrizione: Consulenza oraria mese Giugno/2008
+    qty: 64.5
+    sconto: 0
+    iva: 20
+    prezzo: 35
+  DettagliFattura_131: 
+    fattura_id: Fattura_110
+    descrizione: >
+      iterazione di sviluppo agile e
+      consulenza
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 5250
+  DettagliFattura_134: 
+    fattura_id: Fattura_112
+    descrizione: >
+      consulenza di realizzazione/conferma
+      User Story
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 450
+  DettagliFattura_135: 
+    fattura_id: Fattura_112
+    descrizione: analisi requisiti/planning game
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 450
+  DettagliFattura_136: 
+    fattura_id: Fattura_113
+    descrizione: >
+      iterazione di sviluppo agile e
+      consulenza
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 5250
+  DettagliFattura_139: 
+    fattura_id: Fattura_114
+    descrizione: >
+      rif doc 08016 - sistemistica - voce
+      "aggiornamento server"
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1896
+  DettagliFattura_140: 
+    fattura_id: Fattura_114
+    descrizione: >
+      rif doc 08021 - Sviluppo web - voce
+      "webtv"
+    qty: 2
+    sconto: 0
+    iva: 20
+    prezzo: 480
+  DettagliFattura_141: 
+    fattura_id: Fattura_114
+    descrizione: >
+      rif doc 08001 - Sviluppo e cosulenza web
+      - localizzazione
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1080
+  DettagliFattura_142: 
+    fattura_id: Fattura_114
+    descrizione: rif doc 08001 - sistemistica - backup
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 480
+  DettagliFattura_143: 
+    fattura_id: Fattura_114
+    descrizione: >
+      1 licenza sito - player video flv
+      "FlowPlayer"
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 95
+  DettagliFattura_144: 
+    fattura_id: Fattura_115
+    descrizione: Mantenimento ez Publish per 12 mesi
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 550
+  DettagliFattura_148: 
+    fattura_id: Fattura_116
+    descrizione: consulenza e sviluppo applicazioni web
+    qty: 20
+    sconto: 0
+    iva: 20
+    prezzo: 187.5
+  DettagliFattura_149: 
+    fattura_id: Fattura_117
+    descrizione: >
+      Consulenza e la realizzazione del sito
+      web aziendale su piattaforma eZ Publish
+      ed integrazione con gestionale aziendale
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 6000
+  DettagliFattura_162: 
+    fattura_id: Fattura_101
+    descrizione: pacchetto prepagato 160 ore assistenza
+    qty: 1
+    sconto: 15
+    iva: 20
+    prezzo: 5600
+  DettagliFattura_163: 
+    fattura_id: Fattura_112
+    descrizione: prima iterazione sviluppo software
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 4900
+  DettagliFattura_164: 
+    fattura_id: Fattura_122
+    descrizione: Consulenza mese di Luglio/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 2240
+  DettagliFattura_166: 
+    fattura_id: Fattura_123
+    descrizione: Consulenza oraria mese Luglio/2008
+    qty: 88
+    sconto: 0
+    iva: 20
+    prezzo: 35
+  DettagliFattura_167: 
+    fattura_id: Fattura_115
+    descrizione: Contratto mantenimento server 12 mesi
+    qty: 1
+    sconto: 10
+    iva: 20
+    prezzo: 1500
+  DettagliFattura_169: 
+    fattura_id: Fattura_125
+    descrizione: assistenza oraria portale quicasa.it
+    qty: 24
+    sconto: 0
+    iva: 20
+    prezzo: 40
+  DettagliFattura_171: 
+    fattura_id: Fattura_127
+    descrizione: >
+      Contratto fornitura eZ publish rif.
+      08046
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 550
+  DettagliFattura_172: 
+    fattura_id: Fattura_127
+    descrizione: >
+      Contratto monitoraggio server STAGING
+      rif. 08036
+    qty: 1
+    sconto: 30
+    iva: 20
+    prezzo: 1500
+  DettagliFattura_173: 
+    fattura_id: Fattura_127
+    descrizione: >
+      Contratto monitoraggio server VIRTUOPRO
+      rif. 08036
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1500
+  DettagliFattura_174: 
+    fattura_id: Fattura_128
+    descrizione: Consulenza mese di Agosto/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1344
+  DettagliFattura_175: 
+    fattura_id: Fattura_129
+    descrizione: Consulenza oraria mese Agosto/2008
+    qty: 57
+    sconto: 0
+    iva: 20
+    prezzo: 35
+  DettagliFattura_176: 
+    fattura_id: Fattura_130
+    descrizione: >
+      consulenza per realizzazione Users
+      Stories presso Vs. sede in data 19
+      Agosto 2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 750
+  DettagliFattura_177: 
+    fattura_id: Fattura_130
+    descrizione: >
+      riborsi spesa su fascia km - tariffa aci
+      (0,323544 €/Km)
+    qty: 179
+    sconto: 0
+    iva: 20
+    prezzo: 0.323544
+  DettagliFattura_178: 
+    fattura_id: Fattura_130
+    descrizione: >
+      rimborsi spesa autostrada cesena-terme
+      euganee
+    qty: 2
+    sconto: 0
+    iva: 20
+    prezzo: 7.92
+  DettagliFattura_179: 
+    fattura_id: Fattura_131
+    descrizione: rimborsi spesa per workshop a monaco
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 404.58
+  DettagliFattura_182: 
+    fattura_id: Fattura_133
+    descrizione: consulenza e sviluppo applicazioni web
+    qty: 20
+    sconto: 0
+    iva: 20
+    prezzo: 172.5
+  DettagliFattura_183: 
+    fattura_id: Fattura_134
+    descrizione: Consulenza oraria mese Settembre/2008
+    qty: 60
+    sconto: 0
+    iva: 20
+    prezzo: 35
+  DettagliFattura_184: 
+    fattura_id: Fattura_135
+    descrizione: Consulenza mese di Settembre/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1876
+  DettagliFattura_185: 
+    fattura_id: Fattura_136
+    descrizione: >
+      Pacchetto supporto sistemistico 4h mese
+      di Settembre/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 200
+  DettagliFattura_187: 
+    fattura_id: Fattura_136
+    descrizione: >
+      Pacchetto supporto sistemistico orario
+      mese di Settembre/2008
+    qty: 2
+    sconto: 0
+    iva: 20
+    prezzo: 50
+  DettagliFattura_188: 
+    fattura_id: Fattura_136
+    descrizione: >
+      Pacchetto supporto sistemistico festivi
+      mese di Settembre/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 300
+  DettagliFattura_189: 
+    fattura_id: Fattura_137
+    descrizione: Analisi installazione attualmente online
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 300
+  DettagliFattura_190: 
+    fattura_id: Fattura_137
+    descrizione: >
+      Consulenza giornaliera su software
+      WordPress Mu 
+    qty: 2
+    sconto: 0
+    iva: 20
+    prezzo: 600
+  DettagliFattura_191: 
+    fattura_id: Fattura_138
+    descrizione: >
+      80 ore di assistenza sistemistica e
+      sviluppo php
+    qty: 80
+    sconto: 0
+    iva: 20
+    prezzo: 37.5
+  DettagliFattura_192: 
+    fattura_id: Fattura_139
+    descrizione: >
+      Pacchetto di sviluppo prepagato cod.
+      sp80
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 3000
+  DettagliFattura_193: 
+    fattura_id: Fattura_140
+    descrizione: aggiornamento eZ Publish 4.x
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 400
+  DettagliFattura_194: 
+    fattura_id: Fattura_140
+    descrizione: >
+      canone annuale hosting condiviso da
+      13/10/2008-12/10/2009
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 200
+  DettagliFattura_195: 
+    fattura_id: Fattura_141
+    descrizione: >
+      implementazione nuove funzionalità sito
+      web
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1400
+  DettagliFattura_196: 
+    fattura_id: Fattura_141
+    descrizione: canone annuale mantenimento eZ Publish
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 550
+  DettagliFattura_197: 
+    fattura_id: Fattura_141
+    descrizione: Creazione software per SlideShow Gallery
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1600
+  DettagliFattura_198: 
+    fattura_id: Fattura_141
+    descrizione: sconto
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: -850
+  DettagliFattura_199: 
+    fattura_id: Fattura_142
+    descrizione: consulenza e sviluppo applicazioni web
+    qty: 20
+    sconto: 0
+    iva: 20
+    prezzo: 172.5
+  DettagliFattura_202: 
+    fattura_id: Fattura_143
+    descrizione: seconda iterazione sviluppo software
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 4900
+  DettagliFattura_203: 
+    fattura_id: Fattura_144
+    descrizione: Giornata corso di formazione eZ Publish
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 500
+  DettagliFattura_204: 
+    fattura_id: Fattura_144
+    descrizione: Rimborso spese viaggio forfettario
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 50
+  DettagliFattura_205: 
+    fattura_id: Fattura_146
+    descrizione: >
+      Prima iterazione sviluppo software -
+      esente iva art. 41 comma 1 leg. 427/93
+    qty: 1
+    sconto: 0
+    iva: 0
+    prezzo: 5250
+  DettagliFattura_206: 
+    fattura_id: Fattura_146
+    descrizione: >
+      Seconda iterazione sviluppo software -
+      esente iva art. 41 comma 1 leg. 427/93
+    qty: 1
+    sconto: 0
+    iva: 0
+    prezzo: 5250
+  DettagliFattura_207: 
+    fattura_id: Fattura_147
+    descrizione: Consulenza mese di Ottobre/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 2016
+  DettagliFattura_208: 
+    fattura_id: Fattura_148
+    descrizione: >
+      Attivazione sito del promotore
+      sannio.mondodelgusto.it
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 250
+  DettagliFattura_209: 
+    fattura_id: Fattura_148
+    descrizione: >
+      Attivazione sito del promotore
+      caserta.mondodelgusto.it
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 250
+  DettagliFattura_210: 
+    fattura_id: Fattura_146
+    descrizione: >
+      Sviluppo extra ticket su richiesta
+      cliente - esente iva art. 41 comma 1
+      leg. 427/93
+    qty: 1
+    sconto: 0
+    iva: 0
+    prezzo: 2625
+  DettagliFattura_211: 
+    fattura_id: Fattura_149
+    descrizione: migrazione wordpress su nuovo server
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 300
+  DettagliFattura_212: 
+    fattura_id: Fattura_149
+    descrizione: >
+      migrazione account di posta ed archivi
+      email su nuovo server
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 300
+  DettagliFattura_213: 
+    fattura_id: Fattura_149
+    descrizione: >
+      canone assistenza sistemistica server
+      annuale - dal 1/12/2008 al 31/12/2009
+    qty: 1
+    sconto: 56
+    iva: 20
+    prezzo: 1250
+  DettagliFattura_214: 
+    fattura_id: Fattura_150
+    descrizione: giornata assistenza sistemistica
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 400
+  DettagliFattura_215: 
+    fattura_id: Fattura_150
+    descrizione: Firewall Zyxel Zywall 5
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 300
+  DettagliFattura_216: 
+    fattura_id: Fattura_151
+    descrizione: Consulenza mese di Novembre/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1792
+  DettagliFattura_217: 
+    fattura_id: Fattura_152
+    descrizione: >
+      Pacchetto di sviluppo prepagato cod.
+      sp80 - rif. 2375/00
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 3000
+  DettagliFattura_218: 
+    fattura_id: Fattura_153
+    descrizione: >
+      Sviluppo applicazione Facebook - rif.
+      ordine 179-a/2008
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 4700
+  DettagliFattura_219: 
+    fattura_id: Fattura_154
+    descrizione: >
+      Rimborso forfettario spese di viaggio -
+      rif. 747/398/E08/I del 25/11/08
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 450
+  DettagliFattura_220: 
+    fattura_id: Fattura_154
+    descrizione: >
+      Implementazione CMS eZ Publish per sito
+      vivasardegna.com e corso editor - rif.
+      611/398/E08/I del 14/10/08
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1700
+  DettagliFattura_221: 
+    fattura_id: Fattura_155
+    descrizione: aggiornamento piattaforma TalkWebank
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 3000
+Fattura: 
+  Fattura_83: 
+    id_utente: Utente_29
+    num_fattura: 4
+    cliente_id: Cliente_58
+    data: 2008-04-10
+    data_stato: 2008-04-15
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2964
+    imponibile_mem: 2470
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_84: 
+    id_utente: Utente_29
+    num_fattura: 1
+    cliente_id: Cliente_60
+    data: 2008-04-10
+    data_stato: 2008-04-24
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2160
+    imponibile_mem: 1800
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_85: 
+    id_utente: Utente_29
+    num_fattura: 2
+    cliente_id: Cliente_61
+    data: 2008-04-10
+    data_stato: 2008-05-07
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 240
+    imponibile_mem: 200
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_86: 
+    id_utente: Utente_29
+    num_fattura: 3
+    cliente_id: Cliente_62
+    data: 2008-04-10
+    data_stato: 2008-05-09
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2160
+    imponibile_mem: 1800
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_87: 
+    id_utente: Utente_29
+    num_fattura: 5
+    cliente_id: Cliente_57
+    data: 2008-04-21
+    data_stato: 2008-04-22
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 3260.4
+    imponibile_mem: 2717
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_88: 
+    id_utente: Utente_29
+    num_fattura: 6
+    cliente_id: Cliente_63
+    data: 2008-04-30
+    data_stato: 2008-07-11
+    modo_pagamento_id: ModoPagamento_96
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 576
+    imponibile_mem: 480
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_89: 
+    id_utente: Utente_29
+    num_fattura: 7
+    cliente_id: Cliente_64
+    data: 2008-04-30
+    data_stato: 2008-05-06
+    modo_pagamento_id: ModoPagamento_96
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 960
+    imponibile_mem: 800
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_90: 
+    id_utente: Utente_29
+    num_fattura: 8
+    cliente_id: Cliente_65
+    data: 2008-04-30
+    data_stato: 2008-05-29
+    modo_pagamento_id: ModoPagamento_96
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2284.8
+    imponibile_mem: 1904
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_91: 
+    id_utente: Utente_29
+    num_fattura: 9
+    cliente_id: Cliente_62
+    data: 2008-04-30
+    data_stato: 2008-06-20
+    modo_pagamento_id: ModoPagamento_96
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 1200
+    imponibile_mem: 1000
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_92: 
+    id_utente: Utente_29
+    num_fattura: 10
+    cliente_id: Cliente_65
+    data: 2008-04-30
+    data_stato: 2008-05-29
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 1440
+    imponibile_mem: 1200
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_93: 
+    id_utente: Utente_29
+    num_fattura: 11
+    cliente_id: Cliente_57
+    data: 2008-04-30
+    data_stato: 2008-05-10
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 3154.56
+    imponibile_mem: 2628.8
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_94: 
+    id_utente: Utente_29
+    num_fattura: 12
+    cliente_id: Cliente_67
+    data: 2008-05-30
+    data_stato: 2008-09-30
+    modo_pagamento_id: ModoPagamento_92
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 5280
+    imponibile_mem: 4400
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_95: 
+    id_utente: Utente_29
+    num_fattura: 13
+    cliente_id: Cliente_66
+    data: 2008-05-30
+    data_stato: 2008-09-16
+    modo_pagamento_id: ModoPagamento_93
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 6048
+    imponibile_mem: 5040
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: >
+      Pagato il 5o% del totale al 14/07/2008
+      (3.931,20 euro)
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_96: 
+    id_utente: Utente_29
+    num_fattura: 14
+    cliente_id: Cliente_57
+    data: 2008-05-30
+    data_stato: 2008-05-30
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 748.8
+    imponibile_mem: 624
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_99: 
+    id_utente: Utente_29
+    num_fattura: 17
+    cliente_id: Cliente_63
+    data: 2008-06-16
+    data_stato: 2008-06-16
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 764.4
+    imponibile_mem: 637
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_100: 
+    id_utente: Utente_29
+    num_fattura: 16
+    cliente_id: Cliente_63
+    data: 2008-06-16
+    data_stato: 2008-06-16
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 660
+    imponibile_mem: 550
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_101: 
+    id_utente: Utente_29
+    num_fattura: 26
+    cliente_id: Cliente_58
+    data: 2008-07-31
+    data_stato: 2008-08-05
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 6612
+    imponibile_mem: 5510
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_103: 
+    id_utente: Utente_29
+    num_fattura: 15
+    cliente_id: Cliente_65
+    data: 2008-05-30
+    data_stato: 2008-06-18
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2184
+    imponibile_mem: 1820
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_104: 
+    id_utente: Utente_29
+    num_fattura: 18
+    cliente_id: Cliente_65
+    data: 2008-06-30
+    data_stato: 2008-07-21
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 1612.8
+    imponibile_mem: 1344
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_105: 
+    id_utente: Utente_29
+    num_fattura: 19
+    cliente_id: Cliente_68
+    data: 2008-06-30
+    data_stato: 2008-07-11
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 3549
+    imponibile_mem: 2957.5
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_106: 
+    id_utente: Utente_29
+    num_fattura: 20
+    cliente_id: Cliente_62
+    data: 2008-06-30
+    data_stato: 2008-09-09
+    modo_pagamento_id: ModoPagamento_96
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 960
+    imponibile_mem: 800
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_107: 
+    id_utente: Utente_29
+    num_fattura: 21
+    cliente_id: Cliente_67
+    data: 2008-06-30
+    data_stato: 2008-09-30
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 4500
+    imponibile_mem: 3750
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_108: 
+    id_utente: Utente_29
+    num_fattura: 24
+    cliente_id: Cliente_69
+    data: 2008-07-10
+    data_stato: 2008-07-24
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 10608
+    imponibile_mem: 8840
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_109: 
+    id_utente: Utente_29
+    num_fattura: 22
+    cliente_id: Cliente_64
+    data: 2008-06-30
+    data_stato: 2008-07-09
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2880
+    imponibile_mem: 2400
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_110: 
+    id_utente: Utente_29
+    num_fattura: 23
+    cliente_id: Cliente_70
+    data: 2008-06-30
+    data_stato: 2008-07-23
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 6300
+    imponibile_mem: 5250
+    stato: p
+    iva_pagata: s
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_112: 
+    id_utente: Utente_29
+    num_fattura: 25
+    cliente_id: Cliente_65
+    data: 2008-07-31
+    data_stato: 2008-07-29
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 6960
+    imponibile_mem: 5800
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: n
+  Fattura_113: 
+    id_utente: Utente_29
+    num_fattura: 27
+    cliente_id: Cliente_70
+    data: 2008-07-31
+    data_stato: 2008-10-15
+    modo_pagamento_id: ModoPagamento_93
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 6300
+    imponibile_mem: 5250
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_114: 
+    id_utente: Utente_29
+    num_fattura: 28
+    cliente_id: Cliente_66
+    data: 2008-07-31
+    data_stato: 2008-10-15
+    modo_pagamento_id: ModoPagamento_93
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 5413.2
+    imponibile_mem: 4511
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_115: 
+    id_utente: Utente_29
+    num_fattura: 29
+    cliente_id: Cliente_69
+    data: 2008-07-31
+    data_stato: 2008-07-31
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2280
+    imponibile_mem: 1900
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_116: 
+    id_utente: Utente_29
+    num_fattura: 30
+    cliente_id: Cliente_67
+    data: 2008-07-31
+    data_stato: 2008-11-17
+    modo_pagamento_id: ModoPagamento_92
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 4500
+    imponibile_mem: 3750
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_117: 
+    id_utente: Utente_29
+    num_fattura: 31
+    cliente_id: Cliente_60
+    data: 2008-07-31
+    data_stato: 2008-07-31
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: -1800
+    totale_mem: 5040
+    imponibile_mem: 6000
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_122: 
+    id_utente: Utente_29
+    num_fattura: 32
+    cliente_id: Cliente_65
+    data: 2008-07-31
+    data_stato: 2008-08-13
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2688
+    imponibile_mem: 2240
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_123: 
+    id_utente: Utente_29
+    num_fattura: 33
+    cliente_id: Cliente_68
+    data: 2008-07-31
+    data_stato: 2008-08-01
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 3696
+    imponibile_mem: 3080
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_125: 
+    id_utente: Utente_29
+    num_fattura: 34
+    cliente_id: Cliente_59
+    data: 2008-07-31
+    data_stato: 2008-08-01
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 1152
+    imponibile_mem: 960
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_127: 
+    id_utente: Utente_29
+    num_fattura: 35
+    cliente_id: Cliente_66
+    data: 2008-08-22
+    data_stato: 2008-08-22
+    modo_pagamento_id: ModoPagamento_97
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 3720
+    imponibile_mem: 3100
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_128: 
+    id_utente: Utente_29
+    num_fattura: 36
+    cliente_id: Cliente_65
+    data: 2008-08-31
+    data_stato: 2008-08-13
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 1612.8
+    imponibile_mem: 1344
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_129: 
+    id_utente: Utente_29
+    num_fattura: 37
+    cliente_id: Cliente_68
+    data: 2008-08-31
+    data_stato: 2008-09-01
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2394
+    imponibile_mem: 1995
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_130: 
+    id_utente: Utente_29
+    num_fattura: 38
+    cliente_id: Cliente_72
+    data: 2008-09-05
+    data_stato: 2008-09-16
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 988.505
+    imponibile_mem: 823.754
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_131: 
+    id_utente: Utente_29
+    num_fattura: 39
+    cliente_id: Cliente_73
+    data: 2008-09-05
+    data_stato: 2008-09-05
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 485.496
+    imponibile_mem: 404.58
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_133: 
+    id_utente: Utente_29
+    num_fattura: 40
+    cliente_id: Cliente_67
+    data: 2008-09-08
+    data_stato: 2008-09-10
+    modo_pagamento_id: ModoPagamento_92
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 4140
+    imponibile_mem: 3450
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_134: 
+    id_utente: Utente_29
+    num_fattura: 41
+    cliente_id: Cliente_68
+    data: 2008-09-30
+    data_stato: 2008-10-08
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2520
+    imponibile_mem: 2100
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_135: 
+    id_utente: Utente_29
+    num_fattura: 42
+    cliente_id: Cliente_65
+    data: 2008-09-30
+    data_stato: 2008-10-15
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2251.2
+    imponibile_mem: 1876
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_136: 
+    id_utente: Utente_29
+    num_fattura: 43
+    cliente_id: Cliente_62
+    data: 2008-09-30
+    data_stato: 2008-10-06
+    modo_pagamento_id: ModoPagamento_96
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 720
+    imponibile_mem: 600
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_137: 
+    id_utente: Utente_29
+    num_fattura: 44
+    cliente_id: Cliente_74
+    data: 2008-09-30
+    data_stato: 2008-10-24
+    modo_pagamento_id: ModoPagamento_92
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 1800
+    imponibile_mem: 1500
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_138: 
+    id_utente: Utente_29
+    num_fattura: 46
+    cliente_id: Cliente_75
+    data: 2008-10-15
+    data_stato: 2008-10-20
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 3600
+    imponibile_mem: 3000
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_139: 
+    id_utente: Utente_29
+    num_fattura: 45
+    cliente_id: Cliente_76
+    data: 2008-10-06
+    data_stato: 2008-10-20
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 3600
+    imponibile_mem: 3000
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_140: 
+    id_utente: Utente_29
+    num_fattura: 49
+    cliente_id: Cliente_77
+    data: 2008-10-25
+    data_stato: 2008-10-25
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 720
+    imponibile_mem: 600
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_141: 
+    id_utente: Utente_29
+    num_fattura: 0
+    cliente_id: Cliente_60
+    data: 2008-10-13
+    data_stato: 2008-10-13
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 3240
+    imponibile_mem: 2700
+    stato: n
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_142: 
+    id_utente: Utente_29
+    num_fattura: 47
+    cliente_id: Cliente_67
+    data: 2008-10-24
+    data_stato: 2008-11-17
+    modo_pagamento_id: ModoPagamento_98
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 4140
+    imponibile_mem: 3450
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: s
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_143: 
+    id_utente: Utente_29
+    num_fattura: 48
+    cliente_id: Cliente_65
+    data: 2008-10-24
+    data_stato: 2008-11-10
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 5880
+    imponibile_mem: 4900
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: n
+  Fattura_144: 
+    id_utente: Utente_29
+    num_fattura: 51
+    cliente_id: Cliente_69
+    data: 2008-11-10
+    data_stato: 2008-11-10
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 660
+    imponibile_mem: 550
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_146: 
+    id_utente: Utente_29
+    num_fattura: 52
+    cliente_id: Cliente_78
+    data: 2008-11-28
+    data_stato: 2008-12-01
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 13125
+    imponibile_mem: 13125
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_147: 
+    id_utente: Utente_29
+    num_fattura: 50
+    cliente_id: Cliente_65
+    data: 2008-10-31
+    data_stato: 2008-11-19
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2419.2
+    imponibile_mem: 2016
+    stato: p
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_148: 
+    id_utente: Utente_29
+    num_fattura: 56
+    cliente_id: Cliente_58
+    data: 2008-11-28
+    data_stato: 2008-12-01
+    modo_pagamento_id: ModoPagamento_94
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 600
+    imponibile_mem: 500
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_149: 
+    id_utente: Utente_29
+    num_fattura: 0
+    cliente_id: Cliente_63
+    data: 2008-12-01
+    data_stato: 2008-12-01
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 1380
+    imponibile_mem: 1150
+    stato: n
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: s
+    calcola_tasse: n
+  Fattura_150: 
+    id_utente: Utente_29
+    num_fattura: 53
+    cliente_id: Cliente_79
+    data: 2008-11-28
+    data_stato: 2008-12-11
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 840
+    imponibile_mem: 700
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_151: 
+    id_utente: Utente_29
+    num_fattura: 54
+    cliente_id: Cliente_65
+    data: 2008-11-28
+    data_stato: 2008-12-11
+    modo_pagamento_id: ModoPagamento_95
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2150.4
+    imponibile_mem: 1792
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_152: 
+    id_utente: Utente_29
+    num_fattura: 59
+    cliente_id: Cliente_76
+    data: 2008-11-28
+    data_stato: 2008-12-02
+    modo_pagamento_id: ModoPagamento_91
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 3600
+    imponibile_mem: 3000
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_153: 
+    id_utente: Utente_29
+    num_fattura: 55
+    cliente_id: Cliente_80
+    data: 2008-11-28
+    data_stato: 2008-12-01
+    modo_pagamento_id: ModoPagamento_92
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 5640
+    imponibile_mem: 4700
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_154: 
+    id_utente: Utente_29
+    num_fattura: 58
+    cliente_id: Cliente_81
+    data: 2008-11-28
+    data_stato: 2008-12-01
+    modo_pagamento_id: ModoPagamento_93
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 2580
+    imponibile_mem: 2150
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+  Fattura_155: 
+    id_utente: Utente_29
+    num_fattura: 57
+    cliente_id: Cliente_70
+    data: 2008-11-28
+    data_stato: 2008-12-05
+    modo_pagamento_id: ModoPagamento_92
+    sconto: 0
+    vat: 20
+    spese_anticipate: 0
+    totale_mem: 3600
+    imponibile_mem: 3000
+    stato: i
+    iva_pagata: n
+    iva_depositata: n
+    commercialista: n
+    note: 
+    calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
+Impostazione: 
+  Impostazione_17: 
+    num_clienti: 20
+    num_fatture: 10
+    righe_dettagli: 5
+    ritenuta_acconto: 20/100
+    tipo_ritenuta: debito
+    riepilogo_home: n
+    consegna_commercialista: n
+    deposita_iva: n
+    fattura_automatica: s
+    codice_cliente: n
+    label_imponibile: Imponibile
+    label_spese: Spese Anticipate
+    label_imponibile_iva: Imponibile ai fini iva
+    label_iva: Iva
+    label_totale_fattura: Totale Fattura
+    label_ritenuta_acconto: Ritenuta d'acconto
+    label_netto_liquidare: Netto da liquidare
+    label_quantita: Q.tÃƒÂ 
+    label_descrizione: Desc.
+    label_prezzo_singolo: Prezzo Singolo
+    label_prezzo_totale: Prezzo Totale
+    label_sconto: Sconto
+  Impostazione_23: 
+    num_clienti: 20
+    num_fatture: 20
+    righe_dettagli: 5
+    ritenuta_acconto: 20/100
+    tipo_ritenuta: debito
+    riepilogo_home: n
+    consegna_commercialista: n
+    deposita_iva: n
+    fattura_automatica: s
+    codice_cliente: n
+    label_imponibile: Imponibile
+    label_spese: Spese Anticipate
+    label_imponibile_iva: Imponibile ai fini iva
+    label_iva: Iva
+    label_totale_fattura: Totale Fattura
+    label_ritenuta_acconto: Ritenuta d'acconto
+    label_netto_liquidare: Netto da liquidare
+    label_quantita: Qty
+    label_descrizione: Descrizione
+    label_prezzo_singolo: Prezzo Singolo
+    label_prezzo_totale: Prezzo Totale
+    label_sconto: Sconto
+  Impostazione_29: 
+    num_clienti: 100
+    num_fatture: 20
+    righe_dettagli: 5
+    ritenuta_acconto: 0/100
+    tipo_ritenuta: debito
+    riepilogo_home: s
+    consegna_commercialista: s
+    deposita_iva: n
+    fattura_automatica: s
+    codice_cliente: n
+    label_imponibile: Imponibile
+    label_spese: ACCONTO rif. fatt. n° 1 del 10/04/2008
+    label_imponibile_iva: Imponibile ai fini iva
+    label_iva: Iva
+    label_totale_fattura: Totale Fattura
+    label_ritenuta_acconto: Ritenuta d'acconto
+    label_netto_liquidare: Netto da liquidare
+    label_quantita: Qty
+    label_descrizione: Descrizione
+    label_prezzo_singolo: Prezzo Singolo
+    label_prezzo_totale: Prezzo Totale
+    label_sconto: Sconto
+ModoPagamento: 
+  ModoPagamento_13: 
+    id_utente: Utente_17
+    num_giorni: 0
+    descrizione: Rimessa diretta
+  ModoPagamento_14: 
+    id_utente: Utente_17
+    num_giorni: 30
+    descrizione: 30gg
+  ModoPagamento_15: 
+    id_utente: Utente_17
+    num_giorni: 60
+    descrizione: 60gg
+  ModoPagamento_16: 
+    id_utente: Utente_17
+    num_giorni: 90
+    descrizione: 90gg
+  ModoPagamento_17: 
+    id_utente: Utente_17
+    num_giorni: 10
+    descrizione: 10gg
+  ModoPagamento_18: 
+    id_utente: Utente_
+    num_giorni: 30
+    descrizione: 30gg
+  ModoPagamento_19: 
+    id_utente: Utente_
+    num_giorni: 60
+    descrizione: 60gg
+  ModoPagamento_20: 
+    id_utente: Utente_
+    num_giorni: 90
+    descrizione: 90gg
+  ModoPagamento_21: 
+    id_utente: Utente_
+    num_giorni: 0
+    descrizione: Rimessa Diretta
+  ModoPagamento_91: 
+    id_utente: Utente_29
+    num_giorni: 30
+    descrizione: 30gg
+  ModoPagamento_92: 
+    id_utente: Utente_29
+    num_giorni: 60
+    descrizione: 60gg
+  ModoPagamento_93: 
+    id_utente: Utente_29
+    num_giorni: 90
+    descrizione: 90gg
+  ModoPagamento_94: 
+    id_utente: Utente_29
+    num_giorni: 0
+    descrizione: Rimessa Diretta
+  ModoPagamento_95: 
+    id_utente: Utente_29
+    num_giorni: 0
+    descrizione: Bonifico bancario a vista
+  ModoPagamento_96: 
+    id_utente: Utente_29
+    num_giorni: 0
+    descrizione: Bonifico fine mese data fattura
+  ModoPagamento_97: 
+    id_utente: Utente_29
+    num_giorni: 180
+    descrizione: 50% vista fattura e resto a 180gg
+  ModoPagamento_98: 
+    id_utente: Utente_29
+    num_giorni: 90
+    descrizione: 60-90 data fattura
+Prodotto: 
+  Prodotto_2: 
+    id_utente: Utente_17
+    codice: 0123456
+    nome: Prodotto di prova
+    prezzo: 12.6
+  Prodotto_3: 
+    id_utente: Utente_17
+    codice: KN1223
+    nome: Kingstone 256MB
+    prezzo: 120
+  Prodotto_4: 
+    id_utente: Utente_17
+    codice: consulenza
+    nome: Consulenza informatica
+    prezzo: 25
+  Prodotto_5: 
+    id_utente: Utente_29
+    codice: wp1y
+    nome: mantenimento CMS Wordpress per 1 anno
+    prezzo: 550
+  Prodotto_6: 
+    id_utente: Utente_29
+    codice: ez1y
+    nome: mantenimento ez publish 1 anno
+    prezzo: 550
+TagsFattura: 
+  TagsFattura_54: 
+    id_fattura: Fattura_83
+    id_utente: Utente_29
+    tag: mdg
+    tag_normalizzato: mdg
+    data: 2008-04-01
+  TagsFattura_55: 
+    id_fattura: Fattura_87
+    id_utente: Utente_29
+    tag: sysadmin
+    tag_normalizzato: sysadmin
+    data: 2008-04-22
+  TagsFattura_56: 
+    id_fattura: Fattura_88
+    id_utente: Utente_29
+    tag: wordpress
+    tag_normalizzato: wordpress
+    data: 2008-04-30
+  TagsFattura_57: 
+    id_fattura: Fattura_88
+    id_utente: Utente_29
+    tag: ninjamarketing
+    tag_normalizzato: ninjamarketing
+    data: 2008-04-30
+  TagsFattura_58: 
+    id_fattura: Fattura_89
+    id_utente: Utente_29
+    tag: wordpress
+    tag_normalizzato: wordpress
+    data: 2008-05-02
+  TagsFattura_59: 
+    id_fattura: Fattura_89
+    id_utente: Utente_29
+    tag: webdev
+    tag_normalizzato: webdev
+    data: 2008-05-02
+  TagsFattura_60: 
+    id_fattura: Fattura_90
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_61: 
+    id_fattura: Fattura_91
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_62: 
+    id_fattura: Fattura_85
+    id_utente: Utente_29
+    tag: webdev
+    tag_normalizzato: webdev
+    data: 2008-05-07
+  TagsFattura_63: 
+    id_fattura: Fattura_85
+    id_utente: Utente_29
+    tag: symfony,
+    tag_normalizzato: symfony
+    data: 2008-05-07
+  TagsFattura_64: 
+    id_fattura: Fattura_92
+    id_utente: Utente_29
+    tag: analisi
+    tag_normalizzato: analisi
+    data: 2008-05-07
+  TagsFattura_65: 
+    id_fattura: Fattura_92
+    id_utente: Utente_29
+    tag: consulenza,
+    tag_normalizzato: consulenza
+    data: 2008-05-07
+  TagsFattura_66: 
+    id_fattura: Fattura_93
+    id_utente: Utente_29
+    tag: sysadmin
+    tag_normalizzato: sysadmin
+    data: 2008-04-22
+  TagsFattura_67: 
+    id_fattura: Fattura_86
+    id_utente: Utente_29
+    tag: sysadmin
+    tag_normalizzato: sysadmin
+    data: 2008-05-13
+  TagsFattura_68: 
+    id_fattura: Fattura_94
+    id_utente: Utente_29
+    tag: manrenting
+    tag_normalizzato: manrenting
+    data: 2008-05-30
+  TagsFattura_69: 
+    id_fattura: Fattura_94
+    id_utente: Utente_29
+    tag: mikamai,
+    tag_normalizzato: mikamai
+    data: 2008-05-30
+  TagsFattura_70: 
+    id_fattura: Fattura_94
+    id_utente: Utente_29
+    tag: drupal
+    tag_normalizzato: drupal
+    data: 2008-05-30
+  TagsFattura_71: 
+    id_fattura: Fattura_95
+    id_utente: Utente_29
+    tag: sysadmin
+    tag_normalizzato: sysadmin
+    data: 2008-05-30
+  TagsFattura_72: 
+    id_fattura: Fattura_95
+    id_utente: Utente_29
+    tag: ez,
+    tag_normalizzato: ez
+    data: 2008-05-30
+  TagsFattura_73: 
+    id_fattura: Fattura_95
+    id_utente: Utente_29
+    tag: cpl,
+    tag_normalizzato: cpl
+    data: 2008-05-30
+  TagsFattura_74: 
+    id_fattura: Fattura_95
+    id_utente: Utente_29
+    tag: ezpublish,
+    tag_normalizzato: ezpublish
+    data: 2008-05-30
+  TagsFattura_75: 
+    id_fattura: Fattura_96
+    id_utente: Utente_29
+    tag: sysadmin
+    tag_normalizzato: sysadmin
+    data: 2008-05-30
+  TagsFattura_80: 
+    id_fattura: Fattura_99
+    id_utente: Utente_29
+    tag: update
+    tag_normalizzato: update
+    data: 2008-06-05
+  TagsFattura_81: 
+    id_fattura: Fattura_99
+    id_utente: Utente_29
+    tag: wordpress,
+    tag_normalizzato: wordpress
+    data: 2008-06-05
+  TagsFattura_82: 
+    id_fattura: Fattura_100
+    id_utente: Utente_29
+    tag: canoni
+    tag_normalizzato: canoni
+    data: 2008-06-05
+  TagsFattura_83: 
+    id_fattura: Fattura_100
+    id_utente: Utente_29
+    tag: wordpress,
+    tag_normalizzato: wordpress
+    data: 2008-06-05
+  TagsFattura_85: 
+    id_fattura: Fattura_101
+    id_utente: Utente_29
+    tag: canoni
+    tag_normalizzato: canoni
+    data: 2008-06-05
+  TagsFattura_86: 
+    id_fattura: Fattura_101
+    id_utente: Utente_29
+    tag: wordpress,
+    tag_normalizzato: wordpress
+    data: 2008-06-05
+  TagsFattura_89: 
+    id_fattura: Fattura_103
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_90: 
+    id_fattura: Fattura_104
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_91: 
+    id_fattura: Fattura_105
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-07-01
+  TagsFattura_92: 
+    id_fattura: Fattura_106
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_93: 
+    id_fattura: Fattura_107
+    id_utente: Utente_29
+    tag: drupal
+    tag_normalizzato: drupal
+    data: 2008-05-30
+  TagsFattura_94: 
+    id_fattura: Fattura_107
+    id_utente: Utente_29
+    tag: manrenting
+    tag_normalizzato: manrenting
+    data: 2008-05-30
+  TagsFattura_95: 
+    id_fattura: Fattura_107
+    id_utente: Utente_29
+    tag: mikamai,
+    tag_normalizzato: mikamai
+    data: 2008-05-30
+  TagsFattura_96: 
+    id_fattura: Fattura_108
+    id_utente: Utente_29
+    tag: webdev
+    tag_normalizzato: webdev
+    data: 2008-07-02
+  TagsFattura_97: 
+    id_fattura: Fattura_108
+    id_utente: Utente_29
+    tag: ez,
+    tag_normalizzato: ez
+    data: 2008-07-02
+  TagsFattura_98: 
+    id_fattura: Fattura_109
+    id_utente: Utente_29
+    tag: webdev
+    tag_normalizzato: webdev
+    data: 2008-07-03
+  TagsFattura_99: 
+    id_fattura: Fattura_109
+    id_utente: Utente_29
+    tag: wordpress,
+    tag_normalizzato: wordpress
+    data: 2008-07-03
+  TagsFattura_100: 
+    id_fattura: Fattura_110
+    id_utente: Utente_29
+    tag: symfony
+    tag_normalizzato: symfony
+    data: 2008-07-09
+  TagsFattura_103: 
+    id_fattura: Fattura_112
+    id_utente: Utente_29
+    tag: agile
+    tag_normalizzato: agile
+    data: 2008-07-22
+  TagsFattura_104: 
+    id_fattura: Fattura_112
+    id_utente: Utente_29
+    tag: consulenza,
+    tag_normalizzato: consulenza
+    data: 2008-07-22
+  TagsFattura_105: 
+    id_fattura: Fattura_113
+    id_utente: Utente_29
+    tag: symfony
+    tag_normalizzato: symfony
+    data: 2008-07-09
+  TagsFattura_106: 
+    id_fattura: Fattura_114
+    id_utente: Utente_29
+    tag: cpl,
+    tag_normalizzato: cpl
+    data: 2008-05-30
+  TagsFattura_107: 
+    id_fattura: Fattura_114
+    id_utente: Utente_29
+    tag: ez,
+    tag_normalizzato: ez
+    data: 2008-05-30
+  TagsFattura_108: 
+    id_fattura: Fattura_114
+    id_utente: Utente_29
+    tag: ezpublish,
+    tag_normalizzato: ezpublish
+    data: 2008-05-30
+  TagsFattura_109: 
+    id_fattura: Fattura_114
+    id_utente: Utente_29
+    tag: sysadmin
+    tag_normalizzato: sysadmin
+    data: 2008-05-30
+  TagsFattura_110: 
+    id_fattura: Fattura_115
+    id_utente: Utente_29
+    tag: ez,
+    tag_normalizzato: ez
+    data: 2008-07-02
+  TagsFattura_111: 
+    id_fattura: Fattura_115
+    id_utente: Utente_29
+    tag: webdev
+    tag_normalizzato: webdev
+    data: 2008-07-02
+  TagsFattura_112: 
+    id_fattura: Fattura_115
+    id_utente: Utente_29
+    tag: sysadmin
+    tag_normalizzato: sysadmin
+    data: 2008-07-23
+  TagsFattura_113: 
+    id_fattura: Fattura_116
+    id_utente: Utente_29
+    tag: drupal
+    tag_normalizzato: drupal
+    data: 2008-05-30
+  TagsFattura_114: 
+    id_fattura: Fattura_116
+    id_utente: Utente_29
+    tag: manrenting
+    tag_normalizzato: manrenting
+    data: 2008-05-30
+  TagsFattura_115: 
+    id_fattura: Fattura_116
+    id_utente: Utente_29
+    tag: mikamai,
+    tag_normalizzato: mikamai
+    data: 2008-05-30
+  TagsFattura_116: 
+    id_fattura: Fattura_122
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_117: 
+    id_fattura: Fattura_123
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-07-01
+  TagsFattura_121: 
+    id_fattura: Fattura_125
+    id_utente: Utente_29
+    tag: pivetta
+    tag_normalizzato: pivetta
+    data: 2008-08-01
+  TagsFattura_122: 
+    id_fattura: Fattura_125
+    id_utente: Utente_29
+    tag: cms,
+    tag_normalizzato: cms
+    data: 2008-08-01
+  TagsFattura_123: 
+    id_fattura: Fattura_125
+    id_utente: Utente_29
+    tag: webdev,
+    tag_normalizzato: webdev
+    data: 2008-08-01
+  TagsFattura_124: 
+    id_fattura: Fattura_127
+    id_utente: Utente_29
+    tag: server
+    tag_normalizzato: server
+    data: 2008-08-22
+  TagsFattura_125: 
+    id_fattura: Fattura_127
+    id_utente: Utente_29
+    tag: ez,
+    tag_normalizzato: ez
+    data: 2008-08-22
+  TagsFattura_126: 
+    id_fattura: Fattura_127
+    id_utente: Utente_29
+    tag: assistenza,
+    tag_normalizzato: assistenza
+    data: 2008-08-22
+  TagsFattura_127: 
+    id_fattura: Fattura_127
+    id_utente: Utente_29
+    tag: contratti,
+    tag_normalizzato: contratti
+    data: 2008-08-22
+  TagsFattura_128: 
+    id_fattura: Fattura_128
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_129: 
+    id_fattura: Fattura_129
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-07-01
+  TagsFattura_130: 
+    id_fattura: Fattura_131
+    id_utente: Utente_29
+    tag: viaggi
+    tag_normalizzato: viaggi
+    data: 2008-09-05
+  TagsFattura_131: 
+    id_fattura: Fattura_131
+    id_utente: Utente_29
+    tag: grunerjar,
+    tag_normalizzato: grunerjar
+    data: 2008-09-05
+  TagsFattura_132: 
+    id_fattura: Fattura_131
+    id_utente: Utente_29
+    tag: rimborsi,
+    tag_normalizzato: rimborsi
+    data: 2008-09-05
+  TagsFattura_136: 
+    id_fattura: Fattura_133
+    id_utente: Utente_29
+    tag: drupal
+    tag_normalizzato: drupal
+    data: 2008-05-30
+  TagsFattura_137: 
+    id_fattura: Fattura_133
+    id_utente: Utente_29
+    tag: manrenting
+    tag_normalizzato: manrenting
+    data: 2008-05-30
+  TagsFattura_138: 
+    id_fattura: Fattura_133
+    id_utente: Utente_29
+    tag: mikamai,
+    tag_normalizzato: mikamai
+    data: 2008-05-30
+  TagsFattura_139: 
+    id_fattura: Fattura_134
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-07-01
+  TagsFattura_140: 
+    id_fattura: Fattura_135
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_141: 
+    id_fattura: Fattura_136
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_142: 
+    id_fattura: Fattura_137
+    id_utente: Utente_29
+    tag: consulenza
+    tag_normalizzato: consulenza
+    data: 2008-09-30
+  TagsFattura_143: 
+    id_fattura: Fattura_137
+    id_utente: Utente_29
+    tag: sistemistica,
+    tag_normalizzato: sistemistica
+    data: 2008-09-30
+  TagsFattura_144: 
+    id_fattura: Fattura_137
+    id_utente: Utente_29
+    tag: wordpress,
+    tag_normalizzato: wordpress
+    data: 2008-09-30
+  TagsFattura_145: 
+    id_fattura: Fattura_138
+    id_utente: Utente_29
+    tag: 80h
+    tag_normalizzato: 80h
+    data: 2008-10-13
+  TagsFattura_146: 
+    id_fattura: Fattura_138
+    id_utente: Utente_29
+    tag: canoni,
+    tag_normalizzato: canoni
+    data: 2008-10-13
+  TagsFattura_147: 
+    id_fattura: Fattura_138
+    id_utente: Utente_29
+    tag: assistenza,
+    tag_normalizzato: assistenza
+    data: 2008-10-13
+  TagsFattura_148: 
+    id_fattura: Fattura_139
+    id_utente: Utente_29
+    tag: prepagato
+    tag_normalizzato: prepagato
+    data: 2008-10-13
+  TagsFattura_149: 
+    id_fattura: Fattura_139
+    id_utente: Utente_29
+    tag: contratto,
+    tag_normalizzato: contratto
+    data: 2008-10-13
+  TagsFattura_150: 
+    id_fattura: Fattura_139
+    id_utente: Utente_29
+    tag: sviluppo,
+    tag_normalizzato: sviluppo
+    data: 2008-10-13
+  TagsFattura_151: 
+    id_fattura: Fattura_140
+    id_utente: Utente_29
+    tag: cms
+    tag_normalizzato: cms
+    data: 2008-10-13
+  TagsFattura_152: 
+    id_fattura: Fattura_140
+    id_utente: Utente_29
+    tag: ezpublish,
+    tag_normalizzato: ezpublish
+    data: 2008-10-13
+  TagsFattura_153: 
+    id_fattura: Fattura_140
+    id_utente: Utente_29
+    tag: hosting,
+    tag_normalizzato: hosting
+    data: 2008-10-13
+  TagsFattura_154: 
+    id_fattura: Fattura_141
+    id_utente: Utente_29
+    tag: ezpublish
+    tag_normalizzato: ezpublish
+    data: 2008-10-13
+  TagsFattura_155: 
+    id_fattura: Fattura_141
+    id_utente: Utente_29
+    tag: prepagato,
+    tag_normalizzato: prepagato
+    data: 2008-10-13
+  TagsFattura_156: 
+    id_fattura: Fattura_142
+    id_utente: Utente_29
+    tag: drupal
+    tag_normalizzato: drupal
+    data: 2008-05-30
+  TagsFattura_157: 
+    id_fattura: Fattura_142
+    id_utente: Utente_29
+    tag: manrenting
+    tag_normalizzato: manrenting
+    data: 2008-05-30
+  TagsFattura_158: 
+    id_fattura: Fattura_142
+    id_utente: Utente_29
+    tag: mikamai,
+    tag_normalizzato: mikamai
+    data: 2008-05-30
+  TagsFattura_159: 
+    id_fattura: Fattura_143
+    id_utente: Utente_29
+    tag: agile
+    tag_normalizzato: agile
+    data: 2008-07-22
+  TagsFattura_160: 
+    id_fattura: Fattura_143
+    id_utente: Utente_29
+    tag: consulenza,
+    tag_normalizzato: consulenza
+    data: 2008-07-22
+  TagsFattura_161: 
+    id_fattura: Fattura_144
+    id_utente: Utente_29
+    tag: ezpublish
+    tag_normalizzato: ezpublish
+    data: 2008-11-02
+  TagsFattura_162: 
+    id_fattura: Fattura_144
+    id_utente: Utente_29
+    tag: formazione,
+    tag_normalizzato: formazione
+    data: 2008-11-02
+  TagsFattura_163: 
+    id_fattura: Fattura_146
+    id_utente: Utente_29
+    tag: webdev
+    tag_normalizzato: webdev
+    data: 2008-11-03
+  TagsFattura_164: 
+    id_fattura: Fattura_146
+    id_utente: Utente_29
+    tag: agile,
+    tag_normalizzato: agile
+    data: 2008-11-03
+  TagsFattura_165: 
+    id_fattura: Fattura_146
+    id_utente: Utente_29
+    tag: symfony,
+    tag_normalizzato: symfony
+    data: 2008-11-03
+  TagsFattura_166: 
+    id_fattura: Fattura_147
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_167: 
+    id_fattura: Fattura_149
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-12-01
+  TagsFattura_168: 
+    id_fattura: Fattura_149
+    id_utente: Utente_29
+    tag: wordpress,
+    tag_normalizzato: wordpress
+    data: 2008-12-01
+  TagsFattura_169: 
+    id_fattura: Fattura_150
+    id_utente: Utente_29
+    tag: hardware
+    tag_normalizzato: hardware
+    data: 2008-12-01
+  TagsFattura_170: 
+    id_fattura: Fattura_150
+    id_utente: Utente_29
+    tag: sistemistica,
+    tag_normalizzato: sistemistica
+    data: 2008-12-01
+  TagsFattura_171: 
+    id_fattura: Fattura_151
+    id_utente: Utente_29
+    tag: sistemistica
+    tag_normalizzato: sistemistica
+    data: 2008-05-02
+  TagsFattura_172: 
+    id_fattura: Fattura_152
+    id_utente: Utente_29
+    tag: contratto,
+    tag_normalizzato: contratto
+    data: 2008-10-13
+  TagsFattura_173: 
+    id_fattura: Fattura_152
+    id_utente: Utente_29
+    tag: prepagato
+    tag_normalizzato: prepagato
+    data: 2008-10-13
+  TagsFattura_174: 
+    id_fattura: Fattura_152
+    id_utente: Utente_29
+    tag: sviluppo,
+    tag_normalizzato: sviluppo
+    data: 2008-10-13
+  TagsFattura_175: 
+    id_fattura: Fattura_153
+    id_utente: Utente_29
+    tag: facebook
+    tag_normalizzato: facebook
+    data: 2008-12-01
+  TagsFattura_176: 
+    id_fattura: Fattura_153
+    id_utente: Utente_29
+    tag: symfony,
+    tag_normalizzato: symfony
+    data: 2008-12-01
+  TagsFattura_177: 
+    id_fattura: Fattura_148
+    id_utente: Utente_29
+    tag: 
+    tag_normalizzato: 
+    data: 2008-12-01
+  TagsFattura_178: 
+    id_fattura: Fattura_148
+    id_utente: Utente_29
+    tag: mondodelgusto,
+    tag_normalizzato: mondodelgusto
+    data: 2008-12-01
+  TagsFattura_179: 
+    id_fattura: Fattura_148
+    id_utente: Utente_29
+    tag: ez,
+    tag_normalizzato: ez
+    data: 2008-12-01
+  TagsFattura_180: 
+    id_fattura: Fattura_154
+    id_utente: Utente_29
+    tag: 
+    tag_normalizzato: 
+    data: 2008-12-01
+  TagsFattura_181: 
+    id_fattura: Fattura_154
+    id_utente: Utente_29
+    tag: ez,
+    tag_normalizzato: ez
+    data: 2008-12-01
+  TagsFattura_182: 
+    id_fattura: Fattura_154
+    id_utente: Utente_29
+    tag: formazione,
+    tag_normalizzato: formazione
+    data: 2008-12-01
+  TagsFattura_183: 
+    id_fattura: Fattura_155
+    id_utente: Utente_29
+    tag: answers
+    tag_normalizzato: answers
+    data: 2008-12-02
+  TagsFattura_184: 
+    id_fattura: Fattura_155
+    id_utente: Utente_29
+    tag: symfony,
+    tag_normalizzato: symfony
+    data: 2008-12-02
+Tassa: 
+  Tassa_5: 
+    id_utente: Utente_17
+    nome: Rivalsa previdenziale del 4%
+    valore: 4
+    descrizione: 
+TemaFattura: 
+  TemaFattura_37: 
+    id_utente: Utente_29
+    nome: ideato srl
+    template: |
+      <table width="100%" style="font-size: 10px;" cellpadding="5" cellspacing="0">
+      <tr class="intestazione">
+      <td>[LOGO]</td>
+      <td rowspan="2" class="cliente">
+      Destinatario<br/>
+      <strong>[CLIENTE_INTESTAZIONE]</strong><br/>
+      [CLIENTE_VIA]<br/>
+      [CLIENTE_CAP] - [CLIENTE_CITTA] - ([CLIENTE_PROVINCIA])<br/>
+      [CLIENTE_PIVA_OR_CF]
+      </td>
+      <td rowspan="2" class="fattura" align="right">
+      [NOTA_CREDITO_OR_FATTURA] n. <strong>[PROFORMA_OR_NUM]</strong><br/>
+      del <strong>[FATTURA_DATA]</strong>
+      </td>
+      </tr>
+      <tr>
+      <td class="ragione-sociale"><b>[RAGIONE_SOCIALE]</b><br/>
+      via Quinto Bucci, 205 <br/>
+      47023 Cesena (FC)<br/>
+      P.Iva/CF [PIVA]
+      </td>
+      </tr>
+      </table>
+      
+      
+      <div class="dettaglioFattura">
+      <h2 style="width:100%; background-color: #fefefe">Oggetto:</h2>
+      <table width="100%" cellspacing="0">
+      <tr>
+      <th style="border-bottom: 1px solid black" >Descrizione</th>
+      <th class="pari" style="border-bottom: 1px solid black" width="5%">Q.ta'</th>
+      <th style="border-bottom: 1px solid black" width="20%">Prezzo Singolo</th>
+      <th class="pari" style="border-bottom: 1px solid black" width="5%">Sconto</th>
+      <th style="border-bottom: 1px solid black" width="20%">Prezzo Totale</th>
+      <th class="pari" style="border-bottom: 1px solid black" width="5%">Iva</th>
+      </tr>
+      <FOREACHDETTAGLI>
+      <tr>
+      <td style="font-size: 10px">[DETTAGLIO_FATTURA_DESCRIZIONE]</td>
+      <td align="center" class="pari">[DETTAGLIO_FATTURA_QTY]</td>
+      <td align="center">[DETTAGLIO_FATTURA_PREZZO_SINGOLO]</td>
+      <td align="center" class="pari">[DETTAGLIO_FATTURA_SCONTO]%</td>
+      <td align="center">[DETTAGLIO_FATTURA_PREZZO_TOTALE]</td>
+      <td align="center" class="pari">[IVA]%</td>
+      </tr>
+      </FOREACHDETTAGLI>
+      </table>
+      
+      <div>
+      <table class="calcola_fattura" width="100%" cellspacing="0" cellpadding="5">
+      <tr id="imponibile">
+      <th>Imponibile:</th>
+      <td align="right">[FATTURA_IMPONIBILE]</td>
+      </tr>
+      <tr id="sconto">
+      <th>Sconto del [FATTURA_VAL_SCONTO]%:</th>
+      <td align="right">-[FATTURA_SCONTO]</td>
+      </tr>
+      <tr id="spese_anticipate">
+      <th>Spese Anticipate</th>
+      <td align="right">[FATTURA_SPESE_ANTICIPATE]</td>
+      </tr>
+      <FOREACHTASSE>
+      <tr id="tassa">
+      <th>[TASSA_LABEL]:</th>
+      <td align="right">[TASSA_VALUE]</td>
+      </tr>
+      </FOREACHTASSE>
+      <tr>
+      <th style="border-bottom: 1px solid #000;color: red">Imponibile ai fini iva:</th>
+      <td align="right" style="border-bottom: 1px solid #000;">[FATTURA_IMPONIBILE_IVA]</td>
+      </tr>
+      <tr id="iva">
+      <th>Iva:</th>
+      <td align="right">[FATTURA_IVA]</td>
+      </tr>
+      <tr id="totale">
+      <th>Totale Fattura:</th>
+      <td align="right">[FATTURA_TOTALE]</td>
+      </tr>
+      
+      <tr id="ritenuta_acconto">
+      <th>Ritenuta d'acconto:</th>
+      <td align="right">[FATTURA_RITENUTA_ACCONTO]</td>
+      </tr>
+      <tr style="font-weight:bold;" class="font_bigger" >
+      <td class="left-border">NETTO A PAGARE</td>
+      <td align="right" class="right-border">[FATTURA_NETTO_LIQUIDARE]</td>
+      </tr>
+      </table>
+      </div>
+      </div>
+      
+      <div id="proforma_art_21" style="font-size:10px;">
+      <em>[PROFORMA_ART_21]</em>
+      <em>[PROFORMA_PAGAMENTO]</em>
+      </div>
+      
+      <h2>Modalita' di pagamento:</h2>
+      Pagamento: [FATTURA_PAGAMENTO]
+      
+      <div class="coor_banca">
+      <strong>Nome Banca:</strong> [NOME_BANCA]<br/>
+      <strong>ABI:</strong> [ABI] - <strong>CAB:</strong> [CAB] - <strong>CIN:</strong> [CIN] - <strong>C/C.:</strong> [NUM_CONTO]<br/>
+      <strong>IBAN:</strong> [IBAN]<br/>
+      </div>
+      
+      <div class="footer">
+      ideato srl <info@ideato.it> - http://www.ideato.it - info@ideato.it
+      </div>
+    css: |
+      body{
+      font-size: 12px;
+      font-family: helvetica;
+      padding: 10px;
+      }
+      table{
+      font-size: 12px;
+      }
+      .intestazione{
+      
+      }
+      .cliente{
+      text-align: left;
+      border-left: 1px solid black;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      background-color: #efefef;
+      }
+      .fattura{
+      background-color: #efefef;
+      border-right: 1px solid black;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      font-size: 14px;
+      }
+      .font_bigger{
+      font-size: 18px;
+      }
+      .dettaglioFattura{
+      margin-top: 30px;
+      }
+      .dettaglioFattura table{
+      margin-top: 20px;
+      }
+      .dettaglioFattura table td {
+      font-size: 10px;
+      }
+      table.calcola_fattura th{text-align: left;}
+      table.calcola_fattura{margin-bottom: 30px;}
+      .footer{
+      border-top: 1px solid #000;
+      padding-top: 3px;
+      text-align: center;
+      position: absolute;
+      bottom: 0;
+      }
+      div.coor_banca, table.coor_banca{
+      font-size: 12px;
+      clear: both;
+      }
+      
+      .left-border {
+      border-left: 1px solid black;
+      border-top: 1px solid black;
+      background-color: #efefef;
+      border-bottom: 1px solid black;
+      padding: 5px;
+      }
+      
+      .right-border {
+      border-right: 1px solid black;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      background-color: #efefef;
+      padding: 5px;
+      }
+      .pari {
+      background-color: #efefef;
+      }
+      
+      #proforma_art_21{
+      margin-top: 20px;
+      }
+      
+      .footer{
+      font-size: 10px;
+      font-weight: bold;
+      margin-top: 20px;
+      }
+    logo: 29_logo.jpeg
