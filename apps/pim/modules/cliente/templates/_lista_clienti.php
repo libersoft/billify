@@ -4,15 +4,18 @@
 <?php $results = $pager->getResults()?>
 
 <?php if(count($results)>0):?>
-<p><ul id="lista">
-<?php foreach ($results as $cliente): ?>
-<li class="">
-<div style="float: right"><?php echo format_currency($cliente->getTotaleFatture($sf_request->getParameter('year')),'&euro;')?> (<?php echo link_to($cliente->countFatturas(),'fattura/create?id_cliente='.$cliente->getID(),array('title'=>'Nuova Fattura'))?>)</div>
-<strong><?php echo link_to($cliente->toString(), 'cliente/show?id='.$cliente->getId()) ?></strong>
- - <?php echo $cliente->getCitta()?> (<?php echo $cliente->getProvincia() ?>)
-</li>
-<?php endforeach ?>
-</ul></p>
+  <p><ul id="lista">
+  <?php foreach ($results as $cliente): ?>
+    <li class="">
+      <div style="float: right">
+        <?php echo format_currency($cliente->getTotaleFatture($sf_request->getParameter('year', date('Y'))), '&euro;')?> 
+        (<?php echo link_to($cliente->countFatturas(), 'fattura/create?id_cliente='.$cliente->getID(), array('title'=>'Nuova Fattura'))?>)
+      </div>
+      <strong><?php echo link_to($cliente->toString(), 'cliente/show?id='.$cliente->getId()) ?></strong>
+      - <?php echo $cliente->getCitta()?> (<?php echo $cliente->getProvincia() ?>)
+    </li>
+  <?php endforeach ?>
+  </ul></p>
 
 <div class="navigator">
 <?php if ($pager->haveToPaginate()): ?>

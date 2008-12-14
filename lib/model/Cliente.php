@@ -43,16 +43,18 @@ class Cliente extends BaseCliente {
 
 	public function getTotaleFatture($year = null) {
 	  $c = new Criteria();
+	  
 	  if(!is_null($year)) {
 	    $c->add(FatturaPeer::DATA, date('y-m-d', mktime(0, 0, 0, 1, 1, $year)), Criteria::GREATER_EQUAL);
 	    $c->addAnd(FatturaPeer::DATA, date('y-m-d', mktime(0, 0, 0, 12, 31, $year)), Criteria::LESS_EQUAL);
 	  }
 
 	  $fatture = $this->getFatturas($c);
-
+	  
 	  $totale = 0;
 	  foreach ($fatture as $fattura) {
-	    $totale += $fattura->getTotaleMem();
+	    $fattura->calcolaFattura();
+	    $totale += $fattura->getImponibile();
 	  }
 
 	  return $totale;

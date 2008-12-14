@@ -1,1 +1,2 @@
-<?php echo include_partial('cliente/lista_clienti',array('pager'=>$pager,'string_search' => $string_search));?>
+<?php echo include_partial('cliente/lista_clienti', array('pager'=>$pager,
+                                                                                             'string_search' => $string_search));?>

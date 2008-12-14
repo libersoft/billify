@@ -14,57 +14,54 @@ include_once('propel/util/Criteria.php');
  */
 class clienteActions extends sfActions
 { 
-  public function executeIndex ()
-  {
+  public function executeIndex() {
     return $this->forward('cliente', 'list');
   }
 
-  public function executeList ()
-  {
-  	
-  	if($this->getRequestParameter('string_search'))
-  		$this->executeSearch();
-  	else{
-  		$criteria = new Criteria;
-  		$criteria->add(ClientePeer::STATO, ATTIVO);
-  		$criteria->addAscendingOrderByColumn(ClientePeer::RAGIONE_SOCIALE );
-  		$criteria->addAscendingOrderByColumn(ClientePeer::COGNOME);
+  public function executeList () {
 
-  		$pager = new sfPropelPager('Cliente', UtentePeer::getImpostazione()->getNumClienti());
-  		$pager->setCriteria($criteria);
-  		$pager->setPage($this->getRequestParameter('page', 1));
-  		$pager->init();
-  		$this->pager = $pager;
-  	}
-    
-    //$this->clientes = ClientePeer::doSelect($criteria);
+    if($this->getRequestParameter('string_search')) {
+      $this->executeSearch();
+    }
+    else {
+      $criteria = new Criteria;
+      $criteria->add(ClientePeer::STATO, ATTIVO);
+      $criteria->addAscendingOrderByColumn(ClientePeer::RAGIONE_SOCIALE );
+      $criteria->addAscendingOrderByColumn(ClientePeer::COGNOME);
+
+      $pager = new sfPropelPager('Cliente', UtentePeer::getImpostazione()->getNumClienti());
+      $pager->setCriteria($criteria);
+      $pager->setPage($this->getRequestParameter('page', 1));
+      $pager->init();
+      $this->pager = $pager;
+    }
   }
   
   public function executeSearch()
   {
-  	if($this->getRequestParameter('string_search')!=""){
-		$this->string_search = $this->getRequestParameter('string_search');
-		$criteria = new Criteria();
-		$criteria->addAscendingOrderByColumn(ClientePeer::RAGIONE_SOCIALE );
-  		$criteria->addAscendingOrderByColumn(ClientePeer::COGNOME);
-		$cr1 = $criteria->getNewCriterion(ClientePeer::RAGIONE_SOCIALE , '%'.$this->string_search.'%', Criteria::LIKE );
-		$cr2 = $criteria->getNewCriterion(ClientePeer::NOME , '%'.$this->string_search.'%', Criteria::LIKE );
-		$cr3 = $criteria->getNewCriterion(ClientePeer::COGNOME , '%'.$this->string_search.'%', Criteria::LIKE );
-		$cr2->addOr($cr3);
-		$cr1->addOr($cr2);
-		$criteria->add($cr1);
-		$criteria->add(ClientePeer::STATO,ATTIVO);
-		
-		$pager = new sfPropelPager('Cliente', UtentePeer::getImpostazione()->getNumClienti());
-    	$pager->setCriteria($criteria);
-    	$pager->setPage($this->getRequestParameter('page', UtentePeer::getImpostazione()->getNumClienti()));
-    	$pager->init();
-    	$this->pager = $pager;
+    if($this->getRequestParameter('string_search')!=""){
+      $this->string_search = $this->getRequestParameter('string_search');
+      $criteria = new Criteria();
+      $criteria->addAscendingOrderByColumn(ClientePeer::RAGIONE_SOCIALE );
+      $criteria->addAscendingOrderByColumn(ClientePeer::COGNOME);
+      $cr1 = $criteria->getNewCriterion(ClientePeer::RAGIONE_SOCIALE , '%'.$this->string_search.'%', Criteria::LIKE );
+      $cr2 = $criteria->getNewCriterion(ClientePeer::NOME , '%'.$this->string_search.'%', Criteria::LIKE );
+      $cr3 = $criteria->getNewCriterion(ClientePeer::COGNOME , '%'.$this->string_search.'%', Criteria::LIKE );
+      $cr2->addOr($cr3);
+      $cr1->addOr($cr2);
+      $criteria->add($cr1);
+      $criteria->add(ClientePeer::STATO,ATTIVO);
 
-    	//$this->clientes = ClientePeer::doSelect($criteria);
+      $pager = new sfPropelPager('Cliente', UtentePeer::getImpostazione()->getNumClienti());
+      $pager->setCriteria($criteria);
+      $pager->setPage($this->getRequestParameter('page', 1));
+      $pager->init();
+      $this->pager = $pager;
+
     	return sfView::SUCCESS;
     }else{
-    	return sfView::ERROR;
+      $this->string_search = null;
+      $this->executeList();
     }
   }
 
