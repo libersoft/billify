@@ -57,7 +57,6 @@ abstract class BaseProdottoPeer {
 	
 	public static function getMapBuilder()
 	{
-		include_once 'lib/model/map/ProdottoMapBuilder.php';
 		return BasePeer::getMapBuilder('lib.model.map.ProdottoMapBuilder');
 	}
 	
@@ -182,7 +181,7 @@ abstract class BaseProdottoPeer {
 		$results = array();
 	
 				$cls = ProdottoPeer::getOMClass();
-		$cls = Propel::import($cls);
+		$cls = sfPropel::import($cls);
 				while($rs->next()) {
 		
 			$obj = new $cls();
@@ -242,13 +241,13 @@ abstract class BaseProdottoPeer {
 
 			$omClass = ProdottoPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
 			$omClass = UtentePeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol);
 
@@ -321,7 +320,7 @@ abstract class BaseProdottoPeer {
 			$omClass = ProdottoPeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
@@ -330,7 +329,7 @@ abstract class BaseProdottoPeer {
 			$omClass = UtentePeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol2);
 
@@ -353,6 +352,11 @@ abstract class BaseProdottoPeer {
 		return $results;
 	}
 
+
+  static public function getUniqueColumnNames()
+  {
+    return array();
+  }
 	
 	public static function getTableMap()
 	{
@@ -539,6 +543,5 @@ if (Propel::isInit()) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/ProdottoMapBuilder.php';
-	Propel::registerMapBuilder('lib.model.map.ProdottoMapBuilder');
+			Propel::registerMapBuilder('lib.model.map.ProdottoMapBuilder');
 }

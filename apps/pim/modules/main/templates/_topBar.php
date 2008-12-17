@@ -43,7 +43,7 @@
 	</ul>
 </li>
 
-<li><?php echo link_to('Statistiche', 'statistiche')?></li>
+<li><?php echo link_to('Statistiche', 'statistiche/index')?></li>
 
 <li><a>Opzioni</a>
 	<ul>
@@ -54,10 +54,10 @@
 	<li><?php echo link_to('Tasse','tassa/list')?>
 	<ul><li><?php echo link_to('Crea Nuova','tassa/create')?></li></ul>
 	</li>
-	<li><?php echo link_to('Pagamenti','modipagamento')?>
+	<li><?php echo link_to('Pagamenti','modipagamento/index')?>
 	<ul><li><?php echo link_to('Crea Nuovo','modipagamento/create')?></li></ul>
 	</li>
-	<li><?php echo link_to('Codici Iva','codiciiva')?>
+	<li><?php echo link_to('Codici Iva','codiciiva/index')?>
 	<ul><li><?php echo link_to('Crea Nuovo','codiciiva/create')?></li></ul>
 	</li>
 	<li><?php echo link_to('Temi Fattura','temafattura/list')?>

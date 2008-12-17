@@ -42,7 +42,7 @@ class BugMapBuilder {
 
 		$tMap->addColumn('TESTO', 'Testo', 'string', CreoleTypes::LONGVARCHAR, true, null);
 
-		$tMap->addColumn('DATA', 'Data', 'int', CreoleTypes::DATE, true, null);
+		$tMap->addColumn('DATA', 'Data', 'int', CreoleTypes::DATE, false, null);
 
 		$tMap->addColumn('STATO', 'Stato', 'string', CreoleTypes::VARCHAR, true, 255);
 

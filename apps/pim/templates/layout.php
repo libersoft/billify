@@ -27,7 +27,7 @@ Benvenuto, <?php echo $sf_user->getAttribute('nome').' '.$sf_user->getAttribute(
 <?php echo link_to('Mio Profilo','utente/edit')?> | <span class="logout"><?php echo link_to('Esci','login/logout')?></span>
 </div>
 <?php endif?>
-<?php echo link_to(image_tag('logo.jpg'),($sf_user->isAuthenticated()?'main':'/'))?>
+<?php echo link_to(image_tag('logo.jpg'),($sf_user->isAuthenticated()?'main/index':'main/index'))?>
 
 </div>
 
@@ -57,7 +57,7 @@ Benvenuto, <?php echo $sf_user->getAttribute('nome').' '.$sf_user->getAttribute(
 <?php echo include_component_slot('demoScaduto');?>
 <?php echo include_component_slot('updateProfile');?>
 <?php endif?>
-<?php echo $content ?>
+<?php echo $sf_content ?>
 </div>
 
 

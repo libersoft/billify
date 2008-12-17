@@ -62,9 +62,9 @@ class PaypalMapBuilder {
 
 		$tMap->addColumn('PAYER_EMAIL', 'PayerEmail', 'string', CreoleTypes::VARCHAR, false, 125);
 
-		$tMap->addColumn('PAYER_STATUS', 'PayerStatus', 'string', CreoleTypes::CHAR, true, null);
+		$tMap->addColumn('PAYER_STATUS', 'PayerStatus', 'string', CreoleTypes::VARCHAR, true, 255);
 
-		$tMap->addColumn('TXN_TYPE', 'TxnType', 'string', CreoleTypes::CHAR, true, null);
+		$tMap->addColumn('TXN_TYPE', 'TxnType', 'string', CreoleTypes::VARCHAR, true, 255);
 
 		$tMap->addColumn('FIRST_NAME', 'FirstName', 'string', CreoleTypes::VARCHAR, false, 35);
 
@@ -80,7 +80,7 @@ class PaypalMapBuilder {
 
 		$tMap->addColumn('ADDRESS_COUNTRY', 'AddressCountry', 'string', CreoleTypes::VARCHAR, false, 60);
 
-		$tMap->addColumn('ADDRESS_STATUS', 'AddressStatus', 'string', CreoleTypes::CHAR, true, null);
+		$tMap->addColumn('ADDRESS_STATUS', 'AddressStatus', 'string', CreoleTypes::VARCHAR, true, 255);
 
 		$tMap->addColumn('SUBSCR_DATE', 'SubscrDate', 'string', CreoleTypes::VARCHAR, false, 50);
 
@@ -108,7 +108,7 @@ class PaypalMapBuilder {
 
 		$tMap->addColumn('ENTIREPOST', 'Entirepost', 'string', CreoleTypes::LONGVARCHAR, false, null);
 
-		$tMap->addColumn('PAYPAL_VERIFIED', 'PaypalVerified', 'string', CreoleTypes::CHAR, true, null);
+		$tMap->addColumn('PAYPAL_VERIFIED', 'PaypalVerified', 'string', CreoleTypes::VARCHAR, true, 255);
 
 		$tMap->addColumn('VERIFY_SIGN', 'VerifySign', 'string', CreoleTypes::VARCHAR, false, 125);
 

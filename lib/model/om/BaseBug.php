@@ -29,7 +29,7 @@ abstract class BaseBug extends BaseObject  implements Persistent {
 
 
 	
-	protected $data = 943948800;
+	protected $data;
 
 
 	
@@ -193,7 +193,7 @@ abstract class BaseBug extends BaseObject  implements Persistent {
 		} else {
 			$ts = $v;
 		}
-		if ($this->data !== $ts || $ts === 943948800) {
+		if ($this->data !== $ts) {
 			$this->data = $ts;
 			$this->modifiedColumns[] = BugPeer::DATA;
 		}
@@ -567,11 +567,8 @@ abstract class BaseBug extends BaseObject  implements Persistent {
 	
 	public function getUtente($con = null)
 	{
-				include_once 'lib/model/om/BaseUtentePeer.php';
-
 		if ($this->aUtente === null && ($this->id_utente !== null)) {
-
-			$this->aUtente = UtentePeer::retrieveByPK($this->id_utente, $con);
+						$this->aUtente = UtentePeer::retrieveByPK($this->id_utente, $con);
 
 			
 		}

@@ -25,7 +25,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 
 	
-	protected $data = 943948800;
+	protected $data;
 
 
 	
@@ -57,19 +57,19 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 
 	
-	protected $stato = '';
+	protected $stato = 'n';
 
 
 	
-	protected $iva_pagata = '';
+	protected $iva_pagata = 'n';
 
 
 	
-	protected $iva_depositata = '';
+	protected $iva_depositata = 'n';
 
 
 	
-	protected $commercialista = '';
+	protected $commercialista = 'n';
 
 
 	
@@ -359,7 +359,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 		} else {
 			$ts = $v;
 		}
-		if ($this->data !== $ts || $ts === 943948800) {
+		if ($this->data !== $ts) {
 			$this->data = $ts;
 			$this->modifiedColumns[] = FatturaPeer::DATA;
 		}
@@ -466,7 +466,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 			$v = (string) $v; 
 		}
 
-		if ($this->stato !== $v || $v === '') {
+		if ($this->stato !== $v || $v === 'n') {
 			$this->stato = $v;
 			$this->modifiedColumns[] = FatturaPeer::STATO;
 		}
@@ -480,7 +480,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 			$v = (string) $v; 
 		}
 
-		if ($this->iva_pagata !== $v || $v === '') {
+		if ($this->iva_pagata !== $v || $v === 'n') {
 			$this->iva_pagata = $v;
 			$this->modifiedColumns[] = FatturaPeer::IVA_PAGATA;
 		}
@@ -494,7 +494,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 			$v = (string) $v; 
 		}
 
-		if ($this->iva_depositata !== $v || $v === '') {
+		if ($this->iva_depositata !== $v || $v === 'n') {
 			$this->iva_depositata = $v;
 			$this->modifiedColumns[] = FatturaPeer::IVA_DEPOSITATA;
 		}
@@ -508,7 +508,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 			$v = (string) $v; 
 		}
 
-		if ($this->commercialista !== $v || $v === '') {
+		if ($this->commercialista !== $v || $v === 'n') {
 			$this->commercialista = $v;
 			$this->modifiedColumns[] = FatturaPeer::COMMERCIALISTA;
 		}
@@ -1164,11 +1164,8 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	
 	public function getUtente($con = null)
 	{
-				include_once 'lib/model/om/BaseUtentePeer.php';
-
 		if ($this->aUtente === null && ($this->id_utente !== null)) {
-
-			$this->aUtente = UtentePeer::retrieveByPK($this->id_utente, $con);
+						$this->aUtente = UtentePeer::retrieveByPK($this->id_utente, $con);
 
 			
 		}
@@ -1194,11 +1191,8 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	
 	public function getCliente($con = null)
 	{
-				include_once 'lib/model/om/BaseClientePeer.php';
-
 		if ($this->aCliente === null && ($this->cliente_id !== null)) {
-
-			$this->aCliente = ClientePeer::retrieveByPK($this->cliente_id, $con);
+						$this->aCliente = ClientePeer::retrieveByPK($this->cliente_id, $con);
 
 			
 		}
@@ -1224,11 +1218,8 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	
 	public function getModoPagamento($con = null)
 	{
-				include_once 'lib/model/om/BaseModoPagamentoPeer.php';
-
 		if ($this->aModoPagamento === null && ($this->modo_pagamento_id !== null)) {
-
-			$this->aModoPagamento = ModoPagamentoPeer::retrieveByPK($this->modo_pagamento_id, $con);
+						$this->aModoPagamento = ModoPagamentoPeer::retrieveByPK($this->modo_pagamento_id, $con);
 
 			
 		}
@@ -1246,8 +1237,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	
 	public function getDettagliFatturas($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseDettagliFatturaPeer.php';
-		if ($criteria === null) {
+				if ($criteria === null) {
 			$criteria = new Criteria();
 		}
 		elseif ($criteria instanceof Criteria)
@@ -1284,8 +1274,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	
 	public function countDettagliFatturas($criteria = null, $distinct = false, $con = null)
 	{
-				include_once 'lib/model/om/BaseDettagliFatturaPeer.php';
-		if ($criteria === null) {
+				if ($criteria === null) {
 			$criteria = new Criteria();
 		}
 		elseif ($criteria instanceof Criteria)
@@ -1316,8 +1305,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	
 	public function getTagsFatturas($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseTagsFatturaPeer.php';
-		if ($criteria === null) {
+				if ($criteria === null) {
 			$criteria = new Criteria();
 		}
 		elseif ($criteria instanceof Criteria)
@@ -1354,8 +1342,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	
 	public function countTagsFatturas($criteria = null, $distinct = false, $con = null)
 	{
-				include_once 'lib/model/om/BaseTagsFatturaPeer.php';
-		if ($criteria === null) {
+				if ($criteria === null) {
 			$criteria = new Criteria();
 		}
 		elseif ($criteria instanceof Criteria)
@@ -1379,8 +1366,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	
 	public function getTagsFatturasJoinUtente($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseTagsFatturaPeer.php';
-		if ($criteria === null) {
+				if ($criteria === null) {
 			$criteria = new Criteria();
 		}
 		elseif ($criteria instanceof Criteria)

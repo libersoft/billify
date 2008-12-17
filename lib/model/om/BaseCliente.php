@@ -1324,11 +1324,8 @@ abstract class BaseCliente extends BaseObject  implements Persistent {
 	
 	public function getUtente($con = null)
 	{
-				include_once 'lib/model/om/BaseUtentePeer.php';
-
 		if ($this->aUtente === null && ($this->id_utente !== null)) {
-
-			$this->aUtente = UtentePeer::retrieveByPK($this->id_utente, $con);
+						$this->aUtente = UtentePeer::retrieveByPK($this->id_utente, $con);
 
 			
 		}
@@ -1354,11 +1351,8 @@ abstract class BaseCliente extends BaseObject  implements Persistent {
 	
 	public function getModoPagamento($con = null)
 	{
-				include_once 'lib/model/om/BaseModoPagamentoPeer.php';
-
 		if ($this->aModoPagamento === null && ($this->modo_pagamento_id !== null)) {
-
-			$this->aModoPagamento = ModoPagamentoPeer::retrieveByPK($this->modo_pagamento_id, $con);
+						$this->aModoPagamento = ModoPagamentoPeer::retrieveByPK($this->modo_pagamento_id, $con);
 
 			
 		}
@@ -1384,11 +1378,8 @@ abstract class BaseCliente extends BaseObject  implements Persistent {
 	
 	public function getTemaFattura($con = null)
 	{
-				include_once 'lib/model/om/BaseTemaFatturaPeer.php';
-
 		if ($this->aTemaFattura === null && ($this->id_tema_fattura !== null)) {
-
-			$this->aTemaFattura = TemaFatturaPeer::retrieveByPK($this->id_tema_fattura, $con);
+						$this->aTemaFattura = TemaFatturaPeer::retrieveByPK($this->id_tema_fattura, $con);
 
 			
 		}
@@ -1414,11 +1405,8 @@ abstract class BaseCliente extends BaseObject  implements Persistent {
 	
 	public function getBanca($con = null)
 	{
-				include_once 'lib/model/om/BaseBancaPeer.php';
-
 		if ($this->aBanca === null && ($this->id_banca !== null)) {
-
-			$this->aBanca = BancaPeer::retrieveByPK($this->id_banca, $con);
+						$this->aBanca = BancaPeer::retrieveByPK($this->id_banca, $con);
 
 			
 		}
@@ -1436,8 +1424,7 @@ abstract class BaseCliente extends BaseObject  implements Persistent {
 	
 	public function getFatturas($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseFatturaPeer.php';
-		if ($criteria === null) {
+				if ($criteria === null) {
 			$criteria = new Criteria();
 		}
 		elseif ($criteria instanceof Criteria)
@@ -1474,8 +1461,7 @@ abstract class BaseCliente extends BaseObject  implements Persistent {
 	
 	public function countFatturas($criteria = null, $distinct = false, $con = null)
 	{
-				include_once 'lib/model/om/BaseFatturaPeer.php';
-		if ($criteria === null) {
+				if ($criteria === null) {
 			$criteria = new Criteria();
 		}
 		elseif ($criteria instanceof Criteria)
@@ -1499,8 +1485,7 @@ abstract class BaseCliente extends BaseObject  implements Persistent {
 	
 	public function getFatturasJoinUtente($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseFatturaPeer.php';
-		if ($criteria === null) {
+				if ($criteria === null) {
 			$criteria = new Criteria();
 		}
 		elseif ($criteria instanceof Criteria)
@@ -1534,8 +1519,7 @@ abstract class BaseCliente extends BaseObject  implements Persistent {
 	
 	public function getFatturasJoinModoPagamento($criteria = null, $con = null)
 	{
-				include_once 'lib/model/om/BaseFatturaPeer.php';
-		if ($criteria === null) {
+				if ($criteria === null) {
 			$criteria = new Criteria();
 		}
 		elseif ($criteria instanceof Criteria)

@@ -66,7 +66,6 @@ abstract class BaseBancaPeer {
 	
 	public static function getMapBuilder()
 	{
-		include_once 'lib/model/map/BancaMapBuilder.php';
 		return BasePeer::getMapBuilder('lib.model.map.BancaMapBuilder');
 	}
 	
@@ -197,7 +196,7 @@ abstract class BaseBancaPeer {
 		$results = array();
 	
 				$cls = BancaPeer::getOMClass();
-		$cls = Propel::import($cls);
+		$cls = sfPropel::import($cls);
 				while($rs->next()) {
 		
 			$obj = new $cls();
@@ -257,13 +256,13 @@ abstract class BaseBancaPeer {
 
 			$omClass = BancaPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
 			$omClass = UtentePeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol);
 
@@ -336,7 +335,7 @@ abstract class BaseBancaPeer {
 			$omClass = BancaPeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
@@ -345,7 +344,7 @@ abstract class BaseBancaPeer {
 			$omClass = UtentePeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol2);
 
@@ -368,6 +367,11 @@ abstract class BaseBancaPeer {
 		return $results;
 	}
 
+
+  static public function getUniqueColumnNames()
+  {
+    return array();
+  }
 	
 	public static function getTableMap()
 	{
@@ -571,6 +575,5 @@ if (Propel::isInit()) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/BancaMapBuilder.php';
-	Propel::registerMapBuilder('lib.model.map.BancaMapBuilder');
+			Propel::registerMapBuilder('lib.model.map.BancaMapBuilder');
 }

@@ -469,11 +469,8 @@ abstract class BaseProdotto extends BaseObject  implements Persistent {
 	
 	public function getUtente($con = null)
 	{
-				include_once 'lib/model/om/BaseUtentePeer.php';
-
 		if ($this->aUtente === null && ($this->id_utente !== null)) {
-
-			$this->aUtente = UtentePeer::retrieveByPK($this->id_utente, $con);
+						$this->aUtente = UtentePeer::retrieveByPK($this->id_utente, $con);
 
 			
 		}

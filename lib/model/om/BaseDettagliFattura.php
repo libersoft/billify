@@ -549,11 +549,8 @@ abstract class BaseDettagliFattura extends BaseObject  implements Persistent {
 	
 	public function getFattura($con = null)
 	{
-				include_once 'lib/model/om/BaseFatturaPeer.php';
-
 		if ($this->aFattura === null && ($this->fattura_id !== null)) {
-
-			$this->aFattura = FatturaPeer::retrieveByPK($this->fattura_id, $con);
+						$this->aFattura = FatturaPeer::retrieveByPK($this->fattura_id, $con);
 
 			
 		}

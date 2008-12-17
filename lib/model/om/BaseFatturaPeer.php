@@ -102,7 +102,6 @@ abstract class BaseFatturaPeer {
 	
 	public static function getMapBuilder()
 	{
-		include_once 'lib/model/map/FatturaMapBuilder.php';
 		return BasePeer::getMapBuilder('lib.model.map.FatturaMapBuilder');
 	}
 	
@@ -257,7 +256,7 @@ abstract class BaseFatturaPeer {
 		$results = array();
 	
 				$cls = FatturaPeer::getOMClass();
-		$cls = Propel::import($cls);
+		$cls = sfPropel::import($cls);
 				while($rs->next()) {
 		
 			$obj = new $cls();
@@ -373,13 +372,13 @@ abstract class BaseFatturaPeer {
 
 			$omClass = FatturaPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
 			$omClass = UtentePeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol);
 
@@ -420,13 +419,13 @@ abstract class BaseFatturaPeer {
 
 			$omClass = FatturaPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
 			$omClass = ClientePeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol);
 
@@ -467,13 +466,13 @@ abstract class BaseFatturaPeer {
 
 			$omClass = FatturaPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
 			$omClass = ModoPagamentoPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol);
 
@@ -560,7 +559,7 @@ abstract class BaseFatturaPeer {
 			$omClass = FatturaPeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
@@ -569,7 +568,7 @@ abstract class BaseFatturaPeer {
 			$omClass = UtentePeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol2);
 
@@ -592,7 +591,7 @@ abstract class BaseFatturaPeer {
 			$omClass = ClientePeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj3 = new $cls();
 			$obj3->hydrate($rs, $startcol3);
 
@@ -615,7 +614,7 @@ abstract class BaseFatturaPeer {
 			$omClass = ModoPagamentoPeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj4 = new $cls();
 			$obj4->hydrate($rs, $startcol4);
 
@@ -759,14 +758,14 @@ abstract class BaseFatturaPeer {
 
 			$omClass = FatturaPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
 			$omClass = ClientePeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2  = new $cls();
 			$obj2->hydrate($rs, $startcol2);
 
@@ -788,7 +787,7 @@ abstract class BaseFatturaPeer {
 			$omClass = ModoPagamentoPeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj3  = new $cls();
 			$obj3->hydrate($rs, $startcol3);
 
@@ -843,14 +842,14 @@ abstract class BaseFatturaPeer {
 
 			$omClass = FatturaPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
 			$omClass = UtentePeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2  = new $cls();
 			$obj2->hydrate($rs, $startcol2);
 
@@ -872,7 +871,7 @@ abstract class BaseFatturaPeer {
 			$omClass = ModoPagamentoPeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj3  = new $cls();
 			$obj3->hydrate($rs, $startcol3);
 
@@ -927,14 +926,14 @@ abstract class BaseFatturaPeer {
 
 			$omClass = FatturaPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
 			$omClass = UtentePeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2  = new $cls();
 			$obj2->hydrate($rs, $startcol2);
 
@@ -956,7 +955,7 @@ abstract class BaseFatturaPeer {
 			$omClass = ClientePeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj3  = new $cls();
 			$obj3->hydrate($rs, $startcol3);
 
@@ -980,6 +979,11 @@ abstract class BaseFatturaPeer {
 		return $results;
 	}
 
+
+  static public function getUniqueColumnNames()
+  {
+    return array();
+  }
 	
 	public static function getTableMap()
 	{
@@ -1193,6 +1197,5 @@ if (Propel::isInit()) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/FatturaMapBuilder.php';
-	Propel::registerMapBuilder('lib.model.map.FatturaMapBuilder');
+			Propel::registerMapBuilder('lib.model.map.FatturaMapBuilder');
 }

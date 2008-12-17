@@ -162,7 +162,6 @@ abstract class BasePaypalPeer {
 	
 	public static function getMapBuilder()
 	{
-		include_once 'lib/model/map/PaypalMapBuilder.php';
 		return BasePeer::getMapBuilder('lib.model.map.PaypalMapBuilder');
 	}
 	
@@ -357,7 +356,7 @@ abstract class BasePaypalPeer {
 		$results = array();
 	
 				$cls = PaypalPeer::getOMClass();
-		$cls = Propel::import($cls);
+		$cls = sfPropel::import($cls);
 				while($rs->next()) {
 		
 			$obj = new $cls();
@@ -367,6 +366,11 @@ abstract class BasePaypalPeer {
 		}
 		return $results;
 	}
+
+  static public function getUniqueColumnNames()
+  {
+    return array();
+  }
 	
 	public static function getTableMap()
 	{
@@ -553,6 +557,5 @@ if (Propel::isInit()) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/PaypalMapBuilder.php';
-	Propel::registerMapBuilder('lib.model.map.PaypalMapBuilder');
+			Propel::registerMapBuilder('lib.model.map.PaypalMapBuilder');
 }

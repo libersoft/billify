@@ -42,7 +42,7 @@ class ImpostazioneMapBuilder {
 
 		$tMap->addColumn('RITENUTA_ACCONTO', 'RitenutaAcconto', 'string', CreoleTypes::VARCHAR, true, 255);
 
-		$tMap->addColumn('TIPO_RITENUTA', 'TipoRitenuta', 'string', CreoleTypes::CHAR, true, null);
+		$tMap->addColumn('TIPO_RITENUTA', 'TipoRitenuta', 'string', CreoleTypes::VARCHAR, true, 255);
 
 		$tMap->addColumn('RIEPILOGO_HOME', 'RiepilogoHome', 'string', CreoleTypes::CHAR, true, null);
 

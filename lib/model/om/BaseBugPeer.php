@@ -63,7 +63,6 @@ abstract class BaseBugPeer {
 	
 	public static function getMapBuilder()
 	{
-		include_once 'lib/model/map/BugMapBuilder.php';
 		return BasePeer::getMapBuilder('lib.model.map.BugMapBuilder');
 	}
 	
@@ -192,7 +191,7 @@ abstract class BaseBugPeer {
 		$results = array();
 	
 				$cls = BugPeer::getOMClass();
-		$cls = Propel::import($cls);
+		$cls = sfPropel::import($cls);
 				while($rs->next()) {
 		
 			$obj = new $cls();
@@ -252,13 +251,13 @@ abstract class BaseBugPeer {
 
 			$omClass = BugPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
 			$omClass = UtentePeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol);
 
@@ -331,7 +330,7 @@ abstract class BaseBugPeer {
 			$omClass = BugPeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
@@ -340,7 +339,7 @@ abstract class BaseBugPeer {
 			$omClass = UtentePeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol2);
 
@@ -363,6 +362,11 @@ abstract class BaseBugPeer {
 		return $results;
 	}
 
+
+  static public function getUniqueColumnNames()
+  {
+    return array();
+  }
 	
 	public static function getTableMap()
 	{
@@ -549,6 +553,5 @@ if (Propel::isInit()) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/BugMapBuilder.php';
-	Propel::registerMapBuilder('lib.model.map.BugMapBuilder');
+			Propel::registerMapBuilder('lib.model.map.BugMapBuilder');
 }

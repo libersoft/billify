@@ -54,7 +54,6 @@ abstract class BaseInvitationCodePeer {
 	
 	public static function getMapBuilder()
 	{
-		include_once 'lib/model/map/InvitationCodeMapBuilder.php';
 		return BasePeer::getMapBuilder('lib.model.map.InvitationCodeMapBuilder');
 	}
 	
@@ -177,7 +176,7 @@ abstract class BaseInvitationCodePeer {
 		$results = array();
 	
 				$cls = InvitationCodePeer::getOMClass();
-		$cls = Propel::import($cls);
+		$cls = sfPropel::import($cls);
 				while($rs->next()) {
 		
 			$obj = new $cls();
@@ -187,6 +186,11 @@ abstract class BaseInvitationCodePeer {
 		}
 		return $results;
 	}
+
+  static public function getUniqueColumnNames()
+  {
+    return array(array('codice'));
+  }
 	
 	public static function getTableMap()
 	{
@@ -373,6 +377,5 @@ if (Propel::isInit()) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/InvitationCodeMapBuilder.php';
-	Propel::registerMapBuilder('lib.model.map.InvitationCodeMapBuilder');
+			Propel::registerMapBuilder('lib.model.map.InvitationCodeMapBuilder');
 }

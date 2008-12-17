@@ -27,7 +27,7 @@
     <column name="priorita" type="VARCHAR" size="255" required="true" default="null" />
     <column name="modulo" type="VARCHAR" size="255" required="true" default="null" />
     <column name="testo" type="LONGVARCHAR" required="true" />
-    <column name="data" type="DATE" required="true" default="0000-00-00" />
+    <column name="data" type="DATE" />
     <column name="stato" type="VARCHAR" size="255" required="true" default="null" />
     <index name="id_utente">
       <index-column name="id_utente" />
@@ -136,7 +136,7 @@
     <foreign-key foreignTable="cliente" onDelete="CASCADE" onUpdate="CASCADE">
       <reference local="cliente_id" foreign="id" />
     </foreign-key>
-    <column name="data" type="DATE" required="true" default="0000-00-00" />
+    <column name="data" type="DATE" required="true" />
     <column name="data_stato" type="DATE" />
     <column name="modo_pagamento_id" type="INTEGER" />
     <foreign-key foreignTable="modo_pagamento" onDelete="SET NULL" onUpdate="CASCADE">
