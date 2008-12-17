@@ -1,0 +1,6 @@
+autoload:
+   
+  DomPDF:
+    name:		  DomPdf
+    ext: .cls.php
+    path: %SF_APP_DIR%/lib/dompdf/include

@@ -1,0 +1,16 @@
+methods:
+  post:           [codice, nome, prezzo]
+
+names:
+  codice:
+    required:     Yes
+    required_msg: Il codice non pu&ograve; essere vuoto
+  nome:
+    required:     Yes
+    required_msg: Il nome non pu&ograve; essere vuoto
+  prezzo:
+    required:     Yes
+    required_msg: Il prezzo non pu&ograve; essere vuoto
+    
+fillin:
+  enabled:  on

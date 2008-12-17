@@ -1,0 +1,18 @@
+chooseSuccess:
+  layout: popup
+  stylesheets:    [pmi, -main, -menu]
+
+showSuccess:
+  components:
+    breadcrumps: [prodotto, breadShow]
+
+editSuccess:
+  components:
+    breadcrumps: [prodotto, breadEdit]
+    
+listSuccess:
+  components:
+     breadcrumps: [prodotto, bread]
+     
+default:
+  has_layout: on

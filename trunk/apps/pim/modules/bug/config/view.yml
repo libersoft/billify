@@ -1,0 +1,14 @@
+showSuccess:
+  components:
+    breadcrumps: [bug, breadShow]
+
+createSuccess:
+  components:
+    breadcrumps: [bug, breadEdit]
+    
+listSuccess:
+  components:
+    breadcrumps: [bug, bread]
+    
+default:
+  has_layout: on

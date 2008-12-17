@@ -1,0 +1,25 @@
+methods:
+  post:           [num_fattura, cliente_id, data, sconto, vat, spese_anticipate]
+
+names:
+  num_fattura:
+    required:     Yes
+    required_msg: Il numero di fattura non pu&ograve; essere vuoto
+  cliente_id:
+    required:     Yes
+    required_msg: Seleziona un cliente
+  data:
+    required:     Yes
+    required_msg: La data di emissione fattura non pu&ograve; essere vuota
+  sconto:
+    required:     Yes
+    required_msg: Lo sconto non pu&ograve; essere vuoto
+  vat:
+    required:     Yes
+    required_msg: L' iva non pu&ograve; essere vuota
+  spese_anticipate:
+    required:     Yes
+    required_msg: Le spese anticipate non possono essere vuote
+    
+fillin:
+  enabled:  on

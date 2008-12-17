@@ -1,0 +1,7 @@
+upgradeSuccess:
+  components:
+    breadcrumps: [utente, breadUpgrade]
+    
+editSuccess:
+  components:
+    breadcrumps: [utente, bread]

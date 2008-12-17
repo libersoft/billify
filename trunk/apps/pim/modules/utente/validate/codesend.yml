@@ -1,0 +1,16 @@
+methods:
+  post:           [email]
+  
+names:
+  email:
+    required:     Yes
+    required_msg: L'email non pu&ograve; essere vuota
+    validators:   emailValidator
+    
+emailValidator:
+  class:          sfEmailValidator
+  param:
+    email_error:  E-mail non valida
+    
+fillin:
+  enabled:  on

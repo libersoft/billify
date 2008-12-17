@@ -1,0 +1,74 @@
+methods:
+  post:           [nome, cognome, ragione_sociale, partita_iva, codice_fiscale, email, password, verifica_password]
+
+names:
+  nome:
+    required:     Yes
+    required_msg: Il nome non pu&ograve; essere vuoto
+  cognome:
+    required:     Yes
+    required_msg: Il cognome non pu&ograve; essere vuoto
+  ragione_sociale:
+    required:     No
+    required_msg: La ragione sociale non pu&ograve; essere vuoto
+  partita_iva:
+    required:     No
+    required_msg: La partita iva non pu&ograve; essere vuota
+    validators:   partitaIvaValidator
+  codice_fiscale:
+    required:     No
+    required_msg: Il codice fiscale non pu&ograve; essere vuoto
+    validators:   codiceFiscaleValidator
+  email:
+    required:     Yes
+    required_msg: La email non pu&ograve; essere vuota
+    validators:   emailValidator
+  password:
+    required:     no
+    required_msg: La password non pu&ograve; essere vuota
+  verifica_password:
+    required:     no
+    required_msg: La verifica password non pu&ograve; essere vuota
+    validators:   passwordValidator
+    
+loginValidator:
+  class:          sfPropelUniqueValidator
+  param:
+    class:        Utente
+    column:       username
+    unique_error: Questo username esiste gi&agrave;, scegli un altro username.
+    
+partitaIvaValidator:
+  class:          sfStringValidator
+  param:
+    min:          11
+    min_error:    Partita iva non valida.
+    max:          11
+    max_error:    Partita iva non valida. 
+    		 
+codiceFiscaleValidator:
+  class:          sfStringValidator
+  param:
+    min:          11
+    min_error:    Codice fiscale non valido.
+    max:          11
+    max_error:    Codice fiscale non valido. 
+
+emailValidator:
+  class:          sfEmailValidator
+  param:
+    email_error:  E-mail non valida
+    
+passwordValidator:
+  class:          sfCompareValidator
+  param:
+    check:        password
+    compare_error: La verifica della password non corrisponde, inserisci di nuovo la password.
+    
+captchaValidator:
+  class: myCharactersValidator
+  param:
+    characters_error: Il codice di sicurezza &egrave; errato;
+  
+fillin:
+  enabled:  on

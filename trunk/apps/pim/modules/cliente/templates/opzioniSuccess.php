@@ -1,0 +1,1 @@
+<?php include_partial('cliente/opzioni_fattura',array('cliente'=>$cliente)) ?>

@@ -1,0 +1,11 @@
+editSuccess:
+  components:
+    breadcrumps: [codiciiva, editBread]
+    
+createSuccess:
+  components:
+    breadcrumps: [codiciiva, createBread]
+    
+listSuccess:
+  components:
+    breadcrumps: [codiciiva, bread]

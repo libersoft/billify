@@ -1,0 +1,30 @@
+all:
+  has_layout: on
+  components:
+     topbar: [main, topBar]
+     breadcrumps: [cliente, breadCliente]
+
+showSuccess:
+  components:
+    breadcrumps: [cliente, breadShow]
+
+editSuccess:
+  components:
+    breadcrumps: [cliente, breadEdit]
+    
+listSuccess:
+  components:
+     sidebar: [main, sideBar]
+     
+searchSuccess:
+  has_layout: off
+  
+searchError:
+  has_layout: off
+  
+anagraficaSuccess:
+  has_layout: off
+  
+opzioniSuccess:
+  has_layout: off
+  

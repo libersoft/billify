@@ -1,0 +1,13 @@
+---
+all:
+  admin:
+    email: info@personal-invoice-manager.net
+    from: info@personal-invoice-manager.net
+    label: PIM On-Line
+  tag:
+    cloud_max:   20
+  fusoorario: 9
+  account:
+    gratis: 24,25,27
+  prezzo:
+    base: 5.9

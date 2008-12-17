@@ -1,0 +1,95 @@
+prod:
+  .settings:
+    error_reporting:        4095
+    no_script_name:		on
+#    suffix:         		 .html
+    cache: on
+    
+dev:
+  .settings:
+    # E_ALL | E_STRICT = 4095
+    error_reporting:        4095
+    web_debug:              on
+    cache:                  off
+    stats:                  off
+    no_script_name:         off
+    standard_helpers:       [Number, Partial, Cache, Form, Date, I18N, Javascript, Object]
+
+test:
+  .settings:
+    # E_ALL | E_STRICT & ~E_NOTICE = 2047
+    error_reporting:        2047
+    cache:                  off
+    stats:                  off
+    web_debug:              off
+
+all:
+  .actions:
+    default_module:         engine
+    default_action:         index
+   
+    error_404_module:       main
+    error_404_action:       error404
+#    
+    login_module:           login
+    login_action:           index
+#    
+#    module_disabled_module: default
+#    module_disabled_action: disabled
+#    
+    secure_module:          utente
+    secure_action:          rinnova
+#    
+#    unavailable_module:     default
+#    unavailable_action:     unavailable
+#
+  .settings:
+#    available:              off
+
+#    module_accessor:        module
+#    action_accessor:        action	
+#
+#    content_type:           html
+#    
+#    path_info_array:        SERVER
+#    path_info_key:          PATH_INFO
+#    
+#    url_format:             PATH
+#    
+#    use_database:           off
+#
+#    use_security:           on
+#    
+#    compressed:             on
+#    
+#    tidy:                   on
+#    
+#    is_i18n:                off
+
+#    
+#    timeout:                1800
+#    
+#    suffix:                 .html
+#    
+#    module_default:         on
+#
+    standard_helpers:       [Number, Partial, Cache, Form, Date, I18N, Javascript, Object]
+#
+#    max_forwards:           20
+#
+#    web_debug:              off
+#
+    cache:                  off
+#    default_cache_lifetime: 86400
+#
+#    routing:                on
+#    no_script_name:         on
+#    relative_url_root:      
+#
+#    stats:                  off
+#
+#    # E_ERROR | E_USER_ERROR = 257
+#    error_reporting:        257
+
+    rich_text_fck_js_dir:  js/FCKeditor
+    rich_text_fck_base_dir:  progetti/pimonline/web/js/FCKeditor

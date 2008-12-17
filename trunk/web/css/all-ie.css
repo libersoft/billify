@@ -1,0 +1,15 @@
+
+body {
+	behavior: url(/css/csshover.htc);
+}
+
+
+#indicator{
+	display: none !important;
+	position: absolute;
+	width: 100px;
+	height: 40px;
+	left: 5px;
+	top: 90px;
+	background: url(../images/indicator.gif) no-repeat;
+}

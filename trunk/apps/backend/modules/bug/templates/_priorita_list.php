@@ -1,0 +1,1 @@
+<?php echo select_tag('priorita',options_for_select(array('bassa'=>'Bassa','media'=>'Media','alta'=>'Alta'),$bug->getPriorita()))?>

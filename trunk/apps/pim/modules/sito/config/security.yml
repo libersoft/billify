@@ -1,0 +1,5 @@
+inviaContatti:
+  is_secure: off
+
+default:
+  is_secure: off

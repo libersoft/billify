@@ -1,0 +1,40 @@
+methods:
+  post:           [nome_banca, abi, cab, cin, numero_conto]
+
+names:
+  nome_banca:
+    required:     Yes
+    required_msg: Il nome della banca non pu&ograve; essere vuoto
+  abi:
+    required:     Yes
+    required_msg: L'abi non pu&ograve; essere vuoto
+    validators: intValidator
+  cab:
+    required:     Yes
+    required_msg: Il cab non pu&ograve; essere vuoto
+    validators: intValidator
+  cin:
+    required:     Yes
+    required_msg: Il cin non pu&ograve; essere vuoto
+    validators: cinValidator
+  numero_conto:
+    required:     Yes
+    required_msg: Il numero del conto non pu&ograve; essere vuoto
+    validators: intValidator
+
+intValidator:
+  class:          sfNumberValidator
+  param:
+    nan_error:    Questo valore deve essere numerico
+
+cinValidator:
+  class:          sfStringValidator
+  param:
+    nan_error:    Questo valore deve essere una lettera
+    min:          1
+    min_error:    Il valore deve essere formato da una sola lettera
+    max:          1
+    max_error:    Il valore deve essere formato da una sola lettera
+    
+fillin:
+  enabled:  on

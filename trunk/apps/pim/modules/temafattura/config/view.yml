@@ -1,0 +1,14 @@
+editSuccess:
+  components:
+    breadcrumps: [temafattura, editBread]
+    
+createSuccess:
+  components:
+    breadcrumps: [temafattura, createBread]
+    
+listSuccess:
+  components:
+    breadcrumps: [temafattura, bread]
+    
+helpSuccess:
+  has_layout: off

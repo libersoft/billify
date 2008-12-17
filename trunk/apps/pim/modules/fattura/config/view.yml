@@ -1,0 +1,46 @@
+listFilterSuccess:
+  has_layout: off
+
+listAgainSuccess:
+  has_layout: off
+
+addTagSuccess:
+  has_layout: off
+
+tagAutocompleteSuccess:
+  has_layout: off
+  
+deleteTagSuccess:
+  has_layout: off
+  
+exportSuccess:
+  has_layout: off
+
+exportError:
+  has_layout: off
+  
+listSuccess:
+  components:
+     breadcrumps: [fattura, breadList]
+
+tagsSuccess:
+  components:
+     breadcrumps: [fattura, breadTags]
+     
+showSuccess:
+  components:
+     breadcrumps: [fattura, breadShow]
+
+createSuccess:
+  components:
+    breadcrumps: [fattura, breadEdit]
+    
+editSuccess:
+  components:
+     breadcrumps: [fattura, breadEdit]
+     
+all:
+  has_layout: on
+  components:
+       topbar: [main, topBar]
+       

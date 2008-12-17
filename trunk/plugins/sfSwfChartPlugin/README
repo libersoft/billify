@@ -1,0 +1,19 @@
+= sfSwfChartPlugin plugin =
+
+The `sfSwfChartPlugin` provides abstraction for the PHP/SWF Charts library.
+
+== Installation ==
+
+  * Install the plugin
+  
+  {{{
+    symfony plugin-install http://plugins.symfony-project.com/sfSwfChartPlugin
+  }}}
+
+  * Clear you cache
+
+  {{{
+    symfony cc
+  }}}
+
+  * You're done.

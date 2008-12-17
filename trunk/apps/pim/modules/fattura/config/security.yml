@@ -1,0 +1,11 @@
+create:
+  credentials: attivo
+  
+copia:
+  credentials: attivo
+
+export:
+  credentials: attivo
+  
+default:
+  is_secure: on

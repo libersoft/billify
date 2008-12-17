@@ -1,0 +1,11 @@
+editSuccess:
+  components:
+    breadcrumps: [banca, editBread]
+    
+createSuccess:
+  components:
+    breadcrumps: [banca, createBread]
+    
+listSuccess:
+  components:
+    breadcrumps: [banca, bread]

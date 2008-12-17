@@ -1,0 +1,6 @@
+customer:
+  has_layout: off
+  
+default:
+  http_metas:
+    content-type: text/xml; charset=utf-8

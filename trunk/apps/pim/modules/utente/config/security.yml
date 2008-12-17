@@ -1,0 +1,23 @@
+create:
+  is_secure: off
+
+register:
+  is_secure: off
+
+antispam:
+  is_secure: off
+
+askcode:
+  is_secure: off
+
+codesend:
+  is_secure: off
+
+forgetpassword:
+  is_secure: off
+
+sendpassword:
+  is_secure: off
+
+all:
+  is_secure: on

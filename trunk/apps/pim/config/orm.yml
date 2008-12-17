@@ -1,0 +1,6 @@
+all:
+  adapter:  mysql
+  host:     localhost
+  database: pmibase
+  username: root
+  password: C1cc10DB
