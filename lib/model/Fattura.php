@@ -2,16 +2,6 @@
 
 require_once 'lib/model/om/BaseFattura.php';
 
-define('PAGATA', 'p');
-define('NON_PAGATA', 'n');
-define('RIFIUTATA', 'r');
-define('INVIATA','i');
-
-define('NON_PAGATA_COLOR', 'yellow');
-define('PAGATA_COLOR', 'green');
-define('RIFIUTATA_COLOR', 'red');
-define('INVIATA_COLOR', 'blue');
-
 define('CREDITO', 'credito');
 define('DEBITO', 'debito');
 
@@ -27,8 +17,29 @@ define('DEBITO', 'debito');
  * @package model
  */
 class Fattura extends BaseFattura {
+  
+  const PAGATA = 'p';
+  const NON_PAGATA = 'n';
+  const RIFIUTATA = 'r';
+  const INVIATA = 'i';
+		
+  protected $stato_string = array(self::NON_PAGATA => 'non inviata',
+                                  self::PAGATA     => 'pagata',
+                                  self::RIFIUTATA  => 'rifiutata',
+                                  self::INVIATA    => 'inviata');
+                                 
+  protected $font_color_stato = array(self::NON_PAGATA => 'black',
+                                      self::PAGATA     => 'black',
+                                      self::RIFIUTATA  => 'black',
+                                      self::INVIATA    => 'white');
+                                       
+  protected $color_stato = array(self::NON_PAGATA => 'yellow',
+                                 self::PAGATA     => 'green',
+                                 self::RIFIUTATA  => 'red',
+                                 self::INVIATA    => 'blue');
+  
 
-	private $imponibile = 0;
+	protected $imponibile = 0;
 	private $imponibile_scorporato = 0;
 	private $imponibile_fine_iva = 0;
 	private $sconto_totale = 0;
@@ -50,12 +61,20 @@ class Fattura extends BaseFattura {
 		$stm = $conn->createStatement();
 
 		//Select Invoice whit max ID
-		if($this->getData() != "")
+		if($this->getData() != "") {
 			$year = date('y',strtotime($this->getData()));
-		else
+		}
+		else {
 			$year = date('y',time());
+		}
 
-		$query = 'SELECT max('.FatturaPeer::NUM_FATTURA .') as max FROM '.FatturaPeer::TABLE_NAME.' where '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').' AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'" AND '.FatturaPeer::DATA .' <= "'.date('y-m-d',mktime(0,0,0,12,31,$year)).'"';
+		$query = 'SELECT max('.FatturaPeer::NUM_FATTURA .') as max 
+		          FROM '.FatturaPeer::TABLE_NAME.' 
+		          WHERE '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').' 
+		          AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'" 
+		          AND '.FatturaPeer::DATA .' <= "'.date('y-m-d',mktime(0,0,0,12,31,$year)).'"
+		          AND '.FatturaPeer::CLASS_KEY .' = '.FatturaPeer::CLASSKEY_VENDITA ;
+		
 		$rs = $stm->executeQuery($query);
 		$rs->first();
 		$max = $rs->get('max');
@@ -63,7 +82,14 @@ class Fattura extends BaseFattura {
 		//Select Num Fattura and date of Invoice with Max ID
 		if($max != "")
 		{
-			$query2 = 'SELECT '.FatturaPeer::ID.' as id,'.FatturaPeer::DATA.' as data FROM '.FatturaPeer::TABLE_NAME.' where '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').' AND '.FatturaPeer::NUM_FATTURA .'='.$max.' AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'" AND '.FatturaPeer::DATA .' <= "'.date('y-m-d',mktime(0,0,0,12,31,$year)).'"';
+			$query2 = 'SELECT '.VenditaPeer::ID.' as id,'.VenditaPeer::DATA.' as data 
+			           FROM '.VenditaPeer::TABLE_NAME.' 
+			           WHERE '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').' 
+			           AND '.FatturaPeer::NUM_FATTURA .'='.$max.' 
+			           AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'" 
+			           AND '.FatturaPeer::DATA .' <= "'.date('y-m-d',mktime(0,0,0,12,31,$year)).'"
+			           AND '.FatturaPeer::CLASS_KEY .' = '.FatturaPeer::CLASSKEY_VENDITA ;
+			
 			$rs = $stm->executeQuery($query2);
 			$rs->first();
 			$id_fattura = $rs->get('id');
@@ -90,12 +116,7 @@ class Fattura extends BaseFattura {
 
 	public function checkInRitardo()
 	{
-		if(strtotime($this->getDataPagamento()) < time() && $this->getStato() == INVIATA)
-		{
-			return true;
-		}
-
-		return false;
+		return (strtotime($this->getDataPagamento()) < time() && $this->getStato() == self::INVIATA);
 	}
 
 	public function calcImponibileFineIva()
@@ -142,9 +163,11 @@ class Fattura extends BaseFattura {
 		}
 	}
 
-	public function getTasseUlterioriArray(){
+	public function getTasseUlterioriArray()
+	{
 		return $this->tasse_ulteriori_array;
 	}
+	
 	private function calcImponibile()
 	{
 		$dettagli_fattura = $this->getDettagliFatturas();
@@ -156,10 +179,11 @@ class Fattura extends BaseFattura {
 		}
 	}
 
-	private function calcImponibileScorporato(){
+	private function calcImponibileScorporato()
+	{
 		$dettagli_fattura = $this->getDettagliFatturas();
 		$this->iva = 0;
-		foreach ($dettagli_fattura as $dettaglio){
+		foreach ($dettagli_fattura as $dettaglio) {
 			$det = $this->calcDettaglio($dettaglio,true);
 			$this->imponibile_scorporato += $det;
 			$this->iva += $this->calcIvaDettaglio($det,$dettaglio->getIva());
@@ -178,8 +202,9 @@ class Fattura extends BaseFattura {
 		}
 	}
 
-	private function calcIvaDettaglio($dettaglio,$iva){
-		if($this->getCalcolaTasse() == 's'){
+	private function calcIvaDettaglio($dettaglio,$iva) 
+	{
+		if($this->getCalcolaTasse() == 's') {
 			$vat_tmp_array = $this->tasse_ulteriori_array;
 			//$vat = sfConfig::get('app_vat');
 			//$vat_tmp_array = explode('|',$vat);
@@ -200,37 +225,39 @@ class Fattura extends BaseFattura {
 			return $scorporo/100*$iva;
 	}
 
-	static function calcDettaglioScorporato($dettaglio,$calcola_tasse = false, $tasse_ulteriori_array = array()){
-		if($calcola_tasse){
+	static function calcDettaglioScorporato($dettaglio,$calcola_tasse = false, $tasse_ulteriori_array = array())
+	{
+		if($calcola_tasse) {
 			//$vat = sfConfig::get('app_vat');
 			//$vat_tmp_array = explode('|',$vat);
 			$scorporo = 0;
 			$dettaglio_scorporato = 0;
-			foreach ($tasse_ulteriori_array as $vat)
-			{
+			foreach ($tasse_ulteriori_array as $vat) {
 				//list($nome, $valore, $descrizione) = explode('-',$vat);
 				$dettaglio_scorporato = $dettaglio/(1+($vat->getValore()/100));
 				$scorporo += $dettaglio - $dettaglio_scorporato;
 			}
 			return $dettaglio_scorporato;
-		}else{
+		}
+		else	{
 			return $dettaglio;
 		}
 	}
 
-	static function calcScorporo($dettaglio,$calcola_tasse = false, $tasse_ulteriori_array = array()){
+	static function calcScorporo($dettaglio,$calcola_tasse = false, $tasse_ulteriori_array = array())
+	{
 		$scorporo = 0;
 		if($calcola_tasse){
 			//$vat = sfConfig::get('app_vat');
 			//$vat_tmp_array = explode('|',$vat);
-			foreach ($tasse_ulteriori_array as $vat)
-			{
+			foreach ($tasse_ulteriori_array as $vat) {
 				//list($nome, $valore, $descrizione) = explode('-',$vat);
 				$dettaglio_scorporato = $dettaglio/(1+($vat->getValore()/100));
 				$scorporo += $dettaglio - $dettaglio_scorporato;
 			}
 			return $scorporo;
-		}else{
+		}
+		else {
 			return $scorporo;
 		}
 	}
@@ -262,15 +289,15 @@ class Fattura extends BaseFattura {
 		//$vat_tmp_array = explode('|',$vat);
 		$all_vat = array();
 		$tasse_ulteriori = array();
-		foreach ($vat_tmp_array as $vat)
-		{
+		foreach ($vat_tmp_array as $vat) {
 			//list($nome, $valore, $descrizione) = explode('-',$vat);
 			if($this->getIncludiTasse() == 's'){
 				$totale = ($this->imponibile-$this->sconto_totale+$this->spese_anticipate);
 				$costo = $totale - ($totale/(1+($vat->getValore()/100)));
 			}
-			else
+			else {
 				$costo = (($this->imponibile-$this->sconto_totale+$this->spese_anticipate)/100*$vat->getValore());
+			}
 
 			$this->costo_tasse_ulteriori += $costo;
 			$tasse_ulteriori[]= array('nome'=> $vat->getNome(), 'valore' => $vat->getValore(), 'descrizione' => $vat->getDescrizione(), 'costo' => $costo);
@@ -288,10 +315,12 @@ class Fattura extends BaseFattura {
 
 	public function calcNettoDaLiquidare()
 	{
-		if($this->tipo_ritenuta == CREDITO)
+		if($this->tipo_ritenuta == CREDITO) {
 			$this->netto_da_liquidare = $this->totale + $this->ritenuta_acconto;
-		else
+		}
+		else {
 			$this->netto_da_liquidare = $this->totale - $this->ritenuta_acconto;
+		}
 	}
 
 	public function getNettoDaLiquidare()
@@ -341,64 +370,36 @@ class Fattura extends BaseFattura {
 
 	public function getStato($string = false)
 	{
-		if($string)
-		{
-			switch ($this->stato)
-			{
-				case PAGATA:
-					return 'pagata';
-					break;
-				case NON_PAGATA:
-					return 'non inviata';
-					break;
-				case RIFIUTATA:
-					return 'rifiutata';
-					break;
-				case INVIATA:
-					return 'inviata';
-					break;
-				default:
-					return "non inviata";
-					break;
-			}
-		}
-		return $this->stato;
+	  if($string) {
+	    
+  	  if($this->stato) {
+  	   return $this->stato_string[$this->stato];
+  	  }
+  	  
+  	  return $this->stato_string[self::NON_PAGATA];
+	  }
+	  
+	  return $this->stato;
+	  
 	}
 
 	public function getColorStato()
 	{
-		switch ($this->stato)
-		{
-			case PAGATA:
-				return PAGATA_COLOR;
-				break;
-			case NON_PAGATA:
-				return NON_PAGATA_COLOR;
-				break;
-			case RIFIUTATA:
-				return RIFIUTATA_COLOR;
-				break;
-			case INVIATA:
-				return INVIATA_COLOR;
-				break;
-			default:
-				return NON_PAGATA_COLOR;
-		}
+	  if($this->stato) {
+	   return $this->color_stato[$this->stato];
+	  }
+	  
+	  return $this->color_stato[self::NON_PAGATA];
 	}
 
 	public function getFontColorStato()
 	{
-		switch ($this->stato)
-		{
-			case PAGATA:
-			case RIFIUTATA:
-			case NON_PAGATA:
-				return "black";
-			case INVIATA:
-				return "white";
-			default:
-				return "black";
-		}
+	  if($this->stato) {
+	   return $this->font_color_stato[$this->stato];
+	  }
+	  
+	  return $this->font_color_stato[self::NON_PAGATA];
+	  
 	}
 
 	public function delete($conn = null)
@@ -439,6 +440,14 @@ class Fattura extends BaseFattura {
 
 		return TagsFatturaPeer::doSelect($c);
 	}
+
+  public function getCliente($con = null) {
+    return $this->getContatto($con);
+  }
+
+  public function setCliente($v) {
+    $this->setContatto($v);
+  }
 
 } // Fattura
 

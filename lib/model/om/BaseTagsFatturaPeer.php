@@ -278,7 +278,7 @@ abstract class BaseTagsFatturaPeer {
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = FatturaPeer::getOMClass();
+			$omClass = FatturaPeer::getOMClass($rs, $startcol);
 
 			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
@@ -413,7 +413,7 @@ abstract class BaseTagsFatturaPeer {
 
 
 					
-			$omClass = FatturaPeer::getOMClass();
+			$omClass = FatturaPeer::getOMClass($rs, $startcol2);
 
 
 			$cls = sfPropel::import($omClass);
@@ -605,7 +605,7 @@ abstract class BaseTagsFatturaPeer {
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = FatturaPeer::getOMClass();
+			$omClass = FatturaPeer::getOMClass($rs, $startcol2);
 
 
 			$cls = sfPropel::import($omClass);

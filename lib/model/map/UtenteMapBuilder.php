@@ -56,9 +56,9 @@ class UtenteMapBuilder {
 
 		$tMap->addColumn('DATA_RINNOVO', 'DataRinnovo', 'int', CreoleTypes::DATE, true, null);
 
-		$tMap->addColumn('TIPO', 'Tipo', 'string', CreoleTypes::CHAR, true, null);
+		$tMap->addColumn('TIPO', 'Tipo', 'string', CreoleTypes::VARCHAR, true, 255);
 
-		$tMap->addColumn('STATO', 'Stato', 'string', CreoleTypes::CHAR, true, null);
+		$tMap->addColumn('STATO', 'Stato', 'string', CreoleTypes::VARCHAR, true, 255);
 
 		$tMap->addColumn('FATTURA', 'Fattura', 'string', CreoleTypes::CHAR, true, null);
 

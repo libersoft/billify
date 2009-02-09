@@ -46,8 +46,8 @@ class BaseUtenteForm extends BaseFormPropel
       'password'           => new sfValidatorString(array('max_length' => 255)),
       'data_attivazione'   => new sfValidatorDate(),
       'data_rinnovo'       => new sfValidatorDate(),
-      'tipo'               => new sfValidatorString(),
-      'stato'              => new sfValidatorString(),
+      'tipo'               => new sfValidatorString(array('max_length' => 255)),
+      'stato'              => new sfValidatorString(array('max_length' => 255)),
       'fattura'            => new sfValidatorString(),
       'lastlogin'          => new sfValidatorDateTime(),
       'approva_contratto'  => new sfValidatorInteger(),
@@ -55,10 +55,10 @@ class BaseUtenteForm extends BaseFormPropel
       'sconto'             => new sfValidatorInteger(),
     ));
 
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorPropelUnique(array('model' => 'Utente', 'column' => array('username')))
+    );
 
-Warning: call_user_func(UtentePeer::getUniqueColumnNames): First argument is expected to be a valid callback in /Applications/xampp/xamppfiles/lib/php/pear/symfony/plugins/sfPropelPlugin/lib/propel/generator/sfPropelFormGenerator.class.php on line 461
-
-Warning: Invalid argument supplied for foreach() in /Applications/xampp/xamppfiles/lib/php/pear/symfony/plugins/sfPropelPlugin/lib/propel/generator/sfPropelFormGenerator.class.php on line 461
     $this->widgetSchema->setNameFormat('utente[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

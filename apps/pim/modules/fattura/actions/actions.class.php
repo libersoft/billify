@@ -98,21 +98,19 @@ class fatturaActions extends sfActions
 
 		$criteria->addAscendingOrderByColumn(FatturaPeer::NUM_FATTURA );
 
-		$pager = new sfPropelPager('Fattura',UtentePeer::getImpostazione()->getNumFatture());
+		$pager = new sfPropelPager('Vendita', UtentePeer::getImpostazione()->getNumFatture());
 		$pager->setCriteria($criteria);
 		$pager->setPage($this->getRequestParameter('page',1));
 		$pager->setPeerMethod('doSelectJoinAllExceptModoPagamento');
 		$pager->setPeerCountMethod('doCountJoinAllExceptModoPagamento');
 		$pager->init();
 
-		//$this->fatture = FatturaPeer::doSelect($criteria);
 		$this->fatture_pager = $pager;
-		//$this->fatturas = FatturaPeer::doSelect($criteria);
 
 		if($this->trimestre != 'all')
 			$criteria->add(FatturaPeer::IVA_PAGATA, 'n');
 
-		$this->fatture_iva_da_pagare = FatturaPeer::doCountJoinAllExceptModoPagamento($criteria);
+		$this->fatture_iva_da_pagare = VenditaPeer::doCountJoinAllExceptModoPagamento($criteria);
 		$this->anni_fatture = $this->getYearInvoice();
 	}
 
@@ -226,9 +224,8 @@ class fatturaActions extends sfActions
 		$criteria = new Criteria();
 		$criteria->clearSelectColumns();
 		$criteria->addSelectColumn('year('.FatturaPeer::DATA.')');
-		//$criteria->add(FatturaPeer::CLIENTE_ID, $this->cliente->getID());
 		$criteria->setDistinct();
-		$rs = FatturaPeer::doSelectRS($criteria);
+		$rs = VenditaPeer::doSelectRS($criteria);
 		$anni = array();
 		while($rs->next())
 		$anni[$rs->get(1)] = $rs->get(1);
@@ -241,7 +238,7 @@ class fatturaActions extends sfActions
 		$this->getUser()->setAttribute('dettagli_in_modifica',array());
 		$this->getUser()->setAttribute('modifica_data',false);
 		$this->getUser()->setAttribute('modifica_num_fattura',false);
-		$this->fattura = FatturaPeer::retrieveByPk($this->getRequestParameter('id'));
+		$this->fattura = VenditaPeer::retrieveByPk($this->getRequestParameter('id'));
 
 		$this->forward404Unless($this->fattura instanceof Fattura);
 
@@ -255,22 +252,7 @@ class fatturaActions extends sfActions
 	}
 
 	private function checkBloccoFattura(){
-		/*if($this->getUser()->getAttribute('tipo_utente') == Utente::DEMO){
-			$anno = date('Y',time());
-			$criteria = new Criteria();
-			$criteria->add(FatturaPeer::DATA ,date('y-m-d',mktime(0,0,0,1,1,$anno)),Criteria::GREATER_EQUAL);
-			$criteria->addAnd(FatturaPeer::DATA ,date('y-m-d',mktime(0,0,0,12,31,$anno)),Criteria::LESS_EQUAL);
-			$num_fatture = FatturaPeer::doCount($criteria);
-
-			if($num_fatture >= FatturaPeer::NUM_BLOCCO_FATTURE){
-				$this->setTemplate('blocco');
-				return true;
-			}else
-				return false;
-		}*/
-
 		return false;
-
 	}
 
 	private function makeFattura(){
@@ -318,8 +300,9 @@ class fatturaActions extends sfActions
 		$this->fattura = new Fattura();
 		$this->fattura->setData(time());
 		$this->fattura->setNewNumFattura();
-		if($this->id_cliente)
+		if($this->id_cliente) {
 			$this->fattura->setModoPagamentoId($this->cliente->getModoPagamentoID());
+    }
 
 		$this->makeFattura();
 
@@ -328,7 +311,7 @@ class fatturaActions extends sfActions
 
 	public function executeEdit ()
 	{
-		$this->fattura = FatturaPeer::retrieveByPk($this->getRequestParameter('id'));
+		$this->fattura = VenditaPeer::retrieveByPk($this->getRequestParameter('id'));
 		$this->forward404Unless($this->fattura instanceof Fattura);
 		$this->makeFattura();
 	}
@@ -393,7 +376,7 @@ class fatturaActions extends sfActions
 
 		$criteria = new Criteria();
 		$criteria->add(FatturaPeer::NUM_FATTURA,$fattura->getNumFattura());
-		$fatture = FatturaPeer::doSelect($criteria);
+		$fatture = VenditaPeer::doSelect($criteria);
 		$trovato = false;
 		foreach($fatture as $fattura_find){
 			if($fattura_find->getNumFattura() != '0' && $fattura_find->getData('Y') == $anno && $fattura_find->getID() != $fattura->getID()){
@@ -407,7 +390,7 @@ class fatturaActions extends sfActions
 
 	public function executeDelete ($forward = true)
 	{
-		$fattura = FatturaPeer::retrieveByPk($this->getRequestParameter('id'));
+		$fattura = VenditaPeer::retrieveByPk($this->getRequestParameter('id'));
 
 		$this->forward404Unless($fattura instanceof Fattura);
 
@@ -432,7 +415,7 @@ class fatturaActions extends sfActions
 		}
 		else
 		{
-			$fattura = FatturaPeer::retrieveByPk($this->getRequestParameter($id));
+			$fattura = VenditaPeer::retrieveByPk($this->getRequestParameter($id));
 			$this->forward404Unless($fattura instanceof Fattura);
 		}
 
@@ -468,7 +451,7 @@ class fatturaActions extends sfActions
 		$criteria->add(FatturaPeer::DATA ,date('y-m-d',mktime(0,0,0,$this->inizio_mese,1,$this->anno)),Criteria::GREATER_EQUAL);
 		$criteria->addAnd(FatturaPeer::DATA ,date('y-m-d',mktime(0,0,0,$this->fine_mese,$this->fine_giorno,$this->anno)),Criteria::LESS_EQUAL);
 
-		$fatturas = FatturaPeer::doSelect($criteria);
+		$fatturas = VenditaPeer::doSelect($criteria);
 
 		foreach ($fatturas as $fattura){
 			$fattura->setIvaPagata('s');
@@ -601,7 +584,7 @@ class fatturaActions extends sfActions
 		}
 
 		if($this->getRequestParameter('id')){
-			$fattura = FatturaPeer::retrieveByPK($this->getRequestParameter('id'));
+			$fattura = VenditaPeer::retrieveByPK($this->getRequestParameter('id'));
 			$this->forward404Unless($fattura instanceof Fattura);
 
 			$new_fattura = $fattura->copy(true);
@@ -655,14 +638,14 @@ class fatturaActions extends sfActions
 				$this->getRequest()->setError('tag','Il tag esiste gi&agrave;');
 			}
 		}
-			$this->fattura = FatturaPeer::retrieveByPK($this->getRequestParameter('id_fattura'));
+			$this->fattura = VenditaPeer::retrieveByPK($this->getRequestParameter('id_fattura'));
 		}
 	}
 
 	public function executeDeleteTag(){
 		if($this->hasRequestParameter('id_tag')){
 			TagsFatturaPeer::doDelete($this->getRequestParameter('id_tag'));
-			$this->fattura = FatturaPeer::retrieveByPK($this->getRequestParameter('id_fattura'));
+			$this->fattura = VenditaPeer::retrieveByPK($this->getRequestParameter('id_fattura'));
 			$this->setTemplate('addTag');
 		}
 	}

@@ -490,8 +490,8 @@ abstract class BaseBancaPeer {
 
 						$selectCriteria = new Criteria(BancaPeer::DATABASE_NAME);
 			$updateValues = new Criteria(BancaPeer::DATABASE_NAME);
-			$selectCriteria->add(ClientePeer::ID_BANCA, $obj->getId());
-			$updateValues->add(ClientePeer::ID_BANCA, null);
+			$selectCriteria->add(ContattoPeer::ID_BANCA, $obj->getId());
+			$updateValues->add(ContattoPeer::ID_BANCA, null);
 
 			BasePeer::doUpdate($selectCriteria, $updateValues, $con); 
 		}

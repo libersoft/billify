@@ -71,7 +71,7 @@
 </td>
 
 <?php if($customer):?>
-  <td class="cliente"><?php echo link_to($fattura->getCliente()->toString(),'cliente/show?id='.$fattura->getClienteID())?></td>
+  <td class="cliente"><?php echo link_to($fattura->getCliente(),'cliente/show?id='.$fattura->getClienteID())?></td>
 <?php endif ?>
 
 <td><?php echo format_date($fattura->getData())?></td>

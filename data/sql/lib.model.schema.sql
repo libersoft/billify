@@ -55,13 +55,13 @@ CREATE TABLE `bug`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
-#-- cliente
+#-- contatto
 #-----------------------------------------------------------------------------
 
-DROP TABLE IF EXISTS `cliente`;
+DROP TABLE IF EXISTS `contatto`;
 
 
-CREATE TABLE `cliente`
+CREATE TABLE `contatto`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`id_utente` INTEGER default 0 NOT NULL,
@@ -81,13 +81,15 @@ CREATE TABLE `cliente`
 	`email` VARCHAR(100),
 	`modo_pagamento_id` INTEGER,
 	`stato` CHAR default 'a' NOT NULL,
-	`note` TEXT,
+	`contatto` VARCHAR(255),
 	`id_tema_fattura` INTEGER,
 	`id_banca` INTEGER,
 	`calcola_ritenuta_acconto` CHAR default 'a' NOT NULL,
 	`includi_tasse` CHAR default '' NOT NULL,
 	`calcola_tasse` CHAR default 's' NOT NULL,
 	`cod` VARCHAR(255),
+	`note` TEXT,
+	`class_key` INTEGER default 1,
 	PRIMARY KEY (`id`),
 	KEY `cliente_cognome_index`(`cognome`),
 	KEY `cliente_id_banca_index`(`id_banca`),
@@ -95,22 +97,22 @@ CREATE TABLE `cliente`
 	KEY `id_utente`(`id_utente`),
 	KEY `piva`(`piva`),
 	KEY `id_tema_fattura`(`id_tema_fattura`),
-	CONSTRAINT `cliente_FK_1`
+	CONSTRAINT `contatto_FK_1`
 		FOREIGN KEY (`id_utente`)
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE,
-	CONSTRAINT `cliente_FK_2`
+	CONSTRAINT `contatto_FK_2`
 		FOREIGN KEY (`modo_pagamento_id`)
 		REFERENCES `modo_pagamento` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE SET NULL,
-	CONSTRAINT `cliente_FK_3`
+	CONSTRAINT `contatto_FK_3`
 		FOREIGN KEY (`id_tema_fattura`)
 		REFERENCES `tema_fattura` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE SET NULL,
-	CONSTRAINT `cliente_FK_4`
+	CONSTRAINT `contatto_FK_4`
 		FOREIGN KEY (`id_banca`)
 		REFERENCES `banca` (`id`)
 		ON UPDATE CASCADE
@@ -176,44 +178,45 @@ CREATE TABLE `fattura`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`id_utente` INTEGER default 0 NOT NULL,
-	`num_fattura` INTEGER default 0 NOT NULL,
+	`num_fattura` VARCHAR(10) default '0' NOT NULL,
 	`cliente_id` INTEGER default 0 NOT NULL,
 	`data` DATE  NOT NULL,
 	`data_stato` DATE,
 	`modo_pagamento_id` INTEGER,
-	`sconto` INTEGER default 0 NOT NULL,
-	`vat` INTEGER default 20 NOT NULL,
-	`spese_anticipate` FLOAT default 0 NOT NULL,
-	`totale_mem` FLOAT,
-	`imponibile_mem` FLOAT,
-	`stato` CHAR default 'n' NOT NULL,
-	`iva_pagata` CHAR default 'n' NOT NULL,
-	`iva_depositata` CHAR default 'n' NOT NULL,
-	`commercialista` CHAR default 'n' NOT NULL,
+	`sconto` INTEGER default 0,
+	`vat` INTEGER default 20,
+	`spese_anticipate` FLOAT default 0,
+	`imposte` FLOAT,
+	`imponibile` FLOAT,
+	`stato` CHAR default 'n',
+	`iva_pagata` CHAR default 'n',
+	`iva_depositata` CHAR default 'n',
+	`commercialista` CHAR default 'n',
 	`note` TEXT,
-	`calcola_ritenuta_acconto` CHAR default 'a' NOT NULL,
-	`includi_tasse` CHAR default '' NOT NULL,
-	`calcola_tasse` CHAR default 's' NOT NULL,
+	`calcola_ritenuta_acconto` CHAR default 'a',
+	`includi_tasse` CHAR default '',
+	`calcola_tasse` CHAR default 's',
+	`class_key` INTEGER default 1,
 	PRIMARY KEY (`id`),
 	KEY `fattura_num_fattura_index`(`num_fattura`),
 	KEY `fattura_FI_1`(`cliente_id`),
 	KEY `fattura_FI_2`(`modo_pagamento_id`),
 	KEY `id_utente`(`id_utente`),
 	CONSTRAINT `fattura_FK_1`
-		FOREIGN KEY (`id_utente`)
-		REFERENCES `utente` (`id`)
-		ON UPDATE CASCADE
-		ON DELETE CASCADE,
-	CONSTRAINT `fattura_FK_2`
-		FOREIGN KEY (`cliente_id`)
-		REFERENCES `cliente` (`id`)
-		ON UPDATE CASCADE
-		ON DELETE CASCADE,
-	CONSTRAINT `fattura_FK_3`
 		FOREIGN KEY (`modo_pagamento_id`)
 		REFERENCES `modo_pagamento` (`id`)
 		ON UPDATE CASCADE
-		ON DELETE SET NULL
+		ON DELETE SET NULL,
+	CONSTRAINT `fattura_FK_2`
+		FOREIGN KEY (`cliente_id`)
+		REFERENCES `contatto` (`id`)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE,
+	CONSTRAINT `fattura_FK_3`
+		FOREIGN KEY (`id_utente`)
+		REFERENCES `utente` (`id`)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
@@ -409,7 +412,7 @@ CREATE TABLE `tags_fattura`
 	`id_utente` INTEGER default 0 NOT NULL,
 	`tag` VARCHAR(255) default 'null' NOT NULL,
 	`tag_normalizzato` VARCHAR(255) default 'null' NOT NULL,
-	`data` DATE default '0000-00-00' NOT NULL,
+	`data` DATE  NOT NULL,
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `id_fattura_2` (`id_fattura`, `id_utente`, `tag_normalizzato`),
 	KEY `id_utente`(`id_utente`),
@@ -491,12 +494,12 @@ CREATE TABLE `utente`
 	`codice_fiscale` VARCHAR(255) default 'null' NOT NULL,
 	`email` VARCHAR(255) default 'null' NOT NULL,
 	`password` VARCHAR(255) default 'null' NOT NULL,
-	`data_attivazione` DATE default '0000-00-00' NOT NULL,
-	`data_rinnovo` DATE default '0000-00-00' NOT NULL,
-	`tipo` VARCHAR(255) default 'demo' NOT NULL,
+	`data_attivazione` DATE  NOT NULL,
+	`data_rinnovo` DATE  NOT NULL,
+	`tipo` VARCHAR(255)  NOT NULL,
 	`stato` VARCHAR(255) default 'attivo' NOT NULL,
 	`fattura` CHAR default '' NOT NULL,
-	`lastlogin` DATETIME default '0000-00-00 00:00:00' NOT NULL,
+	`lastlogin` DATETIME  NOT NULL,
 	`approva_contratto` INTEGER default 0 NOT NULL,
 	`approva_policy` INTEGER default 0 NOT NULL,
 	`sconto` INTEGER default 0 NOT NULL,

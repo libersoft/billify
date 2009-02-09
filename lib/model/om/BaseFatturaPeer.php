@@ -13,7 +13,7 @@ abstract class BaseFatturaPeer {
 	const CLASS_DEFAULT = 'lib.model.Fattura';
 
 	
-	const NUM_COLUMNS = 20;
+	const NUM_COLUMNS = 21;
 
 	
 	const NUM_LAZY_LOAD_COLUMNS = 0;
@@ -50,10 +50,10 @@ abstract class BaseFatturaPeer {
 	const SPESE_ANTICIPATE = 'fattura.SPESE_ANTICIPATE';
 
 	
-	const TOTALE_MEM = 'fattura.TOTALE_MEM';
+	const IMPOSTE = 'fattura.IMPOSTE';
 
 	
-	const IMPONIBILE_MEM = 'fattura.IMPONIBILE_MEM';
+	const IMPONIBILE = 'fattura.IMPONIBILE';
 
 	
 	const STATO = 'fattura.STATO';
@@ -80,23 +80,44 @@ abstract class BaseFatturaPeer {
 	const CALCOLA_TASSE = 'fattura.CALCOLA_TASSE';
 
 	
+	const CLASS_KEY = 'fattura.CLASS_KEY';
+
+	
+	const CLASSKEY_2 = '2';
+
+	
+	const CLASSKEY_ACQUISTO = '2';
+
+	
+	const CLASSNAME_2 = 'lib.model.Acquisto';
+
+	
+	const CLASSKEY_1 = '1';
+
+	
+	const CLASSKEY_VENDITA = '1';
+
+	
+	const CLASSNAME_1 = 'lib.model.Vendita';
+
+	
 	private static $phpNameMap = null;
 
 
 	
 	private static $fieldNames = array (
-		BasePeer::TYPE_PHPNAME => array ('Id', 'IdUtente', 'NumFattura', 'ClienteId', 'Data', 'DataStato', 'ModoPagamentoId', 'Sconto', 'Vat', 'SpeseAnticipate', 'TotaleMem', 'ImponibileMem', 'Stato', 'IvaPagata', 'IvaDepositata', 'Commercialista', 'Note', 'CalcolaRitenutaAcconto', 'IncludiTasse', 'CalcolaTasse', ),
-		BasePeer::TYPE_COLNAME => array (FatturaPeer::ID, FatturaPeer::ID_UTENTE, FatturaPeer::NUM_FATTURA, FatturaPeer::CLIENTE_ID, FatturaPeer::DATA, FatturaPeer::DATA_STATO, FatturaPeer::MODO_PAGAMENTO_ID, FatturaPeer::SCONTO, FatturaPeer::VAT, FatturaPeer::SPESE_ANTICIPATE, FatturaPeer::TOTALE_MEM, FatturaPeer::IMPONIBILE_MEM, FatturaPeer::STATO, FatturaPeer::IVA_PAGATA, FatturaPeer::IVA_DEPOSITATA, FatturaPeer::COMMERCIALISTA, FatturaPeer::NOTE, FatturaPeer::CALCOLA_RITENUTA_ACCONTO, FatturaPeer::INCLUDI_TASSE, FatturaPeer::CALCOLA_TASSE, ),
-		BasePeer::TYPE_FIELDNAME => array ('id', 'id_utente', 'num_fattura', 'cliente_id', 'data', 'data_stato', 'modo_pagamento_id', 'sconto', 'vat', 'spese_anticipate', 'totale_mem', 'imponibile_mem', 'stato', 'iva_pagata', 'iva_depositata', 'commercialista', 'note', 'calcola_ritenuta_acconto', 'includi_tasse', 'calcola_tasse', ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, )
+		BasePeer::TYPE_PHPNAME => array ('Id', 'IdUtente', 'NumFattura', 'ClienteId', 'Data', 'DataStato', 'ModoPagamentoId', 'Sconto', 'Vat', 'SpeseAnticipate', 'Imposte', 'Imponibile', 'Stato', 'IvaPagata', 'IvaDepositata', 'Commercialista', 'Note', 'CalcolaRitenutaAcconto', 'IncludiTasse', 'CalcolaTasse', 'ClassKey', ),
+		BasePeer::TYPE_COLNAME => array (FatturaPeer::ID, FatturaPeer::ID_UTENTE, FatturaPeer::NUM_FATTURA, FatturaPeer::CLIENTE_ID, FatturaPeer::DATA, FatturaPeer::DATA_STATO, FatturaPeer::MODO_PAGAMENTO_ID, FatturaPeer::SCONTO, FatturaPeer::VAT, FatturaPeer::SPESE_ANTICIPATE, FatturaPeer::IMPOSTE, FatturaPeer::IMPONIBILE, FatturaPeer::STATO, FatturaPeer::IVA_PAGATA, FatturaPeer::IVA_DEPOSITATA, FatturaPeer::COMMERCIALISTA, FatturaPeer::NOTE, FatturaPeer::CALCOLA_RITENUTA_ACCONTO, FatturaPeer::INCLUDI_TASSE, FatturaPeer::CALCOLA_TASSE, FatturaPeer::CLASS_KEY, ),
+		BasePeer::TYPE_FIELDNAME => array ('id', 'id_utente', 'num_fattura', 'cliente_id', 'data', 'data_stato', 'modo_pagamento_id', 'sconto', 'vat', 'spese_anticipate', 'imposte', 'imponibile', 'stato', 'iva_pagata', 'iva_depositata', 'commercialista', 'note', 'calcola_ritenuta_acconto', 'includi_tasse', 'calcola_tasse', 'class_key', ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, )
 	);
 
 	
 	private static $fieldKeys = array (
-		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'IdUtente' => 1, 'NumFattura' => 2, 'ClienteId' => 3, 'Data' => 4, 'DataStato' => 5, 'ModoPagamentoId' => 6, 'Sconto' => 7, 'Vat' => 8, 'SpeseAnticipate' => 9, 'TotaleMem' => 10, 'ImponibileMem' => 11, 'Stato' => 12, 'IvaPagata' => 13, 'IvaDepositata' => 14, 'Commercialista' => 15, 'Note' => 16, 'CalcolaRitenutaAcconto' => 17, 'IncludiTasse' => 18, 'CalcolaTasse' => 19, ),
-		BasePeer::TYPE_COLNAME => array (FatturaPeer::ID => 0, FatturaPeer::ID_UTENTE => 1, FatturaPeer::NUM_FATTURA => 2, FatturaPeer::CLIENTE_ID => 3, FatturaPeer::DATA => 4, FatturaPeer::DATA_STATO => 5, FatturaPeer::MODO_PAGAMENTO_ID => 6, FatturaPeer::SCONTO => 7, FatturaPeer::VAT => 8, FatturaPeer::SPESE_ANTICIPATE => 9, FatturaPeer::TOTALE_MEM => 10, FatturaPeer::IMPONIBILE_MEM => 11, FatturaPeer::STATO => 12, FatturaPeer::IVA_PAGATA => 13, FatturaPeer::IVA_DEPOSITATA => 14, FatturaPeer::COMMERCIALISTA => 15, FatturaPeer::NOTE => 16, FatturaPeer::CALCOLA_RITENUTA_ACCONTO => 17, FatturaPeer::INCLUDI_TASSE => 18, FatturaPeer::CALCOLA_TASSE => 19, ),
-		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'id_utente' => 1, 'num_fattura' => 2, 'cliente_id' => 3, 'data' => 4, 'data_stato' => 5, 'modo_pagamento_id' => 6, 'sconto' => 7, 'vat' => 8, 'spese_anticipate' => 9, 'totale_mem' => 10, 'imponibile_mem' => 11, 'stato' => 12, 'iva_pagata' => 13, 'iva_depositata' => 14, 'commercialista' => 15, 'note' => 16, 'calcola_ritenuta_acconto' => 17, 'includi_tasse' => 18, 'calcola_tasse' => 19, ),
-		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, )
+		BasePeer::TYPE_PHPNAME => array ('Id' => 0, 'IdUtente' => 1, 'NumFattura' => 2, 'ClienteId' => 3, 'Data' => 4, 'DataStato' => 5, 'ModoPagamentoId' => 6, 'Sconto' => 7, 'Vat' => 8, 'SpeseAnticipate' => 9, 'Imposte' => 10, 'Imponibile' => 11, 'Stato' => 12, 'IvaPagata' => 13, 'IvaDepositata' => 14, 'Commercialista' => 15, 'Note' => 16, 'CalcolaRitenutaAcconto' => 17, 'IncludiTasse' => 18, 'CalcolaTasse' => 19, 'ClassKey' => 20, ),
+		BasePeer::TYPE_COLNAME => array (FatturaPeer::ID => 0, FatturaPeer::ID_UTENTE => 1, FatturaPeer::NUM_FATTURA => 2, FatturaPeer::CLIENTE_ID => 3, FatturaPeer::DATA => 4, FatturaPeer::DATA_STATO => 5, FatturaPeer::MODO_PAGAMENTO_ID => 6, FatturaPeer::SCONTO => 7, FatturaPeer::VAT => 8, FatturaPeer::SPESE_ANTICIPATE => 9, FatturaPeer::IMPOSTE => 10, FatturaPeer::IMPONIBILE => 11, FatturaPeer::STATO => 12, FatturaPeer::IVA_PAGATA => 13, FatturaPeer::IVA_DEPOSITATA => 14, FatturaPeer::COMMERCIALISTA => 15, FatturaPeer::NOTE => 16, FatturaPeer::CALCOLA_RITENUTA_ACCONTO => 17, FatturaPeer::INCLUDI_TASSE => 18, FatturaPeer::CALCOLA_TASSE => 19, FatturaPeer::CLASS_KEY => 20, ),
+		BasePeer::TYPE_FIELDNAME => array ('id' => 0, 'id_utente' => 1, 'num_fattura' => 2, 'cliente_id' => 3, 'data' => 4, 'data_stato' => 5, 'modo_pagamento_id' => 6, 'sconto' => 7, 'vat' => 8, 'spese_anticipate' => 9, 'imposte' => 10, 'imponibile' => 11, 'stato' => 12, 'iva_pagata' => 13, 'iva_depositata' => 14, 'commercialista' => 15, 'note' => 16, 'calcola_ritenuta_acconto' => 17, 'includi_tasse' => 18, 'calcola_tasse' => 19, 'class_key' => 20, ),
+		BasePeer::TYPE_NUM => array (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, )
 	);
 
 	
@@ -169,9 +190,9 @@ abstract class BaseFatturaPeer {
 
 		$criteria->addSelectColumn(FatturaPeer::SPESE_ANTICIPATE);
 
-		$criteria->addSelectColumn(FatturaPeer::TOTALE_MEM);
+		$criteria->addSelectColumn(FatturaPeer::IMPOSTE);
 
-		$criteria->addSelectColumn(FatturaPeer::IMPONIBILE_MEM);
+		$criteria->addSelectColumn(FatturaPeer::IMPONIBILE);
 
 		$criteria->addSelectColumn(FatturaPeer::STATO);
 
@@ -188,6 +209,8 @@ abstract class BaseFatturaPeer {
 		$criteria->addSelectColumn(FatturaPeer::INCLUDI_TASSE);
 
 		$criteria->addSelectColumn(FatturaPeer::CALCOLA_TASSE);
+
+		$criteria->addSelectColumn(FatturaPeer::CLASS_KEY);
 
 	}
 
@@ -255,10 +278,9 @@ abstract class BaseFatturaPeer {
 	{
 		$results = array();
 	
-				$cls = FatturaPeer::getOMClass();
-		$cls = sfPropel::import($cls);
 				while($rs->next()) {
 		
+						$cls = sfPropel::import(FatturaPeer::getOMClass($rs, 1));
 			$obj = new $cls();
 			$obj->hydrate($rs);
 			$results[] = $obj;
@@ -266,62 +288,6 @@ abstract class BaseFatturaPeer {
 		}
 		return $results;
 	}
-
-	
-	public static function doCountJoinUtente(Criteria $criteria, $distinct = false, $con = null)
-	{
-				$criteria = clone $criteria;
-
-				$criteria->clearSelectColumns()->clearOrderByColumns();
-		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(FatturaPeer::COUNT_DISTINCT);
-		} else {
-			$criteria->addSelectColumn(FatturaPeer::COUNT);
-		}
-
-				foreach($criteria->getGroupByColumns() as $column)
-		{
-			$criteria->addSelectColumn($column);
-		}
-
-		$criteria->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
-
-		$rs = FatturaPeer::doSelectRS($criteria, $con);
-		if ($rs->next()) {
-			return $rs->getInt(1);
-		} else {
-						return 0;
-		}
-	}
-
-
-	
-	public static function doCountJoinCliente(Criteria $criteria, $distinct = false, $con = null)
-	{
-				$criteria = clone $criteria;
-
-				$criteria->clearSelectColumns()->clearOrderByColumns();
-		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(FatturaPeer::COUNT_DISTINCT);
-		} else {
-			$criteria->addSelectColumn(FatturaPeer::COUNT);
-		}
-
-				foreach($criteria->getGroupByColumns() as $column)
-		{
-			$criteria->addSelectColumn($column);
-		}
-
-		$criteria->addJoin(FatturaPeer::CLIENTE_ID, ClientePeer::ID);
-
-		$rs = FatturaPeer::doSelectRS($criteria, $con);
-		if ($rs->next()) {
-			return $rs->getInt(1);
-		} else {
-						return 0;
-		}
-	}
-
 
 	
 	public static function doCountJoinModoPagamento(Criteria $criteria, $distinct = false, $con = null)
@@ -352,96 +318,58 @@ abstract class BaseFatturaPeer {
 
 
 	
-	public static function doSelectJoinUtente(Criteria $c, $con = null)
+	public static function doCountJoinContatto(Criteria $criteria, $distinct = false, $con = null)
 	{
-		$c = clone $c;
+				$criteria = clone $criteria;
 
-				if ($c->getDbName() == Propel::getDefaultDB()) {
-			$c->setDbName(self::DATABASE_NAME);
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(FatturaPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(FatturaPeer::COUNT);
 		}
 
-		FatturaPeer::addSelectColumns($c);
-		$startcol = (FatturaPeer::NUM_COLUMNS - FatturaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
-		UtentePeer::addSelectColumns($c);
-
-		$c->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
-		$rs = BasePeer::doSelect($c, $con);
-		$results = array();
-
-		while($rs->next()) {
-
-			$omClass = FatturaPeer::getOMClass();
-
-			$cls = sfPropel::import($omClass);
-			$obj1 = new $cls();
-			$obj1->hydrate($rs);
-
-			$omClass = UtentePeer::getOMClass();
-
-			$cls = sfPropel::import($omClass);
-			$obj2 = new $cls();
-			$obj2->hydrate($rs, $startcol);
-
-			$newObject = true;
-			foreach($results as $temp_obj1) {
-				$temp_obj2 = $temp_obj1->getUtente(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
-					$newObject = false;
-										$temp_obj2->addFattura($obj1); 					break;
-				}
-			}
-			if ($newObject) {
-				$obj2->initFatturas();
-				$obj2->addFattura($obj1); 			}
-			$results[] = $obj1;
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
 		}
-		return $results;
+
+		$criteria->addJoin(FatturaPeer::CLIENTE_ID, ContattoPeer::ID);
+
+		$rs = FatturaPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
 	}
 
 
 	
-	public static function doSelectJoinCliente(Criteria $c, $con = null)
+	public static function doCountJoinUtente(Criteria $criteria, $distinct = false, $con = null)
 	{
-		$c = clone $c;
+				$criteria = clone $criteria;
 
-				if ($c->getDbName() == Propel::getDefaultDB()) {
-			$c->setDbName(self::DATABASE_NAME);
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(FatturaPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(FatturaPeer::COUNT);
 		}
 
-		FatturaPeer::addSelectColumns($c);
-		$startcol = (FatturaPeer::NUM_COLUMNS - FatturaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
-		ClientePeer::addSelectColumns($c);
-
-		$c->addJoin(FatturaPeer::CLIENTE_ID, ClientePeer::ID);
-		$rs = BasePeer::doSelect($c, $con);
-		$results = array();
-
-		while($rs->next()) {
-
-			$omClass = FatturaPeer::getOMClass();
-
-			$cls = sfPropel::import($omClass);
-			$obj1 = new $cls();
-			$obj1->hydrate($rs);
-
-			$omClass = ClientePeer::getOMClass();
-
-			$cls = sfPropel::import($omClass);
-			$obj2 = new $cls();
-			$obj2->hydrate($rs, $startcol);
-
-			$newObject = true;
-			foreach($results as $temp_obj1) {
-				$temp_obj2 = $temp_obj1->getCliente(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
-					$newObject = false;
-										$temp_obj2->addFattura($obj1); 					break;
-				}
-			}
-			if ($newObject) {
-				$obj2->initFatturas();
-				$obj2->addFattura($obj1); 			}
-			$results[] = $obj1;
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
 		}
-		return $results;
+
+		$criteria->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
+
+		$rs = FatturaPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
 	}
 
 
@@ -464,7 +392,7 @@ abstract class BaseFatturaPeer {
 
 		while($rs->next()) {
 
-			$omClass = FatturaPeer::getOMClass();
+			$omClass = FatturaPeer::getOMClass($rs, 1);
 
 			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
@@ -479,6 +407,100 @@ abstract class BaseFatturaPeer {
 			$newObject = true;
 			foreach($results as $temp_obj1) {
 				$temp_obj2 = $temp_obj1->getModoPagamento(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+										$temp_obj2->addFattura($obj1); 					break;
+				}
+			}
+			if ($newObject) {
+				$obj2->initFatturas();
+				$obj2->addFattura($obj1); 			}
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doSelectJoinContatto(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+				if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		FatturaPeer::addSelectColumns($c);
+		$startcol = (FatturaPeer::NUM_COLUMNS - FatturaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		ContattoPeer::addSelectColumns($c);
+
+		$c->addJoin(FatturaPeer::CLIENTE_ID, ContattoPeer::ID);
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = FatturaPeer::getOMClass($rs, 1);
+
+			$cls = sfPropel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = ContattoPeer::getOMClass($rs, $startcol);
+
+			$cls = sfPropel::import($omClass);
+			$obj2 = new $cls();
+			$obj2->hydrate($rs, $startcol);
+
+			$newObject = true;
+			foreach($results as $temp_obj1) {
+				$temp_obj2 = $temp_obj1->getContatto(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+										$temp_obj2->addFattura($obj1); 					break;
+				}
+			}
+			if ($newObject) {
+				$obj2->initFatturas();
+				$obj2->addFattura($obj1); 			}
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doSelectJoinUtente(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+				if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		FatturaPeer::addSelectColumns($c);
+		$startcol = (FatturaPeer::NUM_COLUMNS - FatturaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+		UtentePeer::addSelectColumns($c);
+
+		$c->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = FatturaPeer::getOMClass($rs, 1);
+
+			$cls = sfPropel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = UtentePeer::getOMClass();
+
+			$cls = sfPropel::import($omClass);
+			$obj2 = new $cls();
+			$obj2->hydrate($rs, $startcol);
+
+			$newObject = true;
+			foreach($results as $temp_obj1) {
+				$temp_obj2 = $temp_obj1->getUtente(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 										$temp_obj2->addFattura($obj1); 					break;
 				}
@@ -509,11 +531,11 @@ abstract class BaseFatturaPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
-
-		$criteria->addJoin(FatturaPeer::CLIENTE_ID, ClientePeer::ID);
-
 		$criteria->addJoin(FatturaPeer::MODO_PAGAMENTO_ID, ModoPagamentoPeer::ID);
+
+		$criteria->addJoin(FatturaPeer::CLIENTE_ID, ContattoPeer::ID);
+
+		$criteria->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
 
 		$rs = FatturaPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -536,27 +558,27 @@ abstract class BaseFatturaPeer {
 		FatturaPeer::addSelectColumns($c);
 		$startcol2 = (FatturaPeer::NUM_COLUMNS - FatturaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
-		UtentePeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + UtentePeer::NUM_COLUMNS;
-
-		ClientePeer::addSelectColumns($c);
-		$startcol4 = $startcol3 + ClientePeer::NUM_COLUMNS;
-
 		ModoPagamentoPeer::addSelectColumns($c);
-		$startcol5 = $startcol4 + ModoPagamentoPeer::NUM_COLUMNS;
+		$startcol3 = $startcol2 + ModoPagamentoPeer::NUM_COLUMNS;
 
-		$c->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
+		ContattoPeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + ContattoPeer::NUM_COLUMNS;
 
-		$c->addJoin(FatturaPeer::CLIENTE_ID, ClientePeer::ID);
+		UtentePeer::addSelectColumns($c);
+		$startcol5 = $startcol4 + UtentePeer::NUM_COLUMNS;
 
 		$c->addJoin(FatturaPeer::MODO_PAGAMENTO_ID, ModoPagamentoPeer::ID);
+
+		$c->addJoin(FatturaPeer::CLIENTE_ID, ContattoPeer::ID);
+
+		$c->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
 
 		$rs = BasePeer::doSelect($c, $con);
 		$results = array();
 
 		while($rs->next()) {
 
-			$omClass = FatturaPeer::getOMClass();
+			$omClass = FatturaPeer::getOMClass($rs, 1);
 
 
 			$cls = sfPropel::import($omClass);
@@ -565,7 +587,7 @@ abstract class BaseFatturaPeer {
 
 
 					
-			$omClass = UtentePeer::getOMClass();
+			$omClass = ModoPagamentoPeer::getOMClass();
 
 
 			$cls = sfPropel::import($omClass);
@@ -575,7 +597,7 @@ abstract class BaseFatturaPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getUtente(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getModoPagamento(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj2->addFattura($obj1); 					break;
 				}
@@ -588,7 +610,7 @@ abstract class BaseFatturaPeer {
 
 
 					
-			$omClass = ClientePeer::getOMClass();
+			$omClass = ContattoPeer::getOMClass($rs, $startcol3);
 
 
 			$cls = sfPropel::import($omClass);
@@ -598,7 +620,7 @@ abstract class BaseFatturaPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj3 = $temp_obj1->getCliente(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+				$temp_obj3 = $temp_obj1->getContatto(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj3->addFattura($obj1); 					break;
 				}
@@ -611,7 +633,7 @@ abstract class BaseFatturaPeer {
 
 
 					
-			$omClass = ModoPagamentoPeer::getOMClass();
+			$omClass = UtentePeer::getOMClass();
 
 
 			$cls = sfPropel::import($omClass);
@@ -621,7 +643,7 @@ abstract class BaseFatturaPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj4 = $temp_obj1->getModoPagamento(); 				if ($temp_obj4->getPrimaryKey() === $obj4->getPrimaryKey()) {
+				$temp_obj4 = $temp_obj1->getUtente(); 				if ($temp_obj4->getPrimaryKey() === $obj4->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj4->addFattura($obj1); 					break;
 				}
@@ -635,66 +657,6 @@ abstract class BaseFatturaPeer {
 			$results[] = $obj1;
 		}
 		return $results;
-	}
-
-
-	
-	public static function doCountJoinAllExceptUtente(Criteria $criteria, $distinct = false, $con = null)
-	{
-				$criteria = clone $criteria;
-
-				$criteria->clearSelectColumns()->clearOrderByColumns();
-		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(FatturaPeer::COUNT_DISTINCT);
-		} else {
-			$criteria->addSelectColumn(FatturaPeer::COUNT);
-		}
-
-				foreach($criteria->getGroupByColumns() as $column)
-		{
-			$criteria->addSelectColumn($column);
-		}
-
-		$criteria->addJoin(FatturaPeer::CLIENTE_ID, ClientePeer::ID);
-
-		$criteria->addJoin(FatturaPeer::MODO_PAGAMENTO_ID, ModoPagamentoPeer::ID);
-
-		$rs = FatturaPeer::doSelectRS($criteria, $con);
-		if ($rs->next()) {
-			return $rs->getInt(1);
-		} else {
-						return 0;
-		}
-	}
-
-
-	
-	public static function doCountJoinAllExceptCliente(Criteria $criteria, $distinct = false, $con = null)
-	{
-				$criteria = clone $criteria;
-
-				$criteria->clearSelectColumns()->clearOrderByColumns();
-		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
-			$criteria->addSelectColumn(FatturaPeer::COUNT_DISTINCT);
-		} else {
-			$criteria->addSelectColumn(FatturaPeer::COUNT);
-		}
-
-				foreach($criteria->getGroupByColumns() as $column)
-		{
-			$criteria->addSelectColumn($column);
-		}
-
-		$criteria->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
-
-		$criteria->addJoin(FatturaPeer::MODO_PAGAMENTO_ID, ModoPagamentoPeer::ID);
-
-		$rs = FatturaPeer::doSelectRS($criteria, $con);
-		if ($rs->next()) {
-			return $rs->getInt(1);
-		} else {
-						return 0;
-		}
 	}
 
 
@@ -715,9 +677,9 @@ abstract class BaseFatturaPeer {
 			$criteria->addSelectColumn($column);
 		}
 
-		$criteria->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
+		$criteria->addJoin(FatturaPeer::CLIENTE_ID, ContattoPeer::ID);
 
-		$criteria->addJoin(FatturaPeer::CLIENTE_ID, ClientePeer::ID);
+		$criteria->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
 
 		$rs = FatturaPeer::doSelectRS($criteria, $con);
 		if ($rs->next()) {
@@ -729,170 +691,62 @@ abstract class BaseFatturaPeer {
 
 
 	
-	public static function doSelectJoinAllExceptUtente(Criteria $c, $con = null)
+	public static function doCountJoinAllExceptContatto(Criteria $criteria, $distinct = false, $con = null)
 	{
-		$c = clone $c;
+				$criteria = clone $criteria;
 
-								if ($c->getDbName() == Propel::getDefaultDB()) {
-			$c->setDbName(self::DATABASE_NAME);
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(FatturaPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(FatturaPeer::COUNT);
 		}
 
-		FatturaPeer::addSelectColumns($c);
-		$startcol2 = (FatturaPeer::NUM_COLUMNS - FatturaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
-
-		ClientePeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + ClientePeer::NUM_COLUMNS;
-
-		ModoPagamentoPeer::addSelectColumns($c);
-		$startcol4 = $startcol3 + ModoPagamentoPeer::NUM_COLUMNS;
-
-		$c->addJoin(FatturaPeer::CLIENTE_ID, ClientePeer::ID);
-
-		$c->addJoin(FatturaPeer::MODO_PAGAMENTO_ID, ModoPagamentoPeer::ID);
-
-
-		$rs = BasePeer::doSelect($c, $con);
-		$results = array();
-
-		while($rs->next()) {
-
-			$omClass = FatturaPeer::getOMClass();
-
-			$cls = sfPropel::import($omClass);
-			$obj1 = new $cls();
-			$obj1->hydrate($rs);
-
-			$omClass = ClientePeer::getOMClass();
-
-
-			$cls = sfPropel::import($omClass);
-			$obj2  = new $cls();
-			$obj2->hydrate($rs, $startcol2);
-
-			$newObject = true;
-			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
-				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getCliente(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
-					$newObject = false;
-					$temp_obj2->addFattura($obj1);
-					break;
-				}
-			}
-
-			if ($newObject) {
-				$obj2->initFatturas();
-				$obj2->addFattura($obj1);
-			}
-
-			$omClass = ModoPagamentoPeer::getOMClass();
-
-
-			$cls = sfPropel::import($omClass);
-			$obj3  = new $cls();
-			$obj3->hydrate($rs, $startcol3);
-
-			$newObject = true;
-			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
-				$temp_obj1 = $results[$j];
-				$temp_obj3 = $temp_obj1->getModoPagamento(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
-					$newObject = false;
-					$temp_obj3->addFattura($obj1);
-					break;
-				}
-			}
-
-			if ($newObject) {
-				$obj3->initFatturas();
-				$obj3->addFattura($obj1);
-			}
-
-			$results[] = $obj1;
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
 		}
-		return $results;
+
+		$criteria->addJoin(FatturaPeer::MODO_PAGAMENTO_ID, ModoPagamentoPeer::ID);
+
+		$criteria->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
+
+		$rs = FatturaPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
 	}
 
 
 	
-	public static function doSelectJoinAllExceptCliente(Criteria $c, $con = null)
+	public static function doCountJoinAllExceptUtente(Criteria $criteria, $distinct = false, $con = null)
 	{
-		$c = clone $c;
+				$criteria = clone $criteria;
 
-								if ($c->getDbName() == Propel::getDefaultDB()) {
-			$c->setDbName(self::DATABASE_NAME);
+				$criteria->clearSelectColumns()->clearOrderByColumns();
+		if ($distinct || in_array(Criteria::DISTINCT, $criteria->getSelectModifiers())) {
+			$criteria->addSelectColumn(FatturaPeer::COUNT_DISTINCT);
+		} else {
+			$criteria->addSelectColumn(FatturaPeer::COUNT);
 		}
 
-		FatturaPeer::addSelectColumns($c);
-		$startcol2 = (FatturaPeer::NUM_COLUMNS - FatturaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
-
-		UtentePeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + UtentePeer::NUM_COLUMNS;
-
-		ModoPagamentoPeer::addSelectColumns($c);
-		$startcol4 = $startcol3 + ModoPagamentoPeer::NUM_COLUMNS;
-
-		$c->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
-
-		$c->addJoin(FatturaPeer::MODO_PAGAMENTO_ID, ModoPagamentoPeer::ID);
-
-
-		$rs = BasePeer::doSelect($c, $con);
-		$results = array();
-
-		while($rs->next()) {
-
-			$omClass = FatturaPeer::getOMClass();
-
-			$cls = sfPropel::import($omClass);
-			$obj1 = new $cls();
-			$obj1->hydrate($rs);
-
-			$omClass = UtentePeer::getOMClass();
-
-
-			$cls = sfPropel::import($omClass);
-			$obj2  = new $cls();
-			$obj2->hydrate($rs, $startcol2);
-
-			$newObject = true;
-			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
-				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getUtente(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
-					$newObject = false;
-					$temp_obj2->addFattura($obj1);
-					break;
-				}
-			}
-
-			if ($newObject) {
-				$obj2->initFatturas();
-				$obj2->addFattura($obj1);
-			}
-
-			$omClass = ModoPagamentoPeer::getOMClass();
-
-
-			$cls = sfPropel::import($omClass);
-			$obj3  = new $cls();
-			$obj3->hydrate($rs, $startcol3);
-
-			$newObject = true;
-			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
-				$temp_obj1 = $results[$j];
-				$temp_obj3 = $temp_obj1->getModoPagamento(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
-					$newObject = false;
-					$temp_obj3->addFattura($obj1);
-					break;
-				}
-			}
-
-			if ($newObject) {
-				$obj3->initFatturas();
-				$obj3->addFattura($obj1);
-			}
-
-			$results[] = $obj1;
+				foreach($criteria->getGroupByColumns() as $column)
+		{
+			$criteria->addSelectColumn($column);
 		}
-		return $results;
+
+		$criteria->addJoin(FatturaPeer::MODO_PAGAMENTO_ID, ModoPagamentoPeer::ID);
+
+		$criteria->addJoin(FatturaPeer::CLIENTE_ID, ContattoPeer::ID);
+
+		$rs = FatturaPeer::doSelectRS($criteria, $con);
+		if ($rs->next()) {
+			return $rs->getInt(1);
+		} else {
+						return 0;
+		}
 	}
 
 
@@ -908,15 +762,15 @@ abstract class BaseFatturaPeer {
 		FatturaPeer::addSelectColumns($c);
 		$startcol2 = (FatturaPeer::NUM_COLUMNS - FatturaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
 
-		UtentePeer::addSelectColumns($c);
-		$startcol3 = $startcol2 + UtentePeer::NUM_COLUMNS;
+		ContattoPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + ContattoPeer::NUM_COLUMNS;
 
-		ClientePeer::addSelectColumns($c);
-		$startcol4 = $startcol3 + ClientePeer::NUM_COLUMNS;
+		UtentePeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + UtentePeer::NUM_COLUMNS;
+
+		$c->addJoin(FatturaPeer::CLIENTE_ID, ContattoPeer::ID);
 
 		$c->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
-
-		$c->addJoin(FatturaPeer::CLIENTE_ID, ClientePeer::ID);
 
 
 		$rs = BasePeer::doSelect($c, $con);
@@ -924,13 +778,13 @@ abstract class BaseFatturaPeer {
 
 		while($rs->next()) {
 
-			$omClass = FatturaPeer::getOMClass();
+			$omClass = FatturaPeer::getOMClass($rs, 1);
 
 			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
-			$omClass = UtentePeer::getOMClass();
+			$omClass = ContattoPeer::getOMClass($rs, $startcol2);
 
 
 			$cls = sfPropel::import($omClass);
@@ -940,7 +794,7 @@ abstract class BaseFatturaPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj2 = $temp_obj1->getUtente(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+				$temp_obj2 = $temp_obj1->getContatto(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj2->addFattura($obj1);
 					break;
@@ -952,7 +806,7 @@ abstract class BaseFatturaPeer {
 				$obj2->addFattura($obj1);
 			}
 
-			$omClass = ClientePeer::getOMClass();
+			$omClass = UtentePeer::getOMClass();
 
 
 			$cls = sfPropel::import($omClass);
@@ -962,7 +816,175 @@ abstract class BaseFatturaPeer {
 			$newObject = true;
 			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
 				$temp_obj1 = $results[$j];
-				$temp_obj3 = $temp_obj1->getCliente(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+				$temp_obj3 = $temp_obj1->getUtente(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj3->addFattura($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj3->initFatturas();
+				$obj3->addFattura($obj1);
+			}
+
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doSelectJoinAllExceptContatto(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+								if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		FatturaPeer::addSelectColumns($c);
+		$startcol2 = (FatturaPeer::NUM_COLUMNS - FatturaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+
+		ModoPagamentoPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + ModoPagamentoPeer::NUM_COLUMNS;
+
+		UtentePeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + UtentePeer::NUM_COLUMNS;
+
+		$c->addJoin(FatturaPeer::MODO_PAGAMENTO_ID, ModoPagamentoPeer::ID);
+
+		$c->addJoin(FatturaPeer::ID_UTENTE, UtentePeer::ID);
+
+
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = FatturaPeer::getOMClass($rs, 1);
+
+			$cls = sfPropel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = ModoPagamentoPeer::getOMClass();
+
+
+			$cls = sfPropel::import($omClass);
+			$obj2  = new $cls();
+			$obj2->hydrate($rs, $startcol2);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj2 = $temp_obj1->getModoPagamento(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj2->addFattura($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj2->initFatturas();
+				$obj2->addFattura($obj1);
+			}
+
+			$omClass = UtentePeer::getOMClass();
+
+
+			$cls = sfPropel::import($omClass);
+			$obj3  = new $cls();
+			$obj3->hydrate($rs, $startcol3);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj3 = $temp_obj1->getUtente(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj3->addFattura($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj3->initFatturas();
+				$obj3->addFattura($obj1);
+			}
+
+			$results[] = $obj1;
+		}
+		return $results;
+	}
+
+
+	
+	public static function doSelectJoinAllExceptUtente(Criteria $c, $con = null)
+	{
+		$c = clone $c;
+
+								if ($c->getDbName() == Propel::getDefaultDB()) {
+			$c->setDbName(self::DATABASE_NAME);
+		}
+
+		FatturaPeer::addSelectColumns($c);
+		$startcol2 = (FatturaPeer::NUM_COLUMNS - FatturaPeer::NUM_LAZY_LOAD_COLUMNS) + 1;
+
+		ModoPagamentoPeer::addSelectColumns($c);
+		$startcol3 = $startcol2 + ModoPagamentoPeer::NUM_COLUMNS;
+
+		ContattoPeer::addSelectColumns($c);
+		$startcol4 = $startcol3 + ContattoPeer::NUM_COLUMNS;
+
+		$c->addJoin(FatturaPeer::MODO_PAGAMENTO_ID, ModoPagamentoPeer::ID);
+
+		$c->addJoin(FatturaPeer::CLIENTE_ID, ContattoPeer::ID);
+
+
+		$rs = BasePeer::doSelect($c, $con);
+		$results = array();
+
+		while($rs->next()) {
+
+			$omClass = FatturaPeer::getOMClass($rs, 1);
+
+			$cls = sfPropel::import($omClass);
+			$obj1 = new $cls();
+			$obj1->hydrate($rs);
+
+			$omClass = ModoPagamentoPeer::getOMClass();
+
+
+			$cls = sfPropel::import($omClass);
+			$obj2  = new $cls();
+			$obj2->hydrate($rs, $startcol2);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj2 = $temp_obj1->getModoPagamento(); 				if ($temp_obj2->getPrimaryKey() === $obj2->getPrimaryKey()) {
+					$newObject = false;
+					$temp_obj2->addFattura($obj1);
+					break;
+				}
+			}
+
+			if ($newObject) {
+				$obj2->initFatturas();
+				$obj2->addFattura($obj1);
+			}
+
+			$omClass = ContattoPeer::getOMClass($rs, $startcol3);
+
+
+			$cls = sfPropel::import($omClass);
+			$obj3  = new $cls();
+			$obj3->hydrate($rs, $startcol3);
+
+			$newObject = true;
+			for ($j=0, $resCount=count($results); $j < $resCount; $j++) {
+				$temp_obj1 = $results[$j];
+				$temp_obj3 = $temp_obj1->getContatto(); 				if ($temp_obj3->getPrimaryKey() === $obj3->getPrimaryKey()) {
 					$newObject = false;
 					$temp_obj3->addFattura($obj1);
 					break;
@@ -991,9 +1013,31 @@ abstract class BaseFatturaPeer {
 	}
 
 	
-	public static function getOMClass()
+	public static function getOMClass(ResultSet $rs, $colnum)
 	{
-		return FatturaPeer::CLASS_DEFAULT;
+		try {
+
+			$omClass = null;
+			$classKey = $rs->getString($colnum - 1 + 21);
+
+			switch($classKey) {
+
+				case self::CLASSKEY_2:
+					$omClass = self::CLASSNAME_2;
+					break;
+
+				case self::CLASSKEY_1:
+					$omClass = self::CLASSNAME_1;
+					break;
+
+				default:
+					$omClass = self::CLASS_DEFAULT;
+
+			} 
+		} catch (Exception $e) {
+			throw new PropelException('Unable to get OM class.', $e);
+		}
+		return $omClass;
 	}
 
 	

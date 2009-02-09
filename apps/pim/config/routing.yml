@@ -1,5 +1,21 @@
 # default rules
 
+fatture_acquisto:
+  url: /fatture_acquisto
+  param: {module: invoice, action: index, type: 2}
+  
+fatture_acquisto_create:
+  url: /fatture_acquisto/create
+  param: {module: invoice, action: create, type: 2}
+  
+fornitori:
+  url: /fornitori
+  param: {module: contact, action: index, type: 2}
+
+fornitori_create:
+  url: /fornitori/create
+  param: {module: contact, action: create, type: 2}
+
 statistiche:
   url: /statistiche
   param: { module: stats, action: index }

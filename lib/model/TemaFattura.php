@@ -253,6 +253,10 @@ class TemaFattura extends BaseTemaFattura {
 	}
 
 	public function ToString(){
+		return $this->__toString();
+	}
+
+  public function __toString(){
 		return $this->nome;
 	}
 

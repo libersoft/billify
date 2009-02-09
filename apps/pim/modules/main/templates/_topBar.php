@@ -1,17 +1,4 @@
-<?php if((!$sf_user->isAuthenticated() && ($sf_context->getModuleName() != 'login')) or $sf_context->getModuleName() == 'sito'):?>
-<ul>
-<li class="home"><?php echo link_to('Che cos\'&egrave;','/')?>
-<li><?php echo link_to('Chi Siamo','@pagina?titolo=chi-siamo')?></li>
-<li><?php echo link_to('FAQ','@pagina?titolo=faq')?></li>
-<li><?php echo link_to('Contatti','@pagina?titolo=contatti')?></li>
-<li><?php echo link_to('Blog','http://www.personal-invoice-manager.net')?></li>
-<?php if(!$sf_user->isAuthenticated()):?>
-<li><?php echo link_to('Login','login')?></li>
-<?php else:?>
-<li><?php echo link_to('Torna a PIM','main/index')?></li>
-<?php endif?>
-</ul>
-<?php elseif($sf_user->isAuthenticated()):?>
+<?php if($sf_user->isAuthenticated()):?>
 <ul>
 <li class="home"><?php echo link_to('Bacheca','main/index')?>
 
@@ -29,17 +16,29 @@
 	</ul>
 </li>
 
+<li><?php echo link_to('Fornitori','@fornitori')?>
+	<ul>
+    <li><?php echo link_to('Crea Nuovo','@fornitori_create')?></li>
+	</ul>
+</li>
+
 <li><?php echo link_to('Prodotti','prodotto/index')?>
 	<ul>
 	<li><?php echo link_to('Crea Nuovo','prodotto/create')?> </li>
 	</ul>
 </li>
 
-<li><?php echo link_to('Fatture','fattura/index')?>
+<li><?php echo link_to('Fatture di vendita', 'fattura/index')?>
 	<ul>
-	<li><?php echo link_to('Crea Nuova','fattura/create')?> </li>
-	<li><?=link_to('Tags','fattura/tags')?></li>
-	<li><?php echo link_to('Cerca','fattura/list')?></li>
+  	<li><?php echo link_to('Crea Nuova','fattura/create')?> </li>
+  	<li><?=link_to('Tags','fattura/tags')?></li>
+  	<li><?php echo link_to('Cerca','fattura/list')?></li>
+	</ul>
+</li>
+
+<li><?php echo link_to('Fatture di acquisto', '@fatture_acquisto')?>
+	<ul>
+  	<li><?php echo link_to('Crea Nuova', '@fatture_acquisto_create')?> </li>
 	</ul>
 </li>
 

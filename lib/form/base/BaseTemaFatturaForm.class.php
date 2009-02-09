@@ -29,10 +29,6 @@ class BaseTemaFatturaForm extends BaseFormPropel
       'logo'      => new sfValidatorString(array('max_length' => 255, 'required' => false)),
     ));
 
-
-Warning: call_user_func(TemaFatturaPeer::getUniqueColumnNames): First argument is expected to be a valid callback in /Applications/xampp/xamppfiles/lib/php/pear/symfony/plugins/sfPropelPlugin/lib/propel/generator/sfPropelFormGenerator.class.php on line 461
-
-Warning: Invalid argument supplied for foreach() in /Applications/xampp/xamppfiles/lib/php/pear/symfony/plugins/sfPropelPlugin/lib/propel/generator/sfPropelFormGenerator.class.php on line 461
     $this->widgetSchema->setNameFormat('tema_fattura[%s]');
 
     $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);

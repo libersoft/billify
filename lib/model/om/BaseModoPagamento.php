@@ -27,10 +27,10 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 	protected $aUtente;
 
 	
-	protected $collClientes;
+	protected $collContattos;
 
 	
-	protected $lastClienteCriteria = null;
+	protected $lastContattoCriteria = null;
 
 	
 	protected $collFatturas;
@@ -226,8 +226,8 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 				}
 				$this->resetModified(); 			}
 
-			if ($this->collClientes !== null) {
-				foreach($this->collClientes as $referrerFK) {
+			if ($this->collContattos !== null) {
+				foreach($this->collContattos as $referrerFK) {
 					if (!$referrerFK->isDeleted()) {
 						$affectedRows += $referrerFK->save($con);
 					}
@@ -291,8 +291,8 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 			}
 
 
-				if ($this->collClientes !== null) {
-					foreach($this->collClientes as $referrerFK) {
+				if ($this->collContattos !== null) {
+					foreach($this->collContattos as $referrerFK) {
 						if (!$referrerFK->validate($columns)) {
 							$failureMap = array_merge($failureMap, $referrerFK->getValidationFailures());
 						}
@@ -440,8 +440,8 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 		if ($deepCopy) {
 									$copyObj->setNew(false);
 
-			foreach($this->getClientes() as $relObj) {
-				$copyObj->addCliente($relObj->copy($deepCopy));
+			foreach($this->getContattos() as $relObj) {
+				$copyObj->addContatto($relObj->copy($deepCopy));
 			}
 
 			foreach($this->getFatturas() as $relObj) {
@@ -501,15 +501,15 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 	}
 
 	
-	public function initClientes()
+	public function initContattos()
 	{
-		if ($this->collClientes === null) {
-			$this->collClientes = array();
+		if ($this->collContattos === null) {
+			$this->collContattos = array();
 		}
 	}
 
 	
-	public function getClientes($criteria = null, $con = null)
+	public function getContattos($criteria = null, $con = null)
 	{
 				if ($criteria === null) {
 			$criteria = new Criteria();
@@ -519,34 +519,34 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collClientes === null) {
+		if ($this->collContattos === null) {
 			if ($this->isNew()) {
-			   $this->collClientes = array();
+			   $this->collContattos = array();
 			} else {
 
-				$criteria->add(ClientePeer::MODO_PAGAMENTO_ID, $this->getId());
+				$criteria->add(ContattoPeer::MODO_PAGAMENTO_ID, $this->getId());
 
-				ClientePeer::addSelectColumns($criteria);
-				$this->collClientes = ClientePeer::doSelect($criteria, $con);
+				ContattoPeer::addSelectColumns($criteria);
+				$this->collContattos = ContattoPeer::doSelect($criteria, $con);
 			}
 		} else {
 						if (!$this->isNew()) {
 												
 
-				$criteria->add(ClientePeer::MODO_PAGAMENTO_ID, $this->getId());
+				$criteria->add(ContattoPeer::MODO_PAGAMENTO_ID, $this->getId());
 
-				ClientePeer::addSelectColumns($criteria);
-				if (!isset($this->lastClienteCriteria) || !$this->lastClienteCriteria->equals($criteria)) {
-					$this->collClientes = ClientePeer::doSelect($criteria, $con);
+				ContattoPeer::addSelectColumns($criteria);
+				if (!isset($this->lastContattoCriteria) || !$this->lastContattoCriteria->equals($criteria)) {
+					$this->collContattos = ContattoPeer::doSelect($criteria, $con);
 				}
 			}
 		}
-		$this->lastClienteCriteria = $criteria;
-		return $this->collClientes;
+		$this->lastContattoCriteria = $criteria;
+		return $this->collContattos;
 	}
 
 	
-	public function countClientes($criteria = null, $distinct = false, $con = null)
+	public function countContattos($criteria = null, $distinct = false, $con = null)
 	{
 				if ($criteria === null) {
 			$criteria = new Criteria();
@@ -556,21 +556,21 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		$criteria->add(ClientePeer::MODO_PAGAMENTO_ID, $this->getId());
+		$criteria->add(ContattoPeer::MODO_PAGAMENTO_ID, $this->getId());
 
-		return ClientePeer::doCount($criteria, $distinct, $con);
+		return ContattoPeer::doCount($criteria, $distinct, $con);
 	}
 
 	
-	public function addCliente(Cliente $l)
+	public function addContatto(Contatto $l)
 	{
-		$this->collClientes[] = $l;
+		$this->collContattos[] = $l;
 		$l->setModoPagamento($this);
 	}
 
 
 	
-	public function getClientesJoinUtente($criteria = null, $con = null)
+	public function getContattosJoinUtente($criteria = null, $con = null)
 	{
 				if ($criteria === null) {
 			$criteria = new Criteria();
@@ -580,31 +580,31 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collClientes === null) {
+		if ($this->collContattos === null) {
 			if ($this->isNew()) {
-				$this->collClientes = array();
+				$this->collContattos = array();
 			} else {
 
-				$criteria->add(ClientePeer::MODO_PAGAMENTO_ID, $this->getId());
+				$criteria->add(ContattoPeer::MODO_PAGAMENTO_ID, $this->getId());
 
-				$this->collClientes = ClientePeer::doSelectJoinUtente($criteria, $con);
+				$this->collContattos = ContattoPeer::doSelectJoinUtente($criteria, $con);
 			}
 		} else {
 									
-			$criteria->add(ClientePeer::MODO_PAGAMENTO_ID, $this->getId());
+			$criteria->add(ContattoPeer::MODO_PAGAMENTO_ID, $this->getId());
 
-			if (!isset($this->lastClienteCriteria) || !$this->lastClienteCriteria->equals($criteria)) {
-				$this->collClientes = ClientePeer::doSelectJoinUtente($criteria, $con);
+			if (!isset($this->lastContattoCriteria) || !$this->lastContattoCriteria->equals($criteria)) {
+				$this->collContattos = ContattoPeer::doSelectJoinUtente($criteria, $con);
 			}
 		}
-		$this->lastClienteCriteria = $criteria;
+		$this->lastContattoCriteria = $criteria;
 
-		return $this->collClientes;
+		return $this->collContattos;
 	}
 
 
 	
-	public function getClientesJoinTemaFattura($criteria = null, $con = null)
+	public function getContattosJoinTemaFattura($criteria = null, $con = null)
 	{
 				if ($criteria === null) {
 			$criteria = new Criteria();
@@ -614,31 +614,31 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collClientes === null) {
+		if ($this->collContattos === null) {
 			if ($this->isNew()) {
-				$this->collClientes = array();
+				$this->collContattos = array();
 			} else {
 
-				$criteria->add(ClientePeer::MODO_PAGAMENTO_ID, $this->getId());
+				$criteria->add(ContattoPeer::MODO_PAGAMENTO_ID, $this->getId());
 
-				$this->collClientes = ClientePeer::doSelectJoinTemaFattura($criteria, $con);
+				$this->collContattos = ContattoPeer::doSelectJoinTemaFattura($criteria, $con);
 			}
 		} else {
 									
-			$criteria->add(ClientePeer::MODO_PAGAMENTO_ID, $this->getId());
+			$criteria->add(ContattoPeer::MODO_PAGAMENTO_ID, $this->getId());
 
-			if (!isset($this->lastClienteCriteria) || !$this->lastClienteCriteria->equals($criteria)) {
-				$this->collClientes = ClientePeer::doSelectJoinTemaFattura($criteria, $con);
+			if (!isset($this->lastContattoCriteria) || !$this->lastContattoCriteria->equals($criteria)) {
+				$this->collContattos = ContattoPeer::doSelectJoinTemaFattura($criteria, $con);
 			}
 		}
-		$this->lastClienteCriteria = $criteria;
+		$this->lastContattoCriteria = $criteria;
 
-		return $this->collClientes;
+		return $this->collContattos;
 	}
 
 
 	
-	public function getClientesJoinBanca($criteria = null, $con = null)
+	public function getContattosJoinBanca($criteria = null, $con = null)
 	{
 				if ($criteria === null) {
 			$criteria = new Criteria();
@@ -648,26 +648,26 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 			$criteria = clone $criteria;
 		}
 
-		if ($this->collClientes === null) {
+		if ($this->collContattos === null) {
 			if ($this->isNew()) {
-				$this->collClientes = array();
+				$this->collContattos = array();
 			} else {
 
-				$criteria->add(ClientePeer::MODO_PAGAMENTO_ID, $this->getId());
+				$criteria->add(ContattoPeer::MODO_PAGAMENTO_ID, $this->getId());
 
-				$this->collClientes = ClientePeer::doSelectJoinBanca($criteria, $con);
+				$this->collContattos = ContattoPeer::doSelectJoinBanca($criteria, $con);
 			}
 		} else {
 									
-			$criteria->add(ClientePeer::MODO_PAGAMENTO_ID, $this->getId());
+			$criteria->add(ContattoPeer::MODO_PAGAMENTO_ID, $this->getId());
 
-			if (!isset($this->lastClienteCriteria) || !$this->lastClienteCriteria->equals($criteria)) {
-				$this->collClientes = ClientePeer::doSelectJoinBanca($criteria, $con);
+			if (!isset($this->lastContattoCriteria) || !$this->lastContattoCriteria->equals($criteria)) {
+				$this->collContattos = ContattoPeer::doSelectJoinBanca($criteria, $con);
 			}
 		}
-		$this->lastClienteCriteria = $criteria;
+		$this->lastContattoCriteria = $criteria;
 
-		return $this->collClientes;
+		return $this->collContattos;
 	}
 
 	
@@ -740,6 +740,40 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 
 
 	
+	public function getFatturasJoinContatto($criteria = null, $con = null)
+	{
+				if ($criteria === null) {
+			$criteria = new Criteria();
+		}
+		elseif ($criteria instanceof Criteria)
+		{
+			$criteria = clone $criteria;
+		}
+
+		if ($this->collFatturas === null) {
+			if ($this->isNew()) {
+				$this->collFatturas = array();
+			} else {
+
+				$criteria->add(FatturaPeer::MODO_PAGAMENTO_ID, $this->getId());
+
+				$this->collFatturas = FatturaPeer::doSelectJoinContatto($criteria, $con);
+			}
+		} else {
+									
+			$criteria->add(FatturaPeer::MODO_PAGAMENTO_ID, $this->getId());
+
+			if (!isset($this->lastFatturaCriteria) || !$this->lastFatturaCriteria->equals($criteria)) {
+				$this->collFatturas = FatturaPeer::doSelectJoinContatto($criteria, $con);
+			}
+		}
+		$this->lastFatturaCriteria = $criteria;
+
+		return $this->collFatturas;
+	}
+
+
+	
 	public function getFatturasJoinUtente($criteria = null, $con = null)
 	{
 				if ($criteria === null) {
@@ -765,40 +799,6 @@ abstract class BaseModoPagamento extends BaseObject  implements Persistent {
 
 			if (!isset($this->lastFatturaCriteria) || !$this->lastFatturaCriteria->equals($criteria)) {
 				$this->collFatturas = FatturaPeer::doSelectJoinUtente($criteria, $con);
-			}
-		}
-		$this->lastFatturaCriteria = $criteria;
-
-		return $this->collFatturas;
-	}
-
-
-	
-	public function getFatturasJoinCliente($criteria = null, $con = null)
-	{
-				if ($criteria === null) {
-			$criteria = new Criteria();
-		}
-		elseif ($criteria instanceof Criteria)
-		{
-			$criteria = clone $criteria;
-		}
-
-		if ($this->collFatturas === null) {
-			if ($this->isNew()) {
-				$this->collFatturas = array();
-			} else {
-
-				$criteria->add(FatturaPeer::MODO_PAGAMENTO_ID, $this->getId());
-
-				$this->collFatturas = FatturaPeer::doSelectJoinCliente($criteria, $con);
-			}
-		} else {
-									
-			$criteria->add(FatturaPeer::MODO_PAGAMENTO_ID, $this->getId());
-
-			if (!isset($this->lastFatturaCriteria) || !$this->lastFatturaCriteria->equals($criteria)) {
-				$this->collFatturas = FatturaPeer::doSelectJoinCliente($criteria, $con);
 			}
 		}
 		$this->lastFatturaCriteria = $criteria;

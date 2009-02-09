@@ -470,8 +470,8 @@ abstract class BaseModoPagamentoPeer {
 
 						$selectCriteria = new Criteria(ModoPagamentoPeer::DATABASE_NAME);
 			$updateValues = new Criteria(ModoPagamentoPeer::DATABASE_NAME);
-			$selectCriteria->add(ClientePeer::MODO_PAGAMENTO_ID, $obj->getId());
-			$updateValues->add(ClientePeer::MODO_PAGAMENTO_ID, null);
+			$selectCriteria->add(ContattoPeer::MODO_PAGAMENTO_ID, $obj->getId());
+			$updateValues->add(ContattoPeer::MODO_PAGAMENTO_ID, null);
 
 			BasePeer::doUpdate($selectCriteria, $updateValues, $con); 
 						$selectCriteria = new Criteria(ModoPagamentoPeer::DATABASE_NAME);

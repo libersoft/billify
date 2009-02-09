@@ -99,7 +99,6 @@ abstract class BaseUtentePeer {
 	
 	public static function getMapBuilder()
 	{
-		include_once 'lib/model/map/UtenteMapBuilder.php';
 		return BasePeer::getMapBuilder('lib.model.map.UtenteMapBuilder');
 	}
 	
@@ -252,7 +251,7 @@ abstract class BaseUtentePeer {
 		$results = array();
 	
 				$cls = UtentePeer::getOMClass();
-		$cls = Propel::import($cls);
+		$cls = sfPropel::import($cls);
 				while($rs->next()) {
 		
 			$obj = new $cls();
@@ -262,6 +261,11 @@ abstract class BaseUtentePeer {
 		}
 		return $results;
 	}
+
+  static public function getUniqueColumnNames()
+  {
+    return array(array('username'));
+  }
 	
 	public static function getTableMap()
 	{
@@ -394,12 +398,12 @@ abstract class BaseUtentePeer {
 			$c->add(BugPeer::ID_UTENTE, $obj->getId());
 			$affectedRows += BugPeer::doDelete($c, $con);
 
-			include_once 'lib/model/Cliente.php';
+			include_once 'lib/model/Contatto.php';
 
 						$c = new Criteria();
 			
-			$c->add(ClientePeer::ID_UTENTE, $obj->getId());
-			$affectedRows += ClientePeer::doDelete($c, $con);
+			$c->add(ContattoPeer::ID_UTENTE, $obj->getId());
+			$affectedRows += ContattoPeer::doDelete($c, $con);
 
 			include_once 'lib/model/CodiceIva.php';
 
@@ -538,6 +542,5 @@ if (Propel::isInit()) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/UtenteMapBuilder.php';
-	Propel::registerMapBuilder('lib.model.map.UtenteMapBuilder');
+			Propel::registerMapBuilder('lib.model.map.UtenteMapBuilder');
 }

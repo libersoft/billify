@@ -17,7 +17,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 
 	
-	protected $num_fattura = 0;
+	protected $num_fattura = '0';
 
 
 	
@@ -49,11 +49,11 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 
 	
-	protected $totale_mem;
+	protected $imposte;
 
 
 	
-	protected $imponibile_mem;
+	protected $imponibile;
 
 
 	
@@ -87,14 +87,18 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	
 	protected $calcola_tasse = 's';
 
-	
-	protected $aUtente;
 
 	
-	protected $aCliente;
+	protected $class_key = 1;
 
 	
 	protected $aModoPagamento;
+
+	
+	protected $aContatto;
+
+	
+	protected $aUtente;
 
 	
 	protected $collDettagliFatturas;
@@ -215,17 +219,17 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	}
 
 	
-	public function getTotaleMem()
+	public function getImposte()
 	{
 
-		return $this->totale_mem;
+		return $this->imposte;
 	}
 
 	
-	public function getImponibileMem()
+	public function getImponibile()
 	{
 
-		return $this->imponibile_mem;
+		return $this->imponibile;
 	}
 
 	
@@ -285,6 +289,13 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	}
 
 	
+	public function getClassKey()
+	{
+
+		return $this->class_key;
+	}
+
+	
 	public function setId($v)
 	{
 
@@ -320,11 +331,11 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	public function setNumFattura($v)
 	{
 
-						if ($v !== null && !is_int($v) && is_numeric($v)) {
-			$v = (int) $v;
+						if ($v !== null && !is_string($v)) {
+			$v = (string) $v; 
 		}
 
-		if ($this->num_fattura !== $v || $v === 0) {
+		if ($this->num_fattura !== $v || $v === '0') {
 			$this->num_fattura = $v;
 			$this->modifiedColumns[] = FatturaPeer::NUM_FATTURA;
 		}
@@ -343,8 +354,8 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 			$this->modifiedColumns[] = FatturaPeer::CLIENTE_ID;
 		}
 
-		if ($this->aCliente !== null && $this->aCliente->getId() !== $v) {
-			$this->aCliente = null;
+		if ($this->aContatto !== null && $this->aContatto->getId() !== $v) {
+			$this->aContatto = null;
 		}
 
 	} 
@@ -439,22 +450,22 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 	} 
 	
-	public function setTotaleMem($v)
+	public function setImposte($v)
 	{
 
-		if ($this->totale_mem !== $v) {
-			$this->totale_mem = $v;
-			$this->modifiedColumns[] = FatturaPeer::TOTALE_MEM;
+		if ($this->imposte !== $v) {
+			$this->imposte = $v;
+			$this->modifiedColumns[] = FatturaPeer::IMPOSTE;
 		}
 
 	} 
 	
-	public function setImponibileMem($v)
+	public function setImponibile($v)
 	{
 
-		if ($this->imponibile_mem !== $v) {
-			$this->imponibile_mem = $v;
-			$this->modifiedColumns[] = FatturaPeer::IMPONIBILE_MEM;
+		if ($this->imponibile !== $v) {
+			$this->imponibile = $v;
+			$this->modifiedColumns[] = FatturaPeer::IMPONIBILE;
 		}
 
 	} 
@@ -571,6 +582,20 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 	} 
 	
+	public function setClassKey($v)
+	{
+
+						if ($v !== null && !is_int($v) && is_numeric($v)) {
+			$v = (int) $v;
+		}
+
+		if ($this->class_key !== $v || $v === 1) {
+			$this->class_key = $v;
+			$this->modifiedColumns[] = FatturaPeer::CLASS_KEY;
+		}
+
+	} 
+	
 	public function hydrate(ResultSet $rs, $startcol = 1)
 	{
 		try {
@@ -579,7 +604,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 			$this->id_utente = $rs->getInt($startcol + 1);
 
-			$this->num_fattura = $rs->getInt($startcol + 2);
+			$this->num_fattura = $rs->getString($startcol + 2);
 
 			$this->cliente_id = $rs->getInt($startcol + 3);
 
@@ -595,9 +620,9 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 			$this->spese_anticipate = $rs->getFloat($startcol + 9);
 
-			$this->totale_mem = $rs->getFloat($startcol + 10);
+			$this->imposte = $rs->getFloat($startcol + 10);
 
-			$this->imponibile_mem = $rs->getFloat($startcol + 11);
+			$this->imponibile = $rs->getFloat($startcol + 11);
 
 			$this->stato = $rs->getString($startcol + 12);
 
@@ -615,11 +640,13 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 			$this->calcola_tasse = $rs->getString($startcol + 19);
 
+			$this->class_key = $rs->getInt($startcol + 20);
+
 			$this->resetModified();
 
 			$this->setNew(false);
 
-						return $startcol + 20; 
+						return $startcol + 21; 
 		} catch (Exception $e) {
 			throw new PropelException("Error populating Fattura object", $e);
 		}
@@ -677,25 +704,25 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 
 												
-			if ($this->aUtente !== null) {
-				if ($this->aUtente->isModified()) {
-					$affectedRows += $this->aUtente->save($con);
-				}
-				$this->setUtente($this->aUtente);
-			}
-
-			if ($this->aCliente !== null) {
-				if ($this->aCliente->isModified()) {
-					$affectedRows += $this->aCliente->save($con);
-				}
-				$this->setCliente($this->aCliente);
-			}
-
 			if ($this->aModoPagamento !== null) {
 				if ($this->aModoPagamento->isModified()) {
 					$affectedRows += $this->aModoPagamento->save($con);
 				}
 				$this->setModoPagamento($this->aModoPagamento);
+			}
+
+			if ($this->aContatto !== null) {
+				if ($this->aContatto->isModified()) {
+					$affectedRows += $this->aContatto->save($con);
+				}
+				$this->setContatto($this->aContatto);
+			}
+
+			if ($this->aUtente !== null) {
+				if ($this->aUtente->isModified()) {
+					$affectedRows += $this->aUtente->save($con);
+				}
+				$this->setUtente($this->aUtente);
 			}
 
 
@@ -763,21 +790,21 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 
 												
-			if ($this->aUtente !== null) {
-				if (!$this->aUtente->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aUtente->getValidationFailures());
-				}
-			}
-
-			if ($this->aCliente !== null) {
-				if (!$this->aCliente->validate($columns)) {
-					$failureMap = array_merge($failureMap, $this->aCliente->getValidationFailures());
-				}
-			}
-
 			if ($this->aModoPagamento !== null) {
 				if (!$this->aModoPagamento->validate($columns)) {
 					$failureMap = array_merge($failureMap, $this->aModoPagamento->getValidationFailures());
+				}
+			}
+
+			if ($this->aContatto !== null) {
+				if (!$this->aContatto->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aContatto->getValidationFailures());
+				}
+			}
+
+			if ($this->aUtente !== null) {
+				if (!$this->aUtente->validate($columns)) {
+					$failureMap = array_merge($failureMap, $this->aUtente->getValidationFailures());
 				}
 			}
 
@@ -852,10 +879,10 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 				return $this->getSpeseAnticipate();
 				break;
 			case 10:
-				return $this->getTotaleMem();
+				return $this->getImposte();
 				break;
 			case 11:
-				return $this->getImponibileMem();
+				return $this->getImponibile();
 				break;
 			case 12:
 				return $this->getStato();
@@ -881,6 +908,9 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 			case 19:
 				return $this->getCalcolaTasse();
 				break;
+			case 20:
+				return $this->getClassKey();
+				break;
 			default:
 				return null;
 				break;
@@ -901,8 +931,8 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 			$keys[7] => $this->getSconto(),
 			$keys[8] => $this->getVat(),
 			$keys[9] => $this->getSpeseAnticipate(),
-			$keys[10] => $this->getTotaleMem(),
-			$keys[11] => $this->getImponibileMem(),
+			$keys[10] => $this->getImposte(),
+			$keys[11] => $this->getImponibile(),
 			$keys[12] => $this->getStato(),
 			$keys[13] => $this->getIvaPagata(),
 			$keys[14] => $this->getIvaDepositata(),
@@ -911,6 +941,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 			$keys[17] => $this->getCalcolaRitenutaAcconto(),
 			$keys[18] => $this->getIncludiTasse(),
 			$keys[19] => $this->getCalcolaTasse(),
+			$keys[20] => $this->getClassKey(),
 		);
 		return $result;
 	}
@@ -957,10 +988,10 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 				$this->setSpeseAnticipate($value);
 				break;
 			case 10:
-				$this->setTotaleMem($value);
+				$this->setImposte($value);
 				break;
 			case 11:
-				$this->setImponibileMem($value);
+				$this->setImponibile($value);
 				break;
 			case 12:
 				$this->setStato($value);
@@ -986,6 +1017,9 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 			case 19:
 				$this->setCalcolaTasse($value);
 				break;
+			case 20:
+				$this->setClassKey($value);
+				break;
 		} 	}
 
 	
@@ -1003,8 +1037,8 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[7], $arr)) $this->setSconto($arr[$keys[7]]);
 		if (array_key_exists($keys[8], $arr)) $this->setVat($arr[$keys[8]]);
 		if (array_key_exists($keys[9], $arr)) $this->setSpeseAnticipate($arr[$keys[9]]);
-		if (array_key_exists($keys[10], $arr)) $this->setTotaleMem($arr[$keys[10]]);
-		if (array_key_exists($keys[11], $arr)) $this->setImponibileMem($arr[$keys[11]]);
+		if (array_key_exists($keys[10], $arr)) $this->setImposte($arr[$keys[10]]);
+		if (array_key_exists($keys[11], $arr)) $this->setImponibile($arr[$keys[11]]);
 		if (array_key_exists($keys[12], $arr)) $this->setStato($arr[$keys[12]]);
 		if (array_key_exists($keys[13], $arr)) $this->setIvaPagata($arr[$keys[13]]);
 		if (array_key_exists($keys[14], $arr)) $this->setIvaDepositata($arr[$keys[14]]);
@@ -1013,6 +1047,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 		if (array_key_exists($keys[17], $arr)) $this->setCalcolaRitenutaAcconto($arr[$keys[17]]);
 		if (array_key_exists($keys[18], $arr)) $this->setIncludiTasse($arr[$keys[18]]);
 		if (array_key_exists($keys[19], $arr)) $this->setCalcolaTasse($arr[$keys[19]]);
+		if (array_key_exists($keys[20], $arr)) $this->setClassKey($arr[$keys[20]]);
 	}
 
 	
@@ -1030,8 +1065,8 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(FatturaPeer::SCONTO)) $criteria->add(FatturaPeer::SCONTO, $this->sconto);
 		if ($this->isColumnModified(FatturaPeer::VAT)) $criteria->add(FatturaPeer::VAT, $this->vat);
 		if ($this->isColumnModified(FatturaPeer::SPESE_ANTICIPATE)) $criteria->add(FatturaPeer::SPESE_ANTICIPATE, $this->spese_anticipate);
-		if ($this->isColumnModified(FatturaPeer::TOTALE_MEM)) $criteria->add(FatturaPeer::TOTALE_MEM, $this->totale_mem);
-		if ($this->isColumnModified(FatturaPeer::IMPONIBILE_MEM)) $criteria->add(FatturaPeer::IMPONIBILE_MEM, $this->imponibile_mem);
+		if ($this->isColumnModified(FatturaPeer::IMPOSTE)) $criteria->add(FatturaPeer::IMPOSTE, $this->imposte);
+		if ($this->isColumnModified(FatturaPeer::IMPONIBILE)) $criteria->add(FatturaPeer::IMPONIBILE, $this->imponibile);
 		if ($this->isColumnModified(FatturaPeer::STATO)) $criteria->add(FatturaPeer::STATO, $this->stato);
 		if ($this->isColumnModified(FatturaPeer::IVA_PAGATA)) $criteria->add(FatturaPeer::IVA_PAGATA, $this->iva_pagata);
 		if ($this->isColumnModified(FatturaPeer::IVA_DEPOSITATA)) $criteria->add(FatturaPeer::IVA_DEPOSITATA, $this->iva_depositata);
@@ -1040,6 +1075,7 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 		if ($this->isColumnModified(FatturaPeer::CALCOLA_RITENUTA_ACCONTO)) $criteria->add(FatturaPeer::CALCOLA_RITENUTA_ACCONTO, $this->calcola_ritenuta_acconto);
 		if ($this->isColumnModified(FatturaPeer::INCLUDI_TASSE)) $criteria->add(FatturaPeer::INCLUDI_TASSE, $this->includi_tasse);
 		if ($this->isColumnModified(FatturaPeer::CALCOLA_TASSE)) $criteria->add(FatturaPeer::CALCOLA_TASSE, $this->calcola_tasse);
+		if ($this->isColumnModified(FatturaPeer::CLASS_KEY)) $criteria->add(FatturaPeer::CLASS_KEY, $this->class_key);
 
 		return $criteria;
 	}
@@ -1088,9 +1124,9 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 
 		$copyObj->setSpeseAnticipate($this->spese_anticipate);
 
-		$copyObj->setTotaleMem($this->totale_mem);
+		$copyObj->setImposte($this->imposte);
 
-		$copyObj->setImponibileMem($this->imponibile_mem);
+		$copyObj->setImponibile($this->imponibile);
 
 		$copyObj->setStato($this->stato);
 
@@ -1107,6 +1143,8 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 		$copyObj->setIncludiTasse($this->includi_tasse);
 
 		$copyObj->setCalcolaTasse($this->calcola_tasse);
+
+		$copyObj->setClassKey($this->class_key);
 
 
 		if ($deepCopy) {
@@ -1146,60 +1184,6 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 	}
 
 	
-	public function setUtente($v)
-	{
-
-
-		if ($v === null) {
-			$this->setIdUtente('0');
-		} else {
-			$this->setIdUtente($v->getId());
-		}
-
-
-		$this->aUtente = $v;
-	}
-
-
-	
-	public function getUtente($con = null)
-	{
-		if ($this->aUtente === null && ($this->id_utente !== null)) {
-						$this->aUtente = UtentePeer::retrieveByPK($this->id_utente, $con);
-
-			
-		}
-		return $this->aUtente;
-	}
-
-	
-	public function setCliente($v)
-	{
-
-
-		if ($v === null) {
-			$this->setClienteId('0');
-		} else {
-			$this->setClienteId($v->getId());
-		}
-
-
-		$this->aCliente = $v;
-	}
-
-
-	
-	public function getCliente($con = null)
-	{
-		if ($this->aCliente === null && ($this->cliente_id !== null)) {
-						$this->aCliente = ClientePeer::retrieveByPK($this->cliente_id, $con);
-
-			
-		}
-		return $this->aCliente;
-	}
-
-	
 	public function setModoPagamento($v)
 	{
 
@@ -1224,6 +1208,60 @@ abstract class BaseFattura extends BaseObject  implements Persistent {
 			
 		}
 		return $this->aModoPagamento;
+	}
+
+	
+	public function setContatto($v)
+	{
+
+
+		if ($v === null) {
+			$this->setClienteId('0');
+		} else {
+			$this->setClienteId($v->getId());
+		}
+
+
+		$this->aContatto = $v;
+	}
+
+
+	
+	public function getContatto($con = null)
+	{
+		if ($this->aContatto === null && ($this->cliente_id !== null)) {
+						$this->aContatto = ContattoPeer::retrieveByPK($this->cliente_id, $con);
+
+			
+		}
+		return $this->aContatto;
+	}
+
+	
+	public function setUtente($v)
+	{
+
+
+		if ($v === null) {
+			$this->setIdUtente('0');
+		} else {
+			$this->setIdUtente($v->getId());
+		}
+
+
+		$this->aUtente = $v;
+	}
+
+
+	
+	public function getUtente($con = null)
+	{
+		if ($this->aUtente === null && ($this->id_utente !== null)) {
+						$this->aUtente = UtentePeer::retrieveByPK($this->id_utente, $con);
+
+			
+		}
+		return $this->aUtente;
 	}
 
 	

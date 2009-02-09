@@ -35,11 +35,11 @@ class statsActions extends sfActions
     $this->criteria->add(FatturaPeer::CLIENTE_ID , $this->getRequestParameter('cliente'));
 
 
-    $cr1 = $this->criteria->getNewCriterion(FatturaPeer::STATO , 'i');
-    $cr2 = $this->criteria->getNewCriterion(FatturaPeer::STATO, 'p');
+    $cr1 = $this->criteria->getNewCriterion(FatturaPeer::STATO , Fattura::INVIATA );
+    $cr2 = $this->criteria->getNewCriterion(FatturaPeer::STATO, Fattura::PAGATA);
     $cr1->addOr($cr2);
     $this->criteria->add($cr1);
-    $fatture = FatturaPeer::doSelect($this->criteria);
+    $fatture = VenditaPeer::doSelect($this->criteria);
     $this->fatturato = 0;
     $this->fatturato_netto = 0;
 
@@ -77,7 +77,7 @@ class statsActions extends sfActions
 
     $chart = $this->getChartOption();
 
-    $chart['chart_data'][0] = array_merge(array(""), FatturaPeer::getYearInvoice());
+    $chart['chart_data'][0] = array_merge(array(""), VenditaPeer::getYearInvoice());
     $chart['chart_data'][1][0] = "Lordo";
     $chart['chart_data'][2][0] = "Netto";
     $chart['chart_data'][3][0] = "Ritenuta d'acconto";
@@ -85,7 +85,7 @@ class statsActions extends sfActions
 
     for ( $row = 1; $row < 5; $row++ ) {
       for ( $col = 1; $col < count($chart['chart_data'][0]); $col++ ) {
-        $info_fatturato = FatturaPeer::getFatturato($chart['chart_data'][0][$col]);
+        $info_fatturato = VenditaPeer::getFatturato($chart['chart_data'][0][$col]);
         $chart['chart_data'][ $row ][ $col ] = $info_fatturato[$row-1];
       }
     }
@@ -124,7 +124,7 @@ class statsActions extends sfActions
 
     for ( $row = 1; $row < count($chart['chart_data']); $row++ ) {
       for ( $col = 1; $col < count($chart['chart_data'][0]); $col++ ) {
-        $info_fatturato = FatturaPeer::getFatturato($this->getRequestParameter('year', date('Y', time())), $col);
+        $info_fatturato = VenditaPeer::getFatturato($this->getRequestParameter('year', date('Y', time())), $col);
         $chart['chart_data'][ $row ][ $col ] = $info_fatturato[$row-1];
       }
     }

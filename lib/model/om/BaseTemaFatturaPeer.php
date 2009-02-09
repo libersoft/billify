@@ -60,7 +60,6 @@ abstract class BaseTemaFatturaPeer {
 	
 	public static function getMapBuilder()
 	{
-		include_once 'lib/model/map/TemaFatturaMapBuilder.php';
 		return BasePeer::getMapBuilder('lib.model.map.TemaFatturaMapBuilder');
 	}
 	
@@ -187,7 +186,7 @@ abstract class BaseTemaFatturaPeer {
 		$results = array();
 	
 				$cls = TemaFatturaPeer::getOMClass();
-		$cls = Propel::import($cls);
+		$cls = sfPropel::import($cls);
 				while($rs->next()) {
 		
 			$obj = new $cls();
@@ -247,13 +246,13 @@ abstract class BaseTemaFatturaPeer {
 
 			$omClass = TemaFatturaPeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
 			$omClass = UtentePeer::getOMClass();
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol);
 
@@ -326,7 +325,7 @@ abstract class BaseTemaFatturaPeer {
 			$omClass = TemaFatturaPeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj1 = new $cls();
 			$obj1->hydrate($rs);
 
@@ -335,7 +334,7 @@ abstract class BaseTemaFatturaPeer {
 			$omClass = UtentePeer::getOMClass();
 
 
-			$cls = Propel::import($omClass);
+			$cls = sfPropel::import($omClass);
 			$obj2 = new $cls();
 			$obj2->hydrate($rs, $startcol2);
 
@@ -358,6 +357,11 @@ abstract class BaseTemaFatturaPeer {
 		return $results;
 	}
 
+
+  static public function getUniqueColumnNames()
+  {
+    return array();
+  }
 	
 	public static function getTableMap()
 	{
@@ -476,8 +480,8 @@ abstract class BaseTemaFatturaPeer {
 
 						$selectCriteria = new Criteria(TemaFatturaPeer::DATABASE_NAME);
 			$updateValues = new Criteria(TemaFatturaPeer::DATABASE_NAME);
-			$selectCriteria->add(ClientePeer::ID_TEMA_FATTURA, $obj->getId());
-			$updateValues->add(ClientePeer::ID_TEMA_FATTURA, null);
+			$selectCriteria->add(ContattoPeer::ID_TEMA_FATTURA, $obj->getId());
+			$updateValues->add(ContattoPeer::ID_TEMA_FATTURA, null);
 
 			BasePeer::doUpdate($selectCriteria, $updateValues, $con); 
 		}
@@ -561,6 +565,5 @@ if (Propel::isInit()) {
 		Propel::log('Could not initialize Peer: ' . $e->getMessage(), Propel::LOG_ERR);
 	}
 } else {
-			require_once 'lib/model/map/TemaFatturaMapBuilder.php';
-	Propel::registerMapBuilder('lib.model.map.TemaFatturaMapBuilder');
+			Propel::registerMapBuilder('lib.model.map.TemaFatturaMapBuilder');
 }

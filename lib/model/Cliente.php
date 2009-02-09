@@ -1,10 +1,4 @@
 <?php
-
-require_once 'lib/model/om/BaseCliente.php';
-
-define('ATTIVO','a');
-define('NON_ATTIVO','n');
-
 /**
  * Skeleton subclass for representing a row from the 'cliente' table.
  *
@@ -16,7 +10,17 @@ define('NON_ATTIVO','n');
  *
  * @package model
  */
-class Cliente extends BaseCliente {
+class Cliente extends Contatto {
+
+  /**
+	 * Constructs a new Fornitore class, setting the class_key column to ContattoPeer::CLASSKEY_2.
+	 */
+	public function __construct()
+	{
+
+		$this->setClassKey(ContattoPeer::CLASSKEY_1);
+	}
+
 	public function toString(){
 		if($this->getAzienda()=='s')
 			return $this->ragione_sociale;

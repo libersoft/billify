@@ -1,12 +1,4 @@
 <?php
-
-  // include base peer class
-  require_once 'lib/model/om/BaseClientePeer.php';
-  
-  // include object class
-  include_once 'lib/model/Cliente.php';
-
-
 /**
  * Skeleton subclass for performing query and update operations on the 'cliente' table.
  *
@@ -18,13 +10,16 @@
  *
  * @package model
  */	
-class ClientePeer extends BaseClientePeer {
+class ClientePeer extends ContattoPeer {
 
+  public static function doSelect(Criteria $criteria, $con = null)
+	{
+		return ContattoPeer::populateObjects(ClientePeer::doSelectRS($criteria, $con));
+	}
+  
 	public static function doSelectRS(Criteria $criteria, $conn = null)
 	{	
-		if(sfConfig::get('sf_app')!='backend')
-			$criteria->add(ClientePeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
-			
+		$criteria->add(ClientePeer::CLASS_KEY, ContattoPeer::CLASSKEY_CLIENTE);
 		return parent::doSelectRS($criteria);
 	}
 	

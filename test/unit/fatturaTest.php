@@ -18,7 +18,7 @@ Class ModoPagamento{
   
 }
 
-$test = new lime_test(4, new lime_output_color());
+$test = new lime_test(8, new lime_output_color());
 
 $test->comment('->checkInRitardo()');
 
@@ -41,4 +41,18 @@ $test->is($fattura->checkInRitardo(), false, '->checkInRitardo() return false');
 $test->comment('->getDataPagamento()');
 $test->is($fattura->getDataPagamento(), strftime(date('d M Y', strtotime('+10 days +1 month'))), '->getDataPagamento() return right date');
 
+$test->comment('getStato()');
+
+$fattura = new Fattura();
+$fattura->setStato('n');
+$test->is($fattura->getStato(), 'n', '->getStato() returns right value');
+$test->is($fattura->getStato(true), 'non inviata', '->getStato() returns right value');
+
+$test->comment('getColorStato()');
+
+$test->is($fattura->getColorStato(), 'yellow', '->getColorStato() returns right value');
+
+$test->comment('getFontColorStato()');
+
+$test->is($fattura->getFontColorStato(), 'black', '->getFontColorStato() returns right value');
 ?>

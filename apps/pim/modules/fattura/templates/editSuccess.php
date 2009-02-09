@@ -67,7 +67,7 @@ del <?php echo format_date($fattura->getData()); ?>
 <?php else: ?>
 <tr>
   <th>Cliente:</th>
-  <td><?php echo object_select_tag($fattura, 'getClienteId', array('related_class' => 'Cliente')) ?></td>
+  <td><?php echo object_select_tag($fattura, 'getClienteId', array('related_class' => 'Cliente', 'peer_method' => 'doSelect')) ?></td>
 </tr>
 <?php endif ?>
 <?php if($sf_user->getAttribute('modifica_data')):?>
