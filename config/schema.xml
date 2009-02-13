@@ -43,6 +43,7 @@
     <column name="citta" type="VARCHAR" size="100" />
     <column name="provincia" type="VARCHAR" size="5" />
     <column name="cap" type="VARCHAR" size="5" />
+    <column name="nazione" type="VARCHAR" size="255" />
     <column name="piva" type="VARCHAR" size="20" />
     <column name="cf" type="VARCHAR" size="50" />
     <column name="cognome" type="VARCHAR" size="50" />

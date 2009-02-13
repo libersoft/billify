@@ -12,6 +12,8 @@
  */
 class Cliente extends Contatto {
 
+  protected $azienda = 's';
+
   /**
 	 * Constructs a new Fornitore class, setting the class_key column to ContattoPeer::CLASSKEY_2.
 	 */
@@ -63,5 +65,13 @@ class Cliente extends Contatto {
 
 	  return $totale;
 	}
+
+  public function getContatto() {
+    if(!$this->contatto && $this->cognome != '') {
+      return $this->nome.' '.$this->cognome;
+    }
+
+    return $this->contatto;
+  }
 
 } // Cliente

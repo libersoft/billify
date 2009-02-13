@@ -14,7 +14,7 @@ $browser->
   setField('password', 'user')->
   click('Entra')->
   followRedirect()->
-  click('Fatture di acquisto')->
+  click('Acquisto')->
   
   checkResponseElement('table', 1)->
   checkResponseElement('table tr th', 9)->

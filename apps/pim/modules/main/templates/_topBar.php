@@ -9,18 +9,23 @@
 <?php endif?>
 </li>
 
-<li><?php echo link_to('Clienti','cliente/index')?>
-	<ul>
-	<li><?php echo link_to('Crea Nuovo','cliente/create')?></li>
-	<li><?php echo link_to('Cerca','cliente/list')?></li>
-	</ul>
+<li><?php echo link_to('Contatti','@customer')?>
+  <ul>
+    <li><?php echo link_to('Clienti','@customer')?>
+      <ul>
+      <li><?php echo link_to('Crea Nuovo','@customer_create')?></li>
+      <!--li><?php echo link_to('Cerca','@customer')?></li-->
+      </ul>
+    </li>
+
+    <li><?php echo link_to('Fornitori','@provider')?>
+      <ul>
+        <li><?php echo link_to('Crea Nuovo','@provider_create')?></li>
+      </ul>
+    </li>
+  </ul>
 </li>
 
-<li><?php echo link_to('Fornitori','@fornitori')?>
-	<ul>
-    <li><?php echo link_to('Crea Nuovo','@fornitori_create')?></li>
-	</ul>
-</li>
 
 <li><?php echo link_to('Prodotti','prodotto/index')?>
 	<ul>
@@ -28,19 +33,22 @@
 	</ul>
 </li>
 
-<li><?php echo link_to('Fatture di vendita', 'fattura/index')?>
-	<ul>
-  	<li><?php echo link_to('Crea Nuova','fattura/create')?> </li>
-  	<li><?=link_to('Tags','fattura/tags')?></li>
-  	<li><?php echo link_to('Cerca','fattura/list')?></li>
-	</ul>
-</li>
+<li><?php echo link_to('Fatture', '#')?>
+<ul>
+  <li><?php echo link_to('Vendita', 'fattura/index')?>
+    <ul>
+      <li><?php echo link_to('Crea Nuova','fattura/create')?> </li>
+      <li><?=link_to('Tags','fattura/tags')?></li>
+      <li><?php echo link_to('Cerca','fattura/list')?></li>
+    </ul>
+  </li>
 
-<li><?php echo link_to('Fatture di acquisto', '@fatture_acquisto')?>
-	<ul>
-  	<li><?php echo link_to('Crea Nuova', '@fatture_acquisto_create')?> </li>
-	</ul>
-</li>
+  <li><?php echo link_to('Acquisto', '@fatture_acquisto')?>
+    <ul>
+      <li><?php echo link_to('Crea Nuova', '@fatture_acquisto_create')?> </li>
+    </ul>
+  </li>
+</ul>
 
 <li><?php echo link_to('Statistiche', 'statistiche/index')?></li>
 

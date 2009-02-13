@@ -43,5 +43,9 @@ class FornitoreForm extends ContattoForm{
       $this['cf']
     );
   }
+
+  public function getRoute() {
+    return '@provider';
+  }
 }
 ?>

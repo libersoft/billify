@@ -8,11 +8,6 @@ names:
     
 pivaValidator:
   class:          sfStringValidator
-  param:
-    min:          11
-    min_error:    Il numero di partita iva deve essere di 11 caratteri.
-    max:          11
-    max_error:    Il numero di partita iva deve essere di 11 caratteri. 
     
 fillin:
   enabled:  on

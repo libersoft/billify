@@ -71,6 +71,7 @@ CREATE TABLE `contatto`
 	`citta` VARCHAR(100),
 	`provincia` VARCHAR(5),
 	`cap` VARCHAR(5),
+	`nazione` VARCHAR(255),
 	`piva` VARCHAR(20),
 	`cf` VARCHAR(50),
 	`cognome` VARCHAR(50),

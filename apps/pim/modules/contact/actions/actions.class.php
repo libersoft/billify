@@ -37,8 +37,8 @@ class contactActions extends sfActions
   public function executeEdit($request)
   {
     $factory = new ContactFactoryForm();
-    $this->form = $factory->build($request->getParameter('type'), ContattoPeer::retrieveByPk($request->getParameter('contatto[id]', $request->getParameter('id'))));
-
+    $this->form = $factory->build($request->getParameter('contatto[class_key]', $request->getParameter('type')), ContattoPeer::retrieveByPk($request->getParameter('contatto[id]', $request->getParameter('id'))));
+    
     if($request->isMethod('post')) {
       $contact = $this->update($request);
       if($contact) {
