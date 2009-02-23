@@ -15,6 +15,11 @@ class AcquistoForm extends FatturaForm
   {
     parent::configure();
     
+    $providerCriteria = new Criteria();
+    $providerCriteria->add(ContattoPeer::CLASS_KEY, ContattoPeer::CLASSKEY_FORNITORE);
+
+    $this->widgetSchema['cliente_id']->setOption('criteria', $providerCriteria);
+
     $widgets = $this->getWidgetSchema();
     $widgets['class_key'] = new sfWidgetFormInputHidden();
     $widgets['stato'] = new sfWidgetFormSelect(array('choices' => self::$states));

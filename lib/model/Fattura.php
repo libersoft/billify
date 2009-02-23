@@ -51,8 +51,12 @@ class Fattura extends BaseFattura {
 	private $tipo_ritenuta;
 	private $costo_tasse_ulteriori = 0;
 
+	public function __toString() {
+	  return 'Fattura '.($this->isProForma()?'Pro-Forma':'N&ordm; '.$this->getNumFattura());
+	}
+	
 	public function toString(){
-		return 'Fattura '.($this->isProForma()?'Pro-Forma':'N&ordm; '.$this->getNumFattura());
+        return $this->__toString();
 	}
 
 	public function setNewNumFattura()

@@ -509,5 +509,26 @@ CREATE TABLE `utente`
 	KEY `id_invitation_code`(`id_invitation_code`)
 )Type=MyISAM;
 
+#-----------------------------------------------------------------------------
+#-- cash_flow_row
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `cash_flow_row`;
+
+
+CREATE TABLE `cash_flow_row`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`date` DATETIME,
+	`model_id` INTEGER,
+	`model_class` VARCHAR(255),
+	`imponibile` FLOAT,
+	`imposte` FLOAT,
+	`description` VARCHAR(255)  NOT NULL,
+	`created_at` DATETIME,
+	`updated_at` DATETIME,
+	PRIMARY KEY (`id`)
+)Type=MyISAM;
+
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;

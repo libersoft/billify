@@ -404,4 +404,16 @@
     </unique>
   </table>
 
+  <table name="cash_flow_row" idMethod="native" >
+    <column name="id" type="integer" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="date" type="timestamp" />
+    <column name="model_id" type="integer" />
+    <column name="model_class" type="varchar" size="255" />
+    <column name="imponibile" type="float" />
+    <column name="imposte" type="float" />
+    <column name="description" type="varchar" size="255" required="true" />
+    <column name="created_at" type="timestamp" />
+    <column name="updated_at" type="timestamp" />
+  </table>
+  
 </database>
