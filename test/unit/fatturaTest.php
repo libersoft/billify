@@ -55,4 +55,6 @@ $test->is($fattura->getColorStato(), 'yellow', '->getColorStato() returns right 
 $test->comment('getFontColorStato()');
 
 $test->is($fattura->getFontColorStato(), 'black', '->getFontColorStato() returns right value');
+
+
 ?>

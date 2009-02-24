@@ -9,8 +9,10 @@
  */ 
 class CashFlowRow extends BaseCashFlowRow
 {
-  public function __construct(ICashFlowAdapter $adapter) {
-    $this->fromAdapter($adapter);
+  public function __construct(ICashFlowAdapter $adapter = null) {
+    if($adapter) {
+      $this->fromAdapter($adapter);
+    }
   }
   
   private function fromAdapter($adapter) {

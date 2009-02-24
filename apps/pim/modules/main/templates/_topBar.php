@@ -50,6 +50,8 @@
   </li>
 </ul>
 
+<li><?php echo link_to('Cash Flow', 'cashflow/index')?></li>
+
 <li><?php echo link_to('Statistiche', 'statistiche/index')?></li>
 
 <li><a>Opzioni</a>

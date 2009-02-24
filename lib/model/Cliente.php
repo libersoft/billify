@@ -23,11 +23,17 @@ class Cliente extends Contatto {
 		$this->setClassKey(ContattoPeer::CLASSKEY_1);
 	}
 
+	public function __toString() {
+        if($this->getAzienda() == 's') {
+  		return $this->ragione_sociale;
+  	 }  
+  	 else {
+  		return $this->cognome.' '.$this->nome;
+  	 }
+	}
+	
 	public function toString(){
-		if($this->getAzienda()=='s')
-			return $this->ragione_sociale;
-		else
-			return $this->cognome.' '.$this->nome;
+	 return $this->__toString();	
 	}
 
 	public function getPivaOrCf(){
@@ -36,16 +42,6 @@ class Cliente extends Contatto {
 		}
 		return LABEL_CODICE_FISCALE.$this->getCf();
 	}
-
-	/*public function getPdfTemplate(){
-		$finder = sfFinder::type('any')->discard('.svn');
-		$dirs = $finder->maxdepth(0)->in(sfConfig::get('sf_root_dir').'/'.sfConfig::get('sf_web_dir_name').'/theme_fattura/');
-		$template = array();
-		foreach ($dirs as $dir)
-			$template[basename($dir)] = basename($dir);
-
-		return $template;
-	}*/
 
 	public function getTotaleFatture($year = null) {
 	  $c = new Criteria();

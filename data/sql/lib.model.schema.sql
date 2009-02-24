@@ -525,6 +525,7 @@ CREATE TABLE `cash_flow_row`
 	`imponibile` FLOAT,
 	`imposte` FLOAT,
 	`description` VARCHAR(255)  NOT NULL,
+	`class_key` INTEGER default 1,
 	`created_at` DATETIME,
 	`updated_at` DATETIME,
 	PRIMARY KEY (`id`)

@@ -15,11 +15,11 @@ class invoiceActions extends sfActions
   {
     $this->form->bind($request->getParameter('fattura'));
     if ($this->form->isValid()) {
-      $contact = $this->form->save();
-      $contact->setIdUtente($this->getUser()->getAttribute('id_utente'));
-      $contact->save();
+      $invoice = $this->form->save();
+      $invoice->setIdUtente($this->getUser()->getAttribute('id_utente'));
+      $invoice->save();
       
-      return $contact;
+      return $invoice;
     }
 
     return false;
