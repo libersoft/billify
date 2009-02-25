@@ -3,10 +3,10 @@ default:
     content-type: text/html; charset=utf-8
 
   metas:
-    title:        Personal Invoice Manager
+    title:        phpAccount
     robots:       index, follow
-    description:  personal invoice manager
-    keywords:     personal, invoice, manager
+    description:  php, invoice, account
+    keywords:     php, invoice, account
     language:     it
 
   stylesheets:    [main, pmi, menu]

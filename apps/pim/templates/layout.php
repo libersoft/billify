@@ -27,7 +27,7 @@
   </div>
 <?php endif?>
 
-<?php echo link_to(image_tag('logo.jpg'),($sf_user->isAuthenticated()?'main/index':'main/index'))?>
+<h1 style="padding: 20px 25px"><?php echo link_to('phpAccount',($sf_user->isAuthenticated()?'main/index':'main/index'))?></h1>
 
 </div>
 
