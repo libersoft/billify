@@ -147,22 +147,16 @@ class Fattura extends BaseFattura {
 		if(!$this->calcola)
 		{
 			$this->tasse_ulteriori_array = TassaPeer::doSelect(new Criteria());
-			try {
-			 $this->tipo_ritenuta = UtentePeer::getImpostazione()->getTipoRitenuta();
-			}
-			catch(Exception $e) {}
-			
+			$this->tipo_ritenuta = UtentePeer::getImpostazione()->getTipoRitenuta();
 			$this->calcImponibile();
 
-			if($this->getIncludiTasse() == 's') {
+			if($this->getIncludiTasse() == 's')
 				$this->calcImponibileScorporato();
-			}
 
 			$this->calcScontoTotale();
 
-			if($this->getCalcolaTasse() == 's') {
+			if($this->getCalcolaTasse() == 's')
 				$this->calcTasseUlteriori();
-			}
 
 			$this->calcImponibileFineIva();
 			$this->calcRitenutaAcconto();
@@ -182,7 +176,7 @@ class Fattura extends BaseFattura {
 	{
 		$dettagli_fattura = $this->getDettagliFatturas();
 
-		foreach ($dettagli_fattura as $dettaglio) {
+		foreach ($dettagli_fattura as $dettaglio){
 			$det = $this->calcDettaglio($dettaglio);
 			$this->imponibile += $det;
 			$this->iva += $this->calcIvaDettaglio($det,$dettaglio->getIva());
@@ -317,13 +311,10 @@ class Fattura extends BaseFattura {
 
 	public function calcRitenutaAcconto()
 	{
-		try {
-        		list($percentuale, $percentuale_totale) = explode('/', UtentePeer::getImpostazione()->getRitenutaAcconto());
-        		if(($this->getCliente()->getAzienda() == 's' && $this->getCalcolaRitenutaAcconto() == 'a') || $this->getCalcolaRitenutaAcconto() == 's') {
-        			$this->ritenuta_acconto = (($this->imponibile_fine_iva/100*$percentuale)/100*$percentuale_totale);
-        		}
-		}
-		catch(Exception $e) {}
+		//list($percentuale,$percentuale_totale) = explode(',',sfConfig::get('app_ritenuta_acconto'));
+		list($percentuale,$percentuale_totale) = explode('/',UtentePeer::getImpostazione()->getRitenutaAcconto());
+		if(($this->getCliente()->getAzienda()=='s' && $this->getCalcolaRitenutaAcconto() == 'a') || $this->getCalcolaRitenutaAcconto() == 's')
+			$this->ritenuta_acconto = (($this->imponibile_fine_iva/100*$percentuale)/100*$percentuale_totale);
 	}
 
 	public function calcNettoDaLiquidare()
@@ -464,16 +455,17 @@ class Fattura extends BaseFattura {
   
   public function save($con = null) {
     parent::save();
-    
+
     if($this->getClassKey() == FatturaPeer::CLASSKEY_ACQUISTO ) {
       $co = new CashOutcome(new CashFlowAcquistoAdapter($this));
     }
     else {
       $co = new CashIncome(new CashFlowVenditaAdapter($this));
     }
-    
+
     $co->save();
   }
+
 
 } // Fattura
 

@@ -6,7 +6,7 @@ Class CashFlowVenditaAdapter implements ICashFlowAdapter {
   
   public function __construct($document) {
     $this->document = $document;  
-    $this->document->calcolaFattura();
+    //$this->document->calcolaFattura();
   }
   
   public function getDate() {
