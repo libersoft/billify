@@ -54,8 +54,10 @@ class Cliente extends Contatto {
 	  $fatture = $this->getFatturas($c);
 	  
 	  $totale = 0;
+	  $tasse = TassaPeer::doSelect(new Criteria());
+	  
 	  foreach ($fatture as $fattura) {
-	    $fattura->calcolaFattura();
+	    $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
 	    $totale += $fattura->getImponibile();
 	  }
 

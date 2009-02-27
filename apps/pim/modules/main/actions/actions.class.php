@@ -10,10 +10,7 @@
  */
 class mainActions extends sfActions
 {
-  /**
-   * Executes index action
-   *
-   */
+  
   public function executeIndex()
   {
     $this->getUser()->setCulture('it_IT');
@@ -62,10 +59,12 @@ class mainActions extends sfActions
     $fatture = VenditaPeer::doSelect($criteria);
     $this->fatturato_totale = 0;
     $this->fatturato_totale_netto = 0;
-
+    
+    $tasse = TassaPeer::doSelect(new Criteria());
+    
     foreach ($fatture as $fattura)
     {
-      $fattura->calcolaFattura();
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->fatturato_totale = $this->fatturato_totale + $fattura->getNettoDaLiquidare();
       $this->fatturato_totale_netto = $this->fatturato_totale_netto + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
     }
@@ -80,9 +79,11 @@ class mainActions extends sfActions
     $this->fatturato_totale_incassato = 0;
     $this->fatturato_totale_netto_incassato = 0;
 
+    $tasse = TassaPeer::doSelect(new Criteria());
+    
     foreach ($fatture as $fattura)
     {
-      $fattura->calcolaFattura();
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->fatturato_totale_incassato = $this->fatturato_totale_incassato + $fattura->getNettoDaLiquidare();
       $this->fatturato_totale_netto_incassato = $this->fatturato_totale_netto_incassato + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
     }
@@ -101,10 +102,11 @@ class mainActions extends sfActions
     $this->fatturato_annuo_netto = 0;
     $this->inps = 0;
     $this->ritenuta_acconto = 0;
-
+    $tasse = TassaPeer::doSelect(new Criteria());
+    
     foreach ($fatture as $fattura)
     {
-      $fattura->calcolaFattura();
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->fatturato_annuo = $this->fatturato_annuo + $fattura->getNettoDaLiquidare();
       $this->fatturato_annuo_netto = $this->fatturato_annuo_netto + $fattura->getImponibile();
 
@@ -126,9 +128,11 @@ class mainActions extends sfActions
     $fatture = VenditaPeer::doSelect($criteria);
     $this->fatturato_annuo_incassato = 0;
     $this->fatturato_annuo_netto_incassato = 0;
+    $tasse = TassaPeer::doSelect(new Criteria());
+    
     foreach ($fatture as $fattura)
     {
-      $fattura->calcolaFattura();
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->fatturato_annuo_incassato = $this->fatturato_annuo_incassato + $fattura->getNettoDaLiquidare();
       $this->fatturato_annuo_netto_incassato = $this->fatturato_annuo_netto_incassato + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
     }
@@ -156,10 +160,11 @@ class mainActions extends sfActions
     $criteria->add(FatturaPeer::NUM_FATTURA,0,'>');
     $fatture = VenditaPeer::doSelect($criteria);
     $this->iva = 0;
-
+    $tasse = TassaPeer::doSelect(new Criteria());
+    
     foreach ($fatture as $fattura)
     {
-      $fattura->calcolaFattura();
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->iva = $this->iva + $fattura->getIva();
     }
 
@@ -168,9 +173,11 @@ class mainActions extends sfActions
     $criteria->add(FatturaPeer::NUM_FATTURA,0,'>');
     $fatture = VenditaPeer::doSelect($criteria);
     $this->iva_a_debito = 0;
+    $tasse = TassaPeer::doSelect(new Criteria());
+    
     foreach ($fatture as $fattura)
     {
-      $fattura->calcolaFattura();
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->iva_a_debito = $this->iva_a_debito + $fattura->getIva();
     }
 
@@ -209,10 +216,11 @@ class mainActions extends sfActions
     $this->conta_fatture_da_incassare = VenditaPeer::doCount($criteria);
     $this->totale_da_incassare = 0;
     $this->totale_da_incassare_netto = 0;
-
+    $tasse = TassaPeer::doSelect(new Criteria());
+    
     foreach ($this->fatture_da_incassare->getResults() as $fattura)
     {
-      $fattura->calcolaFattura();
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->totale_da_incassare = $this->totale_da_incassare + $fattura->getNettoDaLiquidare();
       $this->totale_da_incassare_netto = $this->totale_da_incassare_netto + $fattura->getImponibileFineIva() - $fattura->getRitenutaAcconto();
     }
@@ -227,10 +235,11 @@ class mainActions extends sfActions
     $criteria->add(FatturaPeer::STATO , Fattura::PAGATA);
     $fatture = VenditaPeer::doSelect($criteria);
     $this->iva_depositata = 0;
-
+    $tasse = TassaPeer::doSelect(new Criteria());
+    
     foreach ($fatture as $fattura)
     {
-      $fattura->calcolaFattura();
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->iva_depositata = $this->iva_depositata + $fattura->getIva();
     }
 
@@ -239,9 +248,11 @@ class mainActions extends sfActions
     $criteria->add(FatturaPeer::STATO , Fattura::PAGATA);
     $fatture = VenditaPeer::doSelect($criteria);
     $this->iva_da_depositare = 0;
+    $tasse = TassaPeer::doSelect(new Criteria());
+    
     foreach ($fatture as $fattura)
     {
-      $fattura->calcolaFattura();
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->iva_da_depositare = $this->iva_da_depositare + $fattura->getIva();
     }
   }

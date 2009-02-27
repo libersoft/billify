@@ -52,10 +52,11 @@ Class VenditaPeer extends FatturaPeer {
 	  $fatturato_annuo_netto = 0;
 	  $inps = 0;
 	  $ritenuta_acconto = 0;
-
+        $tasse = TassaPeer::doSelect(new Criteria());
+        
 	  foreach ($fatture as $fattura)
 	  {
-	    $fattura->calcolaFattura();
+	    $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
 	    $fatturato_annuo = $fatturato_annuo + $fattura->getNettoDaLiquidare();
 	    $fatturato_annuo_netto = $fatturato_annuo_netto + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
 

@@ -119,10 +119,11 @@ class Utente extends BaseUtente {
 		$fatture = $this->getFatturas($criteria);
 		
 		$fatturato = 0;
-
+             $tasse = TassaPeer::doSelect(new Criteria());
+             
 		foreach ($fatture as $fattura)
 		{
-			$fattura->calcolaFattura();
+			$fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
 			$fatturato = $fatturato + $fattura->getNettoDaLiquidare();
 		}
 		

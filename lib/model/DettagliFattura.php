@@ -36,4 +36,13 @@ class DettagliFattura extends BaseDettagliFattura {
 		}
 
 	} // setPrezzo()
+	
+	public function save($con = null) {
+	  parent::save();
+        
+	  if(!is_null($this->getFattura())) {
+	     $this->getFattura()->save();
+	  }
+
+  }
 } // DettagliFattura

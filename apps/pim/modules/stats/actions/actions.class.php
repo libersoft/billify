@@ -42,10 +42,10 @@ class statsActions extends sfActions
     $fatture = VenditaPeer::doSelect($this->criteria);
     $this->fatturato = 0;
     $this->fatturato_netto = 0;
-
-    foreach ($fatture as $fattura)
-    {
-      $fattura->calcolaFattura();
+    $tasse = TassaPeer::doSelect(new Criteria());
+    
+    foreach ($fatture as $fattura) {
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->fatturato = $this->fatturato + $fattura->getNettoDaLiquidare();
       $this->fatturato_netto = $this->fatturato_netto + $fattura->getImponibileFineIva() - $fattura->getRitenutaAcconto();
     }

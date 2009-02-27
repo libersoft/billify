@@ -368,7 +368,7 @@ DettagliFattura:
   DettagliFattura_<?php echo $i?>: 
     fattura_id: 'Fattura_<?php echo $i?>'
     descrizione: >
-      Consulenza e realizzazione sito web
+      Consulenza e realizzazione sito web 1
     qty: 1
     sconto: 0
     iva: 20
@@ -378,7 +378,7 @@ DettagliFattura:
   DettagliFattura_<?php echo $i?>: 
     fattura_id: 'Fattura_<?php echo $i?>'
     descrizione: >
-      Consulenza e realizzazione sito web
+      Consulenza e realizzazione sito web 2
     qty: 1
     sconto: 0
     iva: 20
@@ -387,7 +387,7 @@ DettagliFattura:
   DettagliFattura_a: 
     fattura_id: Fattura_a
     descrizione: >
-      Consulenza e realizzazione sito web
+      Consulenza e realizzazione sito web 3
     qty: 1
     sconto: 0
     iva: 20
@@ -445,5 +445,10 @@ CashFlowRow:
     imposte: 200
     date: '<?php echo date('Y-m-d', strtotime('-0 days')) ?>'
     class_key: '<?php echo CashFlowRowPeer::CLASSKEY_CASHOUTCOME ?>'
+  incoming1:
+    imponibile: 50000
+    imposte: 200
+    date: '<?php echo date('Y-m-d', strtotime('-2 days')) ?>'
+    class_key: '<?php echo CashFlowRowPeer::CLASSKEY_CASHINCOME ?>'
     
     

@@ -6,7 +6,12 @@ Class CashFlowVenditaAdapter implements ICashFlowAdapter {
   
   public function __construct($document) {
     $this->document = $document;  
-    //$this->document->calcolaFattura();
+    try {
+      $this->document->calcolaFattura(TassaPeer::doSelect(new Criteria()), UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
+    } 
+    catch(Exception $e) {
+      $this->document->calcolaFattura();
+    }
   }
   
   public function getDate() {

@@ -30,7 +30,7 @@ class dettagliFatturaActions extends sfActions
   		$this->getUser()->setAttribute('conta_dettagli',0);
   		$this->getUser()->setAttribute('dettagli_in_modifica',array());
   		$this->fattura = VenditaPeer::retrieveByPK($this->getRequestParameter('fattura_id'));
-  		$this->fattura->calcolaFattura();
+  		$this->fattura->calcolaFattura(TassaPeer::doSelect(new Criteria()), UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
   		$this->dettagli_fattura = $this->fattura->getDettagliFatturas();
       $this->viewSconto = $this->getViewSconto();
   	}else{
@@ -53,7 +53,7 @@ class dettagliFatturaActions extends sfActions
     {
       $this->fattura_id = $this->getRequestParameter('fattura_id');
       $this->fattura = VenditaPeer::retrieveByPK($this->fattura_id);
-      $this->fattura->calcolaFattura();
+      $this->fattura->calcolaFattura(TassaPeer::doSelect(new Criteria()), UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->dettagli_fatturas = $this->fattura->getDettagliFatturas();
 
       if(!is_array($this->getUser()->getAttribute('dettagli_in_modifica')))

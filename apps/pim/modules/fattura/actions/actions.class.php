@@ -246,7 +246,7 @@ class fatturaActions extends sfActions
 		$this->fattura->setDataStato(date('m/d/y',time()));
 
 		$this->dettagliFattura = $this->fattura->getDettagliFatturas();
-		$this->fattura->calcolaFattura();
+		$this->fattura->calcolaFattura(TassaPeer::doSelect(new Criteria()), UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
 		$this->viewSconto = $this->getViewSconto();
 
 	}
@@ -518,7 +518,7 @@ class fatturaActions extends sfActions
 	{
 		$this->fattura = $this->getFatturaOrCreate();
 		if($this->fattura->getCliente()->getIdTemaFattura()){
-			$this->fattura->calcolaFattura();
+			$this->fattura->calcolaFattura(TassaPeer::doSelect(new Criteria()), UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
 			return sfView::SUCCESS;
 		}
 		return sfView::ERROR;

@@ -57,7 +57,11 @@
 <?php endif?>
 <th>Pdf</th>
 <!--th>Elimina</th-->
-<?php foreach ($fatture_results as $fattura):$fattura->calcolaFattura();?>
+<?php 
+$tasse = TassaPeer::doSelect(new Criteria()); 
+foreach ($fatture_results as $fattura) : 
+  $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
+?>
 
 <tr>
 <?php if($checkbox):?><td><?php echo checkbox_tag('ids[]',$fattura->getID())?></td><?php endif?>
