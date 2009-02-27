@@ -15,14 +15,29 @@ class cashflowActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeIndex($request) {
+  public function executeIndex($request) 
+  {
     $c = new Criteria();
-    $c->addAscendingOrderByColumn(CashFlowRowPeer::DATE );
-    $this->rows = CashFlowRowPeer::doSelect($c);
+    
+    $c = new Criteria();
+    $c->addDescendingOrderByColumn(FatturaPeer::DATA);
+    
+    $fatture = FatturaPeer::doSelect($c);
     
     $this->cf = new CashFlow();
-    foreach ($this->rows as $row) {
-      $this->cf->addRow($row);
+    
+    foreach ($fatture as $index => $fattura) 
+    {
+      if($fattura instanceof Vendita ) 
+      {
+        $fattura->calcolaFattura();
+        $this->cf->addIncoming(new CashFlowVenditaAdapter($fattura)); 
+      }
+      elseif($fattura instanceof Acquisto)
+      {
+        $this->cf->addOutcoming(new CashFlowAcquistoAdapter($fattura));
+      }
+      
     }
   }
 }

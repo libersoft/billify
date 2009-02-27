@@ -5,13 +5,7 @@ Class CashFlowVenditaAdapter implements ICashFlowAdapter {
   protected $document;
   
   public function __construct($document) {
-    $this->document = $document;  
-    try {
-      $this->document->calcolaFattura(TassaPeer::doSelect(new Criteria()), UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
-    } 
-    catch(Exception $e) {
-      $this->document->calcolaFattura();
-    }
+    $this->document = $document;
   }
   
   public function getDate() {
@@ -27,7 +21,7 @@ Class CashFlowVenditaAdapter implements ICashFlowAdapter {
   }
   
   public function getImposte() {
-    return $this->document->getImposte();
+    return $this->document->getIva();
   }
   
   public function getTotale() {

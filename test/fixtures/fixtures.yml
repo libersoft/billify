@@ -428,27 +428,3 @@ TagsFattura:
     data: 2008-04-01
 
 Tassa: 
-
-CashFlowRow:
-  outcoming1:
-    imponibile: 1000
-    imposte: 200
-    date: '<?php echo date('Y-m-d', strtotime('-2 days')) ?>'
-    class_key: '<?php echo CashFlowRowPeer::CLASSKEY_CASHOUTCOME ?>'
-  outcoming2:
-    imponibile: 1000
-    imposte: 200
-    date: '<?php echo date('Y-m-d', strtotime('-1 days')) ?>'
-    class_key: '<?php echo CashFlowRowPeer::CLASSKEY_CASHOUTCOME ?>'
-  outcoming3:
-    imponibile: 1000
-    imposte: 200
-    date: '<?php echo date('Y-m-d', strtotime('-0 days')) ?>'
-    class_key: '<?php echo CashFlowRowPeer::CLASSKEY_CASHOUTCOME ?>'
-  incoming1:
-    imponibile: 50000
-    imposte: 200
-    date: '<?php echo date('Y-m-d', strtotime('-2 days')) ?>'
-    class_key: '<?php echo CashFlowRowPeer::CLASSKEY_CASHINCOME ?>'
-    
-    

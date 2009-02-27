@@ -453,19 +453,6 @@ class Fattura extends BaseFattura {
   public function setCliente($v) {
     $this->setContatto($v);
   }
-  
-  public function save($con = null) {
-    parent::save();
-
-    if($this->getClassKey() == FatturaPeer::CLASSKEY_ACQUISTO ) {
-      $co = new CashOutcome(new CashFlowAcquistoAdapter($this));
-    }
-    else {
-      $co = new CashIncome(new CashFlowVenditaAdapter($this));
-    }
-
-    $co->save();
-  }
 
 
 } // Fattura

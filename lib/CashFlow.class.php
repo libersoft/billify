@@ -3,6 +3,7 @@
 Class CashFlow {
   protected $incoming = array();
   protected $outcoming = array();
+  protected $rows = array();
   protected $with_imposte = false;
   
   private function sum($rows) {
@@ -15,10 +16,6 @@ Class CashFlow {
     return $balance;
   }
   
-  private function getMethodName($row) {
-    return ($row instanceof CashIncome ? 'addIncoming' : 'addOutcoming');
-  }
-  
   public function withImposte() {
       $this->with_imposte = true;
   }
@@ -27,17 +24,14 @@ Class CashFlow {
       $this->with_imposte = false;
   }
   
-  public function addOutcoming(CashOutcome $row) {
+  public function addOutcoming(ICashFlowAdapter $row) {
       $this->outcoming[] = $row;
+      $this->rows[] = $row;
   }
   
-  public function addIncoming(CashIncome $row) {
+  public function addIncoming(ICashFlowAdapter $row) {
       $this->incoming[] = $row;
-  }
-  
-  public function addRow($row) {
-    $method = $this->getMethodName($row);
-    $this->$method($row);
+      $this->rows[] = $row;
   }
   
   public function getBalance() {
@@ -50,5 +44,9 @@ Class CashFlow {
   
   public function getOutcoming() {
     return $this->sum($this->outcoming);
+  }
+  
+  public function getRows() {
+    return $this->rows;
   }
 }
