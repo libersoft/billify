@@ -20,22 +20,24 @@ class cashflowActions extends sfActions
     $c = new Criteria();
     
     $c = new Criteria();
-    $c->addDescendingOrderByColumn(FatturaPeer::DATA);
+    $c->addAscendingOrderByColumn(FatturaPeer::DATA);
     
-    $fatture = FatturaPeer::doSelect($c);
+    $invoices = FatturaPeer::doSelect($c);
     
     $this->cf = new CashFlow();
     
-    foreach ($fatture as $index => $fattura) 
+    foreach ($invoices as $index => $invoice) 
     {
-      if($fattura instanceof Vendita ) 
+      if($invoice instanceof Vendita ) 
       {
-        $fattura->calcolaFattura();
-        $this->cf->addIncoming(new CashFlowVenditaAdapter($fattura)); 
+        $invoice->calcolaFattura();
+        $cash_flow_vendita = new CashFlowSalesAdapter($invoice);
+        $this->cf->addIncoming($cash_flow_vendita); 
       }
-      elseif($fattura instanceof Acquisto)
+      elseif($invoice instanceof Acquisto)
       {
-        $this->cf->addOutcoming(new CashFlowAcquistoAdapter($fattura));
+        $cash_flow_acquisto = new CashFlowPurchaseAdapter($invoice);
+        $this->cf->addOutcoming($cash_flow_acquisto);
       }
       
     }

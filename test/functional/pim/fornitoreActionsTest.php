@@ -52,10 +52,13 @@ $browser->
   checkResponseElement('.error_list', 0)->
   click('Torna alla lista')->
   
-  checkResponseElement('tr', 22)->
+  checkResponseElement('tr', 11)->
   click('delete')->
   followRedirect()->
-  checkResponseElement('tr', 21)
+  click('delete')->
+  followRedirect()->
+  click('>')->
+  checkResponseElement('tr', 10)
   
 
 ;

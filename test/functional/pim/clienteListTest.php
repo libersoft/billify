@@ -15,27 +15,28 @@ $browser->
   click('Entra')->
   followRedirect()->
   click('Clienti')->
-  checkResponseElement('ul#lista')->
-  checkResponseElement('ul#lista li', 10)->
-  checkResponseElement('ul#lista li', '/00 Azienda/', array('position' => 0))->
-  checkResponseElement('ul#lista li', '/01 Azienda/', array('position' => 1))->
-  checkResponseElement('ul#lista li', '/3.000,00/', array('position' => 1))->
-  checkResponseElement('ul#lista li', '/02 Azienda/', array('position' => 2))->
-  checkResponseElement('ul#lista li', '/03 Azienda/', array('position' => 3))->
+  checkResponseElement('table', 1)->
+  checkResponseElement('table tr', 11)->
+  checkResponseElement('table tr th', 6)->
+  checkResponseElement('table tr th', 'Ragione Sociale', array('position' => 0))->
+  checkResponseElement('table tr th', 'Contatto', array('position' => 1))->
+  checkResponseElement('table tr th', 'E-Mail', array('position' => 2))->
+  checkResponseElement('table tr th', 'Telefono', array('position' => 3))->
+  checkResponseElement('table tr th', 'Fax', array('position' => 4))->
+  
+  checkResponseElement('table tr td', '00 Azienda', array('position' => 0))->
+  checkResponseElement('table tr td', '', array('position' => 1))->
+  checkResponseElement('table tr td', 'azienda@example.it', array('position' => 2))->
+  checkResponseElement('table tr td', '35989805', array('position' => 3))->
+  checkResponseElement('table tr td', '36064127', array('position' => 4))->
+  
   checkResponseElement('div.navigator', 1)->
   checkResponseElement('div.navigator a', '«', array('position' => 0))->
   checkResponseElement('div.navigator a', '<', array('position' => 1))->
   checkResponseElement('div.navigator', '/1/')->
   checkResponseElement('div.navigator a', '2', array('position' => 2))->
   checkResponseElement('div.navigator a', '>', array('position' => 3))->
-  checkResponseElement('div.navigator a', '»', array('position' => 4))->
-  
-  get('cliente/search', array('page' => 2))->
-  checkResponseElement('ul#lista li', 10)->
-  checkResponseElement('ul#lista li', '/10 Azienda/', array('position' => 0))->
-  
-  get('cliente/search', array('page' => 1))->
-  checkResponseElement('ul#lista li', 10)->
-  checkResponseElement('ul#lista li', '/00 Azienda/', array('position' => 0))
-  
+  checkResponseElement('div.navigator a', '»', array('position' => 4)) 
 ;
+ 
+?>

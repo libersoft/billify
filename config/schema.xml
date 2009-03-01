@@ -18,7 +18,7 @@
     </index>
   </table>
 
-  <table name="bug" idMethod="native">
+  <!--table name="bug" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="id_utente" type="INTEGER" required="true" default="0" />
     <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
@@ -32,7 +32,7 @@
     <index name="id_utente">
       <index-column name="id_utente" />
     </index>
-  </table>
+  </table-->
 
   <table name="contatto" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
@@ -208,7 +208,7 @@
     <column name="label_sconto" type="VARCHAR" size="255" required="true" default="Sconto" />
   </table>
 
-  <table name="invitation_code" idMethod="native">
+  <!--table name="invitation_code" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="codice" type="VARCHAR" size="10" required="true" default="null" />
     <column name="inviato" type="CHAR" required="true" default="" />
@@ -216,7 +216,7 @@
     <unique name="codice">
       <unique-column name="codice" />
     </unique>
-  </table>
+  </table-->
 
   <table name="modo_pagamento" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
@@ -231,13 +231,13 @@
     </index>
   </table>
 
-  <table name="pagina" idMethod="native">
+  <!--table name="pagina" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="titolo" type="VARCHAR" size="255" required="true" default="null" />
     <column name="corpo" type="LONGVARCHAR" required="true" />
-  </table>
+  </table-->
 
-  <table name="paypal" idMethod="native">
+  <!--table name="paypal" idMethod="native">
     <column name="id" type="BIGINT" required="true" autoIncrement="true" primaryKey="true" />
     <column name="date" type="TIMESTAMP" />
     <column name="item_name" type="VARCHAR" size="130" />
@@ -305,7 +305,7 @@
     <index name="id_utente">
       <index-column name="id_utente" />
     </index>
-  </table>
+  </table-->
 
   <table name="prodotto" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />

@@ -46,6 +46,9 @@ all:
 #
   .settings:
     compat_10: on
+    default_culture: it_IT
+    i18n: on
+
 #    available:              off
 
 #    module_accessor:        module

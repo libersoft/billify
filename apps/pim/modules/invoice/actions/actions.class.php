@@ -37,7 +37,7 @@ class invoiceActions extends sfActions
     $criteria->add(FatturaPeer::ID_UTENTE, $this->getUser()->getAttribute('id_utente'));
     $criteria->addAscendingOrderByColumn(FatturaPeer::DATA );
 
-    $this->invoices = FatturaPeer::doSelectJoinAll($criteria);
+    $this->invoices = FatturaPeer::doSelect($criteria);
   }
   
   public function executeBatch($request) 
@@ -52,7 +52,7 @@ class invoiceActions extends sfActions
   public function executeEdit($request)
   {
     $factory = new FatturaFactoryForm();
-    $this->form = $factory->build($request->getParameter('type'), ContattoPeer::retrieveByPk($request->getParameter('fattura[id]', $request->getParameter('id'))));
+    $this->form = $factory->build($request->getParameter('type'), FatturaPeer::retrieveByPk($request->getParameter('fattura[id]', $request->getParameter('id'))));
 
     if($request->isMethod('post')) {
       $contact = $this->update($request);

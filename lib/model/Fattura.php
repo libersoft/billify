@@ -51,7 +51,7 @@ class Fattura extends BaseFattura {
 	private $costo_tasse_ulteriori = 0;
 
 	public function __toString() {
-	  return 'Fattura '.($this->isProForma() ? 'Pro-Forma' : 'N&ordm; '.$this->getNumFattura());
+	  return 'Fattura '.($this->isProForma() ? 'Pro-Forma' : 'n. '.$this->getNumFattura());
 	}
 	
 	public function toString(){

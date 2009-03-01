@@ -1,52 +1,103 @@
 <?php
+/*
+ * This file is part of the phpAccount software.
+ * (c) 2009 Francesco (cphp) Trucchia <ft@ideato.it>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-Class CashFlow {
+/** 
+ * Cash flow model
+ * 
+ * @author Francescp (cphp) Trucchia <ft@ideato.it>
+ * @version  $version$
+ * @package cashflow
+ *
+ */
+Class CashFlow 
+{
   protected $incoming = array();
   protected $outcoming = array();
   protected $rows = array();
-  protected $with_imposte = false;
   
-  private function sum($rows) {
+  /**
+   * Make sum of all row total value
+   *
+   * @param array $rows
+   * @return integer
+   */
+  private function sum($rows) 
+  {
     $balance = 0;
     
-    foreach ($rows as $row) {
-      $balance += $row->getImponibile() + ($this->with_imposte ? $row->getImposte() : 0);  
+    foreach ($rows as $row) 
+    {
+      $balance += $row->getTotal();
     }
     
     return $balance;
   }
   
-  public function withImposte() {
-      $this->with_imposte = true;
-  }
-  
-  public function withoutImposte() {
-      $this->with_imposte = false;
-  }
-  
-  public function addOutcoming(ICashFlowAdapter $row) {
+  /**
+   * Add a purchase document instance of ICashFlowAdapter 
+   *
+   * @param ICashFlowAdapter $row
+   */
+  public function addOutcoming(ICashFlowAdapter $row) 
+  {
       $this->outcoming[] = $row;
       $this->rows[] = $row;
   }
   
-  public function addIncoming(ICashFlowAdapter $row) {
+  /**
+   * Add a sales document instance of ICashFlowAdapter 
+   *
+   * @param ICashFlowAdapter $row
+   */
+  public function addIncoming(ICashFlowAdapter $row) 
+  {
       $this->incoming[] = $row;
       $this->rows[] = $row;
   }
   
-  public function getBalance() {
+  /**
+   * Get balance of all row added to cash flow
+   *
+   * @return integer
+   */
+  public function getBalance() 
+  {
     return $this->getIncoming() - $this->getOutcoming();
   }
   
-  public function getIncoming() {
+  /**
+   * Get incoming of all row added to cash flow
+   *
+   * @return integer
+   */
+  public function getIncoming() 
+  {
     return $this->sum($this->incoming);
   }
   
-  public function getOutcoming() {
+  /**
+   * Get outcoming of all row added to cash flow
+   *
+   * @return integer
+   */
+  public function getOutcoming() 
+  {
     return $this->sum($this->outcoming);
   }
   
-  public function getRows() {
+  /**
+   * Get all rows added to cash flow
+   *
+   * @return integer
+   */
+  public function getRows() 
+  {
     return $this->rows;
   }
 }
