@@ -1,17 +1,4 @@
-<?php if((!$sf_user->isAuthenticated() && ($sf_context->getModuleName() != 'login')) or $sf_context->getModuleName() == 'sito'):?>
-<ul>
-<li class="home"><?php echo link_to('Che cos\'&egrave;','/')?>
-<li><?php echo link_to('Chi Siamo','@pagina?titolo=chi-siamo')?></li>
-<li><?php echo link_to('FAQ','@pagina?titolo=faq')?></li>
-<li><?php echo link_to('Contatti','@pagina?titolo=contatti')?></li>
-<li><?php echo link_to('Blog','http://www.personal-invoice-manager.net')?></li>
-<?php if(!$sf_user->isAuthenticated()):?>
-<li><?php echo link_to('Login','login')?></li>
-<?php else:?>
-<li><?php echo link_to('Torna a PIM','main/index')?></li>
-<?php endif?>
-</ul>
-<?php elseif($sf_user->isAuthenticated()):?>
+<?php if($sf_user->isAuthenticated()):?>
 <ul>
 <li class="home"><?php echo link_to('Bacheca','main/index')?>
 
@@ -22,12 +9,23 @@
 <?php endif?>
 </li>
 
-<li><?php echo link_to('Clienti','cliente/index')?>
-	<ul>
-	<li><?php echo link_to('Crea Nuovo','cliente/create')?></li>
-	<li><?php echo link_to('Cerca','cliente/list')?></li>
-	</ul>
+<li><?php echo link_to('Contatti','@customer')?>
+  <ul>
+    <li><?php echo link_to('Clienti','@customer')?>
+      <ul>
+      <li><?php echo link_to('Crea Nuovo','@customer_create')?></li>
+      <!--li><?php echo link_to('Cerca','@customer')?></li-->
+      </ul>
+    </li>
+
+    <li><?php echo link_to('Fornitori','@provider')?>
+      <ul>
+        <li><?php echo link_to('Crea Nuovo','@provider_create')?></li>
+      </ul>
+    </li>
+  </ul>
 </li>
+
 
 <li><?php echo link_to('Prodotti','prodotto/index')?>
 	<ul>
@@ -35,15 +33,26 @@
 	</ul>
 </li>
 
-<li><?php echo link_to('Fatture','fattura/index')?>
-	<ul>
-	<li><?php echo link_to('Crea Nuova','fattura/create')?> </li>
-	<li><?=link_to('Tags','fattura/tags')?></li>
-	<li><?php echo link_to('Cerca','fattura/list')?></li>
-	</ul>
-</li>
+<li><?php echo link_to('Fatture', '#')?>
+<ul>
+  <li><?php echo link_to('Vendita', 'fattura/index')?>
+    <ul>
+      <li><?php echo link_to('Crea Nuova','fattura/create')?> </li>
+      <li><?=link_to('Tags','fattura/tags')?></li>
+      <li><?php echo link_to('Cerca','fattura/list')?></li>
+    </ul>
+  </li>
 
-<li><?php echo link_to('Statistiche', 'statistiche')?></li>
+  <li><?php echo link_to('Acquisto', '@fatture_acquisto')?>
+    <ul>
+      <li><?php echo link_to('Crea Nuova', '@fatture_acquisto_create')?> </li>
+    </ul>
+  </li>
+</ul>
+
+<li><?php echo link_to('Cash Flow', 'cashflow/index')?></li>
+
+<li><?php echo link_to('Statistiche', 'statistiche/index')?></li>
 
 <li><a>Opzioni</a>
 	<ul>
@@ -54,10 +63,10 @@
 	<li><?php echo link_to('Tasse','tassa/list')?>
 	<ul><li><?php echo link_to('Crea Nuova','tassa/create')?></li></ul>
 	</li>
-	<li><?php echo link_to('Pagamenti','modipagamento')?>
+	<li><?php echo link_to('Pagamenti','modipagamento/index')?>
 	<ul><li><?php echo link_to('Crea Nuovo','modipagamento/create')?></li></ul>
 	</li>
-	<li><?php echo link_to('Codici Iva','codiciiva')?>
+	<li><?php echo link_to('Codici Iva','codiciiva/index')?>
 	<ul><li><?php echo link_to('Crea Nuovo','codiciiva/create')?></li></ul>
 	</li>
 	<li><?php echo link_to('Temi Fattura','temafattura/list')?>

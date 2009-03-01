@@ -41,25 +41,16 @@ class loginActions extends sfActions
 
   		if($utente->getUsername() == 'admin'){
   			$this->getUser()->addCredential('admin');
-  			//$this->getUser()->addCredential('attivo');
-  		}//elseif((!$utente->checkRinnovo() && !$utente->checkDemo()) or in_array($utente->getId(),explode(',',sfConfig::get('app_account_gratis')))){
-  			$this->getUser()->addCredential('attivo');
-  		//}
-
+  		}
+  		
+  		$this->getUser()->addCredential('attivo');
   		$utente->setLastlogin(time());
   		$utente->save();
-
   		return $this->redirect('main/index');
   	}
-  	else
-  	{
-  		if(!is_null($utente) && $utente->getStato() == 'disattivo')
-  			$this->getRequest()->setError('login', 'Utente bloccato - <a href="mailto:pim@trucchia.info">Contatta lo staff</a>');
-  		else
-  			$this->getRequest()->setError('login', 'Identificazione fallita - riprova');
-
-  		return $this->forward('sito','index');
-  	}
+  	
+        $this->getUser()->setFlash('login', 'Identificazione fallita - riprova');
+        return $this->redirect('login/index');
   }
 
   public function executeLogout()
@@ -81,7 +72,7 @@ class loginActions extends sfActions
   	$this->getUser()->getAttributeHolder()->remove('dettagli_in_modifica');
   	$this->getUser()->clearCredentials();
   	$this->getUser()->setAuthenticated(false);
-  	return $this->redirect('login');
+  	return $this->redirect('login/index');
   }
 }
 

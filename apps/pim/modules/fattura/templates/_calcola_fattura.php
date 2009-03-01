@@ -54,8 +54,8 @@
 </tr>
 </table>
 <?php 
-$fattura->setTotaleMem($fattura->getNettoDaLiquidare());
-$fattura->setImponibileMem($fattura->getImponibile());
-$fattura->save();
+//$fattura->setTotaleMem($fattura->getNettoDaLiquidare());
+//$fattura->setImponibileMem($fattura->getImponibile());
+//$fattura->save();
 ?>
 

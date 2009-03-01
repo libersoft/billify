@@ -236,7 +236,7 @@ Banca:
     numero_conto: 000000112209
     nome_banca: Credito di PIM 
 
-Cliente:
+Contatto:
 <?php for($i = 0; $i < 20; $i++):?> 
   Cliente_<?php echo $i ?>: 
     id_utente: Utente_1
@@ -258,6 +258,21 @@ Cliente:
     calcola_ritenuta_acconto: n
     includi_tasse: n
     calcola_tasse: s
+<?php endfor?>
+<?php for($i = 0; $i < 20; $i++):?>
+  Fornitore_<?php echo $i ?>:
+    id_utente: Utente_1
+    azienda: s
+    ragione_sociale: '<?php echo $i<=9?'0'.$i:$i ?> Fornitore'
+    via: via degli ulivi, 19
+    citta: Milano
+    provincia: MI
+    cap: 60100
+    piva: 02437420405
+    telefono: 0211224455
+    fax: 0211445577
+    email: azienda@example.it
+    class_key: '<?php echo ContattoPeer::CLASSKEY_FORNITORE ?>'
 <?php endfor?>
   
 CodiceIva: 
@@ -311,13 +326,49 @@ Fattura:
     sconto: 0
     stato: p
     vat: 20
+<?php for($i = 1; $i < 3; $i++):?>
+  Fattura_acquisto_<?php echo $i?>: 
+    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
+    id_utente: Utente_1
+    num_fattura: '10/<?php echo $i?>'
+    cliente_id: Fornitore_2
+    data: '<?php echo date('Y-m-d', strtotime('+3 days'))?>'
+    modo_pagamento_id: ModoPagamento_2
+    imponibile: '1000'
+    imposte: '200'
+    stato: 'n'
+<?php endfor?>
+<?php for($i = 3; $i < 7; $i++):?>
+  Fattura_acquisto_<?php echo $i?>: 
+    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
+    id_utente: Utente_1
+    num_fattura: '10/<?php echo $i?>'
+    cliente_id: Fornitore_1
+    data: '<?php echo date('Y-m-d', strtotime('+3 days'))?>'
+    modo_pagamento_id: ModoPagamento_2
+    imponibile: '1200.34'
+    imposte: '200.12'
+    stato: 'n'
+<?php endfor?>
+<?php for($i = 7; $i < 10; $i++):?>
+  Fattura_acquisto_<?php echo $i?>: 
+    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
+    id_utente: Utente_1
+    num_fattura: '10/<?php echo $i?>'
+    cliente_id: Fornitore_3
+    data: '<?php echo date('Y-m-d', strtotime('-1 month'))?>'
+    modo_pagamento_id: ModoPagamento_2
+    imponibile: '11200.34675'
+    imposte: '2002.125'
+    stato: 'n'
+<?php endfor?>
     
 DettagliFattura: 
 <?php for($i = 1; $i <= 3; $i++):?>
   DettagliFattura_<?php echo $i?>: 
     fattura_id: 'Fattura_<?php echo $i?>'
     descrizione: >
-      Consulenza e realizzazione sito web
+      Consulenza e realizzazione sito web 1
     qty: 1
     sconto: 0
     iva: 20
@@ -327,7 +378,7 @@ DettagliFattura:
   DettagliFattura_<?php echo $i?>: 
     fattura_id: 'Fattura_<?php echo $i?>'
     descrizione: >
-      Consulenza e realizzazione sito web
+      Consulenza e realizzazione sito web 2
     qty: 1
     sconto: 0
     iva: 20
@@ -336,7 +387,7 @@ DettagliFattura:
   DettagliFattura_a: 
     fattura_id: Fattura_a
     descrizione: >
-      Consulenza e realizzazione sito web
+      Consulenza e realizzazione sito web 3
     qty: 1
     sconto: 0
     iva: 20

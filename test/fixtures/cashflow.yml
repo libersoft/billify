@@ -1,0 +1,73 @@
+Utente:
+  Utente_1: 
+    username: user
+    password: user
+    
+Impostazione: 
+  Impostazione: 
+    id_utente: Utente_1
+    
+ModoPagamento: 
+  ModoPagamento_1: 
+    id_utente: Utente_1
+    num_giorni: 10
+    descrizione: 10 Giorni
+  ModoPagamento_2: 
+    id_utente: Utente_1
+    num_giorni: 30
+    descrizione: 30 Giorni
+    
+Contatto:
+  Cliente: 
+    id_utente: Utente_1
+    azienda: s
+    ragione_sociale: 'Cliente'
+    via: via degli ulivi, 19
+    citta: Milano
+    provincia: MI
+    cap: 60100
+    piva: 02437420405
+    cf: 02437420405
+    telefono: 0211224455
+    fax: 0211445577
+    email: azienda@example.it
+  Fornitore:
+    id_utente: Utente_1
+    azienda: s
+    ragione_sociale: 'Fornitore'
+    via: via degli ulivi, 19
+    citta: Milano
+    provincia: MI
+    cap: 60100
+    piva: 02437420405
+    telefono: 0211224455
+    fax: 0211445577
+    email: azienda@example.it
+    class_key: '<?php echo ContattoPeer::CLASSKEY_FORNITORE ?>'
+    
+Fattura:
+  Fattura: 
+    id_utente: Utente_1
+    num_fattura: 1
+    cliente_id: Cliente
+    data: '<?php echo date('Y-m-d', strtotime('-2 days')) ?>'
+    modo_pagamento_id: ModoPagamento_1
+  Fattura_acquisto: 
+    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
+    id_utente: Utente_1
+    num_fattura: '10/1'
+    cliente_id: Fornitore
+    data: '<?php echo date('Y-m-d', strtotime('-1 days'))?>'
+    imponibile: '500'
+    imposte: '250'
+    stato: '<?php echo Fattura::PAGATA ?>'
+    modo_pagamento_id: ModoPagamento_2
+    
+DettagliFattura: 
+  DettagliFattura: 
+    fattura_id: 'Fattura'
+    descrizione: >
+      Consulenza e realizzazione sito web 1
+    qty: 1
+    iva: 20
+    prezzo: 1000

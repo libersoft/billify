@@ -1,6 +1,7 @@
 prod:
   .settings:
-    error_reporting:        4095
+    logging_enabled: off
+    error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>
     no_script_name:		on
 #    suffix:         		 .html
     cache: on
@@ -8,7 +9,7 @@ prod:
 dev:
   .settings:
     # E_ALL | E_STRICT = 4095
-    error_reporting:        4095
+    error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>
     web_debug:              on
     cache:                  off
     stats:                  off
@@ -18,7 +19,7 @@ dev:
 test:
   .settings:
     # E_ALL | E_STRICT & ~E_NOTICE = 2047
-    error_reporting:        2047
+    error_reporting:        <?php echo ((E_ALL | E_STRICT) ^ E_NOTICE)."\n" ?>
     cache:                  off
     stats:                  off
     web_debug:              off
@@ -44,6 +45,10 @@ all:
 #    unavailable_action:     unavailable
 #
   .settings:
+    compat_10: on
+    default_culture: it_IT
+    i18n: on
+
 #    available:              off
 
 #    module_accessor:        module

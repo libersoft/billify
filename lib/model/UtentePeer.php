@@ -23,7 +23,13 @@ class UtentePeer extends BaseUtentePeer {
 	public static function getUtenteCorrente(){
 		$criteria = new Criteria();
 		$criteria->add(UtentePeer::ID , sfContext::getInstance()->getUser()->getAttribute('id_utente'));
-		return UtentePeer::doSelectOne($criteria);
+		$user = UtentePeer::doSelectOne($criteria);
+
+    if(!$user) {
+      throw new Exception('L\'utente corrente non è più valido');
+    }
+
+    return $user;
 	}
 	
 	public static function getImpostazione(){

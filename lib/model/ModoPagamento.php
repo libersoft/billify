@@ -17,7 +17,11 @@ require_once 'lib/model/om/BaseModoPagamento.php';
 class ModoPagamento extends BaseModoPagamento {
 
 	public function toString(){
-		return $this->descrizione;
-	}
+		return $this->__toString();
+  }
+
+  public function __toString() {
+    return $this->descrizione;
+  }
 
 } // ModoPagamento

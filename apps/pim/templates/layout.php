@@ -19,45 +19,35 @@
 <body>
 
 <div id="header-top">
+
 <?php if($sf_user->isAuthenticated()):?>
-<div class="user-board">
-Benvenuto, <?php echo $sf_user->getAttribute('nome').' '.$sf_user->getAttribute('cognome')?>&nbsp;
-<!--<em>(versione <?php echo $sf_user->getAttribute('tipo_utente')?>)</em>&nbsp;-->|
-<?php echo include_component_slot('demoAlert') ?>
-<?php echo link_to('Mio Profilo','utente/edit')?> | <span class="logout"><?php echo link_to('Esci','login/logout')?></span>
-</div>
+  <div class="user-board">
+    Benvenuto, <?php echo $sf_user->getAttribute('nome').' '.$sf_user->getAttribute('cognome')?>&nbsp;
+    <?php echo link_to('Mio Profilo','utente/edit')?> | <span class="logout"><?php echo link_to('Esci','login/logout')?></span>
+  </div>
 <?php endif?>
-<?php echo link_to(image_tag('logo.jpg'),($sf_user->isAuthenticated()?'main':'/'))?>
+
+<h1 style="padding: 20px 25px"><?php echo link_to('phpAccount',($sf_user->isAuthenticated()?'main/index':'main/index'))?></h1>
 
 </div>
-
-<?php echo periodically_call_remote(array(
-    'frequency' => 60,
-    'url'       => 'main/time',
-	 'update' 	 => 'dateTime'
-)) ?>
 
 <div class="header_date" align="right">
-<?php echo include_component_slot('giorniRest') ?> <span id="dateTime"><?php echo format_date((time()/*+(9*3600)*/),'dd MMMM yyyy - HH:mm'); ?></span>
+  <span id="dateTime"><?php echo format_date((time()/*+(9*3600)*/),'dd MMMM yyyy - HH:mm'); ?></span>
 </div>
 
 <div id="hormenu">
-<?php echo include_component_slot('topbar') ?>
+  <?php echo include_component_slot('topbar') ?>
 </div>
 
 <?php if($sf_user->isAuthenticated()):?>
-<div id="bread-crumps">
-<?php echo include_component_slot('breadcrumps') ?>
-</div>
+  <div id="bread-crumps">
+    <?php echo include_component_slot('breadcrumps') ?>
+  </div>
 <?php endif?>
 
 
 <div id="content">
-<?php if($sf_user->isAuthenticated()):?>
-<?php echo include_component_slot('demoScaduto');?>
-<?php echo include_component_slot('updateProfile');?>
-<?php endif?>
-<?php echo $content ?>
+  <?php echo $sf_content ?>
 </div>
 
 

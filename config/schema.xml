@@ -18,7 +18,7 @@
     </index>
   </table>
 
-  <table name="bug" idMethod="native">
+  <!--table name="bug" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="id_utente" type="INTEGER" required="true" default="0" />
     <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
@@ -27,57 +27,65 @@
     <column name="priorita" type="VARCHAR" size="255" required="true" default="null" />
     <column name="modulo" type="VARCHAR" size="255" required="true" default="null" />
     <column name="testo" type="LONGVARCHAR" required="true" />
-    <column name="data" type="DATE" required="true" default="0000-00-00" />
+    <column name="data" type="DATE" />
     <column name="stato" type="VARCHAR" size="255" required="true" default="null" />
     <index name="id_utente">
       <index-column name="id_utente" />
     </index>
-  </table>
+  </table-->
 
-  <table name="cliente" idMethod="native">
+  <table name="contatto" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="id_utente" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="id_utente" foreign="id" />
-    </foreign-key>
     <column name="azienda" type="CHAR" required="true" default="" />
     <column name="ragione_sociale" type="VARCHAR" size="255" />
     <column name="via" type="VARCHAR" size="255" />
     <column name="citta" type="VARCHAR" size="100" />
     <column name="provincia" type="VARCHAR" size="5" />
     <column name="cap" type="VARCHAR" size="5" />
+    <column name="nazione" type="VARCHAR" size="255" />
     <column name="piva" type="VARCHAR" size="20" />
     <column name="cf" type="VARCHAR" size="50" />
     <column name="cognome" type="VARCHAR" size="50" />
-    <index name="cliente_cognome_index">
-      <index-column name="cognome" />
-    </index>
     <column name="nome" type="VARCHAR" size="50" />
     <column name="telefono" type="VARCHAR" size="20" />
     <column name="fax" type="VARCHAR" size="20" />
     <column name="cellulare" type="VARCHAR" size="20" />
     <column name="email" type="VARCHAR" size="100" />
     <column name="modo_pagamento_id" type="INTEGER" />
+    <column name="stato" type="CHAR" required="true" default="a" />
+    <column name="contatto" type="VARCHAR" size="255" />
+    
+    <column name="id_tema_fattura" type="INTEGER" />
+    <column name="id_banca" type="INTEGER" />
+    <column name="calcola_ritenuta_acconto" type="CHAR" required="true" default="a" />
+    <column name="includi_tasse" type="CHAR" required="true" default="" />
+    <column name="calcola_tasse" type="CHAR" required="true" default="s" />
+    <column name="cod" type="VARCHAR" size="255" />
+    <column name="note" type="LONGVARCHAR" />
+    <column name="class_key" type="integer" inheritance="single" default="1">
+      <inheritance key="2" class="Fornitore" extends="pim.Contatto"/>
+      <inheritance key="1" class="Cliente" extends="pim.Contatto"/>
+    </column>
+
+    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="id_utente" foreign="id" />
+    </foreign-key>
+    <index name="cliente_cognome_index">
+      <index-column name="cognome" />
+    </index>
     <foreign-key foreignTable="modo_pagamento" onDelete="SET NULL" onUpdate="CASCADE">
       <reference local="modo_pagamento_id" foreign="id" />
     </foreign-key>
-    <column name="stato" type="CHAR" required="true" default="a" />
-    <column name="note" type="LONGVARCHAR" />
-    <column name="id_tema_fattura" type="INTEGER" />
     <foreign-key foreignTable="tema_fattura" onDelete="SET NULL" onUpdate="CASCADE">
       <reference local="id_tema_fattura" foreign="id" />
     </foreign-key>
-    <column name="id_banca" type="INTEGER" />
     <foreign-key foreignTable="banca" onDelete="SET NULL" onUpdate="CASCADE">
       <reference local="id_banca" foreign="id" />
     </foreign-key>
     <index name="cliente_id_banca_index">
       <index-column name="id_banca" />
     </index>
-    <column name="calcola_ritenuta_acconto" type="CHAR" required="true" default="a" />
-    <column name="includi_tasse" type="CHAR" required="true" default="" />
-    <column name="calcola_tasse" type="CHAR" required="true" default="s" />
-    <column name="cod" type="VARCHAR" size="255" />
     <index name="cliente_FI_1">
       <index-column name="modo_pagamento_id" />
     </index>
@@ -125,36 +133,41 @@
   <table name="fattura" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="id_utente" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="id_utente" foreign="id" />
-    </foreign-key>
-    <column name="num_fattura" type="INTEGER" required="true" default="0" />
-    <index name="fattura_num_fattura_index">
-      <index-column name="num_fattura" />
-    </index>
+    <column name="num_fattura" type="VARCHAR" size="10" required="true" default="0" />
     <column name="cliente_id" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="cliente" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="cliente_id" foreign="id" />
-    </foreign-key>
-    <column name="data" type="DATE" required="true" default="0000-00-00" />
+    <column name="data" type="DATE" required="true" />
     <column name="data_stato" type="DATE" />
     <column name="modo_pagamento_id" type="INTEGER" />
+    <column name="sconto" type="INTEGER" default="0" />
+    <column name="vat" type="INTEGER" default="20" />
+    <column name="spese_anticipate" type="FLOAT" default="0" />
+    <column name="imposte" type="FLOAT" />
+    <column name="imponibile" type="FLOAT" />
+    <column name="stato" type="CHAR" default="n" />
+    <column name="iva_pagata" type="CHAR" default="n" />
+    <column name="iva_depositata" type="CHAR" default="n" />
+    <column name="commercialista" type="CHAR" default="n" />
+    <column name="note" type="LONGVARCHAR" />
+    <column name="calcola_ritenuta_acconto" type="CHAR" default="a" />
+    <column name="includi_tasse" type="CHAR" default="" />
+    <column name="calcola_tasse" type="CHAR" default="s" />
+    <column name="class_key" type="integer" inheritance="single" default="1">
+      <inheritance key="2" class="Acquisto" extends="pim.Fattura"/>
+      <inheritance key="1" class="Vendita" extends="pim.Fattura"/>
+    </column>
+
     <foreign-key foreignTable="modo_pagamento" onDelete="SET NULL" onUpdate="CASCADE">
       <reference local="modo_pagamento_id" foreign="id" />
     </foreign-key>
-    <column name="sconto" type="INTEGER" required="true" default="0" />
-    <column name="vat" type="INTEGER" required="true" default="20" />
-    <column name="spese_anticipate" type="FLOAT" required="true" default="0" />
-    <column name="totale_mem" type="FLOAT" />
-    <column name="imponibile_mem" type="FLOAT" />
-    <column name="stato" type="CHAR" required="true" default="n" />
-    <column name="iva_pagata" type="CHAR" required="true" default="n" />
-    <column name="iva_depositata" type="CHAR" required="true" default="n" />
-    <column name="commercialista" type="CHAR" required="true" default="n" />
-    <column name="note" type="LONGVARCHAR" />
-    <column name="calcola_ritenuta_acconto" type="CHAR" required="true" default="a" />
-    <column name="includi_tasse" type="CHAR" required="true" default="" />
-    <column name="calcola_tasse" type="CHAR" required="true" default="s" />
+    <foreign-key foreignTable="contatto" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="cliente_id" foreign="id" />
+    </foreign-key>
+    <index name="fattura_num_fattura_index">
+      <index-column name="num_fattura" />
+    </index>
+    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="id_utente" foreign="id" />
+    </foreign-key>
     <index name="fattura_FI_1">
       <index-column name="cliente_id" />
     </index>
@@ -195,7 +208,7 @@
     <column name="label_sconto" type="VARCHAR" size="255" required="true" default="Sconto" />
   </table>
 
-  <table name="invitation_code" idMethod="native">
+  <!--table name="invitation_code" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="codice" type="VARCHAR" size="10" required="true" default="null" />
     <column name="inviato" type="CHAR" required="true" default="" />
@@ -203,7 +216,7 @@
     <unique name="codice">
       <unique-column name="codice" />
     </unique>
-  </table>
+  </table-->
 
   <table name="modo_pagamento" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
@@ -218,13 +231,13 @@
     </index>
   </table>
 
-  <table name="pagina" idMethod="native">
+  <!--table name="pagina" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="titolo" type="VARCHAR" size="255" required="true" default="null" />
     <column name="corpo" type="LONGVARCHAR" required="true" />
-  </table>
+  </table-->
 
-  <table name="paypal" idMethod="native">
+  <!--table name="paypal" idMethod="native">
     <column name="id" type="BIGINT" required="true" autoIncrement="true" primaryKey="true" />
     <column name="date" type="TIMESTAMP" />
     <column name="item_name" type="VARCHAR" size="130" />
@@ -292,7 +305,7 @@
     <index name="id_utente">
       <index-column name="id_utente" />
     </index>
-  </table>
+  </table-->
 
   <table name="prodotto" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
@@ -323,7 +336,7 @@
     </foreign-key>
     <column name="tag" type="VARCHAR" size="255" required="true" default="null" />
     <column name="tag_normalizzato" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="data" type="DATE" required="true" default="0000-00-00" />
+    <column name="data" type="DATE" required="true" />
     <index name="id_utente">
       <index-column name="id_utente" />
     </index>
@@ -374,12 +387,12 @@
     <column name="codice_fiscale" type="VARCHAR" size="255" required="true" default="null" />
     <column name="email" type="VARCHAR" size="255" required="true" default="null" />
     <column name="password" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="data_attivazione" type="DATE" required="true" default="0000-00-00" />
-    <column name="data_rinnovo" type="DATE" required="true" default="0000-00-00" />
-    <column name="tipo" type="VARCHAR" size="255" required="true" default="demo" />
+    <column name="data_attivazione" type="DATE" required="true" />
+    <column name="data_rinnovo" type="DATE" required="true" />
+    <column name="tipo" type="VARCHAR" size="255" required="true" />
     <column name="stato" type="VARCHAR" size="255" required="true" default="attivo" />
     <column name="fattura" type="CHAR" required="true" default="" />
-    <column name="lastlogin" type="TIMESTAMP" required="true" default="0000-00-00 00:00:00" />
+    <column name="lastlogin" type="TIMESTAMP" required="true" />
     <column name="approva_contratto" type="INTEGER" required="true" default="0" />
     <column name="approva_policy" type="INTEGER" required="true" default="0" />
     <column name="sconto" type="INTEGER" required="true" default="0" />
@@ -390,5 +403,5 @@
       <unique-column name="username" />
     </unique>
   </table>
-
+  
 </database>

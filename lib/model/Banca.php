@@ -17,6 +17,10 @@ require_once 'lib/model/om/BaseBanca.php';
 class Banca extends BaseBanca {
 
 	public function ToString(){
-		return $this->getNomeBanca();
+		return $this->__toString();
 	}
+
+  public function __toString() {
+    return $this->getNomeBanca();
+  }
 } // Banca

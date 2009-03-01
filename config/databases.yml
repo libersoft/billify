@@ -4,7 +4,7 @@ dev:
       hostspec: localhost
       username: root
       password:
-      database: pim
+      database: phpaccount
 
 all:
   propel:
@@ -13,7 +13,7 @@ all:
       datasource:   propel
       phptype:      mysql
       hostspec: localhost
-      database: pim
+      database: phpaccount
       username: root
       password:
       compat_assoc_lower:  true

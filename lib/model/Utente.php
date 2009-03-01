@@ -116,17 +116,14 @@ class Utente extends BaseUtente {
 		use_helper('Number');
 		
 		$criteria = new Criteria();
-		//$cr1 = $criteria->getNewCriterion(FatturaPeer::STATO , 'i');
-		//$cr2 = $criteria->getNewCriterion(FatturaPeer::STATO, 'p');
-		//$cr1->addOr($cr2);
-		//$criteria->add($cr1);
 		$fatture = $this->getFatturas($criteria);
 		
 		$fatturato = 0;
-
+             $tasse = TassaPeer::doSelect(new Criteria());
+             
 		foreach ($fatture as $fattura)
 		{
-			$fattura->calcolaFattura();
+			$fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
 			$fatturato = $fatturato + $fattura->getNettoDaLiquidare();
 		}
 		

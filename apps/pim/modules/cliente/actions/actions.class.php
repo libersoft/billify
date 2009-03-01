@@ -25,7 +25,8 @@ class clienteActions extends sfActions
     }
     else {
       $criteria = new Criteria;
-      $criteria->add(ClientePeer::STATO, ATTIVO);
+      $criteria->add(ClientePeer::STATO, Cliente::ATTIVO);
+      $criteria->add(ClientePeer::CLASS_KEY, ContattoPeer::CLASSKEY_CLIENTE);
       $criteria->addAscendingOrderByColumn(ClientePeer::RAGIONE_SOCIALE );
       $criteria->addAscendingOrderByColumn(ClientePeer::COGNOME);
 
@@ -42,6 +43,7 @@ class clienteActions extends sfActions
     if($this->getRequestParameter('string_search')!=""){
       $this->string_search = $this->getRequestParameter('string_search');
       $criteria = new Criteria();
+      $criteria->add(ClientePeer::CLASS_KEY, ContattoPeer::CLASSKEY_CLIENTE);
       $criteria->addAscendingOrderByColumn(ClientePeer::RAGIONE_SOCIALE );
       $criteria->addAscendingOrderByColumn(ClientePeer::COGNOME);
       $cr1 = $criteria->getNewCriterion(ClientePeer::RAGIONE_SOCIALE , '%'.$this->string_search.'%', Criteria::LIKE );
@@ -50,7 +52,7 @@ class clienteActions extends sfActions
       $cr2->addOr($cr3);
       $cr1->addOr($cr2);
       $criteria->add($cr1);
-      $criteria->add(ClientePeer::STATO,ATTIVO);
+      $criteria->add(ClientePeer::STATO, Cliente::ATTIVO);
 
       $pager = new sfPropelPager('Cliente', UtentePeer::getImpostazione()->getNumClienti());
       $pager->setCriteria($criteria);
@@ -78,7 +80,7 @@ class clienteActions extends sfActions
   {
   	//Customer
   	$criteria = new Criteria();
-  	$criteria->add(ClientePeer::STATO,ATTIVO);
+  	$criteria->add(ClientePeer::STATO, Cliente::ATTIVO);
   	$criteria->add(ClientePeer::ID,$this->getRequestParameter('id'));
   	$this->cliente = ClientePeer::doSelectOne($criteria);
     //$this->cliente = ClientePeer::retrieveByPk($this->getRequestParameter('id'));
