@@ -1,5 +1,9 @@
 # default rules
 
+document_sales_create:
+  url: cashflow/create/document/sales
+  param: {module: cashflow, action: create, type: 3}
+  
 fatture_acquisto:
   url: /fatture_acquisto
   param: {module: invoice, action: index, type: 2}

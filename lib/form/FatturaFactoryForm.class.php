@@ -7,11 +7,20 @@ Class FatturaFactoryForm{
   }
 
   public function build($class_key, $model = null) {
-    if($class_key == FatturaPeer::CLASSKEY_VENDITA) {
-      return new VenditaForm($model);
+    if(!is_null($model)) {
+      $class_name = get_class($model).'Form';
+      return   new $class_name($model);
     }
-
-    return new AcquistoForm($model);
+    
+    switch ($class_key)
+    {
+      case FatturaPeer::CLASSKEY_VENDITA;
+        return new VenditaForm($model);
+      case FatturaPeer::CLASSKEY_ENTRATA:
+        return new EntrataForm($model);
+      default:
+        return new AcquistoForm($model);    
+    }
   }
 }
 

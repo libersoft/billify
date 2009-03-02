@@ -18,22 +18,6 @@
     </index>
   </table>
 
-  <!--table name="bug" idMethod="native">
-    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="id_utente" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="id_utente" foreign="id" />
-    </foreign-key>
-    <column name="priorita" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="modulo" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="testo" type="LONGVARCHAR" required="true" />
-    <column name="data" type="DATE" />
-    <column name="stato" type="VARCHAR" size="255" required="true" default="null" />
-    <index name="id_utente">
-      <index-column name="id_utente" />
-    </index>
-  </table-->
-
   <table name="contatto" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="id_utente" type="INTEGER" required="true" default="0" />
@@ -131,27 +115,32 @@
   </table>
 
   <table name="fattura" idMethod="native">
-    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="id_utente" type="INTEGER" required="true" default="0" />
-    <column name="num_fattura" type="VARCHAR" size="10" required="true" default="0" />
-    <column name="cliente_id" type="INTEGER" required="true" default="0" />
-    <column name="data" type="DATE" required="true" />
-    <column name="data_stato" type="DATE" />
-    <column name="modo_pagamento_id" type="INTEGER" />
-    <column name="sconto" type="INTEGER" default="0" />
-    <column name="vat" type="INTEGER" default="20" />
-    <column name="spese_anticipate" type="FLOAT" default="0" />
-    <column name="imposte" type="FLOAT" />
-    <column name="imponibile" type="FLOAT" />
-    <column name="stato" type="CHAR" default="n" />
-    <column name="iva_pagata" type="CHAR" default="n" />
-    <column name="iva_depositata" type="CHAR" default="n" />
-    <column name="commercialista" type="CHAR" default="n" />
-    <column name="note" type="LONGVARCHAR" />
-    <column name="calcola_ritenuta_acconto" type="CHAR" default="a" />
-    <column name="includi_tasse" type="CHAR" default="" />
-    <column name="calcola_tasse" type="CHAR" default="s" />
+    <column name="id" type="integer" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="id_utente" type="integer" required="true" default="0" />
+    <column name="num_fattura" type="varchar" size="10" />
+    <column name="cliente_id" type="integer" />
+    <column name="contatto_string" type="varchar" size="100" />
+    <column name="descrizione" type="varchar" size="255" />
+    <column name="data" type="date" required="true" />
+    <column name="data_stato" type="date" />
+    <column name="data_scadenza" type="date" />
+    <column name="modo_pagamento_id" type="integer" />
+    <column name="sconto" type="integer" default="0" />
+    <column name="vat" type="integer" default="20" />
+    <column name="spese_anticipate" type="float" default="0" />
+    <column name="imposte" type="float" size="20"/>
+    <column name="imponibile" type="float" size="20"/>
+    <column name="stato" type="char" default="n" />
+    <column name="iva_pagata" type="char" default="n" />
+    <column name="iva_depositata" type="char" default="n" />
+    <column name="commercialista" type="char" default="n" />
+    <column name="note" type="longvarchar" />
+    <column name="calcola_ritenuta_acconto" type="char" default="a" />
+    <column name="includi_tasse" type="char" default="" />
+    <column name="calcola_tasse" type="char" default="s" />
     <column name="class_key" type="integer" inheritance="single" default="1">
+      <inheritance key="4" class="Uscita" extends="pim.Fattura"/>
+      <inheritance key="3" class="Entrata" extends="pim.Fattura"/>
       <inheritance key="2" class="Acquisto" extends="pim.Fattura"/>
       <inheritance key="1" class="Vendita" extends="pim.Fattura"/>
     </column>
@@ -208,16 +197,6 @@
     <column name="label_sconto" type="VARCHAR" size="255" required="true" default="Sconto" />
   </table>
 
-  <!--table name="invitation_code" idMethod="native">
-    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="codice" type="VARCHAR" size="10" required="true" default="null" />
-    <column name="inviato" type="CHAR" required="true" default="" />
-    <column name="email" type="VARCHAR" size="255" />
-    <unique name="codice">
-      <unique-column name="codice" />
-    </unique>
-  </table-->
-
   <table name="modo_pagamento" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="id_utente" type="INTEGER" />
@@ -230,82 +209,6 @@
       <index-column name="id_utente" />
     </index>
   </table>
-
-  <!--table name="pagina" idMethod="native">
-    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="titolo" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="corpo" type="LONGVARCHAR" required="true" />
-  </table-->
-
-  <!--table name="paypal" idMethod="native">
-    <column name="id" type="BIGINT" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="date" type="TIMESTAMP" />
-    <column name="item_name" type="VARCHAR" size="130" />
-    <column name="receiver_email" type="VARCHAR" size="125" />
-    <column name="item_number" type="VARCHAR" size="130" />
-    <column name="quantity" type="SMALLINT" />
-    <column name="id_utente" type="INTEGER" />
-    <column name="payment_status" type="CHAR" />
-    <column name="pending_reason" type="CHAR" />
-    <column name="payment_gross" type="FLOAT" />
-    <column name="payment_fee" type="FLOAT" />
-    <column name="payment_type" type="CHAR" />
-    <column name="payment_date" type="VARCHAR" size="50" required="true" default="0" />
-    <column name="txn_id" type="VARCHAR" size="20" />
-    <column name="payer_email" type="VARCHAR" size="125" />
-    <column name="payer_status" type="VARCHAR" size="255" required="true" default="unverified" />
-    <column name="txn_type" type="VARCHAR" size="255" required="true" default="subscr_payment" />
-    <column name="first_name" type="VARCHAR" size="35" />
-    <column name="last_name" type="VARCHAR" size="60" />
-    <column name="address_city" type="VARCHAR" size="60" />
-    <column name="address_street" type="VARCHAR" size="60" />
-    <column name="address_state" type="VARCHAR" size="60" />
-    <column name="address_zip" type="VARCHAR" size="15" />
-    <column name="address_country" type="VARCHAR" size="60" />
-    <column name="address_status" type="VARCHAR" size="255" required="true" default="unconfirmed" />
-    <column name="subscr_date" type="VARCHAR" size="50" />
-    <column name="period1" type="VARCHAR" size="20" required="true" default="UNK" />
-    <column name="period2" type="VARCHAR" size="20" required="true" default="UNK" />
-    <column name="period3" type="VARCHAR" size="20" required="true" default="UNK" />
-    <column name="amount1" type="FLOAT" required="true" default="0" />
-    <column name="amount2" type="FLOAT" required="true" default="0" />
-    <column name="amount3" type="FLOAT" required="true" default="0" />
-    <column name="recurring" type="TINYINT" required="true" default="1" />
-    <column name="reattempt" type="TINYINT" required="true" default="0" />
-    <column name="retry_at" type="VARCHAR" size="50" />
-    <column name="recur_times" type="SMALLINT" required="true" default="0" />
-    <column name="subscr_id" type="VARCHAR" size="20" />
-    <column name="entirepost" type="LONGVARCHAR" />
-    <column name="paypal_verified" type="VARCHAR" size="255" required="true" default="INVALID" />
-    <column name="verify_sign" type="VARCHAR" size="125" />
-    <index name="txn_type">
-      <index-column name="txn_type" />
-    </index>
-    <index name="payment_status">
-      <index-column name="payment_status" />
-    </index>
-    <index name="pending_reason">
-      <index-column name="pending_reason" />
-    </index>
-    <index name="payer_status">
-      <index-column name="payer_status" />
-    </index>
-    <index name="payment_type">
-      <index-column name="payment_type" />
-    </index>
-    <index name="retry_at">
-      <index-column name="retry_at" />
-    </index>
-    <index name="receiver_email">
-      <index-column name="receiver_email" />
-    </index>
-    <index name="date">
-      <index-column name="date" />
-    </index>
-    <index name="id_utente">
-      <index-column name="id_utente" />
-    </index>
-  </table-->
 
   <table name="prodotto" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />

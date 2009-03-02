@@ -10,6 +10,21 @@
  */
 class cashflowActions extends sfActions
 {
+  
+  private function update($request)
+  {
+    $this->form->bind($request->getParameter('fattura'));
+    if ($this->form->isValid()) {
+      $document = $this->form->save();
+      $document->setIdUtente($this->getUser()->getAttribute('id_utente'));
+      $document->save();
+      
+      return $document;
+    }
+
+    return false;
+  }
+  
  /**
   * Executes index action
   *
@@ -22,24 +37,49 @@ class cashflowActions extends sfActions
     $c = new Criteria();
     $c->addAscendingOrderByColumn(FatturaPeer::DATA);
     
-    $invoices = FatturaPeer::doSelect($c);
+    $documents = FatturaPeer::doSelect($c);
     
     $this->cf = new CashFlow();
     
-    foreach ($invoices as $index => $invoice) 
+    foreach ($documents as $index => $document) 
     {
-      if($invoice instanceof Vendita ) 
+      if($document instanceof Vendita ) 
       {
-        $invoice->calcolaFattura();
-        $cash_flow_vendita = new CashFlowSalesAdapter($invoice);
+        $document->calcolaFattura();
+        $cash_flow_vendita = new CashFlowSalesAdapter($document);
         $this->cf->addIncoming($cash_flow_vendita); 
       }
-      elseif($invoice instanceof Acquisto)
+      elseif($document instanceof Acquisto)
       {
-        $cash_flow_acquisto = new CashFlowPurchaseAdapter($invoice);
+        $cash_flow_acquisto = new CashFlowPurchaseAdapter($document);
         $this->cf->addOutcoming($cash_flow_acquisto);
       }
+      elseif($document instanceof Entrata)
+      {
+        $cash_flow_entrance = new CashFlowEntranceAdapter($document);
+        $this->cf->addIncoming($cash_flow_entrance); 
+      }
       
+    }
+  }
+  
+  public function executeCreate($request)
+  {
+    $this->forward('cashflow', 'edit');
+  }
+  
+  public function executeEdit($request)
+  {
+    $factory = new FatturaFactoryForm();
+    $this->form = $factory->build($request->getParameter('type'), FatturaPeer::retrieveByPk($request->getParameter('fattura[id]', $request->getParameter('id'))));
+
+    if($request->isMethod('post')) 
+    {
+      $contact = $this->update($request);
+      if($contact) 
+      {
+        $this->redirect('cashflow/edit?id='.$contact->getId());
+      }
     }
   }
 }

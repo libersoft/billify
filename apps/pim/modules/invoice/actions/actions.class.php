@@ -54,9 +54,11 @@ class invoiceActions extends sfActions
     $factory = new FatturaFactoryForm();
     $this->form = $factory->build($request->getParameter('type'), FatturaPeer::retrieveByPk($request->getParameter('fattura[id]', $request->getParameter('id'))));
 
-    if($request->isMethod('post')) {
+    if($request->isMethod('post')) 
+    {
       $contact = $this->update($request);
-      if($contact) {
+      if($contact) 
+      {
         $this->redirect('invoice/edit?id='.$contact->getId());
       }
     }

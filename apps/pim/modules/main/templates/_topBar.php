@@ -50,7 +50,11 @@
   </li>
 </ul>
 
-<li><?php echo link_to('Cash Flow', 'cashflow/index')?></li>
+<li><?php echo link_to('Cash Flow', 'cashflow/index')?>
+  <ul>
+    <li><?php echo link_to(__('Nuova entrata'), '@document_sales_create')?></li>
+  </ul>
+</li>
 
 <li><?php echo link_to('Statistiche', 'statistiche/index')?></li>
 
