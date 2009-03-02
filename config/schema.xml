@@ -18,22 +18,6 @@
     </index>
   </table>
 
-  <!--table name="bug" idMethod="native">
-    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="id_utente" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="id_utente" foreign="id" />
-    </foreign-key>
-    <column name="priorita" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="modulo" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="testo" type="LONGVARCHAR" required="true" />
-    <column name="data" type="DATE" />
-    <column name="stato" type="VARCHAR" size="255" required="true" default="null" />
-    <index name="id_utente">
-      <index-column name="id_utente" />
-    </index>
-  </table-->
-
   <table name="contatto" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="id_utente" type="INTEGER" required="true" default="0" />
