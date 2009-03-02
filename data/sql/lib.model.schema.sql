@@ -30,31 +30,6 @@ CREATE TABLE `banca`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
-#-- bug
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `bug`;
-
-
-CREATE TABLE `bug`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`id_utente` INTEGER default 0 NOT NULL,
-	`priorita` VARCHAR(255) default 'null' NOT NULL,
-	`modulo` VARCHAR(255) default 'null' NOT NULL,
-	`testo` TEXT  NOT NULL,
-	`data` DATE,
-	`stato` VARCHAR(255) default 'null' NOT NULL,
-	PRIMARY KEY (`id`),
-	KEY `id_utente`(`id_utente`),
-	CONSTRAINT `bug_FK_1`
-		FOREIGN KEY (`id_utente`)
-		REFERENCES `utente` (`id`)
-		ON UPDATE CASCADE
-		ON DELETE CASCADE
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
 #-- contatto
 #-----------------------------------------------------------------------------
 
@@ -261,23 +236,6 @@ CREATE TABLE `impostazione`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
-#-- invitation_code
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `invitation_code`;
-
-
-CREATE TABLE `invitation_code`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`codice` VARCHAR(10) default 'null' NOT NULL,
-	`inviato` CHAR default '' NOT NULL,
-	`email` VARCHAR(255),
-	PRIMARY KEY (`id`),
-	UNIQUE KEY `codice` (`codice`)
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
 #-- modo_pagamento
 #-----------------------------------------------------------------------------
 
@@ -297,82 +255,6 @@ CREATE TABLE `modo_pagamento`
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
-#-- pagina
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `pagina`;
-
-
-CREATE TABLE `pagina`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`titolo` VARCHAR(255) default 'null' NOT NULL,
-	`corpo` TEXT  NOT NULL,
-	PRIMARY KEY (`id`)
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
-#-- paypal
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `paypal`;
-
-
-CREATE TABLE `paypal`
-(
-	`id` BIGINT  NOT NULL AUTO_INCREMENT,
-	`date` DATETIME,
-	`item_name` VARCHAR(130),
-	`receiver_email` VARCHAR(125),
-	`item_number` VARCHAR(130),
-	`quantity` SMALLINT,
-	`id_utente` INTEGER,
-	`payment_status` CHAR,
-	`pending_reason` CHAR,
-	`payment_gross` FLOAT,
-	`payment_fee` FLOAT,
-	`payment_type` CHAR,
-	`payment_date` VARCHAR(50) default '0' NOT NULL,
-	`txn_id` VARCHAR(20),
-	`payer_email` VARCHAR(125),
-	`payer_status` VARCHAR(255) default 'unverified' NOT NULL,
-	`txn_type` VARCHAR(255) default 'subscr_payment' NOT NULL,
-	`first_name` VARCHAR(35),
-	`last_name` VARCHAR(60),
-	`address_city` VARCHAR(60),
-	`address_street` VARCHAR(60),
-	`address_state` VARCHAR(60),
-	`address_zip` VARCHAR(15),
-	`address_country` VARCHAR(60),
-	`address_status` VARCHAR(255) default 'unconfirmed' NOT NULL,
-	`subscr_date` VARCHAR(50),
-	`period1` VARCHAR(20) default 'UNK' NOT NULL,
-	`period2` VARCHAR(20) default 'UNK' NOT NULL,
-	`period3` VARCHAR(20) default 'UNK' NOT NULL,
-	`amount1` FLOAT default 0 NOT NULL,
-	`amount2` FLOAT default 0 NOT NULL,
-	`amount3` FLOAT default 0 NOT NULL,
-	`recurring` TINYINT default 1 NOT NULL,
-	`reattempt` TINYINT default 0 NOT NULL,
-	`retry_at` VARCHAR(50),
-	`recur_times` SMALLINT default 0 NOT NULL,
-	`subscr_id` VARCHAR(20),
-	`entirepost` TEXT,
-	`paypal_verified` VARCHAR(255) default 'INVALID' NOT NULL,
-	`verify_sign` VARCHAR(125),
-	PRIMARY KEY (`id`),
-	KEY `txn_type`(`txn_type`),
-	KEY `payment_status`(`payment_status`),
-	KEY `pending_reason`(`pending_reason`),
-	KEY `payer_status`(`payer_status`),
-	KEY `payment_type`(`payment_type`),
-	KEY `retry_at`(`retry_at`),
-	KEY `receiver_email`(`receiver_email`),
-	KEY `date`(`date`),
-	KEY `id_utente`(`id_utente`)
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
