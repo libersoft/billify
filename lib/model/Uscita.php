@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * Skeleton subclass for representing a row from one of the subclasses of the 'fattura' table.
  *
@@ -14,13 +12,21 @@
  */
 class Uscita extends Fattura {
 
-	/**
-	 * Constructs a new Uscita class, setting the class_key column to FatturaPeer::CLASSKEY_3.
-	 */
-	public function __construct()
-	{
+  /**
+    * Constructs a new Uscita class, setting the class_key column to FatturaPeer::CLASSKEY_3.
+    */
+  public function __construct()
+  {
+    $this->setClassKey(FatturaPeer::CLASSKEY_3);
+  }
 
-		$this->setClassKey(FatturaPeer::CLASSKEY_3);
-	}
-
+  /**
+   * Check if data scadenza is minus than time and stato in NON PAGATA
+   *
+   * @return boolean
+   */
+  public function checkInRitardo()
+  {
+    return strtotime($this->getDataScadenza()) < time() && $this->getStato() == self::NON_PAGATA;
+  }
 } // Uscita

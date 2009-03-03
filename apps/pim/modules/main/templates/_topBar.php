@@ -53,6 +53,7 @@
 <li><?php echo link_to('Cash Flow', 'cashflow/index')?>
   <ul>
     <li><?php echo link_to(__('Nuova entrata'), '@document_sales_create')?></li>
+    <li><?php echo link_to(__('Nuova uscita'), '@document_purchase_create')?></li>
   </ul>
 </li>
 

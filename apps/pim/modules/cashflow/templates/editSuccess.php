@@ -1,4 +1,4 @@
-<h2><?php echo __('Nuova entrata')?></h2>
+<h2><?php echo $form->getObject() instanceof Entrata ? __('Nuova entrata') : __('Nuova uscita') ?></h2>
 
 <p><a href="<?php echo url_for('cashflow/index')?>">Torna al cash flow</a></p>
 

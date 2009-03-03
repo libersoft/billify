@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Entrata form.
+ * Uscita form.
  *
  * @package    form
  * @subpackage fattura
  * @version    SVN: $Id: sfPropelFormTemplate.php 6174 2007-11-27 06:22:40Z fabien $
  */
-class EntrataForm extends FatturaForm
+class UscitaForm extends FatturaForm
 {
   protected static $states = array('p' => 'Pagata', 'n' => 'Non Pagata');
 
@@ -19,7 +19,7 @@ class EntrataForm extends FatturaForm
     $widgets['class_key'] = new sfWidgetFormInputHidden();
     $widgets['stato'] = new sfWidgetFormSelect(array('choices' => self::$states));
     
-    $this->setDefault('class_key', FatturaPeer::CLASSKEY_ENTRATA);
+    $this->setDefault('class_key', FatturaPeer::CLASSKEY_USCITA);
     
     $this->widgetSchema->setLabel('contatto_string', 'Contatto');
     
@@ -43,6 +43,6 @@ class EntrataForm extends FatturaForm
   
   public function getModelName()
   {
-    return 'Entrata';
+    return 'Uscita';
   }
 }

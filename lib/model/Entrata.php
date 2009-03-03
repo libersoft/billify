@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * Skeleton subclass for representing a row from one of the subclasses of the 'fattura' table.
  *
@@ -13,14 +11,31 @@
  * @package    lib.model
  */
 class Entrata extends Fattura {
+  protected $stato_string = array(self::NON_PAGATA => 'non pagata',
+  self::PAGATA     => 'pagata',
+  self::RIFIUTATA  => 'rifiutata',
+  self::INVIATA    => 'inviata');
 
-	/**
-	 * Constructs a new Entrata class, setting the class_key column to FatturaPeer::CLASSKEY_3.
-	 */
-	public function __construct()
-	{
+  protected $color_stato = array(self::NON_PAGATA => 'red',
+  self::PAGATA     => 'green',
+  self::RIFIUTATA  => 'white',
+  self::INVIATA    => 'white');
 
-		$this->setClassKey(FatturaPeer::CLASSKEY_3);
-	}
+  /**
+    * Constructs a new Entrata class, setting the class_key column to FatturaPeer::CLASSKEY_3.
+    */
+  public function __construct()
+  {
+    $this->setClassKey(FatturaPeer::CLASSKEY_3);
+  }
 
+  /**
+   * Check if data scadenza is minus than time and stato in NON PAGATA
+   *
+   * @return boolean
+   */
+  public function checkInRitardo()
+  {
+    return strtotime($this->getDataScadenza()) < time() && $this->getStato() == self::NON_PAGATA;
+  }
 } // Entrata

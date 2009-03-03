@@ -59,6 +59,11 @@ class cashflowActions extends sfActions
         $cash_flow_entrance = new CashFlowEntranceAdapter($document);
         $this->cf->addIncoming($cash_flow_entrance); 
       }
+      elseif($document instanceof Uscita)
+      {
+        $cash_flow_entrance = new CashFlowExitAdapter($document);
+        $this->cf->addOutcoming($cash_flow_entrance); 
+      }
       
     }
   }
@@ -69,9 +74,34 @@ class cashflowActions extends sfActions
   }
   
   public function executeEdit($request)
-  {
+  { 
+    $id = null;
+    
+    
+    if(!is_null($request->getParameter('id')))
+    {
+      $id = $request->getParameter('id');
+    }
+    
+    if(!is_null($request->getParameter('fattura[id]')))
+    {
+      $id = $request->getParameter('fattura[id]');
+    }
+    
+    
+    $document = FatturaPeer::retrieveByPk($id);
+    
+    
     $factory = new FatturaFactoryForm();
-    $this->form = $factory->build($request->getParameter('type'), FatturaPeer::retrieveByPk($request->getParameter('fattura[id]', $request->getParameter('id'))));
+    $this->form = $factory->build($request->getParameter('type'), $document);
+    
+    /*if($request->hasParameter('type') && $request->getParameter('type') == 4)
+    {
+      print_r($document);
+      var_dump($id);
+      die('qui');
+    }*/
+    
 
     if($request->isMethod('post')) 
     {

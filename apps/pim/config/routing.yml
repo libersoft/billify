@@ -1,5 +1,9 @@
 # default rules
 
+document_purchase_create:
+  url: cashflow/create/document/purchase
+  param: {module: cashflow, action: create, type: 4}
+  
 document_sales_create:
   url: cashflow/create/document/sales
   param: {module: cashflow, action: create, type: 3}
