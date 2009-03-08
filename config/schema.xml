@@ -2,17 +2,17 @@
 <database name="propel" defaultIdMethod="native" noXsd="true" package="lib.model">
 
   <table name="banca" idMethod="native">
-    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="id_utente" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
+    <column name="id" type="integer" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="id_utente" type="integer" required="true" default="0" />
+    <foreign-key foreignTable="utente" onDelete="cascade" onUpdate="cascade">
       <reference local="id_utente" foreign="id" />
     </foreign-key>
-    <column name="abi" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="cab" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="cin" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="iban" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="numero_conto" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="nome_banca" type="VARCHAR" size="255" required="true" default="null" />
+    <column name="nome_banca" type="varchar" size="255" required="true" default="null" />
+    <column name="abi" type="varchar" size="255" required="true" default="null" />
+    <column name="cab" type="varchar" size="255" required="true" default="null" />
+    <column name="cin" type="varchar" size="255" required="true" default="null" />
+    <column name="iban" type="varchar" size="255" required="true" default="null" />
+    <column name="numero_conto" type="varchar" size="255" required="true" default="null" />
     <index name="id_utente">
       <index-column name="id_utente" />
     </index>

@@ -10,6 +10,30 @@
         <source>Description</source>
         <target>Descrizione</target>
       </trans-unit>
+      <trans-unit id="3">
+        <source>Bank list</source>
+        <target>Lista banche</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>are you sure?</source>
+        <target>sei sicuro?</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>No bank available, %insert_bank%.</source>
+        <target>Nessuna banca disponibile, %insert_bank%.</target>
+      </trans-unit>
+      <trans-unit id="6">
+        <source>insert your bank data</source>
+        <target>inserisci i dati della tua banca</target>
+      </trans-unit>
+      <trans-unit id="7">
+        <source>Banks</source>
+        <target>Banche</target>
+      </trans-unit>
+      <trans-unit id="8">
+        <source>New</source>
+        <target>Crea nuova</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

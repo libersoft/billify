@@ -14,12 +14,12 @@ CREATE TABLE `banca`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`id_utente` INTEGER default 0 NOT NULL,
+	`nome_banca` VARCHAR(255) default 'null' NOT NULL,
 	`abi` VARCHAR(255) default 'null' NOT NULL,
 	`cab` VARCHAR(255) default 'null' NOT NULL,
 	`cin` VARCHAR(255) default 'null' NOT NULL,
 	`iban` VARCHAR(255) default 'null' NOT NULL,
 	`numero_conto` VARCHAR(255) default 'null' NOT NULL,
-	`nome_banca` VARCHAR(255) default 'null' NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `id_utente`(`id_utente`),
 	CONSTRAINT `banca_FK_1`
