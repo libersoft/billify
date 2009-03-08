@@ -1,20 +1,21 @@
 dev:
   propel:
     param:
-      hostspec: localhost
-      username: root
-      password:
-      database: phpaccount
+      classname: DebugPDO
+
+test:
+  propel:
+    param:
+      classname:  DebugPDO
 
 all:
   propel:
     class: sfPropelDatabase
     param:
-      datasource:   propel
-      phptype:      mysql
-      hostspec: localhost
-      database: phpaccount
-      username: root
-      password:
-      compat_assoc_lower:  true
-      compat_rtrim_string: true
+      dsn:        mysql:dbname=phpaccount;host=localhost
+      username:   root
+      password:   
+      encoding:   utf8
+      persistent: true
+      pooling:    true
+      classname:  PropelPDO

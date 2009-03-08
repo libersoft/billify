@@ -35,8 +35,8 @@ class UtentePeer extends BaseUtentePeer {
 	public static function getImpostazione(){
 		if(!sfContext::getInstance()->getUser()->hasAttribute('impostazioni')){
 			$utente = UtentePeer::getUtenteCorrente();
-			$impostazioni = $utente->getImpostaziones();
-			sfContext::getInstance()->getUser()->setAttribute('impostazioni',$impostazioni[0]);
+			$impostazione = $utente->getImpostazione();
+			sfContext::getInstance()->getUser()->setAttribute('impostazioni',$impostazione);
 		}
 		return sfContext::getInstance()->getUser()->getAttribute('impostazioni');
 	}

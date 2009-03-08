@@ -98,5 +98,5 @@ all:
 #    validation_error_class:     form_error
 #    validation_error_id_prefix: error_for_
 
-    rich_text_fck_js_dir:  js/FCKeditor    
-    rich_text_fck_base_dir:js/FCKeditor
+ #   rich_text_fck_js_dir:  js/FCKeditor    
+ #   rich_text_fck_base_dir:js/FCKeditor

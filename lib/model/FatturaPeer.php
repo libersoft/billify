@@ -20,7 +20,7 @@ class FatturaPeer extends BaseFatturaPeer {
 			$criteria->add(FatturaPeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
 		}
 
-		return parent::doSelectRS($criteria);
+		return parent::doSelectStmt($criteria);
 	}
 
 } // FatturaPeer

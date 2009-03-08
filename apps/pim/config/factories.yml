@@ -5,8 +5,16 @@ prod:
       level:   err
       loggers: ~
 test:
+  response:
+    class: sfWebResponse
+    param:
+      send_http_headers: false
+
   storage:
     class: sfSessionTestStorage
+    param:
+      session_path: %SF_TEST_CACHE_DIR%/sessions
+
 
 all:
 #  controller:

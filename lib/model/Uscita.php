@@ -12,6 +12,16 @@
  */
 class Uscita extends Fattura {
 
+  protected $stato_string = array(self::NON_PAGATA => 'non pagata',
+                                  self::PAGATA     => 'pagata',
+                                  self::RIFIUTATA  => 'rifiutata',
+                                  self::INVIATA    => 'inviata');
+                                  
+  protected $color_stato = array(self::NON_PAGATA => 'red',
+                                 self::PAGATA     => 'green',
+                                 self::RIFIUTATA  => 'white',
+                                 self::INVIATA    => 'white');
+                                 
   /**
     * Constructs a new Uscita class, setting the class_key column to FatturaPeer::CLASSKEY_3.
     */

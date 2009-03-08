@@ -12,12 +12,12 @@
  */	
 class ClientePeer extends ContattoPeer {
 
-  public static function doSelect(Criteria $criteria, $con = null)
+  public static function doSelect(Criteria $criteria, PropelPDO $con = null)
 	{
 		return ContattoPeer::populateObjects(ClientePeer::doSelectRS($criteria, $con));
 	}
   
-	public static function doSelectRS(Criteria $criteria, $conn = null)
+	public static function doSelectRS(Criteria $criteria, PropelPDO $conn = null)
 	{	
 		$criteria->add(ClientePeer::CLASS_KEY, ContattoPeer::CLASSKEY_CLIENTE);
 		return parent::doSelectRS($criteria);

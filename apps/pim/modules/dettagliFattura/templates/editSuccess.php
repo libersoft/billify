@@ -23,7 +23,7 @@
         <input type="hidden" name="ids[]" value="<?php echo $dettaglio->getID();?>"/>
         <td><?php echo object_input_tag($dettaglio, 'getQty', array('id'=>'qty'.$dettaglio->getID(),'size' => 3, 'name' => 'qty[]')) ?></td>
         <td valign="top"><?php echo object_textarea_tag($dettaglio, 'getDescrizioneEditing', array('id'=>'desc'.$dettaglio->getID(),'size' => '50x5','name' => 'descrizione[]')) ?>&nbsp;
-        <?php echo link_to(image_tag('icons_tango/open.png',array('align'=>'top')),'#',array('title'=>'Seleziona Prodotto','onClick'=>"window.open('".url_for('prodotto/choose?id='.$dettaglio->getID())."','chooseProdotto','width=600,height=500 ,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=yes')"))?></td>
+        <?php echo link_to(image_tag('icons_tango/open.png',array('align'=>'top')),'/#',array('title'=>'Seleziona Prodotto','onClick'=>"window.open('".url_for('prodotto/choose?id='.$dettaglio->getID())."','chooseProdotto','width=600,height=500 ,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=yes')"))?></td>
         <td><?php echo object_input_tag($dettaglio, 'getPrezzo', array('id'=>'prezzo'.$dettaglio->getID(),'size' => 5,'name'=>'prezzo[]')) ?> &euro;</td>
         <td><?php echo object_input_tag($dettaglio, 'getSconto', array('size' => 3,'name'=>'sconto[]')) ?>%</td>
         <?php if($dettaglio->getFattura()->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'):?>
@@ -64,7 +64,7 @@
       <td width="5%"><?php echo input_tag('qty_new[]','0',array('id'=>'qty'.$i,'size'=>3))?></td>
       <td valign="top" width="50%">
       <?php echo textarea_tag('descrizione_new[]',null,array('id'=>'desc'.$i,'size'=>'50x5'))?>&nbsp;
-      <?php echo link_to(image_tag('icons_tango/open.png', array('align' => 'top')),'#',array('title'=>'Seleziona Prodotto','onClick'=>"window.open('".url_for('prodotto/choose?id='.$i)."','chooseProdotto','width=600,height=500 ,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=yes')"))?></td>
+      <?php echo link_to(image_tag('icons_tango/open.png', array('align' => 'top')),'/#',array('title'=>'Seleziona Prodotto','onClick'=>"window.open('".url_for('prodotto/choose?id='.$i)."','chooseProdotto','width=600,height=500 ,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=yes')"))?></td>
       <td width="10%"><?php echo input_tag('prezzo_new[]','0',array('id'=>'prezzo'.$i,'size'=>5))?> &euro;</td>
       <td width="5%"><?php echo input_tag('sconto_new[]','0',array('size'=>3))?>%</td>
       <?php if($fattura->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'):?><td width="10%"><?php echo input_tag('','',array('disabled' => 'disabled', 'size'=>5))?> &euro;</td><?php endif?>

@@ -52,7 +52,19 @@ $browser->
   checkResponseElement('table.banca th', 'Totale:', array('position' => 2))->
   checkResponseElement('table.banca td', '€ 1.200,00', array('position' => 0))->
   checkResponseElement('table.banca td', '€ 750,00', array('position' => 1))->
-  checkResponseElement('table.banca td', '€ 450,00', array('position' => 2))
+  checkResponseElement('table.banca td', '€ 450,00', array('position' => 2));
+  
+$browser->test()->info('Filtro data cashflow');
+$browser->
+  checkResponseElement('label[for="filter_date_start"]', 'Data Inizio')->
+  checkResponseElement('input[name="filter_date[start]"]')->
+  checkResponseElement('label[for="filter_date_start"]', 'Data Fine')->
+  checkResponseElement('input[name="filter_date[end]"]')->
+  setField('filter_date[start]', date('d/m/Y', strtotime('+8 days')))->
+  setField('filter_date[start]', date('d/m/Y', strtotime('+9 days')))->
+  click('Filtra')->
+  checkResponseElement('table.fatture tr', 1)->
+  checkResponseElement('table.fatture td', date('Y-m-d', strtotime('+8 days')), array('position' => 0))
   
 ;
 

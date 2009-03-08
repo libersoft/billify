@@ -36,8 +36,8 @@ class CodiceIvaPeer extends BaseCodiceIvaPeer {
    	FROM '.CodiceIvaPeer::TABLE_NAME.'
     WHERE '.CodiceIvaPeer::ID_UTENTE.' IS NULL';
     
-		$stmt = $con->prepareStatement($query);
-		$rs = $stmt->executeQuery();
+		$stmt = $con->prepare($query);
+		$rs = $stmt->execute();
 		
 		while ($rs->next())
 		{

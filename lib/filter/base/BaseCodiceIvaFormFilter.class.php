@@ -1,0 +1,53 @@
+<?php
+
+require_once(sfConfig::get('sf_lib_dir').'/filter/base/BaseFormFilterPropel.class.php');
+
+/**
+ * CodiceIva filter form base class.
+ *
+ * @package    sf_sandbox
+ * @subpackage filter
+ * @author     Your name here
+ * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 13459 2008-11-28 14:48:12Z fabien $
+ */
+class BaseCodiceIvaFormFilter extends BaseFormFilterPropel
+{
+  public function setup()
+  {
+    $this->setWidgets(array(
+      'id_utente'   => new sfWidgetFormPropelChoice(array('model' => 'Utente', 'add_empty' => true)),
+      'nome'        => new sfWidgetFormFilterInput(),
+      'valore'      => new sfWidgetFormFilterInput(),
+      'descrizione' => new sfWidgetFormFilterInput(),
+    ));
+
+    $this->setValidators(array(
+      'id_utente'   => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Utente', 'column' => 'id')),
+      'nome'        => new sfValidatorPass(array('required' => false)),
+      'valore'      => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'descrizione' => new sfValidatorPass(array('required' => false)),
+    ));
+
+    $this->widgetSchema->setNameFormat('codice_iva_filters[%s]');
+
+    $this->errorSchema = new sfValidatorErrorSchema($this->validatorSchema);
+
+    parent::setup();
+  }
+
+  public function getModelName()
+  {
+    return 'CodiceIva';
+  }
+
+  public function getFields()
+  {
+    return array(
+      'id'          => 'Number',
+      'id_utente'   => 'ForeignKey',
+      'nome'        => 'Text',
+      'valore'      => 'Number',
+      'descrizione' => 'Text',
+    );
+  }
+}

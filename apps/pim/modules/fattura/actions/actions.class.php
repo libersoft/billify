@@ -33,7 +33,7 @@ class fatturaActions extends sfActions
 
 	public function executeListFilter ()
 	{
-		$this->tags = TagsFatturaPeer::getPopularTags(sfConfig::get('app_tag_cloud_max'));
+		$this->tags = null; //TagsFatturaPeer::getPopularTags(sfConfig::get('app_tag_cloud_max'));
 
 		$criteria = new criteria();
 		$this->orderby = FatturaPeer::NUM_FATTURA;
@@ -225,10 +225,10 @@ class fatturaActions extends sfActions
 		$criteria->clearSelectColumns();
 		$criteria->addSelectColumn('year('.FatturaPeer::DATA.')');
 		$criteria->setDistinct();
-		$rs = VenditaPeer::doSelectRS($criteria);
+		$stmt = VenditaPeer::doSelectStmt($criteria);
 		$anni = array();
-		while($rs->next())
-		$anni[$rs->get(1)] = $rs->get(1);
+		while($res = $stmt->fetchColumn(0))
+		$anni[$res] = $res;
 		return $anni;
 	}
 

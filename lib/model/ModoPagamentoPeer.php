@@ -37,8 +37,8 @@ class ModoPagamentoPeer extends BaseModoPagamentoPeer {
    	FROM '.ModoPagamentoPeer::TABLE_NAME.'
     WHERE '.ModoPagamentoPeer::ID_UTENTE.' IS NULL';
     
-		$stmt = $con->prepareStatement($query);
-		$rs = $stmt->executeQuery();
+		$stmt = $con->prepare($query);
+		$rs = $stmt->execute();
 		
 		while ($rs->next())
 		{

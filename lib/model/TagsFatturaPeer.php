@@ -39,11 +39,11 @@ class TagsFatturaPeer extends BaseTagsFatturaPeer {
 		TagsFatturaPeer::TAG
 		);
 
-		$stmt = $con->prepareStatement($query);
+		$stmt = $con->prepare($query);
 		$stmt->setInt(1, $user_id);
 		$stmt->setString(2, $tag.'%');
 		$stmt->setLimit($max);
-		$rs = $stmt->executeQuery();
+		$rs = $stmt->execute();
 		while ($rs->next())
 		{
 			$tags[] = $rs->getString('tag');
@@ -65,9 +65,9 @@ class TagsFatturaPeer extends BaseTagsFatturaPeer {
     GROUP BY '.TagsFatturaPeer::TAG_NORMALIZZATO.'
     ORDER BY count DESC';
 //echo $query;
-		$stmt = $con->prepareStatement($query);
+		$stmt = $con->prepare($query);
 		$stmt->setLimit($max);
-		$rs = $stmt->executeQuery();
+		$rs = $stmt->execute();
 		$max_popularity = 0;
 		while ($rs->next())
 		{

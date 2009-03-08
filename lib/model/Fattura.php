@@ -407,7 +407,7 @@ class Fattura extends BaseFattura {
 	  
 	}
 
-	public function delete($conn = null)
+	public function delete(PropelPDO $con = null)
 	{
 		$dettagli_fattura = $this->getDettagliFatturas();
 		foreach ($dettagli_fattura as $dettaglio)

@@ -23,13 +23,15 @@ class mainActions extends sfActions
     }
   }
 
-  public function executeRiepilogo(){
+  public function executeRiepilogo()
+  {
     $this->riepilogo();
     $this->setTemplate('index');
 
   }
 
-  private function riepilogo(){
+  private function riepilogo()
+  {
     $this->count_customer = $this->countCustomers();
     $this->count_year_invoice = $this->countYearInvoices();
     $this->getFatturatoAnnuo();
@@ -189,14 +191,14 @@ class mainActions extends sfActions
     $criteria->add(FatturaPeer::STATO, 'n' );
     $criteria->addAscendingOrderByColumn(FatturaPeer::NUM_FATTURA);
 
-    $pager = new sfPropelPager('Vendita',10000);
+    /*$pager = new sfPropelPager('Vendita', 10000);
     $pager->setCriteria($criteria);
-    $pager->setPage($this->getRequestParameter('page',1));
+    $pager->setPage($this->getRequestParameter('page', 1));
     $pager->setPeerMethod('doSelectJoinAllExceptModoPagamento');
     $pager->setPeerCountMethod('doCountJoinAllExceptModoPagamento');
-    $pager->init();
-
-    $this->fatture_da_inviare = $pager;
+    $pager->init();*/
+   
+    $this->fatture_da_inviare = VenditaPeer::doSelectJoinAllExceptModoPagamento($criteria);
   }
 
   public function totaleDaIncassare()

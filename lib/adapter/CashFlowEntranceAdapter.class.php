@@ -55,7 +55,7 @@ Class CashFlowEntranceAdapter extends CashFlowSalesAdapter implements ICashFlowA
    */
   public function getContactUrl()
   {
-    return '#';
+    return '/#';
   }
   
   /**

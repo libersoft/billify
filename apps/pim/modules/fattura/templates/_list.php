@@ -1,7 +1,7 @@
 <?php if(count($fatture_results)>0):?>
 
 
-<?php if ($fatture->haveToPaginate()): ?>
+<?php if ($fatture instanceof sfPager && $fatture->haveToPaginate()): ?>
 <div class="navigator">Pagina <?php echo $fatture->getPage()?> di <?php echo $fatture->getLastPage();?>&nbsp;&nbsp;
   <?php echo link_to_remote('&laquo;',array('url'=>$form_action.'page='.$fatture->getFirstPage().'&tag='.$tag,
   											'update'=>$div_to_update,

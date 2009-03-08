@@ -20,7 +20,7 @@ class TagsFattura extends BaseTagsFattura {
 	{
 		parent::setTag($v);
 
-		$this->setTagNormalizzato(Tag::normalize($v));
+		//$this->setTagNormalizzato(Tag::normalize($v));
 	}
 	
 } // TagsFattura

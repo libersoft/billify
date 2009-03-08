@@ -1,5 +1,9 @@
 autoload:
-   
+  idLibrary:
+    name: idLibrary
+    ext: .class.php
+    path: %SF_PLUGINS_DIR%/idLibrary/lib/test
+    
   DomPDF:
     name:		  DomPdf
     ext: .cls.php

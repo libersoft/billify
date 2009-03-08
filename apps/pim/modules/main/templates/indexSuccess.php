@@ -27,7 +27,7 @@
 
 <h2>Fatture da Inviare</h2>
 <?php include_partial('fattura/list', array( 'fatture' => $fatture_da_inviare, 
-                                                                       'fatture_results'=>$fatture_da_inviare->getResults(), 
+                                                                       'fatture_results'=>$fatture_da_inviare, 
                                                                        'customer' => true, 
                                                                        'checkbox' => false, 
                                                                        'referrer' => 'main',

@@ -55,7 +55,7 @@ Class CashFlowExitAdapter extends CashFlowPurchaseAdapter implements ICashFlowAd
    */
   public function getContactUrl()
   {
-    return '#';
+    return '/#';
   }
   
   /**

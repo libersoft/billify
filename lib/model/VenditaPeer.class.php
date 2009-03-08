@@ -3,7 +3,7 @@
 
 Class VenditaPeer extends FatturaPeer {
   
-  public static function doSelect(Criteria $criteria, $con = null)
+  public static function doSelect(Criteria $criteria, PropelPDO $con = null)
 	{
 		return VenditaPeer::populateObjects(VenditaPeer::doSelectRS($criteria, $con));
 	}
@@ -71,17 +71,17 @@ Class VenditaPeer extends FatturaPeer {
 	  return array($fatturato_annuo, $fatturato_annuo_netto, $ritenuta_acconto, $inps);
 	}
 	
-	public static function doSelectJoinAllExceptModoPagamento(Criteria $c, $con = null)
+	public static function doSelectJoinAllExceptModoPagamento(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
 	  $c->add(VenditaPeer::CLASS_KEY, VenditaPeer::CLASSKEY_VENDITA );
 		$c->add(FatturaPeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
 		return parent::doSelectJoinAllExceptModoPagamento($c);
 	}
 
-	public static function doCountJoinAllExceptModoPagamento(Criteria $c, $distinct = false, $con = null)
+	public static function doCountJoinAllExceptModoPagamento(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
 	{
-	  $c->add(VenditaPeer::CLASS_KEY, VenditaPeer::CLASSKEY_VENDITA );
-		$c->add(FatturaPeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
-		return parent::doCountJoinAllExceptModoPagamento($c,$distinct,$con);
+	  $criteria->add(VenditaPeer::CLASS_KEY, VenditaPeer::CLASSKEY_VENDITA );
+		$criteria->add(FatturaPeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
+		return parent::doCountJoinAllExceptModoPagamento($criteria, $distinct, $con);
 	}
 }

@@ -37,7 +37,7 @@ class DettagliFattura extends BaseDettagliFattura {
 
 	} // setPrezzo()
 	
-	public function save($con = null) {
+	public function save(PropelPDO $con = null) {
 	  parent::save();
         
 	  if(!is_null($this->getFattura())) {

@@ -33,7 +33,7 @@
 	</ul>
 </li>
 
-<li><?php echo link_to('Fatture', '#')?>
+<li><?php echo link_to('Fatture', '/#')?>
 <ul>
   <li><?php echo link_to('Vendita', 'fattura/index')?>
     <ul>

@@ -9,7 +9,7 @@
  */ 
 class ContattoPeer extends BaseContattoPeer
 {
-  public static function doSelectRS(Criteria $criteria, $conn = null)
+  public static function doSelectRS(Criteria $criteria, PropelPDO $conn = null)
 	{	
 		if(sfConfig::get('sf_app') != 'backend') {
 			$criteria->add(ContattoPeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
