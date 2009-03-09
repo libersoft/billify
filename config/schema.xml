@@ -7,12 +7,12 @@
     <foreign-key foreignTable="utente" onDelete="cascade" onUpdate="cascade">
       <reference local="id_utente" foreign="id" />
     </foreign-key>
-    <column name="nome_banca" type="varchar" size="255" required="true" default="null" />
-    <column name="abi" type="varchar" size="255" required="true" default="null" />
-    <column name="cab" type="varchar" size="255" required="true" default="null" />
-    <column name="cin" type="varchar" size="255" required="true" default="null" />
-    <column name="iban" type="varchar" size="255" required="true" default="null" />
-    <column name="numero_conto" type="varchar" size="255" required="true" default="null" />
+    <column name="nome_banca" type="varchar" size="255" required="true" />
+    <column name="abi" type="varchar" size="255" required="true" />
+    <column name="cab" type="varchar" size="255" required="true" />
+    <column name="cin" type="varchar" size="255" required="true" />
+    <column name="iban" type="varchar" size="255" required="true" />
+    <column name="numero_conto" type="varchar" size="255" required="true" />
     <index name="id_utente">
       <index-column name="id_utente" />
     </index>

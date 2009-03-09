@@ -11,5 +11,8 @@ class BancaForm extends BaseBancaForm
 {
   public function configure()
   {
+    unset(
+      $this['id_utente']
+    );
   }
 }

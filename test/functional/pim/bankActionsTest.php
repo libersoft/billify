@@ -53,20 +53,51 @@ $browser->
   
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('h2', 'Modifica banca')->
+    checkElement('h2', 'Nuova banca')->
     checkElement('table.banca', 1)->
     checkElement('table th', 'Nome banca', array('position' => 0))->
     checkElement('table th', 'Abi', array('position' => 1))->
     checkElement('table th', 'Cab', array('position' => 2))->
-    checkElement('table th', 'Cin', array('position' => 4))->
-    checkElement('table th', 'Iban', array('position' => 5))->
-    checkElement('table th', 'N. conto', array('position' => 6))->
+    checkElement('table th', 'Cin', array('position' => 3))->
+    checkElement('table th', 'Iban', array('position' => 4))->
+    checkElement('table th', 'Numero conto', array('position' => 5))->
   end()->
   
-  with('form')->begin()->
+  setField('banca[nome_banca]', 'Banca del tempo')->
+  setField('banca[abi]', '1234')->
+  setField('banca[cab]', '0034')->
+  setField('banca[cin]', 'U')->
+  setField('banca[iban]', 'IT 0034 90234 789')->
+  setField('banca[numero_conto]', '98765400')->
+  click('Salva')->
   
+  followRedirect();
+  
+$browser->test()->todo('test bank validation');
+  /*with('form')->begin()->
+  
+  end()->*/
+$browser->
+  click('Annulla')->
+  with('response')->begin()->
+    isStatusCode(200)->
+    checkElement('td:contains("Banca del tempo")')->
+    checkElement('td:contains("IT 0034 90234 789")')->
+    checkElement('td:contains("98765400")')->
+  end()->
+  
+  info('4. edit bank')->
+  click('Banca del tempo')->
+  with('response')->begin()->
+    isStatusCode(200)->
+    checkElement('h2', 'Modifica banca')->
+  end()->
+  setField('banca[nome_banca]', 'Banca del tempo2')->
+  click('Salva')->
+  followRedirect()->
+  click('Annulla')->
+  
+  with('response')->begin()->
+    isStatusCode(200)->
+    checkElement('td:contains("Banca del tempo2")')->
   end();
-  $browser->test()->todo('3. new bank');
-  
-  $browser->info('4. edit bank');
-  $browser->test()->todo('4. edit bank');

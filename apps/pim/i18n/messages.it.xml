@@ -34,6 +34,30 @@
         <source>New</source>
         <target>Crea nuova</target>
       </trans-unit>
+      <trans-unit id="9">
+        <source>New bank</source>
+        <target>Nuova banca</target>
+      </trans-unit>
+      <trans-unit id="10">
+        <source>Save</source>
+        <target>Salva</target>
+      </trans-unit>
+      <trans-unit id="11">
+        <source>Bank data</source>
+        <target>Dati banca</target>
+      </trans-unit>
+      <trans-unit id="12">
+        <source>Cancel</source>
+        <target>Annulla</target>
+      </trans-unit>
+      <trans-unit id="13">
+        <source>Delete</source>
+        <target>Elimina</target>
+      </trans-unit>
+      <trans-unit id="14">
+        <source>Edit bank</source>
+        <target>Modifica banca</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
