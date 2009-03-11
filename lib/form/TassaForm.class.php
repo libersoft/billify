@@ -11,5 +11,8 @@ class TassaForm extends BaseTassaForm
 {
   public function configure()
   {
+    unset(
+      $this['id_utente']
+    );
   }
 }

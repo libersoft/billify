@@ -58,6 +58,34 @@
         <source>Edit bank</source>
         <target>Modifica banca</target>
       </trans-unit>
+      <trans-unit id="15">
+        <source>Tax list</source>
+        <target>Lista tasse</target>
+      </trans-unit>
+      <trans-unit id="16">
+        <source>name</source>
+        <target>nome</target>
+      </trans-unit>
+      <trans-unit id="17">
+        <source>value</source>
+        <target>valore</target>
+      </trans-unit>
+      <trans-unit id="18">
+        <source>No tax available, %insert_tax%.</source>
+        <target>Nessuna tassa disponibile, %insert_tax%.</target>
+      </trans-unit>
+      <trans-unit id="19">
+        <source>insert tax data</source>
+        <target>crea la tua tassa</target>
+      </trans-unit>
+      <trans-unit id="20">
+        <source>New tax</source>
+        <target>Nuova tassa</target>
+      </trans-unit>
+      <trans-unit id="21">
+        <source>Edit tax</source>
+        <target>Modifica tassa</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

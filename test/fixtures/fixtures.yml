@@ -428,3 +428,7 @@ TagsFattura:
     data: 2008-04-01
 
 Tassa: 
+  Tassa1:
+    nome: tassa
+    valore: 20
+    descrizione: descrizione

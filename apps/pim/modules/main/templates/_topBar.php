@@ -61,12 +61,12 @@
 
 <li><a>Opzioni</a>
 	<ul>
-	<!--li><?php echo link_to('Profilo','utente/edit')?></li-->
-	<li><?php echo link_to(__('Banks'),'bank/index')?>
+	<!--li><?php echo link_to('Profilo', 'utente/edit')?></li-->
+	<li><?php echo link_to(__('Banks'), 'bank/index')?>
 	<ul><li><?php echo link_to(__('New'), 'bank/new')?></li></ul>
 	</li>
-	<li><?php echo link_to('Tasse','tassa/list')?>
-	<ul><li><?php echo link_to('Crea Nuova','tassa/create')?></li></ul>
+	<li><?php echo link_to('Tasse', 'tax/index')?>
+	<ul><li><?php echo link_to('Crea Nuova', 'tax/new')?></li></ul>
 	</li>
 	<li><?php echo link_to('Pagamenti','modipagamento/index')?>
 	<ul><li><?php echo link_to('Crea Nuovo','modipagamento/create')?></li></ul>
