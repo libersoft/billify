@@ -18,6 +18,10 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('h2', 'Lista banche')->
+    checkElement('#bread-crumps ul li', 3)->
+    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#bread-crumps ul li', '/Banche/', array('position' => 2))->
     checkElement('table.fatture', 1)->
     checkElement('table th', 4)->
     checkElement('table th', 'banca', array('position' => 0))->
@@ -53,6 +57,11 @@ $browser->
   
   with('response')->begin()->
     isStatusCode(200)->
+    checkElement('#bread-crumps ul li', 4)->
+    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#bread-crumps ul li', '/Banche/', array('position' => 2))->
+    checkElement('#bread-crumps ul li', '/Nuova banca/', array('position' => 3))->
     checkElement('h2', 'Nuova banca')->
     checkElement('table.banca', 1)->
     checkElement('table th', 'Nome banca', array('position' => 0))->
@@ -91,6 +100,11 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('h2', 'Modifica banca')->
+    checkElement('#bread-crumps ul li', 4)->
+    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#bread-crumps ul li', '/Banche/', array('position' => 2))->
+    checkElement('#bread-crumps ul li', '/Modifica Banca del tempo/', array('position' => 3))->
   end()->
   setField('banca[nome_banca]', 'Banca del tempo2')->
   click('Salva')->

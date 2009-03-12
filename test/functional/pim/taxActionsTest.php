@@ -18,6 +18,10 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('h2', 'Lista tasse')->
+    checkElement('#bread-crumps ul li', 3)->
+    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#bread-crumps ul li', '/Tasse/', array('position' => 2))->
     checkElement('table.fatture', 1)->
     checkElement('table th', 3)->
     checkElement('table th', 'nome', array('position' => 0))->
@@ -51,6 +55,11 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('h2', 'Nuova tassa')->
+    checkElement('#bread-crumps ul li', 4)->
+    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#bread-crumps ul li', '/Tasse/', array('position' => 2))->
+    checkElement('#bread-crumps ul li', '/Nuova tassa/', array('position' => 3))->
     checkElement('table.banca', 1)->
     checkElement('table th', 'Nome', array('position' => 0))->
     checkElement('table th', 'Valore', array('position' => 1))->
@@ -81,6 +90,11 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('h2', 'Modifica tassa')->
+    checkElement('#bread-crumps ul li', 4)->
+    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#bread-crumps ul li', '/Tasse/', array('position' => 2))->
+    checkElement('#bread-crumps ul li', '/Modifica Tassa 2/', array('position' => 3))->
   end()->
   setField('tassa[nome]', 'Tassa 3')->
   click('Salva')->

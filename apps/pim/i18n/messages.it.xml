@@ -86,6 +86,22 @@
         <source>Edit tax</source>
         <target>Modifica tassa</target>
       </trans-unit>
+      <trans-unit id="22">
+        <source>You are in</source>
+        <target>Sei in</target>
+      </trans-unit>
+      <trans-unit id="23">
+        <source>Banks</source>
+        <target>Banche</target>
+      </trans-unit>
+      <trans-unit id="24">
+        <source>Edit %name%</source>
+        <target>Modifica %name%</target>
+      </trans-unit>
+      <trans-unit id="25">
+        <source>Taxes</source>
+        <target>Tasse</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
