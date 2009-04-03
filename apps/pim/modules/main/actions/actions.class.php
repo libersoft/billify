@@ -224,7 +224,7 @@ class mainActions extends sfActions
     {
       $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       $this->totale_da_incassare = $this->totale_da_incassare + $fattura->getNettoDaLiquidare();
-      $this->totale_da_incassare_netto = $this->totale_da_incassare_netto + $fattura->getImponibileFineIva() - $fattura->getRitenutaAcconto();
+      $this->totale_da_incassare_netto = $this->totale_da_incassare_netto + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
     }
 
   }

@@ -2,21 +2,7 @@
 include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 include_once(dirname(__FILE__).'/../../lib/model/Fattura.php');
 
-Class ModoPagamento{  
-  
-  function getId(){
-    return 1;
-  }
-  
-  function setNumGiorni($num){
-    $this->num_giorni = $num;
-  }
-  
-  function getNumGiorni(){
-    return $this->num_giorni;
-  }
-  
-}
+ProjectConfiguration::getApplicationConfiguration('pim', 'test', true);
 
 $test = new lime_test(15, new lime_output_color());
 
@@ -52,12 +38,6 @@ $test->is($fattura->getIva(), '720', '->getIva() returns right value');
 $test->is($fattura->getImponibile(), '4000', '->getImponibile() returns right value');
 $test->is($fattura->getImponibileFineIva(), '4800', '->getImponibileFineIva() returns right value');
 $test->is($fattura->getTotale(), 4800 + 720, '->getTotale() returns right value');
-
-
-
-
-
-
 
 $test->comment('->checkInRitardo()');
 $modo_pagamento = new ModoPagamento();

@@ -33,17 +33,17 @@ $browser->
   checkResponseElement('table.fatture td', '01 Azienda', array('position' => 1))->
   checkResponseElement('table.fatture td', date('d/m/y', strtotime('+1 day')), array('position' => 2))->
   checkResponseElement('table.fatture td', '/1.000,00/', array('position' => 3))->
-  checkResponseElement('table.fatture td', '/1.200,00/', array('position' => 3))->
+  checkResponseElement('table.fatture td', '/1.440,00/', array('position' => 3))->
   checkResponseElement('table.fatture td', 'non inviata', array('position' => 4))->
   checkResponseElement('table.fatture td', 'no', array('position' => 5))->
   
   checkResponseElement('p strong', 'Fatturato annuo:', array('position' => 0))->
   checkResponseElement('p', '/9.000,00/', array('position' => 0))->
-  checkResponseElement('p', '/10.800,00/', array('position' => 0))->
+  checkResponseElement('p', '/12.960,00/', array('position' => 0))->
   
   checkResponseElement('p strong', 'Fatturato annuo incassato:', array('position' => 1))->
   checkResponseElement('p', '/1.000,00/', array('position' => 1))->
-  checkResponseElement('p', '/1.200,00/', array('position' => 1))->
+  checkResponseElement('p', '/1.440,00/', array('position' => 1))->
   
   checkResponseElement('p strong', 'Fatture da incassare:', array('position' => 2))->
   checkResponseElement('p', '/4/', array('position' => 2))->
@@ -51,10 +51,10 @@ $browser->
   checkResponseElement('p strong', 'Iva da pagare:', array('position' => 3))->
   checkResponseElement('p strong', 'Totale da incassare:', array('position' => 4  ))->
   checkResponseElement('p', '/8.000,00/', array('position' => 4))->
-  checkResponseElement('p', '/9.600,00/', array('position' => 4))->
-  checkResponseElement('p', '/1.800,00/', array('position' => 3))->
-  checkResponseElement('p', '/1.600,00/', array('position' => 3))->
-  checkResponseElement('p', '/200,00/', array('position' => 3))->
+  checkResponseElement('p', '/11.520,00/', array('position' => 4))->
+  checkResponseElement('p', '/2.160,00/', array('position' => 3))->
+  checkResponseElement('p', '/1.920,00/', array('position' => 3))->
+  checkResponseElement('p', '/240,00/', array('position' => 3))->
   
   checkResponseElement('body', '!/Ritenuta d\'acconto versata/')
   
