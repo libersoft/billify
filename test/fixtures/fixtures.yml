@@ -281,16 +281,6 @@ CodiceIva:
     nome: 20%
     valore: 20
     descrizione: Iva al 20%
-  CodiceIva_2: 
-    id_utente: Utente_1
-    nome: 3%
-    valore: 3
-    descrizione: Iva al 3%
-  CodiceIva_3: 
-    id_utente: Utente_1
-    nome: esente
-    valore: 0
-    descrizione: Esente Iva 
     
 Fattura:
 <?php for($i = 1; $i <= 3; $i++):?>

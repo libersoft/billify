@@ -102,6 +102,38 @@
         <source>Taxes</source>
         <target>Tasse</target>
       </trans-unit>
+      <trans-unit id="26">
+        <source>Taxes code list</source>
+        <target>Lista codici iva</target>
+      </trans-unit>
+      <trans-unit id="27">
+        <source>description</source>
+        <target>descrizione</target>
+      </trans-unit>
+      <trans-unit id="28">
+        <source>tax code</source>
+        <target>codice iva</target>
+      </trans-unit>
+      <trans-unit id="29">
+        <source>No taxes codes available, %insert_taxes_code%.</source>
+        <target>Nessun codice iva disponibile, %insert_taxes_code%.</target>
+      </trans-unit>
+      <trans-unit id="30">
+        <source>insert new tax code</source>
+        <target>crea un nuovo codice iva</target>
+      </trans-unit>
+      <trans-unit id="31">
+        <source>Taxes codes</source>
+        <target>Codici iva</target>
+      </trans-unit>
+      <trans-unit id="32">
+        <source>New tax code</source>
+        <target>Nuovo codice iva</target>
+      </trans-unit>
+      <trans-unit id="33">
+        <source>Edit tax code</source>
+        <target>Modifica codice iva</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

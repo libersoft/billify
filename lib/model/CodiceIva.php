@@ -15,5 +15,10 @@ require_once 'lib/model/om/BaseCodiceIva.php';
  * @package model
  */	
 class CodiceIva extends BaseCodiceIva {
+  
+  public function __toString()
+  {
+    return $this->getNome();
+  }
 	
 } // CodiceIva

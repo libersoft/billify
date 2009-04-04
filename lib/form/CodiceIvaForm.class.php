@@ -11,5 +11,8 @@ class CodiceIvaForm extends BaseCodiceIvaForm
 {
   public function configure()
   {
+    unset(
+      $this['id_utente']
+    );
   }
 }
