@@ -1,0 +1,11 @@
+editSuccess:
+  components:
+    breadcrumps: [payment, editBread]
+
+newSuccess:
+  components:
+    breadcrumps: [payment, createBread]
+
+indexSuccess:
+  components:
+    breadcrumps: [payment, bread]

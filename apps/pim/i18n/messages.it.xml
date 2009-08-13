@@ -134,6 +134,10 @@
         <source>Edit tax code</source>
         <target>Modifica codice iva</target>
       </trans-unit>
+      <trans-unit id="34">
+        <source>Payment's types</source>
+        <target>Tipologie di pagamento</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

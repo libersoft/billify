@@ -5,15 +5,11 @@
 
 <?php echo include_http_metas() ?>
 <?php echo include_metas() ?>
-
 <?php echo include_title() ?>
 
-
 <!--[if IE]>
-  	<link rel="stylesheet" type="text/css" href="/progetti/pim/web/css/all-ie.css" />
+  	<link rel="stylesheet" type="text/css" href=<?php echo url_for("css/all-ie.css")?>" />
 <![endif]-->
-
-<link rel="shortcut icon" href="/favicon.ico">
 
 </head>
 <body>

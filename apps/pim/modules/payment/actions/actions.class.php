@@ -13,6 +13,11 @@ class paymentActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     $this->modo_pagamento_list = ModoPagamentoPeer::doSelect(new Criteria());
+
+    if(!count($this->modo_pagamento_list))
+    {
+      return 'NoResults';
+    }
   }
 
   public function executeNew(sfWebRequest $request)

@@ -1,3 +1,3 @@
-<h1>New Payment</h1>
+<h2><?php echo __('New bank')?></h2>
 
 <?php include_partial('form', array('form' => $form)) ?>
