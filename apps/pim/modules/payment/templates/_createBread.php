@@ -1,5 +1,6 @@
-<?php include_partial('global/breadcrumps', array('items' => 
-                                                                                    array(link_to(__('Home'), 'main/index'), 
-                                                                                              link_to(__('Banks'), 'bank/index'),
-                                                                                              __('New bank')
-                                                                                              ))) ?>
+<?php
+
+include_partial('global/breadcrumps', array('items' => array(link_to(__('Home'), 'main/index'),
+                                                             link_to(__('Payment\'s types'), 'payment/index'),
+                                                             __('New type'))));
+?>

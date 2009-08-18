@@ -11,5 +11,8 @@ class ModoPagamentoForm extends BaseModoPagamentoForm
 {
   public function configure()
   {
+    unset(
+      $this['id_utente']
+    );
   }
 }

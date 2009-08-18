@@ -50,5 +50,60 @@ $browser->
     checkElement('table', 0)->
     checkElement('#content p', 'Nessuna tipologia di pagamento disponibile, inserisci un nuovo tipo.')->
     checkElement('#content p a[title="create"]', 'inserisci un nuovo tipo')->
-  end()
+  end()->
+
+  info('4. new payment')->
+  get('payment/new')->
+
+  with('response')->begin()->
+    isStatusCode(200)->
+    checkElement('#bread-crumps ul li', 4)->
+    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#bread-crumps ul li', '/Tipologie di pagamento/', array('position' => 2))->
+    checkElement('#bread-crumps ul li', '/Nuova tipologia/', array('position' => 3))->
+    checkElement('h2', 'Nuova tipologia di pagamento')->
+    checkElement('table.banca', 1)->
+    checkElement('table th', 'Num giorni', array('position' => 0))->
+    checkElement('table th', 'Descrizione', array('position' => 1))->
+  end()->
+
+  setField('modo_pagamento[num_giorni]', '90')->
+  setField('modo_pagamento[descrizione]', '90gg')->
+  click('Salva')->
+
+  followRedirect();
+
+$browser->test()->todo('test payment validation');
+  /*with('form')->begin()->
+
+  end()->*/
+$browser->
+  click('Annulla')->
+  with('response')->begin()->
+    isStatusCode(200)->
+    checkElement('td:contains("90")')->
+    checkElement('td:contains("90gg")')->
+  end()->
+
+  info('4. edit payment')->
+  click('90')->
+  with('response')->begin()->
+    isStatusCode(200)->
+    checkElement('h2', 'Modifica tipologia di pagamento')->
+    checkElement('#bread-crumps ul li', 4)->
+    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#bread-crumps ul li', '/Tipologie di pagamento/', array('position' => 2))->
+    checkElement('#bread-crumps ul li', '/Modifica 90gg/', array('position' => 3))->
+  end()->
+  setField('modo_pagamento[descrizione]', '90ggg')->
+  click('Salva')->
+  followRedirect()->
+  click('Annulla')->
+
+  with('response')->begin()->
+    isStatusCode(200)->
+    checkElement('td:contains("90ggg")')->
+  end();
 ;

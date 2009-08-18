@@ -138,6 +138,27 @@
         <source>Payment's types</source>
         <target>Tipologie di pagamento</target>
       </trans-unit>
+      <trans-unit id="35">
+        <source>No payment's type available, %insert_payment%.</source>
+        <target>Nessuna tipologia di pagamento disponibile, %insert_payment%.</target>
+      </trans-unit>
+      <trans-unit id="36">
+        <source>insert a new type</source>
+        <target>inserisci un nuovo tipo</target>
+      </trans-unit>
+      <trans-unit id="37">
+        <source>New type</source>
+        <target>Nuova tipologia</target>
+      </trans-unit>
+      <trans-unit id="38">
+        <source>New payment's type</source>
+        <target>Nuova tipologia di pagamento</target>
+      </trans-unit>
+      <trans-unit id="39">
+        <source>Edit payment's type</source>
+        <target>Modifica tipologia di pagamento</target>
+      </trans-unit>
+      Edit payment\'s type
     </body>
   </file>
 </xliff>

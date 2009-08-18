@@ -58,7 +58,7 @@
     	 <ul><li><?php echo link_to('Crea Nuova', 'tax/new')?></li></ul>
     	</li>
     	<li><?php echo link_to('Pagamenti', 'payment/index')?>
-    	 <ul><li><?php echo link_to('Crea Nuovo','modipagamento/create')?></li></ul>
+    	 <ul><li><?php echo link_to('Crea Nuovo','payment/new')?></li></ul>
     	</li>
     	<li><?php echo link_to('Codici iva', 'taxescode/index')?>
     	 <ul><li><?php echo link_to('Crea Nuovo','taxescode/new')?></li></ul>
