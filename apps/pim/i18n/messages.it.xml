@@ -158,7 +158,10 @@
         <source>Edit payment's type</source>
         <target>Modifica tipologia di pagamento</target>
       </trans-unit>
-      Edit payment\'s type
+      <trans-unit id="40">
+        <source>Payment's type</source>
+        <target>Tipologia di pagamento</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
