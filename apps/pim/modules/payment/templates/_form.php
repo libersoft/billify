@@ -7,7 +7,7 @@
 <?php endif; ?>
 
 <fieldset>
-  <legend><?php echo __('Payment\s type') ?></legend>
+  <legend><?php echo __('Payment\'s type') ?></legend>
 
   <table class="banca">
     <tfoot>
