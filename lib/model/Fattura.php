@@ -15,27 +15,27 @@ define('DEBITO', 'debito');
  * @package model
  */
 class Fattura extends BaseFattura {
-  
+
   const PAGATA = 'p';
   const NON_PAGATA = 'n';
   const RIFIUTATA = 'r';
   const INVIATA = 'i';
-		
+
   protected $stato_string = array(self::NON_PAGATA => 'non inviata',
                                   self::PAGATA     => 'pagata',
                                   self::RIFIUTATA  => 'rifiutata',
                                   self::INVIATA    => 'inviata');
-                                 
+
   protected $font_color_stato = array(self::NON_PAGATA => 'black',
                                       self::PAGATA     => 'black',
                                       self::RIFIUTATA  => 'black',
                                       self::INVIATA    => 'white');
-                                       
+
   protected $color_stato = array(self::NON_PAGATA => 'yellow',
                                  self::PAGATA     => 'green',
                                  self::RIFIUTATA  => 'red',
                                  self::INVIATA    => 'blue');
-  
+
 
 	protected $imponibile = 0;
 	private $imponibile_scorporato = 0;
@@ -53,15 +53,15 @@ class Fattura extends BaseFattura {
 	public function __toString() {
 	  return 'Fattura '.($this->isProForma() ? 'Pro-Forma' : 'n. '.$this->getNumFattura());
 	}
-	
+
 	public function toString(){
         return $this->__toString();
 	}
 
 	public function setNewNumFattura()
 	{
-		$conn = Propel::getConnection();
-		$stm = $conn->createStatement();
+		$con = Propel::getConnection();
+		//$stm = $conn->createStatement();
 
 		//Select Invoice whit max ID
 		if($this->getData() != "") {
@@ -71,31 +71,34 @@ class Fattura extends BaseFattura {
 			$year = date('y', time());
 		}
 
-		$query = 'SELECT max('.FatturaPeer::NUM_FATTURA .') as max 
-		          FROM '.FatturaPeer::TABLE_NAME.' 
-		          WHERE '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').' 
-		          AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'" 
+		$query = 'SELECT max('.FatturaPeer::NUM_FATTURA .') as max
+		          FROM '.FatturaPeer::TABLE_NAME.'
+		          WHERE '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').'
+		          AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'"
 		          AND '.FatturaPeer::DATA .' <= "'.date('y-m-d',mktime(0,0,0,12,31,$year)).'"
 		          AND '.FatturaPeer::CLASS_KEY .' = '.FatturaPeer::CLASSKEY_VENDITA ;
-		
-		$rs = $stm->executeQuery($query);
-		$rs->first();
-		$max = $rs->get('max');
+
+		$stmt = $con->prepare($query);
+		$stmt->execute();
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
+		$max = $row['max'];
 
 		//Select Num Fattura and date of Invoice with Max ID
 		if($max != "") {
-			$query2 = 'SELECT '.VenditaPeer::ID.' as id,'.VenditaPeer::DATA.' as data 
-			           FROM '.VenditaPeer::TABLE_NAME.' 
-			           WHERE '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').' 
-			           AND '.FatturaPeer::NUM_FATTURA .'='.$max.' 
-			           AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'" 
+			$query2 = 'SELECT '.VenditaPeer::ID.' as id,'.VenditaPeer::DATA.' as data
+			           FROM '.VenditaPeer::TABLE_NAME.'
+			           WHERE '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').'
+			           AND '.FatturaPeer::NUM_FATTURA .'='.$max.'
+			           AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'"
 			           AND '.FatturaPeer::DATA .' <= "'.date('y-m-d',mktime(0,0,0,12,31,$year)).'"
 			           AND '.FatturaPeer::CLASS_KEY .' = '.FatturaPeer::CLASSKEY_VENDITA ;
-			
-			$rs = $stm->executeQuery($query2);
-			$rs->first();
-			$id_fattura = $rs->get('id');
-			$data_fattura = $rs->get('data');
+
+			$stmt = $con->prepare($query2);
+			$stmt->execute();
+
+			$row = $stmt->fetch(PDO::FETCH_ASSOC);
+			$id_fattura = $row['id'];
+			$data_fattura = $row['data'];
 
 			$num_fattura = $max;
 			$data = $data_fattura;
@@ -148,10 +151,10 @@ class Fattura extends BaseFattura {
 		{
 			//$this->tasse_ulteriori_array = TassaPeer::doSelect(new Criteria());
 			$this->tasse_ulteriori_array = $tasse_ulteriori;
-			
+
 			//$this->tipo_ritenuta = UtentePeer::getImpostazione()->getTipoRitenuta();
 			$this->tipo_ritenuta = $tipo_ritenuta;
-			
+
 			$this->calcImponibile();
 
 			if($this->getIncludiTasse() == 's') {
@@ -177,7 +180,7 @@ class Fattura extends BaseFattura {
 	{
 		return $this->tasse_ulteriori_array;
 	}
-	
+
 	private function calcImponibile()
 	{
 		$dettagli_fattura = $this->getDettagliFatturas();
@@ -214,7 +217,7 @@ class Fattura extends BaseFattura {
 
 	private function calcIvaDettaglio($dettaglio, $iva) {
 		if($this->getCalcolaTasse() == 's' && count($this->tasse_ulteriori_array) > 0) {
-		  
+
 			$vat_tmp_array = $this->tasse_ulteriori_array;
 			$tassa = 0;
 			foreach ($vat_tmp_array as $vat) {
@@ -298,9 +301,9 @@ class Fattura extends BaseFattura {
 			}
 
 			$this->costo_tasse_ulteriori += $costo;
-			$tasse_ulteriori[]= array('nome'=> $vat->getNome(), 
-			                                           'valore' => $vat->getValore(), 
-			                                           'descrizione' => $vat->getDescrizione(), 
+			$tasse_ulteriori[]= array('nome'=> $vat->getNome(),
+			                                           'valore' => $vat->getValore(),
+			                                           'descrizione' => $vat->getDescrizione(),
 			                                           'costo' => $costo);
 		}
 		$this->tasse_ulteriori = $tasse_ulteriori;
@@ -376,16 +379,16 @@ class Fattura extends BaseFattura {
 	public function getStato($string = false)
 	{
 	  if($string) {
-	    
+
   	  if($this->stato) {
   	   return $this->stato_string[$this->stato];
   	  }
-  	  
+
   	  return $this->stato_string[self::NON_PAGATA];
 	  }
-	  
+
 	  return $this->stato;
-	  
+
 	}
 
 	public function getColorStato()
@@ -393,7 +396,7 @@ class Fattura extends BaseFattura {
 	  if($this->stato) {
 	   return $this->color_stato[$this->stato];
 	  }
-	  
+
 	  return $this->color_stato[self::NON_PAGATA];
 	}
 
@@ -402,9 +405,9 @@ class Fattura extends BaseFattura {
 	  if($this->stato) {
 	   return $this->font_color_stato[$this->stato];
 	  }
-	  
+
 	  return $this->font_color_stato[self::NON_PAGATA];
-	  
+
 	}
 
 	public function delete(PropelPDO $con = null)
