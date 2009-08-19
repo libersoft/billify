@@ -39,7 +39,7 @@
     <column name="modo_pagamento_id" type="INTEGER" />
     <column name="stato" type="CHAR" required="true" default="a" />
     <column name="contatto" type="VARCHAR" size="255" />
-    
+
     <column name="id_tema_fattura" type="INTEGER" />
     <column name="id_banca" type="INTEGER" />
     <column name="calcola_ritenuta_acconto" type="CHAR" required="true" default="a" />
@@ -178,11 +178,11 @@
     <column name="righe_dettagli" type="INTEGER" required="true" default="5" />
     <column name="ritenuta_acconto" type="VARCHAR" size="255" required="true" default="20/100" />
     <column name="tipo_ritenuta" type="VARCHAR" size="255" required="true" default="debito" />
-    <column name="riepilogo_home" type="CHAR" required="true" default="" />
-    <column name="consegna_commercialista" type="CHAR" required="true" default="" />
-    <column name="deposita_iva" type="CHAR" required="true" default="" />
+    <column name="riepilogo_home" type="CHAR" required="true" default="s" />
+    <column name="consegna_commercialista" type="CHAR" required="true" default="n" />
+    <column name="deposita_iva" type="CHAR" required="true" default="n" />
     <column name="fattura_automatica" type="CHAR" required="true" default="s" />
-    <column name="codice_cliente" type="CHAR" required="true" default="" />
+    <column name="codice_cliente" type="CHAR" required="true" default="n" />
     <column name="label_imponibile" type="VARCHAR" size="255" required="true" default="Imponibile" />
     <column name="label_spese" type="VARCHAR" size="255" required="true" default="Spese Anticipate" />
     <column name="label_imponibile_iva" type="VARCHAR" size="255" required="true" default="Imponibile ai fini iva" />
@@ -306,5 +306,5 @@
       <unique-column name="username" />
     </unique>
   </table>
-  
+
 </database>

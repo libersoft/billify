@@ -68,7 +68,9 @@ class paymentActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      $modo_pagamento = $form->save();
+      $modo_pagamento = $form->getObject();
+      $modo_pagamento->setIdUtente($this->getUser()->getId());
+      $form->save();
 
       $this->redirect('payment/edit?id='.$modo_pagamento->getId());
     }
