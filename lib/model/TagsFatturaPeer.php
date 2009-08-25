@@ -2,7 +2,7 @@
 
   // include base peer class
   require_once 'lib/model/om/BaseTagsFatturaPeer.php';
-  
+
   // include object class
   include_once 'lib/model/TagsFattura.php';
 
@@ -10,14 +10,14 @@
 /**
  * Skeleton subclass for performing query and update operations on the 'tags_fattura' table.
  *
- * 
+ *
  *
  * You should add additional methods to this class to meet the
  * application requirements.  This class will only be generated as
  * long as it does not already exist in the output directory.
  *
  * @package model
- */	
+ */
 class TagsFatturaPeer extends BaseTagsFatturaPeer {
 	public static function getTagsForUserLike($user_id, $tag, $max = 10)
 	{
@@ -51,7 +51,7 @@ class TagsFatturaPeer extends BaseTagsFatturaPeer {
 
 		return $tags;
 	}
-	
+
 	public static function getPopularTags($max = 5)
 	{
 		$tags = array();
@@ -63,11 +63,13 @@ class TagsFatturaPeer extends BaseTagsFatturaPeer {
     FROM '.TagsFatturaPeer::TABLE_NAME.'
     WHERE '.TagsFatturaPeer::ID_UTENTE .' = '.sfContext::getInstance()->getUser()->getAttribute('id_utente').'
     GROUP BY '.TagsFatturaPeer::TAG_NORMALIZZATO.'
-    ORDER BY count DESC';
+    ORDER BY count DESC LIMIT '.$max;
 //echo $query;
-		$stmt = $con->prepare($query);
-		$stmt->setLimit($max);
-		$rs = $stmt->execute();
+
+    $stmt = $con->prepare($query);
+		$stmt->execute();
+
+		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 		$max_popularity = 0;
 		while ($rs->next())
 		{

@@ -90,10 +90,11 @@ class dettagliFatturaActions extends sfActions
       $descrizione = $this->getRequestParameter('descrizione');
       for ($i=0;$i<count($ids);$i++)
       {
-        if($descrizione[$i]!=""){
+        if($descrizione[$i]!="")
+        {
           $dettagli_fattura = DettagliFatturaPeer::retrieveByPk($ids[$i]);
           $this->forward404Unless($dettagli_fattura instanceof DettagliFattura);
-          $dettagli_fattura->setId($ids[$i]);
+          //$dettagli_fattura->setId($ids[$i]);
           $dettagli_fattura->setFatturaId($this->getRequestParameter('fattura_id'));
           $dettagli_fattura->setDescrizione($descrizione[$i]);
           $dettagli_fattura->setQty($qty[$i]);
@@ -118,7 +119,7 @@ class dettagliFatturaActions extends sfActions
       {
         if($descrizione_new[$i]!=""){
           $dettagli_fattura = new DettagliFattura();
-          $dettagli_fattura->setId($ids_new[$i]);
+          //$dettagli_fattura->setId($ids_new[$i]);
           $dettagli_fattura->setFatturaId($this->getRequestParameter('fattura_id'));
           $dettagli_fattura->setDescrizione(($descrizione_new[$i]));
           $dettagli_fattura->setQty($qty_new[$i]);

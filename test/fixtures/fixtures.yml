@@ -1,7 +1,7 @@
 ---
 Utente:
-  Utente_1: 
-    id_invitation_code: 
+  Utente_1:
+    id_invitation_code:
     username: user
     nome: User
     cognome: User
@@ -20,18 +20,18 @@ Utente:
     approva_policy: 1
     sconto: 0
 
-ModoPagamento: 
-  ModoPagamento_1: 
+ModoPagamento:
+  ModoPagamento_1:
     id_utente: Utente_1
     num_giorni: 0
     descrizione: Rimessa diretta
-  ModoPagamento_2: 
+  ModoPagamento_2:
     id_utente: Utente_1
     num_giorni: 10
     descrizione: 10 Giorni
 
-TemaFattura: 
-  TemaFattura_1: 
+TemaFattura:
+  TemaFattura_1:
     id_utente: Utente_1
     nome: ideato srl
     template: |
@@ -58,8 +58,8 @@ TemaFattura:
       </td>
       </tr>
       </table>
-      
-      
+
+
       <div class="dettaglioFattura">
       <h2 style="width:100%; background-color: #fefefe">Oggetto:</h2>
       <table width="100%" cellspacing="0">
@@ -82,7 +82,7 @@ TemaFattura:
       </tr>
       </FOREACHDETTAGLI>
       </table>
-      
+
       <div>
       <table class="calcola_fattura" width="100%" cellspacing="0" cellpadding="5">
       <tr id="imponibile">
@@ -115,7 +115,7 @@ TemaFattura:
       <th>Totale Fattura:</th>
       <td align="right">[FATTURA_TOTALE]</td>
       </tr>
-      
+
       <tr id="ritenuta_acconto">
       <th>Ritenuta d'acconto:</th>
       <td align="right">[FATTURA_RITENUTA_ACCONTO]</td>
@@ -127,21 +127,21 @@ TemaFattura:
       </table>
       </div>
       </div>
-      
+
       <div id="proforma_art_21" style="font-size:10px;">
       <em>[PROFORMA_ART_21]</em>
       <em>[PROFORMA_PAGAMENTO]</em>
       </div>
-      
+
       <h2>Modalita' di pagamento:</h2>
       Pagamento: [FATTURA_PAGAMENTO]
-      
+
       <div class="coor_banca">
       <strong>Nome Banca:</strong> [NOME_BANCA]<br/>
       <strong>ABI:</strong> [ABI] - <strong>CAB:</strong> [CAB] - <strong>CIN:</strong> [CIN] - <strong>C/C.:</strong> [NUM_CONTO]<br/>
       <strong>IBAN:</strong> [IBAN]<br/>
       </div>
-      
+
       <div class="footer">
       ideato srl <info@ideato.it> - http://www.ideato.it - info@ideato.it
       </div>
@@ -155,7 +155,7 @@ TemaFattura:
       font-size: 12px;
       }
       .intestazione{
-      
+
       }
       .cliente{
       text-align: left;
@@ -196,7 +196,7 @@ TemaFattura:
       font-size: 12px;
       clear: both;
       }
-      
+
       .left-border {
       border-left: 1px solid black;
       border-top: 1px solid black;
@@ -204,7 +204,7 @@ TemaFattura:
       border-bottom: 1px solid black;
       padding: 5px;
       }
-      
+
       .right-border {
       border-right: 1px solid black;
       border-top: 1px solid black;
@@ -215,30 +215,30 @@ TemaFattura:
       .pari {
       background-color: #efefef;
       }
-      
+
       #proforma_art_21{
       margin-top: 20px;
       }
-      
+
       .footer{
       font-size: 10px;
       font-weight: bold;
       margin-top: 20px;
       }
-      
-Banca: 
-  Banca_1: 
+
+Banca:
+  Banca_1:
     id_utente: Utente_1
     abi: 01234
     cab: 22000
     cin: O
     iban: IT00 O011 7777 9999 0000 0001 111
     numero_conto: 000000112209
-    nome_banca: Credito di PIM 
+    nome_banca: Credito di PIM
 
 Contatto:
-<?php for($i = 0; $i < 20; $i++):?> 
-  Cliente_<?php echo $i ?>: 
+<?php for($i = 0; $i < 20; $i++):?>
+  Cliente_<?php echo $i ?>:
     id_utente: Utente_1
     azienda: s
     ragione_sociale: '<?php echo $i<=9?'0'.$i:$i ?> Azienda'
@@ -274,17 +274,17 @@ Contatto:
     email: azienda@example.it
     class_key: '<?php echo ContattoPeer::CLASSKEY_FORNITORE ?>'
 <?php endfor?>
-  
-CodiceIva: 
-  CodiceIva_1: 
+
+CodiceIva:
+  CodiceIva_1:
     id_utente: Utente_1
     nome: 20%
     valore: 20
     descrizione: Iva al 20%
-    
+
 Fattura:
 <?php for($i = 1; $i <= 3; $i++):?>
-  Fattura_<?php echo $i?>: 
+  Fattura_<?php echo $i?>:
     id_utente: Utente_1
     num_fattura: '<?php echo $i?>'
     cliente_id: Cliente_1
@@ -294,19 +294,19 @@ Fattura:
     sconto: 0
     vat: 20
 <?php endfor?>
-<?php for($i = 4; $i <= 7; $i++):?>
-  Fattura_<?php echo $i?>: 
+<?php for($i = 4; $i <= 25; $i++):?>
+  Fattura_<?php echo $i?>:
     id_utente: Utente_1
     num_fattura: '<?php echo $i?>'
     cliente_id: Cliente_2
-    data: '<?php echo date('Y-m-d', strtotime('+3 days'))?>'
+    data: '<?php echo date('Y-m-d', strtotime('today'))?>'
     modo_pagamento_id: ModoPagamento_2
     calcola_ritenuta_acconto: n
     sconto: 0
     stato: i
     vat: 20
 <?php endfor?>
-  Fattura_a: 
+  Fattura_a:
     id_utente: Utente_1
     num_fattura: 100
     cliente_id: Cliente_2
@@ -317,7 +317,7 @@ Fattura:
     stato: p
     vat: 20
 <?php for($i = 1; $i < 3; $i++):?>
-  Fattura_acquisto_<?php echo $i?>: 
+  Fattura_acquisto_<?php echo $i?>:
     class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
@@ -329,7 +329,7 @@ Fattura:
     stato: 'n'
 <?php endfor?>
 <?php for($i = 3; $i < 7; $i++):?>
-  Fattura_acquisto_<?php echo $i?>: 
+  Fattura_acquisto_<?php echo $i?>:
     class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
@@ -341,7 +341,7 @@ Fattura:
     stato: 'n'
 <?php endfor?>
 <?php for($i = 7; $i < 10; $i++):?>
-  Fattura_acquisto_<?php echo $i?>: 
+  Fattura_acquisto_<?php echo $i?>:
     class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
@@ -352,10 +352,10 @@ Fattura:
     imposte: '2002.125'
     stato: 'n'
 <?php endfor?>
-    
-DettagliFattura: 
+
+DettagliFattura:
 <?php for($i = 1; $i <= 3; $i++):?>
-  DettagliFattura_<?php echo $i?>: 
+  DettagliFattura_<?php echo $i?>:
     fattura_id: 'Fattura_<?php echo $i?>'
     descrizione: >
       Consulenza e realizzazione sito web 1
@@ -365,7 +365,7 @@ DettagliFattura:
     prezzo: 1000
 <?php endfor?>
 <?php for($i = 4; $i <= 7; $i++):?>
-  DettagliFattura_<?php echo $i?>: 
+  DettagliFattura_<?php echo $i?>:
     fattura_id: 'Fattura_<?php echo $i?>'
     descrizione: >
       Consulenza e realizzazione sito web 2
@@ -374,7 +374,7 @@ DettagliFattura:
     iva: 20
     prezzo: 2000
 <?php endfor?>
-  DettagliFattura_a: 
+  DettagliFattura_a:
     fattura_id: Fattura_a
     descrizione: >
       Consulenza e realizzazione sito web 3
@@ -382,9 +382,9 @@ DettagliFattura:
     sconto: 0
     iva: 20
     prezzo: 1000
-  
-Impostazione: 
-  Impostazione_1: 
+
+Impostazione:
+  Impostazione_1:
     num_clienti: 10
     num_fatture: 20
     righe_dettagli: 5
@@ -408,16 +408,16 @@ Impostazione:
     label_prezzo_totale: Prezzo Totale
     label_sconto: Sconto
     id_utente: Utente_1
-    
-TagsFattura: 
-  TagsFattura_1: 
+
+TagsFattura:
+  TagsFattura_1:
     id_fattura: Fattura_1
     id_utente: Utente_1
     tag: mdg
     tag_normalizzato: mdg
     data: 2008-04-01
 
-Tassa: 
+Tassa:
   Tassa1:
     nome: tassa
     valore: 20

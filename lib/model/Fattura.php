@@ -64,14 +64,16 @@ class Fattura extends BaseFattura {
 		//$stm = $conn->createStatement();
 
 		//Select Invoice whit max ID
-		if($this->getData() != "") {
+		if($this->getData() != "")
+		{
 			$year = date('y', strtotime($this->getData()));
 		}
-		else {
+		else
+		{
 			$year = date('y', time());
 		}
 
-		$query = 'SELECT max('.FatturaPeer::NUM_FATTURA .') as max
+		$query = 'SELECT MAX(CAST('.FatturaPeer::NUM_FATTURA .' AS UNSIGNED)) as max
 		          FROM '.FatturaPeer::TABLE_NAME.'
 		          WHERE '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').'
 		          AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'"

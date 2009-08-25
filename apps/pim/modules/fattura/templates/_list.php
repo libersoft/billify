@@ -7,7 +7,7 @@
   											'update'=>$div_to_update,
   											'loading' => "Element.show('indicator')",
 								 			'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?>
-  											
+
   <?php echo link_to_remote('&lt;',array('url' => $form_action.'page='.$fatture->getPreviousPage().'&tag='.$tag,
   										 'update'=>$div_to_update,
   										 'loading' => "Element.show('indicator')",
@@ -34,11 +34,11 @@
 
 <table width="100%" class="fatture" style="margin-bottom: 5px;margin-top: 10px;">
 <?php if($checkbox):?>
-<th></th>
+  <th></th>
 <?php endif ?>
 <th>N.</th>
 <?php if($customer):?>
-<th class="cliente">Cliente</th>
+  <th class="cliente">Ragione sociale</th>
 <?php endif ?>
 <th>Data</th>
 <!--th>Scadenza</th-->
@@ -46,20 +46,20 @@
 <th>Totale</th>
 <th>Stato</th>
 <?php if(UtentePeer::getImpostazione()->getBoolConsegnaCommercialista()):?>
-<th><abbr title="Consegnata al commercialista">Commer.ta</abbr></th>
+  <th><abbr title="Consegnata al commercialista">Commer.ta</abbr></th>
 <?php endif?>
 <?php if(UtentePeer::getImpostazione()->getBoolDepositaIva()):?>
-<th><abbr title="Iva depositata">Iva Dep.</abbr></th>
+  <th><abbr title="Iva depositata">Iva Dep.</abbr></th>
 <?php endif?>
 <th>Ritardo</th>
 <?php if($copia):?>
-<th>Copia</th>
+  <th>Copia</th>
 <?php endif?>
 <th>Pdf</th>
 <!--th>Elimina</th-->
-<?php 
-$tasse = TassaPeer::doSelect(new Criteria()); 
-foreach ($fatture_results as $fattura) : 
+<?php
+$tasse = TassaPeer::doSelect(new Criteria());
+foreach ($fatture_results as $fattura) :
   $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
 ?>
 
@@ -75,7 +75,7 @@ foreach ($fatture_results as $fattura) :
 </td>
 
 <?php if($customer):?>
-  <td class="cliente"><?php echo link_to($fattura->getCliente(),'cliente/show?id='.$fattura->getClienteID())?></td>
+  <td class="cliente"><?php echo link_to($fattura->getCliente(),'@contact_show?id='.$fattura->getClienteID())?></td>
 <?php endif ?>
 
 <td><?php echo format_date($fattura->getData())?></td>

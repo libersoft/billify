@@ -36,25 +36,15 @@ class fatturaActions extends sfActions
 		$this->tags = null; //TagsFatturaPeer::getPopularTags(sfConfig::get('app_tag_cloud_max'));
 
 		$criteria = new criteria();
-		$this->orderby = FatturaPeer::NUM_FATTURA;
-		$this->mode = 'Ascending';
 
-		if($this->getRequestParameter('orderby'))
-		{
-			$this->orderby = $this->getRequestParameter('orderby');
-			if($this->getRequestParameter('mode'))
-			{
-				$this->mode = $this->getRequestParameter('mode');
-			}
-		}
-		$method = 'add'.$this->mode.'OrderByColumn';
-		$criteria->$method($this->orderby);
+		$criteria->addAscendingOrderByColumn(FatturaPeer::NUM_FATTURA );
 
 		$this->setFilter();
 		$this->getTrimestre();
 
 		$this->tag = '';
-		if($this->hasRequestParameter('tag') && $this->getRequestParameter('tag') != ''){
+		if($this->hasRequestParameter('tag') && $this->getRequestParameter('tag') != '')
+		{
 			$criteria->add(TagsFatturaPeer::TAG_NORMALIZZATO , $this->getRequestParameter('tag'));
 			$criteria->addJoin(FatturaPeer::ID,TagsFatturaPeer::ID_FATTURA );
 			$criteria->addGroupByColumn(FatturaPeer::ID);
@@ -316,34 +306,45 @@ class fatturaActions extends sfActions
 		$this->makeFattura();
 	}
 
-	private function updateFattura($fattura){
+	private function updateFattura($fattura)
+	{
 
-		if($this->checkBloccoFattura() && $fattura->isNew()){
+		if($this->checkBloccoFattura() && $fattura->isNew())
+		{
 			$this->setTemplate('blocco');
 			return sfView::SUCCESS;
 		}
 
-		list($d, $m, $y) = sfI18N::getDateForCulture($this->getRequestParameter('data'), $this->getUser()->getCulture());
+		$i18n = new sfI18N($this->getContext()->getConfiguration());
+		list($d, $m, $y) = $i18n->getDateForCulture($this->getRequestParameter('data'), $this->getUser()->getCulture());
 
-		if(date('y',strtotime($fattura->getData()))!=date('y',mktime(0,0,0,$m,$d,$y))){
-			$fattura->setData("$y-$m-$d");
+		$fattura->setData("$y-$m-$d");
+
+		if(date('y', strtotime($fattura->getData())) != date('y', mktime(0, 0, 0, $m, $d, $y)))
+		{
 			$fattura->setNewNumFattura();
 		}
-		else {
-			$fattura->setData("$y-$m-$d");
+		else
+		{
 			$fattura->setNumFattura($this->getRequestParameter('num_fattura'));
 		}
 
-		if($this->getRequestParameter('proforma')=='y')
+		if($this->getRequestParameter('proforma') == 'y')
+		{
 			$fattura->setNumFattura(0);
+		}
 
-		if(!$fattura->isNew() && $fattura->isProForma() && $this->getRequestParameter('proforma')!='y')
+		if(!$fattura->isNew() && $fattura->isProForma() && $this->getRequestParameter('proforma') != 'y')
+		{
 			$fattura->setRegolare();
+		}
 
 		if($this->checkFatturaExist($fattura))
-			return sfView::ERROR;
+		{
+		  return sfView::ERROR;
+		}
 
-		$fattura->setId($this->getRequestParameter('id'));
+		//$fattura->setId($this->getRequestParameter('id'));
 		$fattura->setClienteId($this->getRequestParameter('cliente_id'));
 		$fattura->setModoPagamentoId($this->getRequestParameter('modo_pagamento_id'));
 		$fattura->setSconto($this->getRequestParameter('sconto'));
@@ -366,7 +367,7 @@ class fatturaActions extends sfActions
 	public function executeUpdate ()
 	{
 		$fattura = $this->getFatturaOrCreate();
-		$this->updateFattura($fattura);
+		return $this->updateFattura($fattura);
 	}
 
 	public function checkFatturaExist($fattura){
@@ -375,11 +376,13 @@ class fatturaActions extends sfActions
 		$this->fattura = $fattura;
 
 		$criteria = new Criteria();
-		$criteria->add(FatturaPeer::NUM_FATTURA,$fattura->getNumFattura());
+		$criteria->add(FatturaPeer::NUM_FATTURA, $fattura->getNumFattura());
 		$fatture = VenditaPeer::doSelect($criteria);
 		$trovato = false;
-		foreach($fatture as $fattura_find){
-			if($fattura_find->getNumFattura() != '0' && $fattura_find->getData('Y') == $anno && $fattura_find->getID() != $fattura->getID()){
+		foreach($fatture as $fattura_find)
+		{
+			if($fattura_find->getNumFattura() != '0' && $fattura_find->getData('Y') == $anno && $fattura_find->getID() != $fattura->getID())
+			{
 				$trovato = true;
 				break;
 			}
@@ -411,7 +414,9 @@ class fatturaActions extends sfActions
 			$fattura->setData(time());
 			$fattura->setNewNumFattura();
 			if($this->id_cliente)
+			{
 				$fattura->setModoPagamentoId($this->cliente->getModoPagamentoID());
+			}
 		}
 		else
 		{
@@ -616,9 +621,13 @@ class fatturaActions extends sfActions
 		$this->getRequest()->setParameter('id_cliente',$this->getRequestParameter('cliente_id'));
 
 		if(!$this->getRequestParameter('id',0))
-		$this->forward('fattura','create');
+		{
+		  $this->forward('fattura','create');
+		}
 		else
-		$this->forward('fattura','edit');
+		{
+		  $this->forward('fattura','edit');
+		}
 	}
 
 	public function executeAddTag(){

@@ -1,17 +1,21 @@
 # default rules
 
+contact_show:
+  url: contact/show/:id
+  param: {module: contact, action: edit}
+
 document_purchase_create:
   url: cashflow/create/document/purchase
   param: {module: cashflow, action: create, type: 4}
-  
+
 document_sales_create:
   url: cashflow/create/document/sales
   param: {module: cashflow, action: create, type: 3}
-  
+
 fatture_acquisto:
   url: /fatture_acquisto
   param: {module: invoice, action: index, type: 2}
-  
+
 fatture_acquisto_create:
   url: /fatture_acquisto/create
   param: {module: invoice, action: create, type: 2}
