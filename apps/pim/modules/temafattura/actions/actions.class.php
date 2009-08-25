@@ -56,7 +56,7 @@ class temafatturaActions extends sfActions
       $this->forward404Unless($tema_fattura);
     }
 
-    $tema_fattura->setId($this->getRequestParameter('id'));
+    //$tema_fattura->setId($this->getRequestParameter('id'));
     $tema_fattura->setIdUtente($this->getUser()->getAttribute('id_utente'));
     $tema_fattura->setNome($this->getRequestParameter('nome'));
     $tema_fattura->setTemplate($this->getRequestParameter('template'));
@@ -89,7 +89,7 @@ class temafatturaActions extends sfActions
 
     $tema_fattura->delete();
 
-    return $this->redirect('temafattura/list');
+    return $this->redirect('temafattura/index');
   }
 
   public function handleErrorUpdate()

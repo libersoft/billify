@@ -16,7 +16,7 @@
 <?php foreach ($tema_fatturas as $tema_fattura): ?>
 <tr>
     <td><?php echo link_to($tema_fattura->getNome(), 'temafattura/edit?id='.$tema_fattura->getId()) ?></td>
-    <td><?php echo link_to(image_tag('icons_tango/trash-full.png'), 'temafattura/delete?id='.$tema_fattura->getId(), 'post=true&confirm=Vuoi eliminiare questo tema?') ?></td>
+    <td><?php echo link_to(image_tag('icons_tango/trash-full.png', array('alt' => 'delete')), 'temafattura/delete?id='.$tema_fattura->getId(), 'post=true&confirm=Vuoi eliminiare questo tema?') ?></td>
   </tr>
 <?php endforeach; ?>
 </tbody>

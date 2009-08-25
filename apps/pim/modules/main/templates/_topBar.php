@@ -63,7 +63,7 @@
     	<li><?php echo link_to('Codici iva', 'taxescode/index')?>
     	 <ul><li><?php echo link_to('Crea Nuovo','taxescode/new')?></li></ul>
     	</li>
-    	<li><?php echo link_to('Temi Fattura', 'temafattura/list')?>
+    	<li><?php echo link_to('Temi Fattura', 'temafattura/index')?>
     	 <ul><li><?php echo link_to('Crea Nuovo','temafattura/create')?></li></ul>
     	</li>
     	<li><?php echo link_to('Impostazioni', 'impostazione/edit')?></li>
