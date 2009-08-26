@@ -162,6 +162,26 @@
         <source>Payment's type</source>
         <target>Tipologia di pagamento</target>
       </trans-unit>
+      <trans-unit id="41">
+        <source>Date start</source>
+        <target>Data inizio</target>
+      </trans-unit>
+      <trans-unit id="42">
+        <source>Date end</source>
+        <target>Data fine</target>
+      </trans-unit>
+      <trans-unit id="43">
+        <source>Document date</source>
+        <target>Data documento</target>
+      </trans-unit>
+      <trans-unit id="44">
+        <source>from %from_date% to %to_date%</source>
+        <target>da %from_date% a %to_date%</target>
+      </trans-unit>
+      <trans-unit id="45">
+        <source>Filter</source>
+        <target>Filtra</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -118,8 +118,7 @@ class Fattura extends BaseFattura {
 	public function getDataPagamento($format = 'd M Y')
 	{
 		$data_pagamento = $this->getData();
-		$data = explode('-',$data_pagamento);
-		$data = date($format, mktime(0, 0, 0, $data[1], $data[2] + (is_object($this->getModoPagamento())?$this->getModoPagamento()->getNumGiorni():0), $data[0]));
+		$data = date($format, strtotime($this->getData().' +'.(is_object($this->getModoPagamento())?$this->getModoPagamento()->getNumGiorni():0).' days'));
 		return strftime($data);
 	}
 
@@ -459,7 +458,14 @@ class Fattura extends BaseFattura {
     $this->setContatto($v);
   }
 
-
+  public function save(PropelPDO $con = null)
+  {
+    if ($this->getClassKey() == FatturaPeer::CLASSKEY_ACQUISTO || $this->getClassKey() == FatturaPeer::CLASSKEY_VENDITA )
+    {
+      $this->setDataScadenza($this->getDataPagamento());
+    }
+    return parent::save($con);
+  }
 } // Fattura
 
 function numFormat($number){

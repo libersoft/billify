@@ -1,5 +1,12 @@
 <h2><?php echo __('Cash Flow')?></h2>
 
+<div class="filter">
+  <form method="post">
+    <?php echo $filter ?>
+    <input type="submit" value="<?php echo __('Filter')?>" />
+  </form>
+</div>
+
 <table class="fatture">
   <tr>
     <th><?php echo __('Data')?></th>

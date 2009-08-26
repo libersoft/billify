@@ -10,103 +10,73 @@
  */
 class cashflowActions extends sfActions
 {
-  
+
   private function update($request)
   {
     $this->form->bind($request->getParameter('fattura'));
-    if ($this->form->isValid()) {
+    if ($this->form->isValid())
+    {
       $document = $this->form->save();
       $document->setIdUtente($this->getUser()->getAttribute('id_utente'));
       $document->save();
-      
+
       return $document;
     }
 
     return false;
   }
-  
+
  /**
   * Executes index action
   *
   * @param sfRequest $request A request object
   */
-  public function executeIndex($request) 
+  public function executeIndex($request)
   {
-    $c = new Criteria();
-    
-    $c = new Criteria();
-    $c->addAscendingOrderByColumn(FatturaPeer::DATA);
-    
-    $documents = FatturaPeer::doSelect($c);
-    
+    $this->filter = new CashFlowFilter();
     $this->cf = new CashFlow();
-    
-    foreach ($documents as $index => $document) 
-    {
-      if($document instanceof Vendita ) 
-      {
-        $document->calcolaFattura();
-        $cash_flow_vendita = new CashFlowSalesAdapter($document);
-        $this->cf->addIncoming($cash_flow_vendita); 
-      }
-      elseif($document instanceof Acquisto)
-      {
-        $cash_flow_acquisto = new CashFlowPurchaseAdapter($document);
-        $this->cf->addOutcoming($cash_flow_acquisto);
-      }
-      elseif($document instanceof Entrata)
-      {
-        $cash_flow_entrance = new CashFlowEntranceAdapter($document);
-        $this->cf->addIncoming($cash_flow_entrance); 
-      }
-      elseif($document instanceof Uscita)
-      {
-        $cash_flow_entrance = new CashFlowExitAdapter($document);
-        $this->cf->addOutcoming($cash_flow_entrance); 
-      }
-      
-    }
+    $this->cf->addDocuments(FatturaPeer::doSelectForCashFlow($request->getParameter('cash_flow_filters[document_date]')));
   }
-  
+
   public function executeCreate($request)
   {
     $this->forward('cashflow', 'edit');
   }
-  
+
   public function executeEdit($request)
-  { 
+  {
     $id = null;
-    
-    
+
+
     if(!is_null($request->getParameter('id')))
     {
       $id = $request->getParameter('id');
     }
-    
+
     if(!is_null($request->getParameter('fattura[id]')))
     {
       $id = $request->getParameter('fattura[id]');
     }
-    
-    
+
+
     $document = FatturaPeer::retrieveByPk($id);
-    
-    
+
+
     $factory = new FatturaFactoryForm();
     $this->form = $factory->build($request->getParameter('type'), $document);
-    
+
     /*if($request->hasParameter('type') && $request->getParameter('type') == 4)
     {
       print_r($document);
       var_dump($id);
       die('qui');
     }*/
-    
 
-    if($request->isMethod('post')) 
+
+    if($request->isMethod('post'))
     {
       $contact = $this->update($request);
-      if($contact) 
+      if($contact)
       {
         $this->redirect('cashflow/edit?id='.$contact->getId());
       }
