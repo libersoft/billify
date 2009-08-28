@@ -3,13 +3,13 @@ default:
     content-type: text/html; charset=utf-8
 
   metas:
-    title:        phpAccount
+    title:        Billify - simplify your business management
     robots:       index, follow
     description:  php, invoice, account
     keywords:     php, invoice, account
     language:     it
 
-  stylesheets:    [main, pmi, menu]
+  stylesheets:    [impress/reset, impress/main, impress/style]
 
   javascripts:    [prototype/prototype]
 
@@ -17,10 +17,9 @@ default:
   layout:         layout
 
   slots:          {}
-  
+
   #SideBar Options
   components:
-    topbar:  [main, topBar]
     sidebar: [main, sideBar]
     breadcrumps: [main, bread]
     demoAlert: [utente, demoAlert]

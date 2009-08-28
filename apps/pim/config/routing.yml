@@ -1,5 +1,29 @@
 # default rules
 
+user_edit:
+  url: profile
+  param: {module: user, action: edit}
+
+preferences:
+  url: preferences
+  param: {module: settings, action: index}
+
+logout:
+  url: logout
+  param: {module: login, action: logout}
+
+invoice:
+  url: invoices
+  param: {module: fattura, action: index}
+
+invoice_create:
+  url: invoices
+  param: {module: fattura, action: create}
+
+cashflow:
+  url: cashflow
+  param: {module: cashflow, action: index}
+
 contact_show:
   url: contact/show/:id
   param: {module: contact, action: edit}

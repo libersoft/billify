@@ -182,6 +182,114 @@
         <source>Filter</source>
         <target>Filtra</target>
       </trans-unit>
+      <trans-unit id="46">
+        <source>go to homepage</source>
+        <target>vai alla homepage</target>
+      </trans-unit>
+      <trans-unit id="47">
+        <source>profile</source>
+        <target>profilo</target>
+      </trans-unit>
+      <trans-unit id="48">
+        <source>preferences</source>
+        <target>impostazioni</target>
+      </trans-unit>
+      <trans-unit id="49">
+        <source>logout</source>
+        <target>esci</target>
+      </trans-unit>
+      <trans-unit id="50">
+        <source>dashboard</source>
+        <target>bacheca</target>
+      </trans-unit>
+      <trans-unit id="51">
+        <source>address book</source>
+        <target>rubrica</target>
+      </trans-unit>
+      <trans-unit id="52">
+        <source>invoices</source>
+        <target>fatture</target>
+      </trans-unit>
+      <trans-unit id="53">
+        <source>cash flow</source>
+        <target>cash flow</target>
+      </trans-unit>
+      <trans-unit id="54">
+        <source>welcome %firstname% %lastname%</source>
+        <target>benvenuto %firstname% %lastname%</target>
+      </trans-unit>
+      <trans-unit id="55">
+        <source>outcoming invoices</source>
+        <target>fatture da inviare</target>
+      </trans-unit>
+      <trans-unit id="56">
+        <source>cashing invoices</source>
+        <target>fatture da incassare</target>
+      </trans-unit>
+      <trans-unit id="57">
+        <source>customers address book</source>
+        <target>rubrica clienti</target>
+      </trans-unit>
+      <trans-unit id="58">
+        <source>providers address book</source>
+        <target>rubrica fornitori</target>
+      </trans-unit>
+      <trans-unit id="59">
+        <source>sales invoices</source>
+        <target>fatture di vendita</target>
+      </trans-unit>
+      <trans-unit id="60">
+        <source>purchase invoices</source>
+        <target>fatture d'acquisto</target>
+      </trans-unit>
+      <trans-unit id="62">
+        <source>resume</source>
+        <target>riepilogo</target>
+      </trans-unit>
+      <trans-unit id="63">
+        <source>customers list</source>
+        <target>lista clienti</target>
+      </trans-unit>
+      <trans-unit id="64">
+        <source>add new customer</source>
+        <target>aggiungi un nuovo cliente</target>
+      </trans-unit>
+      <trans-unit id="65">
+        <source>providers list</source>
+        <target>lista fornitori</target>
+      </trans-unit>
+      <trans-unit id="66">
+        <source>add new provider</source>
+        <target>aggiungi un nuovo fornitore</target>
+      </trans-unit>
+      <trans-unit id="67">
+        <source>sales invoices list</source>
+        <target>lista fatture di vendita</target>
+      </trans-unit>
+      <trans-unit id="68">
+        <source>add new sales invoice</source>
+        <target>aggiungi una nuova fattura di vendita</target>
+      </trans-unit>
+      <trans-unit id="69">
+        <source>purchase invoices list</source>
+        <target>lista fatture d'acquisto</target>
+      </trans-unit>
+      <trans-unit id="70">
+        <source>add new purchase</source>
+        <target>aggiungi una nuova fattura d'acquisto</target>
+      </trans-unit>
+      <trans-unit id="71">
+        <source>add new income</source>
+        <target>aggiungi una nuova entrata</target>
+      </trans-unit>
+      <trans-unit id="72">
+        <source>add new outcome</source>
+        <target>aggiungi una nuova uscita</target>
+      </trans-unit>
+      <trans-unit id="73">
+        <source>statistics</source>
+        <target>statistiche</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

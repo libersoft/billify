@@ -8,48 +8,36 @@
 <?php echo include_title() ?>
 
 <!--[if IE]>
-  	<link rel="stylesheet" type="text/css" href=<?php echo url_for("css/all-ie.css")?>" />
+  	<link rel="stylesheet" type="text/css" href=<?php echo url_for("css/impress/main-msie.css.css")?>" />
 <![endif]-->
 
 </head>
 <body>
+<div id="main">
+  <div id="header">
+    <h1 id="logo"><a href="<?php echo url_for('@homepage')?>" title="[<?php echo __('go to homepage')?>]"><?php echo image_tag('impress/logo.gif')?></a></h1>
+    <hr class="noscreen"/>
 
-<div id="header-top">
-
-<?php if($sf_user->isAuthenticated()):?>
-  <div class="user-board">
-    Benvenuto, <?php echo $sf_user->getAttribute('nome').' '.$sf_user->getAttribute('cognome')?>&nbsp;
-    <?php echo link_to('Mio Profilo','utente/edit')?> | <span class="logout"><?php echo link_to('Esci','login/logout')?></span>
+    <?php echo include_partial('global/userbar') ?>
   </div>
-<?php endif?>
 
-<h1 style="padding: 20px 25px"><?php echo link_to('phpAccount',($sf_user->isAuthenticated()?'main/index':'main/index'))?></h1>
-
-</div>
-
-<div class="header_date" align="right">
-  <span id="dateTime"><?php echo format_date((time()/*+(9*3600)*/),'dd MMMM yyyy - HH:mm'); ?></span>
-</div>
-
-<div id="hormenu">
-  <?php echo include_component_slot('topbar') ?>
-</div>
-
-<?php if($sf_user->isAuthenticated()):?>
-  <div id="bread-crumps">
-    <?php echo include_component_slot('breadcrumps') ?>
+  <div id="tray">
+    <?php echo include_partial('global/topbar') ?>
   </div>
-<?php endif?>
 
+  <?php echo include_partial('global/bread') ?>
 
-<div id="content">
-  <?php echo $sf_content ?>
+  <div id="cols2" class="box">
+    <div id="col-left">
+      <?php echo $sf_content ?>
+    </div>
+    <hr class="noscreen"/>
+    <?php echo include_partial('global/sidebar') ?>
+  </div>
+
+  <div id="footer">
+    <?php echo include_partial('global/footer') ?>
+  </div>
 </div>
-
-
-<div id="footer">
-All &copy; ideato srl 2006 - <?php echo date('Y')?>
-</div>
-
 </body>
 </html>
