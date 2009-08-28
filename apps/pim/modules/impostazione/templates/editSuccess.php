@@ -28,7 +28,7 @@
 <ul class="impostazioni">
 <li id="li-paginazione" class="selected">
 <?php echo ($sf_request->hasError('num_clienti') || $sf_request->hasError('num_fatture') || $sf_request->hasError('dettagli_righe')?image_tag('icons/icon_alert.gif',array('align'=>'top')).'&nbsp;':'')?>
-<?php echo link_to_function('Paginazione',							
+<?php echo link_to_function('Paginazione',
 							visual_effect('fade','features',array('duration'=> 0))
 							.visual_effect('fade','label-fattura',array('duration'=> 0))
 							.visual_effect('fade','label-dettagli-fattura',array('duration'=> 0))
@@ -160,7 +160,7 @@
   <td>
   <?php echo radiobutton_tag('codice_cliente','s',($impostazione->getCodiceCliente()=='s'?true:false))?>&nbsp;Si
   <?php echo radiobutton_tag('codice_cliente','n',($impostazione->getCodiceCliente()=='n'?true:false))?>&nbsp;No
-    
+
 </td>
 </tr>
 <tr>
@@ -179,11 +179,11 @@
   </td>
   <?php if($sf_request->hasError('percentuale_ra') || $sf_request->hasError('percentuale_imponibile_ra')):?>
   <td class="validate-error">
-  
+
   <?php if($sf_request->hasError('percentuale_ra')):?>
   <?php echo image_tag('icons/icon_alert.gif')?>&nbsp;<?php echo $sf_request->getError('percentuale_ra')?><br/>
   <?php endif?>
-  
+
   <?php if($sf_request->hasError('percentuale_imponibile_ra')):?>
   <?php echo image_tag('icons/icon_alert.gif')?>&nbsp;<?php echo $sf_request->getError('percentuale_imponibile_ra')?>
   <?php endif?>
@@ -300,3 +300,5 @@
 </table>
 </div>
 </div>
+
+<?php slot('sidebar')?><?php include_partial('impostazione/sidebar')?><?php end_slot()?>

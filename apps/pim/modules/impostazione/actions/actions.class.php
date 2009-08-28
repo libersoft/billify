@@ -16,19 +16,8 @@ class impostazioneActions extends sfActions
 {
   public function executeIndex ()
   {
-    return $this->forward('impostazione', 'list');
+    return $this->forward('impostazione', 'edit');
   }
-
-  /*public function executeList ()
-  {
-    $this->impostaziones = ImpostazionePeer::doSelect(new Criteria());
-  }*/
-
-  /*public function executeShow ()
-  {
-    $this->impostazione = ImpostazionePeer::retrieveByPk($this->getRequestParameter('id_utente'));
-    $this->forward404Unless($this->impostazione);
-  }*/
 
   public function executeCreate ()
   {
@@ -81,28 +70,22 @@ class impostazioneActions extends sfActions
     $impostazione->setLabelSconto($this->getRequestParameter('label_sconto'));
 
     $impostazione->save();
-	
+
     $this->getRequest()->setParameter('success','Impostazioni modificate con successo.');
     $this->getUser()->setAttribute('impostazioni',$impostazione);
     return $this->forward('impostazione','edit');
   }
 
-  /*public function executeDelete ()
-  {
-    $impostazione = ImpostazionePeer::retrieveByPk($this->getRequestParameter('id_utente'));
 
-    $this->forward404Unless($impostazione);
-
-    $impostazione->delete();
-
-    return $this->redirect('impostazione/list');
-  }*/
-  
   public function handleErrorUpdate()
   {
   	if(!$this->getRequestParameter('id_utente',0))
+  	{
   		$this->forward('impostazione','create');
+  	}
   	else
+  	{
   		$this->forward('impostazione','edit');
-  }	
+  	}
+  }
 }

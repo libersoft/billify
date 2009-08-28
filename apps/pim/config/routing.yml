@@ -2,11 +2,11 @@
 
 user_edit:
   url: profile
-  param: {module: user, action: edit}
+  param: {module: utente, action: edit}
 
 preferences:
   url: preferences
-  param: {module: settings, action: index}
+  param: {module: impostazione, action: index}
 
 logout:
   url: logout
