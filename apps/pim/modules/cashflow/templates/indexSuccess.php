@@ -1,4 +1,6 @@
-<h2><?php echo __('Cash Flow')?></h2>
+<div class="title">
+  <h2><?php echo __('Cash Flow')?></h2>
+</div>
 
 <div class="filter">
   <form method="post">
@@ -42,3 +44,9 @@
     <td align="right"><?php echo format_currency($cf->getBalance(), '&euro;')?></td>
   </tr>
 </table>
+
+<?php
+  slot('sidebar');
+    include_partial('cashflow/sidebar');
+  end_slot();
+?>
