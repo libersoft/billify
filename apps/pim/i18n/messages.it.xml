@@ -290,6 +290,30 @@
         <source>statistics</source>
         <target>statistiche</target>
       </trans-unit>
+      <trans-unit id="74">
+        <source>bank accounts</source>
+        <target>conti bancari</target>
+      </trans-unit>
+      <trans-unit id="75">
+        <source>bank accounts list</source>
+        <target>lista conti bancari</target>
+      </trans-unit>
+      <trans-unit id="75">
+        <source>bank</source>
+        <target>banca</target>
+      </trans-unit>
+      <trans-unit id="75">
+        <source>account n.</source>
+        <target>n. conto</target>
+      </trans-unit>
+      <trans-unit id="75">
+        <source>new bank account</source>
+        <target>nuovo conto bancario</target>
+      </trans-unit>
+      <trans-unit id="75">
+        <source>edit bank account</source>
+        <target>modifica conto bancario</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

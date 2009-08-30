@@ -1,11 +1,13 @@
-<h2><?php echo __('Bank list') ?></h2>
+<div class="title">
+  <h2><?php echo __('bank accounts list') ?></h2>
+</div>
 
 <table class="fatture">
   <thead>
     <tr>
-      <th>banca</th>
-      <th>n. conto</th>
-      <th>iban</th>
+      <th><?php echo __('bank')?></th>
+      <th><?php echo __('account n.')?></th>
+      <th><?php echo __('iban')?></th>
       <th></th>
     </tr>
   </thead>
@@ -20,3 +22,9 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<?php
+  slot('sidebar');
+    include_partial('bank/sidebar');
+  end_slot();
+?>
