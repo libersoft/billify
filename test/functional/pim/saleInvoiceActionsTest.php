@@ -8,7 +8,7 @@ $browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/fixtures.yml');
 $browser->
   login()->
   info('1. sale invoices list')->
-  click('Vendita')->
+  click('lista fatture di vendita')->
 
   with('response')->begin()->
     checkElement('table', 2)->
@@ -50,11 +50,11 @@ $browser->click('1')->
   end()->
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('#bread-crumps ul li', 4)->
-    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
-    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
-    checkElement('#bread-crumps ul li', '/Fatture/', array('position' => 2))->
-    checkElement('#bread-crumps ul li', '/Nuova/', array('position' => 3))->
+    checkElement('#breadcrumps ul li', 4)->
+    checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#breadcrumps ul li', '/Fatture/', array('position' => 2))->
+    checkElement('#breadcrumps ul li', '/Nuova/', array('position' => 3))->
     checkElement('h2', '/Nuova Fattura/')->
     checkElement('fieldset legend', 'Dati Fattura')->
     checkElement('table.fattura', 1)->

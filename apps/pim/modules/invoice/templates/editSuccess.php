@@ -16,3 +16,9 @@
 </fieldset>
 
 </form>
+
+<?php
+  slot('sidebar');
+    include_partial('invoice/sidebar');
+  end_slot();
+?>

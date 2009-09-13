@@ -27,9 +27,15 @@
   <?php endforeach; ?>
   </tbody>
   </table>
-  
+
   <?php echo pager($pager, $sf_request, array('class' => 'navigator')) ?>
-  
+
 <?php else:?>
   <p><?php echo __('Nessun contatto disponibile')?>, <?php echo link_to(__('inserisci un contatto'), 'contact/create?type='.$sf_request->getParameter('type'))?>.</p>
 <?php endif?>
+
+<?php
+  slot('sidebar');
+    include_partial('contact/sidebar');
+  end_slot();
+?>

@@ -298,21 +298,73 @@
         <source>bank accounts list</source>
         <target>lista conti bancari</target>
       </trans-unit>
-      <trans-unit id="75">
+      <trans-unit id="76">
         <source>bank</source>
         <target>banca</target>
       </trans-unit>
-      <trans-unit id="75">
+      <trans-unit id="77">
         <source>account n.</source>
         <target>n. conto</target>
       </trans-unit>
-      <trans-unit id="75">
+      <trans-unit id="78">
         <source>new bank account</source>
         <target>nuovo conto bancario</target>
       </trans-unit>
-      <trans-unit id="75">
+      <trans-unit id="79">
         <source>edit bank account</source>
         <target>modifica conto bancario</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>invoice themes</source>
+        <target>temi fattura</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>invoice themes list</source>
+        <target>lista temi fattura</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>new invoice theme</source>
+        <target>nuovo tema fattura</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>year turnover</source>
+        <target>fatturato annuo</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>taxes</source>
+        <target>tasse</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>tax list</source>
+        <target>lista tasse</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>new tax</source>
+        <target>nuova tassa</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>payment's types</source>
+        <target>tipologie di pagamento</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>payment's types list</source>
+        <target>lista tipologie di pagamento</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>new payment's type</source>
+        <target>nuova tipologia di pagamento</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>taxes code</source>
+        <target>codici iva</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>taxes code list</source>
+        <target>lista codici iva</target>
+      </trans-unit>
+      <trans-unit id="79">
+        <source>new tax code</source>
+        <target>nuovo codice iva</target>
       </trans-unit>
     </body>
   </file>

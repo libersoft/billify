@@ -37,3 +37,9 @@
 <?php else:?>
   <p>Nessuna fattura disponibile, <?php echo link_to('inserisci una nuova fattura', 'invoice/create?type='.$sf_request->getParameter('type'))?>.</p>
 <?php endif?>
+
+<?php
+  slot('sidebar');
+    include_partial('invoice/sidebar');
+  end_slot();
+?>

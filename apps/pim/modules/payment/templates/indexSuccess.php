@@ -18,3 +18,9 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<?php
+  slot('sidebar');
+    include_partial('payment/sidebar');
+  end_slot();
+?>

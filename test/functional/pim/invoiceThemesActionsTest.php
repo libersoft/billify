@@ -8,7 +8,8 @@ $browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/fixtures.yml');
 $browser->
   login()->
   info('1. invoice themes list')->
-  click('Temi Fattura')->
+  click('impostazioni')->
+  click('lista temi fattura')->
 
   with('request')->begin()->
     isParameter('module', 'temafattura')->
@@ -18,10 +19,10 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('h2', 'Temi Fattura')->
-    checkElement('#bread-crumps ul li', 3)->
-    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
-    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
-    checkElement('#bread-crumps ul li', '/Temi Fattura/', array('position' => 2))->
+    checkElement('#breadcrumps ul li', 3)->
+    checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#breadcrumps ul li', '/Temi Fattura/', array('position' => 2))->
     checkElement('table.fatture', 1)->
     checkElement('table th', 2)->
     checkElement('table th', 'Nome', array('position' => 0))->
@@ -42,8 +43,8 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('table', 0)->
-    checkElement('#content p', 'Nessun tema disponibile, crea il tuo tema fattura.')->
-    checkElement('#content p a', 'crea il tuo tema fattura')->
+    checkElement('#cols2 p', 'Nessun tema disponibile, crea il tuo tema fattura.')->
+    checkElement('#cols2 p a', 'crea il tuo tema fattura')->
   end()->
 
   info('3. new invoice theme')->
@@ -51,20 +52,20 @@ $browser->
 
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('#bread-crumps ul li', 4)->
-    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
-    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
-    checkElement('#bread-crumps ul li', '/Temi Fattura/', array('position' => 2))->
-    checkElement('#bread-crumps ul li', '/Nuovo tema Fattura/', array('position' => 3))->
+    checkElement('#breadcrumps ul li', 4)->
+    checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#breadcrumps ul li', '/Temi Fattura/', array('position' => 2))->
+    checkElement('#breadcrumps ul li', '/Nuovo tema Fattura/', array('position' => 3))->
     checkElement('h2', '/Nuovo Tema/')->
-    checkElement('#edit-options ul li', '/Nome Tema/')->
-    checkElement('#edit-options ul li', '/Modello Fattura/', array('position' => 1))->
-    checkElement('#edit-options ul li', '/Stile Fattura/', array('position' => 2))->
+    checkElement('h3', '/Nome Tema/', array('position'))->
+    checkElement('h3', '/Modello Fattura/', array('position' => 1))->
+    checkElement('h3', '/Stile Fattura/', array('position' => 2))->
     checkElement('#nome table.banca', 1)->
     checkElement('#nome table th', 'Nome*:', array('position' => 0))->
     checkElement('#nome table th', 'Logo Ditta:', array('position' => 1))->
-    checkElement('#header table.banca', 1)->
-    checkElement('#header table th', 'Modello Fattura*:', array('position' => 0))->
+    checkElement('#theme_header table.banca', 1)->
+    checkElement('#theme_header table th', 'Modello Fattura*:', array('position' => 0))->
     checkElement('#css table.banca', 1)->
     checkElement('#css table th', 'Stile Fattura*:', array('position' => 0))->
   end()->
@@ -90,11 +91,11 @@ $browser->click('Temi Fattura')->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('h2', '/Modifica Tema/')->
-    checkElement('#bread-crumps ul li', 4)->
-    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
-    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
-    checkElement('#bread-crumps ul li', '/Temi Fattura/', array('position' => 2))->
-    checkElement('#bread-crumps ul li', '/Modifica tema test/', array('position' => 3))->
+    checkElement('#breadcrumps ul li', 4)->
+    checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#breadcrumps ul li', '/Temi Fattura/', array('position' => 2))->
+    checkElement('#breadcrumps ul li', '/Modifica tema test/', array('position' => 3))->
   end()->
   setField('nome', 'tema test 2')->
   click('Salva')->

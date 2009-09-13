@@ -17,3 +17,9 @@
 
 </form>
 
+<?php
+  slot('sidebar');
+    include_partial('contact/sidebar');
+  end_slot();
+?>
+

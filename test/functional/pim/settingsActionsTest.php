@@ -8,20 +8,20 @@ $browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/fixtures.yml');
 $browser->
   login()->
   info('1. settings list')->
-  click('Impostazioni')->
+  click('impostazioni')->
 
   with('request')->begin()->
     isParameter('module', 'impostazione')->
-    isParameter('action', 'edit')->
+    isParameter('action', 'index')->
   end()->
 
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('h2', '/Impostazioni/')->
-    checkElement('#bread-crumps ul li', 3)->
-    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
-    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
-    checkElement('#bread-crumps ul li', '/Impostazioni/', array('position' => 2))->
+    checkElement('#breadcrumps ul li', 3)->
+    checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#breadcrumps ul li', '/Impostazioni/', array('position' => 2))->
 
     checkElement('#paginazione table th', 3)->
     checkElement('#paginazione table th', 'Num clienti:', array('position' => 0))->

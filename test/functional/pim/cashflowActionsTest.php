@@ -13,7 +13,7 @@ $browser->
   setField('password', 'user')->
   click('Entra')->
   followRedirect()->
-  click('Cash Flow')->
+  click('cash flow')->
   checkResponseElement('h2', 'Cash Flow')->
   checkResponseElement('table.fatture', 1)->
   checkResponseElement('table.fatture th', 6)->

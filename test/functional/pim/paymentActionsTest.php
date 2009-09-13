@@ -8,7 +8,8 @@ $browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/fixtures.yml');
 $browser->
   login()->
   info('1. payment list')->
-  click('Pagamenti')->
+  click('impostazioni')->
+  click('lista tipologie di pagamento')->
 
   with('request')->begin()->
     isParameter('module', 'payment')->
@@ -18,10 +19,10 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('h2', 'Tipologie di pagamento')->
-    checkElement('#bread-crumps ul li', 3)->
-    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
-    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
-    checkElement('#bread-crumps ul li', '/Tipologie di pagamento/', array('position' => 2))->
+    checkElement('#breadcrumps ul li', 3)->
+    checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#breadcrumps ul li', '/Tipologie di pagamento/', array('position' => 2))->
     checkElement('table.fatture', 1)->
     checkElement('table th', 3)->
     checkElement('table th', 'Num giorni', array('position' => 0))->
@@ -48,20 +49,20 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('table', 0)->
-    checkElement('#content p', 'Nessuna tipologia di pagamento disponibile, inserisci un nuovo tipo.')->
-    checkElement('#content p a[title="create"]', 'inserisci un nuovo tipo')->
+    checkElement('#cols2 p', 'Nessuna tipologia di pagamento disponibile, inserisci un nuovo tipo.')->
+    checkElement('#cols2 p a[title="create"]', 'inserisci un nuovo tipo')->
   end()->
 
   info('4. new payment')->
-  get('payment/new')->
+  click('nuova tipologia di pagamento')->
 
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('#bread-crumps ul li', 4)->
-    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
-    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
-    checkElement('#bread-crumps ul li', '/Tipologie di pagamento/', array('position' => 2))->
-    checkElement('#bread-crumps ul li', '/Nuova tipologia/', array('position' => 3))->
+    checkElement('#breadcrumps ul li', 4)->
+    checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#breadcrumps ul li', '/Tipologie di pagamento/', array('position' => 2))->
+    checkElement('#breadcrumps ul li', '/Nuova tipologia/', array('position' => 3))->
     checkElement('h2', 'Nuova tipologia di pagamento')->
     checkElement('table.banca', 1)->
     checkElement('table th', 'Num giorni', array('position' => 0))->
@@ -91,11 +92,11 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('h2', 'Modifica tipologia di pagamento')->
-    checkElement('#bread-crumps ul li', 4)->
-    checkElement('#bread-crumps ul li', 'Sei in:', array('position' => 0))->
-    checkElement('#bread-crumps ul li', '/Home/', array('position' => 1))->
-    checkElement('#bread-crumps ul li', '/Tipologie di pagamento/', array('position' => 2))->
-    checkElement('#bread-crumps ul li', '/Modifica 90gg/', array('position' => 3))->
+    checkElement('#breadcrumps ul li', 4)->
+    checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
+    checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
+    checkElement('#breadcrumps ul li', '/Tipologie di pagamento/', array('position' => 2))->
+    checkElement('#breadcrumps ul li', '/Modifica 90gg/', array('position' => 3))->
   end()->
   setField('modo_pagamento[descrizione]', '90ggg')->
   click('Salva')->

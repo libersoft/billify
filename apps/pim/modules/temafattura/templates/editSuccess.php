@@ -3,7 +3,11 @@
 // date: 2006/08/16 01:09:56
 ?>
 
-<h2><?php if($tema_fattura->isNew()):?>Nuovo Tema<?php else:?>Modifica Tema<?php endif?>
+<div class="title">
+  <h2><?php if($tema_fattura->isNew()):?>Nuovo Tema<?php else:?>Modifica Tema<?php endif?>
+</div>
+
+
 
 <?php if($sf_request->hasParameter('success')):?>
 <span style="color:red;font-size: 70%;">- Tema aggiornato con successo</span>
@@ -23,42 +27,9 @@
 </div>
 <?php endif ?>
 
-<ul>
-<li id="li-nome" class="selected">
-<?php echo ($sf_request->hasError('nome')?image_tag('icons/icon_alert.gif',array('align'=>'top')).'&nbsp;':'')?>
-<?php echo link_to_function('Nome Tema',
-							visual_effect('fade','header',array('duration'=> 0))
-							.visual_effect('fade','css',array('duration'=> 0))
-							.visual_effect('appear','nome',array('duration'=> 0))
-							."Element.addClassName('li-nome','selected');"
-							."Element.removeClassName('li-header','selected');"
-							."Element.removeClassName('li-css','selected');"
-							)?></li>
-							
-							
-<li id="li-header">
-<?php echo ($sf_request->hasError('template')?image_tag('icons/icon_alert.gif',array('align'=>'top')).'&nbsp;':'')?>
-<?php echo link_to_function('Modello Fattura',
-							visual_effect('fade','nome',array('duration'=> 0))
-							.visual_effect('fade','css',array('duration'=> 0))
-							.visual_effect('appear','header',array('duration'=> 0))
-							."Element.addClassName('li-header','selected');"
-							."Element.removeClassName('li-nome','selected');"
-							."Element.removeClassName('li-css','selected');"
-							)?>
-</li>
-<li id="li-css">
-<?php echo ($sf_request->hasError('css')?image_tag('icons/icon_alert.gif',array('align'=>'top')).'&nbsp;':'')?>
-<?php echo link_to_function('Stile Fattura',
-							visual_effect('fade','nome',array('duration'=> 0))
-							.visual_effect('fade','header',array('duration'=> 0))
-							.visual_effect('appear','css',array('duration'=> 0))
-							."Element.addClassName('li-css','selected');"
-							."Element.removeClassName('li-nome','selected');"
-							."Element.removeClassName('li-header','selected');"
-							)?>
-</li>
-</ul>
+<div class="title">
+  <h3><?php echo __('Nome Tema') ?></h3>
+</div>
 
 <div class="fieldset tema-fattura <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="nome">
 
@@ -104,7 +75,11 @@
 
 </div>
 
-<div class="fieldset tema-fattura <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="header" style="display: none;">
+<div class="title">
+  <h3><?php echo __('Modello Fattura') ?></h3>
+</div>
+
+<div class="fieldset tema-fattura <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="theme_header">
 
 <table class="banca">
 <tr>
@@ -124,7 +99,11 @@
 
 </div>
 
-<div class="fieldset tema-fattura <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="css" style="display: none;">
+<div class="title">
+  <h3><?php echo __('Stile Fattura') ?></h3>
+</div>
+
+<div class="fieldset tema-fattura <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="css">
 
 <table class="banca">
 <tr>
@@ -148,3 +127,9 @@
 </form>
 
 </div>
+
+<?php
+  slot('sidebar');
+    include_partial('temafattura/sidebar');
+  end_slot();
+?>

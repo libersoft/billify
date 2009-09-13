@@ -19,3 +19,9 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<?php
+  slot('sidebar');
+    include_partial('taxescode/sidebar');
+  end_slot();
+?>

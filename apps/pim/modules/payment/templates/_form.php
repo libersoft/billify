@@ -28,3 +28,9 @@
 
   </fieldset>
 </form>
+
+<?php
+  slot('sidebar');
+    include_partial('payment/sidebar');
+  end_slot();
+?>

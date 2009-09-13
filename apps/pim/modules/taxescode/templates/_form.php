@@ -22,3 +22,9 @@
     </tbody>
   </table>
 </form>
+
+<?php
+  slot('sidebar');
+    include_partial('taxescode/sidebar');
+  end_slot();
+?>

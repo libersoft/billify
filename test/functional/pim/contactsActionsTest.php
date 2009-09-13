@@ -14,7 +14,7 @@ $browser->
   setField('password', 'user')->
   click('Entra')->
   followRedirect()->
-  click('Clienti')->
+  click('rubrica')->
   checkResponseElement('table', 1)->
   checkResponseElement('table tr', 11)->
   checkResponseElement('table tr th', 6)->
@@ -41,7 +41,7 @@ $browser->
 
 $browser->
   get('/')->
-  click('Crea Nuovo')->
+  click('aggiungi un nuovo cliente')->
   setField('contatto[ragione_sociale]', 'Gigi Lapislazulli')->
   setField('contatto[piva]', '1234')->
   setField('contatto[nazione]', 'Italia')->

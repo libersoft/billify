@@ -24,3 +24,9 @@
 <?php else:?>
 <p>Nessun tema disponibile, <?php echo link_to('crea il tuo tema fattura','temafattura/create')?>.</p>
 <?php endif?>
+
+<?php
+  slot('sidebar');
+    include_partial('temafattura/sidebar');
+  end_slot();
+?>
