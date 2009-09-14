@@ -18,15 +18,15 @@ $browser->
 
   checkResponseElement('table', 1)->
   checkResponseElement('table tr th', 9)->
-  checkResponseElement('table tr th', 'N.', array('position' => 1))->
-  checkResponseElement('table tr th', 'Ragione sociale', array('position' => 2))->
-  checkResponseElement('table tr th', 'Data', array('position' => 3))->
-  checkResponseElement('table tr th', 'Totale', array('position' => 4))->
-  checkResponseElement('table tr th', 'Stato', array('position' => 5))->
-  checkResponseElement('table tr th', 'Ritardo', array('position' => 6))->
+  checkResponseElement('table tr th', 'n.', array('position' => 1))->
+  checkResponseElement('table tr th', 'ragione sociale', array('position' => 2))->
+  checkResponseElement('table tr th', 'data', array('position' => 3))->
+  checkResponseElement('table tr th', 'totale', array('position' => 4))->
+  checkResponseElement('table tr th', 'stato', array('position' => 5))->
+  checkResponseElement('table tr th', 'ritardo', array('position' => 6))->
 
   click('aggiungi una nuova fattura d\'acquisto')->
-  checkResponseElement('h2', 'Nuova fattura')->
+  checkResponseElement('h2', 'nuova fattura d\'acquisto')->
   checkResponseElement('label[for="fattura_num_fattura"]', 'N.')->
   checkResponseElement('input[type="text"][id="fattura_num_fattura"]')->
   checkResponseElement('label[for="fattura_cliente_id"]', 'Fornitore')->

@@ -23,69 +23,66 @@ $browser->
     checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
     checkElement('#breadcrumps ul li', '/Impostazioni/', array('position' => 2))->
 
-    checkElement('#paginazione table th', 3)->
-    checkElement('#paginazione table th', 'Num clienti:', array('position' => 0))->
-    checkElement('#paginazione table th', 'Num fatture:', array('position' => 1))->
-    checkElement('#paginazione table th', 'Righe dettagli:', array('position' => 2))->
-    checkElement('#paginazione table td input[id="num_clienti"]')->
-    checkElement('#paginazione table td input[name="num_fatture"][value="20"]')->
-    checkElement('#paginazione table td input[id="righe_dettagli"]')->
+    checkElement('#paginazione th', 3)->
+    checkElement('#paginazione th', 'Num clienti:', array('position' => 0))->
+    checkElement('#paginazione th', 'Num fatture:', array('position' => 1))->
+    checkElement('#paginazione th', 'Righe dettagli:', array('position' => 2))->
+    checkElement('#paginazione td input[id="num_clienti"]')->
+    checkElement('#paginazione td input[name="num_fatture"][value="20"]')->
+    checkElement('#paginazione td input[id="righe_dettagli"]')->
 
-    checkElement('#features table', 2)->
-    checkElement('#features table th', 7)->
-    checkElement('#features table th', 'Riepilogo home:', array('position' => 0))->
-    checkElement('#features table th', 'Consegna commercialista:', array('position' => 1))->
-    checkElement('#features table th', 'Deposita iva:', array('position' => 2))->
-    checkElement('#features table th', 'Fattura automatica:', array('position' => 3))->
-    checkElement('#features table th', 'Codice cliente:', array('position' => 4))->
-    checkElement('#features table th', 'Ritenuta acconto:', array('position' => 5))->
-    checkElement('#features table th', 'Tipo ritenuta:', array('position' => 6))->
+    checkElement('#features th', 7)->
+    checkElement('#features th', 'Riepilogo home:', array('position' => 0))->
+    checkElement('#features th', 'Consegna commercialista:', array('position' => 1))->
+    checkElement('#features th', 'Deposita iva:', array('position' => 2))->
+    checkElement('#features th', 'Fattura automatica:', array('position' => 3))->
+    checkElement('#features th', 'Codice cliente:', array('position' => 4))->
+    checkElement('#features th', 'Ritenuta acconto:', array('position' => 5))->
+    checkElement('#features th', 'Tipo ritenuta:', array('position' => 6))->
 
-    checkElement('#features table td input[id="riepilogo_home_s"]')->
-    checkElement('#features table td input[id="riepilogo_home_n"]')->
-    checkElement('#features table td input[id="consegna_commercialista_s"]')->
-    checkElement('#features table td input[id="consegna_commercialista_n"]')->
-    checkElement('#features table td input[id="deposita_iva_s"]')->
-    checkElement('#features table td input[id="deposita_iva_n"]')->
-    checkElement('#features table td input[id="fattura_automatica_s"]')->
-    checkElement('#features table td input[id="fattura_automatica_n"]')->
-    checkElement('#features table td input[id="codice_cliente_s"]')->
-    checkElement('#features table td input[id="codice_cliente_n"]')->
-    checkElement('#features table td input[id="percentuale_ra"]')->
-    checkElement('#features table td input[id="percentuale_imponibile_ra"]')->
-    checkElement('#features table td select[id="tipo_ritenuta"]')->
+    checkElement('#features td input[id="riepilogo_home_s"]')->
+    checkElement('#features td input[id="riepilogo_home_n"]')->
+    checkElement('#features td input[id="consegna_commercialista_s"]')->
+    checkElement('#features td input[id="consegna_commercialista_n"]')->
+    checkElement('#features td input[id="deposita_iva_s"]')->
+    checkElement('#features td input[id="deposita_iva_n"]')->
+    checkElement('#features td input[id="fattura_automatica_s"]')->
+    checkElement('#features td input[id="fattura_automatica_n"]')->
+    checkElement('#features td input[id="codice_cliente_s"]')->
+    checkElement('#features td input[id="codice_cliente_n"]')->
+    checkElement('#features td input[id="percentuale_ra"]')->
+    checkElement('#features td input[id="percentuale_imponibile_ra"]')->
+    checkElement('#features td select[id="tipo_ritenuta"]')->
 
-    checkElement('#label-fattura table', 1)->
-    checkElement('#label-fattura table th', 7)->
-    checkElement('#label-fattura table th', 'Label imponibile:', array('position' => 0))->
-    checkElement('#label-fattura table th', 'Label spese:', array('position' => 1))->
-    checkElement('#label-fattura table th', 'Label imponibile iva:', array('position' => 2))->
-    checkElement('#label-fattura table th', 'Label iva:', array('position' => 3))->
-    checkElement('#label-fattura table th', 'Label totale fattura:', array('position' => 4))->
-    checkElement('#label-fattura table th', 'Label ritenuta acconto:', array('position' => 5))->
-    checkElement('#label-fattura table th', 'Label netto liquidare:', array('position' => 6))->
+    checkElement('#label-fattura th', 7)->
+    checkElement('#label-fattura th', 'Label imponibile:', array('position' => 0))->
+    checkElement('#label-fattura th', 'Label spese:', array('position' => 1))->
+    checkElement('#label-fattura th', 'Label imponibile iva:', array('position' => 2))->
+    checkElement('#label-fattura th', 'Label iva:', array('position' => 3))->
+    checkElement('#label-fattura th', 'Label totale fattura:', array('position' => 4))->
+    checkElement('#label-fattura th', 'Label ritenuta acconto:', array('position' => 5))->
+    checkElement('#label-fattura th', 'Label netto liquidare:', array('position' => 6))->
 
-    checkElement('#label-fattura table td input[id="label_imponibile"][value="Imponibile"]')->
-    checkElement('#label-fattura table td input[id="label_spese"][value="Spese Anticipate"]')->
-    checkElement('#label-fattura table td input[id="label_imponibile_iva"][value="Imponibile ai fini iva"]')->
-    checkElement('#label-fattura table td input[id="label_iva"][value="Iva"]')->
-    checkElement('#label-fattura table td input[id="label_totale_fattura"][value="Totale Fattura"]')->
-    checkElement('#label-fattura table td input[id="label_ritenuta_acconto"][value="Ritenuta d\'acconto"]')->
-    checkElement('#label-fattura table td input[id="label_netto_liquidare"][value="Netto da liquidare"]')->
+    checkElement('#label-fattura td input[id="label_imponibile"][value="Imponibile"]')->
+    checkElement('#label-fattura td input[id="label_spese"][value="Spese Anticipate"]')->
+    checkElement('#label-fattura td input[id="label_imponibile_iva"][value="Imponibile ai fini iva"]')->
+    checkElement('#label-fattura td input[id="label_iva"][value="Iva"]')->
+    checkElement('#label-fattura td input[id="label_totale_fattura"][value="Totale Fattura"]')->
+    checkElement('#label-fattura td input[id="label_ritenuta_acconto"][value="Ritenuta d\'acconto"]')->
+    checkElement('#label-fattura td input[id="label_netto_liquidare"][value="Netto da liquidare"]')->
 
-    checkElement('#label-dettagli-fattura table', 1)->
-    checkElement('#label-dettagli-fattura table th', 5)->
-    checkElement('#label-dettagli-fattura table th', 'Label quantita:', array('position' => 0))->
-    checkElement('#label-dettagli-fattura table th', 'Label descrizione:', array('position' => 1))->
-    checkElement('#label-dettagli-fattura table th', 'Label prezzo singolo:', array('position' => 2))->
-    checkElement('#label-dettagli-fattura table th', 'Label prezzo totale:', array('position' => 3))->
-    checkElement('#label-dettagli-fattura table th', 'Label sconto:', array('position' => 4))->
+    checkElement('#label-dettagli-fattura th', 5)->
+    checkElement('#label-dettagli-fattura th', 'Label quantita:', array('position' => 0))->
+    checkElement('#label-dettagli-fattura th', 'Label descrizione:', array('position' => 1))->
+    checkElement('#label-dettagli-fattura th', 'Label prezzo singolo:', array('position' => 2))->
+    checkElement('#label-dettagli-fattura th', 'Label prezzo totale:', array('position' => 3))->
+    checkElement('#label-dettagli-fattura th', 'Label sconto:', array('position' => 4))->
 
-    checkElement('#label-dettagli-fattura table td input[id="label_quantita"][value="Qty"]')->
-    checkElement('#label-dettagli-fattura table td input[id="label_descrizione"][value="Descrizione"]')->
-    checkElement('#label-dettagli-fattura table td input[id="label_prezzo_singolo"][value="Prezzo Singolo"]')->
-    checkElement('#label-dettagli-fattura table td input[id="label_prezzo_totale"][value="Prezzo Totale"]')->
-    checkElement('#label-dettagli-fattura table td input[id="label_sconto"][value="Sconto"]')->
+    checkElement('#label-dettagli-fattura td input[id="label_quantita"][value="Qty"]')->
+    checkElement('#label-dettagli-fattura td input[id="label_descrizione"][value="Descrizione"]')->
+    checkElement('#label-dettagli-fattura td input[id="label_prezzo_singolo"][value="Prezzo Singolo"]')->
+    checkElement('#label-dettagli-fattura td input[id="label_prezzo_totale"][value="Prezzo Totale"]')->
+    checkElement('#label-dettagli-fattura td input[id="label_sconto"][value="Sconto"]')->
   end()->
 
   setField('label_quantita', 'Quantità')->
@@ -94,6 +91,6 @@ $browser->
   //followRedirect()->
 
   with('response')->begin()->
-    checkElement('#label-dettagli-fattura table td input[id="label_quantita"][value="Quantità"]')->
+    checkElement('#label-dettagli-fattura td input[id="label_quantita"][value="Quantità"]')->
   end()
 ;

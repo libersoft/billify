@@ -1,13 +1,15 @@
 <?php use_helper('Object') ?>
 
-<h2><?php echo $fattura->getID()?'Modifica Fattura':'Nuova Fattura'?>&nbsp;
-<?php if($fattura->isProForma()):?>
-  pro-forma
-<?php else:?>
-  n. <?php echo $fattura->getNumFattura() ?>&nbsp;
-<?php endif?>
-del <?php echo format_date($fattura->getData()); ?>
-</h2>
+<div class="title">
+  <h2><?php echo $fattura->getID()?'Modifica Fattura':'Nuova Fattura'?>&nbsp;
+  <?php if($fattura->isProForma()):?>
+    pro-forma
+  <?php else:?>
+    n. <?php echo $fattura->getNumFattura() ?>&nbsp;
+  <?php endif?>
+  del <?php echo format_date($fattura->getData()); ?>
+  </h2>
+</div>
 
 <?php echo form_tag('fattura/update') ?>
 
@@ -20,19 +22,16 @@ del <?php echo format_date($fattura->getData()); ?>
 </div>
 <?php endif ?>
 
-<fieldset>
-<legend>Dati Fattura</legend>
-
-<table class="fattura">
+<table class="edit" width="100%">
 <tbody>
   <tr>
-    <th>Pro forma:</th>
+    <th>Pro forma</th>
     <td><input type="checkbox" name="proforma" value="y" <?php if($fattura->isProForma() && !$fattura->isNew()):?>checked="checked"<?php endif?>></td>
   </tr>
   <?php if(!$fattura->isProForma() || $fattura->isNew()):?>
     <?php if($sf_user->getAttribute('modifica_num_fattura')):?>
       <tr>
-        <th>Num fattura:</th>
+        <th>Num fattura</th>
         <td><?php echo object_input_tag($fattura,'getNumFattura',array('size' => 4))?></td>
         <?php if($sf_request->hasError('num_fattura')):?>
           <td class="validate-error">
@@ -42,7 +41,7 @@ del <?php echo format_date($fattura->getData()); ?>
       </tr>
     <?php else:?>
       <tr>
-        <th>Num fattura:</th>
+        <th>Num fattura</th>
         <td>
           <?php echo link_to($fattura->getNumFattura(),'fattura/'.($fattura->getId()?'edit':'create').'?modifica_num_fattura=true&id_cliente='.$fattura->getClienteID().($fattura->getID()?'&id='.$fattura->getID():''))?>
           <?php echo input_hidden_tag('num_fattura',$fattura->getNumFattura());?>
@@ -54,7 +53,7 @@ del <?php echo format_date($fattura->getData()); ?>
   <?php endif ?>
 
   <tr>
-      <th>Cliente:</th>
+      <th>Cliente</th>
       <td>
       <?php if ($fattura->getClienteId()) : ?>
         <?php echo link_to($fattura->getCliente(), 'cliente/show?id='.$fattura->getClienteId())?>
@@ -67,7 +66,7 @@ del <?php echo format_date($fattura->getData()); ?>
 
   <?php if($sf_user->getAttribute('modifica_data')):?>
     <tr>
-      <th>Data:</th>
+      <th>Data</th>
       <td><?php echo object_input_date_tag($fattura, 'getData', array('rich' => true)) ?></td>
         <?php if($sf_request->hasError('data')):?>
           <td class="validate-error">
@@ -77,7 +76,7 @@ del <?php echo format_date($fattura->getData()); ?>
     </tr>
   <?php else:?>
     <tr>
-      <th>Data:</th>
+      <th>Data</th>
       <td>
         <?php echo link_to($fattura->getData('d M y'),'fattura/'.($fattura->getId()?'edit':'create').'?modifica_data=true&id_cliente='.$fattura->getClienteID().($fattura->getID()?'&id='.$fattura->getID():''))?>
         <?php echo input_hidden_tag('data',format_date($fattura->getData()))?>
@@ -85,11 +84,11 @@ del <?php echo format_date($fattura->getData()); ?>
     </tr>
   <?php endif?>
   <tr>
-    <th>Modo pagamento:</th>
+    <th>Modo pagamento</th>
     <td><?php echo object_select_tag($fattura, 'getModoPagamentoId', array('related_class' => 'ModoPagamento')) ?></td>
   </tr>
   <tr>
-    <th>Sconto:</th>
+    <th>Sconto</th>
     <td><?php echo object_input_tag($fattura, 'getSconto', array('size' => 3)) ?> %</td>
     <?php if($sf_request->hasError('sconto')):?>
       <td class="validate-error">
@@ -98,7 +97,7 @@ del <?php echo format_date($fattura->getData()); ?>
     <?php endif?>
   </tr>
   <tr>
-    <th>Iva:</th>
+    <th>Iva</th>
     <td><?php echo select_tag('vat',objects_for_select(CodiceIvaPeer::doSelect(new Criteria),'getValore','getNome',$fattura->getVat()))?></td>
     <?php if($sf_request->hasError('vat')):?>
       <td class="validate-error">
@@ -107,7 +106,7 @@ del <?php echo format_date($fattura->getData()); ?>
     <?php endif?>
   </tr>
   <tr>
-    <th>Spese anticipate:</th>
+    <th>Spese anticipate</th>
     <td><?php echo object_input_tag($fattura, 'getSpeseAnticipate', array('size' => 10),0) ?> &euro;</td>
     <?php if($sf_request->hasError('spese_anticipate')):?>
       <td class="validate-error">
@@ -116,19 +115,19 @@ del <?php echo format_date($fattura->getData()); ?>
     <?php endif?>
   </tr>
   <tr>
-    <th>Calcola ritenuta:</th>
+    <th>Calcola ritenuta</th>
     <td><?php echo select_tag('calcola_ritenuta_acconto',options_for_select(Array('a' => 'Auto', 's' => 'Si', 'n' => 'No'), $fattura->getCalcolaRitenutaAcconto()))?></td>
   </tr>
   <tr>
-    <th>Calcola tasse:</th>
+    <th>Calcola tasse</th>
     <td><?php echo select_tag('calcola_tasse',options_for_select(array('s'=>'Si','n'=>'No'),$fattura->getCalcolaTasse()))?></td>
   </tr>
   <tr>
-    <th>Scorpora tasse:</th>
+    <th>Scorpora tasse</th>
     <td><?php echo select_tag('includi_tasse',options_for_select(array('s'=>'Si','n'=>'No'),$fattura->getIncludiTasse()))?></td>
   </tr>
   <tr>
-    <th>Note:</th>
+    <th>Note</th>
     <td><?php echo object_textarea_tag($fattura, 'getNote', array('cols' => '50', 'rows' => '5')) ?></td>
   </tr>
   <tr>
@@ -136,5 +135,10 @@ del <?php echo format_date($fattura->getData()); ?>
   </tr>
 </tbody>
 </table>
-</fieldset>
 </form>
+
+<?php
+  slot('sidebar');
+    include_partial('invoice/sidebar');
+  end_slot();
+?>

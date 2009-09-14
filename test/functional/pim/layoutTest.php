@@ -41,29 +41,29 @@ $browser->
     checkElement('#main div#cols2 #col-left div.title h2', 'fatture da inviare')->
     checkElement('#main div#cols2 #col-left div.title h2', 'fatture da incassare', array('position' => 1))->
 
-    checkElement('#main div#cols2 #col-right div.title h4', 'rubrica clienti', array('position' => 0))->
-    checkElement('#main div#cols2 #col-right ul li:contains("lista clienti")')->
-    checkElement('#main div#cols2 #col-right ul li:contains("aggiungi un nuovo cliente")')->
+    checkElement('h4:contains("rubrica clienti")')->
+    checkElement('ul li:contains("lista clienti")')->
+    checkElement('ul li:contains("aggiungi un nuovo cliente")')->
 
-    checkElement('#main div#cols2 #col-right div.title h4', 'rubrica fornitori', array('position' => 1))->
-    checkElement('#main div#cols2 #col-right ul li:contains("lista fornitori")')->
-    checkElement('#main div#cols2 #col-right ul li:contains("aggiungi un nuovo fornitore")')->
+    checkElement('h4:contains("rubrica fornitori")')->
+    checkElement('ul li:contains("lista fornitori")')->
+    checkElement('ul li:contains("aggiungi un nuovo fornitore")')->
 
-    checkElement('#main div#cols2 #col-right div.title h4', 'fatture di vendita', array('position' => 2))->
-    checkElement('#main div#cols2 #col-right ul li:contains("lista fatture di vendita")')->
-    checkElement('#main div#cols2 #col-right ul li:contains("aggiungi una nuova fattura di vendita")')->
-    checkElement('#main div#cols2 #col-right ul li:contains("statistiche")')->
+    checkElement('h4:contains("fatture di vendita")')->
+    checkElement('ul li:contains("lista fatture di vendita")')->
+    checkElement('ul li:contains("aggiungi una nuova fattura di vendita")')->
+    checkElement('ul li:contains("statistiche")')->
 
-    checkElement('#main div#cols2 #col-right div.title h4', 'fatture d\'acquisto', array('position' => 3))->
-    checkElement('#main div#cols2 #col-right ul li:contains("lista fatture d\'acquisto")')->
-    checkElement('#main div#cols2 #col-right ul li:contains("aggiungi una nuova fattura d\'acquisto")')->
+    checkElement('h4:contains("fatture d\'acquisto")')->
+    checkElement('ul li:contains("lista fatture d\'acquisto")')->
+    checkElement('ul li:contains("aggiungi una nuova fattura d\'acquisto")')->
 
-    checkElement('#main div#cols2 #col-right div.title h4', 'cash flow', array('position' => 4))->
-    checkElement('#main div#cols2 #col-right ul li:contains("cash flow")')->
-    checkElement('#main div#cols2 #col-right ul li:contains("aggiungi una nuova entrata")')->
-    checkElement('#main div#cols2 #col-right ul li:contains("aggiungi una nuova uscita")')->
+    checkElement('h4:contains("cash flow")')->
+    checkElement('ul li:contains("cash flow")')->
+    checkElement('ul li:contains("aggiungi una nuova entrata")')->
+    checkElement('ul li:contains("aggiungi una nuova uscita")')->
 
-    checkElement('#main div#cols2 #col-right div.title h4', 'riepilogo', array('position' => 5))->
+    checkElement('h4:contains("riepilogo")')->
 
   end()->
   click('lista clienti')->

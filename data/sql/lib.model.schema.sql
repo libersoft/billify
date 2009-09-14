@@ -106,7 +106,7 @@ CREATE TABLE `codice_iva`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`id_utente` INTEGER,
-	`nome` VARCHAR(255) default 'null' NOT NULL,
+	`nome` VARCHAR(255)  NOT NULL,
 	`valore` INTEGER default 0 NOT NULL,
 	`descrizione` TEXT  NOT NULL,
 	PRIMARY KEY (`id`),
@@ -325,9 +325,9 @@ CREATE TABLE `tassa`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`id_utente` INTEGER default 0 NOT NULL,
-	`nome` VARCHAR(255) default 'null' NOT NULL,
-	`valore` VARCHAR(255) default 'null' NOT NULL,
-	`descrizione` VARCHAR(255) default 'null' NOT NULL,
+	`nome` VARCHAR(255)  NOT NULL,
+	`valore` VARCHAR(255)  NOT NULL,
+	`descrizione` VARCHAR(255)  NOT NULL,
 	PRIMARY KEY (`id`),
 	KEY `id_utente`(`id_utente`),
 	CONSTRAINT `tassa_FK_1`

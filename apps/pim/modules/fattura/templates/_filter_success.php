@@ -2,10 +2,9 @@
 
 <a name="lista_fatture"></a>
 
-<h2>Lista Fatture <?php echo $anno=='all'?'Anni '.implode('/',$anni_fatture):'Anno '.$anno ?> 
-<span id="view-tag" style="font-size: 75%; font-weight: normal">- <?php echo link_to_function('Visualizza Tag',visual_effect('blindDown','tag_cloud').visual_effect('fade','view-tag',array('duration'=>0)).visual_effect('appear','hidden-tag',array('duration'=>0)))?></span>
-<span id="hidden-tag" style="display: none;font-size: 75%; font-weight: normal">- <?php echo link_to_function('Nascondi Tag',visual_effect('blindUp','tag_cloud').visual_effect('fade','hidden-tag',array('duration'=>0)).visual_effect('appear','view-tag',array('duration'=>0)))?></span></h2>
-
+<div class="title">
+  <h2>Lista Fatture <?php echo $anno=='all'?'Anni '.implode('/',$anni_fatture):'Anno '.$anno ?></h2>
+</div>
 
 
 <?php if(count($tags)>0):?>
@@ -23,7 +22,7 @@
 <?php echo link_to_function(image_tag('/images/icons/arrow_right.gif',array('alt'=>'Filtra Lista','align'=>'absmiddle')).'Filtra la lista',visual_effect('appear','filter',array('duration'=>0)).visual_effect('fade','filter_link',array('duration'=>0)),array('title'=>'Filtra'),array('title'=>'Filtra'))?>
 </div>
 
-<?php 
+<?php
 $array_filter = array('form_action' => $form_action,
 											 'select_name_anno' => 'anno',
 											 'anni_fatture' => $anni_fatture,
@@ -34,10 +33,10 @@ $array_filter = array('form_action' => $form_action,
 											 'cliente' => $cliente,
 											 'trimestre'=>isset($trimestre)?$trimestre:'',
 											 'div_to_update'=>$div_to_update);
-											 
+
 if(isset($cliente_id))$array_filter['cliente_id'] = $cliente_id;
 
-include_partial('fattura/filter',$array_filter); 
+include_partial('fattura/filter',$array_filter);
 ?>
 
 <?php if(count($fatture_results)>0):?>
@@ -49,11 +48,11 @@ include_partial('fattura/filter',$array_filter);
 								 'loading'  => "Element.show('indicator')",
 								 'complete' => "Element.hide('indicator');",
 								 'confirm'  => 'Sei sicuro?'))?>
-								 
+
 <?php echo form_tag('fattura/actions')?>
 
 <?php endif?>
-								 
+
 <?php include_partial('fattura/list',array('tag'=>$tag_selected,'fatture' => $fatture,'fatture_results'=>$fatture_results,'checkbox'=>$checkbox, 'customer'=>$customer,'copia'=>$copia,'div_to_update'=>$div_to_update,'form_action'=>$form_action));?>
 
 <?php if(!isset($cliente_id)):?>
@@ -65,7 +64,7 @@ include_partial('fattura/filter',$array_filter);
 <?php echo submit_tag('Deposita Iva',array('onClick'=>'this.form.todo.value=\'i\''))?>&nbsp;
 <?php endif?>
 <?php echo submit_tag('Elimina',array('onClick'=>'this.form.todo.value=\'d\''))?>
-</form>	
+</form>
 <?php endif?>
 
 <?php if(isset($trimestre) && $anno != "all" && $stato=='all' && $trimestre >= 1 && $fatture_iva_da_pagare > 0):?>

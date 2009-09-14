@@ -56,19 +56,18 @@ $browser->click('1')->
     checkElement('#breadcrumps ul li', '/Fatture/', array('position' => 2))->
     checkElement('#breadcrumps ul li', '/Nuova/', array('position' => 3))->
     checkElement('h2', '/Nuova Fattura/')->
-    checkElement('fieldset legend', 'Dati Fattura')->
-    checkElement('table.fattura', 1)->
-    checkElement('table th', 'Pro forma:', array('position' => 0))->
-    checkElement('table th', 'Num fattura:', array('position' => 1))->
-    checkElement('table th', 'Cliente:', array('position' => 2))->
-    checkElement('table th', 'Data:', array('position' => 3))->
-    checkElement('table th', 'Modo pagamento:', array('position' => 4))->
-    checkElement('table th', 'Sconto:', array('position' => 5))->
-    checkElement('table th', 'Iva:', array('position' => 6))->
-    checkElement('table th', 'Spese anticipate:', array('position' => 7))->
-    checkElement('table th', 'Calcola ritenuta:', array('position' => 8))->
-    checkElement('table th', 'Calcola tasse:', array('position' => 9))->
-    checkElement('table th', 'Scorpora tasse:', array('position' => 10))->
+    checkElement('table.edit', 1)->
+    checkElement('table th', 'Pro forma', array('position' => 0))->
+    checkElement('table th', 'Num fattura', array('position' => 1))->
+    checkElement('table th', 'Cliente', array('position' => 2))->
+    checkElement('table th', 'Data', array('position' => 3))->
+    checkElement('table th', 'Modo pagamento', array('position' => 4))->
+    checkElement('table th', 'Sconto', array('position' => 5))->
+    checkElement('table th', 'Iva', array('position' => 6))->
+    checkElement('table th', 'Spese anticipate', array('position' => 7))->
+    checkElement('table th', 'Calcola ritenuta', array('position' => 8))->
+    checkElement('table th', 'Calcola tasse', array('position' => 9))->
+    checkElement('table th', 'Scorpora tasse', array('position' => 10))->
     checkElement('#cliente_id option', 20)->
     checkElement('#modo_pagamento_id option', 2)->
     checkElement('#modo_pagamento_id option', 'Rimessa diretta', array('position' => 0))->

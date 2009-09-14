@@ -23,8 +23,8 @@ $browser->
     checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
     checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
     checkElement('#breadcrumps ul li', '/Codici iva/', array('position' => 2))->
-    checkElement('table.fatture', 1)->
-    checkElement('table th', 3)->
+    checkElement('table', 1)->
+    checkElement('table th', 4)->
     checkElement('table th', 'nome', array('position' => 0))->
     checkElement('table th', 'valore', array('position' => 1))->
     checkElement('table th', 'descrizione', array('position' => 2))->
@@ -63,7 +63,7 @@ $browser->
     checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
     checkElement('#breadcrumps ul li', '/Codici iva/', array('position' => 2))->
     checkElement('#breadcrumps ul li', '/Nuovo codice iva/', array('position' => 3))->
-    checkElement('table.banca', 1)->
+    checkElement('table', 1)->
     checkElement('table th', 'Nome', array('position' => 0))->
     checkElement('table th', 'Valore', array('position' => 1))->
     checkElement('table th', 'Descrizione', array('position' => 2))->

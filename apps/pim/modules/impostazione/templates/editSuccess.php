@@ -3,84 +3,30 @@
 // date: 2006/08/16 01:08:07
 ?>
 
-<h2>Impostazioni
-
-<?php if($sf_request->hasParameter('success')):?>
-<span style="color:red;font-size: 70%;">- <?php echo $sf_request->getParameter('success')?></span>
-<?php endif?>
-</h2>
-
-<div id="edit-options">
+<div class="title">
+  <h2><?php echo __('Impostazioni')?>
+  <?php if($sf_request->hasParameter('success')):?>
+    <span style="color:red;font-size: 70%;">- <?php echo $sf_request->getParameter('success')?></span>
+  <?php endif?>
+  </h2>
+</div>
 
 <?php use_helper('Object') ?>
 
 <?php echo form_tag('impostazione/update') ?>
-
 <?php echo object_input_hidden_tag($impostazione, 'getIdUtente') ?>
 
 <?php if ($sf_request->hasErrors()): ?>
 <div class="validate-error">
-  <p>I dati inseriri non sono corretti.
-  Correggi i seguenti errori e salva i dati di nuovo:</p>
+  <p><?php echo __('I dati inseriri non sono corretti. Correggi i seguenti errori e salva i dati di nuovo:')?></p>
 </div>
 <?php endif ?>
 
-<ul class="impostazioni">
-<li id="li-paginazione" class="selected">
-<?php echo ($sf_request->hasError('num_clienti') || $sf_request->hasError('num_fatture') || $sf_request->hasError('dettagli_righe')?image_tag('icons/icon_alert.gif',array('align'=>'top')).'&nbsp;':'')?>
-<?php echo link_to_function('Paginazione',
-							visual_effect('fade','features',array('duration'=> 0))
-							.visual_effect('fade','label-fattura',array('duration'=> 0))
-							.visual_effect('fade','label-dettagli-fattura',array('duration'=> 0))
-							.visual_effect('appear','paginazione',array('duration'=> 0))
-							."Element.addClassName('li-paginazione','selected');"
-							."Element.removeClassName('li-features','selected');"
-							."Element.removeClassName('li-label-fattura','selected');"
-							."Element.removeClassName('li-label-dettagli-fattura','selected');"
-							)?></li>
+<div class="title">
+  <h3><?php echo __('Paginazione')?></h3>
+</div>
 
-<li id="li-features">
-<?php echo ($sf_request->hasError('percentuale_ra') || $sf_request->hasError('percentuale_imponibile_ra')?image_tag('icons/icon_alert.gif',array('align'=>'top')).'&nbsp;':'')?>
-<?php echo link_to_function('Features',
-							 visual_effect('fade','paginazione',array('duration'=> 0))
-							.visual_effect('fade','label-fattura',array('duration'=> 0))
-							.visual_effect('fade','label-dettagli-fattura',array('duration'=> 0))
-							.visual_effect('appear','features',array('duration'=> 0))
-							."Element.removeClassName('li-paginazione','selected');"
-							."Element.removeClassName('li-tasse','selected');"
-							."Element.addClassName('li-features','selected');"
-							."Element.removeClassName('li-label-fattura','selected');"
-							."Element.removeClassName('li-label-dettagli-fattura','selected');"
-							)?>
-</li>
-<li id="li-label-fattura">
-<?php echo link_to_function('Label fattura',
-							 visual_effect('fade','paginazione',array('duration'=> 0))
-							.visual_effect('fade','features',array('duration'=> 0))
-							.visual_effect('fade','label-dettagli-fattura',array('duration'=> 0))
-							.visual_effect('appear','label-fattura',array('duration'=> 0))
-							."Element.removeClassName('li-paginazione','selected');"
-							."Element.removeClassName('li-features','selected');"
-							."Element.addClassName('li-label-fattura','selected');"
-							."Element.removeClassName('li-label-dettagli-fattura','selected');"
-							)?>
-</li>
-<li id="li-label-dettagli-fattura">
-<?php echo link_to_function('Label dettagli fattura',
-							 visual_effect('fade','paginazione',array('duration'=> 0))
-							.visual_effect('fade','features',array('duration'=> 0))
-							.visual_effect('fade','label-fattura',array('duration'=> 0))
-							.visual_effect('appear','label-dettagli-fattura',array('duration'=> 0))
-							."Element.removeClassName('li-paginazione','selected');"
-							."Element.removeClassName('li-features','selected');"
-							."Element.removeClassName('li-label-fattura','selected');"
-							."Element.addClassName('li-label-dettagli-fattura','selected');"
-							)?></li>
-</ul>
-
-<div class="fieldset impostazioni <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="paginazione">
-
-<table class="fattura impostazioni">
+<table class="edit" id="paginazione" width="100%">
 <tbody>
 <tr>
   <th>Num clienti:</th>
@@ -121,11 +67,11 @@
 </tbody>
 </table>
 
+<div class="title">
+  <h3><?php echo __('Features')?></h3>
 </div>
 
-
-<div class="fieldset impostazioni <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="features" style="display: none;">
-<table class="fattura impostazioni">
+<table class="edit" id="features" width="100%">
 <tbody>
 <tr>
   <th>Riepilogo home:</th>
@@ -164,14 +110,6 @@
 </td>
 </tr>
 <tr>
-<td align="right" colspan="2"><?php echo submit_tag('Salva') ?></td>
-</tr>
-</tbody>
-</table>
-
-<table class="fattura impostazioni">
-<tbody>
-<tr>
   <th>Ritenuta acconto:</th>
   <td>
   <?php list($percentuale, $perc_imponibile) = explode('/',$impostazione->getRitenutaAcconto())?>
@@ -202,11 +140,11 @@
 </tbody>
 </table>
 
+<div class="title">
+  <h3><?php echo __('Label fattura')?></h3>
 </div>
 
-<div class="fieldset impostazioni <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="label-fattura" style="display: none;">
-
-<table class="fattura impostazioni">
+<table class="edit" id="label-fattura" width="100%">
 <tbody>
 <tr>
   <th>Label imponibile:</th>
@@ -256,12 +194,11 @@
 </tbody>
 </table>
 
+<div class="title">
+  <h3><?php echo __('Label dettagli fattura')?></h3>
 </div>
 
-
-<div class="fieldset impostazioni <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="label-dettagli-fattura" style="display: none;">
-
-<table class="fattura impostazioni">
+<table class="edit" id="label-dettagli-fattura" width="100%">
 <tbody>
 <tr>
   <th>Label quantita:</th>
@@ -298,7 +235,5 @@
 </tr>
 </tbody>
 </table>
-</div>
-</div>
 
 <?php slot('sidebar')?><?php include_partial('impostazione/sidebar')?><?php end_slot()?>

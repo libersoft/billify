@@ -14,8 +14,9 @@
 
 <?php echo object_input_hidden_tag($utente, 'getId') ?>
 
-<h2><?php echo $utente->isNew()?'Registrazione Nuovo Utente':'Modifica il tuo profilo'?>
-
+<div class="title">
+  <h2><?php echo $utente->isNew()?'Registrazione Nuovo Utente':'Modifica il tuo profilo'?>
+</div>
 
 
 <?php if($sf_request->hasAttribute('success')):?>
@@ -34,10 +35,7 @@
 </div>
 <?php endif ?>
 
-<fieldset>
-<legend>Dati Utente</legend>
-
-<table class="utente">
+<table class="edit" width="100%">
 <?php if($utente->isNew()):?>
 
 <tr>
@@ -208,5 +206,4 @@ Letta l'informativa:</small> </p>
 <td colspan="2" align="center"><?php echo submit_tag(($utente->isNew()?'Registrati':'Salva Profilo'))?>&nbsp;<?php echo $utente->isNew()?link_to('Annulla','utente/show'):''?></td>
 </tr>
 </table>
-</fieldset>
 </form>

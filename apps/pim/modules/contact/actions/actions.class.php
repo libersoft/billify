@@ -17,7 +17,7 @@ class contactActions extends sfActions
       $contact = $this->form->save();
       $contact->setIdUtente($this->getUser()->getAttribute('id_utente'));
       $contact->save();
-      
+
       return $contact;
     }
 
@@ -36,13 +36,18 @@ class contactActions extends sfActions
     $this->pager->setCriteria($criteria);
     $this->pager->init();
 
+    if(!$this->pager->getNbResults())
+    {
+      return 'NoResults';
+    }
+
   }
 
   public function executeEdit($request)
   {
     $factory = new ContactFactoryForm();
     $this->form = $factory->build($request->getParameter('contatto[class_key]', $request->getParameter('type')), ContattoPeer::retrieveByPk($request->getParameter('contatto[id]', $request->getParameter('id'))));
-    
+
     if($request->isMethod('post')) {
       $contact = $this->update($request);
       if($contact) {
@@ -59,9 +64,9 @@ class contactActions extends sfActions
   public function executeDelete($request)
   {
    $this->forward404Unless($contact = ContattoPeer::retrieveByPK($request->getParameter('id')));
-   
+
    $contact->delete();
-   
+
    $this->redirect('contact/index?type='.$contact->getClassKey());
   }
 }

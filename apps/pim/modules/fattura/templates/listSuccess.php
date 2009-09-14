@@ -16,3 +16,9 @@
 													 'tags'=>$tags,
 													 'tag_selected'=>$tag));?>
 </div>
+
+<?php
+  slot('sidebar');
+    include_partial('invoice/sidebar');
+  end_slot();
+?>

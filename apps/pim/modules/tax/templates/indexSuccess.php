@@ -1,6 +1,8 @@
-<h2><?php echo __('Tax list') ?></h2>
+<div class="title">
+  <h2><?php echo __('Tax list') ?></h2>
+</div>
 
-<table class="fatture">
+<table width="100%">
   <thead>
     <tr>
       <th><?php echo __("name") ?></th>
@@ -13,7 +15,7 @@
     <tr>
       <td><a href="<?php echo url_for('tax/edit?id='.$tassa->getId()) ?>" title="<?php echo $tassa->getNome() ?>"><?php echo $tassa->getNome() ?></a></td>
       <td><?php echo $tassa->getValore() ?></td>
-      <td><?php echo link_to(image_tag('icons_tango/trash-full.png', 'alt=delete'), 'tax/delete?id='.$tassa->getId(), 'post=true&confirm='.__('are you sure?').' title=delete') ?></td>
+      <td class="trash"><?php echo link_to(image_tag('icons_tango/trash-full.png', 'alt=delete'), 'tax/delete?id='.$tassa->getId(), 'post=true&confirm='.__('are you sure?').' title=delete') ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>

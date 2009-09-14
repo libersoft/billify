@@ -50,7 +50,7 @@ $browser->
   click('Salva')->
   followRedirect()->
   checkResponseElement('.error_list', 0)->
-  click('Torna alla lista')->
+  click('lista fornitori')->
 
   checkResponseElement('tr', 11)->
   click('delete')->

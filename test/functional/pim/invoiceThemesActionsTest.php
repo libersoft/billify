@@ -18,12 +18,12 @@ $browser->
 
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('h2', 'Temi Fattura')->
+    checkElement('h2', 'temi fattura')->
     checkElement('#breadcrumps ul li', 3)->
     checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
     checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
     checkElement('#breadcrumps ul li', '/Temi Fattura/', array('position' => 2))->
-    checkElement('table.fatture', 1)->
+    checkElement('table', 1)->
     checkElement('table th', 2)->
     checkElement('table th', 'Nome', array('position' => 0))->
     checkElement('table td', 'ideato srl', array('position' => 0))->

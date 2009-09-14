@@ -17,7 +17,7 @@ invoice:
   param: {module: fattura, action: index}
 
 invoice_create:
-  url: invoices
+  url: invoices/new
   param: {module: fattura, action: create}
 
 cashflow:

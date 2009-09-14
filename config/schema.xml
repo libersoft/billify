@@ -90,7 +90,7 @@
     <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
       <reference local="id_utente" foreign="id" />
     </foreign-key>
-    <column name="nome" type="VARCHAR" size="255" required="true" default="null" />
+    <column name="nome" type="VARCHAR" size="255" required="true" />
     <column name="valore" type="INTEGER" required="true" default="0" />
     <column name="descrizione" type="LONGVARCHAR" required="true" />
     <index name="id_utente">
@@ -256,9 +256,9 @@
     <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
       <reference local="id_utente" foreign="id" />
     </foreign-key>
-    <column name="nome" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="valore" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="descrizione" type="VARCHAR" size="255" required="true" default="null" />
+    <column name="nome" type="VARCHAR" size="255" required="true" />
+    <column name="valore" type="VARCHAR" size="255" required="true" />
+    <column name="descrizione" type="VARCHAR" size="255" required="true" />
     <index name="id_utente">
       <index-column name="id_utente" />
     </index>

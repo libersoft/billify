@@ -4,14 +4,14 @@
 ?>
 
 <div class="title">
-  <h2><?php if($tema_fattura->isNew()):?>Nuovo Tema<?php else:?>Modifica Tema<?php endif?>
+  <h2><?php if($tema_fattura->isNew()):?><?php echo __('Nuovo Tema')?><?php else:?><?php echo __('Modifica Tema')?><?php endif?>
 </div>
 
 
-
 <?php if($sf_request->hasParameter('success')):?>
-<span style="color:red;font-size: 70%;">- Tema aggiornato con successo</span>
+  <span style="color:red;font-size: 70%;">- <?php echo __('Tema aggiornato con successo')?></span>
 <?php endif?>
+
 </h2>
 <div id="edit-options">
 <?php use_helper('Object') ?>

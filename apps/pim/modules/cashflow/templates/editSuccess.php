@@ -3,7 +3,7 @@
 </div>
 
 <form action="<?php echo url_for('@document_sales_create')?>" method="post">
-  <table class="banca">
+  <table class="edit" width="100%">
     <?php echo $form; ?>
     <tr>
       <td colspan="2" align="right"><?php echo submit_tag('Salva')?></td>

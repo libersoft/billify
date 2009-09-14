@@ -5,7 +5,7 @@
 <?php if (!$form->getObject()->isNew()): ?>
 <input type="hidden" name="sf_method" value="put" />
 <?php endif; ?>
-  <table class="banca">
+  <table class="edit" width="100%">
     <tfoot>
       <tr>
         <td colspan="2">

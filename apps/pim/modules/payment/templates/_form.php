@@ -2,12 +2,9 @@
 <?php include_javascripts_for_form($form) ?>
 
 <form action="<?php echo url_for('payment/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
-<?php if (!$form->getObject()->isNew()): ?>
-<input type="hidden" name="sf_method" value="put" />
-<?php endif; ?>
-
-<fieldset>
-  <legend><?php echo __('Payment\'s type') ?></legend>
+  <?php if (!$form->getObject()->isNew()): ?>
+    <input type="hidden" name="sf_method" value="put" />
+  <?php endif; ?>
 
   <table class="banca">
     <tfoot>
@@ -25,8 +22,6 @@
       <?php echo $form ?>
     </tbody>
   </table>
-
-  </fieldset>
 </form>
 
 <?php

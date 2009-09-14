@@ -138,9 +138,31 @@ table th { background-color: #EEF8E4 }
 
 span.lordo{display: none;}
 
-table.edit th {text-align: right;}
+table.edit th {text-align: right; width: 30%;}
 
-input[type="text"], input[type="password"]{padding: 3px; border: 1px solid #BFBFBF; font-size: 110%;}
+input[type="text"], input[type="password"]{padding: 3px; border: 1px solid #BFBFBF; font-size: 110%; width: 300px;}
+table.filter input[type="text"], .box input[type="text"] {width: 150px;}
+table.dettagli_fattura input[type="text"] {width: auto;}
 
 #breadcrumps {margin-top: 5px;}
-#breadcrumps ul li {display: inline}
+#breadcrumps ul li, ul.radio_list li, div.actions ul li {display: inline}
+
+ul.radio_list, div.actions ul li { list-style-type: none}
+div.actions{background-color: #EEF8E4; padding: 3px 10px;}
+td.trash{text-align: center; width: 5%;}
+
+.box{margin-bottom: 10px;}
+
+.red{font-color: red;}
+
+#indicator{
+	position: absolute;
+	width: 100px;
+	height: 40px;
+	left: 5px;
+	top: 10px;
+	z-index: 900;
+	background: url(../../images/indicator.gif) no-repeat;
+}
+
+.hide{display: none;}

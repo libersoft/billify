@@ -1,10 +1,12 @@
-<h2><?php echo __('Payment\'s types') ?></h2>
+<div class="title">
+  <h2><?php echo __('Payment\'s types') ?></h2>
+</div>
 
-<table class="fatture">
+<table width="100%">
   <thead>
     <tr>
-      <th>Num giorni</th>
-      <th>Descrizione</th>
+      <th><?php echo __('Num giorni')?></th>
+      <th><?php echo __('Descrizione')?></th>
       <th></th>
     </tr>
   </thead>
@@ -13,7 +15,7 @@
     <tr>
       <td><a href="<?php echo url_for('payment/edit?id='.$modo_pagamento->getId()) ?>" title="<?php echo $modo_pagamento->getNumGiorni() ?>"><?php echo $modo_pagamento->getNumGiorni() ?></a></td>
       <td><?php echo $modo_pagamento->getDescrizione() ?></td>
-      <td><?php echo link_to(image_tag('icons_tango/trash-full.png', 'alt=delete'), 'payment/delete?id='.$modo_pagamento->getId(), 'post=true&confirm='.__('are you sure?').' title=delete') ?></td>
+      <td class="trash"><?php echo link_to(image_tag('icons_tango/trash-full.png', 'alt=delete'), 'payment/delete?id='.$modo_pagamento->getId(), 'post=true&confirm='.__('are you sure?').' title=delete') ?></td>
     </tr>
     <?php endforeach; ?>
   </tbody>

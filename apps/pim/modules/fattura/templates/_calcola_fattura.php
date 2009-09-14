@@ -1,4 +1,4 @@
-<table class="calcola_fattura" <?php echo isset($align)?'align="'.$align.'"':''?> <?php echo isset($align)?'width="'.$width.'"':''?> width="100%">
+<table class="edit" <?php echo isset($align)?'align="'.$align.'"':''?> <?php echo isset($align)?'width="'.$width.'"':''?> width="100%">
 <tr>
 <th><?php echo stripcslashes(UtentePeer::getImpostazione()->getLabelImponibile());?>:</th>
 <td align="right"><?php echo $fattura->getIncludiTasse()=='s'?format_currency($fattura->getImponibileScorporato()):format_currency($fattura->getImponibile())?> <?php echo isset($euro)?$euro:'&euro;'?></td>
@@ -53,7 +53,7 @@
 <td align="right" style="border-top: 1px solid #000;"><?php echo format_currency($fattura->getNettoDaLiquidare())?> <?php echo isset($euro)?$euro:'&euro;'?></td>
 </tr>
 </table>
-<?php 
+<?php
 //$fattura->setTotaleMem($fattura->getNettoDaLiquidare());
 //$fattura->setImponibileMem($fattura->getImponibile());
 //$fattura->save();

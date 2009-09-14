@@ -23,6 +23,9 @@
 
 <?php slot('sidebar')?>
   <?php include_partial('main/sidebar') ?>
+<?php end_slot('sidebar')?>
+
+<?php slot('infobox')?>
   <?php include_partial('main/resume', array(
     'fatturato_annuo' => $fatturato_annuo,
     'fatturato_annuo_netto' => $fatturato_annuo_netto,

@@ -10,7 +10,7 @@
  */
 class invoiceActions extends sfActions
 {
- 
+
   private function update($request)
   {
     $this->form->bind($request->getParameter('fattura'));
@@ -18,18 +18,18 @@ class invoiceActions extends sfActions
       $invoice = $this->form->save();
       $invoice->setIdUtente($this->getUser()->getAttribute('id_utente'));
       $invoice->save();
-      
+
       return $invoice;
     }
 
     return false;
 
   }
-  
+
   private function delete($request) {
     FatturaPeer::doDelete($request->getParameter('delete'));
   }
-  
+
   public function executeIndex($request)
   {
     $criteria = new Criteria();
@@ -38,26 +38,31 @@ class invoiceActions extends sfActions
     $criteria->addAscendingOrderByColumn(FatturaPeer::DATA );
 
     $this->invoices = FatturaPeer::doSelect($criteria);
+
+    if(!count($this->invoices))
+    {
+      return 'NoResults';
+    }
   }
-  
-  public function executeBatch($request) 
+
+  public function executeBatch($request)
   {
     if($request->hasParameter('delete_button')) {
       $this->delete($request);
-    } 
-    
+    }
+
     $this->redirect('invoice/index');
   }
-  
+
   public function executeEdit($request)
   {
     $factory = new FatturaFactoryForm();
     $this->form = $factory->build($request->getParameter('type'), FatturaPeer::retrieveByPk($request->getParameter('fattura[id]', $request->getParameter('id'))));
 
-    if($request->isMethod('post')) 
+    if($request->isMethod('post'))
     {
       $contact = $this->update($request);
-      if($contact) 
+      if($contact)
       {
         $this->redirect('invoice/edit?id='.$contact->getId());
       }

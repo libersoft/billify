@@ -9,7 +9,7 @@
   </form>
 </div>
 
-<table class="fatture">
+<table width="100%">
   <tr>
     <th><?php echo __('Data')?></th>
     <th><?php echo __('Contatto')?></th>

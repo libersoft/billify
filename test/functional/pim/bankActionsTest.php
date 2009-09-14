@@ -23,7 +23,7 @@ $browser->
     checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
     checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
     checkElement('#breadcrumps ul li', '/Banche/', array('position' => 2))->
-    checkElement('table.fatture', 1)->
+    checkElement('table', 1)->
     checkElement('table th', 4)->
     checkElement('table th', 'banca', array('position' => 0))->
     checkElement('table th', 'n. conto', array('position' => 1))->
@@ -64,7 +64,7 @@ $browser->
     checkElement('#breadcrumps ul li', '/Banche/', array('position' => 2))->
     checkElement('#breadcrumps ul li', '/Nuova banca/', array('position' => 3))->
     checkElement('h2', 'nuovo conto bancario')->
-    checkElement('table.banca', 1)->
+    checkElement('table.edit', 1)->
     checkElement('table th', 'Nome banca', array('position' => 0))->
     checkElement('table th', 'Abi', array('position' => 1))->
     checkElement('table th', 'Cab', array('position' => 2))->

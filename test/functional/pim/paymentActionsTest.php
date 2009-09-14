@@ -23,7 +23,7 @@ $browser->
     checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
     checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
     checkElement('#breadcrumps ul li', '/Tipologie di pagamento/', array('position' => 2))->
-    checkElement('table.fatture', 1)->
+    checkElement('table', 1)->
     checkElement('table th', 3)->
     checkElement('table th', 'Num giorni', array('position' => 0))->
     checkElement('table th', 'Descrizione', array('position' => 1))->

@@ -432,8 +432,9 @@ class fatturaActions extends sfActions
 		$fattura = $this->getFatturaOrCreate();
 		$fattura->setStato($this->getRequestParameter('stato','n'));
 
-		if($this->getRequestParameter('data_stato')){
-			list($d, $m, $y) = sfI18N::getDateForCulture($this->getRequestParameter('data_stato'), $this->getUser()->getCulture());
+		if($this->getRequestParameter('data_stato'))
+		{
+			list($d, $m, $y) = $this->getContext()->getI18N()->getDateForCulture($this->getRequestParameter('data_stato'), $this->getUser()->getCulture());
 			$fattura->setDataStato("$y-$m-$d");
 		}
 

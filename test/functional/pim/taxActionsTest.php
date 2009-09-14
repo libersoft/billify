@@ -23,7 +23,7 @@ $browser->
     checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
     checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
     checkElement('#breadcrumps ul li', '/Tasse/', array('position' => 2))->
-    checkElement('table.fatture', 1)->
+    checkElement('table', 1)->
     checkElement('table th', 3)->
     checkElement('table th', 'nome', array('position' => 0))->
     checkElement('table th', 'valore', array('position' => 1))->
