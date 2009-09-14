@@ -140,9 +140,9 @@ span.lordo{display: none;}
 
 table.edit th {text-align: right; width: 30%;}
 
-input[type="text"], input[type="password"]{padding: 3px; border: 1px solid #BFBFBF; font-size: 110%; width: 300px;}
-table.filter input[type="text"], .box input[type="text"] {width: 150px;}
-table.dettagli_fattura input[type="text"] {width: auto;}
+table.edit  input[type="text"], table.login input[type="text"], input[type="text"], input[type="password"]{padding: 3px; border: 1px solid #BFBFBF; font-size: 110%; width: 300px;}
+.filter input[type="text"], .box input[type="text"] {width: 150px;}
+.dettagli_fattura input[type="text"] {width: auto;}
 
 #breadcrumps {margin-top: 5px;}
 #breadcrumps ul li, ul.radio_list li, div.actions ul li {display: inline}
