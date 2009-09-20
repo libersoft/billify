@@ -10,27 +10,27 @@
 
     <!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="css/impress/main-msie.css" /><![endif]-->
 
-    <title>phpAccount - Simplify business management</title>
+    <title>Billify - Simplify business management</title>
 </head>
 
 <body>
 
 <div id="main">
     <div id="header">
-        <h1 id="logo"><a href="./" title="[Go to homepage]"><img src="/images/impress/logo.gif" alt="" /></a></h1>
+        <h1 id="logo"><a href="./" title="[Go to homepage]"><img src="<?php echo image_path('impress/logo.gif')?>" alt="" /></a></h1>
         <hr class="noscreen" />
         <div id="nav">
-            <a href="/" id="nav-active">Home</a> <span>|</span>
+            <a href="<?php echo url_for('@homepage')?>" id="nav-active">Home</a> <span>|</span>
             <a href="http://www.ideato.it/Azienda/Chi-siamo" target="_blank"><?php echo __('About')?></a> <span>|</span>
-            <a href="<?php echo url_for('@content?page=support')?>"><?php echo __('Support')?></a> <span>|</span>
+            <!--a href="<?php echo url_for('@content?page=support')?>"><?php echo __('Support')?></a> <span>|</span-->
             <a href="http://www.ideato.it/Azienda/Contatti" target="_blank"><?php echo __('Contat us')?></a>
         </div>
     </div>
     
     <div id="tray">
         <ul>
-            <li><a href="/billify.php" target="_blank">Demo</a></li>
-            <li><a href="<?php echo url_for('@download')?>">Download</a></li>
+            <li><a href="<?php echo url_for('@content?page=demo')?>">Demo</a></li>
+            <li><a href="<?php echo url_for('@content?page=download')?>">Download</a></li>
         </ul>
     <hr class="noscreen" />
     </div>
@@ -38,7 +38,7 @@
     <div id="col-top"></div>
     <div id="col" class="box">
         <div id="ribbon"></div>
-        <div id="col-browser"><img src="/images/screenshot/dashboard.jpg" width="255" height="177" alt="" /></div>
+        <div id="col-browser"><img src="<?php echo image_path('screenshot/dashboard.jpg')?>" width="255" height="177" alt="" /></div>
         <div id="col-text">
 	  <?php echo $sf_content; ?>
         </div>
@@ -50,35 +50,29 @@
     <div id="cols3-top"></div>
     <div id="cols3" class="box">
         <div class="col">
-            <h3><a href="#"><?php echo __('Address book')?></a></h3>
+            <h3><?php echo __('Address book')?></h3>
 
-            <!--p class="nom t-center"><a href="#"><img src="tmp/200x140.gif" alt="" /></a></p-->
+            <p class="nom t-center" style="padding-top: 20px;">
+              <object width="250">
+                <param name="movie" value="http://www.youtube.com/v/_fHoDWc22B0&hl=it&fs=1&rel=0"></param>
+                <param name="allowFullScreen" value="true"></param>
+                <param name="allowscriptaccess" value="always"></param>
+                <embed src="http://www.youtube.com/v/_fHoDWc22B0&hl=it&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="250" ></embed>
+              </object>
+            </p>
 
-            <!--div class="col-text">
-
-                <p>Lorem ipsum dolor sit amet <a href="#">consectetuer</a> amit adipiscing elit. <strong>Nunc feugiat.</strong>
-                Inam massa est feugiat <a href="#">pharetra</a> lacus. In non arcu nec liberom pharetra rutrum est.</p>
-
-                <ul class="ul-01">
-                    <li>Provider contacts</li>
-                    <li>Customer contacts</li>
-                </ul>
-
-            </div--> <!-- /col-text -->
-
-            <!--div class="col-more"><a href="#"><img src="design/cols3-more.gif" alt="" /></a></div-->
         </div>
 
         <hr class="noscreen" />
 
         <div class="col">
-            <h3><a href="#"><?php echo __('Payments and invoices')?></a></h3>
+            <h3><?php echo __('Payments and invoices')?></h3>
         </div>
 
         <hr class="noscreen" />
 
         <div class="col last">
-            <h3><a href="#"><?php echo __('Cash flow')?></a></h3>
+            <h3><?php echo __('Cash flow')?></h3>
             <!--p class="nom t-center"><a href="#"><img src="tmp/200x140.gif" alt="" /></a></p-->
         </div>
         <hr class="noscreen" />
@@ -124,7 +118,7 @@
         <p class="f-right"><a href="http://www.nuviotemplates.com/">Free web templates</a> presented by <a href="http://www.qartin.cz/">QARTIN</a> &ndash; Our tip: <a href="http://last-minute.invia.pl">Wakacje</a> <a href="http://dovolenka.invia.sk">Dovolenka</a></p>
         <!-- Do you want remove this backlinks? Look at www.nuviotemplates.com/payment.php -->
 
-        <p>Copyright &copy;&nbsp;2009 <strong><a href="#">ideato srl</a></strong>, All Rights Reserved &reg;</p>
+        <p>Copyright &copy;&nbsp;2009 <strong><a href="http://www.ideato.it">ideato srl</a></strong>, All Rights Reserved &reg;</p>
 
     </div>
 
