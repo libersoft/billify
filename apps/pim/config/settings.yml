@@ -2,9 +2,10 @@ prod:
   .settings:
     logging_enabled: off
     error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>
-    no_script_name:		on
+    no_script_name:		off
 #    suffix:         		 .html
-    cache: on
+    cache: off
+    standard_helpers:       [Number, Partial, Cache, Form, Date, I18N, Javascript, Object]
 
 dev:
   .settings:

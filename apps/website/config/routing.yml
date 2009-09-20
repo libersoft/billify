@@ -1,0 +1,12 @@
+# default rules
+download:
+  url:   /download
+  param: { module: content, action: index, page: download }
+
+homepage:
+  url:   /
+  param: { module: content, action: index, page: homepage }
+
+content:
+  url:   /:page
+  param: { module: content, action: index }

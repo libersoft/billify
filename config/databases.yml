@@ -12,9 +12,9 @@ all:
   propel:
     class: sfPropelDatabase
     param:
-      dsn:        mysql:dbname=phpaccount;host=localhost
-      username:   root
-      password:   
+      dsn:        mysql:dbname=demo_billify;host=localhost
+      username:   demo_billify
+      password:   demo
       encoding:   utf8
       persistent: true
       pooling:    true
