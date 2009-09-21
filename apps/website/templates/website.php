@@ -51,15 +51,15 @@
     <div id="cols3" class="box">
         <div class="col">
             <h3><?php echo __('Address book')?></h3>
-
-            <p class="nom t-center" style="padding-top: 20px;">
-              <object width="250">
-                <param name="movie" value="http://www.youtube.com/v/_fHoDWc22B0&hl=it&fs=1&rel=0"></param>
-                <param name="allowFullScreen" value="true"></param>
-                <param name="allowscriptaccess" value="always"></param>
-                <embed src="http://www.youtube.com/v/_fHoDWc22B0&hl=it&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="250" ></embed>
-              </object>
-            </p>
+            
+            <div class="col-text">
+              <p><?php echo __('Manage your contacts. Both clients than providers.')?></p>
+              
+              <ul class="ul-01">
+                <li><?php echo __('Manage clients contacts')?></li>
+                <li><?php echo __('Manage providers contacts')?></li>
+              </ul>
+            </div>
 
         </div>
 
@@ -67,31 +67,51 @@
 
         <div class="col">
             <h3><?php echo __('Payments and invoices')?></h3>
+            
+            <div class="col-text">
+              <p><?php echo __('Manage your business documents. Both purchase than sales invoices.')?></p>
+              
+              <ul class="ul-01">
+                <li><?php echo __('Manage purchase invoices')?></li>
+                <li><?php echo __('Manage sales invoices')?></li>
+                <li><?php echo __('Manage payment details')?></li>
+              </ul>
+            </div>
+            
         </div>
 
         <hr class="noscreen" />
 
         <div class="col last">
             <h3><?php echo __('Cash flow')?></h3>
-            <!--p class="nom t-center"><a href="#"><img src="tmp/200x140.gif" alt="" /></a></p-->
+            
+            <div class="col-text">
+              <p><?php echo __('Manage your incoming and outcoming flow.')?></p>
+              
+              <ul class="ul-01">
+                <li><?php echo __('Manage incoming documents')?></li>
+                <li><?php echo __('Manage outcoming documents')?></li>
+                <li><?php echo __('Filter on cash flow')?></li>
+              </ul>
+            </div>
+            
         </div>
         <hr class="noscreen" />
     </div>
     <div id="cols3-bottom"></div>
-<!--
+
     <div id="cols2-top"></div>
     <div id="cols2" class="box">
 
         <div id="col-left">
             <div class="title">
-                <span class="f-right"><a href="#" class="ico-rss">RSS feed</a></span>
-                <h4><?php echo __('Latest news')?></h4>
+                <h4><?php echo __('Some screenshot from billify')?></h4>
             </div>
 
-            <ul class="ul-list nomb">
-                <li><span class="f-right"><a href="#" class="ico-comment">1 commento</a></span> <span class="date">27.09.2008</span> <a href="#" class="article">L'amministrazione aziendale si fa Open Source</a></li>
-                <li><span class="f-right"><a href="#" class="ico-comment">0 commenti</a></span> <span class="date">27.09.2008</span> <a href="#" class="article">Completata la suite dei test automatici</a></li>
-                <li><span class="f-right"><a href="#" class="ico-comment">0 commenti</a></span> <span class="date">27.09.2008</span> <a href="#" class="article">Dalle ceneri di PIM Online nasce Billify</a></li>
+            <ul class="ul-list nomb list-images">
+                <li><img src="<?php echo image_path('screenshot/invoice.jpg')?>" width="170" alt="" /></li>
+                <li><img src="<?php echo image_path('screenshot/cashflow.jpg')?>" width="170" alt="" /></li>
+                <li><img src="<?php echo image_path('screenshot/stats.jpg')?>" width="170" alt="" /></li>
             </ul>
         </div>
 
@@ -101,14 +121,16 @@
             <h4><span><?php echo __('From web')?></span></h4>
 
             <div class="box">
-                    <p><em>Con Billify gestiamo tutta l'amministrazione dell'azienda. Con questo prodotto abbiamo sempre in tempo reale la situazione finanziare.</em></p>
+                    <p><em>
+                    <?php echo __('With Billify we manage all business tasks. With this product we have always the updated real time financial situation.');?>
+                    </em></p>
                     <p class="high smaller">&ndash; <cite>Francesco Trucchia, ideato srl</cite></p>
             </div>
         </div>
 
     </div>
     <div id="cols2-bottom"></div>
--->
+
     <hr class="noscreen" />
 
     <!-- Footer -->

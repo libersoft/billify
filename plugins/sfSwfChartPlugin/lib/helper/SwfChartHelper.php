@@ -14,24 +14,19 @@
  * @version    SVN: $Id: sfSwfChart.class.php 1519 2006-06-24 03:44:30Z dwhittle $
  */
 
-  function swf_chart($xml_source, $width=400, $height=250, $bg_color="#ffffff", $transparent = false, $license = null )
-  {
-    $library_path = sfConfig::get('sf_swfchart_dir', '/swfcharts/');
-    $flash_file = $library_path . 'chart.swf';
+function swf_chart($xml_source, $width = 400, $height = 250, $bg_color="#ffffff")
+{
+  $flash_file = _compute_public_path('chart', 'swfcharts', 'swf');
+  $library_path = dirname($flash_file).DIRECTORY_SEPARATOR;
 
-  	$u = (strpos($flash_file,"?") === false) ? "?" : ((substr($flash_file, -1) === "&") ? "" : "&");
+  $movie = $flash_file.'?library_path='.$library_path.'&amp;php_source='.$xml_source;
 
-    $license_query = ($license != null) ? '&license=' . $license : '' ;
-    $transparent_html = ($transparent) ? '<param name="wmode" value="transparent" />' : '' ;
-    $movie = $flash_file.$u.'library_path='.$library_path.'&amp;php_source='.$xml_source.$license_query;
-
-  	return '<object type="application/x-shockwave-flash" data="'.$movie.'" width="'.$width.'" height="'.$height.'" id="chart">
+  return '<object type="application/x-shockwave-flash" data="'.$movie.'" width="'.$width.'" height="'.$height.'">
   	         <param name="movie" value="'.$movie.'" />
   	         <param name="quality value="high" />
-  	         <param name="bgcolor" value="'.$bg_color.'" />'
-  	         . $transparent_html.
-  	        '</object>';
+  	         <param name="bgcolor" value="'.$bg_color.'" />
+              </object>';
 
-  }
+}
 
 ?>

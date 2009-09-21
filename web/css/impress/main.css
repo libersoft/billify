@@ -44,11 +44,11 @@ ul.ul-list span.date {padding-right:10px;}
 
 #main {width:95%; margin:0 auto; overflow:hidden;}
 
-    #header {position:relative; height:90px; padding:30px 20px 15px 20px;}
+    #header {position:relative; height:90px; padding:0 20px 10px 20px;}
 
         #logo {margin:0;}
 
-        #nav {position:absolute; top:80px; right:20px; margin:0;}
+        #nav {position:absolute; top:60px; right:20px; margin:0;}
         #nav span {margin:0 8px;}
         #nav #nav-active {font-weight:bold; text-decoration:none;}
 
@@ -166,3 +166,6 @@ td.trash{text-align: center; width: 5%;}
 }
 
 .hide{display: none;}
+
+.chart{float: left;}
+.chart h2{margin-left: 30px;}

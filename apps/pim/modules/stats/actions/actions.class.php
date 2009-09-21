@@ -17,9 +17,20 @@ class statsActions extends sfActions
    * Executes index action
    *
    */
-  public function executeIndex()
+  public function executeIndex($request)
   {
     $this->getFatturato();
+    
+    $this->anno_precedente = date('Y', time()) - 1;
+    $this->anno = date('Y', time());
+    $this->anno_successivo = date('Y', time()) + 1;
+
+    if($request->hasParameter('year'))
+    {
+      $this->anno_precedente = $request->getParameter('year') - 1;
+      $this->anno = $request->getParameter('year');
+      $this->anno_successivo = $request->getParameter('year') + 1;
+    }
   }
 
   public function getFatturato(){

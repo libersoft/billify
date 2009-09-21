@@ -44,11 +44,11 @@ ul.ul-list span.date {padding-right:10px;}
 
 #main {width:960px; margin:0 auto; overflow:hidden;}
 
-    #header {position:relative; height:90px; padding:30px 20px 15px 20px;}
+    #header {position:relative; height:90px; padding: 0 20px 10px 20px;}
 
         #logo {margin:0;}
 
-        #nav {position:absolute; top:80px; right:20px; margin:0;}
+        #nav {position:absolute; top:60px; right:20px; margin:0;}
         #nav span {margin:0 8px;}
         #nav #nav-active {font-weight:bold; text-decoration:none;}
 
@@ -109,7 +109,7 @@ ul.ul-list span.date {padding-right:10px;}
 
 #cols3-top {width:960px; height:5px; margin-top:15px; background:url("../../images/impress/design/cols3-top.gif") 0 0 no-repeat; font-size:0; line-height:0; overflow:hidden;}
 #cols3-bottom {width:960px; height:5px; margin-bottom:15px; background:url("../../images/impress/design/cols3-bottom.gif") 0 0 no-repeat; font-size:0; line-height:0; overflow:hidden;}
-#cols3 {background:url("../design/cols3.gif") 0 0 repeat-y;}
+#cols3 {background:url("../../images/impress/design/cols3.gif") 0 0 repeat-y;}
 
     .col {float:left; width:308px; padding:0 1px; margin-right:15px;}
     .col.last {margin-right:0;}
@@ -128,3 +128,5 @@ ul.ul-list span.date {padding-right:10px;}
 .ico-rss {padding-left:18px; background:url("../../images/impress/design/ico-rss.gif") 0 50% no-repeat;}
 
 .smaller {font-size:85%;}
+
+.list-images li {display: inline; margin-right: 30px;}
