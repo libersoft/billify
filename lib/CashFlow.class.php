@@ -106,6 +106,10 @@ Class CashFlow
     if($document instanceof Vendita )
     {
       $document->calcolaFattura();
+      if (!$document->getDataScadenza())
+	  {
+	    $document->save();	
+	  }
       $cash_flow_vendita = new CashFlowSalesAdapter($document);
       $this->addIncoming($cash_flow_vendita);
     }
