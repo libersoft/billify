@@ -1,5 +1,6 @@
-stats
 .svn
-web/uploads
-cache
-log
+/web/uploads/*
+/cache/*
+/log/*
+/web/*_dev.php
+/doc/*

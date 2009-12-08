@@ -18,7 +18,7 @@
     <th><?php echo __('Uscite')?></th>
     <th><?php echo __('Pagata')?></th>
   </tr>
-  <?php foreach ($cf->getRows() as $row) : ?>
+  <?php foreach ($cf->getResults() as $row) : ?>
     <tr>
       <td><?php echo $row->getPaymentDate('Y-m-d')?></td>
       <td><?php echo link_to($row->getContact(), $row->getContactUrl())?></td>
@@ -29,6 +29,8 @@
     </tr>
   <?php endforeach; ?>
 </table>
+
+<?php include_partial('cashflow/pager', array('pager' => $pager))?>
 
 <table class="banca" style="margin: 10px 0px; border: 1px solid #AAA;">
   <tr>

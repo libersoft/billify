@@ -137,4 +137,9 @@ Class CashFlow
       $this->add($document);
     }
   }
+  
+  public function getResults()
+  {
+    return $this->getRows();
+  }
 }

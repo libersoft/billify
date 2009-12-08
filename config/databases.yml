@@ -8,6 +8,13 @@ test:
     param:
       classname:  DebugPDO
 
+prod:
+  propel:
+    param:
+      dsn:        mysql:dbname=billify;host=localhost
+      username:   ideato
+      password:   ideato123qwe
+      
 all:
   propel:
     class: sfPropelDatabase
