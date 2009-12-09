@@ -366,6 +366,26 @@
         <source>new tax code</source>
         <target>nuovo codice iva</target>
       </trans-unit>
+      <trans-unit id="80">
+        <source>print</source>
+        <target>stampa</target>
+      </trans-unit>
+      <trans-unit id="81">
+        <source>edit</source>
+        <target>modifica</target>
+      </trans-unit>
+      <trans-unit id="82">
+        <source>copy</source>
+        <target>copia</target>
+      </trans-unit>
+      <trans-unit id="83">
+        <source>delete</source>
+        <target>elimina</target>
+      </trans-unit>
+      <trans-unit id="84">
+        <source>actions</source>
+        <target>azioni</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

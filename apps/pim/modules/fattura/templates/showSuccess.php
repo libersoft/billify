@@ -3,11 +3,10 @@
 <div class="title">
   <h2>
     <?php echo __('%invoice% del %date%', array('%invoice%' => $fattura->toString(), '%date%' => format_date($fattura->getData())))?>&nbsp;
-    <?php echo include_partial('fattura/menu', array('fattura' => $fattura));?>
   </h2>
 </div>
 
-<?php include_partial('fattura/tags', array('fattura' => $fattura));?>
+<?php //include_partial('fattura/tags', array('fattura' => $fattura));?>
 
 <h3><?php echo link_to($fattura->getCliente()->toString(), '@contact_show?id='.$fattura->getClienteID(), array('title' => __('Gestione Cliente')))?></h3>
 <?php include_partial('cliente/contatti',array('cliente'=>$fattura->getCliente(),'margin_left'=> '0px;'));?>
@@ -22,8 +21,17 @@
   </small>
 <?php endif?>
 
+<?php slot('sidebar'); ?>
+    <div class="title">
+       <h4><?php echo __('actions')?></h4>
+    </div>
+    <ul class="ul-list nomb">
+      <li>+ <?php echo link_to(__('edit'),'fattura/edit?id='.$fattura->getID().'&id_cliente='.$fattura->getClienteID(),array('title'=>'Modifica Fattura'))?></li>
+      <li>+ <?php echo link_to(__('copy'),'fattura/copia?id='.$fattura->getID().'&actions=show',array('title'=>'Copia Fattura'))?></li>
+      <li>+ <?php echo link_to(__('print'),'fattura/export?id='.$fattura->getID(),array('title'=>'Crea PDF Fattura','target'=>'_blank'))?></li>
+      <li>+     <?php echo link_to(__('delete'),'fattura/delete?id='.$fattura->getID(),array('title'=>'Elimina fattura','confirm' => 'Vuoi veramente eliminare la '.$fattura->toString().'?'))?></li>
+    </ul>
 <?php
-  slot('sidebar');
     include_partial('invoice/sidebar');
   end_slot();
 ?>

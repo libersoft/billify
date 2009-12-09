@@ -1,4 +1,3 @@
-<?php echo link_to_function(image_tag('icons_tango/open.png',array('alt'=>'Opzioni Fattura','align'=>'top')),'if(Element.getStyle(\'opzioni_fattura\',\'display\') == \'none\'){'.visual_effect('appear','opzioni_fattura').'}else{'.visual_effect('fade','opzioni_fattura',array('duration'=>0.2)).'}',array('title'=>'Opzioni Fattura'))?>&nbsp;
 <?php echo link_to(image_tag('icons_tango/edit.png',array('alt'=>'Modifica Fattura','align'=>'top')),'fattura/edit?id='.$fattura->getID().'&id_cliente='.$fattura->getClienteID(),array('title'=>'Modifica Fattura'))?>&nbsp;
 <?php echo link_to(image_tag('icons_tango/copy.png',array('alt'=>'Copia Fattura','align'=>'top')),'fattura/copia?id='.$fattura->getID().'&actions=show',array('title'=>'Copia Fattura'))?>&nbsp;
 <?php echo link_to(image_tag('icons_tango/print-pdf.png',array('alt'=>'Crea PDF Fattura','align'=>'top')),'fattura/export?id='.$fattura->getID(),array('title'=>'Crea PDF Fattura','target'=>'_blank'))?>&nbsp;

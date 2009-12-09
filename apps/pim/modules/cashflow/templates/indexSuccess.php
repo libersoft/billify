@@ -3,11 +3,13 @@
 </div>
 
 <div class="filter">
-  <form method="post">
+  <form method="get">
     <?php echo $filter ?>
     <input type="submit" value="<?php echo __('Filter')?>" />
   </form>
 </div>
+
+<?php include_partial('cashflow/pager', array('pager' => $pager))?>
 
 <table width="100%">
   <tr>
