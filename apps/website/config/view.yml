@@ -9,9 +9,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [impress/reset, impress/style-website, impress/main-website]
+  stylesheets:    [impress/reset, impress/style-website, impress/main-website, jquery.lightbox-0.5.css]
 
-  javascripts:    []
+  javascripts:    [jquery, jquery.lightbox-0.5.min.js]
 
   has_layout:     on
   layout:         website

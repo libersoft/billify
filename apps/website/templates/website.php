@@ -1,16 +1,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta http-equiv="content-language" content="en" />
-    <meta name="robots" content="all,follow" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta http-equiv="content-language" content="en" />
+  <meta name="robots" content="all,follow" />
 
-    <meta name="author" lang="en" content="All: Francesco Trucchia [www.cphp.it]; e-mail: ft@ideato.it" />
-    <meta name="copyright" lang="en" content="Webdesign: Nuvio [www.nuvio.cz]; e-mail: ahoj@nuvio.cz" />
+  <meta name="author" lang="en" content="All: Francesco Trucchia [www.cphp.it]; e-mail: ft@ideato.it" />
+  <meta name="copyright" lang="en" content="Webdesign: Nuvio [www.nuvio.cz]; e-mail: ahoj@nuvio.cz" />
 
-    <!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="css/impress/main-msie.css" /><![endif]-->
+  <!--[if lte IE 6]><link rel="stylesheet" type="text/css" href="css/impress/main-msie.css" /><![endif]-->
 
-    <title>Billify - Simplify business management</title>
+  <title>Billify - Simplify business management</title>
+
+  <?php include_stylesheets() ?>
+  <?php include_javascripts() ?>
+
+  <script type="text/javascript">
+  $(function() {
+    // Use this example, or...
+    $('a[@rel*=lightbox]').lightBox(); // Select all links that contains lightbox in the attribute rel
+  });
+  </script>
 </head>
 
 <body>
@@ -38,7 +48,7 @@
     <div id="col-top"></div>
     <div id="col" class="box">
         <div id="ribbon"></div>
-        <div id="col-browser"><img src="<?php echo image_path('screenshot/dashboard.jpg')?>" width="255" height="177" alt="" /></div>
+        <div id="col-browser"><a href="<?php echo image_path('screenshot/dashboard.jpg')?>" rel="lightbox"><img src="<?php echo image_path('screenshot/thumb_dashboard.jpg')?>" width="255" height="177" alt="" /></a></div>
         <div id="col-text">
 	  <?php echo $sf_content; ?>
         </div>
@@ -109,9 +119,9 @@
             </div>
 
             <ul class="ul-list nomb list-images">
-                <li><img src="<?php echo image_path('screenshot/invoice.jpg')?>" width="170" alt="" /></li>
-                <li><img src="<?php echo image_path('screenshot/cashflow.jpg')?>" width="170" alt="" /></li>
-                <li><img src="<?php echo image_path('screenshot/stats.jpg')?>" width="170" alt="" /></li>
+                <li><a href="<?php echo image_path('screenshot/invoice.jpg')?>" rel="lightbox"><img src="<?php echo image_path('screenshot/thumb_invoice.jpg')?>" width="170" alt="" /></a></li>
+                <li><a href="<?php echo image_path('screenshot/cashflow.jpg')?>" rel="lightbox"><img src="<?php echo image_path('screenshot/thumb_cashflow.jpg')?>" width="170" alt="" /></a></li>
+                <li><a href="<?php echo image_path('screenshot/stats.jpg')?>17" rel="lightbox"><img src="<?php echo image_path('screenshot/thumb_stats.jpg')?>" width="170" alt="" /></a></li>
             </ul>
         </div>
 

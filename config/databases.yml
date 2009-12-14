@@ -7,11 +7,11 @@ test:
   propel:
     param:
       classname:  DebugPDO
+      dsn:        mysql:dbname=billify_test;host=localhost
 
 prod:
   propel:
     param:
-      dsn:        mysql:dbname=billify;host=localhost
       username:   ideato
       password:   ideato123qwe
       
@@ -19,9 +19,9 @@ all:
   propel:
     class: sfPropelDatabase
     param:
-      dsn:        mysql:dbname=demo_billify;host=localhost
-      username:   demo_billify
-      password:   demo
+      dsn:        mysql:dbname=billify;host=localhost
+      username:   root
+      password:   
       encoding:   utf8
       persistent: true
       pooling:    true
