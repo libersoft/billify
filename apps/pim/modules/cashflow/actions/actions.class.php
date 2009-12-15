@@ -26,6 +26,18 @@ class cashflowActions extends sfActions
     return false;
   }
 
+  private function filter($request)
+  {
+    $this->filter = new CashFlowFilter();
+
+    if ($request->hasParameter($this->filter->getName()))
+    {
+      $this->getUser()->setAttribute($this->filter->getName(), $request->getParameter($this->filter->getName()));
+    }
+
+    $this->filter->bind($this->getUser()->getAttribute($this->filter->getName()));
+  }
+
  /**
   * Executes index action
   *
@@ -33,9 +45,11 @@ class cashflowActions extends sfActions
   */
   public function executeIndex($request)
   {
-    $this->filter = new CashFlowFilter();
+    
+    $this->filter($request);
+    
     $this->cf = new CashFlow();
-    $this->cf->addDocuments(FatturaPeer::doSelectForCashFlow($request->getParameter('cash_flow_filters[document_date]')));
+    $this->cf->addDocuments(FatturaPeer::doSelectForCashFlow($this->getUser()->getAttribute($this->filter->getName().'[document_date]')));
     
     $this->pager = new CashFlowPaginator($this->cf);
     $this->pager->setLimit('10');

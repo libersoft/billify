@@ -11,4 +11,4 @@ listSuccess:
     breadcrumps: [temafattura, bread]
     
 helpSuccess:
-  has_layout: off
+  has_layout: false

@@ -1,24 +1,22 @@
 <?php
 
-require_once(sfConfig::get('sf_lib_dir').'/filter/base/BaseFormFilterPropel.class.php');
-
 /**
  * TemaFattura filter form base class.
  *
  * @package    sf_sandbox
  * @subpackage filter
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
+ * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 24051 2009-11-16 21:08:08Z Kris.Wallsmith $
  */
-class BaseTemaFatturaFormFilter extends BaseFormFilterPropel
+abstract class BaseTemaFatturaFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
       'id_utente' => new sfWidgetFormPropelChoice(array('model' => 'Utente', 'add_empty' => true)),
-      'nome'      => new sfWidgetFormFilterInput(),
-      'template'  => new sfWidgetFormFilterInput(),
-      'css'       => new sfWidgetFormFilterInput(),
+      'nome'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'template'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'css'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'logo'      => new sfWidgetFormFilterInput(),
     ));
 

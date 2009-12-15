@@ -2,11 +2,11 @@
 InvitationCode: 
   InvitationCode_3: 
     codice: 1234-aabb-
-    inviato: n
+    inviato: false
     email: 
   InvitationCode_50: 
     codice: vb!2?8wq1c
-    inviato: n
+    inviato: false
     email: 
 Pagina: 
   Pagina_1: 
@@ -149,7 +149,7 @@ Utente:
     data_rinnovo: 2006-08-22
     tipo: demo
     stato: disattivo
-    fattura: n
+    fattura: false
     lastlogin: 2007-06-02 19:56:32
     approva_contratto: 0
     approva_policy: 0
@@ -168,7 +168,7 @@ Utente:
     data_rinnovo: 2006-08-28
     tipo: pro
     stato: attivo
-    fattura: n
+    fattura: false
     lastlogin: 2007-05-06 18:49:59
     approva_contratto: 0
     approva_policy: 0
@@ -187,7 +187,7 @@ Utente:
     data_rinnovo: 2008-03-26
     tipo: pro
     stato: attivo
-    fattura: n
+    fattura: false
     lastlogin: 2008-12-13 22:04:22
     approva_contratto: 1
     approva_policy: 1
@@ -225,7 +225,7 @@ Cliente:
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
     calcola_ritenuta_acconto: a
-    includi_tasse: n
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_58: 
@@ -249,8 +249,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_59: 
@@ -275,7 +275,7 @@ Cliente:
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
     calcola_ritenuta_acconto: a
-    includi_tasse: n
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_60: 
@@ -299,8 +299,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_61: 
@@ -324,8 +324,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_62: 
@@ -349,8 +349,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_63: 
@@ -386,7 +386,7 @@ Cliente:
       Christian
     via: Corso Cavallotti 19
     citta: Novara
-    provincia: NO
+    provincia: false
     cap: 28100
     piva: 06030500968
     cf: 06030500968
@@ -401,8 +401,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_65: 
@@ -426,8 +426,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_66: 
@@ -476,7 +476,7 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
     calcola_tasse: s
     cod: 
@@ -526,9 +526,9 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
     cod: 
   Cliente_70: 
     id_utente: Utente_29
@@ -553,9 +553,9 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
     cod: 
   Cliente_71: 
     id_utente: Utente_29
@@ -603,8 +603,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_73: 
@@ -628,8 +628,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_74: 
@@ -653,8 +653,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_75: 
@@ -678,8 +678,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_76: 
@@ -703,8 +703,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_77: 
@@ -732,8 +732,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_78: 
@@ -757,8 +757,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_79: 
@@ -782,8 +782,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_80: 
@@ -807,8 +807,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
   Cliente_81: 
@@ -832,8 +832,8 @@ Cliente:
     note: 
     id_tema_fattura: TemaFattura_37
     id_banca: Banca_16
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
     cod: 
 CodiceIva: 
@@ -1688,11 +1688,11 @@ Fattura:
     imponibile_mem: 2470
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_84: 
     id_utente: Utente_29
@@ -1708,11 +1708,11 @@ Fattura:
     imponibile_mem: 1800
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_85: 
     id_utente: Utente_29
@@ -1728,11 +1728,11 @@ Fattura:
     imponibile_mem: 200
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_86: 
     id_utente: Utente_29
@@ -1748,11 +1748,11 @@ Fattura:
     imponibile_mem: 1800
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_87: 
     id_utente: Utente_29
@@ -1768,11 +1768,11 @@ Fattura:
     imponibile_mem: 2717
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_88: 
     id_utente: Utente_29
@@ -1788,11 +1788,11 @@ Fattura:
     imponibile_mem: 480
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_89: 
     id_utente: Utente_29
@@ -1808,11 +1808,11 @@ Fattura:
     imponibile_mem: 800
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_90: 
     id_utente: Utente_29
@@ -1828,11 +1828,11 @@ Fattura:
     imponibile_mem: 1904
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_91: 
     id_utente: Utente_29
@@ -1848,11 +1848,11 @@ Fattura:
     imponibile_mem: 1000
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_92: 
     id_utente: Utente_29
@@ -1868,11 +1868,11 @@ Fattura:
     imponibile_mem: 1200
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_93: 
     id_utente: Utente_29
@@ -1888,11 +1888,11 @@ Fattura:
     imponibile_mem: 2628.8
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_94: 
     id_utente: Utente_29
@@ -1908,12 +1908,12 @@ Fattura:
     imponibile_mem: 4400
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_95: 
     id_utente: Utente_29
     num_fattura: 13
@@ -1928,14 +1928,14 @@ Fattura:
     imponibile_mem: 5040
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: >
       Pagato il 5o% del totale al 14/07/2008
       (3.931,20 euro)
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_96: 
     id_utente: Utente_29
     num_fattura: 14
@@ -1950,12 +1950,12 @@ Fattura:
     imponibile_mem: 624
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_99: 
     id_utente: Utente_29
     num_fattura: 17
@@ -1970,12 +1970,12 @@ Fattura:
     imponibile_mem: 637
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_100: 
     id_utente: Utente_29
     num_fattura: 16
@@ -1990,12 +1990,12 @@ Fattura:
     imponibile_mem: 550
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_101: 
     id_utente: Utente_29
     num_fattura: 26
@@ -2009,13 +2009,13 @@ Fattura:
     totale_mem: 6612
     imponibile_mem: 5510
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_103: 
     id_utente: Utente_29
     num_fattura: 15
@@ -2030,11 +2030,11 @@ Fattura:
     imponibile_mem: 1820
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_104: 
     id_utente: Utente_29
@@ -2050,11 +2050,11 @@ Fattura:
     imponibile_mem: 1344
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_105: 
     id_utente: Utente_29
@@ -2070,11 +2070,11 @@ Fattura:
     imponibile_mem: 2957.5
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_106: 
     id_utente: Utente_29
@@ -2090,11 +2090,11 @@ Fattura:
     imponibile_mem: 800
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_107: 
     id_utente: Utente_29
@@ -2110,12 +2110,12 @@ Fattura:
     imponibile_mem: 3750
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_108: 
     id_utente: Utente_29
     num_fattura: 24
@@ -2129,13 +2129,13 @@ Fattura:
     totale_mem: 10608
     imponibile_mem: 8840
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_109: 
     id_utente: Utente_29
     num_fattura: 22
@@ -2150,12 +2150,12 @@ Fattura:
     imponibile_mem: 2400
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_110: 
     id_utente: Utente_29
     num_fattura: 23
@@ -2170,12 +2170,12 @@ Fattura:
     imponibile_mem: 5250
     stato: p
     iva_pagata: s
-    iva_depositata: n
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_112: 
     id_utente: Utente_29
     num_fattura: 25
@@ -2189,13 +2189,13 @@ Fattura:
     totale_mem: 6960
     imponibile_mem: 5800
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
-    calcola_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
+    calcola_tasse: false
   Fattura_113: 
     id_utente: Utente_29
     num_fattura: 27
@@ -2209,13 +2209,13 @@ Fattura:
     totale_mem: 6300
     imponibile_mem: 5250
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_114: 
     id_utente: Utente_29
     num_fattura: 28
@@ -2229,13 +2229,13 @@ Fattura:
     totale_mem: 5413.2
     imponibile_mem: 4511
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_115: 
     id_utente: Utente_29
     num_fattura: 29
@@ -2249,13 +2249,13 @@ Fattura:
     totale_mem: 2280
     imponibile_mem: 1900
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_116: 
     id_utente: Utente_29
     num_fattura: 30
@@ -2269,13 +2269,13 @@ Fattura:
     totale_mem: 4500
     imponibile_mem: 3750
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_117: 
     id_utente: Utente_29
     num_fattura: 31
@@ -2289,12 +2289,12 @@ Fattura:
     totale_mem: 5040
     imponibile_mem: 6000
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_122: 
     id_utente: Utente_29
@@ -2309,12 +2309,12 @@ Fattura:
     totale_mem: 2688
     imponibile_mem: 2240
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_123: 
     id_utente: Utente_29
@@ -2329,12 +2329,12 @@ Fattura:
     totale_mem: 3696
     imponibile_mem: 3080
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_125: 
     id_utente: Utente_29
@@ -2349,13 +2349,13 @@ Fattura:
     totale_mem: 1152
     imponibile_mem: 960
     stato: i
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_127: 
     id_utente: Utente_29
     num_fattura: 35
@@ -2369,12 +2369,12 @@ Fattura:
     totale_mem: 3720
     imponibile_mem: 3100
     stato: i
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_128: 
     id_utente: Utente_29
@@ -2389,12 +2389,12 @@ Fattura:
     totale_mem: 1612.8
     imponibile_mem: 1344
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_129: 
     id_utente: Utente_29
@@ -2409,12 +2409,12 @@ Fattura:
     totale_mem: 2394
     imponibile_mem: 1995
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_130: 
     id_utente: Utente_29
@@ -2429,12 +2429,12 @@ Fattura:
     totale_mem: 988.505
     imponibile_mem: 823.754
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_131: 
     id_utente: Utente_29
@@ -2449,12 +2449,12 @@ Fattura:
     totale_mem: 485.496
     imponibile_mem: 404.58
     stato: i
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_133: 
     id_utente: Utente_29
@@ -2469,13 +2469,13 @@ Fattura:
     totale_mem: 4140
     imponibile_mem: 3450
     stato: i
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_134: 
     id_utente: Utente_29
     num_fattura: 41
@@ -2489,12 +2489,12 @@ Fattura:
     totale_mem: 2520
     imponibile_mem: 2100
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_135: 
     id_utente: Utente_29
@@ -2509,12 +2509,12 @@ Fattura:
     totale_mem: 2251.2
     imponibile_mem: 1876
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_136: 
     id_utente: Utente_29
@@ -2529,12 +2529,12 @@ Fattura:
     totale_mem: 720
     imponibile_mem: 600
     stato: i
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_137: 
     id_utente: Utente_29
@@ -2549,12 +2549,12 @@ Fattura:
     totale_mem: 1800
     imponibile_mem: 1500
     stato: i
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_138: 
     id_utente: Utente_29
@@ -2569,12 +2569,12 @@ Fattura:
     totale_mem: 3600
     imponibile_mem: 3000
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_139: 
     id_utente: Utente_29
@@ -2589,12 +2589,12 @@ Fattura:
     totale_mem: 3600
     imponibile_mem: 3000
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_140: 
     id_utente: Utente_29
@@ -2609,12 +2609,12 @@ Fattura:
     totale_mem: 720
     imponibile_mem: 600
     stato: i
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_141: 
     id_utente: Utente_29
@@ -2628,13 +2628,13 @@ Fattura:
     spese_anticipate: 0
     totale_mem: 3240
     imponibile_mem: 2700
-    stato: n
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    stato: false
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_142: 
     id_utente: Utente_29
@@ -2649,13 +2649,13 @@ Fattura:
     totale_mem: 4140
     imponibile_mem: 3450
     stato: p
-    iva_pagata: n
-    iva_depositata: n
+    iva_pagata: false
+    iva_depositata: false
     commercialista: s
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_143: 
     id_utente: Utente_29
     num_fattura: 48
@@ -2669,13 +2669,13 @@ Fattura:
     totale_mem: 5880
     imponibile_mem: 4900
     stato: p
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
-    calcola_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
+    calcola_tasse: false
   Fattura_144: 
     id_utente: Utente_29
     num_fattura: 51
@@ -2689,12 +2689,12 @@ Fattura:
     totale_mem: 660
     imponibile_mem: 550
     stato: i
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_146: 
     id_utente: Utente_29
@@ -2709,12 +2709,12 @@ Fattura:
     totale_mem: 13125
     imponibile_mem: 13125
     stato: i
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_147: 
     id_utente: Utente_29
@@ -2729,12 +2729,12 @@ Fattura:
     totale_mem: 2419.2
     imponibile_mem: 2016
     stato: p
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_148: 
     id_utente: Utente_29
@@ -2749,12 +2749,12 @@ Fattura:
     totale_mem: 600
     imponibile_mem: 500
     stato: i
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_149: 
     id_utente: Utente_29
@@ -2768,14 +2768,14 @@ Fattura:
     spese_anticipate: 0
     totale_mem: 1380
     imponibile_mem: 1150
-    stato: n
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    stato: false
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
+    calcola_ritenuta_acconto: false
     includi_tasse: s
-    calcola_tasse: n
+    calcola_tasse: false
   Fattura_150: 
     id_utente: Utente_29
     num_fattura: 53
@@ -2789,12 +2789,12 @@ Fattura:
     totale_mem: 840
     imponibile_mem: 700
     stato: i
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_151: 
     id_utente: Utente_29
@@ -2809,12 +2809,12 @@ Fattura:
     totale_mem: 2150.4
     imponibile_mem: 1792
     stato: i
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_152: 
     id_utente: Utente_29
@@ -2829,12 +2829,12 @@ Fattura:
     totale_mem: 3600
     imponibile_mem: 3000
     stato: i
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_153: 
     id_utente: Utente_29
@@ -2849,12 +2849,12 @@ Fattura:
     totale_mem: 5640
     imponibile_mem: 4700
     stato: i
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_154: 
     id_utente: Utente_29
@@ -2869,12 +2869,12 @@ Fattura:
     totale_mem: 2580
     imponibile_mem: 2150
     stato: i
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
   Fattura_155: 
     id_utente: Utente_29
@@ -2889,12 +2889,12 @@ Fattura:
     totale_mem: 3600
     imponibile_mem: 3000
     stato: i
-    iva_pagata: n
-    iva_depositata: n
-    commercialista: n
+    iva_pagata: false
+    iva_depositata: false
+    commercialista: false
     note: 
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
+    calcola_ritenuta_acconto: false
+    includi_tasse: false
     calcola_tasse: s
 Impostazione: 
   Impostazione_17: 
@@ -2903,11 +2903,11 @@ Impostazione:
     righe_dettagli: 5
     ritenuta_acconto: 20/100
     tipo_ritenuta: debito
-    riepilogo_home: n
-    consegna_commercialista: n
-    deposita_iva: n
+    riepilogo_home: false
+    consegna_commercialista: false
+    deposita_iva: false
     fattura_automatica: s
-    codice_cliente: n
+    codice_cliente: false
     label_imponibile: Imponibile
     label_spese: Spese Anticipate
     label_imponibile_iva: Imponibile ai fini iva
@@ -2926,11 +2926,11 @@ Impostazione:
     righe_dettagli: 5
     ritenuta_acconto: 20/100
     tipo_ritenuta: debito
-    riepilogo_home: n
-    consegna_commercialista: n
-    deposita_iva: n
+    riepilogo_home: false
+    consegna_commercialista: false
+    deposita_iva: false
     fattura_automatica: s
-    codice_cliente: n
+    codice_cliente: false
     label_imponibile: Imponibile
     label_spese: Spese Anticipate
     label_imponibile_iva: Imponibile ai fini iva
@@ -2951,9 +2951,9 @@ Impostazione:
     tipo_ritenuta: debito
     riepilogo_home: s
     consegna_commercialista: s
-    deposita_iva: n
+    deposita_iva: false
     fattura_automatica: s
-    codice_cliente: n
+    codice_cliente: false
     label_imponibile: Imponibile
     label_spese: ACCONTO rif. fatt. n° 1 del 10/04/2008
     label_imponibile_iva: Imponibile ai fini iva

@@ -3,16 +3,16 @@ methods:
 
 names:
   nome:
-    required:     Yes
+    required:     true
     required_msg: Il nome non pu&ograve; essere vuoto
   template:
-    required:     Yes
+    required:     true
     required_msg: L'header non pu&ograve; essere vuoto
   css:
-    required:     Yes
+    required:     true
     required_msg: Il css non pu&ograve; essere vuoto
   logo:
-    required:         No
+    required:         false
     validators:       myFileValidator
     file:             true
     
@@ -26,4 +26,4 @@ myFileValidator:
     max_size_error:   La dimensione massima &egrave; 512Kb
     
 fillin:
-  enabled:  on
+  enabled:  true

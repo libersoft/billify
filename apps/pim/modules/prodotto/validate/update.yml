@@ -3,14 +3,14 @@ methods:
 
 names:
   codice:
-    required:     Yes
+    required:     true
     required_msg: Il codice non pu&ograve; essere vuoto
   nome:
-    required:     Yes
+    required:     true
     required_msg: Il nome non pu&ograve; essere vuoto
   prezzo:
-    required:     Yes
+    required:     true
     required_msg: Il prezzo non pu&ograve; essere vuoto
     
 fillin:
-  enabled:  on
+  enabled:  true

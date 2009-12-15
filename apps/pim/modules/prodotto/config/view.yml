@@ -15,4 +15,4 @@ listSuccess:
      breadcrumps: [prodotto, bread]
      
 default:
-  has_layout: on
+  has_layout: true

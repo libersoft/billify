@@ -3,23 +3,23 @@ methods:
 
 names:
   num_clienti:
-    required:     Yes
+    required:     true
     required_msg: Il num clienti non pu&ograve; essere vuoto
     validators: numValidator
   num_fatture:
-    required:     Yes
+    required:     true
     required_msg: Il num fatture non pu&ograve; essere vuoto
     validators: numValidator
   righe_dettagli:
-    required:     Yes
+    required:     true
     required_msg: Le righe dettaggli non pu&ograve; essere vuoto
     validators: numValidator
   percentuale_ra:
-    required:     Yes
+    required:     true
     required_msg: La percentuale non pu&ograve; essere vuota
     validators: numRaValidator
   percentuale_imponibile_ra:
-    required:     Yes
+    required:     true
     required_msg: La percentuale d'imponibile non pu&ograve; essere vuota
     validators: numRaValidator
     
@@ -38,4 +38,4 @@ numRaValidator:
     min_error:    Il valore minimo deve essere 0
     
 fillin:
-  enabled:  on
+  enabled:  true

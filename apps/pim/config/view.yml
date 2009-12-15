@@ -13,7 +13,7 @@ default:
 
   javascripts:    [prototype/prototype]
 
-  has_layout:     on
+  has_layout:     true
   layout:         layout
 
   slots:          {}

@@ -54,7 +54,7 @@ $browser->
   checkResponseElement('table td', 'Azienda Custom', array('position' => 1))->
   checkResponseElement('table td', 'Nuova riga del 10/01/2008', array('position' => 2))->
   checkResponseElement('table td a', 'Nuova riga del 10/01/2008', array('position' => 1))->
-  checkResponseElement('table td', '€ 11.000,00', array('position' => 3))->
+  checkResponseElement('table td', format_currency('11000', 'EUR'), array('position' => 3))->
   checkResponseElement('table td', '', array('position' => 4))->
   checkResponseElement('table td', 'No', array('position' => 5))->
   checkResponseElement('table td[style="background-color: red; font-weight: bold;"]', 'No');

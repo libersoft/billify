@@ -1,23 +1,23 @@
 create:
-  is_secure: off
+  is_secure: false
 
 register:
-  is_secure: off
+  is_secure: false
 
 antispam:
-  is_secure: off
+  is_secure: false
 
 askcode:
-  is_secure: off
+  is_secure: false
 
 codesend:
-  is_secure: off
+  is_secure: false
 
 forgetpassword:
-  is_secure: off
+  is_secure: false
 
 sendpassword:
-  is_secure: off
+  is_secure: false
 
 all:
-  is_secure: on
+  is_secure: true

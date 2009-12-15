@@ -1,26 +1,24 @@
 <?php
 
-require_once(sfConfig::get('sf_lib_dir').'/filter/base/BaseFormFilterPropel.class.php');
-
 /**
  * DettagliFattura filter form base class.
  *
  * @package    sf_sandbox
  * @subpackage filter
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
+ * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 24051 2009-11-16 21:08:08Z Kris.Wallsmith $
  */
-class BaseDettagliFatturaFormFilter extends BaseFormFilterPropel
+abstract class BaseDettagliFatturaFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
       'fattura_id'  => new sfWidgetFormPropelChoice(array('model' => 'Fattura', 'add_empty' => true)),
       'descrizione' => new sfWidgetFormFilterInput(),
-      'qty'         => new sfWidgetFormFilterInput(),
-      'sconto'      => new sfWidgetFormFilterInput(),
-      'iva'         => new sfWidgetFormFilterInput(),
-      'prezzo'      => new sfWidgetFormFilterInput(),
+      'qty'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'sconto'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'iva'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'prezzo'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(

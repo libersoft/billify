@@ -1,8 +1,8 @@
 all:
-  has_layout: on
+  has_layout: true
   
 editSuccess:
-  has_layout: off
+  has_layout: false
   
 showSuccess:
-  has_layout: off
+  has_layout: false

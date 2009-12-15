@@ -3,11 +3,11 @@ methods:
   
 names:
   piva:
-    required: no
+    required: false
     validators: pivaValidator
     
 pivaValidator:
   class:          sfStringValidator
     
 fillin:
-  enabled:  on
+  enabled:  true

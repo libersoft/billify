@@ -10,6 +10,10 @@ class CashFlowFilter extends sfFormFilter
                                                          'template' => 'da %from_date% a %to_date%')),
     ));
 
+    $this->setValidators(array(
+      'document_date'   => new sfValidatorPass(array('required' => false)),
+    ));
+    
     $this->widgetSchema->setNameFormat('cash_flow_filters[%s]');
 
     parent::setup();

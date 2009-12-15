@@ -8,4 +8,4 @@ export:
   credentials: attivo
   
 default:
-  is_secure: on
+  is_secure: true

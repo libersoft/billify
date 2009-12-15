@@ -1,16 +1,14 @@
 <?php
 
-require_once(sfConfig::get('sf_lib_dir').'/filter/base/BaseFormFilterPropel.class.php');
-
 /**
  * Fattura filter form base class.
  *
  * @package    sf_sandbox
  * @subpackage filter
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
+ * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 24051 2009-11-16 21:08:08Z Kris.Wallsmith $
  */
-class BaseFatturaFormFilter extends BaseFormFilterPropel
+abstract class BaseFatturaFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
@@ -21,8 +19,8 @@ class BaseFatturaFormFilter extends BaseFormFilterPropel
       'contatto_string'          => new sfWidgetFormFilterInput(),
       'descrizione'              => new sfWidgetFormFilterInput(),
       'data'                     => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'data_stato'               => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => true)),
-      'data_scadenza'            => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => true)),
+      'data_stato'               => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
+      'data_scadenza'            => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
       'modo_pagamento_id'        => new sfWidgetFormPropelChoice(array('model' => 'ModoPagamento', 'add_empty' => true)),
       'sconto'                   => new sfWidgetFormFilterInput(),
       'vat'                      => new sfWidgetFormFilterInput(),

@@ -1,27 +1,25 @@
 <?php
 
-require_once(sfConfig::get('sf_lib_dir').'/filter/base/BaseFormFilterPropel.class.php');
-
 /**
  * Banca filter form base class.
  *
  * @package    sf_sandbox
  * @subpackage filter
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
+ * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 24051 2009-11-16 21:08:08Z Kris.Wallsmith $
  */
-class BaseBancaFormFilter extends BaseFormFilterPropel
+abstract class BaseBancaFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
       'id_utente'    => new sfWidgetFormPropelChoice(array('model' => 'Utente', 'add_empty' => true)),
-      'nome_banca'   => new sfWidgetFormFilterInput(),
-      'abi'          => new sfWidgetFormFilterInput(),
-      'cab'          => new sfWidgetFormFilterInput(),
-      'cin'          => new sfWidgetFormFilterInput(),
-      'iban'         => new sfWidgetFormFilterInput(),
-      'numero_conto' => new sfWidgetFormFilterInput(),
+      'nome_banca'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'abi'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'cab'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'cin'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'iban'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'numero_conto' => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(

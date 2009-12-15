@@ -52,7 +52,7 @@ $browser->
   checkResponseElement('table td', 'Nuova riga del 12/01/2008', array('position' => 2))->
   checkResponseElement('table td a', 'Nuova riga del 12/01/2008', array('position' => 1))->
   checkResponseElement('table td', '', array('position' => 3))->
-  checkResponseElement('table td', '€ 5.200,00', array('position' => 4))->
+  checkResponseElement('table td', format_currency('5200', 'EUR'), array('position' => 4))->
   checkResponseElement('table td', 'No', array('position' => 5))->
   checkResponseElement('table td[style="background-color: red; font-weight: bold;"]', 'No')
 

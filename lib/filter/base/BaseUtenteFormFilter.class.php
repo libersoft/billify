@@ -1,38 +1,36 @@
 <?php
 
-require_once(sfConfig::get('sf_lib_dir').'/filter/base/BaseFormFilterPropel.class.php');
-
 /**
  * Utente filter form base class.
  *
  * @package    sf_sandbox
  * @subpackage filter
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
+ * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 24051 2009-11-16 21:08:08Z Kris.Wallsmith $
  */
-class BaseUtenteFormFilter extends BaseFormFilterPropel
+abstract class BaseUtenteFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
       'id_invitation_code' => new sfWidgetFormFilterInput(),
-      'username'           => new sfWidgetFormFilterInput(),
-      'nome'               => new sfWidgetFormFilterInput(),
-      'cognome'            => new sfWidgetFormFilterInput(),
-      'ragione_sociale'    => new sfWidgetFormFilterInput(),
-      'partita_iva'        => new sfWidgetFormFilterInput(),
-      'codice_fiscale'     => new sfWidgetFormFilterInput(),
-      'email'              => new sfWidgetFormFilterInput(),
-      'password'           => new sfWidgetFormFilterInput(),
+      'username'           => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'nome'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'cognome'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'ragione_sociale'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'partita_iva'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'codice_fiscale'     => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'email'              => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'password'           => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'data_attivazione'   => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'data_rinnovo'       => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'tipo'               => new sfWidgetFormFilterInput(),
-      'stato'              => new sfWidgetFormFilterInput(),
-      'fattura'            => new sfWidgetFormFilterInput(),
+      'tipo'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'stato'              => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'fattura'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'lastlogin'          => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
-      'approva_contratto'  => new sfWidgetFormFilterInput(),
-      'approva_policy'     => new sfWidgetFormFilterInput(),
-      'sconto'             => new sfWidgetFormFilterInput(),
+      'approva_contratto'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'approva_policy'     => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'sconto'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(

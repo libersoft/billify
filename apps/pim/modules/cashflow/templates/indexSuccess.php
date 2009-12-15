@@ -25,8 +25,8 @@
       <td><?php echo $row->getPaymentDate('Y-m-d')?></td>
       <td><?php echo link_to($row->getContact(), $row->getContactUrl())?></td>
       <td><?php echo link_to($row->getDescription().' '.__('del').' '.format_date($row->getDate(), 'dd/MM/yyyy'), $row->getDocumentUrl()) ?></td>
-      <td><?php echo $row instanceof  CashFlowSalesAdapter ? format_currency($row->getTotal(), '&euro;') : '' ?></td>
-      <td><?php echo $row instanceof CashFlowPurchaseAdapter ? format_currency($row->getTotal(), '&euro;') : ''?></td>
+      <td><?php echo $row instanceof  CashFlowSalesAdapter ? format_currency($row->getTotal(), 'EUR') : '' ?></td>
+      <td><?php echo $row instanceof CashFlowPurchaseAdapter ? format_currency($row->getTotal(), 'EUR') : ''?></td>
       <td style="background-color: <?php echo $row->getColorStato() ?>; font-weight: bold;" ><?php echo $row->isPaid() ? __('Si') : __('No') ?></td>
     </tr>
   <?php endforeach; ?>

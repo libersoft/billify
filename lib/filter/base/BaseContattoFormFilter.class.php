@@ -1,22 +1,20 @@
 <?php
 
-require_once(sfConfig::get('sf_lib_dir').'/filter/base/BaseFormFilterPropel.class.php');
-
 /**
  * Contatto filter form base class.
  *
  * @package    sf_sandbox
  * @subpackage filter
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
+ * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 24051 2009-11-16 21:08:08Z Kris.Wallsmith $
  */
-class BaseContattoFormFilter extends BaseFormFilterPropel
+abstract class BaseContattoFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
       'id_utente'                => new sfWidgetFormPropelChoice(array('model' => 'Utente', 'add_empty' => true)),
-      'azienda'                  => new sfWidgetFormFilterInput(),
+      'azienda'                  => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'ragione_sociale'          => new sfWidgetFormFilterInput(),
       'via'                      => new sfWidgetFormFilterInput(),
       'citta'                    => new sfWidgetFormFilterInput(),
@@ -32,13 +30,13 @@ class BaseContattoFormFilter extends BaseFormFilterPropel
       'cellulare'                => new sfWidgetFormFilterInput(),
       'email'                    => new sfWidgetFormFilterInput(),
       'modo_pagamento_id'        => new sfWidgetFormPropelChoice(array('model' => 'ModoPagamento', 'add_empty' => true)),
-      'stato'                    => new sfWidgetFormFilterInput(),
+      'stato'                    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'contatto'                 => new sfWidgetFormFilterInput(),
       'id_tema_fattura'          => new sfWidgetFormPropelChoice(array('model' => 'TemaFattura', 'add_empty' => true)),
       'id_banca'                 => new sfWidgetFormPropelChoice(array('model' => 'Banca', 'add_empty' => true)),
-      'calcola_ritenuta_acconto' => new sfWidgetFormFilterInput(),
-      'includi_tasse'            => new sfWidgetFormFilterInput(),
-      'calcola_tasse'            => new sfWidgetFormFilterInput(),
+      'calcola_ritenuta_acconto' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'includi_tasse'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'calcola_tasse'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'cod'                      => new sfWidgetFormFilterInput(),
       'note'                     => new sfWidgetFormFilterInput(),
       'class_key'                => new sfWidgetFormFilterInput(),

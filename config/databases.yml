@@ -20,8 +20,8 @@ all:
     class: sfPropelDatabase
     param:
       dsn:        mysql:dbname=billify;host=localhost
-      username:   root
-      password:   
+      username:   billify
+      password:   billify
       encoding:   utf8
       persistent: true
       pooling:    true

@@ -1,42 +1,40 @@
 <?php
 
-require_once(sfConfig::get('sf_lib_dir').'/filter/base/BaseFormFilterPropel.class.php');
-
 /**
  * Impostazione filter form base class.
  *
  * @package    sf_sandbox
  * @subpackage filter
  * @author     Your name here
- * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 16976 2009-04-04 12:47:44Z fabien $
+ * @version    SVN: $Id: sfPropelFormFilterGeneratedTemplate.php 24051 2009-11-16 21:08:08Z Kris.Wallsmith $
  */
-class BaseImpostazioneFormFilter extends BaseFormFilterPropel
+abstract class BaseImpostazioneFormFilter extends BaseFormFilterPropel
 {
   public function setup()
   {
     $this->setWidgets(array(
-      'num_clienti'             => new sfWidgetFormFilterInput(),
-      'num_fatture'             => new sfWidgetFormFilterInput(),
-      'righe_dettagli'          => new sfWidgetFormFilterInput(),
-      'ritenuta_acconto'        => new sfWidgetFormFilterInput(),
-      'tipo_ritenuta'           => new sfWidgetFormFilterInput(),
-      'riepilogo_home'          => new sfWidgetFormFilterInput(),
-      'consegna_commercialista' => new sfWidgetFormFilterInput(),
-      'deposita_iva'            => new sfWidgetFormFilterInput(),
-      'fattura_automatica'      => new sfWidgetFormFilterInput(),
-      'codice_cliente'          => new sfWidgetFormFilterInput(),
-      'label_imponibile'        => new sfWidgetFormFilterInput(),
-      'label_spese'             => new sfWidgetFormFilterInput(),
-      'label_imponibile_iva'    => new sfWidgetFormFilterInput(),
-      'label_iva'               => new sfWidgetFormFilterInput(),
-      'label_totale_fattura'    => new sfWidgetFormFilterInput(),
-      'label_ritenuta_acconto'  => new sfWidgetFormFilterInput(),
-      'label_netto_liquidare'   => new sfWidgetFormFilterInput(),
-      'label_quantita'          => new sfWidgetFormFilterInput(),
-      'label_descrizione'       => new sfWidgetFormFilterInput(),
-      'label_prezzo_singolo'    => new sfWidgetFormFilterInput(),
-      'label_prezzo_totale'     => new sfWidgetFormFilterInput(),
-      'label_sconto'            => new sfWidgetFormFilterInput(),
+      'num_clienti'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'num_fatture'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'righe_dettagli'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'ritenuta_acconto'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'tipo_ritenuta'           => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'riepilogo_home'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'consegna_commercialista' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'deposita_iva'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'fattura_automatica'      => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'codice_cliente'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_imponibile'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_spese'             => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_imponibile_iva'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_iva'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_totale_fattura'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_ritenuta_acconto'  => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_netto_liquidare'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_quantita'          => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_descrizione'       => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_prezzo_singolo'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_prezzo_totale'     => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'label_sconto'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(

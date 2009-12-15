@@ -30,7 +30,7 @@ $browser->
   checkResponseElement('table td a', 'Cliente', array('position' => 0))->
   checkResponseElement('table td', 'Fattura n. 1 del '.date('d/m/Y', strtotime('-2 days')), array('position' => 2))->
   checkResponseElement('table td a', 'Fattura n. 1 del '.date('d/m/Y', strtotime('-2 days')), array('position' => 1))->
-  checkResponseElement('table td', '€ 1.200,00', array('position' => 3))->
+  checkResponseElement('table td', format_currency('1200', 'EUR'), array('position' => 3))->
   checkResponseElement('table td', '', array('position' => 4))->
   checkResponseElement('table td', 'No', array('position' => 5))->
   checkResponseElement('table td[style="background-color: yellow; font-weight: bold;"]', 'No')->
@@ -41,7 +41,7 @@ $browser->
   checkResponseElement('table td', 'Fattura n. 10/1 del '.date('d/m/Y', strtotime('-1 days')), array('position' => 8))->
   checkResponseElement('table td a', 'Fattura n. 10/1 del '.date('d/m/Y', strtotime('-1 days')), array('position' => 3))->
   checkResponseElement('table td', '', array('position' => 9))->
-  checkResponseElement('table td', '€ 750,00', array('position' => 10))->
+  checkResponseElement('table td', format_currency('750', 'EUR'), array('position' => 10))->
   checkResponseElement('table td', 'Si', array('position' => 11))->
   checkResponseElement('table td[style="background-color: green; font-weight: bold;"]', 'Si')->
 
@@ -50,9 +50,9 @@ $browser->
   checkResponseElement('table.banca th', 'Totale Entrate:', array('position' => 0))->
   checkResponseElement('table.banca th', 'Totale Uscite:', array('position' => 1))->
   checkResponseElement('table.banca th', 'Totale:', array('position' => 2))->
-  checkResponseElement('table.banca td', '€ 1.200,00', array('position' => 0))->
-  checkResponseElement('table.banca td', '€ 750,00', array('position' => 1))->
-  checkResponseElement('table.banca td', '€ 450,00', array('position' => 2));
+  checkResponseElement('table.banca td', format_currency('1200', 'EUR'), array('position' => 0))->
+  checkResponseElement('table.banca td', format_currency('750', 'EUR'), array('position' => 1))->
+  checkResponseElement('table.banca td', format_currency('450', 'EUR'), array('position' => 2));
 
 $browser->
   info('Filtro data cashflow')->

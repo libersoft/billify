@@ -1,5 +1,5 @@
 all:
-  has_layout: on
+  has_layout: true
   components:
      topbar: [main, topBar]
      breadcrumps: [cliente, breadCliente]
@@ -17,14 +17,14 @@ listSuccess:
      sidebar: [main, sideBar]
      
 searchSuccess:
-  has_layout: off
+  has_layout: false
   
 searchError:
-  has_layout: off
+  has_layout: false
   
 anagraficaSuccess:
-  has_layout: off
+  has_layout: false
   
 opzioniSuccess:
-  has_layout: off
+  has_layout: false
   

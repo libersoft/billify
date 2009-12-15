@@ -1,12 +1,12 @@
 all:
-  has_layout: on
+  has_layout: true
   
 riepilogoSuccess:
   components:
     breadcrumps: [main, breadRiepilogo]
     
 updateProfileSuccess:
-  has_layout: off
+  has_layout: false
     
 timeSuccess:
-  has_layout: off
+  has_layout: false

@@ -3,7 +3,7 @@ methods:
   
 names:
   email:
-    required:     Yes
+    required:     true
     required_msg: L'email non pu&ograve; essere vuota
     validators:   emailValidator
     
@@ -13,4 +13,4 @@ emailValidator:
     email_error:  E-mail non valida
     
 fillin:
-  enabled:  on
+  enabled:  true

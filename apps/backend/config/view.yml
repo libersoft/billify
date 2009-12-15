@@ -13,9 +13,9 @@ default:
 
   javascripts:    [prototype/prototype]
 
-  has_layout:     on
+  has_layout:     true
   layout:         layout
 
   slots:          {}
 
-  use_default_slots: on
+  use_default_slots: true

@@ -1,23 +1,23 @@
 listFilterSuccess:
-  has_layout: off
+  has_layout: false
 
 listAgainSuccess:
-  has_layout: off
+  has_layout: false
 
 addTagSuccess:
-  has_layout: off
+  has_layout: false
 
 tagAutocompleteSuccess:
-  has_layout: off
+  has_layout: false
   
 deleteTagSuccess:
-  has_layout: off
+  has_layout: false
   
 exportSuccess:
-  has_layout: off
+  has_layout: false
 
 exportError:
-  has_layout: off
+  has_layout: false
   
 listSuccess:
   components:
@@ -40,7 +40,7 @@ editSuccess:
      breadcrumps: [fattura, breadEdit]
      
 all:
-  has_layout: on
+  has_layout: true
   components:
        topbar: [main, topBar]
        

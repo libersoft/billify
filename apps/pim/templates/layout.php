@@ -3,9 +3,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
 <head>
 
-<?php echo include_http_metas() ?>
-<?php echo include_metas() ?>
-<?php echo include_title() ?>
+<?php include_http_metas() ?>
+<?php include_metas() ?>
+<?php include_title() ?>
+<?php include_stylesheets() ?>
+<?php include_javascripts() ?>
 
 <!--[if IE]>
   	<link rel="stylesheet" type="text/css" href=<?php echo url_for("css/impress/main-msie.css.css")?>" />

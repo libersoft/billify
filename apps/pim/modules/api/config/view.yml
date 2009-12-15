@@ -1,5 +1,5 @@
 customer:
-  has_layout: off
+  has_layout: false
   
 default:
   http_metas:
