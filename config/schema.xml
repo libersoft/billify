@@ -98,6 +98,11 @@
     </index>
   </table>
 
+  <table name="categoria" idMethod="native">
+    <column name="id" type="integer" required="true" autoIncrement="true" primaryKey="true" />
+    <column name="nome" type="varchar" size="255" required="true" />
+  </table>
+
   <table name="dettagli_fattura" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="fattura_id" type="INTEGER" required="true" default="0" />
@@ -134,6 +139,7 @@
     <column name="iva_pagata" type="char" default="n" />
     <column name="iva_depositata" type="char" default="n" />
     <column name="commercialista" type="char" default="n" />
+    <column name="categoria_id" type="integer" />
     <column name="note" type="longvarchar" />
     <column name="calcola_ritenuta_acconto" type="char" default="a" />
     <column name="includi_tasse" type="char" default="" />
@@ -148,19 +154,23 @@
     <foreign-key foreignTable="modo_pagamento" onDelete="SET NULL" onUpdate="CASCADE">
       <reference local="modo_pagamento_id" foreign="id" />
     </foreign-key>
+    <foreign-key foreignTable="categoria" onDelete="SET NULL" onUpdate="CASCADE">
+      <reference local="categoria_id" foreign="id" />
+    </foreign-key>
     <foreign-key foreignTable="contatto" onDelete="CASCADE" onUpdate="CASCADE">
       <reference local="cliente_id" foreign="id" />
     </foreign-key>
+
     <index name="fattura_num_fattura_index">
       <index-column name="num_fattura" />
     </index>
     <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
       <reference local="id_utente" foreign="id" />
     </foreign-key>
-    <index name="fattura_FI_1">
+    <index name="fattura_cliente_id">
       <index-column name="cliente_id" />
     </index>
-    <index name="fattura_FI_2">
+    <index name="fattura_modo_pagamento_id">
       <index-column name="modo_pagamento_id" />
     </index>
     <index name="id_utente">

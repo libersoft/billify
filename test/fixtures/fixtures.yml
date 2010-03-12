@@ -1,4 +1,12 @@
 ---
+Categoria:
+  Categoria1:
+    nome: Test Categoria 1
+  Categoria2:
+    nome: Test Categoria 2
+  Categoria3:
+    nome: Test Categoria 3
+    
 Utente:
   Utente_1:
     id_invitation_code:

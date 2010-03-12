@@ -119,6 +119,20 @@ CREATE TABLE `codice_iva`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
+#-- categoria
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `categoria`;
+
+
+CREATE TABLE `categoria`
+(
+	`id` INTEGER  NOT NULL AUTO_INCREMENT,
+	`nome` VARCHAR(255)  NOT NULL,
+	PRIMARY KEY (`id`)
+)Type=MyISAM;
+
+#-----------------------------------------------------------------------------
 #-- dettagli_fattura
 #-----------------------------------------------------------------------------
 
@@ -171,6 +185,7 @@ CREATE TABLE `fattura`
 	`iva_pagata` CHAR default 'n',
 	`iva_depositata` CHAR default 'n',
 	`commercialista` CHAR default 'n',
+	`categoria_id` INTEGER,
 	`note` TEXT,
 	`calcola_ritenuta_acconto` CHAR default 'a',
 	`includi_tasse` CHAR default '',
@@ -178,20 +193,26 @@ CREATE TABLE `fattura`
 	`class_key` INTEGER default 1,
 	PRIMARY KEY (`id`),
 	KEY `fattura_num_fattura_index`(`num_fattura`),
-	KEY `fattura_FI_1`(`cliente_id`),
-	KEY `fattura_FI_2`(`modo_pagamento_id`),
+	KEY `fattura_cliente_id`(`cliente_id`),
+	KEY `fattura_modo_pagamento_id`(`modo_pagamento_id`),
 	KEY `id_utente`(`id_utente`),
 	CONSTRAINT `fattura_FK_1`
 		FOREIGN KEY (`modo_pagamento_id`)
 		REFERENCES `modo_pagamento` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE SET NULL,
+	INDEX `fattura_FI_2` (`categoria_id`),
 	CONSTRAINT `fattura_FK_2`
+		FOREIGN KEY (`categoria_id`)
+		REFERENCES `categoria` (`id`)
+		ON UPDATE CASCADE
+		ON DELETE SET NULL,
+	CONSTRAINT `fattura_FK_3`
 		FOREIGN KEY (`cliente_id`)
 		REFERENCES `contatto` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE,
-	CONSTRAINT `fattura_FK_3`
+	CONSTRAINT `fattura_FK_4`
 		FOREIGN KEY (`id_utente`)
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE

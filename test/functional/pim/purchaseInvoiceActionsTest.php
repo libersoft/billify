@@ -48,5 +48,11 @@ $browser->
   with('response')->begin()->
     checkElement('select[id="fattura_vat"]')->
     checkElement('select[id="fattura_vat"] option[value="20"]')->
+    checkElement('select[id="fattura_categoria_id"]')->
+    checkElement('select[id="fattura_categoria_id"] option', 4)->
+    checkElement('select[id="fattura_categoria_id"] option', '', array('position' => 0))->
+    checkElement('select[id="fattura_categoria_id"] option', 'Test Categoria 1', array('position' => 1))->
+    checkElement('select[id="fattura_categoria_id"] option', 'Test Categoria 2', array('position' => 2))->
+    checkElement('select[id="fattura_categoria_id"] option', 'Test Categoria 3', array('position' => 3))->
   end();
 ?>
