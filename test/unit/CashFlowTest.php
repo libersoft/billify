@@ -1,10 +1,9 @@
 <?php
 include_once(dirname(__FILE__).'/../bootstrap/unit.php');
-include_once(dirname(__FILE__).'/../../lib/model/map/DettagliFatturaMapBuilder.php');
+
 include_once(dirname(__FILE__).'/../../lib/model/DettagliFatturaPeer.php');
 include_once(dirname(__FILE__).'/../../lib/model/DettagliFattura.php');
 
-include_once(dirname(__FILE__).'/../../lib/model/map/FatturaMapBuilder.php');
 include_once(dirname(__FILE__).'/../../lib/model/om/BaseFatturaPeer.php');
 include_once(dirname(__FILE__).'/../../lib/model/FatturaPeer.php');
 include_once(dirname(__FILE__).'/../../lib/model/om/BaseFattura.php');

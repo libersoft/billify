@@ -14,7 +14,14 @@ prod:
     param:
       username:   ideato
       password:   ideato123qwe
-      
+
+vetrina:
+  propel:
+    param:
+      dsn:        mysql:dbname=demo_billify;host=localhost
+      username:   demo_billify
+      password:   billify
+
 all:
   propel:
     class: sfPropelDatabase
