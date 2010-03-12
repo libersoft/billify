@@ -11,7 +11,7 @@ default:
 
   stylesheets:    [impress/reset, impress/main, impress/style]
 
-  javascripts:    [prototype/prototype]
+  javascripts:    []
 
   has_layout:     true
   layout:         layout

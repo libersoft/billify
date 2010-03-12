@@ -5,24 +5,8 @@
 <ul class="ul-list nomb">
   <li>
     <strong><?php echo __('stato')?>:</strong>
-    <?php echo link_to_function(
-      $fattura->getStato('true'),
-      'if(Element.getStyle(\'stato-fattura\',\'display\') == \'none\')
-      {'.visual_effect('appear','stato-fattura',array('duration'=>0.2)).';
-        Element.removeClassName(\'link-stato\',\'menu-expand\');
-        Element.addClassName(\'link-stato\',\'menu-collapse\');
-      }
-      else
-      {'.visual_effect('fade','stato-fattura',array('duration'=>0.2)).';
-        Element.removeClassName(\'link-stato\',\'menu-collapse\');Element.addClassName(\'link-stato\',\'menu-expand\');
-      }',
-      array(
-        'title' => 'Cambia Stato Fattura',
-        //'style' => 'color:'.$fattura->getColorStato().';',
-        'class'=>'link_stato menu-expand',
-        'id'=>'link-stato'
-      ))?>
-      <?php echo ($fattura->getStato()=='p' || $fattura->getStato()=='r' || $fattura->getStato()=='i') ? 'il '.format_date($fattura->getDataStato()) : ''?>
+    <?php echo  $fattura->getStato('true') ?>
+    <?php echo ($fattura->getStato()=='p' || $fattura->getStato()=='r' || $fattura->getStato()=='i') ? 'il '.format_date($fattura->getDataStato()) : ''?>
   </li>
   <?php include_partial('fattura/fattura', array('fattura' => $fattura));?>
 </ul>
@@ -34,7 +18,7 @@
   <ul class="ul-list nomb">
 		<li class="non_inviata">+ <?php echo link_to('non inviata', 'fattura/stato?stato=n&id='.$fattura->getID(), array('title' => 'Segna come non inviata'))?></li>
 		<li class="inviata">
-		  + <?php echo link_to_function('inviata',
+		  + <?php echo link_to_function('inviata', 
 		                                visual_effect('fade', 'data_stato_rifiutata', array('duration' => 0)).
 		                                visual_effect('fade','data_stato_pagata', array('duration' => 0)).
 		                                visual_effect('appear', 'data_stato_inviata', array('duration' => 0)),
@@ -63,7 +47,8 @@
   </div>
   <?php echo form_tag('fattura/stato')?>
     <small class="nomargin">Pagata il</small>
-    <?php echo object_input_date_tag($fattura, 'getDataStato',array('rich'=>true))?> <small class="nomargin">(dd/mm/yy)</small>
+    <?php echo object_input_date_tag($fattura, 'getDataStato',array('rich'=>true, 'id' => 'button_data_stato_pagata'))?> <small class="nomargin">(dd/mm/yy)</small>
+
     <div align="<?php echo $fattura->isProForma()?'left':'right'; ?>" class="data">
       <?php if($fattura->isProForma()):?>
         <input type="checkbox" name="regolare" value="y"><small style="margin-left: 5px">Trasforma in fattura regolare</small>
@@ -82,7 +67,7 @@
   </div>
   <?php echo form_tag('fattura/stato')?>
     <small class="nomargin">Rifiutata il</small>
-    <?php echo object_input_date_tag($fattura, 'getDataStato', array('rich' => true))?> <small class="nomargin">(dd/mm/yy)</small>
+    <?php echo object_input_date_tag($fattura, 'getDataStato', array('rich' => true, 'id' => 'button_data_stato_rifiutata'))?> <small class="nomargin">(dd/mm/yy)</small>
     <div align="right" class="data">
       <?php echo submit_tag('Salva')?>&nbsp;
       <input type="button" value="Annulla" onclick="<?php echo visual_effect('blind_up','data_stato_rifiutata',array('duration'=>0.5))?>">
@@ -98,7 +83,7 @@
   </div>
   <?php echo form_tag('fattura/stato')?>
     <small class="nomargin">Inviata il</small>
-    <?php echo object_input_date_tag($fattura, 'getDataStato', array('rich' => true))?> <small class="nomargin">(dd/mm/yy)</small>
+    <?php echo object_input_date_tag($fattura, 'getDataStato', array('rich' => true, 'id' => 'button_data_stato_inviata'))?> <small class="nomargin">(dd/mm/yy)</small>
     <div align="right" class="data">
       <?php echo submit_tag('Salva')?>&nbsp;
       <input type="button" value="Annulla" onclick="<?php echo visual_effect('blind_up','data_stato_inviata',array('duration'=>0.5))?>">

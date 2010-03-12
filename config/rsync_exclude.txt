@@ -1,5 +1,5 @@
 .svn
-/web/uploads/*
+/web/uploads
 /cache/*
 /log/*
 /web/*_dev.php

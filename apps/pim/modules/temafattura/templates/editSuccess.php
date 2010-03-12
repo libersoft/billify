@@ -52,7 +52,7 @@
 <table style="margin-bottom: 5px;margin-top: 5px;">
 <tr>
 <td>
-<?php echo image_tag('/'.sfConfig::get('sf_upload_dir_name').'/thumbnail/'.$tema_fattura->getLogo()) ?>
+<?php echo image_tag('/uploads/thumbnail/'.$tema_fattura->getLogo()) ?>
 
 </td>
 </tr>

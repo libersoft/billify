@@ -109,7 +109,7 @@ class TemaFattura extends BaseTemaFattura {
 
 		if(!is_null($this->getLogo()) && $this->getLogo() != ""){
 			$patterns[] = ('/\['.LOGO.'\]/');
-			$replacements[] = ('<img width="100" src="'.sfConfig::get('sf_upload_dir_name').'/'.$this->getLogo().'">');
+			$replacements[] = ('<img width="100" src="uploads/'.$this->getLogo().'">');
 		}
 
 		$patterns[] = ('/\['.RAGIONE_SOCIALE.'\]/');

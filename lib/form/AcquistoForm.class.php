@@ -21,6 +21,7 @@ class AcquistoForm extends FatturaForm
     $this->widgetSchema['cliente_id']->setOption('criteria', $providerCriteria);
 
     $widgets = $this->getWidgetSchema();
+    $widgets['vat'] = new sfWidgetFormPropelChoice(array('model' => 'CodiceIva', 'add_empty' => true, 'key_method' => 'getValore'));
     $widgets['class_key'] = new sfWidgetFormInputHidden();
     $widgets['stato'] = new sfWidgetFormSelect(array('choices' => self::$states));
 
@@ -39,7 +40,6 @@ class AcquistoForm extends FatturaForm
       $this['descrizione'],
       $this['data_scadenza'],
       $this['sconto'],
-      $this['vat'],
       $this['spese_anticipate'],
       $this['iva_pagata'],
       $this['iva_depositata'],

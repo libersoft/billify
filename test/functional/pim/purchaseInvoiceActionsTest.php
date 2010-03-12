@@ -5,8 +5,7 @@ include_once(dirname(__FILE__).'/../../bootstrap/functional.php');
 $data = new sfPropelData();
 $data->loadData(sfConfig::get('sf_test_dir').'/fixtures/fixtures.yml');
 
-$browser = new sfTestBrowser();
-$browser->initialize();
+$browser = new sfTestFunctional(new sfBrowser());
 
 $browser->
   get('/')->
@@ -43,7 +42,11 @@ $browser->
   checkResponseElement('select[id="fattura_modo_pagamento_id"]')->
   checkResponseElement('label[for="fattura_stato"]', 'Stato')->
   checkResponseElement('select[id="fattura_stato"]')->
-  checkResponseElement('input[type="submit"][value="Salva"]')
+  checkResponseElement('input[type="submit"][value="Salva"]');
 
-;
+$browser->
+  with('response')->begin()->
+    checkElement('select[id="fattura_vat"]')->
+    checkElement('select[id="fattura_vat"] option[value="20"]')->
+  end();
 ?>

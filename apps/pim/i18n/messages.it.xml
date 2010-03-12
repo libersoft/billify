@@ -386,6 +386,10 @@
         <source>actions</source>
         <target>azioni</target>
       </trans-unit>
+      <trans-unit id="85">
+        <source>edit state</source>
+        <target>modifica stato</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
