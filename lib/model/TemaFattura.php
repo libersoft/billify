@@ -31,6 +31,7 @@ define('CAB','CAB');
 define('CIN','CIN');
 define('NUM_CONTO','NUM_CONTO');
 define('IBAN', 'IBAN');
+define('FATTURA_NOTA', 'FATTURA_NOTA');
 
 define('CSS','CSS');
 
@@ -182,6 +183,9 @@ class TemaFattura extends BaseTemaFattura {
 		$replacements[] = (format_currency($this->fattura->getTotale()).PDF_EURO_SIMBOL);
 		$replacements[] = (format_currency($this->fattura->getNettoDaLiquidare()).PDF_EURO_SIMBOL);
 		$replacements[] = (format_currency($this->getRitenutaAcconto()).PDF_EURO_SIMBOL);
+
+    $patterns[] = ('/\['.FATTURA_NOTA.'\]/');
+		$replacements[] = ($this->fattura->getNote());
 
 		$content = preg_replace($patterns,$replacements,$string);
 		$dettagli_fattura = $this->parseFatturaDettagli($content);
