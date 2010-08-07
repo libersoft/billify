@@ -25,7 +25,7 @@ $browser->
   checkResponseElement('table tr th', 'Fax', array('position' => 4))->
 
   checkResponseElement('table tr td', '00 Azienda', array('position' => 0))->
-  checkResponseElement('table tr td', '', array('position' => 1))->
+  checkResponseElement('table tr td', 'Utente utente', array('position' => 1))->
   checkResponseElement('table tr td', 'azienda@example.it', array('position' => 2))->
   checkResponseElement('table tr td', '35989805', array('position' => 3))->
   checkResponseElement('table tr td', '36064127', array('position' => 4))->
