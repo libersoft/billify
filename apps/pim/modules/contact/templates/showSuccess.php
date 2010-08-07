@@ -36,11 +36,15 @@
     <td style="font-weight: bold; background-color: <?php echo $invoice->getColorStato()?>; color: <?php echo $invoice->getFontColorStato()?>"><?php echo $invoice->getStato(true)?></td>
     <td align="center" class="<?php echo $invoice->checkInRitardo()?'red':'none'?>"><?php echo $invoice->checkInRitardo()?'<strong>si</strong>':'no'?></td>
   </tr>
-<?php endforeach; ?>
+<?php $totale += $invoice->getTotale(); endforeach; ?>
 </tbody>
 </table>
 
 <?php slot('sidebar'); ?>
+  <div class="total">
+    <?php echo format_currency($totale, '&euro;') ?>
+  </div>
+
   <div class="title">
     <h4><?php echo __('actions')?></h4>
   </div>

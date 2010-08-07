@@ -55,6 +55,7 @@ class contactActions extends sfActions
     }
     
     $this->criteria->addDescendingOrderByColumn('data');
+    $this->totale = 0;
   }
 
   public function executeEdit($request)

@@ -68,6 +68,7 @@ a:hover {color:#000;}
 
 #cols2 #col-right {background-color:#EEF8E4;}
 #cols2 #col-right h4 span {background-color:#EEF8E4;}
+#cols2 #col-right .total { text-align: center; font-size: 30px; background-color: #090; color: #fff; }
 
 /* ----------------------------------------------------------------------------------------------------------
 5) Others
