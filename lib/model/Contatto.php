@@ -15,4 +15,9 @@ class Contatto extends BaseContatto
   public function __toString() {
     return $this->ragione_sociale;
   }
+
+  public function hasCompleteInfo()
+  {
+      return (bool)($this->getVia() && $this->getCap() && $this->getCitta() && $this->getProvincia());
+  }
 }

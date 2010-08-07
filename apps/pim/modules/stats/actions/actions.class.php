@@ -21,15 +21,15 @@ class statsActions extends sfActions
   {
     $this->getFatturato();
     
-    $this->anno_precedente = date('Y', time()) - 1;
-    $this->anno = date('Y', time());
-    $this->anno_successivo = date('Y', time()) + 1;
+    $this->anno_precedente = date('Y', time()) - 2;
+    $this->anno = date('Y', time()) - 1;
+    $this->anno_successivo = date('Y', time());
 
     if($request->hasParameter('year'))
     {
-      $this->anno_precedente = $request->getParameter('year') - 1;
-      $this->anno = $request->getParameter('year');
-      $this->anno_successivo = $request->getParameter('year') + 1;
+      $this->anno_precedente = $request->getParameter('year') - 2;
+      $this->anno = $request->getParameter('year') - 1;
+      $this->anno_successivo = $request->getParameter('year');
     }
   }
 

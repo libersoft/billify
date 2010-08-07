@@ -49,4 +49,9 @@ class Acquisto extends Fattura {
     return parent::save($con);
   }
 
+  public function getRoutingRule()
+  {
+      return 'invoice/edit';
+  }
+
 } // Acquisto

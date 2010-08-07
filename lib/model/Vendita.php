@@ -14,18 +14,25 @@
  */
 class Vendita extends Fattura {
 
-	/**
-	 * Constructs a new Vendita class, setting the class_key column to FatturaPeer::CLASSKEY_1.
-	 */
-	public function __construct()
-	{
-		$this->setClassKey(FatturaPeer::CLASSKEY_1);
-	}
+  /**
+   * Constructs a new Vendita class, setting the class_key column to FatturaPeer::CLASSKEY_1.
+   */
+  public function __construct()
+  {
+            $this->setClassKey(FatturaPeer::CLASSKEY_1);
+  }
 
   public function save(PropelPDO $con = null)
   {
     $this->setDataScadenza($this->getDataPagamento());
     return parent::save($con);
   }
+  
+  public function getRoutingRule()
+  {
+      return 'fattura/show';
+  }
+
+
 
 } // Vendita

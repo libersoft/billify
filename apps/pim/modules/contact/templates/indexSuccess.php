@@ -18,7 +18,7 @@
 <tbody>
 <?php foreach ($pager->getResults() as $contact): ?>
   <tr>
-    <td><?php echo link_to($contact->getRagioneSociale(), 'contact/edit?id='.$contact->getId()) ?></td>
+    <td><?php echo link_to($contact->getRagioneSociale(), '@contact_show?id='.$contact->getId()) ?></td>
     <td style="text-align: left"><?php echo $contact->getContatto() ?></td>
     <td><?php echo $contact->getEmail() ?></td>
     <td><?php echo $contact->getTelefono() ?></td>

@@ -39,7 +39,7 @@ $browser->click('1')->
   click('01 Azienda')->
   with('request')->begin()->
     isParameter('module', 'contact')->
-    isParameter('action', 'edit')->
+    isParameter('action', 'show')->
   end()->
 
   info('2. sale invoice create')->

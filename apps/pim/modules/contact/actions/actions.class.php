@@ -43,6 +43,20 @@ class contactActions extends sfActions
 
   }
 
+  public function executeShow($request)
+  {
+    $this->contact = ContattoPeer::retrieveByPK($request->getParameter('id'));
+    $this->criteria = new Criteria();
+
+    if ($request->getParameter('year') != 'all')
+    {
+      $this->criteria->addAnd(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0, 1, 1, $request->getParameter('year', date('Y')))), Criteria::GREATER_EQUAL);
+      $this->criteria->addAnd(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0, 12, 31, $request->getParameter('year', date('Y')))), Criteria::LESS_EQUAL);
+    }
+    
+    $this->criteria->addDescendingOrderByColumn('data');
+  }
+
   public function executeEdit($request)
   {
     $factory = new ContactFactoryForm();
@@ -51,7 +65,7 @@ class contactActions extends sfActions
     if($request->isMethod('post')) {
       $contact = $this->update($request);
       if($contact) {
-        $this->redirect('contact/edit?id='.$contact->getId());
+        $this->redirect('@contact_show?id='.$contact->getId());
       }
     }
   }

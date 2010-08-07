@@ -26,7 +26,15 @@ cashflow:
 
 contact_show:
   url: contact/show/:id
+  param: {module: contact, action: show}
+  
+contact_edit:
+  url: contact/edit/:id
   param: {module: contact, action: edit}
+
+contact_delete:
+  url: contact/delete/:id
+  param: {module: contact, action: delete}
 
 document_purchase_create:
   url: cashflow/create/document/purchase

@@ -266,6 +266,7 @@ Contatto:
     calcola_ritenuta_acconto: n
     includi_tasse: n
     calcola_tasse: s
+    contatto: Utente utente
 <?php endfor?>
 <?php for($i = 0; $i < 20; $i++):?>
   Fornitore_<?php echo $i ?>:
@@ -300,6 +301,18 @@ Fattura:
     modo_pagamento_id: ModoPagamento_1
     calcola_ritenuta_acconto: n
     sconto: 0
+    vat: 20
+<?php endfor?>
+<?php for($i = 1; $i <= 3; $i++):?>
+  Fattura_lastyear_<?php echo $i?>:
+    id_utente: Utente_1
+    num_fattura: '<?php echo $i?>'
+    cliente_id: Cliente_1
+    data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'').' -1 year'))?>'
+    modo_pagamento_id: ModoPagamento_1
+    calcola_ritenuta_acconto: n
+    sconto: 0
+    stato: p
     vat: 20
 <?php endfor?>
 <?php for($i = 4; $i <= 25; $i++):?>

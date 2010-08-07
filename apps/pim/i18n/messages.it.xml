@@ -390,6 +390,14 @@
         <source>edit state</source>
         <target>modifica stato</target>
       </trans-unit>
+      <trans-unit id="86">
+        <source>Invoices list</source>
+        <target>Lista delle fatture</target>
+      </trans-unit>
+      <trans-unit id="87">
+        <source>Referent</source>
+        <target>Referente</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

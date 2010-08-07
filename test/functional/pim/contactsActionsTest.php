@@ -48,7 +48,6 @@ $browser->
   click('Salva')->
 
   followRedirect()->
-  responseContains('Gigi Lapislazulli')->
-  checkResponseElement('h2', 'Modifica cliente')
+  checkResponseElement('h2', 'Gigi Lapislazulli')
 ;
 ?>
