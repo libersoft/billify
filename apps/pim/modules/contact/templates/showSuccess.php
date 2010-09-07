@@ -4,7 +4,7 @@
 
 <?php include_partial('contact/info', array('contact' => $contact)); ?>
 
-<div class="title">
+<div class="title">    
     <h2><?php echo __('Invoices list'); ?></h2>
 </div>
 
@@ -52,6 +52,7 @@
   <ul class="ul-list nomb">
     <li>+ <?php echo link_to(__('edit'),'@contact_edit?id='.$contact->getID())?></li>
     <li>+ <?php echo link_to(__('delete'), '@contact_delete?id='.$contact->getId(), 'post=true&confirm='.__('vuoi cancellare questo contatto?').' title=delete') ?></li>
+    <li>+ <?php echo link_to(__('new invoice'),'@invoice_create_for_client?id_cliente='.$contact->getId()); ?></li>
   </ul>
 <?php
     include_partial('contact/sidebar');

@@ -454,6 +454,15 @@ class Fattura extends BaseFattura {
     $this->setContatto($v);
   }
 
+  public function setDefaultForClient(Cliente $client)
+  {
+    $this->setIncludiTasse($client->getIncludiTasse());
+    $this->setCalcolaTasse($client->getCalcolaTasse());
+    $this->setCalcolaRitenutaAcconto($client->getCalcolaRitenutaAcconto());
+    $this->setModoPagamentoId($client->getModoPagamentoId());
+    $this->setClienteId($client->getId());
+  }
+
   public function save(PropelPDO $con = null)
   {
     if ($this->getClassKey() == FatturaPeer::CLASSKEY_ACQUISTO || $this->getClassKey() == FatturaPeer::CLASSKEY_VENDITA )

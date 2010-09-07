@@ -61,10 +61,10 @@ class invoiceActions extends sfActions
 
     if($request->isMethod('post'))
     {
-      $contact = $this->update($request);
-      if($contact)
+      $invoice = $this->update($request);
+      if($invoice)
       {
-        $this->redirect('invoice/edit?id='.$contact->getId());
+        $this->redirect('invoice/edit?id='.$invoice->getId());
       }
     }
   }

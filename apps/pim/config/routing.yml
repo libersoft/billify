@@ -20,6 +20,10 @@ invoice_create:
   url: invoices/new
   param: {module: fattura, action: create}
 
+invoice_create_for_client:
+  url: invoices/new/:id_cliente
+  param: {module: fattura, action: create}
+
 cashflow:
   url: cashflow
   param: {module: cashflow, action: index}

@@ -50,4 +50,7 @@ $browser->
   followRedirect()->
   checkResponseElement('h2', 'Gigi Lapislazulli')
 ;
+
+
+
 ?>

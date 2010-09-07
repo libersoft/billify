@@ -263,9 +263,9 @@ Contatto:
     stato: a
     id_tema_fattura: TemaFattura_1
     id_banca: Banca_1
-    calcola_ritenuta_acconto: n
-    includi_tasse: n
-    calcola_tasse: s
+    calcola_ritenuta_acconto: "n"
+    includi_tasse: "n"
+    calcola_tasse: "s"
     contatto: Utente utente
 <?php endfor?>
 <?php for($i = 0; $i < 20; $i++):?>
