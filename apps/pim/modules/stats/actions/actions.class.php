@@ -82,8 +82,9 @@ class statsActions extends sfActions
    * Executes source action
    *
    */
-  public function executeFatturatoannuo()
+  public function executeFatturatoannuo(sfWebRequest $request)
   {
+
     $sfSwfChart = new sfSwfChart();
 
     $chart = $this->getChartOption();

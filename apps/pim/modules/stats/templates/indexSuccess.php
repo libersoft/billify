@@ -7,6 +7,7 @@
   <?php echo swf_chart(url_for('statistiche/fatturatoannuo', true));?>
 </div>
 
+
 <div class="chart">
   <div class="title">
     <h2>Statistiche Mensili <?php echo $anno_precedente ?></h2>

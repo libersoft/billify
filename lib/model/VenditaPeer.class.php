@@ -32,14 +32,16 @@ class VenditaPeer extends FatturaPeer
     $criteria->addSelectColumn('year('.VenditaPeer::DATA.') as year');
     //$criteria->add(VenditaPeer::CLIENTE_ID, $this->cliente->getID());
     $criteria->setDistinct();
+    $criteria->addDescendingOrderByColumn(VenditaPeer::DATA);
     $rs = VenditaPeer::doSelectRS($criteria);
-    $results = $rs->fetch(PDO::FETCH_ASSOC);
-    
+    $results = $rs->fetchAll(PDO::FETCH_COLUMN);
+
     $anni = array();
     foreach($results as $result)
     {
       $anni[$result] = $result;
     }
+
     return $anni;
   }
 
