@@ -18,8 +18,8 @@ $browser->
 
   checkResponseElement('chart_type', 'column')->
   checkResponseElement('row', 5)->
-  checkResponseElement('row string', '2010', array('position' => 1))->
-  checkResponseElement('row string', '2009', array('position' => 2))
+  checkResponseElement('row string', date('Y'), array('position' => 1))->
+  checkResponseElement('row string', date('Y', strtotime('-1 year')), array('position' => 2))
   
 
 ;

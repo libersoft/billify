@@ -84,9 +84,6 @@ $browser->click('1')->
   with('request')->begin()->
     isParameter('module', 'fattura')->
     isParameter('action', 'show')->
-  end()->
-  with('response')->begin()->
-    contains('Fattura n. 101 del '.date('d/m/y'))->
   end();
 
 $browser->test()->todo('test invoice details');
