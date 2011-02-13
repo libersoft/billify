@@ -36,6 +36,13 @@ $browser->
   checkResponseElement('table.fatture td', 'non inviata', array('position' => 4))->
   checkResponseElement('table.fatture td', 'no', array('position' => 5))->
 
+// Sorting test
+  checkResponseElement('table.fatture td', '1', array('position' => 0))->
+  checkResponseElement('table.fatture td', '2', array('position' => 7))->
+  checkResponseElement('table.fatture td', '3', array('position' => 14))->
+  checkResponseElement('table.fatture td', '4', array('position' => 21))->
+  checkResponseElement('table.fatture td', '5', array('position' => 28))->
+
   checkResponseElement('ul#resume li strong', 'fatturato annuo:', array('position' => 0))->
   checkResponseElement('ul#resume li', '/9.000,00/', array('position' => 0))->
   checkResponseElement('ul#resume li', '/12.960,00/', array('position' => 0))->
@@ -56,6 +63,4 @@ $browser->
   checkResponseElement('ul#resume li', '/240,00/', array('position' => 3))->
 
   checkResponseElement('body', '!/Ritenuta d\'acconto versata/')
-
-
 ;

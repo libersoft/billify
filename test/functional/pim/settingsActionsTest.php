@@ -31,17 +31,16 @@ $browser->
     checkElement('#paginazione td input[name="num_fatture"][value="20"]')->
     checkElement('#paginazione td input[id="righe_dettagli"]')->
 
-    checkElement('#features th', 7)->
-    checkElement('#features th', 'Riepilogo home:', array('position' => 0))->
-    checkElement('#features th', 'Consegna commercialista:', array('position' => 1))->
-    checkElement('#features th', 'Deposita iva:', array('position' => 2))->
-    checkElement('#features th', 'Fattura automatica:', array('position' => 3))->
-    checkElement('#features th', 'Codice cliente:', array('position' => 4))->
-    checkElement('#features th', 'Ritenuta acconto:', array('position' => 5))->
-    checkElement('#features th', 'Tipo ritenuta:', array('position' => 6))->
+    checkElement('#features th', 6)->
+    checkElement('#features th', 'Consegna commercialista:', array('position' => 0))->
+    checkElement('#features th', 'Deposita iva:', array('position' => 1))->
+    checkElement('#features th', 'Fattura automatica:', array('position' => 2))->
+    checkElement('#features th', 'Codice cliente:', array('position' => 3))->
+    checkElement('#features th', 'Ritenuta acconto:', array('position' => 4))->
+    checkElement('#features th', 'Tipo ritenuta:', array('position' => 5))->
 
-    checkElement('#features td input[id="riepilogo_home_s"]')->
-    checkElement('#features td input[id="riepilogo_home_n"]')->
+    checkElement('#features td input[id="riepilogo_home_s"]', false)->
+    checkElement('#features td input[id="riepilogo_home_n"]', false)->
     checkElement('#features td input[id="consegna_commercialista_s"]')->
     checkElement('#features td input[id="consegna_commercialista_n"]')->
     checkElement('#features td input[id="deposita_iva_s"]')->

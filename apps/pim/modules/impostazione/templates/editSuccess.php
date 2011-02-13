@@ -74,13 +74,6 @@
 <table class="edit" id="features" width="100%">
 <tbody>
 <tr>
-  <th>Riepilogo home:</th>
-  <td valign="middle">
-  <?php echo radiobutton_tag('riepilogo_home','s',($impostazione->getRiepilogoHome()=='s'?true:false))?>&nbsp;Si
-  <?php echo radiobutton_tag('riepilogo_home','n',($impostazione->getRiepilogoHome()=='n'?true:false))?>&nbsp;No
-  </td>
-</tr>
-<tr>
   <th>Consegna commercialista:</th>
   <td>
   <?php echo radiobutton_tag('consegna_commercialista','s',($impostazione->getConsegnaCommercialista()=='s'?true:false))?>&nbsp;Si

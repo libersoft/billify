@@ -7,7 +7,6 @@ test:
   propel:
     param:
       classname:  DebugPDO
-      dsn:        mysql:dbname=billify_test;host=localhost
 
 prod:
   propel:

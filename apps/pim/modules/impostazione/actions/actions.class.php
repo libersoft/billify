@@ -51,7 +51,6 @@ class impostazioneActions extends sfActions
     $impostazione->setRigheDettagli($this->getRequestParameter('righe_dettagli'));
     $impostazione->setRitenutaAcconto($this->getRequestParameter('percentuale_ra').'/'.$this->getRequestParameter('percentuale_imponibile_ra'));
     $impostazione->setTipoRitenuta($this->getRequestParameter('tipo_ritenuta'));
-    $impostazione->setRiepilogoHome($this->getRequestParameter('riepilogo_home'));
     $impostazione->setConsegnaCommercialista($this->getRequestParameter('consegna_commercialista'));
     $impostazione->setDepositaIva($this->getRequestParameter('deposita_iva'));
     $impostazione->setFatturaAutomatica($this->getRequestParameter('fattura_automatica'));

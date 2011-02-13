@@ -10,32 +10,36 @@
  *
  * @package model
  */
-class FatturaPeer extends BaseFatturaPeer {
+class FatturaPeer extends BaseFatturaPeer
+{
+  const NUM_BLOCCO_FATTURE = 10;
 
-	const NUM_BLOCCO_FATTURE = 10;
+  static $instance;
+  
+  public static function doSelectRS(Criteria $criteria, $conn = null)
+  {
+    if(sfConfig::get('sf_app')!='backend')
+    {
+      $criteria->add(FatturaPeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
+    }
 
-	public static function doSelectRS(Criteria $criteria, $conn = null)
-	{
-		if(sfConfig::get('sf_app')!='backend') {
-			$criteria->add(FatturaPeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
-		}
+    return parent::doSelectStmt($criteria);
+  }
 
-		return parent::doSelectStmt($criteria);
-	}
+  public static function doSelectForCashFlow($document_date = null)
+  {
+    $criteria = new Criteria();
 
-	public static function doSelectForCashFlow($document_date = null)
-	{
-	  $criteria = new Criteria();
-
-	  if (!is_null($document_date))
-	  {
-	    $from = implode('/', array_reverse($document_date['from']));
-	    $to = implode('/', array_reverse($document_date['to']));
-	    $criteria->add(FatturaPeer::DATA_SCADENZA, $from, Criteria::GREATER_EQUAL);
-	    $criteria->addAnd(FatturaPeer::DATA_SCADENZA, $to, Criteria::LESS_EQUAL);
-	  }
+    if (!is_null($document_date))
+    {
+      $from = implode('/', array_reverse($document_date['from']));
+      $to = implode('/', array_reverse($document_date['to']));
+      $criteria->add(FatturaPeer::DATA_SCADENZA, $from, Criteria::GREATER_EQUAL);
+      $criteria->addAnd(FatturaPeer::DATA_SCADENZA, $to, Criteria::LESS_EQUAL);
+    }
 
     $criteria->addAscendingOrderByColumn(FatturaPeer::DATA_SCADENZA);
     return FatturaPeer::doSelect($criteria);
-	}
+  }
+  
 } // FatturaPeer
