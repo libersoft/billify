@@ -42,7 +42,10 @@ $browser->
   checkResponseElement('select[id="fattura_modo_pagamento_id"]')->
   checkResponseElement('label[for="fattura_stato"]', 'Stato')->
   checkResponseElement('select[id="fattura_stato"]')->
-  checkResponseElement('input[type="submit"][value="Salva"]');
+  checkResponseElement('input[type="submit"][value="Salva"]')->
+  checkResponseElement('td select[name*="fattura[data]"]', '/28/')->
+  checkResponseElement('td select[name*="fattura[data]"]', '!/28/', array('position' => 1))->
+  checkResponseElement('td select[name*="fattura[data]"]', '/'.date('Y').'/', array('position' => 2));
 
 $browser->
   with('response')->begin()->

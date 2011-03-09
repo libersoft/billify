@@ -11,5 +11,8 @@ class FatturaForm extends BaseFatturaForm
 {
   public function configure()
   {
+    $widget_schema = $this->getWidgetSchema();
+    $widget_schema['data'] = new sfWidgetFormDate(array('format' => '%day%/%month%/%year%'));
+
   }
 }
