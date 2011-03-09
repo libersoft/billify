@@ -1,0 +1,36 @@
+<project name="Billify" default="build" basedir=".">
+  <target name="clean">
+    <delete dir="${basedir}/build"/>
+  </target>
+
+  <target name="prepare">
+    <mkdir dir="${basedir}/build/logs"/>
+    <chmod file="${basedir}/web/uploads" perm="777"/>
+  </target>
+
+  <target name="build-all">
+    <exec dir="${basedir}/"
+          executable="./symfony" >
+      <arg line=" propel:build --all --no-confirmation"/>
+    </exec>
+  </target>
+
+  <target name="clear-cache">
+    <exec dir="${basedir}/"
+          executable="./symfony" >
+      <arg line=" cc "/>
+    </exec>
+  </target>
+
+  <target name="runtest">
+    <exec dir="${basedir}/"
+          executable="./symfony"
+          failonerror="true">
+      <arg line=" test:all --xml=${basedir}/build/logs/junit_symfony.xml"/>
+    </exec>
+  </target>
+
+  <target name="build"
+          depends="clean,prepare,build-all,clear-cache,runtest"/>
+</project>
+
