@@ -21,7 +21,7 @@ class AcquistoForm extends FatturaForm
     $this->widgetSchema['cliente_id']->setOption('criteria', $providerCriteria);
 
     $widgets = $this->getWidgetSchema();
-    $widgets['vat'] = new sfWidgetFormPropelChoice(array('model' => 'CodiceIva', 'add_empty' => true, 'key_method' => 'getValore'));
+    $widgets['vat'] = new sfWidgetFormPropelChoice(array('model' => 'CodiceIva', 'key_method' => 'getValore'));
     $widgets['class_key'] = new sfWidgetFormInputHidden();
     $widgets['stato'] = new sfWidgetFormSelect(array('choices' => self::$states));
 
@@ -32,6 +32,7 @@ class AcquistoForm extends FatturaForm
     $this->setDefault('class_key', FatturaPeer::CLASSKEY_ACQUISTO);
     $this->setDefault('num_fattura', '');
     
+    $this->validatorSchema['vat']->setOption('required', true);
     $this->validatorSchema['num_fattura']->setOption('required', true);
     
     unset(
