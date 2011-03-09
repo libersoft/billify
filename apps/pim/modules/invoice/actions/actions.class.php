@@ -32,12 +32,8 @@ class invoiceActions extends sfActions
 
   public function executeIndex($request)
   {
-    $criteria = new Criteria();
-    $criteria->add(FatturaPeer::CLASS_KEY, $request->getParameter('type', FatturaPeer::CLASSKEY_ACQUISTO));
-    $criteria->add(FatturaPeer::ID_UTENTE, $this->getUser()->getAttribute('id_utente'));
-    $criteria->addAscendingOrderByColumn(FatturaPeer::DATA );
-
-    $this->invoices = FatturaPeer::doSelect($criteria);
+    $acquisto_peer = new AcquistoPeer($this->getUser());
+    $this->invoices = $acquisto_peer->doSelect();
 
     if(!count($this->invoices))
     {
