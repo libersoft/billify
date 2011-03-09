@@ -122,7 +122,7 @@
   <table name="fattura" idMethod="native">
     <column name="id" type="integer" required="true" autoIncrement="true" primaryKey="true" />
     <column name="id_utente" type="integer" required="true" default="0" />
-    <column name="num_fattura" type="varchar" size="10" />
+    <column name="num_fattura" type="varchar" size="255" />
     <column name="cliente_id" type="integer" />
     <column name="contatto_string" type="varchar" size="100" />
     <column name="descrizione" type="varchar" size="255" />

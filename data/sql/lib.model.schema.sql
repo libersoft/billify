@@ -168,7 +168,7 @@ CREATE TABLE `fattura`
 (
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`id_utente` INTEGER default 0 NOT NULL,
-	`num_fattura` VARCHAR(10),
+	`num_fattura` VARCHAR(255),
 	`cliente_id` INTEGER,
 	`contatto_string` VARCHAR(100),
 	`descrizione` VARCHAR(255),

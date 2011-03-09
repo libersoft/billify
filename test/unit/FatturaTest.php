@@ -1,18 +1,10 @@
 <?php
 include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 
-include_once(dirname(__FILE__).'/../../lib/model/DettagliFatturaPeer.php');
-include_once(dirname(__FILE__).'/../../lib/model/DettagliFattura.php');
+$configuration = ProjectConfiguration::getApplicationConfiguration('pim', 'test', true);
+new sfDatabaseManager($configuration);
 
-include_once(dirname(__FILE__).'/../../lib/model/om/BaseFatturaPeer.php');
-include_once(dirname(__FILE__).'/../../lib/model/FatturaPeer.php');
-include_once(dirname(__FILE__).'/../../lib/model/om/BaseFattura.php');
-
-include_once(dirname(__FILE__).'/../../lib/model/Fattura.php');
-
-ProjectConfiguration::getApplicationConfiguration('pim', 'test', true);
-
-$test = new lime_test(15, new lime_output_color());
+$test = new lime_test(16, new lime_output_color());
 
 $dettaglio1 = new DettagliFattura();
 $dettaglio1->setPrezzo(1000);
@@ -75,6 +67,13 @@ $test->is($fattura->getColorStato(), 'yellow', '->getColorStato() returns right 
 $test->comment('getFontColorStato()');
 $test->is($fattura->getFontColorStato(), 'black', '->getFontColorStato() returns right value');
 
+$test->comment('Limite caratteri nel numero di fattura');
+$fattura = new Fattura();
+$fattura->setNumFattura('123456789012');
+$fattura->save();
+$fattura->reload();
+
+$test->is($fattura->getNumFattura(), '123456789012', '->getNumFattura() returns right value');
 
 
 ?>

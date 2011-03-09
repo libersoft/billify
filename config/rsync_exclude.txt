@@ -4,3 +4,4 @@
 /log/*
 /web/*_dev.php
 /doc/*
+/nbproject
