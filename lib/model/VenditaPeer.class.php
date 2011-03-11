@@ -111,7 +111,7 @@ class VenditaPeer extends FatturaPeer
   public function fattureDaIncassare()
   {
     $criteria = new Criteria();
-    $this->sortCriteria($criteria);
+    $this->sortByDateAndInvoiceNumber($criteria);
     $criteria->add(FatturaPeer::STATO,'i');
 
     $pager = new sfPropelPager('Vendita', 10000);
@@ -268,7 +268,7 @@ class VenditaPeer extends FatturaPeer
   public function fattureDaInviare()
   {
     $criteria = new Criteria();
-    $this->sortCriteria($criteria);
+    $this->sortByDateAndInvoiceNumber($criteria);
     $criteria->add(FatturaPeer::STATO, 'n' );
 
     $this->fatture_da_inviare = VenditaPeer::doSelectJoinAllExceptModoPagamento($criteria);
@@ -304,11 +304,17 @@ class VenditaPeer extends FatturaPeer
     }
   }
 
+  public function sortByDateAndInvoiceNumber(Criteria $criteria)
+  {
+    $criteria->addAsColumn('integer_num_fattura', 'CONVERT('.FatturaPeer::NUM_FATTURA.', signed)');
+    $criteria->addAscendingOrderByColumn('data');
+    $criteria->addAscendingOrderByColumn('integer_num_fattura');
+  }
+
   public function sortCriteria(Criteria $criteria)
   {
     $criteria->addAsColumn('integer_num_fattura', 'CONVERT('.FatturaPeer::NUM_FATTURA.', signed)');
     $criteria->addAscendingOrderByColumn('integer_num_fattura');
-    $criteria->addDescendingOrderByColumn('data');
   }
 
   public function filterByYearCriteria($year, Criteria $criteria)
