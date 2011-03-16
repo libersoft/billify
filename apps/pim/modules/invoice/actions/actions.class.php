@@ -33,12 +33,11 @@ class invoiceActions extends sfActions
   public function executeIndex($request)
   {
     $criteria = new Criteria();
+    $criteria->addAscendingOrderByColumn(FatturaPeer::DATA);
     
     $this->pager = new sfPropelPager('Fattura', UtentePeer::getImpostazione()->getNumFatture());
     $this->pager->setCriteria($criteria);
     $this->pager->setPage($this->getRequestParameter('page',1));
-    //$pager->setPeerMethod('doSelectJoinAllExceptModoPagamento');
-    //$pager->setPeerCountMethod('doCountJoinAllExceptModoPagamento');
     $this->pager->init();
     
     if(0 == $this->pager->count())
