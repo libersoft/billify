@@ -374,6 +374,31 @@ Fattura:
     stato: 'n'
 <?php endfor?>
 
+<?php for($i = 1; $i < 10; $i++):?>
+  Fattura_acquisto_last_year_<?php echo $i?>:
+    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
+    id_utente: Utente_1
+    num_fattura: '100-<?php echo $i?>'
+    cliente_id: Fornitore_3
+    data: '<?php echo date('Y-m-d', strtotime('-1 year'))?>'
+    modo_pagamento_id: ModoPagamento_2
+    imponibile: '11200.34675'
+    imposte: '2002.125'
+    stato: 'p'
+<?php endfor?>
+<?php for($i = 10; $i < 20; $i++):?>
+  Fattura_acquisto_last_year_<?php echo $i?>:
+    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
+    id_utente: Utente_1
+    num_fattura: '100-<?php echo $i?>'
+    cliente_id: Fornitore_3
+    data: '<?php echo date('Y-m-d', strtotime('-2 year'))?>'
+    modo_pagamento_id: ModoPagamento_2
+    imponibile: '11200.34675'
+    imposte: '2002.125'
+    stato: 'p'
+<?php endfor?>
+
 DettagliFattura:
 <?php for($i = 1; $i <= 3; $i++):?>
   DettagliFattura_<?php echo $i?>:
