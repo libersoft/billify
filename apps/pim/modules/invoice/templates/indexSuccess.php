@@ -2,6 +2,8 @@
   <h2><?php echo __('fatture di acquisto')?></h2>
 </div>
 
+<?php include_partial('pager', array('pager' => $pager)); ?>
+
 <form action="<?php echo url_for('invoice/batch')?>" method="post">
 <table class="fatture" width="100%" style="margin-bottom: 5px;">
 <thead>
@@ -18,7 +20,7 @@
 </tr>
 </thead>
 <tbody>
-<?php foreach ($invoices as $invoice): ?>
+<?php foreach ($pager->getResults() as $invoice): ?>
   <tr>
     <td><input type="checkbox" name="delete[]" value="<?php echo $invoice->getId()?>"></td>
     <td><?php echo link_to($invoice->getNumFattura(), 'invoice/edit?id='.$invoice->getId()) ?></td>
@@ -35,6 +37,8 @@
 </table>
 <?php echo submit_tag('Elimina', array('name' => 'delete_button', 'confirm' => __('Vuoi eliminare le fatture selezionate')))?>
 </form>
+
+<?php include_partial('pager', array('pager' => $pager)); ?>
 
 <?php
   slot('sidebar');

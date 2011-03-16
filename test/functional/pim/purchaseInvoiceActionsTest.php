@@ -23,7 +23,12 @@ $browser->
   checkResponseElement('table tr th', 'totale', array('position' => 4))->
   checkResponseElement('table tr th', 'stato', array('position' => 5))->
   checkResponseElement('table tr th', 'ritardo', array('position' => 6))->
-
+  checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
+  checkResponseElement('div[class="navigator"]', '/Pagina 1 di 3/')->
+  checkResponseElement('div[class="navigator"]', 2)->
+  click('2')->
+  checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
+  checkResponseElement('table tr td', '18', array('position' => 1))->
   click('aggiungi una nuova fattura d\'acquisto')->
   checkResponseElement('h2', 'nuova fattura d\'acquisto')->
   checkResponseElement('label[for="fattura_num_fattura"]', 'N.')->

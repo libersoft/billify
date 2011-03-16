@@ -12,7 +12,6 @@ include_once('propel/util/Criteria.php');
  */
 class fatturaActions extends sfActions
 {
-
   public function executeIndex ()
   {
     return $this->forward('fattura', 'list');
