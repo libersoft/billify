@@ -16,16 +16,18 @@ $browser->
   click('lista fatture d\'acquisto')->
 
   checkResponseElement('table', 1)->
-  checkResponseElement('table tr th', 9)->
+  checkResponseElement('table tr th', 10)->
   checkResponseElement('table tr th', 'n.', array('position' => 1))->
   checkResponseElement('table tr th', 'ragione sociale', array('position' => 2))->
   checkResponseElement('table tr th', 'data', array('position' => 3))->
-  checkResponseElement('table tr th', 'totale', array('position' => 4))->
-  checkResponseElement('table tr th', 'stato', array('position' => 5))->
-  checkResponseElement('table tr th', 'ritardo', array('position' => 6))->
+  checkResponseElement('table tr th', 'imponibile', array('position' => 4))->
+  checkResponseElement('table tr th', 'totale', array('position' => 5))->
+  checkResponseElement('table tr th', 'stato', array('position' => 6))->
+  checkResponseElement('table tr th', 'ritardo', array('position' => 7))->
   checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
   checkResponseElement('div[class="navigator"]', '/Pagina 1 di 3/')->
   checkResponseElement('table tr td', date('d/m/Y', strtotime('-2 years')), array('position' => 3))->
+  checkResponseElement('table tr td', '11200.3', array('position' => 4))->
   checkResponseElement('div[class="navigator"]', 2)->
   click('2')->
   checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
