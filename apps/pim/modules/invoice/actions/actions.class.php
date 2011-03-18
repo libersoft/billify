@@ -35,10 +35,12 @@ class invoiceActions extends sfActions
     $criteria = new Criteria();
     $criteria->addAscendingOrderByColumn(FatturaPeer::DATA);
     
-    $this->pager = new sfPropelPager('Fattura', UtentePeer::getImpostazione()->getNumFatture());
+    $this->pager = new sfPropelPager('Acquisto', UtentePeer::getImpostazione()->getNumFatture());
     $this->pager->setCriteria($criteria);
     $this->pager->setPage($this->getRequestParameter('page',1));
     $this->pager->init();
+
+    $this->filter = new AcquistoFormFilter();
     
     if(0 == $this->pager->count())
     {

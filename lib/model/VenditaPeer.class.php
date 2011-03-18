@@ -22,9 +22,15 @@ class VenditaPeer extends FatturaPeer
     return VenditaPeer::populateObjects(VenditaPeer::doSelectRS($criteria, $con));
   }
 
+  public static function doCount(Criteria $criteria, $distinct = false, PropelPDO $con = null)
+  {
+    $criteria->add(VenditaPeer::CLASS_KEY, VenditaPeer::CLASSKEY_VENDITA);
+    return parent::doCount($criteria, $distinct, $con);
+  }
+  
   public static function doSelectRS(Criteria $criteria, $conn = null)
   {
-    $criteria->add(VenditaPeer::CLASS_KEY, VenditaPeer::CLASSKEY_VENDITA );
+    $criteria->add(VenditaPeer::CLASS_KEY, VenditaPeer::CLASSKEY_VENDITA);
     return parent::doSelectRS($criteria);
   }
 

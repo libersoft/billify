@@ -14,6 +14,8 @@
  */
 class Vendita extends Fattura {
 
+  const PEER = 'VenditaPeer';
+
   /**
    * Constructs a new Vendita class, setting the class_key column to FatturaPeer::CLASSKEY_1.
    */

@@ -12,6 +12,11 @@
  */
 class FatturaPeer extends BaseFatturaPeer
 {
+  const PAGATA = 'p';
+  const NON_PAGATA = 'n';
+  const RIFIUTATA = 'r';
+  const INVIATA = 'i';
+
   const NUM_BLOCCO_FATTURE = 10;
 
   static $instance;
@@ -27,8 +32,6 @@ class FatturaPeer extends BaseFatturaPeer
     return parent::doSelectStmt($criteria);
   }
   
-  
-
   public static function doSelectForCashFlow($document_date = null)
   {
     $criteria = new Criteria();
