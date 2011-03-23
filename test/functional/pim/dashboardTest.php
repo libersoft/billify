@@ -18,7 +18,7 @@ $browser->
   checkResponseElement('h2', 'fatture da inviare', array('position' => 0))->
   checkResponseElement('h2', 'fatture da incassare', array('position' => 1))->
   checkResponseElement('table.fatture', 2)->
-  checkResponseElement('table.fatture tr', 25)->
+  checkResponseElement('table.fatture tr', 28)->
   checkResponseElement('table.fatture th', 14)->
   checkResponseElement('table.fatture th', 'N.', array('position' => 0))->
   checkResponseElement('table.fatture th', 'Ragione sociale', array('position' => 1))->
@@ -28,7 +28,7 @@ $browser->
   checkResponseElement('table.fatture th', 'Ritardo', array('position' => 5))->
   checkResponseElement('table.fatture th', 'Pdf', array('position' => 6))->
 
-  checkResponseElement('table.fatture td', '1', array('position' => 0))->
+  checkResponseElement('table.fatture td', '/Pro-Forma/', array('position' => 0))->
   checkResponseElement('table.fatture td', '01 Azienda', array('position' => 1))->
   checkResponseElement('table.fatture td', date('d/m/y', strtotime('+1 day')), array('position' => 2))->
   checkResponseElement('table.fatture td', '/1.000,00/', array('position' => 3))->
@@ -37,11 +37,11 @@ $browser->
   checkResponseElement('table.fatture td', 'no', array('position' => 5))->
 
 // Sorting test
-  checkResponseElement('table.fatture td', '1', array('position' => 0))->
-  checkResponseElement('table.fatture td', '2', array('position' => 7))->
-  checkResponseElement('table.fatture td', '3', array('position' => 14))->
-  checkResponseElement('table.fatture td', '4', array('position' => 21))->
-  checkResponseElement('table.fatture td', '5', array('position' => 28))->
+  checkResponseElement('table.fatture td', '/Pro-Forma/', array('position' => 0))->
+  checkResponseElement('table.fatture td', '/Pro-Forma/', array('position' => 7))->
+  checkResponseElement('table.fatture td', '/Pro-Forma/', array('position' => 14))->
+  checkResponseElement('table.fatture td', '1', array('position' => 21))->
+  checkResponseElement('table.fatture td', '2', array('position' => 28))->
 
   checkResponseElement('ul#resume li strong', 'fatturato annuo:', array('position' => 0))->
   checkResponseElement('ul#resume li', '/9.000,00/', array('position' => 0))->

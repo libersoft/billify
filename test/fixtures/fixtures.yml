@@ -293,6 +293,17 @@ CodiceIva:
 
 Fattura:
 <?php for($i = 1; $i <= 3; $i++):?>
+  Fattura_proforma_<?php echo $i?>:
+    id_utente: Utente_1
+    num_fattura: 0
+    cliente_id: Cliente_1
+    data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'')))?>'
+    modo_pagamento_id: ModoPagamento_1
+    calcola_ritenuta_acconto: n
+    sconto: 0
+    vat: 20
+<?php endfor?>
+<?php for($i = 1; $i <= 3; $i++):?>
   Fattura_<?php echo $i?>:
     id_utente: Utente_1
     num_fattura: '<?php echo $i?>'
@@ -400,6 +411,16 @@ Fattura:
 <?php endfor?>
 
 DettagliFattura:
+<?php for($i = 1; $i <= 3; $i++):?>
+  DettagliFatturaProforma_<?php echo $i?>:
+    fattura_id: 'Fattura_proforma_<?php echo $i?>'
+    descrizione: >
+      Consulenza e realizzazione sito web 1
+    qty: 1
+    sconto: 0
+    iva: 20
+    prezzo: 1000
+<?php endfor?>
 <?php for($i = 1; $i <= 3; $i++):?>
   DettagliFattura_<?php echo $i?>:
     fattura_id: 'Fattura_<?php echo $i?>'
