@@ -1,8 +1,9 @@
 rendering: ~
 security:  ~
+peer_security:
+  class: peerSecurityFilter
 
 # generally, you will want to insert your own filters here
-
 
 cache:     ~
 common:

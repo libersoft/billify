@@ -5,3 +5,4 @@ lib/model/map/*
 lib/model/om/*
 log/*
 nbproject/
+/build

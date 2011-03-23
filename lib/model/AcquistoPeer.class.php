@@ -1,24 +1,22 @@
 <?php 
 
 
-Class AcquistoPeer {
-  private $user;
-
-  public function __construct(sfUser $user)
-  {
-    $this->user = $user;
+Class AcquistoPeer extends FatturaPeer
+{
+  public static function doSelect(Criteria $criteria, PropelPDO $con = null)
+  { 
+    return AcquistoPeer::populateObjects(AcquistoPeer::doSelectRS($criteria, $con));
   }
 
-  public function doSelect(Criteria $criteria = null)
-	{
-    if (null === $criteria)
-    {
-      $criteria = new Criteria();
-    }
-    $criteria->add(FatturaPeer::ID_UTENTE, $this->user->getAttribute('id_utente'));
-    $criteria->add(FatturaPeer::CLASS_KEY, FatturaPeer::CLASSKEY_ACQUISTO);
-    $criteria->addAscendingOrderByColumn(FatturaPeer::DATA);
+  public static function doCount(Criteria $criteria, $distinct = false, PropelPDO $con = null)
+  {
+    $criteria->add(AcquistoPeer::CLASS_KEY, AcquistoPeer::CLASSKEY_ACQUISTO );
+    return parent::doCount($criteria, $distinct, $con);
+  }
 
-		return FatturaPeer::doSelect($criteria);
-	}
+  public static function doSelectRS(Criteria $criteria, $conn = null)
+  {
+    $criteria->add(AcquistoPeer::CLASS_KEY, AcquistoPeer::CLASSKEY_ACQUISTO );
+    return parent::doSelectRS($criteria);
+  }
 }

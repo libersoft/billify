@@ -14,6 +14,8 @@
  */
 class Acquisto extends Fattura {
 
+  const PEER = 'AcquistoPeer';
+
   protected $stato_string = array(self::NON_PAGATA => 'non pagata',
                                   self::PAGATA     => 'pagata',
                                   self::RIFIUTATA  => 'rifiutata',

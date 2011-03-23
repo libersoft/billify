@@ -12,20 +12,26 @@
  */
 class FatturaPeer extends BaseFatturaPeer
 {
+  const PAGATA = 'p';
+  const NON_PAGATA = 'n';
+  const RIFIUTATA = 'r';
+  const INVIATA = 'i';
+
   const NUM_BLOCCO_FATTURE = 10;
 
   static $instance;
+  static $user_id;
   
   public static function doSelectRS(Criteria $criteria, $conn = null)
   {
     if(sfConfig::get('sf_app')!='backend')
     {
-      $criteria->add(FatturaPeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
+      $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
     }
-
+    
     return parent::doSelectStmt($criteria);
   }
-
+  
   public static function doSelectForCashFlow($document_date = null)
   {
     $criteria = new Criteria();

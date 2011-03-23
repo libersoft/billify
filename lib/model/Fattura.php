@@ -471,6 +471,12 @@ class Fattura extends BaseFattura {
     }
     return parent::save($con);
   }
+
+  public function getStatoString()
+  {
+    return $this->stato_string;
+  }
+  
 } // Fattura
 
 function numFormat($number)

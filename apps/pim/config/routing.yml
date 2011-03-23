@@ -48,13 +48,13 @@ document_sales_create:
   url: cashflow/create/document/sales
   param: {module: cashflow, action: create, type: 3}
 
-fatture_acquisto:
-  url: /fatture_acquisto
-  param: {module: invoice, action: index, type: 2}
-
 fatture_acquisto_create:
   url: /fatture_acquisto/create
   param: {module: invoice, action: create, type: 2}
+  
+fatture_acquisto:
+  url: /fatture_acquisto/*
+  param: {module: invoice, action: index, type: 2}
 
 customer:
   url: /clienti
