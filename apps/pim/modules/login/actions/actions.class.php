@@ -33,24 +33,13 @@ class loginActions extends sfActions
 
   	if (!is_null($utente) && $utente->getStato() != 'disattivo')
   	{
-  		$this->getUser()->setAuthenticated(true);
-  		$this->getUser()->setAttribute('id_utente',$utente->getId());
-  		$this->getUser()->setAttribute('nome',$utente->getNome());
-  		$this->getUser()->setAttribute('cognome',$utente->getCognome());
-  		$this->getUser()->setAttribute('tipo_utente',$utente->getTipo());
+      $this->getUser()->signin($utente);
 
-  		if($utente->getUsername() == 'admin'){
-  			$this->getUser()->addCredential('admin');
-  		}
-  		
-  		$this->getUser()->addCredential('attivo');
-  		$utente->setLastlogin(time());
-  		$utente->save();
   		return $this->redirect('main/index');
   	}
   	
-        $this->getUser()->setFlash('login', 'Identificazione fallita - riprova');
-        return $this->redirect('login/index');
+    $this->getUser()->setFlash('login', 'Identificazione fallita - riprova');
+    return $this->redirect('login/index');
   }
 
   public function executeLogout()

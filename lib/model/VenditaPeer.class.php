@@ -67,16 +67,13 @@ class VenditaPeer extends FatturaPeer
 
   public static function getFatturato($anno, $mese = null)
   {
-    $criteria = new criteria();
-    $cr1 = $criteria->getNewCriterion(VenditaPeer::DATA,date('Y-m-d',mktime(0,0,0,(!is_null($mese)?$mese:1),1, $anno)),Criteria::GREATER_EQUAL);
-    $cr2 = $criteria->getNewCriterion(VenditaPeer::DATA,date('Y-m-d',mktime(0,0,0,(!is_null($mese)?$mese:12),31, $anno)),Criteria::LESS_EQUAL );
-    $cr1->addAnd($cr2);
-    $criteria->add($cr1);
-    $cr1 = $criteria->getNewCriterion(VenditaPeer::STATO , 'i');
-    $cr2 = $criteria->getNewCriterion(VenditaPeer::STATO, 'p');
-    $cr1->addOr($cr2);
-    $criteria->add($cr1);
+    $criteria = new Criteria();
+    $criteria->add(VenditaPeer::DATA,date('Y-m-d',mktime(0, 0, 0, (!is_null($mese)?$mese:1), 1, $anno)), Criteria::GREATER_EQUAL);
+    $criteria->add(VenditaPeer::DATA,date('Y-m-d',mktime(0, 0, 0, (!is_null($mese)?$mese:12), 31, $anno)), Criteria::LESS_EQUAL );
+    $criteria->add(VenditaPeer::STATO, array('i', 'p', 'n'), Criteria::IN);
+    $criteria->add(VenditaPeer::NUM_FATTURA, 0, Criteria::NOT_EQUAL);
     $fatture = VenditaPeer::doSelect($criteria);
+    
     $fatturato_annuo = 0;
     $fatturato_annuo_netto = 0;
     $inps = 0;
@@ -92,7 +89,9 @@ class VenditaPeer extends FatturaPeer
       $previdenza = 0;
       $tasse_previdenza = $fattura->getTasseUlteriori();
       foreach ($tasse_previdenza as $tassa)
-      $previdenza += $tassa['costo'];
+      {
+        $previdenza += $tassa['costo'];
+      }
       $inps = $inps + $previdenza;
       $ritenuta_acconto += $fattura->getRitenutaAcconto();
     }
@@ -313,7 +312,7 @@ class VenditaPeer extends FatturaPeer
   public function sortByDateAndInvoiceNumber(Criteria $criteria)
   {
     $criteria->addAsColumn('integer_num_fattura', 'CONVERT('.FatturaPeer::NUM_FATTURA.', signed)');
-    $criteria->addAscendingOrderByColumn('data');
+    $criteria->addAscendingOrderByColumn('YEAR(data)');
     $criteria->addAscendingOrderByColumn('integer_num_fattura');
   }
 
