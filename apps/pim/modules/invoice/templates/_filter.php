@@ -1,4 +1,4 @@
-<!--
+
 <div class="title">
    <h4><?php echo __('filtro')?></h4>
 </div>
@@ -8,8 +8,8 @@
     <li><?php echo $filter['data']->render(); ?></li>
     <li><?php echo $filter['stato']->render(); ?></li>
   </ul>
+  <?php echo $filter->renderHiddenFields(); ?>
   <?php //echo $filter; ?>
   <input type="submit" value="Filtra" />
+  <a href="<?php echo url_for('@fatture_acquisto'); ?>" >Reset</a>
 </form>
-
--->

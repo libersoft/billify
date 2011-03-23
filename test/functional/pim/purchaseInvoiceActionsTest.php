@@ -14,7 +14,13 @@ $browser->
   click('Entra')->
   followRedirect()->
   click('lista fatture d\'acquisto')->
-
+  setField('fattura_filters[data][from][day]', '')->
+  setField('fattura_filters[data][from][month]', '')->
+  setField('fattura_filters[data][from][year]', '')->
+  setField('fattura_filters[data][to][day]', '')->
+  setField('fattura_filters[data][to][month]', '')->
+  setField('fattura_filters[data][to][year]', '')->
+  click('Filtra')->
   checkResponseElement('table', 1)->
   checkResponseElement('table tr th', 10)->
   checkResponseElement('table tr th', 'n.', array('position' => 1))->
@@ -73,4 +79,32 @@ $browser->
   with('response')->begin()->
     checkElement('ul.error_list', 3)->
   end();
-?>
+
+$browser->
+  get('/fatture_acquisto')->
+  with('response')->begin()->
+    checkElement('#fattura_filters_data_from_day')->
+    checkElement('#fattura_filters_data_from_month')->
+    checkElement('#fattura_filters_data_from_year')->
+    checkElement('#fattura_filters_data_to_day')->
+    checkElement('#fattura_filters_data_to_month')->
+    checkElement('#fattura_filters_data_to_year')->
+    checkElement('#fattura_filters_stato')->
+  end()->
+  setField('fattura_filters[stato]', Acquisto::NON_PAGATA)->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('td', '!/pagata/')->
+    checkElement('.fatture tbody tr ', 9)->
+  end()->
+  setField('fattura_filters[data][from][day]', '1')->
+  setField('fattura_filters[data][from][month]', date('m', strtotime('-1 month')))->
+  setField('fattura_filters[data][from][year]', date('Y', strtotime('-1 month')))->
+  setField('fattura_filters[data][to][day]', date('t', strtotime('-1 month')))->
+  setField('fattura_filters[data][to][month]', date('m', strtotime('-1 month')))->
+  setField('fattura_filters[data][to][year]', date('Y', strtotime('-1 month')))->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('td', '!/pagata/')->
+    checkElement('.fatture tbody tr ', 3)->
+  end();

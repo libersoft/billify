@@ -30,9 +30,17 @@ class invoiceActions extends sfActions
     FatturaPeer::doDelete($request->getParameter('delete'));
   }
 
-  public function executeIndex($request)
+  public function executeIndex(sfWebRequest $request)
   {
     $criteria = new Criteria();
+
+    $this->filter = new AcquistoFormFilter();
+    $this->filter->bind($request->getParameter($this->filter->getName(), $this->filter->getDefaultFilter()));
+    if($this->filter->isValid())
+    {
+      $criteria= $this->filter->getCriteria();
+    }
+
     $criteria->addAscendingOrderByColumn(FatturaPeer::DATA);
     
     $this->pager = new sfPropelPager('Acquisto', UtentePeer::getImpostazione()->getNumFatture());
@@ -40,8 +48,6 @@ class invoiceActions extends sfActions
     $this->pager->setPage($this->getRequestParameter('page',1));
     $this->pager->init();
 
-    $this->filter = new AcquistoFormFilter();
-    
     if(0 == $this->pager->count())
     {
       return 'NoResults';

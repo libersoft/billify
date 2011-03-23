@@ -9,7 +9,7 @@
  */
 class AcquistoForm extends FatturaForm
 {
-  static $states = array('p' => 'Pagata', 'n' => 'Non Pagata');
+  static $states = array(Acquisto::PAGATA => 'Pagata', Acquisto::NON_PAGATA => 'Non Pagata');
 
   public function configure()
   {
