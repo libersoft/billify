@@ -67,13 +67,16 @@ class VenditaPeer extends FatturaPeer
 
   public static function getFatturato($anno, $mese = null)
   {
-    $criteria = new Criteria();
-    $criteria->add(VenditaPeer::DATA,date('Y-m-d',mktime(0, 0, 0, (!is_null($mese)?$mese:1), 1, $anno)), Criteria::GREATER_EQUAL);
-    $criteria->add(VenditaPeer::DATA,date('Y-m-d',mktime(0, 0, 0, (!is_null($mese)?$mese:12), 31, $anno)), Criteria::LESS_EQUAL );
+    $criteria = new criteria();
+    $cr1 = $criteria->getNewCriterion(VenditaPeer::DATA,date('Y-m-d',mktime(0,0,0,(!is_null($mese)?$mese:1),1, $anno)),Criteria::GREATER_EQUAL);
+    $cr2 = $criteria->getNewCriterion(VenditaPeer::DATA,date('Y-m-d',mktime(0,0,0,(!is_null($mese)?$mese:12),31, $anno)),Criteria::LESS_EQUAL );
+    $cr1->addAnd($cr2);
+    $criteria->add($cr1);
     $criteria->add(VenditaPeer::STATO, array('i', 'p', 'n'), Criteria::IN);
-    $criteria->add(VenditaPeer::NUM_FATTURA, 0, Criteria::NOT_EQUAL);
+    $criteria->add(FatturaPeer::NUM_FATTURA, 0, Criteria::NOT_EQUAL);
+
     $fatture = VenditaPeer::doSelect($criteria);
-    
+
     $fatturato_annuo = 0;
     $fatturato_annuo_netto = 0;
     $inps = 0;
