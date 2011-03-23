@@ -6,3 +6,4 @@
 /doc/*
 /nbproject
 .git
+/web/billify.php
