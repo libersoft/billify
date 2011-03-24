@@ -21,20 +21,26 @@ class Fattura extends BaseFattura {
   const RIFIUTATA = 'r';
   const INVIATA = 'i';
 
-  protected $stato_string = array(self::NON_PAGATA => 'non inviata',
-  self::PAGATA     => 'pagata',
-  self::RIFIUTATA  => 'rifiutata',
-  self::INVIATA    => 'inviata');
+  protected $stato_string = array(
+      self::NON_PAGATA => 'non inviata',
+      self::PAGATA     => 'pagata',
+      self::RIFIUTATA  => 'rifiutata',
+      self::INVIATA    => 'inviata'
+  );
 
-  protected $font_color_stato = array(self::NON_PAGATA => 'black',
-  self::PAGATA     => 'black',
-  self::RIFIUTATA  => 'black',
-  self::INVIATA    => 'white');
+  protected $font_color_stato = array(
+      self::NON_PAGATA => 'black',
+      self::PAGATA     => 'black',
+      self::RIFIUTATA  => 'black',
+      self::INVIATA    => 'white'
+  );
 
-  protected $color_stato = array(self::NON_PAGATA => 'yellow',
-  self::PAGATA     => 'green',
-  self::RIFIUTATA  => 'red',
-  self::INVIATA    => 'blue');
+  protected $color_stato = array(
+      self::NON_PAGATA => 'yellow',
+      self::PAGATA     => 'green',
+      self::RIFIUTATA  => 'red',
+      self::INVIATA    => 'blue'
+  );
 
 
   protected $imponibile = 0;
