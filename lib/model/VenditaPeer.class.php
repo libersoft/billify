@@ -34,17 +34,6 @@ class VenditaPeer extends FatturaPeer
     return parent::doSelectRS($criteria);
   }
 
-  public static function countFattureDaFare()
-  {
-    $anno = date('Y',time());
-    $criteria = new Criteria();
-    $criteria->add(VenditaPeer::DATA, date('y-m-d',mktime(0,0,0,1,1,$anno)), Criteria::GREATER_EQUAL);
-    $criteria->addAnd(VenditaPeer::DATA, date('y-m-d',mktime(0,0,0,12,31,$anno)), Criteria::LESS_EQUAL);
-    $num_fatture = VenditaPeer::doCount($criteria);
-
-    return VenditaPeer::NUM_BLOCCO_FATTURE - $num_fatture;
-  }
-
   public static function getYearInvoice()
   {
     $criteria = new Criteria();

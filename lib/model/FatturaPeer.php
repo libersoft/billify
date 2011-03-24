@@ -1,24 +1,7 @@
 <?php
-/**
- * Skeleton subclass for performing query and update operations on the 'fattura' table.
- *
- *
- *
- * You should add additional methods to this class to meet the
- * application requirements.  This class will only be generated as
- * long as it does not already exist in the output directory.
- *
- * @package model
- */
+
 class FatturaPeer extends BaseFatturaPeer
 {
-  const PAGATA = 'p';
-  const NON_PAGATA = 'n';
-  const RIFIUTATA = 'r';
-  const INVIATA = 'i';
-
-  const NUM_BLOCCO_FATTURE = 10;
-
   static $instance;
   static $user_id;
   
@@ -27,8 +10,7 @@ class FatturaPeer extends BaseFatturaPeer
     if(sfConfig::get('sf_app')!='backend')
     {
       $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
-    }
-    
+    } 
     return parent::doSelectStmt($criteria);
   }
   
@@ -46,6 +28,5 @@ class FatturaPeer extends BaseFatturaPeer
 
     $criteria->addAscendingOrderByColumn(FatturaPeer::DATA_SCADENZA);
     return FatturaPeer::doSelect($criteria);
-  }
-  
-} // FatturaPeer
+  } 
+}
