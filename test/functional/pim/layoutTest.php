@@ -80,14 +80,14 @@ $browser->
   back()->
   click('lista fatture di vendita')->
   with('request')->begin()->
-    isParameter('module', 'fattura')->
-    isParameter('action', 'index')->
+    isParameter('module', 'invoice')->
+    isParameter('action', 'indexSale')->
   end()->
   back()->
   click('lista fatture d\'acquisto')->
   with('request')->begin()->
     isParameter('module', 'invoice')->
-    isParameter('action', 'index')->
+    isParameter('action', 'indexPurchase')->
   end()->
   back()->
   click('cash flow')->

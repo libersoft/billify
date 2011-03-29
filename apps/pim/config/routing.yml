@@ -12,17 +12,33 @@ logout:
   url: logout
   param: {module: login, action: logout}
 
-invoice:
-  url: invoices
+old_invoice:
+  url: oldinvoices
   param: {module: fattura, action: index}
 
+invoice:
+  url: invoices/sale
+  param: {module: invoice, action: indexSale}
+
+invoice_show:
+  url: invoice/sale/show/:id
+  param: {module: fattura, action: show}
+
 invoice_create:
-  url: invoices/new
+  url: invoices/sale/new
   param: {module: fattura, action: create}
 
 invoice_create_for_client:
-  url: invoices/new/:id_cliente
+  url: invoices/sale/new/:id_cliente
   param: {module: fattura, action: create}
+
+invoice_purchase_create:
+  url: /invoice/purchase/create
+  param: {module: invoice, action: create, type: 2}
+
+invoice_purchase:
+  url: invoice/purchase/*
+  param: {module: invoice, action: indexPurchase, type: 2}
 
 cashflow:
   url: cashflow
@@ -47,14 +63,6 @@ document_purchase_create:
 document_sales_create:
   url: cashflow/create/document/sales
   param: {module: cashflow, action: create, type: 3}
-
-fatture_acquisto_create:
-  url: /fatture_acquisto/create
-  param: {module: invoice, action: create, type: 2}
-  
-fatture_acquisto:
-  url: /fatture_acquisto/*
-  param: {module: invoice, action: index, type: 2}
 
 customer:
   url: /clienti

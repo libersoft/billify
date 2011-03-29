@@ -1,0 +1,3 @@
+saleIndexSuccess:
+  components:
+     breadcrumps: [invoice, breadList]

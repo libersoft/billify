@@ -661,7 +661,7 @@ class fatturaActions extends sfActions
 
     }
 
-    $this->redirect('fattura/list');
+    $this->redirect($this->getUser()->getReferer('fattura/list'));
   }
 
   public function handleErrorUpdate()

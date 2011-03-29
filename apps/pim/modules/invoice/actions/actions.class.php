@@ -14,7 +14,9 @@ class invoiceActions extends sfActions
   private function update($request)
   {
     $this->form->bind($request->getParameter('fattura'));
-    if ($this->form->isValid()) {
+
+    if ($this->form->isValid())
+    {
       $invoice = $this->form->save();
       $invoice->setIdUtente($this->getUser()->getAttribute('id_utente'));
       $invoice->save();
@@ -26,13 +28,46 @@ class invoiceActions extends sfActions
 
   }
 
-  private function delete($request) {
+  private function delete($request)
+  {
     FatturaPeer::doDelete($request->getParameter('delete'));
   }
 
-  public function executeIndex(sfWebRequest $request)
+  public function executeIndexSale(sfWebRequest $request)
   {
     $criteria = new Criteria();
+
+    $this->getUser()->setReferer('@invoice');
+
+    $this->filter = new AcquistoFormFilter();
+    $this->filter->bind($request->getParameter($this->filter->getName(), $this->filter->getDefaultFilter()));
+    if($this->filter->isValid())
+    {
+      $criteria= $this->filter->getCriteria();
+    }
+
+    VenditaPeer::getInstance()->sortCriteria($criteria);
+    
+    $this->pager = new sfPropelPager('Vendita', UtentePeer::getImpostazione()->getNumFatture());
+    $this->pager->setCriteria($criteria);
+    $this->pager->setPage($this->getRequestParameter('page',1));
+    $this->pager->setPeerMethod('doSelectJoinAllExceptModoPagamento');
+    $this->pager->setPeerCountMethod('doCountJoinAllExceptModoPagamento');
+    $this->pager->init();
+
+    $this->taxes = TassaPeer::doSelect(new Criteria());
+    
+    if(0 == $this->pager->count())
+    {
+      return 'NoResults';
+    }
+  }
+
+  public function executeIndexPurchase(sfWebRequest $request)
+  {
+    $criteria = new Criteria();
+
+    $this->getUser()->setReferer('@invoice_purchase');
 
     $this->filter = new AcquistoFormFilter();
     $this->filter->bind($request->getParameter($this->filter->getName(), $this->filter->getDefaultFilter()));
@@ -45,9 +80,9 @@ class invoiceActions extends sfActions
     
     $this->pager = new sfPropelPager('Acquisto', UtentePeer::getImpostazione()->getNumFatture());
     $this->pager->setCriteria($criteria);
-    $this->pager->setPage($this->getRequestParameter('page',1));
+    $this->pager->setPage($this->getRequestParameter('page', 1));
     $this->pager->init();
-
+    
     if(0 == $this->pager->count())
     {
       return 'NoResults';
@@ -56,11 +91,12 @@ class invoiceActions extends sfActions
 
   public function executeBatch($request)
   {
-    if($request->hasParameter('delete_button')) {
+    if($request->hasParameter('delete_button'))
+    {
       $this->delete($request);
     }
 
-    $this->redirect('invoice/index');
+    $this->redirect($request->getReferer($this->getUser()->getReferer('@invoices')));
   }
 
   public function executeEdit($request)

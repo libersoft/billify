@@ -11,15 +11,16 @@ $browser->
   click('lista fatture di vendita')->
 
   with('response')->begin()->
-    checkElement('table', 2)->
-    checkElement('table.fatture th', 9)->
-    checkElement('table.fatture th', 'N.', array('position' => 1))->
-    checkElement('table.fatture th', 'Ragione sociale', array('position' => 2))->
-    checkElement('table.fatture th', 'Data', array('position' => 3))->
-    checkElement('table.fatture th', 'Totale', array('position' => 4))->
-    checkElement('table.fatture th', 'Stato', array('position' => 5))->
-    checkElement('table.fatture th', 'Ritardo', array('position' => 6))->
-    checkElement('table.fatture tr', 20)->
+    checkElement('table', 1)->
+    checkElement('table.fatture th', 10)->
+    checkElement('table.fatture th', 'n.', array('position' => 1))->
+    checkElement('table.fatture th', 'ragione sociale', array('position' => 2))->
+    checkElement('table.fatture th', 'data', array('position' => 3))->
+    checkElement('table.fatture th', 'imponibile', array('position' => 4))->
+    checkElement('table.fatture th', 'totale', array('position' => 5))->
+    checkElement('table.fatture th', 'stato', array('position' => 6))->
+    checkElement('table.fatture th', 'ritardo', array('position' => 7))->
+    checkElement('table.fatture tr', 21)->
     checkElement('table.fatture td:contains("1")')->
     checkElement('table.fatture td:contains("2")')->
   end();
