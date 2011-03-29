@@ -9,6 +9,13 @@
  */
 class VenditaForm extends FatturaForm
 {
+  static $states = array(
+      Vendita::NON_PAGATA => 'non inviata',
+      Vendita::INVIATA => 'inviata',
+      Vendita::PAGATA => 'pagata',
+      Vendita::RIFIUTATA => 'rifiutata',
+  );
+  
   public function configure()
   {
     parent::configure();

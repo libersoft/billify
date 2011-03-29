@@ -8,12 +8,12 @@
  * @author     Your name here
  * @version    SVN: $Id: sfPropelFormFilterTemplate.php 11675 2008-09-19 15:21:38Z fabien $
  */
-class AcquistoFormFilter extends FatturaFormFilter
+class VenditaFormFilter extends FatturaFormFilter
 {
   public function configure()
   {
     $choices = array("" => "");
-    $choices += AcquistoForm::$states;
+    $choices += VenditaForm::$states;
     
     $this->widgetSchema['data'] = new sfWidgetFormFilterDate(
       array('template'    => 'da %from_date%<br/> a %to_date%',
@@ -33,7 +33,7 @@ class AcquistoFormFilter extends FatturaFormFilter
       return;
     }
     
-    $criteria->add($field, $value);
+    $criteria->add(FatturaPeer::STATO, $value);
   }
 
   public function getDefaultFilter()
@@ -52,6 +52,6 @@ class AcquistoFormFilter extends FatturaFormFilter
 
   public function getRoute()
   {
-    return '@invoice_purchase';
+    return '@invoice';
   }
 }

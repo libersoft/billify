@@ -39,7 +39,7 @@ class invoiceActions extends sfActions
 
     $this->getUser()->setReferer('@invoice');
 
-    $this->filter = new AcquistoFormFilter();
+    $this->filter = new VenditaFormFilter();
     $this->filter->bind($request->getParameter($this->filter->getName(), $this->filter->getDefaultFilter()));
     if($this->filter->isValid())
     {
