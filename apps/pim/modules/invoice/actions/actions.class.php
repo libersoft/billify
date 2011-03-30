@@ -23,9 +23,8 @@ class invoiceActions extends sfActions
 
       return $invoice;
     }
-
+    
     return false;
-
   }
 
   private function delete($request)
@@ -33,34 +32,23 @@ class invoiceActions extends sfActions
     FatturaPeer::doDelete($request->getParameter('delete'));
   }
 
+  public function pager($criteria, $page, $offset)
+  {
+    
+  }
+
+  
   public function executeIndexSale(sfWebRequest $request)
   {
-    $criteria = new Criteria();
-
     $this->getUser()->setReferer('@invoice');
 
-    $this->filter = new VenditaFormFilter();
-    $this->filter->bind($request->getParameter($this->filter->getName(), $this->filter->getDefaultFilter()));
-    if($this->filter->isValid())
-    {
-      $criteria= $this->filter->getCriteria();
-    }
-
-    VenditaPeer::getInstance()->sortCriteria($criteria);
-    
-    $this->pager = new sfPropelPager('Vendita', UtentePeer::getImpostazione()->getNumFatture());
-    $this->pager->setCriteria($criteria);
-    $this->pager->setPage($this->getRequestParameter('page',1));
-    $this->pager->setPeerMethod('doSelectJoinAllExceptModoPagamento');
-    $this->pager->setPeerCountMethod('doCountJoinAllExceptModoPagamento');
+    $this->pager = new VenditaPager($this->getUser(), $request);
+    $this->pager->filter();
     $this->pager->init();
 
     $this->taxes = TassaPeer::doSelect(new Criteria());
     
-    if(0 == $this->pager->count())
-    {
-      return 'NoResults';
-    }
+    return (0 == $this->pager->count()) ? 'NoResults' : sfView::SUCCESS;
   }
 
   public function executeIndexPurchase(sfWebRequest $request)

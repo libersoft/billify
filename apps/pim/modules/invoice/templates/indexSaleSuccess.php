@@ -56,6 +56,6 @@
 
 <?php
   slot('infobox');
-    include_partial('invoice/filter', array('filter' => $filter));
+    include_partial('invoice/filter', array('filter' => $pager->getFilter()));
   end_slot('sidebar');
 ?>
