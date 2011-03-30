@@ -50,7 +50,12 @@
 
 <?php
   slot('sidebar');
-    include_partial('invoice/filter', array('filter' => $filter));
     include_partial('invoice/sidebar');
   end_slot();
+?>
+
+<?php
+  slot('infobox');
+    include_partial('invoice/filter', array('filter' => $filter));
+  end_slot('sidebar');
 ?>

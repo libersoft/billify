@@ -87,7 +87,50 @@ $browser->click('1')->
     isParameter('action', 'show')->
   end();
 
+$browser->
+  get('/invoices/sale')->
+  with('response')->begin()->
+    checkElement('#fattura_filters_data_from_day')->
+    checkElement('#fattura_filters_data_from_month')->
+    checkElement('#fattura_filters_data_from_year')->
+    checkElement('#fattura_filters_data_to_day')->
+    checkElement('#fattura_filters_data_to_month')->
+    checkElement('#fattura_filters_data_to_year')->
+    checkElement('#fattura_filters_stato')->
+  end()->
+  setField('fattura_filters[stato]', Vendita::PAGATA)->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('td', '!/non inviata/')->
+    checkElement('td', '!/inviata/')->
+    checkElement('td', '!/rifiutata/')->
+    checkElement('.fatture tbody tr ', 1)->
+  end()->
+  setField('fattura_filters[data][from][day]', '1')->
+  setField('fattura_filters[data][from][month]', '1')->
+  setField('fattura_filters[data][from][year]', date('Y', strtotime('-1 year')))->
+  setField('fattura_filters[data][to][day]', '31')->
+  setField('fattura_filters[data][to][month]', '12')->
+  setField('fattura_filters[data][to][year]', date('Y', strtotime('-1 year')))->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('td', '!/non inviata/')->
+    checkElement('td', '!/inviata/')->
+    checkElement('td', '!/rifiutata/')->
+    checkElement('.fatture tbody tr ', 3)->
+  end()->
+  click('Reset')->
+  setField('fattura_filters[num_fattura]', '2')->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('.fatture tbody tr ', 3)->
+  end()->
+  click('Reset')->
+  setField('fattura_filters[cliente_id]', '01')->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('.fatture tbody tr ', 6)->
+  end();
+
 $browser->test()->todo('test invoice details');
 $browser->test()->todo('test invoice calculation');
-
-?>

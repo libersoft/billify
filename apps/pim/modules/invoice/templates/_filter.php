@@ -4,12 +4,10 @@
 </div>
 
 <form action="<?php echo url_for($filter->getRoute()); ?>" method="get">
-  <ul class="ul-list nomb">
-    <li><?php echo $filter['data']->render(); ?></li>
-    <li><?php echo $filter['stato']->render(); ?></li>
-  </ul>
-  <?php echo $filter->renderHiddenFields(); ?>
-  <?php //echo $filter; ?>
-  <input type="submit" value="Filtra" />
-  <a href="<?php echo url_for('@invoice_purchase'); ?>" >Reset</a>
+  <?php echo $filter; ?>
+  <hr/>
+  <div class="button-block">
+    <input class="button" type="submit" value="Filtra" />
+    <a href="<?php echo url_for($filter->getRoute()); ?>" >Reset</a>
+  </div>
 </form>

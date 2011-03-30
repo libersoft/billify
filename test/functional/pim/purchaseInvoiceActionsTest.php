@@ -75,13 +75,13 @@ $browser->
   end();
 
 $browser->
-  post('/invoice/purchase/create', array('fattura' => array()))->
+  post('/invoices/purchase/create', array('fattura' => array()))->
   with('response')->begin()->
     checkElement('ul.error_list', 3)->
   end();
 
 $browser->
-  get('/invoice/purchase')->
+  get('/invoices/purchase')->
   with('response')->begin()->
     checkElement('#fattura_filters_data_from_day')->
     checkElement('#fattura_filters_data_from_month')->

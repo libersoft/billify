@@ -21,7 +21,7 @@ invoice:
   param: {module: invoice, action: indexSale}
 
 invoice_show:
-  url: invoice/sale/show/:id
+  url: invoices/sale/show/:id
   param: {module: fattura, action: show}
 
 invoice_create:
@@ -33,11 +33,11 @@ invoice_create_for_client:
   param: {module: fattura, action: create}
 
 invoice_purchase_create:
-  url: /invoice/purchase/create
+  url: /invoices/purchase/create
   param: {module: invoice, action: create, type: 2}
 
 invoice_purchase:
-  url: invoice/purchase/*
+  url: invoices/purchase/*
   param: {module: invoice, action: indexPurchase, type: 2}
 
 cashflow:
