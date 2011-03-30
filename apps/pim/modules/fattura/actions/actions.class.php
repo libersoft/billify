@@ -12,236 +12,6 @@ include_once('propel/util/Criteria.php');
  */
 class fatturaActions extends sfActions
 {
-  public function executeIndex ()
-  {
-    return $this->forward('fattura', 'list');
-  }
-
-  public function executeList()
-  {
-    $this->executeListFilter();
-  }
-
-  public function executeListAgain()
-  {
-    $this->executeListFilter();
-  }
-
-  public function executeListFilter ()
-  {
-    $this->tags = null; //TagsFatturaPeer::getPopularTags(sfConfig::get('app_tag_cloud_max'));
-
-    $criteria = new criteria();
-
-    $this->setFilter();
-    $this->getTrimestre();
-
-    $this->tag = '';
-    if($this->hasRequestParameter('tag') && $this->getRequestParameter('tag') != '')
-    {
-      $criteria->add(TagsFatturaPeer::TAG_NORMALIZZATO , $this->getRequestParameter('tag'));
-      $criteria->addJoin(FatturaPeer::ID,TagsFatturaPeer::ID_FATTURA );
-      $criteria->addGroupByColumn(FatturaPeer::ID);
-      $this->tag = $this->getRequestParameter('tag');
-    }
-
-    if($this->anno != "all")
-    {
-      $criteria->add(FatturaPeer::DATA ,date('y-m-d',mktime(0,0,0,$this->inizio_mese,1,$this->anno)),Criteria::GREATER_EQUAL);
-      $criteria->addAnd(FatturaPeer::DATA ,date('y-m-d',mktime(0,0,0,$this->fine_mese,$this->fine_giorno,$this->anno)),Criteria::LESS_EQUAL);
-    }
-
-    if($this->stato != "all")
-    {
-      $criteria->add(FatturaPeer::STATO ,$this->stato);
-    }
-
-    if($this->tipo != "all")
-    {
-      if($this->tipo == '1')
-      {
-        $criteria->add(FatturaPeer::NUM_FATTURA,'0','>');
-      }
-      else
-      {
-        $criteria->add(FatturaPeer::NUM_FATTURA,'0');
-      }
-    }
-
-    if($this->getRequestParameter('cliente_id'))
-    {
-      $this->cliente_id = $this->getRequestParameter('cliente_id');
-      $criteria->add(FatturaPeer::CLIENTE_ID , $this->cliente_id);
-    }
-
-
-    if($this->cliente != "" && !$this->getRequestParameter('cliente_id'))
-    {
-      $cr1 = $criteria->getNewCriterion(ClientePeer::RAGIONE_SOCIALE , '%'.$this->cliente.'%', Criteria::LIKE );
-      $cr2 = $criteria->getNewCriterion(ClientePeer::NOME , '%'.$this->cliente.'%', Criteria::LIKE );
-      $cr3 = $criteria->getNewCriterion(ClientePeer::COGNOME , '%'.$this->cliente.'%', Criteria::LIKE );
-      $cr2->addOr($cr3);
-      $cr1->addOr($cr3);
-      $criteria->add($cr1);
-    }
-
-    VenditaPeer::getInstance()->sortCriteria($criteria);
-
-    $pager = new sfPropelPager('Vendita', UtentePeer::getImpostazione()->getNumFatture());
-    $pager->setCriteria($criteria);
-    $pager->setPage($this->getRequestParameter('page',1));
-    $pager->setPeerMethod('doSelectJoinAllExceptModoPagamento');
-    $pager->setPeerCountMethod('doCountJoinAllExceptModoPagamento');
-    $pager->init();
-
-    $this->fatture_pager = $pager;
-
-    if($this->trimestre != 'all')
-    {
-      $criteria->add(FatturaPeer::IVA_PAGATA, 'n');
-    }
-
-    $this->fatture_iva_da_pagare = VenditaPeer::doCountJoinAllExceptModoPagamento($criteria);
-    $this->anni_fatture = $this->getYearInvoice();
-  }
-
-  private function setFilter()
-  {
-    if($this->getRequestParameter('anno'))
-    {
-      $this->anno = $this->getRequestParameter('anno');
-      $this->getUser()->setAttribute('anno',$this->anno);
-    }
-    else
-    {
-      if($this->getUser()->hasAttribute('anno'))
-      {
-        $this->anno = $this->getUser()->getAttribute('anno');
-      }
-      else
-      {
-        $this->anno = date('Y',time());
-      }
-    }
-
-    if($this->getRequestParameter('stato'))
-    {
-      $this->stato = $this->getRequestParameter('stato');
-      $this->getUser()->setAttribute('stato',$this->stato);
-    }
-    else
-    {
-      if($this->getUser()->hasAttribute('stato'))
-      {
-        $this->stato = $this->getUser()->getAttribute('stato');
-      }
-      else
-      {
-        $this->stato = 'all';
-      }
-    }
-
-    if($this->getRequestParameter('trimestre'))
-    {
-      $this->trimestre = $this->getRequestParameter('trimestre');
-      $this->getUser()->setAttribute('trimestre',$this->trimestre);
-    }
-    else
-    {
-      if($this->getUser()->hasAttribute('trimestre'))
-      {
-        $this->trimestre = $this->getUser()->getAttribute('trimestre');
-      }
-      else
-      {
-        $this->trimestre = 'all';
-      }
-    }
-
-    if($this->getRequestParameter('tipo'))
-    {
-      $this->tipo = $this->getRequestParameter('tipo');
-      $this->getUser()->setAttribute('tipo',$this->tipo);
-    }
-    else
-    {
-      if($this->getUser()->hasAttribute('tipo'))
-      {
-        $this->tipo = $this->getUser()->getAttribute('tipo');
-      }
-      else
-      {
-        $this->tipo = 'all';
-      }
-    }
-
-    if($this->getRequest()->hasParameter('cliente'))
-    {
-      $this->cliente = $this->getRequestParameter('cliente');
-      $this->getUser()->setAttribute('cliente',$this->cliente);
-    }
-    else
-    {
-      if($this->getUser()->hasAttribute('cliente'))
-      {
-        $this->cliente = $this->getUser()->getAttribute('cliente');
-      }
-      else
-      {
-        $this->cliente = '';
-      }
-    }
-  }
-
-
-  private function getTrimestre()
-  {
-    switch ($this->trimestre) {
-      case 'all':
-        $this->inizio_mese = 1;
-        $this->fine_mese = 12;
-        $this->fine_giorno = 31;
-        break;
-      case 1:
-        $this->inizio_mese = 1;
-        $this->fine_mese = 3;
-        $this->fine_giorno = 31;
-        break;
-      case 2:
-        $this->inizio_mese = 4;
-        $this->fine_mese = 6;
-        $this->fine_giorno = 30;
-        break;
-      case 3:
-        $this->inizio_mese = 7;
-        $this->fine_mese = 9;
-        $this->fine_giorno = 30;
-        break;
-      case 4:
-        $this->inizio_mese = 10;
-        $this->fine_mese = 12;
-        $this->fine_giorno = 31;
-        break;
-      default:
-        $this->inizio_mese = 1;
-        $this->fine_mese = 12;
-        $this->fine_giorno = 31;
-        break;
-    }
-  }
-
-  private function getYearInvoice()
-  {
-    $criteria = new Criteria();
-    $criteria->clearSelectColumns();
-    $criteria->addSelectColumn('year('.FatturaPeer::DATA.')');
-    $criteria->setDistinct();
-    $stmt = VenditaPeer::doSelectStmt($criteria);
-    $anni = array();
-    while($res = $stmt->fetchColumn(0))
-    $anni[$res] = $res;
-    return $anni;
-  }
 
   public function executeShow ()
   {
@@ -259,47 +29,6 @@ class fatturaActions extends sfActions
     $this->dettagliFattura = $this->fattura->getDettagliFatturas();
     $this->fattura->calcolaFattura(TassaPeer::doSelect(new Criteria()), UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
     $this->viewSconto = $this->getViewSconto();
-  }
-
-  private function checkBloccoFattura(){
-    return false;
-  }
-
-  private function makeFattura()
-  {
-    if($this->getRequestParameter('id_cliente'))
-    {
-      $this->id_cliente = $this->getRequestParameter('id_cliente');
-      $this->cliente = ClientePeer::retrieveByPK($this->getRequestParameter('id_cliente'));
-      $this->forward404Unless($this->cliente instanceof Cliente);
-
-      if($this->fattura->isNew() && UtentePeer::getImpostazione()->getBoolFatturaAutomatica())
-      {
-        $this->getRequest()->setParameter('cliente_id',$this->cliente->getID());
-        $this->getRequest()->setParameter('modo_pagamento_id',$this->cliente->getModoPagamentoID());
-        $this->getRequest()->setParameter('vat','20');
-        $this->getRequest()->setParameter('sconto','0');
-        $this->getRequest()->setParameter('spese_anticipate','0');
-        $this->getRequest()->setParameter('calcola_ritenuta_acconto',$this->cliente->getCalcolaRitenutaAcconto());
-        $this->getRequest()->setParameter('includi_tasse',$this->cliente->getIncludiTasse());
-        $this->getRequest()->setParameter('calcola_tasse',$this->cliente->getCalcolaTasse());
-        $this->getRequest()->setParameter('data',date("d/m/Y",time()));
-        $this->getRequest()->setParameter('num_fattura',$this->fattura->getNumFattura());
-        $this->updateFattura($this->fattura);
-      }
-    }
-
-    if($this->getRequestParameter('modifica_data'))
-    {
-      $this->modifica_data = true;
-      $this->getUser()->setAttribute('modifica_data',true);
-    }
-
-    if($this->getRequestParameter('modifica_num_fattura'))
-    {
-      $this->modifica_num_fattura = true;
-      $this->getUser()->setAttribute('modifica_num_fattura',true);
-    }
   }
 
   public function executeCreate ()
@@ -329,88 +58,10 @@ class fatturaActions extends sfActions
     $this->makeFattura();
   }
 
-  private function updateFattura($fattura)
-  {
-
-    if($this->checkBloccoFattura() && $fattura->isNew())
-    {
-            $this->setTemplate('blocco');
-            return sfView::SUCCESS;
-    }
-
-    $i18n = new sfI18N($this->getContext()->getConfiguration());
-    list($d, $m, $y) = $i18n->getDateForCulture($this->getRequestParameter('data'), $this->getUser()->getCulture());
-
-    $fattura->setData("$y-$m-$d");
-
-    if(date('y', strtotime($fattura->getData())) != date('y', mktime(0, 0, 0, $m, $d, $y)))
-    {
-            $fattura->setNewNumFattura();
-    }
-    else
-    {
-            $fattura->setNumFattura($this->getRequestParameter('num_fattura'));
-    }
-
-    if($this->getRequestParameter('proforma') == 'y')
-    {
-            $fattura->setNumFattura(0);
-    }
-
-    if(!$fattura->isNew() && $fattura->isProForma() && $this->getRequestParameter('proforma') != 'y')
-    {
-            $fattura->setRegolare();
-    }
-
-    if($this->checkFatturaExist($fattura))
-    {
-      return sfView::ERROR;
-    }
-
-    //$fattura->setId($this->getRequestParameter('id'));
-    $fattura->setClienteId($this->getRequestParameter('cliente_id'));
-    $fattura->setModoPagamentoId($this->getRequestParameter('modo_pagamento_id'));
-    $fattura->setSconto($this->getRequestParameter('sconto'));
-    $fattura->setVat($this->getRequestParameter('vat'));
-    $fattura->setNote($this->getRequestParameter('note'));
-    $fattura->setSpeseAnticipate($this->getRequestParameter('spese_anticipate'));
-    $fattura->setCalcolaRitenutaAcconto($this->getRequestParameter('calcola_ritenuta_acconto'));
-    $fattura->setIncludiTasse($this->getRequestParameter('includi_tasse'));
-    $fattura->setCalcolaTasse($this->getRequestParameter('calcola_tasse'));
-    $fattura->setIdUtente($this->getUser()->getAttribute('id_utente'));
-    $fattura->save();
-
-    $this->getUser()->setAttribute('modifica_data',false);
-    $this->getUser()->setAttribute('modifica_num_fattura',false);
-
-    return $this->redirect('fattura/show?id='.$fattura->getId());
-
-  }
-
   public function executeUpdate ()
   {
     $fattura = $this->getFatturaOrCreate();
     return $this->updateFattura($fattura);
-  }
-
-  public function checkFatturaExist($fattura){
-    $id = $fattura->getNumFattura();
-    $anno = $fattura->getData('Y');
-    $this->fattura = $fattura;
-
-    $criteria = new Criteria();
-    $criteria->add(FatturaPeer::NUM_FATTURA, $fattura->getNumFattura());
-    $fatture = VenditaPeer::doSelect($criteria);
-    $trovato = false;
-    foreach($fatture as $fattura_find)
-    {
-      if($fattura_find->getNumFattura() != '0' && $fattura_find->getData('Y') == $anno && $fattura_find->getID() != $fattura->getID())
-      {
-        $trovato = true;
-        break;
-      }
-    }
-    return $trovato;
   }
 
   public function executeDelete ($forward = true)
@@ -428,29 +79,8 @@ class fatturaActions extends sfActions
 
     if($forward)
     {
-      return $this->redirect('fattura/list');
+      return $this->redirect('@invoice');
     }
-  }
-
-  private function getFatturaOrCreate ($id = 'id')
-  {
-    if (!$this->getRequestParameter($id, 0))
-    {
-      $fattura = new Fattura();
-      $fattura->setData(time());
-      $fattura->setNewNumFattura();
-      if($this->id_cliente)
-      {
-        $fattura->setModoPagamentoId($this->cliente->getModoPagamentoID());
-      }
-    }
-    else
-    {
-      $fattura = VenditaPeer::retrieveByPk($this->getRequestParameter($id));
-      $this->forward404Unless($fattura instanceof Fattura);
-    }
-
-    return $fattura;
   }
 
   public function executeStato()
@@ -562,39 +192,8 @@ class fatturaActions extends sfActions
     return sfView::ERROR;
   }
 
-  public function getViewSconto()
+  public function executeActions()
   {
-    $trovato = false;
-    foreach( $this->dettagliFattura as $dettaglio )
-    {
-      if($dettaglio->getSconto() > 0)
-      {
-        $trovato = true;
-      }
-    }
-    return $trovato;
-  }
-
-  public function setProForma()
-  {
-    if($this->getRequestParameter('id'))
-    {
-      $fattura = $this->getFatturaOrCreate();
-      $fattura->setNumFattura(0);
-      $fattura->save();
-    }
-    else
-    {
-      $this->forward404();
-    }
-  }
-
-  public function setRegolare()
-  {
-    $fattura->setNewNumfattura();
-  }
-
-  public function executeActions(){
     if(count($this->getRequestParameter('ids'))>0)
     {
       switch($this->getRequestParameter('todo'))
@@ -661,21 +260,7 @@ class fatturaActions extends sfActions
 
     }
 
-    $this->redirect($this->getUser()->getReferer('fattura/list'));
-  }
-
-  public function handleErrorUpdate()
-  {
-    $this->getRequest()->setParameter('id_cliente',$this->getRequestParameter('cliente_id'));
-
-    if(!$this->getRequestParameter('id',0))
-    {
-      $this->forward('fattura','create');
-    }
-    else
-    {
-      $this->forward('fattura','edit');
-    }
+    $this->redirect($this->getUser()->getReferer('@invoice'));
   }
 
   public function executeAddTag()
@@ -715,8 +300,321 @@ class fatturaActions extends sfActions
     $this->tags = TagsFatturaPeer::getTagsForUserLike($this->getUser()->getAttribute('id_utente'), $this->getRequestParameter('new_tag'), 10);
   }
 
-  public function executeTags(){
+  public function executeTags()
+  {
     $this->tags = TagsFatturaPeer::getPopularTags(0);
   }
 
+  private function setFilter()
+  {
+    if($this->getRequestParameter('anno'))
+    {
+      $this->anno = $this->getRequestParameter('anno');
+      $this->getUser()->setAttribute('anno',$this->anno);
+    }
+    else
+    {
+      if($this->getUser()->hasAttribute('anno'))
+      {
+        $this->anno = $this->getUser()->getAttribute('anno');
+      }
+      else
+      {
+        $this->anno = date('Y',time());
+      }
+    }
+
+    if($this->getRequestParameter('stato'))
+    {
+      $this->stato = $this->getRequestParameter('stato');
+      $this->getUser()->setAttribute('stato',$this->stato);
+    }
+    else
+    {
+      if($this->getUser()->hasAttribute('stato'))
+      {
+        $this->stato = $this->getUser()->getAttribute('stato');
+      }
+      else
+      {
+        $this->stato = 'all';
+      }
+    }
+
+    if($this->getRequestParameter('trimestre'))
+    {
+      $this->trimestre = $this->getRequestParameter('trimestre');
+      $this->getUser()->setAttribute('trimestre',$this->trimestre);
+    }
+    else
+    {
+      if($this->getUser()->hasAttribute('trimestre'))
+      {
+        $this->trimestre = $this->getUser()->getAttribute('trimestre');
+      }
+      else
+      {
+        $this->trimestre = 'all';
+      }
+    }
+
+    if($this->getRequestParameter('tipo'))
+    {
+      $this->tipo = $this->getRequestParameter('tipo');
+      $this->getUser()->setAttribute('tipo',$this->tipo);
+    }
+    else
+    {
+      if($this->getUser()->hasAttribute('tipo'))
+      {
+        $this->tipo = $this->getUser()->getAttribute('tipo');
+      }
+      else
+      {
+        $this->tipo = 'all';
+      }
+    }
+
+    if($this->getRequest()->hasParameter('cliente'))
+    {
+      $this->cliente = $this->getRequestParameter('cliente');
+      $this->getUser()->setAttribute('cliente',$this->cliente);
+    }
+    else
+    {
+      if($this->getUser()->hasAttribute('cliente'))
+      {
+        $this->cliente = $this->getUser()->getAttribute('cliente');
+      }
+      else
+      {
+        $this->cliente = '';
+      }
+    }
+  }
+
+  private function getTrimestre()
+  {
+    switch ($this->trimestre) {
+      case 'all':
+        $this->inizio_mese = 1;
+        $this->fine_mese = 12;
+        $this->fine_giorno = 31;
+        break;
+      case 1:
+        $this->inizio_mese = 1;
+        $this->fine_mese = 3;
+        $this->fine_giorno = 31;
+        break;
+      case 2:
+        $this->inizio_mese = 4;
+        $this->fine_mese = 6;
+        $this->fine_giorno = 30;
+        break;
+      case 3:
+        $this->inizio_mese = 7;
+        $this->fine_mese = 9;
+        $this->fine_giorno = 30;
+        break;
+      case 4:
+        $this->inizio_mese = 10;
+        $this->fine_mese = 12;
+        $this->fine_giorno = 31;
+        break;
+      default:
+        $this->inizio_mese = 1;
+        $this->fine_mese = 12;
+        $this->fine_giorno = 31;
+        break;
+    }
+  }
+
+  private function checkBloccoFattura()
+  {
+    return false;
+  }
+
+  private function makeFattura()
+  {
+    if($this->getRequestParameter('id_cliente'))
+    {
+      $this->id_cliente = $this->getRequestParameter('id_cliente');
+      $this->cliente = ClientePeer::retrieveByPK($this->getRequestParameter('id_cliente'));
+      $this->forward404Unless($this->cliente instanceof Cliente);
+
+      if($this->fattura->isNew() && UtentePeer::getImpostazione()->getBoolFatturaAutomatica())
+      {
+        $this->getRequest()->setParameter('cliente_id',$this->cliente->getID());
+        $this->getRequest()->setParameter('modo_pagamento_id',$this->cliente->getModoPagamentoID());
+        $this->getRequest()->setParameter('vat','20');
+        $this->getRequest()->setParameter('sconto','0');
+        $this->getRequest()->setParameter('spese_anticipate','0');
+        $this->getRequest()->setParameter('calcola_ritenuta_acconto',$this->cliente->getCalcolaRitenutaAcconto());
+        $this->getRequest()->setParameter('includi_tasse',$this->cliente->getIncludiTasse());
+        $this->getRequest()->setParameter('calcola_tasse',$this->cliente->getCalcolaTasse());
+        $this->getRequest()->setParameter('data',date("d/m/Y",time()));
+        $this->getRequest()->setParameter('num_fattura',$this->fattura->getNumFattura());
+        $this->updateFattura($this->fattura);
+      }
+    }
+
+    if($this->getRequestParameter('modifica_data'))
+    {
+      $this->modifica_data = true;
+      $this->getUser()->setAttribute('modifica_data',true);
+    }
+
+    if($this->getRequestParameter('modifica_num_fattura'))
+    {
+      $this->modifica_num_fattura = true;
+      $this->getUser()->setAttribute('modifica_num_fattura',true);
+    }
+  }
+
+  private function updateFattura($fattura)
+  {
+
+    if($this->checkBloccoFattura() && $fattura->isNew())
+    {
+            $this->setTemplate('blocco');
+            return sfView::SUCCESS;
+    }
+
+    $i18n = new sfI18N($this->getContext()->getConfiguration());
+    list($d, $m, $y) = $i18n->getDateForCulture($this->getRequestParameter('data'), $this->getUser()->getCulture());
+
+    $fattura->setData("$y-$m-$d");
+
+    if(date('y', strtotime($fattura->getData())) != date('y', mktime(0, 0, 0, $m, $d, $y)))
+    {
+            $fattura->setNewNumFattura();
+    }
+    else
+    {
+            $fattura->setNumFattura($this->getRequestParameter('num_fattura'));
+    }
+
+    if($this->getRequestParameter('proforma') == 'y')
+    {
+            $fattura->setNumFattura(0);
+    }
+
+    if(!$fattura->isNew() && $fattura->isProForma() && $this->getRequestParameter('proforma') != 'y')
+    {
+            $fattura->setRegolare();
+    }
+
+    if($this->checkFatturaExist($fattura))
+    {
+      return sfView::ERROR;
+    }
+
+    //$fattura->setId($this->getRequestParameter('id'));
+    $fattura->setClienteId($this->getRequestParameter('cliente_id'));
+    $fattura->setModoPagamentoId($this->getRequestParameter('modo_pagamento_id'));
+    $fattura->setSconto($this->getRequestParameter('sconto'));
+    $fattura->setVat($this->getRequestParameter('vat'));
+    $fattura->setNote($this->getRequestParameter('note'));
+    $fattura->setSpeseAnticipate($this->getRequestParameter('spese_anticipate'));
+    $fattura->setCalcolaRitenutaAcconto($this->getRequestParameter('calcola_ritenuta_acconto'));
+    $fattura->setIncludiTasse($this->getRequestParameter('includi_tasse'));
+    $fattura->setCalcolaTasse($this->getRequestParameter('calcola_tasse'));
+    $fattura->setIdUtente($this->getUser()->getAttribute('id_utente'));
+    $fattura->save();
+
+    $this->getUser()->setAttribute('modifica_data',false);
+    $this->getUser()->setAttribute('modifica_num_fattura',false);
+
+    return $this->redirect('fattura/show?id='.$fattura->getId());
+
+  }
+
+  private function checkFatturaExist($fattura)
+  {
+    $id = $fattura->getNumFattura();
+    $anno = $fattura->getData('Y');
+    $this->fattura = $fattura;
+
+    $criteria = new Criteria();
+    $criteria->add(FatturaPeer::NUM_FATTURA, $fattura->getNumFattura());
+    $fatture = VenditaPeer::doSelect($criteria);
+    $trovato = false;
+    foreach($fatture as $fattura_find)
+    {
+      if($fattura_find->getNumFattura() != '0' && $fattura_find->getData('Y') == $anno && $fattura_find->getID() != $fattura->getID())
+      {
+        $trovato = true;
+        break;
+      }
+    }
+    return $trovato;
+  }
+
+  private function getFatturaOrCreate ($id = 'id')
+  {
+    if (!$this->getRequestParameter($id, 0))
+    {
+      $fattura = new Fattura();
+      $fattura->setData(time());
+      $fattura->setNewNumFattura();
+      if($this->id_cliente)
+      {
+        $fattura->setModoPagamentoId($this->cliente->getModoPagamentoID());
+      }
+    }
+    else
+    {
+      $fattura = VenditaPeer::retrieveByPk($this->getRequestParameter($id));
+      $this->forward404Unless($fattura instanceof Fattura);
+    }
+
+    return $fattura;
+  }
+
+  public function getViewSconto()
+  {
+    $trovato = false;
+    foreach( $this->dettagliFattura as $dettaglio )
+    {
+      if($dettaglio->getSconto() > 0)
+      {
+        $trovato = true;
+      }
+    }
+    return $trovato;
+  }
+
+  public function setProForma()
+  {
+    if($this->getRequestParameter('id'))
+    {
+      $fattura = $this->getFatturaOrCreate();
+      $fattura->setNumFattura(0);
+      $fattura->save();
+    }
+    else
+    {
+      $this->forward404();
+    }
+  }
+
+  public function setRegolare()
+  {
+    $fattura->setNewNumfattura();
+  }
+
+  public function handleErrorUpdate()
+  {
+    $this->getRequest()->setParameter('id_cliente',$this->getRequestParameter('cliente_id'));
+
+    if(!$this->getRequestParameter('id',0))
+    {
+      $this->forward('fattura','create');
+    }
+    else
+    {
+      $this->forward('fattura','edit');
+    }
+  }
+  
 }

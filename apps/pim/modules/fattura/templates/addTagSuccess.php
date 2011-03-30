@@ -5,9 +5,9 @@ Tags:
 <?php if(count($tags) > 0):?>
 <?php foreach($tags as $index => $tag):?>
 <?php if($index >= count($tags)-1):?>
-<small>[<?php echo link_to_remote('x',array('url'=>'fattura/deleteTag?id_tag='.$tag->getId().'&id_fattura='.$tag->getIdFattura(),'update'=>'tags'))?>]</small>&nbsp;<?php echo link_to($tag->getTagNormalizzato(),'fattura/list?tag='.$tag->getTagNormalizzato(),'rel="tag"')?>
+<small>[<?php echo link_to_remote('x',array('url'=>'fattura/deleteTag?id_tag='.$tag->getId().'&id_fattura='.$tag->getIdFattura(),'update'=>'tags'))?>]</small>&nbsp;<?php echo link_to($tag->getTagNormalizzato(),'@invoice?tag='.$tag->getTagNormalizzato(),'rel="tag"')?>
 <?php else:?>
-<small>[<?php echo link_to_remote('x',array('url'=>'fattura/deleteTag?id_tag='.$tag->getId().'&id_fattura='.$tag->getIdFattura(),'update'=>'tags'))?>]</small>&nbsp;<?php echo link_to($tag->getTagNormalizzato(),'fattura/list?tag='.$tag->getTagNormalizzato(),'rel="tag"')?>,
+<small>[<?php echo link_to_remote('x',array('url'=>'fattura/deleteTag?id_tag='.$tag->getId().'&id_fattura='.$tag->getIdFattura(),'update'=>'tags'))?>]</small>&nbsp;<?php echo link_to($tag->getTagNormalizzato(),'@invoice?tag='.$tag->getTagNormalizzato(),'rel="tag"')?>,
 <?php endif?>
 <?php endforeach?>
 <?php else:?>
