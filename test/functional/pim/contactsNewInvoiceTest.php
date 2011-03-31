@@ -9,7 +9,7 @@ $browser->
   login()->
   click('rubrica')->
   click('00 Azienda')->
-  click('new invoice')->
+  click('nuova fattura')->
 
   with('request')->begin()->
     isParameter('module', 'fattura')->

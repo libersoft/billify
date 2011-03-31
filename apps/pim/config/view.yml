@@ -9,9 +9,9 @@ default:
     keywords:     php, invoice, account
     language:     it
 
-  stylesheets:    [impress/reset, impress/main, impress/style, jquery-ui/jquery-ui-1.8.11.custom.css]
+  stylesheets:    [impress/reset, impress/main, impress/style ]
 
-  javascripts:    [http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js, jquery-ui-1.8.11.custom.min.js]
+  javascripts:    []
 
   has_layout:     true
   layout:         layout
