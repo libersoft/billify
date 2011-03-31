@@ -14,12 +14,8 @@ $browser->
   click('Entra')->
   followRedirect()->
   click('lista fatture d\'acquisto')->
-  setField('fattura_filters[data][from][day]', '')->
-  setField('fattura_filters[data][from][month]', '')->
-  setField('fattura_filters[data][from][year]', '')->
-  setField('fattura_filters[data][to][day]', '')->
-  setField('fattura_filters[data][to][month]', '')->
-  setField('fattura_filters[data][to][year]', '')->
+  setField('fattura_filters[data][from]', '')->
+  setField('fattura_filters[data][to]', '')->
   click('Filtra')->
   checkResponseElement('table', 1)->
   checkResponseElement('table tr th', 10)->
@@ -83,12 +79,8 @@ $browser->
 $browser->
   get('/invoices/purchase')->
   with('response')->begin()->
-    checkElement('#fattura_filters_data_from_day')->
-    checkElement('#fattura_filters_data_from_month')->
-    checkElement('#fattura_filters_data_from_year')->
-    checkElement('#fattura_filters_data_to_day')->
-    checkElement('#fattura_filters_data_to_month')->
-    checkElement('#fattura_filters_data_to_year')->
+    checkElement('#fattura_filters_data_from')->
+    checkElement('#fattura_filters_data_to')->
     checkElement('#fattura_filters_stato')->
   end()->
   setField('fattura_filters[stato]', Acquisto::NON_PAGATA)->
@@ -97,12 +89,8 @@ $browser->
     checkElement('td', '!/pagata/')->
     checkElement('.fatture tbody tr ', 9)->
   end()->
-  setField('fattura_filters[data][from][day]', '1')->
-  setField('fattura_filters[data][from][month]', date('m', strtotime('-1 month')))->
-  setField('fattura_filters[data][from][year]', date('Y', strtotime('-1 month')))->
-  setField('fattura_filters[data][to][day]', date('t', strtotime('-1 month')))->
-  setField('fattura_filters[data][to][month]', date('m', strtotime('-1 month')))->
-  setField('fattura_filters[data][to][year]', date('Y', strtotime('-1 month')))->
+  setField('fattura_filters[data][from]', date('d/m/Y', strtotime('-1 month')))->
+  setField('fattura_filters[data][to]', date('t/m/Y', strtotime('-1 month')))->
   click('Filtra')->
   with('response')->begin()->
     checkElement('td', '!/pagata/')->

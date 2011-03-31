@@ -12,9 +12,9 @@ class AcquistoFormFilter extends FatturaFormFilter
 {
   public function configure()
   {
-    parent::configure();
-    
     $this->choices += AcquistoForm::$states;
+
+    parent::configure();
     
     $this->useFields(array('data', 'stato')); 
   }

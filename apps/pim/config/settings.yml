@@ -47,7 +47,7 @@ all:
 #
   .settings:
     compat_10: on
-    default_culture: it_IT
+    default_culture: it
     i18n: on
 
 #    available:              off

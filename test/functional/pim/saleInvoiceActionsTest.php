@@ -90,12 +90,8 @@ $browser->click('1')->
 $browser->
   get('/invoices/sale')->
   with('response')->begin()->
-    checkElement('#fattura_filters_data_from_day')->
-    checkElement('#fattura_filters_data_from_month')->
-    checkElement('#fattura_filters_data_from_year')->
-    checkElement('#fattura_filters_data_to_day')->
-    checkElement('#fattura_filters_data_to_month')->
-    checkElement('#fattura_filters_data_to_year')->
+    checkElement('#fattura_filters_data_from')->
+    checkElement('#fattura_filters_data_to')->
     checkElement('#fattura_filters_stato')->
   end()->
   setField('fattura_filters[stato]', Vendita::PAGATA)->
@@ -106,12 +102,8 @@ $browser->
     checkElement('td', '!/rifiutata/')->
     checkElement('.fatture tbody tr ', 1)->
   end()->
-  setField('fattura_filters[data][from][day]', '1')->
-  setField('fattura_filters[data][from][month]', '1')->
-  setField('fattura_filters[data][from][year]', date('Y', strtotime('-1 year')))->
-  setField('fattura_filters[data][to][day]', '31')->
-  setField('fattura_filters[data][to][month]', '12')->
-  setField('fattura_filters[data][to][year]', date('Y', strtotime('-1 year')))->
+  setField('fattura_filters[data][from]', '01/01/'.date('Y', strtotime('-1 year')))->
+  setField('fattura_filters[data][to]', '31/12/'.date('Y', strtotime('-1 year')))->
   click('Filtra')->
   with('response')->begin()->
     checkElement('td', '!/non inviata/')->
@@ -130,6 +122,12 @@ $browser->
   click('Filtra')->
   with('response')->begin()->
     checkElement('.fatture tbody tr ', 6)->
+  end()->
+  click('Reset')->
+  setField('fattura_filters[cliente_id]', 'test')->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('p:contains("Nessuna fattura disponibile.")')->
   end();
 
 $browser->test()->todo('test invoice details');
