@@ -48,7 +48,7 @@
 <ul class="home">
 <li><?php echo link_to('Visualizza Riepilogo','main/riepilogo')?></li>
 <li><?php echo link_to('Emetti fattura','fattura/create')?></li>
-<li><?php echo link_to('Lista Fatture','fattura/list')?></li>
+<li><?php echo link_to('Lista Fatture','@invoice')?></li>
 </ul>
 </fieldset>
 </td>

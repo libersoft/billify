@@ -33,7 +33,7 @@ $browser->
   checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
   checkResponseElement('div[class="navigator"]', '/Pagina 1 di 2/')->
   checkResponseElement('table tr td', date('d/m/Y', strtotime('-2 years')), array('position' => 3))->
-  checkResponseElement('table tr td', '11200.3', array('position' => 4))->
+  checkResponseElement('table tr td', '/11.200,30/', array('position' => 4))->
   checkResponseElement('div[class="navigator"]', 2)->
   checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
   click('2')->
@@ -75,13 +75,13 @@ $browser->
   end();
 
 $browser->
-  post('/fatture_acquisto/create', array('fattura' => array()))->
+  post('/invoices/purchase/create', array('fattura' => array()))->
   with('response')->begin()->
     checkElement('ul.error_list', 3)->
   end();
 
 $browser->
-  get('/fatture_acquisto')->
+  get('/invoices/purchase')->
   with('response')->begin()->
     checkElement('#fattura_filters_data_from_day')->
     checkElement('#fattura_filters_data_from_month')->

@@ -3,6 +3,54 @@
 
 class VenditaPeer extends FatturaPeer
 {
+  private function getYearCriteria()
+  {
+    $criteria = new Criteria();
+    $cr1 = $criteria->getNewCriterion(FatturaPeer::DATA,date('Y-m-d',mktime(0,0,0,1,1,date('Y',time()))),Criteria::GREATER_EQUAL);
+    $cr2 = $criteria->getNewCriterion(FatturaPeer::DATA,date('Y-m-d',mktime(0,0,0,12,31,date('Y',time()))),Criteria::LESS_EQUAL );
+    $cr1->addAnd($cr2);
+    $criteria->add($cr1);
+    return $criteria;
+  }
+
+  private function getFatturatoTotale()
+  {
+    $criteria = new criteria();
+    $cr1 = $criteria->getNewCriterion(FatturaPeer::STATO , 'i');
+    $cr2 = $criteria->getNewCriterion(FatturaPeer::STATO, 'p');
+    $cr1->addOr($cr2);
+    $fatture = VenditaPeer::doSelect($criteria);
+    $this->fatturato_totale = 0;
+    $this->fatturato_totale_netto = 0;
+
+    $tasse = TassaPeer::doSelect(new Criteria());
+
+    foreach ($fatture as $fattura)
+    {
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
+      $this->fatturato_totale = $this->fatturato_totale + $fattura->getNettoDaLiquidare();
+      $this->fatturato_totale_netto = $this->fatturato_totale_netto + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
+    }
+  }
+
+  private function getFatturatoTotaleIncassato()
+  {
+    $criteria = new criteria();
+    $criteria->add(FatturaPeer::STATO, 'p');
+    $fatture = VenditaPeer::doSelect($criteria);
+    $this->fatturato_totale_incassato = 0;
+    $this->fatturato_totale_netto_incassato = 0;
+
+    $tasse = TassaPeer::doSelect(new Criteria());
+
+    foreach ($fatture as $fattura)
+    {
+      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
+      $this->fatturato_totale_incassato = $this->fatturato_totale_incassato + $fattura->getNettoDaLiquidare();
+      $this->fatturato_totale_netto_incassato = $this->fatturato_totale_netto_incassato + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
+    }
+  }
+
   /**
    * Returns instance of VenditaPeer
    * 
@@ -12,9 +60,9 @@ class VenditaPeer extends FatturaPeer
   {
     if (!self::$instance)
     {
-      $instance = new self;
+      self::$instance = new self;
     }
-    return $instance;
+    return self::$instance;
   }
   
   public static function doSelect(Criteria $criteria, PropelPDO $con = null)
@@ -163,16 +211,6 @@ class VenditaPeer extends FatturaPeer
     }
   }
 
-  private function getYearCriteria()
-  {
-    $criteria = new Criteria();
-    $cr1 = $criteria->getNewCriterion(FatturaPeer::DATA,date('Y-m-d',mktime(0,0,0,1,1,date('Y',time()))),Criteria::GREATER_EQUAL);
-    $cr2 = $criteria->getNewCriterion(FatturaPeer::DATA,date('Y-m-d',mktime(0,0,0,12,31,date('Y',time()))),Criteria::LESS_EQUAL );
-    $cr1->addAnd($cr2);
-    $criteria->add($cr1);
-    return $criteria;
-  }
-
   public function getFatturatoAnnuoIncassato()
   {
     $criteria = $this->getYearCriteria();
@@ -189,44 +227,6 @@ class VenditaPeer extends FatturaPeer
       $this->fatturato_annuo_netto_incassato = $this->fatturato_annuo_netto_incassato + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
     }
 
-  }
-
-  private function getFatturatoTotale()
-  {
-    $criteria = new criteria();
-    $cr1 = $criteria->getNewCriterion(FatturaPeer::STATO , 'i');
-    $cr2 = $criteria->getNewCriterion(FatturaPeer::STATO, 'p');
-    $cr1->addOr($cr2);
-    $fatture = VenditaPeer::doSelect($criteria);
-    $this->fatturato_totale = 0;
-    $this->fatturato_totale_netto = 0;
-
-    $tasse = TassaPeer::doSelect(new Criteria());
-
-    foreach ($fatture as $fattura)
-    {
-      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
-      $this->fatturato_totale = $this->fatturato_totale + $fattura->getNettoDaLiquidare();
-      $this->fatturato_totale_netto = $this->fatturato_totale_netto + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
-    }
-  }
-
-  private function getFatturatoTotaleIncassato()
-  {
-    $criteria = new criteria();
-    $criteria->add(FatturaPeer::STATO, 'p');
-    $fatture = VenditaPeer::doSelect($criteria);
-    $this->fatturato_totale_incassato = 0;
-    $this->fatturato_totale_netto_incassato = 0;
-
-    $tasse = TassaPeer::doSelect(new Criteria());
-
-    foreach ($fatture as $fattura)
-    {
-      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
-      $this->fatturato_totale_incassato = $this->fatturato_totale_incassato + $fattura->getNettoDaLiquidare();
-      $this->fatturato_totale_netto_incassato = $this->fatturato_totale_netto_incassato + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
-    }
   }
 
   public function getIvaDaPagare()
