@@ -12,17 +12,11 @@ class VenditaFormFilter extends FatturaFormFilter
 {
   public function configure()
   {
-    $choices = array("" => "");
-    $choices += VenditaForm::$states;
+    parent::configure();
     
-    $this->widgetSchema['data'] = new sfWidgetFormFilterDate(
-      array('template'    => 'da %from_date%<br/> a %to_date%',
-            'from_date'   => new sfWidgetFormDate(array('format' => '%day%/%month%/%year%')),
-            'to_date'     => new sfWidgetFormDate(array('format' => '%day%/%month%/%year%')),
-            'with_empty'  => false));
-
+    $this->choices += VenditaForm::$states;
+    
     $this->widgetSchema['cliente_id'] = new sfWidgetFormInput();
-    $this->widgetSchema['stato'] = new sfWidgetFormChoice(array('choices' => $choices));
     $this->widgetSchema['num_fattura'] = new sfWidgetFormChoice(array('choices' => array('' => '', 1 => 'Regolare', 2 => 'Pro-Forma')));
 
     $this->widgetSchema->setLabel('num_fattura', 'Tipo');
@@ -31,16 +25,6 @@ class VenditaFormFilter extends FatturaFormFilter
 
     $this->useFields(array('data', 'stato', 'num_fattura', 'cliente_id'));
     $this->widgetSchema->setPositions(array('data', 'cliente_id', 'stato', 'num_fattura'));
-  }
-
-  public function addStatoColumnCriteria(Criteria $criteria, $field, $value)
-  {
-    if ('' == $value)
-    {
-      return;
-    }
-    
-    $criteria->add(FatturaPeer::STATO, $value);
   }
 
   public function addClienteIdColumnCriteria(Criteria $criteria, $field, $value)
@@ -60,20 +44,6 @@ class VenditaFormFilter extends FatturaFormFilter
         $criteria->add(FatturaPeer::NUM_FATTURA, 0, Criteria::GREATER_THAN);
         break;
     }
-  }
-
-  public function getDefaultFilter()
-  {
-    $default_filter=array();
-    $default_filter['data']['from']['day']    = '1';
-    $default_filter['data']['from']['month']  = '1';
-    $default_filter['data']['from']['year']   = date('Y');
-    $default_filter['data']['to']['day']    = '31';
-    $default_filter['data']['to']['month']  = '12';
-    $default_filter['data']['to']['year']   = date('Y');
-    $default_filter['stato']   = '';
-
-    return $default_filter;
   }
 
   public function getRoute()
