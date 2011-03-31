@@ -56,11 +56,18 @@ class Fattura extends BaseFattura {
   private $tipo_ritenuta;
   private $costo_tasse_ulteriori = 0;
 
-  public function __toString() {
+  public function __toString()
+  {
     return 'Fattura '.($this->isProForma() ? 'Pro-Forma' : 'n. '.$this->getNumFattura());
   }
 
-  public function toString(){
+  public function getShortName()
+  {
+    return ($this->isProForma() ? 'Pro-Forma' : $this->getNumFattura());
+  }
+
+  public function toString()
+  {
     return $this->__toString();
   }
 

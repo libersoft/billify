@@ -2,7 +2,7 @@
 
 include_once(dirname(__FILE__).'/../../bootstrap/functional.php');
 
-$browser = new paTestFunctional(new sfBrowser());
+$browser = new bfTestFunctional(new sfBrowser());
 $browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/fixtures.yml');
 
 $browser->
@@ -11,15 +11,16 @@ $browser->
   click('lista fatture di vendita')->
 
   with('response')->begin()->
-    checkElement('table', 2)->
-    checkElement('table.fatture th', 9)->
-    checkElement('table.fatture th', 'N.', array('position' => 1))->
-    checkElement('table.fatture th', 'Ragione sociale', array('position' => 2))->
-    checkElement('table.fatture th', 'Data', array('position' => 3))->
-    checkElement('table.fatture th', 'Totale', array('position' => 4))->
-    checkElement('table.fatture th', 'Stato', array('position' => 5))->
-    checkElement('table.fatture th', 'Ritardo', array('position' => 6))->
-    checkElement('table.fatture tr', 20)->
+    checkElement('table', 1)->
+    checkElement('table.fatture th', 10)->
+    checkElement('table.fatture th', 'n.', array('position' => 1))->
+    checkElement('table.fatture th', 'ragione sociale', array('position' => 2))->
+    checkElement('table.fatture th', 'data', array('position' => 3))->
+    checkElement('table.fatture th', 'imponibile', array('position' => 4))->
+    checkElement('table.fatture th', 'totale', array('position' => 5))->
+    checkElement('table.fatture th', 'stato', array('position' => 6))->
+    checkElement('table.fatture th', 'ritardo', array('position' => 7))->
+    checkElement('table.fatture tr', 21)->
     checkElement('table.fatture td:contains("1")')->
     checkElement('table.fatture td:contains("2")')->
   end();
@@ -86,7 +87,50 @@ $browser->click('1')->
     isParameter('action', 'show')->
   end();
 
+$browser->
+  get('/invoices/sale')->
+  with('response')->begin()->
+    checkElement('#fattura_filters_data_from_day')->
+    checkElement('#fattura_filters_data_from_month')->
+    checkElement('#fattura_filters_data_from_year')->
+    checkElement('#fattura_filters_data_to_day')->
+    checkElement('#fattura_filters_data_to_month')->
+    checkElement('#fattura_filters_data_to_year')->
+    checkElement('#fattura_filters_stato')->
+  end()->
+  setField('fattura_filters[stato]', Vendita::PAGATA)->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('td', '!/non inviata/')->
+    checkElement('td', '!/inviata/')->
+    checkElement('td', '!/rifiutata/')->
+    checkElement('.fatture tbody tr ', 1)->
+  end()->
+  setField('fattura_filters[data][from][day]', '1')->
+  setField('fattura_filters[data][from][month]', '1')->
+  setField('fattura_filters[data][from][year]', date('Y', strtotime('-1 year')))->
+  setField('fattura_filters[data][to][day]', '31')->
+  setField('fattura_filters[data][to][month]', '12')->
+  setField('fattura_filters[data][to][year]', date('Y', strtotime('-1 year')))->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('td', '!/non inviata/')->
+    checkElement('td', '!/inviata/')->
+    checkElement('td', '!/rifiutata/')->
+    checkElement('.fatture tbody tr ', 3)->
+  end()->
+  click('Reset')->
+  setField('fattura_filters[num_fattura]', '2')->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('.fatture tbody tr ', 3)->
+  end()->
+  click('Reset')->
+  setField('fattura_filters[cliente_id]', '01')->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('.fatture tbody tr ', 6)->
+  end();
+
 $browser->test()->todo('test invoice details');
 $browser->test()->todo('test invoice calculation');
-
-?>

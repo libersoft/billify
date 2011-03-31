@@ -14,53 +14,56 @@ class invoiceActions extends sfActions
   private function update($request)
   {
     $this->form->bind($request->getParameter('fattura'));
-    if ($this->form->isValid()) {
+
+    if ($this->form->isValid())
+    {
       $invoice = $this->form->save();
       $invoice->setIdUtente($this->getUser()->getAttribute('id_utente'));
       $invoice->save();
 
       return $invoice;
     }
-
+    
     return false;
-
   }
 
-  private function delete($request) {
+  private function delete($request)
+  {
     FatturaPeer::doDelete($request->getParameter('delete'));
   }
-
-  public function executeIndex(sfWebRequest $request)
+  
+  public function executeIndexSale(sfWebRequest $request)
   {
-    $criteria = new Criteria();
+    $this->getUser()->setReferer('@invoice');
 
-    $this->filter = new AcquistoFormFilter();
-    $this->filter->bind($request->getParameter($this->filter->getName(), $this->filter->getDefaultFilter()));
-    if($this->filter->isValid())
-    {
-      $criteria= $this->filter->getCriteria();
-    }
-
-    $criteria->addAscendingOrderByColumn(FatturaPeer::DATA);
-    
-    $this->pager = new sfPropelPager('Acquisto', UtentePeer::getImpostazione()->getNumFatture());
-    $this->pager->setCriteria($criteria);
-    $this->pager->setPage($this->getRequestParameter('page',1));
+    $this->pager = new VenditaPager($this->getUser(), $request);
+    $this->pager->filter();
     $this->pager->init();
 
-    if(0 == $this->pager->count())
-    {
-      return 'NoResults';
-    }
+    $this->taxes = TassaPeer::doSelect(new Criteria());
+    
+    return (!$this->pager->count()) ? 'NoResults' : sfView::SUCCESS;
+  }
+
+  public function executeIndexPurchase(sfWebRequest $request)
+  {
+    $this->getUser()->setReferer('@invoice_purchase');
+
+    $this->pager = new AcquistoPager($this->getUser(), $request);
+    $this->pager->filter();
+    $this->pager->init();
+
+    return (!$this->pager->count()) ? 'NoResults' : sfView::SUCCESS;
   }
 
   public function executeBatch($request)
   {
-    if($request->hasParameter('delete_button')) {
+    if($request->hasParameter('delete_button'))
+    {
       $this->delete($request);
     }
 
-    $this->redirect('invoice/index');
+    $this->redirect($request->getReferer($this->getUser()->getReferer('@invoices')));
   }
 
   public function executeEdit($request)

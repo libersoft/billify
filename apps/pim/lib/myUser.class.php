@@ -15,6 +15,8 @@ class myUser extends sfBasicSecurityUser
     $this->setAttribute('cognome',$utente->getCognome());
     $this->setAttribute('tipo_utente',$utente->getTipo());
 
+    FatturaPeer::$user_id = $utente->getId();
+
     if($utente->getUsername() == 'admin'){
       $this->addCredential('admin');
     }
@@ -26,6 +28,19 @@ class myUser extends sfBasicSecurityUser
 
     return true;
   }
-}
 
-?>
+  public function getSettings()
+  {
+    return UtentePeer::getImpostazione();
+  }
+
+  public function setReferer($referer)
+  {
+    $this->setAttribute('referer', $referer);
+  }
+
+  public function getReferer($default)
+  {
+    return $this->hasAttribute('referer') ? $this->getAttribute('referer') : $default;
+  }
+}

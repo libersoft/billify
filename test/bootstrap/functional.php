@@ -24,3 +24,5 @@ sfContext::createInstance($configuration);
 
 // remove all cache
 sfToolkit::clearDirectory(sfConfig::get('sf_app_cache_dir'));
+
+require_once dirname(__FILE__).'/../lib/bfTestFunctional.class.php';

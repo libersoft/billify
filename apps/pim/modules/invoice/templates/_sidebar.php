@@ -13,6 +13,6 @@
 </div>
 
 <ul class="ul-list nomb">
-  <li>+ <?php echo link_to(__('purchase invoices list'), '@fatture_acquisto')?></li>
-  <li>+ <?php echo link_to(__('add new purchase'), '@fatture_acquisto_create')?></li>
+  <li>+ <?php echo link_to(__('purchase invoices list'), '@invoice_purchase')?></li>
+  <li>+ <?php echo link_to(__('add new purchase'), '@invoice_purchase_create')?></li>
 </ul>

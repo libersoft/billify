@@ -92,7 +92,7 @@ ul.ul-list span.date {padding-right:10px;}
 #cols2-bottom {width:960px; height:5px; margin-bottom:15px; font-size:0; line-height:0; overflow:hidden;}
 #cols2 {}
 
-    #cols2 #col-left {float:left; width:70%; padding:20px; min-width: 500px;}
+    #cols2 #col-left {float:left; width:70%; padding:20px; min-width: 500px; min-height: 400px; }
     #cols2 #col-right {float:right; width:21%; margin-right:1px; padding:20px;}
 
         #cols2 #col-left h4, #cols2 #col-right h4 {margin:0; font-size:100%;}
@@ -171,3 +171,8 @@ table td.red {background-color: red; color: #000;}
 
 .chart{float: left;}
 .chart h2{margin-left: 30px;}
+
+#col-right label { display: block; background-color: #009900; color: #fff; margin: 5px 0 5px 0; padding: 0 3px; }
+#col-right .button { margin-top: 5px; }
+#col-right hr { border: 1px solid #009900; margin-top: 5px; }
+#col-right .button-block { text-align: right; }

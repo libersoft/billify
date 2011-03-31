@@ -21,7 +21,7 @@ class Vendita extends Fattura {
    */
   public function __construct()
   {
-            $this->setClassKey(FatturaPeer::CLASSKEY_1);
+    $this->setClassKey(FatturaPeer::CLASSKEY_1);
   }
 
   public function save(PropelPDO $con = null)

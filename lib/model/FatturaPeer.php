@@ -13,6 +13,16 @@ class FatturaPeer extends BaseFatturaPeer
     } 
     return parent::doSelectStmt($criteria);
   }
+
+  public static function doCount(Criteria $criteria, $distinct = false, PropelPDO $con = null)
+  {
+    if(sfConfig::get('sf_app')!='backend')
+    {
+      $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
+    }
+    
+    return parent::doCount($criteria, $distinct, $con);
+  }
   
   public static function doSelectForCashFlow($document_date = null)
   {
