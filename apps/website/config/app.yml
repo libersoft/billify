@@ -1,2 +1,3 @@
 # default values
-#all:
+all:
+  demo_url: http://billify.ideato.it/billify.php
