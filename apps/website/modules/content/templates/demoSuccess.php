@@ -6,5 +6,5 @@
 <li><strong>Password:</strong> user</li>
 </ul>
 
-<p><a href="<?php echo _compute_public_path('billify.php', '', 'php', true)?>" target="_blank">Login</a></p>
+<p><a href="<?php echo sfConfig::get('app_demo_url'); ?>" target="_blank">Login</a></p>
 
