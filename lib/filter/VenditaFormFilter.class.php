@@ -12,9 +12,9 @@ class VenditaFormFilter extends FatturaFormFilter
 {
   public function configure()
   {
-    parent::configure();
-    
     $this->choices += VenditaForm::$states;
+
+    parent::configure();
     
     $this->widgetSchema['cliente_id'] = new sfWidgetFormInput();
     $this->widgetSchema['num_fattura'] = new sfWidgetFormChoice(array('choices' => array('' => '', 1 => 'Regolare', 2 => 'Pro-Forma')));

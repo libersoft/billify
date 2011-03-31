@@ -34,7 +34,7 @@
     <td><?php echo format_currency($invoice->getTotale(), 'EUR'); ?></td>
     <td style="font-weight: bold; background-color: <?php echo $invoice->getColorStato()?>; color: <?php echo $invoice->getFontColorStato()?>"><?php echo $invoice->getStato(true)?></td>
     <?php if($sf_user->getSettings()->getBoolConsegnaCommercialista()):?>
-      <td><?php echo link_to($fattura->getCommercialista()=='s'?'si':'no','fattura/consegnaCommercialista?id='.$fattura->getID().'&redirect=list')?></td>
+      <td><?php echo link_to($invoice->getCommercialista()=='s'?'si':'no','fattura/consegnaCommercialista?id='.$invoice->getID().'&redirect=list')?></td>
     <?php endif?>
     <td class="<?php echo $invoice->checkInRitardo()?'red':'none'?>"><?php echo $invoice->checkInRitardo()?'<strong>si</strong>':'no'?></td>
     <td><?php echo link_to(image_tag('/images/icons_tango/copy.png',array('alt'=>'crea copia fattura')), 'fattura/copia?id='.$invoice->getID())?></td>

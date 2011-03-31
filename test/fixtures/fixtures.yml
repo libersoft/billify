@@ -311,6 +311,8 @@ Fattura:
     data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'')))?>'
     modo_pagamento_id: ModoPagamento_1
     calcola_ritenuta_acconto: n
+    includi_tasse: n
+    calcola_tasse: s
     sconto: 0
     vat: 20
 <?php endfor?>

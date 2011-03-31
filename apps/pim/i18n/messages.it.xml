@@ -398,6 +398,10 @@
         <source>Referent</source>
         <target>Referente</target>
       </trans-unit>
+      <trans-unit id="87">
+        <source>new invoice</source>
+        <target>nuova fattura</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -1,5 +1,0 @@
-create:
-  credentials: attivo
-
-default:
-  is_secure: true
