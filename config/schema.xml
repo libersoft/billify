@@ -43,7 +43,7 @@
     <column name="id_tema_fattura" type="INTEGER" />
     <column name="id_banca" type="INTEGER" />
     <column name="calcola_ritenuta_acconto" type="CHAR" required="true" default="a" />
-    <column name="includi_tasse" type="CHAR" required="true" default="" />
+    <column name="includi_tasse" type="CHAR" required="true" default="n" />
     <column name="calcola_tasse" type="CHAR" required="true" default="s" />
     <column name="cod" type="VARCHAR" size="255" />
     <column name="note" type="LONGVARCHAR" />
@@ -142,7 +142,7 @@
     <column name="categoria_id" type="integer" />
     <column name="note" type="longvarchar" />
     <column name="calcola_ritenuta_acconto" type="char" default="a" />
-    <column name="includi_tasse" type="char" default="" />
+    <column name="includi_tasse" type="char" default="n" />
     <column name="calcola_tasse" type="char" default="s" />
     <column name="class_key" type="integer" inheritance="single" default="1">
       <inheritance key="4" class="Uscita" extends="pim.Fattura"/>

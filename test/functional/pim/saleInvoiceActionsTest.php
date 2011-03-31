@@ -152,7 +152,7 @@ $browser->
     checkElement('input[type="text"][name="sconto"][value="0"]')->
     checkElement('select[name="vat"] option', '20%')->
     checkElement('input[type="text"][name="spese_anticipate"][value="0"]')->
-    checkElement('select[name="calcola_ritenuta_acconto"] option[selected="selected"]', 'No')->
+    checkElement('select[name="calcola_ritenuta_acconto"] option[selected="selected"]', 'Auto')->
     checkElement('select[name="calcola_tasse"] option[selected="selected"]', 'Si')->
     checkElement('select[name="includi_tasse"] option[selected="selected"]', 'No')->
   end();
