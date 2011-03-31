@@ -2,7 +2,7 @@
 
 include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
-$browser = new paTestFunctional(new sfBrowser());
+$browser = new bfTestFunctional(new sfBrowser());
 $browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/fixtures.yml');
 
 $browser->

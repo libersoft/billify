@@ -1,22 +1,10 @@
 <?php
 include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 
+$test = new bfTestUnit(4, new lime_output_color());
+$test->loadData();
+$test->signin('user');
 
-$configuration = ProjectConfiguration::getApplicationConfiguration('pim', 'test', true);
-$context = sfContext::createInstance($configuration);
-
-$data = new sfPropelData();
-$data->loadData(sfConfig::get('sf_test_dir').'/fixtures/fixtures.yml');
-
-$test = new lime_test(4, new lime_output_color());
-
-$criteria = new Criteria();
-$criteria->add(UtentePeer::USERNAME , 'user');
-$user = UtentePeer::doSelectOne($criteria);
-
-$context->getUser()->signin($user);
-
-FatturaPeer::$user_id = $user->getId();
 
 $fatturato = VenditaPeer::getFatturato('2011');
 

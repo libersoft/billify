@@ -15,6 +15,8 @@ class myUser extends sfBasicSecurityUser
     $this->setAttribute('cognome',$utente->getCognome());
     $this->setAttribute('tipo_utente',$utente->getTipo());
 
+    FatturaPeer::$user_id = $utente->getId();
+
     if($utente->getUsername() == 'admin'){
       $this->addCredential('admin');
     }

@@ -31,12 +31,6 @@ class invoiceActions extends sfActions
   {
     FatturaPeer::doDelete($request->getParameter('delete'));
   }
-
-  public function pager($criteria, $page, $offset)
-  {
-    
-  }
-
   
   public function executeIndexSale(sfWebRequest $request)
   {

@@ -1,6 +1,6 @@
 <?php
 
-Class paTestFunctional extends sfTestFunctional
+Class bfTestFunctional extends sfTestFunctional
 {
   public function login($username = 'user', $password = 'user')
   {
