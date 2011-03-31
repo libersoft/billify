@@ -42,33 +42,18 @@ class invoiceActions extends sfActions
 
     $this->taxes = TassaPeer::doSelect(new Criteria());
     
-    return (0 == $this->pager->count()) ? 'NoResults' : sfView::SUCCESS;
+    return (!$this->pager->count()) ? 'NoResults' : sfView::SUCCESS;
   }
 
   public function executeIndexPurchase(sfWebRequest $request)
   {
-    $criteria = new Criteria();
-
     $this->getUser()->setReferer('@invoice_purchase');
 
-    $this->filter = new AcquistoFormFilter();
-    $this->filter->bind($request->getParameter($this->filter->getName(), $this->filter->getDefaultFilter()));
-    if($this->filter->isValid())
-    {
-      $criteria= $this->filter->getCriteria();
-    }
-
-    $criteria->addAscendingOrderByColumn(FatturaPeer::DATA);
-    
-    $this->pager = new sfPropelPager('Acquisto', UtentePeer::getImpostazione()->getNumFatture());
-    $this->pager->setCriteria($criteria);
-    $this->pager->setPage($this->getRequestParameter('page', 1));
+    $this->pager = new AcquistoPager($this->getUser(), $request);
+    $this->pager->filter();
     $this->pager->init();
-    
-    if(0 == $this->pager->count())
-    {
-      return 'NoResults';
-    }
+
+    return (!$this->pager->count()) ? 'NoResults' : sfView::SUCCESS;
   }
 
   public function executeBatch($request)
