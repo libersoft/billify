@@ -18,11 +18,16 @@ abstract class FatturaFormFilter extends BaseFatturaFormFilter
   {
     $this->widgetSchema['data'] = new sfWidgetFormFilterDate(
       array('template'    => 'da %from_date%<br/> a %to_date%',
-            'from_date'   => new sfWidgetFormJQueryDate(array('config' => '{ showButtonPanel: true, changeMonth: true, changeYear: true }', 'date_widget' => new sfWidgetFormDate(array('format' => '%day%/%month%/%year%')))),
-            'to_date'     => new sfWidgetFormJQueryDate(array('config' => '{ showButtonPanel: true, changeMonth: true, changeYear: true }', 'date_widget' => new sfWidgetFormDate(array('format' => '%day%/%month%/%year%')))),
+            'from_date'   => new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it')),
+            'to_date'     => new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it')),
             'with_empty'  => false));
 
     $this->widgetSchema['stato'] = new sfWidgetFormChoice(array('choices' => $this->choices));
+
+    $this->validatorSchema['data'] = new sfValidatorDateRange(
+            array('required'  => false,
+                  'from_date' => new sfValidatorDate(array('required' => false, 'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~')),
+                  'to_date'   => new sfValidatorDate(array('required' => false, 'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~'))));
 
   }
 
@@ -39,13 +44,9 @@ abstract class FatturaFormFilter extends BaseFatturaFormFilter
   public function getDefaultFilter()
   {
     $default_filter=array();
-    $default_filter['data']['from']['day']    = '1';
-    $default_filter['data']['from']['month']  = '1';
-    $default_filter['data']['from']['year']   = date('Y');
-    $default_filter['data']['to']['day']    = '31';
-    $default_filter['data']['to']['month']  = '12';
-    $default_filter['data']['to']['year']   = date('Y');
-    $default_filter['stato']   = '';
+    $default_filter['data']['from'] = '01/01/'.date('Y');
+    $default_filter['data']['to']   = '31/12/'.date('Y');
+    $default_filter['stato']        = '';
 
     return $default_filter;
   }

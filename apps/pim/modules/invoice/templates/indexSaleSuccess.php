@@ -1,3 +1,6 @@
+<?php include_stylesheets_for_form($pager->getFilter()) ?>
+<?php include_javascripts_for_form($pager->getFilter()) ?>
+
 <div class="title">
   <h2><?php echo __('fatture di vendita'); ?></h2>
 </div>
