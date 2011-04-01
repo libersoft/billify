@@ -104,16 +104,11 @@ Class CashFlow
     return $this->rows;
   }
 
-  private function add(Fattura $document)
-  {
-    $document->addToCashFlow($this);
-  }
-
   public function addDocuments($documents)
   {
     foreach ($documents as $index => $document)
     {
-      $this->add($document);
+      $document->addToCashFlow($this);
     }
   }
   
