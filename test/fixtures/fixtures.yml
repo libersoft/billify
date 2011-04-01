@@ -287,7 +287,7 @@ CodiceIva:
     valore: 20
     descrizione: Iva al 20%
 
-Fattura:
+Vendita:
 <?php for($i = 1; $i <= 3; $i++):?>
   Fattura_proforma_<?php echo $i?>:
     id_utente: Utente_1
@@ -334,9 +334,10 @@ Fattura:
     modo_pagamento_id: ModoPagamento_2
     stato: p
     vat: 20
+
+Acquisto:
 <?php for($i = 1; $i < 3; $i++):?>
   Fattura_acquisto_<?php echo $i?>:
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
     cliente_id: Fornitore_2
@@ -348,7 +349,6 @@ Fattura:
 <?php endfor?>
 <?php for($i = 3; $i < 7; $i++):?>
   Fattura_acquisto_<?php echo $i?>:
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
     cliente_id: Fornitore_1
@@ -360,7 +360,6 @@ Fattura:
 <?php endfor?>
 <?php for($i = 7; $i < 10; $i++):?>
   Fattura_acquisto_<?php echo $i?>:
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
     cliente_id: Fornitore_3
@@ -373,7 +372,6 @@ Fattura:
 
 <?php for($i = 1; $i < 10; $i++):?>
   Fattura_acquisto_last_year_<?php echo $i?>:
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '100-<?php echo $i?>'
     cliente_id: Fornitore_3
@@ -385,7 +383,6 @@ Fattura:
 <?php endfor?>
 <?php for($i = 10; $i < 20; $i++):?>
   Fattura_acquisto_last_year_<?php echo $i?>:
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '100-<?php echo $i?>'
     cliente_id: Fornitore_3

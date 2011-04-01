@@ -29,6 +29,11 @@ Class CashFlow
 
   }
 
+  /**
+   * Singleton implementation
+   * 
+   * @return CashFlow
+   */
   public static function getInstance()
   {
     if(!self::$instance)

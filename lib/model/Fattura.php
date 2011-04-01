@@ -14,7 +14,7 @@ define('DEBITO', 'debito');
  *
  * @package model
  */
-class Fattura extends BaseFattura
+abstract class Fattura extends BaseFattura
 {
   const PAGATA = 'p';
   const NON_PAGATA = 'n';
@@ -43,17 +43,17 @@ class Fattura extends BaseFattura
   );
   
   protected $imponibile = 0;
-  private $imponibile_scorporato = 0;
-  private $imponibile_fine_iva = 0;
-  private $sconto_totale = 0;
-  private $tasse_ulteriori = array();
-  private $tasse_ulteriori_array = array();
-  private $ritenuta_acconto = 0;
-  private $iva = 0;
-  private $totale = 0;
-  private $calcola = false;
-  private $tipo_ritenuta;
-  private $costo_tasse_ulteriori = 0;
+  protected $imponibile_scorporato = 0;
+  protected $imponibile_fine_iva = 0;
+  protected $sconto_totale = 0;
+  protected $tasse_ulteriori = array();
+  protected $tasse_ulteriori_array = array();
+  protected $ritenuta_acconto = 0;
+  protected $iva = 0;
+  protected $totale = 0;
+  protected $calcola = false;
+  protected $tipo_ritenuta;
+  protected $costo_tasse_ulteriori = 0;
 
   private function calcScontoTotale()
   {
@@ -192,128 +192,6 @@ class Fattura extends BaseFattura
     }
   }
 
-  public function __toString()
-  {
-    return 'Fattura ' . ($this->isProForma() ? 'Pro-Forma' : 'n. ' . $this->getNumFattura());
-  }
-
-  public function getShortName()
-  {
-    return ($this->isProForma() ? 'Pro-Forma' : $this->getNumFattura());
-  }
-
-  public function toString()
-  {
-    return $this->__toString();
-  }
-
-  public function setNewNumFattura()
-  {
-    $con = Propel::getConnection();
-    $year = date('y', time());
-    $num_fattura = 1;
-
-    //Select Invoice whit max ID
-    if ($this->getData() != "")
-    {
-      $year = date('y', strtotime($this->getData()));
-    }
-
-    $query = 'SELECT MAX(CAST(' . FatturaPeer::NUM_FATTURA . ' AS UNSIGNED)) as max
-		          FROM ' . FatturaPeer::TABLE_NAME . '
-		          WHERE ' . FatturaPeer::ID_UTENTE . '=' . sfContext::getInstance()->getUser()->getAttribute('id_utente') . '
-		          AND ' . FatturaPeer::DATA . '>= "' . date('y-m-d', mktime(0, 0, 0, 1, 1, $year)) . '"
-		          AND ' . FatturaPeer::DATA . ' <= "' . date('y-m-d', mktime(0, 0, 0, 12, 31, $year)) . '"
-		          AND ' . FatturaPeer::CLASS_KEY . ' = ' . FatturaPeer::CLASSKEY_VENDITA;
-
-    $stmt = $con->prepare($query);
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $max = $row['max'];
-
-
-    //Select Num Fattura and date of Invoice with Max ID
-    if ($max != "")
-    {
-      $query2 = 'SELECT ' . VenditaPeer::ID . ' as id,' . VenditaPeer::DATA . ' as data
-			           FROM ' . VenditaPeer::TABLE_NAME . '
-			           WHERE ' . FatturaPeer::ID_UTENTE . '=' . sfContext::getInstance()->getUser()->getAttribute('id_utente') . '
-			           AND ' . FatturaPeer::NUM_FATTURA . '=' . $max . '
-			           AND ' . FatturaPeer::DATA . '>= "' . date('y-m-d', mktime(0, 0, 0, 1, 1, $year)) . '"
-			           AND ' . FatturaPeer::DATA . ' <= "' . date('y-m-d', mktime(0, 0, 0, 12, 31, $year)) . '"
-			           AND ' . FatturaPeer::CLASS_KEY . ' = ' . FatturaPeer::CLASSKEY_VENDITA;
-
-      $stmt = $con->prepare($query2);
-      $stmt->execute();
-
-      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      $id_fattura = $row['id'];
-      $data_fattura = $row['data'];
-
-      $num_fattura = $max;
-      $data = $data_fattura;
-
-      $num_fattura = $num_fattura + 1;
-    }
-
-    parent::setNumFattura($num_fattura);
-  }
-
-  public function getDataPagamento($format = 'd M Y')
-  {
-    $data_pagamento = $this->getData();
-    $data = date($format, strtotime($this->getData() . ' +' . (is_object($this->getModoPagamento()) ? $this->getModoPagamento()->getNumGiorni() : 0) . ' days'));
-    return strftime($data);
-  }
-
-  public function checkInRitardo()
-  {
-    return (strtotime($this->getDataPagamento()) < time() && $this->getStato() == self::INVIATA);
-  }
-
-  public function getTipoRitenuta()
-  {
-    return $this->tipo_ritenuta;
-  }
-
-  public function calcolaFattura($tasse_ulteriori = array(), $tipo_ritenuta = null, $ritenuta_acconto = null)
-  {
-    if (!$this->calcola)
-    {
-      //$this->tasse_ulteriori_array = TassaPeer::doSelect(new Criteria());
-      $this->tasse_ulteriori_array = $tasse_ulteriori;
-
-      //$this->tipo_ritenuta = UtentePeer::getImpostazione()->getTipoRitenuta();
-      $this->tipo_ritenuta = $tipo_ritenuta;
-
-      $this->calcImponibile();
-
-      if ($this->getIncludiTasse() == 's')
-      {
-        $this->calcImponibileScorporato();
-      }
-
-      $this->calcScontoTotale();
-
-      if ($this->getCalcolaTasse() == 's')
-      {
-        $this->calcTasseUlteriori();
-      }
-
-      $this->calcImponibileFineIva();
-      $this->calcRitenutaAcconto($ritenuta_acconto);
-      $this->calcIva();
-      $this->calcTotale();
-      $this->calcNettoDaLiquidare();
-      $this->calcola = true;
-    }
-  }
-
-  public function getTasseUlterioriArray()
-  {
-    return $this->tasse_ulteriori_array;
-  }
-
   static function calcDettaglioScorporato($dettaglio, $calcola_tasse = false, $tasse_ulteriori_array = array())
   {
     if ($calcola_tasse)
@@ -330,6 +208,33 @@ class Fattura extends BaseFattura
     {
       return $dettaglio;
     }
+  }
+
+  public function __toString()
+  {
+    return 'Fattura ' . ($this->isProForma() ? 'Pro-Forma' : 'n. ' . $this->getNumFattura());
+  }
+
+  public function getShortName()
+  {
+    return ($this->isProForma() ? 'Pro-Forma' : $this->getNumFattura());
+  }
+
+  public function getDataPagamento($format = 'd M Y')
+  {
+    $data_pagamento = $this->getData();
+    $data = date($format, strtotime($this->getData() . ' +' . (is_object($this->getModoPagamento()) ? $this->getModoPagamento()->getNumGiorni() : 0) . ' days'));
+    return strftime($data);
+  }
+
+  public function getTipoRitenuta()
+  {
+    return $this->tipo_ritenuta;
+  }
+
+  public function getTasseUlterioriArray()
+  {
+    return $this->tasse_ulteriori_array;
   }
 
   public function getNettoDaLiquidare()
@@ -413,24 +318,16 @@ class Fattura extends BaseFattura
     return $this->font_color_stato[self::NON_PAGATA];
   }
 
-  public function delete(PropelPDO $con = null)
+  public function getCliente($con = null)
   {
-    $dettagli_fattura = $this->getDettagliFatturas();
-    foreach ($dettagli_fattura as $dettaglio)
-    {
-      $dettaglio->delete();
-    }
-    parent::delete($conn);
+    return $this->getContatto($con);
   }
 
-  public function isProForma()
+  public function getStatoString()
   {
-    if ($this->getNumFattura() == 0)
-      return true;
-
-    return false;
+    return $this->stato_string;
   }
-
+  
   public function setRegolare()
   {
     $this->setNewNumFattura();
@@ -444,11 +341,6 @@ class Fattura extends BaseFattura
       $this->spese_anticipate = str_replace(',', '.', $v);
       $this->modifiedColumns[] = FatturaPeer::SPESE_ANTICIPATE;
     }
-  }
-
-  public function getCliente($con = null)
-  {
-    return $this->getContatto($con);
   }
 
   public function setCliente($v)
@@ -465,6 +357,76 @@ class Fattura extends BaseFattura
     $this->setClienteId($client->getId());
   }
 
+  public function setNewNumFattura()
+  {
+    $con = Propel::getConnection();
+    $year = date('y', time());
+    $num_fattura = 1;
+
+    //Select Invoice whit max ID
+    if ($this->getData() != "")
+    {
+      $year = date('y', strtotime($this->getData()));
+    }
+
+    $query = 'SELECT MAX(CAST(' . FatturaPeer::NUM_FATTURA . ' AS UNSIGNED)) as max
+		          FROM ' . FatturaPeer::TABLE_NAME . '
+		          WHERE ' . FatturaPeer::ID_UTENTE . '=' . sfContext::getInstance()->getUser()->getAttribute('id_utente') . '
+		          AND ' . FatturaPeer::DATA . '>= "' . date('y-m-d', mktime(0, 0, 0, 1, 1, $year)) . '"
+		          AND ' . FatturaPeer::DATA . ' <= "' . date('y-m-d', mktime(0, 0, 0, 12, 31, $year)) . '"
+		          AND ' . FatturaPeer::CLASS_KEY . ' = ' . FatturaPeer::CLASSKEY_VENDITA;
+
+    $stmt = $con->prepare($query);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $max = $row['max'];
+
+
+    //Select Num Fattura and date of Invoice with Max ID
+    if ($max != "")
+    {
+      $query2 = 'SELECT ' . VenditaPeer::ID . ' as id,' . VenditaPeer::DATA . ' as data
+			           FROM ' . VenditaPeer::TABLE_NAME . '
+			           WHERE ' . FatturaPeer::ID_UTENTE . '=' . sfContext::getInstance()->getUser()->getAttribute('id_utente') . '
+			           AND ' . FatturaPeer::NUM_FATTURA . '=' . $max . '
+			           AND ' . FatturaPeer::DATA . '>= "' . date('y-m-d', mktime(0, 0, 0, 1, 1, $year)) . '"
+			           AND ' . FatturaPeer::DATA . ' <= "' . date('y-m-d', mktime(0, 0, 0, 12, 31, $year)) . '"
+			           AND ' . FatturaPeer::CLASS_KEY . ' = ' . FatturaPeer::CLASSKEY_VENDITA;
+
+      $stmt = $con->prepare($query2);
+      $stmt->execute();
+
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      $id_fattura = $row['id'];
+      $data_fattura = $row['data'];
+
+      $num_fattura = $max;
+      $data = $data_fattura;
+
+      $num_fattura = $num_fattura + 1;
+    }
+
+    parent::setNumFattura($num_fattura);
+  }
+
+  public function toString()
+  {
+    return $this->__toString();
+  }
+
+  public function isProForma()
+  {
+    if ($this->getNumFattura() == 0)
+      return true;
+
+    return false;
+  }
+
+  public function checkInRitardo()
+  {
+    return (strtotime($this->getDataPagamento()) < time() && $this->getStato() == self::INVIATA);
+  }
+
   public function save(PropelPDO $con = null)
   {
     if ($this->getClassKey() == FatturaPeer::CLASSKEY_ACQUISTO || $this->getClassKey() == FatturaPeer::CLASSKEY_VENDITA)
@@ -473,15 +435,52 @@ class Fattura extends BaseFattura
     }
     return parent::save($con);
   }
-
-  public function getStatoString()
+  
+  public function delete(PropelPDO $con = null)
   {
-    return $this->stato_string;
+    $dettagli_fattura = $this->getDettagliFatturas();
+    foreach ($dettagli_fattura as $dettaglio)
+    {
+      $dettaglio->delete();
+    }
+    parent::delete($conn);
   }
 
-}
+  public function calcolaFattura($tasse_ulteriori = array(), $tipo_ritenuta = null, $ritenuta_acconto = null)
+  {
+    if (!$this->calcola)
+    {
+      //$this->tasse_ulteriori_array = TassaPeer::doSelect(new Criteria());
+      $this->tasse_ulteriori_array = $tasse_ulteriori;
 
-// Fattura
+      //$this->tipo_ritenuta = UtentePeer::getImpostazione()->getTipoRitenuta();
+      $this->tipo_ritenuta = $tipo_ritenuta;
+
+      $this->calcImponibile();
+
+      if ($this->getIncludiTasse() == 's')
+      {
+        $this->calcImponibileScorporato();
+      }
+
+      $this->calcScontoTotale();
+
+      if ($this->getCalcolaTasse() == 's')
+      {
+        $this->calcTasseUlteriori();
+      }
+
+      $this->calcImponibileFineIva();
+      $this->calcRitenutaAcconto($ritenuta_acconto);
+      $this->calcIva();
+      $this->calcTotale();
+      $this->calcNettoDaLiquidare();
+      $this->calcola = true;
+    }
+  }
+
+  abstract public function addToCashFlow(CashFlow $cf);
+}
 
 function numFormat($number)
 {

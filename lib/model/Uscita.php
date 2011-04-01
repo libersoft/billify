@@ -1,6 +1,6 @@
 <?php
 
-class Uscita extends Fattura implements FinancialDocument
+class Uscita extends Fattura
 {
 
   protected $stato_string = array(
@@ -19,6 +19,7 @@ class Uscita extends Fattura implements FinancialDocument
                                  
   public function __construct()
   {
+    parent::__construct();
     $this->setClassKey(FatturaPeer::CLASSKEY_3);
   }
 

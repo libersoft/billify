@@ -1,6 +1,6 @@
 <?php
 
-class Acquisto extends Fattura implements FinancialDocument
+class Acquisto extends Fattura
 {
 
   const PEER = 'AcquistoPeer';
@@ -15,6 +15,7 @@ class Acquisto extends Fattura implements FinancialDocument
    */
   public function __construct()
   {
+    parent::__construct();
     $this->stato_string[self::NON_PAGATA] = 'non pagata';
     $this->setClassKey(FatturaPeer::CLASSKEY_2);
   }

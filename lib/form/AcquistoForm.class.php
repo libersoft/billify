@@ -51,4 +51,9 @@ class AcquistoForm extends FatturaForm
       $this['data_stato']
     );
   }
+
+  public function getModelName()
+  {
+    return 'Acquisto';
+  }
 }

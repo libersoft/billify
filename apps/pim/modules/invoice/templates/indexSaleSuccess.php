@@ -60,12 +60,11 @@
 <?php
   slot('infobox');
     include_partial('invoice/filter', array('filter' => $pager->getFilter()));
+  end_slot();
+?>
 
-
-
-    echo $cf->getIncoming()."<br/>";
-    echo $cf->getOutcoming()."<br/>";
-    echo $cf->getBalance()."<br/>";
-
-  end_slot('sidebar');
+<?php
+  slot('infobox-2');
+    include_component('invoice', 'monitor');
+  end_slot();
 ?>

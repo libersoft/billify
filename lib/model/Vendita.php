@@ -1,6 +1,6 @@
 <?php
 
-class Vendita extends Fattura implements FinancialDocument
+class Vendita extends Fattura
 {
 
   const PEER = 'VenditaPeer';
@@ -10,6 +10,7 @@ class Vendita extends Fattura implements FinancialDocument
    */
   public function __construct()
   {
+    parent::__construct();
     $this->setClassKey(FatturaPeer::CLASSKEY_1);
   }
 

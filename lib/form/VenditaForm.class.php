@@ -25,4 +25,9 @@ class VenditaForm extends FatturaForm
 
     $this->setDefault('class_key', FatturaPeer::CLASSKEY_VENDITA);
   }
+
+  public function getModelName()
+  {
+    return 'Vendita';
+  }
 }

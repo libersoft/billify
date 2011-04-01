@@ -45,15 +45,16 @@ Contatto:
     email: azienda@example.it
     class_key: '<?php echo ContattoPeer::CLASSKEY_FORNITORE ?>'
     
-Fattura:
+Vendita:
   Fattura: 
     id_utente: Utente_1
     num_fattura: 1
     cliente_id: Cliente
     data: '<?php echo date('Y-m-d', strtotime('-2 days')) ?>'
     modo_pagamento_id: ModoPagamento_1
+
+Acquisto:
   Fattura_acquisto: 
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '10/1'
     cliente_id: Fornitore

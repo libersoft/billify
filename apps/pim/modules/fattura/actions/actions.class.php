@@ -38,7 +38,7 @@ class fatturaActions extends sfActions
       return sfView::SUCCESS;
     }
 
-    $this->fattura = new Fattura();
+    $this->fattura = new Vendita();
     $this->fattura->setData(time());
     $this->fattura->setNewNumFattura();
     if ($this->id_cliente)
@@ -322,7 +322,7 @@ class fatturaActions extends sfActions
   {
     if (!$this->getRequestParameter($id, 0))
     {
-      $fattura = new Fattura();
+      $fattura = new Vendita();
       $fattura->setData(time());
       $fattura->setNewNumFattura();
       if ($this->id_cliente)

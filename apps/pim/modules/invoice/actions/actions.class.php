@@ -41,9 +41,6 @@ class invoiceActions extends sfActions
     $this->pager->init();
 
     $this->taxes = TassaPeer::doSelect(new Criteria());
-
-    $this->cf = CashFlow::getInstance();
-    $this->cf->addDocuments(VenditaPeer::doSelectJoinAllExceptModoPagamento(new Criteria));
     
     return (!$this->pager->count()) ? 'NoResults' : sfView::SUCCESS;
   }

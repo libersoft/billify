@@ -1,6 +1,6 @@
 <?php
 
-class Entrata extends Fattura implements FinancialDocument
+class Entrata extends Fattura
 {
   protected $stato_string = array(
     self::NON_PAGATA => 'non pagata',
@@ -18,6 +18,7 @@ class Entrata extends Fattura implements FinancialDocument
 
   public function __construct()
   {
+    parent::__construct();
     $this->setClassKey(FatturaPeer::CLASSKEY_3);
   }
 
