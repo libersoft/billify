@@ -155,7 +155,17 @@ $browser->
     checkElement('select[name="calcola_ritenuta_acconto"] option[selected="selected"]', 'Auto')->
     checkElement('select[name="calcola_tasse"] option[selected="selected"]', 'Si')->
     checkElement('select[name="includi_tasse"] option[selected="selected"]', 'No')->
+  end()->
+  setField('sconto', '10')->
+  click('Salva e vai ai dettagli')->
+  followRedirect()->
+  with('response')->begin()->
+    checkElement('table.edit th', 'Imponibile:')->
+    checkElement('table.edit td', '/1.000,00 €/')->
+    checkElement('table.edit th', 'Sconto 10%:', array('position' => 1))->
+    checkElement('table.edit td', '-100 €', array('position' => 1))->
   end();
+
 
 $browser->test()->todo('Test taxes payment');
 $browser->test()->todo('Test invoice copy');
