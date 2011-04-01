@@ -30,7 +30,7 @@
 <tbody>
 <?php foreach($contact->getFatturas($criteria) as $invoice): $invoice->calcolaFattura(); ?>
   <tr>
-    <td align="center"><?php echo link_to($invoice->getNumFattura(), $invoice->getRoutingRule().'?id='.$invoice->getId()) ?></td>
+    <td align="center"><?php echo link_to($invoice->getShortName(), $invoice->getRoutingRule().'?id='.$invoice->getId()) ?></td>
     <td align="center"><?php echo $invoice->getData('d/m/Y') ?></td>
     <td align="right"><?php echo format_currency($invoice->getTotale(), '&euro;') ?></td>
     <td style="font-weight: bold; background-color: <?php echo $invoice->getColorStato()?>; color: <?php echo $invoice->getFontColorStato()?>"><?php echo $invoice->getStato(true)?></td>

@@ -25,12 +25,6 @@ $browser->
     checkElement('table.fatture td:contains("2")')->
   end();
 
-$browser->test()->todo('Test sale invoices filters');
-$browser->test()->todo('Test invoices order');
-$browser->test()->todo('Test taxes payment');
-$browser->test()->todo('Test invoice copy');
-$browser->test()->todo('Test invoice download');
-
 $browser->click('1')->
   with('request')->begin()->
     isParameter('module', 'fattura')->
@@ -130,5 +124,51 @@ $browser->
     checkElement('p:contains("Nessuna fattura disponibile.")')->
   end();
 
+$browser->info('Edit invoice of sale');
+
+$browser->
+  click('fatture')->
+  click('1')->
+  click('modifica')->
+  with('response')->begin()->
+    checkElement('table th:contains("Pro forma")')->
+    checkElement('table th:contains("Num fattura")')->
+    checkElement('table th:contains("Cliente")')->
+    checkElement('table th:contains("Data")')->
+    checkElement('table th:contains("Modo pagamento")')->
+    checkElement('table th:contains("Sconto")')->
+    checkElement('table th:contains("Iva")')->
+    checkElement('table th:contains("Spese anticipate")')->
+    checkElement('table th:contains("Calcola ritenuta")')->
+    checkElement('table th:contains("Calcola tasse")')->
+    checkElement('table th:contains("Scorpora tasse")')->
+    checkElement('table th:contains("Note")')->
+    checkElement('input[type="checkbox"][name="proforma"][value="y"]')->
+    checkElement('input[type="hidden"][name="num_fattura"][value="1"]')->
+    checkElement('input[type="hidden"][name="data"][value="'.date('d/m/y', strtotime('tomorrow')).'"]')->
+    checkElement('select[name="modo_pagamento_id"] option', 'Rimessa diretta')->
+    checkElement('select[name="modo_pagamento_id"] option', '10 Giorni', array('position' => 1))->
+    checkElement('input[type="text"][name="sconto"][value="0"]')->
+    checkElement('input[type="text"][name="sconto"][value="0"]')->
+    checkElement('select[name="vat"] option', '20%')->
+    checkElement('input[type="text"][name="spese_anticipate"][value="0"]')->
+    checkElement('select[name="calcola_ritenuta_acconto"] option[selected="selected"]', 'Auto')->
+    checkElement('select[name="calcola_tasse"] option[selected="selected"]', 'Si')->
+    checkElement('select[name="includi_tasse"] option[selected="selected"]', 'No')->
+  end()->
+  setField('sconto', '10')->
+  click('Salva e vai ai dettagli')->
+  followRedirect()->
+  with('response')->begin()->
+    checkElement('table.edit th', 'Imponibile:')->
+    checkElement('table.edit td', '/1.000,00 €/')->
+    checkElement('table.edit th', 'Sconto 10%:', array('position' => 1))->
+    checkElement('table.edit td', '-100 €', array('position' => 1))->
+  end();
+
+
+$browser->test()->todo('Test taxes payment');
+$browser->test()->todo('Test invoice copy');
+$browser->test()->todo('Test invoice download');
 $browser->test()->todo('test invoice details');
 $browser->test()->todo('test invoice calculation');

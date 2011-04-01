@@ -9,7 +9,7 @@ $browser->
   login()->
   click('rubrica')->
   click('00 Azienda')->
-  click('new invoice')->
+  click('nuova fattura')->
 
   with('request')->begin()->
     isParameter('module', 'fattura')->
@@ -22,7 +22,7 @@ $browser->
     isStatusCode(200)->
     checkElement('#col-left .title h2', '/Fattura n. 101/')->
     checkElement('#col-left h3', '/00 Azienda/')->
-    checkElement('#col-right .ul-list li', '/no/', array('position' => 4))->
+    checkElement('#col-right .ul-list li', '/auto/', array('position' => 4))->
     checkElement('#col-right .ul-list li', '/si/', array('position' => 5))->
     checkElement('#col-right .ul-list li', '/no/', array('position' => 6))->
  end();

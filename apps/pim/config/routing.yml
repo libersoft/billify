@@ -12,10 +12,6 @@ logout:
   url: logout
   param: {module: login, action: logout}
 
-old_invoice:
-  url: oldinvoices
-  param: {module: fattura, action: index}
-
 invoice:
   url: invoices/sale
   param: {module: invoice, action: indexSale}
