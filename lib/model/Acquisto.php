@@ -1,6 +1,6 @@
 <?php
 
-class Acquisto extends Fattura
+class Acquisto extends Fattura implements FinancialDocument
 {
 
   const PEER = 'AcquistoPeer';
@@ -38,6 +38,12 @@ class Acquisto extends Fattura
   public function getRoutingRule()
   {
     return 'invoice/edit';
+  }
+
+  public function  addToCashFlow(CashFlow $cf)
+  {
+    $cash_flow_acquisto = new CashFlowPurchaseAdapter($this);
+    $cf->addOutcoming($cash_flow_acquisto);;
   }
 
 }

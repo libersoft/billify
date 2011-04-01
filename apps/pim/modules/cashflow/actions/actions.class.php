@@ -45,7 +45,6 @@ class cashflowActions extends sfActions
   */
   public function executeIndex($request)
   {
-    
     $this->filter($request);
     
     $this->cf = new CashFlow();

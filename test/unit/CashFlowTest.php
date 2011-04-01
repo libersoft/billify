@@ -9,6 +9,7 @@ include_once(dirname(__FILE__).'/../../lib/model/FatturaPeer.php');
 include_once(dirname(__FILE__).'/../../lib/model/om/BaseFattura.php');
 include_once(dirname(__FILE__).'/../../lib/model/Fattura.php');
 
+include_once(dirname(__FILE__).'/../../lib/model/FinancialDocument.php');
 include_once(dirname(__FILE__).'/../../lib/model/Vendita.php');
 include_once(dirname(__FILE__).'/../../lib/model/Acquisto.php');
 
@@ -18,7 +19,7 @@ include_once(dirname(__FILE__).'/../../lib/adapter/CashFlowPurchaseAdapter.class
 include_once(dirname(__FILE__).'/../../lib/adapter/CashFlowSalesAdapter.class.php');
 include_once(dirname(__FILE__).'/../../lib/CashFlow.class.php');
 
-$test = new lime_test(12, new lime_output_color());
+$test = new lime_test(14, new lime_output_color());
 
 $a1 = new Acquisto();
 $a1->setData(strtotime('-3 days'));;
@@ -54,9 +55,8 @@ $test->is($cf->getIncoming(), '0', '->getIncoming() return right incoming');
 $test->is($cf->getOutcoming(), '2200', '->getOutcoming() return right outcoming');
 
 $cf = new CashFlow();
-$purchase = new CashFlowPurchaseAdapter($a1);
-$purchase->withoutTaxes();
-$cf->addOutcoming($purchase);
+$cf->setWithTaxes(false);
+$cf->addOutcoming(new CashFlowPurchaseAdapter($a1));
 
 $test->is($cf->getBalance(), '-2000', '->getBalance() return right balance');
 $test->is($cf->getIncoming(), '0', '->getIncoming() return right incoming');
@@ -80,4 +80,9 @@ $test->is($cf->getBalance(), '2400', '->getBalance() return right balance');
 $test->is($cf->getIncoming(), '2400', '->getIncoming() return right incoming');
 $test->is($cf->getOutcoming(), '0', '->getOutcoming() return right outcoming');
 
-?>
+$cf = new CashFlow();
+$cf->setWithTaxes(false);
+$cf->addIncoming(new CashFlowSalesAdapter($v1));
+
+$test->is($cf->getBalance(), '2000', '->getBalance() return right balance');
+$test->is($cf->getIncoming(), '2000', '->getIncoming() return right incoming');
