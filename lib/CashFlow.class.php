@@ -22,6 +22,31 @@ Class CashFlow
   protected $rows = array();
   protected $with_taxes = true;
 
+  private static $instance;
+
+  private function __construct()
+  {
+
+  }
+
+  public static function getInstance()
+  {
+    if(!self::$instance)
+    {
+      self::$instance = new self;
+    }
+
+    return self::$instance;
+  }
+
+  public function reset()
+  {
+    $this->incoming = array();
+    $this->outcoming = array();
+    $this->rows = array();
+    $this->with_taxes = true;
+  }
+
   /**
    * Make sum of all row total value
    *

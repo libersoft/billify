@@ -33,7 +33,7 @@ $a3 = new Acquisto();
 $a3->setData(strtotime('-1 days'));;
 $a3->setImponibile(1000);
 
-$cf = new CashFlow();
+$cf = CashFlow::getInstance();
 $cf->addOutcoming(new CashFlowPurchaseAdapter($a1));
 $cf->addOutcoming(new CashFlowPurchaseAdapter($a2));
 $cf->addOutcoming(new CashFlowPurchaseAdapter($a3));
@@ -47,14 +47,16 @@ $a1->setData(strtotime('-3 days'));;
 $a1->setImponibile(2000);
 $a1->setImposte(200);
 
-$cf = new CashFlow();
+$cf = CashFlow::getInstance();
+$cf->reset();
 $cf->addOutcoming(new CashFlowPurchaseAdapter($a1));
 
 $test->is($cf->getBalance(), '-2200', '->getBalance() return right balance');
 $test->is($cf->getIncoming(), '0', '->getIncoming() return right incoming');
 $test->is($cf->getOutcoming(), '2200', '->getOutcoming() return right outcoming');
 
-$cf = new CashFlow();
+$cf = CashFlow::getInstance();
+$cf->reset();
 $cf->setWithTaxes(false);
 $cf->addOutcoming(new CashFlowPurchaseAdapter($a1));
 
@@ -62,7 +64,8 @@ $test->is($cf->getBalance(), '-2000', '->getBalance() return right balance');
 $test->is($cf->getIncoming(), '0', '->getIncoming() return right incoming');
 $test->is($cf->getOutcoming(), '2000', '->getOutcoming() return right outcoming');
 
-$cf = new CashFlow();
+$cf = CashFlow::getInstance();
+$cf->reset();
 
 $dettaglio = new DettagliFattura();
 $dettaglio->setPrezzo(1000);
@@ -80,7 +83,9 @@ $test->is($cf->getBalance(), '2400', '->getBalance() return right balance');
 $test->is($cf->getIncoming(), '2400', '->getIncoming() return right incoming');
 $test->is($cf->getOutcoming(), '0', '->getOutcoming() return right outcoming');
 
-$cf = new CashFlow();
+$cf = CashFlow::getInstance();
+$cf->reset();
+
 $cf->setWithTaxes(false);
 $cf->addIncoming(new CashFlowSalesAdapter($v1));
 

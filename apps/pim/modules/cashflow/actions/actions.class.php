@@ -47,7 +47,8 @@ class cashflowActions extends sfActions
   {
     $this->filter($request);
     
-    $this->cf = new CashFlow();
+    $this->cf = CashFlow::getInstance();
+    $this->cf->reset();
     $this->cf->addDocuments(FatturaPeer::doSelectForCashFlow($this->getUser()->getAttribute($this->filter->getName().'[document_date]')));
     
     $this->pager = new CashFlowPaginator($this->cf);
