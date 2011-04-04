@@ -67,6 +67,7 @@ class VenditaPeer extends FatturaPeer
     return $anni;
   }
 
+  // TODO: refactoring with cashflow
   public static function getFatturato($anno, $mese = null)
   {
     $criteria = new criteria();

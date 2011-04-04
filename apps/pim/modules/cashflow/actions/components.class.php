@@ -14,6 +14,7 @@ class cashflowComponents extends paComponents
     }
 
     $values = $filter->getValues();
+
     $this->from_date = $values['data']['from'];
     $this->to_date = $values['data']['to'];
 
