@@ -43,11 +43,5 @@ $browser->
   checkResponseElement('table.fatture td', '1', array('position' => 21))->
   checkResponseElement('table.fatture td', '2', array('position' => 28))->
 
-  checkResponseElement('ul#resume li strong', 'fatture da incassare:', array('position' => 0))->
-  checkResponseElement('ul#resume li', '/22/', array('position' => 0))->
-
-  checkResponseElement('ul#resume li strong', 'totale da incassare:', array('position' => 1))->
-  checkResponseElement('ul#resume li', '/8.000,00/', array('position' => 1))->
-
   checkResponseElement('body', '!/Ritenuta d\'acconto versata/')
 ;

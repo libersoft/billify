@@ -21,7 +21,7 @@ include_partial('fattura/list', array('fatture' => $invoice_repository->fatture_
 <?php
 
 include_partial('fattura/list', array('fatture' => $invoice_repository->fatture_da_incassare,
-                                      'fatture_results'=> $invoice_repository->fatture_da_incassare->getResults(),
+                                      'fatture_results'=> $invoice_repository->fatture_da_incassare,
                                       'customer' => true,
                                       'checkbox' => false,
                                       'referrer' => 'main',
@@ -34,14 +34,6 @@ include_partial('fattura/list', array('fatture' => $invoice_repository->fatture_
 
 <?php slot('infobox')?>
   <?php
-
-  include_partial('main/resume', array(
-    'conta_fatture_da_incassare' => $invoice_repository->conta_fatture_da_incassare,
-    'totale_da_incassare_netto' => $invoice_repository->totale_da_incassare_netto,
-    'totale_da_incassare' => $invoice_repository->totale_da_incassare,
-    'ritenuta_acconto' => $invoice_repository->ritenuta_acconto,
-  ));
-
   include_component('cashflow', 'monitor', array('label_total' => 'fatturato ultimo anno', 'label_taxes' => 'iva ultimo anno'));
     include_component('cashflow', 'monitor', array(
         'label_total' => 'fatturato ultimo mese',

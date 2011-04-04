@@ -63,8 +63,6 @@ $browser->
     checkElement('ul li:contains("aggiungi una nuova entrata")')->
     checkElement('ul li:contains("aggiungi una nuova uscita")')->
 
-    checkElement('h4:contains("riepilogo")')->
-
   end()->
   click('lista clienti')->
   with('request')->begin()->

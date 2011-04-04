@@ -16,10 +16,6 @@ class mainActions extends sfActions
     $this->getUser()->setCulture('it_IT');
 
     $this->invoice_repository = VenditaPeer::getInstance();
-    
-    $this->invoice_repository->getFatturatoAnnuo();
-    $this->invoice_repository->getFatturatoAnnuoIncassato();
-    $this->invoice_repository->getIvaDaPagare();
 
     $this->invoice_repository->fattureDaIncassare();
     $this->invoice_repository->fattureDaInviare();

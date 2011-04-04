@@ -25,6 +25,6 @@
 <ul class="ul-list nomb">
   <li><strong><?php echo __('encashment'); ?>:</strong> <?php echo format_currency($cf_paid_document->getIncomingTaxes(), 'EUR'); ?> (<?php echo format_currency($cf->getIncomingTaxes(), 'EUR'); ?>)</li>
   <li><strong><?php echo __('in charge'); ?>:</strong> <?php echo format_currency($cf_paid_document->getOutcomingTaxes(), 'EUR'); ?> (<?php echo format_currency($cf->getOutcomingTaxes(), 'EUR'); ?>)</li>
-  <li><strong><?php echo __('payable'); ?>:</strong> <?php echo format_currency($cf_paid_document->getBalanceTaxes()*-1, 'EUR'); ?> (<?php echo format_currency($cf->getBalanceTaxes(), 'EUR'); ?>)</li>
+  <li><strong class="red"><?php echo __('payable'); ?>:</strong> <?php echo format_currency($cf_paid_document->getBalanceTaxes()*-1, 'EUR'); ?> (<?php echo format_currency($cf->getBalanceTaxes(), 'EUR'); ?>)</li>
 </ul>
 
