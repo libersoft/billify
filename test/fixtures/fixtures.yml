@@ -26,7 +26,6 @@ Utente:
     lastlogin: 2008-12-13 22:04:22
     approva_contratto: 1
     approva_policy: 1
-    sconto: 0
 
 ModoPagamento:
   ModoPagamento_1:
@@ -263,9 +262,6 @@ Contatto:
     stato: a
     id_tema_fattura: TemaFattura_1
     id_banca: Banca_1
-    calcola_ritenuta_acconto: "n"
-    includi_tasse: "n"
-    calcola_tasse: "s"
     contatto: Utente utente
 <?php endfor?>
 <?php for($i = 0; $i < 20; $i++):?>
@@ -291,7 +287,7 @@ CodiceIva:
     valore: 20
     descrizione: Iva al 20%
 
-Fattura:
+Vendita:
 <?php for($i = 1; $i <= 3; $i++):?>
   Fattura_proforma_<?php echo $i?>:
     id_utente: Utente_1
@@ -299,8 +295,6 @@ Fattura:
     cliente_id: Cliente_1
     data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'')))?>'
     modo_pagamento_id: ModoPagamento_1
-    calcola_ritenuta_acconto: n
-    sconto: 0
     vat: 20
 <?php endfor?>
 <?php for($i = 1; $i <= 3; $i++):?>
@@ -310,8 +304,6 @@ Fattura:
     cliente_id: Cliente_1
     data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'')))?>'
     modo_pagamento_id: ModoPagamento_1
-    calcola_ritenuta_acconto: n
-    sconto: 0
     vat: 20
 <?php endfor?>
 <?php for($i = 1; $i <= 3; $i++):?>
@@ -321,8 +313,6 @@ Fattura:
     cliente_id: Cliente_1
     data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'').' -1 year'))?>'
     modo_pagamento_id: ModoPagamento_1
-    calcola_ritenuta_acconto: n
-    sconto: 0
     stato: p
     vat: 20
 <?php endfor?>
@@ -333,8 +323,6 @@ Fattura:
     cliente_id: Cliente_2
     data: '<?php echo date('Y-m-d', strtotime('today'))?>'
     modo_pagamento_id: ModoPagamento_2
-    calcola_ritenuta_acconto: n
-    sconto: 0
     stato: i
     vat: 20
 <?php endfor?>
@@ -344,13 +332,12 @@ Fattura:
     cliente_id: Cliente_2
     data: '<?php echo date('Y-m-d', strtotime('-1 month'))?>'
     modo_pagamento_id: ModoPagamento_2
-    calcola_ritenuta_acconto: n
-    sconto: 0
     stato: p
     vat: 20
+
+Acquisto:
 <?php for($i = 1; $i < 3; $i++):?>
   Fattura_acquisto_<?php echo $i?>:
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
     cliente_id: Fornitore_2
@@ -362,7 +349,6 @@ Fattura:
 <?php endfor?>
 <?php for($i = 3; $i < 7; $i++):?>
   Fattura_acquisto_<?php echo $i?>:
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
     cliente_id: Fornitore_1
@@ -374,7 +360,6 @@ Fattura:
 <?php endfor?>
 <?php for($i = 7; $i < 10; $i++):?>
   Fattura_acquisto_<?php echo $i?>:
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
     cliente_id: Fornitore_3
@@ -387,7 +372,6 @@ Fattura:
 
 <?php for($i = 1; $i < 10; $i++):?>
   Fattura_acquisto_last_year_<?php echo $i?>:
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '100-<?php echo $i?>'
     cliente_id: Fornitore_3
@@ -399,7 +383,6 @@ Fattura:
 <?php endfor?>
 <?php for($i = 10; $i < 20; $i++):?>
   Fattura_acquisto_last_year_<?php echo $i?>:
-    class_key: '<?php echo FatturaPeer::CLASSKEY_ACQUISTO ?>'
     id_utente: Utente_1
     num_fattura: '100-<?php echo $i?>'
     cliente_id: Fornitore_3
@@ -417,7 +400,6 @@ DettagliFattura:
     descrizione: >
       Consulenza e realizzazione sito web 1
     qty: 1
-    sconto: 0
     iva: 20
     prezzo: 1000
 <?php endfor?>
@@ -427,7 +409,6 @@ DettagliFattura:
     descrizione: >
       Consulenza e realizzazione sito web 1
     qty: 1
-    sconto: 0
     iva: 20
     prezzo: 1000
 <?php endfor?>
@@ -437,7 +418,6 @@ DettagliFattura:
     descrizione: >
       Consulenza e realizzazione sito web 2
     qty: 1
-    sconto: 0
     iva: 20
     prezzo: 2000
 <?php endfor?>
@@ -446,7 +426,6 @@ DettagliFattura:
     descrizione: >
       Consulenza e realizzazione sito web 3
     qty: 1
-    sconto: 0
     iva: 20
     prezzo: 1000
 

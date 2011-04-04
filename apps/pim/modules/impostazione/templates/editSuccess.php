@@ -81,26 +81,11 @@
 </td>
 </tr>
 <tr>
-  <th>Deposita iva:</th>
-  <td>
-  <?php echo radiobutton_tag('deposita_iva','s',($impostazione->getDepositaIva()=='s'?true:false))?>&nbsp;Si
-  <?php echo radiobutton_tag('deposita_iva','n',($impostazione->getDepositaIva()=='n'?true:false))?>&nbsp;No
-  </td>
-</tr>
-<tr>
   <th>Fattura automatica:</th>
   <td>
   <?php echo radiobutton_tag('fattura_automatica','s',($impostazione->getFatturaAutomatica()=='s'?true:false))?>&nbsp;Si
   <?php echo radiobutton_tag('fattura_automatica','n',($impostazione->getFatturaAutomatica()=='n'?true:false))?>&nbsp;No
   </td>
-</tr>
-<tr>
-  <th>Codice cliente:</th>
-  <td>
-  <?php echo radiobutton_tag('codice_cliente','s',($impostazione->getCodiceCliente()=='s'?true:false))?>&nbsp;Si
-  <?php echo radiobutton_tag('codice_cliente','n',($impostazione->getCodiceCliente()=='n'?true:false))?>&nbsp;No
-
-</td>
 </tr>
 <tr>
   <th>Ritenuta acconto:</th>

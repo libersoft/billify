@@ -1,18 +1,7 @@
 <?php
 
-
-/**
- * Skeleton subclass for representing a row from one of the subclasses of the 'fattura' table.
- *
- *
- *
- * You should add additional methods to this class to meet the
- * application requirements.  This class will only be generated as
- * long as it does not already exist in the output directory.
- *
- * @package    lib.model
- */
-class Vendita extends Fattura {
+class Vendita extends Fattura
+{
 
   const PEER = 'VenditaPeer';
 
@@ -21,6 +10,7 @@ class Vendita extends Fattura {
    */
   public function __construct()
   {
+    parent::__construct();
     $this->setClassKey(FatturaPeer::CLASSKEY_1);
   }
 
@@ -35,6 +25,16 @@ class Vendita extends Fattura {
       return 'fattura/show';
   }
 
+  public function addToCashFlow(CashFlow $cf)
+  {
+    $this->calcolaFattura();
+    if (!$this->getDataScadenza())
+    {
+      $this->save();
+    }
 
+    $cash_flow_vendita = new CashFlowSalesAdapter($this);
+    $cf->addIncoming($cash_flow_vendita);
+  }
 
 } // Vendita

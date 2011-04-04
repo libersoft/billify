@@ -16,6 +16,7 @@ abstract class FatturaFormFilter extends BaseFatturaFormFilter
   
   public function configure()
   {
+    $this->widgetSchema['cliente_id'] = new sfWidgetFormInput();
     $this->widgetSchema['data'] = new sfWidgetFormFilterDate(
       array('template'    => 'da %from_date%<br/> a %to_date%',
             'from_date'   => new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it')),
@@ -24,6 +25,7 @@ abstract class FatturaFormFilter extends BaseFatturaFormFilter
 
     $this->widgetSchema['stato'] = new sfWidgetFormChoice(array('choices' => $this->choices));
 
+    $this->validatorSchema['cliente_id'] = new sfValidatorPass(array('required' => false));
     $this->validatorSchema['data'] = new sfValidatorDateRange(
             array('required'  => false,
                   'from_date' => new sfValidatorDate(array('required' => false, 'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~')),
@@ -40,12 +42,28 @@ abstract class FatturaFormFilter extends BaseFatturaFormFilter
 
     $criteria->add(FatturaPeer::STATO, $value);
   }
-  
-  public function getDefaultFilter()
+
+  public function addClienteIdColumnCriteria(Criteria $criteria, $field, $value)
   {
+    $criteria->addJoin(FatturaPeer::CLIENTE_ID, ClientePeer::ID);
+    $criteria->add(ClientePeer::RAGIONE_SOCIALE, "%$value%", Criteria::LIKE);
+  }
+  
+  public function getDefaultFilter($from_date = null, $to_date = null)
+  {
+    if (null === $from_date)
+    {
+      $from_date = '01/01/'.date('Y');
+    }
+
+    if (null === $to_date)
+    {
+      $to_date = '31/12/'.date('Y');
+    }
+
     $default_filter=array();
-    $default_filter['data']['from'] = '01/01/'.date('Y');
-    $default_filter['data']['to']   = '31/12/'.date('Y');
+    $default_filter['data']['from'] = $from_date;
+    $default_filter['data']['to']   = $to_date;
     $default_filter['stato']        = '';
 
     return $default_filter;

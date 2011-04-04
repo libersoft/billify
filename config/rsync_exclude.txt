@@ -8,3 +8,4 @@
 .git
 /web/billify.php
 .htaccess
+/test

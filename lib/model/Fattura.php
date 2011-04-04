@@ -14,8 +14,8 @@ define('DEBITO', 'debito');
  *
  * @package model
  */
-class Fattura extends BaseFattura {
-
+abstract class Fattura extends BaseFattura
+{
   const PAGATA = 'p';
   const NON_PAGATA = 'n';
   const RIFIUTATA = 'r';
@@ -23,179 +23,124 @@ class Fattura extends BaseFattura {
 
   protected $stato_string = array(
       self::NON_PAGATA => 'non inviata',
-      self::PAGATA     => 'pagata',
-      self::RIFIUTATA  => 'rifiutata',
-      self::INVIATA    => 'inviata'
+      self::PAGATA => 'pagata',
+      self::RIFIUTATA => 'rifiutata',
+      self::INVIATA => 'inviata'
   );
 
   protected $font_color_stato = array(
       self::NON_PAGATA => 'black',
-      self::PAGATA     => 'black',
-      self::RIFIUTATA  => 'black',
-      self::INVIATA    => 'white'
+      self::PAGATA => 'black',
+      self::RIFIUTATA => 'black',
+      self::INVIATA => 'white'
   );
 
   protected $color_stato = array(
       self::NON_PAGATA => 'yellow',
-      self::PAGATA     => 'green',
-      self::RIFIUTATA  => 'red',
-      self::INVIATA    => 'blue'
+      self::PAGATA => 'green',
+      self::RIFIUTATA => 'red',
+      self::INVIATA => 'blue'
   );
-
-
+  
   protected $imponibile = 0;
-  private $imponibile_scorporato = 0;
-  private $imponibile_fine_iva = 0;
-  private $sconto_totale = 0;
-  private $tasse_ulteriori = array();
-  private $tasse_ulteriori_array = array();
-  private $ritenuta_acconto = 0;
-  private $iva = 0;
-  private $totale = 0;
-  private $calcola = false;
-  private $tipo_ritenuta;
-  private $costo_tasse_ulteriori = 0;
+  protected $imponibile_scorporato = 0;
+  protected $imponibile_fine_iva = 0;
+  protected $sconto_totale = 0;
+  protected $tasse_ulteriori = array();
+  protected $tasse_ulteriori_array = array();
+  protected $ritenuta_acconto = 0;
+  protected $iva = 0;
+  protected $totale = 0;
+  protected $calcola = false;
+  protected $tipo_ritenuta;
+  protected $costo_tasse_ulteriori = 0;
 
-  public function __toString()
+  private function calcScontoTotale()
   {
-    return 'Fattura '.($this->isProForma() ? 'Pro-Forma' : 'n. '.$this->getNumFattura());
+    $this->sconto_totale = (($this->imponibile / 100) * $this->getSconto());
   }
 
-  public function getShortName()
+  private function calcIva()
   {
-    return ($this->isProForma() ? 'Pro-Forma' : $this->getNumFattura());
+    $this->iva = $this->iva + ($this->spese_anticipate / 100 * $this->getVat());
   }
 
-  public function toString()
+  private function calcTotale()
   {
-    return $this->__toString();
+    $this->totale = $this->imponibile_fine_iva + $this->iva;
   }
 
-  public function setNewNumFattura()
+  private function calcTasseUlteriori()
   {
-    $con = Propel::getConnection();
-    $year = date('y', time());
-    $num_fattura = 1;
-
-    //Select Invoice whit max ID
-    if($this->getData() != "")
+    $vat_tmp_array = $this->tasse_ulteriori_array;
+    $all_vat = array();
+    $tasse_ulteriori = array();
+    foreach ($vat_tmp_array as $vat)
     {
-      $year = date('y', strtotime($this->getData()));
+      if ($this->getIncludiTasse() == 's')
+      {
+        $totale = ($this->imponibile - $this->sconto_totale + $this->spese_anticipate);
+        $costo = $totale - ($totale / (1 + ($vat->getValore() / 100)));
+      } else
+      {
+        $costo = (($this->imponibile - $this->sconto_totale + $this->spese_anticipate) / 100 * $vat->getValore());
+      }
+
+      $this->costo_tasse_ulteriori += $costo;
+      $tasse_ulteriori[] = array('nome' => $vat->getNome(),
+          'valore' => $vat->getValore(),
+          'descrizione' => $vat->getDescrizione(),
+          'costo' => $costo);
     }
+    $this->tasse_ulteriori = $tasse_ulteriori;
+  }
 
-    $query = 'SELECT MAX(CAST('.FatturaPeer::NUM_FATTURA .' AS UNSIGNED)) as max
-		          FROM '.FatturaPeer::TABLE_NAME.'
-		          WHERE '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').'
-		          AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'"
-		          AND '.FatturaPeer::DATA .' <= "'.date('y-m-d',mktime(0,0,0,12,31,$year)).'"
-		          AND '.FatturaPeer::CLASS_KEY .' = '.FatturaPeer::CLASSKEY_VENDITA ;
-
-    $stmt = $con->prepare($query);
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $max = $row['max'];
-
-
-    //Select Num Fattura and date of Invoice with Max ID
-    if($max != "")
+  private function calcRitenutaAcconto($ritenuta_acconto)
+  {
+    //list($percentuale,$percentuale_totale) = explode(',',sfConfig::get('app_ritenuta_acconto'));
+    //list($percentuale,$percentuale_totale) = explode('/',UtentePeer::getImpostazione()->getRitenutaAcconto());
+    if ($ritenuta_acconto)
     {
-      $query2 = 'SELECT '.VenditaPeer::ID.' as id,'.VenditaPeer::DATA.' as data
-			           FROM '.VenditaPeer::TABLE_NAME.'
-			           WHERE '.FatturaPeer::ID_UTENTE .'='.sfContext::getInstance()->getUser()->getAttribute('id_utente').'
-			           AND '.FatturaPeer::NUM_FATTURA .'='.$max.'
-			           AND '.FatturaPeer::DATA.'>= "'.date('y-m-d',mktime(0,0,0,1,1,$year)).'"
-			           AND '.FatturaPeer::DATA .' <= "'.date('y-m-d',mktime(0,0,0,12,31,$year)).'"
-			           AND '.FatturaPeer::CLASS_KEY .' = '.FatturaPeer::CLASSKEY_VENDITA ;
-
-      $stmt = $con->prepare($query2);
-      $stmt->execute();
-
-      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      $id_fattura = $row['id'];
-      $data_fattura = $row['data'];
-
-      $num_fattura = $max;
-      $data = $data_fattura;
-
-      $num_fattura = $num_fattura+1;
-
+      list($percentuale, $percentuale_totale) = explode('/', $ritenuta_acconto);
+      if (($this->getCliente()->getAzienda() == 's' && $this->getCalcolaRitenutaAcconto() == 'a') || $this->getCalcolaRitenutaAcconto() == 's')
+      {
+        $this->ritenuta_acconto = (($this->imponibile_fine_iva / 100 * $percentuale) / 100 * $percentuale_totale);
+      }
     }
-
-    parent::setNumFattura($num_fattura);
   }
 
-  public function getDataPagamento($format = 'd M Y')
+  private function calcNettoDaLiquidare()
   {
-    $data_pagamento = $this->getData();
-    $data = date($format, strtotime($this->getData().' +'.(is_object($this->getModoPagamento())?$this->getModoPagamento()->getNumGiorni():0).' days'));
-    return strftime($data);
+    if ($this->tipo_ritenuta == CREDITO)
+    {
+      $this->netto_da_liquidare = $this->totale + $this->ritenuta_acconto;
+    } else
+    {
+      $this->netto_da_liquidare = $this->totale - $this->ritenuta_acconto;
+    }
   }
 
-  public function checkInRitardo()
+  private function calcImponibileFineIva()
   {
-    return (strtotime($this->getDataPagamento()) < time() && $this->getStato() == self::INVIATA);
-  }
-
-  public function calcImponibileFineIva()
-  {
-    if($this->getIncludiTasse() == 's')
-    $this->imponibile = $this->imponibile_scorporato;
+    if ($this->getIncludiTasse() == 's')
+      $this->imponibile = $this->imponibile_scorporato;
 
     $imponibile = $this->imponibile - $this->sconto_totale;
-    if(count($this->tasse_ulteriori)>0)
-    foreach ($this->tasse_ulteriori as $tassa_ulteriore)
-    {
-      $imponibile += $tassa_ulteriore['costo'];
-    }
+    if (count($this->tasse_ulteriori) > 0)
+      foreach ($this->tasse_ulteriori as $tassa_ulteriore)
+      {
+        $imponibile += $tassa_ulteriore['costo'];
+      }
 
     $this->imponibile_fine_iva = $imponibile + $this->spese_anticipate;
-  }
-
-  public function getTipoRitenuta(){
-    return $this->tipo_ritenuta;
-  }
-
-  public function calcolaFattura($tasse_ulteriori = array(), $tipo_ritenuta = null, $ritenuta_acconto = null)
-  {
-    if(!$this->calcola)
-    {
-      //$this->tasse_ulteriori_array = TassaPeer::doSelect(new Criteria());
-      $this->tasse_ulteriori_array = $tasse_ulteriori;
-
-      //$this->tipo_ritenuta = UtentePeer::getImpostazione()->getTipoRitenuta();
-      $this->tipo_ritenuta = $tipo_ritenuta;
-
-      $this->calcImponibile();
-
-      if($this->getIncludiTasse() == 's') {
-        $this->calcImponibileScorporato();
-      }
-
-      $this->calcScontoTotale();
-
-      if($this->getCalcolaTasse() == 's') {
-        $this->calcTasseUlteriori();
-      }
-
-      $this->calcImponibileFineIva();
-      $this->calcRitenutaAcconto($ritenuta_acconto);
-      $this->calcIva();
-      $this->calcTotale();
-      $this->calcNettoDaLiquidare();
-      $this->calcola = true;
-    }
-  }
-
-  public function getTasseUlterioriArray()
-  {
-    return $this->tasse_ulteriori_array;
   }
 
   private function calcImponibile()
   {
     $dettagli_fattura = $this->getDettagliFatturas();
 
-    foreach ($dettagli_fattura as $dettaglio){
+    foreach ($dettagli_fattura as $dettaglio)
+    {
       $det = $this->calcDettaglio($dettaglio);
       $this->imponibile += $det;
       $this->iva += $this->calcIvaDettaglio($det, $dettaglio->getIva());
@@ -206,139 +151,90 @@ class Fattura extends BaseFattura {
   {
     $dettagli_fattura = $this->getDettagliFatturas();
     $this->iva = 0;
-    foreach ($dettagli_fattura as $dettaglio) {
-      $det = $this->calcDettaglio($dettaglio,true);
+    foreach ($dettagli_fattura as $dettaglio)
+    {
+      $det = $this->calcDettaglio($dettaglio, true);
       $this->imponibile_scorporato += $det;
-      $this->iva += $this->calcIvaDettaglio($det,$dettaglio->getIva());
+      $this->iva += $this->calcIvaDettaglio($det, $dettaglio->getIva());
     }
   }
 
-  private function calcDettaglio($dettaglio,$scorpora = false)
+  private function calcDettaglio($dettaglio, $scorpora = false)
   {
     //$dettaglio = ($dettaglio->getPrezzo()*$dettaglio->getQty())-($this->calcSconto(($dettaglio->getPrezzo()*$dettaglio->getQty()),$dettaglio->getSconto()));
     $det = $dettaglio->getTotale();
 
-    if($scorpora && $this->getCalcolaTasse() == 's') {
+    if ($scorpora && $this->getCalcolaTasse() == 's')
+    {
       return $this->calcDettaglioScorporato($det, $this->getCalcolaTasse() == 's', $this->tasse_ulteriori_array);
-    } else {
+    } else
+    {
       return $det;
     }
   }
 
-  private function calcIvaDettaglio($dettaglio, $iva) {
-    if($this->getCalcolaTasse() == 's' && count($this->tasse_ulteriori_array) > 0) {
+  private function calcIvaDettaglio($dettaglio, $iva)
+  {
+    if ($this->getCalcolaTasse() == 's' && count($this->tasse_ulteriori_array) > 0)
+    {
 
       $vat_tmp_array = $this->tasse_ulteriori_array;
       $tassa = 0;
-      foreach ($vat_tmp_array as $vat) {
+      foreach ($vat_tmp_array as $vat)
+      {
         $tassa += $dettaglio / 100 * $vat->getValore();
       }
 
       return (($dettaglio) / 100 * $iva) + $tassa / 100 * $iva;
-    }
-    else {
+    } else
+    {
       return (($dettaglio) / 100 * $iva);
     }
-
   }
 
-  private function calcIvaScorporo($scorporo,$iva) {
-    return $scorporo/100*$iva;
-  }
-
-  static function calcDettaglioScorporato($dettaglio,$calcola_tasse = false, $tasse_ulteriori_array = array()) {
-    if($calcola_tasse) {
+  static function calcDettaglioScorporato($dettaglio, $calcola_tasse = false, $tasse_ulteriori_array = array())
+  {
+    if ($calcola_tasse)
+    {
       $scorporo = 0;
       $dettaglio_scorporato = 0;
-      foreach ($tasse_ulteriori_array as $vat) {
-        $dettaglio_scorporato = $dettaglio/(1+($vat->getValore()/100));
+      foreach ($tasse_ulteriori_array as $vat)
+      {
+        $dettaglio_scorporato = $dettaglio / (1 + ($vat->getValore() / 100));
         $scorporo += $dettaglio - $dettaglio_scorporato;
       }
       return $dettaglio_scorporato;
-    }
-    else {
+    } else
+    {
       return $dettaglio;
     }
   }
 
-  static function calcScorporo($dettaglio, $calcola_tasse = false, $tasse_ulteriori_array = array())
+  public function __toString()
   {
-    $scorporo = 0;
-    if($calcola_tasse) {
-      foreach ($tasse_ulteriori_array as $vat) {
-        $dettaglio_scorporato = $dettaglio/(1+($vat->getValore()/100));
-        $scorporo += $dettaglio - $dettaglio_scorporato;
-      }
-      return $scorporo;
-    }
-    else {
-      return $scorporo;
-    }
+    return 'Fattura ' . ($this->isProForma() ? 'Pro-Forma' : 'n. ' . $this->getNumFattura());
   }
 
-  private function calcSconto($costo, $sconto)
+  public function getShortName()
   {
-    return ($costo/100)*$sconto;
+    return ($this->isProForma() ? 'Pro-Forma' : $this->getNumFattura());
   }
 
-  private function calcScontoTotale()
+  public function getDataPagamento($format = 'd M Y')
   {
-    $this->sconto_totale = (($this->imponibile/100)*$this->getSconto());
+    $data_pagamento = $this->getData();
+    $data = date($format, strtotime($this->getData() . ' +' . (is_object($this->getModoPagamento()) ? $this->getModoPagamento()->getNumGiorni() : 0) . ' days'));
+    return strftime($data);
   }
 
-  private function calcIva()
+  public function getTipoRitenuta()
   {
-    $this->iva = $this->iva + ($this->spese_anticipate/100*$this->getVat());
+    return $this->tipo_ritenuta;
   }
 
-  private function calcTotale()
+  public function getTasseUlterioriArray()
   {
-    $this->totale = $this->imponibile_fine_iva + $this->iva;
-  }
-
-  public function calcTasseUlteriori()
-  {
-    $vat_tmp_array = $this->tasse_ulteriori_array;
-    $all_vat = array();
-    $tasse_ulteriori = array();
-    foreach ($vat_tmp_array as $vat) {
-      if($this->getIncludiTasse() == 's') {
-        $totale = ($this->imponibile - $this->sconto_totale + $this->spese_anticipate);
-        $costo = $totale - ($totale / (1 + ($vat->getValore() / 100)));
-      }
-      else {
-        $costo = (($this->imponibile - $this->sconto_totale + $this->spese_anticipate) / 100 * $vat->getValore());
-      }
-
-      $this->costo_tasse_ulteriori += $costo;
-      $tasse_ulteriori[]= array('nome'=> $vat->getNome(),
-      'valore' => $vat->getValore(),
-      'descrizione' => $vat->getDescrizione(),
-      'costo' => $costo);
-    }
-    $this->tasse_ulteriori = $tasse_ulteriori;
-  }
-
-  public function calcRitenutaAcconto($ritenuta_acconto)
-  {
-    //list($percentuale,$percentuale_totale) = explode(',',sfConfig::get('app_ritenuta_acconto'));
-    //list($percentuale,$percentuale_totale) = explode('/',UtentePeer::getImpostazione()->getRitenutaAcconto());
-    if($ritenuta_acconto) {
-      list($percentuale, $percentuale_totale) = explode('/', $ritenuta_acconto);
-      if(($this->getCliente()->getAzienda() == 's' && $this->getCalcolaRitenutaAcconto() == 'a') || $this->getCalcolaRitenutaAcconto() == 's') {
-        $this->ritenuta_acconto = (($this->imponibile_fine_iva / 100 * $percentuale) / 100 * $percentuale_totale);
-      }
-    }
-  }
-
-  public function calcNettoDaLiquidare()
-  {
-    if($this->tipo_ritenuta == CREDITO) {
-      $this->netto_da_liquidare = $this->totale + $this->ritenuta_acconto;
-    }
-    else {
-      $this->netto_da_liquidare = $this->totale - $this->ritenuta_acconto;
-    }
+    return $this->tasse_ulteriori_array;
   }
 
   public function getNettoDaLiquidare()
@@ -388,9 +284,11 @@ class Fattura extends BaseFattura {
 
   public function getStato($string = false)
   {
-    if($string) {
+    if ($string)
+    {
 
-      if($this->stato) {
+      if ($this->stato)
+      {
         return $this->stato_string[$this->stato];
       }
 
@@ -398,12 +296,12 @@ class Fattura extends BaseFattura {
     }
 
     return $this->stato;
-
   }
 
   public function getColorStato()
   {
-    if($this->stato) {
+    if ($this->stato)
+    {
       return $this->color_stato[$this->stato];
     }
 
@@ -412,58 +310,41 @@ class Fattura extends BaseFattura {
 
   public function getFontColorStato()
   {
-    if($this->stato) {
+    if ($this->stato)
+    {
       return $this->font_color_stato[$this->stato];
     }
 
     return $this->font_color_stato[self::NON_PAGATA];
-
   }
 
-  public function delete(PropelPDO $con = null)
+  public function getCliente($con = null)
   {
-    $dettagli_fattura = $this->getDettagliFatturas();
-    foreach ($dettagli_fattura as $dettaglio)
-    {
-      $dettaglio->delete();
-    }
-    parent::delete($conn);
+    return $this->getContatto($con);
   }
 
-  public function isProForma(){
-    if ($this->getNumFattura()==0)
-    return true;
-
-    return false;
+  public function getStatoString()
+  {
+    return $this->stato_string;
   }
-
-  public function setRegolare(){
+  
+  public function setRegolare()
+  {
     $this->setNewNumFattura();
-    $this->setData(date('y-m-d',time()));
+    $this->setData(date('y-m-d', time()));
   }
 
-  public function setSpeseAnticipate($v){
-    if ($this->spese_anticipate !== $v || $v === '0') {
-      $this->spese_anticipate = str_replace(',','.',$v);
+  public function setSpeseAnticipate($v)
+  {
+    if ($this->spese_anticipate !== $v || $v === '0')
+    {
+      $this->spese_anticipate = str_replace(',', '.', $v);
       $this->modifiedColumns[] = FatturaPeer::SPESE_ANTICIPATE;
     }
   }
 
-  public function getTags()
+  public function setCliente($v)
   {
-    $c = new Criteria();
-    $c->clearSelectColumns();
-    //$c->addAscendingOrderByColumn(TagsFatturaPeer::TAG_NORMALIZZATO);
-    $c->add(TagsFatturaPeer::ID_FATTURA, $this->getId());
-
-    return TagsFatturaPeer::doSelect($c);
-  }
-
-  public function getCliente($con = null) {
-    return $this->getContatto($con);
-  }
-
-  public function setCliente($v) {
     $this->setContatto($v);
   }
 
@@ -476,21 +357,130 @@ class Fattura extends BaseFattura {
     $this->setClienteId($client->getId());
   }
 
+  public function setNewNumFattura()
+  {
+    $con = Propel::getConnection();
+    $year = date('y', time());
+    $num_fattura = 1;
+
+    //Select Invoice whit max ID
+    if ($this->getData() != "")
+    {
+      $year = date('y', strtotime($this->getData()));
+    }
+
+    $query = 'SELECT MAX(CAST(' . FatturaPeer::NUM_FATTURA . ' AS UNSIGNED)) as max
+		          FROM ' . FatturaPeer::TABLE_NAME . '
+		          WHERE ' . FatturaPeer::ID_UTENTE . '=' . sfContext::getInstance()->getUser()->getAttribute('id_utente') . '
+		          AND ' . FatturaPeer::DATA . '>= "' . date('y-m-d', mktime(0, 0, 0, 1, 1, $year)) . '"
+		          AND ' . FatturaPeer::DATA . ' <= "' . date('y-m-d', mktime(0, 0, 0, 12, 31, $year)) . '"
+		          AND ' . FatturaPeer::CLASS_KEY . ' = ' . FatturaPeer::CLASSKEY_VENDITA;
+
+    $stmt = $con->prepare($query);
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    $max = $row['max'];
+
+
+    //Select Num Fattura and date of Invoice with Max ID
+    if ($max != "")
+    {
+      $query2 = 'SELECT ' . VenditaPeer::ID . ' as id,' . VenditaPeer::DATA . ' as data
+			           FROM ' . VenditaPeer::TABLE_NAME . '
+			           WHERE ' . FatturaPeer::ID_UTENTE . '=' . sfContext::getInstance()->getUser()->getAttribute('id_utente') . '
+			           AND ' . FatturaPeer::NUM_FATTURA . '=' . $max . '
+			           AND ' . FatturaPeer::DATA . '>= "' . date('y-m-d', mktime(0, 0, 0, 1, 1, $year)) . '"
+			           AND ' . FatturaPeer::DATA . ' <= "' . date('y-m-d', mktime(0, 0, 0, 12, 31, $year)) . '"
+			           AND ' . FatturaPeer::CLASS_KEY . ' = ' . FatturaPeer::CLASSKEY_VENDITA;
+
+      $stmt = $con->prepare($query2);
+      $stmt->execute();
+
+      $row = $stmt->fetch(PDO::FETCH_ASSOC);
+      $id_fattura = $row['id'];
+      $data_fattura = $row['data'];
+
+      $num_fattura = $max;
+      $data = $data_fattura;
+
+      $num_fattura = $num_fattura + 1;
+    }
+
+    parent::setNumFattura($num_fattura);
+  }
+
+  public function toString()
+  {
+    return $this->__toString();
+  }
+
+  public function isProForma()
+  {
+    if ($this->getNumFattura() == 0)
+      return true;
+
+    return false;
+  }
+
+  public function checkInRitardo()
+  {
+    return (strtotime($this->getDataPagamento()) < time() && $this->getStato() == self::INVIATA);
+  }
+
   public function save(PropelPDO $con = null)
   {
-    if ($this->getClassKey() == FatturaPeer::CLASSKEY_ACQUISTO || $this->getClassKey() == FatturaPeer::CLASSKEY_VENDITA )
+    if ($this->getClassKey() == FatturaPeer::CLASSKEY_ACQUISTO || $this->getClassKey() == FatturaPeer::CLASSKEY_VENDITA)
     {
       $this->setDataScadenza($this->getDataPagamento());
     }
     return parent::save($con);
   }
-
-  public function getStatoString()
-  {
-    return $this->stato_string;
-  }
   
-} // Fattura
+  public function delete(PropelPDO $con = null)
+  {
+    $dettagli_fattura = $this->getDettagliFatturas();
+    foreach ($dettagli_fattura as $dettaglio)
+    {
+      $dettaglio->delete();
+    }
+    parent::delete($conn);
+  }
+
+  public function calcolaFattura($tasse_ulteriori = array(), $tipo_ritenuta = null, $ritenuta_acconto = null)
+  {
+    if (!$this->calcola)
+    {
+      //$this->tasse_ulteriori_array = TassaPeer::doSelect(new Criteria());
+      $this->tasse_ulteriori_array = $tasse_ulteriori;
+
+      //$this->tipo_ritenuta = UtentePeer::getImpostazione()->getTipoRitenuta();
+      $this->tipo_ritenuta = $tipo_ritenuta;
+
+      $this->calcImponibile();
+
+      if ($this->getIncludiTasse() == 's')
+      {
+        $this->calcImponibileScorporato();
+      }
+
+      $this->calcScontoTotale();
+
+      if ($this->getCalcolaTasse() == 's')
+      {
+        $this->calcTasseUlteriori();
+      }
+
+      $this->calcImponibileFineIva();
+      $this->calcRitenutaAcconto($ritenuta_acconto);
+      $this->calcIva();
+      $this->calcTotale();
+      $this->calcNettoDaLiquidare();
+      $this->calcola = true;
+    }
+  }
+
+  abstract public function addToCashFlow(CashFlow $cf);
+}
 
 function numFormat($number)
 {

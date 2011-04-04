@@ -106,7 +106,7 @@ Class importModel{
 		$criteria->add(ModoPagamentoPeer::NUM_GIORNI, $fattura['num_giorni']);
 		$modo_pagamento = ModoPagamentoPeer::doSelectOne($criteria);
 
-				$fattura_new = new Fattura();
+				$fattura_new = new Vendita();
 				$fattura_new->fromArray($fattura);
 				$fattura_new->setClienteId($id_cliente);
 				$fattura_new->setIdUtente($utente->getId());

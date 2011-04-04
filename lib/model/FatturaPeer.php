@@ -38,5 +38,17 @@ class FatturaPeer extends BaseFatturaPeer
 
     $criteria->addAscendingOrderByColumn(FatturaPeer::DATA_SCADENZA);
     return FatturaPeer::doSelect($criteria);
-  } 
+  }
+
+  public static function doSelectPaid(Criteria $criteria = null)
+  {
+    if (null === $criteria)
+    {
+      $criteria = new Criteria();
+    }
+
+    $criteria->add(FatturaPeer::STATO, Fattura::PAGATA);
+
+    return self::doSelect($criteria);
+  }
 }

@@ -60,5 +60,11 @@
 <?php
   slot('infobox');
     include_partial('invoice/filter', array('filter' => $pager->getFilter()));
-  end_slot('sidebar');
+  end_slot();
+?>
+
+<?php
+  slot('infobox-2');
+    include_component('cashflow', 'monitor');
+  end_slot();
 ?>

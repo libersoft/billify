@@ -15,22 +15,13 @@ class VenditaFormFilter extends FatturaFormFilter
     $this->choices += VenditaForm::$states;
 
     parent::configure();
-
-    $this->widgetSchema['cliente_id'] = new sfWidgetFormInput();
+ 
     $this->widgetSchema['num_fattura'] = new sfWidgetFormChoice(array('choices' => array('' => '', 1 => 'Regolare', 2 => 'Pro-Forma')));
 
     $this->widgetSchema->setLabel('num_fattura', 'Tipo');
 
-    $this->validatorSchema['cliente_id'] = new sfValidatorPass(array('required' => false));
-
     $this->useFields(array('data', 'stato', 'num_fattura', 'cliente_id'));
     $this->widgetSchema->setPositions(array('data', 'cliente_id', 'stato', 'num_fattura'));
-  }
-
-  public function addClienteIdColumnCriteria(Criteria $criteria, $field, $value)
-  {
-    $criteria->addJoin(FatturaPeer::CLIENTE_ID, ClientePeer::ID);
-    $criteria->add(ClientePeer::RAGIONE_SOCIALE, "%$value%", Criteria::LIKE);
   }
 
   public function addNumFatturaColumnCriteria(Criteria $criteria, $field, $value)

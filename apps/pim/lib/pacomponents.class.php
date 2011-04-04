@@ -1,5 +1,6 @@
 <?php
 
+//TODO: Rinominare paComponents in btComponents
 Class paComponents extends sfComponents
 {
   public function executeBread() { }

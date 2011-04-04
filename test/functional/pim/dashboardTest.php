@@ -43,24 +43,5 @@ $browser->
   checkResponseElement('table.fatture td', '1', array('position' => 21))->
   checkResponseElement('table.fatture td', '2', array('position' => 28))->
 
-  checkResponseElement('ul#resume li strong', 'fatturato annuo:', array('position' => 0))->
-  checkResponseElement('ul#resume li', '/9.000,00/', array('position' => 0))->
-  checkResponseElement('ul#resume li', '/12.960,00/', array('position' => 0))->
-
-  checkResponseElement('ul#resume li strong', 'fatturato annuo incassato:', array('position' => 1))->
-  checkResponseElement('ul#resume li', '/1.000,00/', array('position' => 1))->
-  checkResponseElement('ul#resume li', '/1.440,00/', array('position' => 1))->
-
-  checkResponseElement('ul#resume li strong', 'fatture da incassare:', array('position' => 2))->
-  checkResponseElement('ul#resume li', '/22/', array('position' => 2))->
-
-  checkResponseElement('ul#resume li strong', 'iva da pagare:', array('position' => 3))->
-  checkResponseElement('ul#resume li strong', 'totale da incassare:', array('position' => 4  ))->
-  checkResponseElement('ul#resume li', '/8.000,00/', array('position' => 4))->
-  checkResponseElement('ul#resume li', '/11.520,00/', array('position' => 4))->
-  checkResponseElement('ul#resume li', '/2.160,00/', array('position' => 3))->
-  checkResponseElement('ul#resume li', '/1.920,00/', array('position' => 3))->
-  checkResponseElement('ul#resume li', '/240,00/', array('position' => 3))->
-
   checkResponseElement('body', '!/Ritenuta d\'acconto versata/')
 ;

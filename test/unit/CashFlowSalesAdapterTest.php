@@ -22,7 +22,7 @@ include_once(dirname(__FILE__).'/../../lib/adapter/ICashFlowAdapter.class.php');
 include_once(dirname(__FILE__).'/../../lib/adapter/AbstractCashFlowAdapter.class.php');
 include_once(dirname(__FILE__).'/../../lib/adapter/CashFlowSalesAdapter.class.php');
 
-$test = new lime_test(9, new lime_output_color());
+$test = new lime_test(10, new lime_output_color());
 
 $v1 = new Vendita();
 $v1->setId(100);
@@ -54,4 +54,5 @@ $test->is($vcf1->getContact(), 'Customer', '->getContact() returns right value')
 $test->is($vcf1->getContactUrl(), 'contact/edit?id=100', '->getContact() returns right value');
 $test->is($vcf1->isPaid(), false, '->getContact() returns right value');
 
-?>
+$vcf1->setWithTaxes(false);
+$test->is($vcf1->getTotal(), '1000', '->getTotal() return right total');

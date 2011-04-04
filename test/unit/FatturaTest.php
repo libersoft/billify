@@ -16,7 +16,7 @@ $dettaglio2->setPrezzo(1000);
 $dettaglio2->setQty(2);
 $dettaglio2->setIva(10);
 
-$fattura = new Fattura();
+$fattura = new Vendita();
 $fattura->addDettagliFattura($dettaglio1);
 $fattura->addDettagliFattura($dettaglio2);
 $fattura->calcolaFattura();
@@ -26,12 +26,13 @@ $test->is($fattura->getTotale(), '4600', '->getTotale() returns right value');
 $tassa = new Tassa();
 $tassa->setValore(20);
 
-$fattura = new Fattura();
+$fattura = new Vendita();
 $fattura->addDettagliFattura($dettaglio1);
 $fattura->addDettagliFattura($dettaglio2);
 
 $fattura->calcolaFattura(array($tassa));
 $tasse_ulteriori = $fattura->getTasseUlteriori();
+
 $test->isa_ok($tasse_ulteriori, 'array', '->getTasseUlteriori() returns right value');
 $test->is($tasse_ulteriori[0]['costo'], '800', '->getTasseUlteriori() returns right value');
 $test->is($fattura->getIva(), '720', '->getIva() returns right value');
@@ -42,7 +43,8 @@ $test->is($fattura->getTotale(), 4800 + 720, '->getTotale() returns right value'
 $test->comment('->checkInRitardo()');
 $modo_pagamento = new ModoPagamento();
 $modo_pagamento->setNumGiorni(10);
-$fattura = new Fattura();
+
+$fattura = new Vendita();
 $fattura->setStato('i');
 $fattura->setModoPagamento($modo_pagamento);
 $fattura->setData(date('Y-m-d', strtotime('-1 year')));
@@ -56,7 +58,7 @@ $test->comment('->getDataPagamento()');
 $test->is($fattura->getDataPagamento(), strftime(date('d M Y', strtotime('+10 days +1 month'))), '->getDataPagamento() return right date');
 
 $test->comment('getStato()');
-$fattura = new Fattura();
+$fattura = new Vendita();
 $fattura->setStato('n');
 $test->is($fattura->getStato(), 'n', '->getStato() returns right value');
 $test->is($fattura->getStato(true), 'non inviata', '->getStato() returns right value');
@@ -68,7 +70,7 @@ $test->comment('getFontColorStato()');
 $test->is($fattura->getFontColorStato(), 'black', '->getFontColorStato() returns right value');
 
 $test->comment('Limite caratteri nel numero di fattura');
-$fattura = new Fattura();
+$fattura = new Vendita();
 $fattura->setNumFattura('123456789012');
 $fattura->save();
 $fattura->reload();

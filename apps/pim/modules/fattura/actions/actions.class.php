@@ -3,6 +3,16 @@
 class fatturaActions extends sfActions
 {
 
+  public function executeIndex()
+  {
+    $this->forward('invoice', 'indexSale');
+  }
+
+  public function executeList()
+  {
+    $this->forward('invoice', 'indexSale');
+  }
+
   public function executeShow()
   {
     $this->getUser()->setAttribute('conta_dettagli', 0);
@@ -28,7 +38,7 @@ class fatturaActions extends sfActions
       return sfView::SUCCESS;
     }
 
-    $this->fattura = new Fattura();
+    $this->fattura = new Vendita();
     $this->fattura->setData(time());
     $this->fattura->setNewNumFattura();
     if ($this->id_cliente)
@@ -64,7 +74,7 @@ class fatturaActions extends sfActions
 
     if ($this->getRequestParameter('cliente_id') && $forward)
     {
-      return $this->redirect('cliente/show?id=' . $this->getRequestParameter('cliente_id'));
+      return $this->redirect('@contact_show?id=' . $this->getRequestParameter('cliente_id'));
     }
 
     if ($forward)
@@ -182,7 +192,7 @@ class fatturaActions extends sfActions
       $referer = explode('/', str_replace('http://', '', $_SERVER['HTTP_REFERER']));
       if (in_array('cliente', $referer))
       {
-        $this->redirect('cliente/show?id=' . $referer[4]);
+        $this->redirect('@contact_show?id=' . $referer[4]);
       }
     }
 
@@ -312,7 +322,7 @@ class fatturaActions extends sfActions
   {
     if (!$this->getRequestParameter($id, 0))
     {
-      $fattura = new Fattura();
+      $fattura = new Vendita();
       $fattura->setData(time());
       $fattura->setNewNumFattura();
       if ($this->id_cliente)

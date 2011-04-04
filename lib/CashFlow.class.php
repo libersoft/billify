@@ -19,7 +19,42 @@ Class CashFlow
 {
   protected $incoming = array();
   protected $outcoming = array();
+  protected $incoming_taxes = array();
+  protected $outcoming_taxes = array();
+  protected $balances = array();
   protected $rows = array();
+  protected $with_taxes = true;
+
+  private static $instance;
+
+  /**
+   * Singleton implementation
+   * 
+   * @return CashFlow
+   */
+  public static function getInstance()
+  {
+    if(!self::$instance)
+    {
+      self::$instance = new self;
+    }
+
+    return self::$instance;
+  }
+
+  public function reset()
+  {
+    $this->incoming = array();
+    $this->outcoming = array();
+    $this->rows = array();
+    $this->with_taxes = true;
+    $this->resetBalances();
+  }
+
+  public function resetBalances()
+  {
+    $this->balances = array();
+  }
 
   /**
    * Make sum of all row total value
@@ -27,16 +62,21 @@ Class CashFlow
    * @param array $rows
    * @return integer
    */
-  private function sum($rows)
+  private function sum($name, $rows, $method = 'getTotal')
   {
-    $balance = 0;
-
-    foreach ($rows as $row)
+    if (!isset($this->balances[$name]))
     {
-      $balance += $row->getTotal();
+      $balance = 0;
+
+      foreach ($rows as $row)
+      {
+        $balance += call_user_func(array($row, $method));
+      }
+
+      $this->balances[$name] = $balance;
     }
 
-    return $balance;
+    return $this->balances[$name];
   }
 
   /**
@@ -46,8 +86,10 @@ Class CashFlow
    */
   public function addOutcoming(ICashFlowAdapter $row)
   {
-      $this->outcoming[] = $row;
-      $this->rows[] = $row;
+    $this->resetBalances();
+    $row->setWithTaxes($this->with_taxes);
+    $this->outcoming[] = $row;
+    $this->rows[] = $row;
   }
 
   /**
@@ -57,12 +99,14 @@ Class CashFlow
    */
   public function addIncoming(ICashFlowAdapter $row)
   {
-      $this->incoming[] = $row;
-      $this->rows[] = $row;
+    $this->resetBalances();
+    $row->setWithTaxes($this->with_taxes);
+    $this->incoming[] = $row;
+    $this->rows[] = $row;
   }
 
   /**
-   * Get balance of all row added to cash flow
+   * Get balance for all row added to cash flow
    *
    * @return integer
    */
@@ -72,23 +116,53 @@ Class CashFlow
   }
 
   /**
-   * Get incoming of all row added to cash flow
+   * Get balance of taxes for all rows added to cash flow
+   *
+   * @return integer
+   */
+  public function getBalanceTaxes()
+  {
+    return $this->getOutcomingTaxes() - $this->getIncomingTaxes();
+  }
+
+  /**
+   * Get incoming for all row added to cash flow
    *
    * @return integer
    */
   public function getIncoming()
   {
-    return $this->sum($this->incoming);
+    return $this->sum('incoming_total', $this->incoming);
   }
 
   /**
-   * Get outcoming of all row added to cash flow
+   * Get incoming tasex for all row added to cash flow
+   *
+   * @return integer
+   */
+  public function getIncomingTaxes()
+  {
+    return $this->sum('incoming_taxes', $this->incoming, 'getTaxes');
+  }
+
+  /**
+   * Get outcoming for all row added to cash flow
    *
    * @return integer
    */
   public function getOutcoming()
   {
-    return $this->sum($this->outcoming);
+    return $this->sum('outcoming_total', $this->outcoming);
+  }
+
+  /**
+   * Get outcoming taxes for all row added to cash flow
+   * 
+   * @return integer
+   */
+  public function getOutcomingTaxes()
+  {
+    return $this->sum('outcoming_taxes', $this->outcoming, 'getTaxes');
   }
 
   /**
@@ -101,45 +175,24 @@ Class CashFlow
     return $this->rows;
   }
 
-  public function add(Fattura $document)
-  {
-    if($document instanceof Vendita )
-    {
-      $document->calcolaFattura();
-      if (!$document->getDataScadenza())
-	  {
-	    $document->save();	
-	  }
-      $cash_flow_vendita = new CashFlowSalesAdapter($document);
-      $this->addIncoming($cash_flow_vendita);
-    }
-    elseif($document instanceof Acquisto)
-    {
-      $cash_flow_acquisto = new CashFlowPurchaseAdapter($document);
-      $this->addOutcoming($cash_flow_acquisto);
-    }
-    elseif($document instanceof Entrata)
-    {
-      $cash_flow_entrance = new CashFlowEntranceAdapter($document);
-      $this->addIncoming($cash_flow_entrance);
-    }
-    elseif($document instanceof Uscita)
-    {
-      $cash_flow_entrance = new CashFlowExitAdapter($document);
-      $this->addOutcoming($cash_flow_entrance);
-    }
-  }
-
   public function addDocuments($documents)
   {
-    foreach ($documents as $index => $document)
+    if (count($documents) > 0)
     {
-      $this->add($document);
+      foreach ($documents as $index => $document)
+      {
+        $document->addToCashFlow($this);
+      }
     }
   }
   
   public function getResults()
   {
     return $this->getRows();
+  }
+
+  public function setWithTaxes($value)
+  {
+    $this->with_taxes = $value;
   }
 }

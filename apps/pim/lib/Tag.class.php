@@ -1,5 +1,5 @@
 <?php
- 
+//TODO: Remove this class
 class Tag
 {
   public static function normalize($tag)

@@ -26,24 +26,6 @@ abstract class AbstractCashFlowAdapter
   }
   
   /**
-   * Use this methos to decide if the document total needs to be calculate with taxes
-   *
-   */
-  public function withTaxes() 
-  {
-      $this->with_taxes = true;
-  }
-  
-  /**
-   * Use this methos to decide if the document total needs to be calculate without taxes
-   *
-   */
-  public function withoutTaxes() 
-  {
-      $this->with_taxes = false;
-  }
-  
-  /**
    * Calculate the document total
    *
    * @return integer
@@ -51,6 +33,16 @@ abstract class AbstractCashFlowAdapter
   public function getTotal() 
   {
     return $this->getTaxable() + ($this->with_taxes ? $this->getTaxes() : 0);  
+  }
+
+  /**
+   * Set if we have to calculate cashflow with taxes
+   *
+   * @param boolean $value
+   */
+  public function setWithTaxes($value)
+  {
+    $this->with_taxes = $value;
   }
   
 }

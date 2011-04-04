@@ -15,6 +15,7 @@ class Acquisto extends Fattura
    */
   public function __construct()
   {
+    parent::__construct();
     $this->stato_string[self::NON_PAGATA] = 'non pagata';
     $this->setClassKey(FatturaPeer::CLASSKEY_2);
   }
@@ -38,6 +39,12 @@ class Acquisto extends Fattura
   public function getRoutingRule()
   {
     return 'invoice/edit';
+  }
+
+  public function  addToCashFlow(CashFlow $cf)
+  {
+    $cash_flow_acquisto = new CashFlowPurchaseAdapter($this);
+    $cf->addOutcoming($cash_flow_acquisto);;
   }
 
 }
