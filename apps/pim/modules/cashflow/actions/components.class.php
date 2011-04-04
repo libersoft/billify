@@ -6,7 +6,7 @@ class cashflowComponents extends paComponents
   {
     $criteria = new Criteria;
 
-    $filter = new VenditaFormFilter();
+    $filter = new FinancialDocumentFormFilter();
     $filter->bind($request->getParameter($filter->getName(), $filter->getDefaultFilter($this->from_date, $this->to_date)));
     if($filter->isValid())
     {
