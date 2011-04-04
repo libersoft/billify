@@ -25,13 +25,7 @@ Class CashFlow
   protected $rows = array();
   protected $with_taxes = true;
 
-
   private static $instance;
-
-  private function __construct()
-  {
-
-  }
 
   /**
    * Singleton implementation
@@ -183,9 +177,12 @@ Class CashFlow
 
   public function addDocuments($documents)
   {
-    foreach ($documents as $index => $document)
+    if (count($documents) > 0)
     {
-      $document->addToCashFlow($this);
+      foreach ($documents as $index => $document)
+      {
+        $document->addToCashFlow($this);
+      }
     }
   }
   

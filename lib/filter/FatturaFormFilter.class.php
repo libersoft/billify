@@ -41,11 +41,21 @@ abstract class FatturaFormFilter extends BaseFatturaFormFilter
     $criteria->add(FatturaPeer::STATO, $value);
   }
   
-  public function getDefaultFilter()
+  public function getDefaultFilter($from_date = null, $to_date = null)
   {
+    if (null === $from_date)
+    {
+      $from_date = '01/01/'.date('Y');
+    }
+
+    if (null === $to_date)
+    {
+      $to_date = '31/12/'.date('Y');
+    }
+
     $default_filter=array();
-    $default_filter['data']['from'] = '01/01/'.date('Y');
-    $default_filter['data']['to']   = '31/12/'.date('Y');
+    $default_filter['data']['from'] = $from_date;
+    $default_filter['data']['to']   = $to_date;
     $default_filter['stato']        = '';
 
     return $default_filter;

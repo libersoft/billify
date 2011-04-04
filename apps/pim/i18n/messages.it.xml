@@ -398,9 +398,41 @@
         <source>Referent</source>
         <target>Referente</target>
       </trans-unit>
-      <trans-unit id="87">
+      <trans-unit id="88">
         <source>new invoice</source>
         <target>nuova fattura</target>
+      </trans-unit>
+      <trans-unit id="89">
+        <source>incoming</source>
+        <target>entrate</target>
+      </trans-unit>
+      <trans-unit id="90">
+        <source>outcoming</source>
+        <target>uscite</target>
+      </trans-unit>
+      <trans-unit id="91">
+        <source>balance</source>
+        <target>utile</target>
+      </trans-unit>
+      <trans-unit id="92">
+        <source>encashment</source>
+        <target>in accredito</target>
+      </trans-unit>
+      <trans-unit id="93">
+        <source>in charge</source>
+        <target>in addebito</target>
+      </trans-unit>
+      <trans-unit id="94">
+        <source>payable</source>
+        <target>da versare</target>
+      </trans-unit>
+      <trans-unit id="95">
+        <source>turnover from %from_date% to %to_date%</source>
+        <target>fatturato dal %from_date% al %to_date%</target>
+      </trans-unit>
+      <trans-unit id="96">
+        <source>vat from %from_date% to %to_date%</source>
+        <target>iva dal %from_date% al %to_date%</target>
       </trans-unit>
     </body>
   </file>

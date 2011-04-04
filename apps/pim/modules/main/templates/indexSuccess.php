@@ -33,16 +33,20 @@ include_partial('fattura/list', array('fatture' => $invoice_repository->fatture_
 <?php end_slot('sidebar')?>
 
 <?php slot('infobox')?>
-  <?php include_partial('main/resume', array(
-    'fatturato_annuo' => $invoice_repository->fatturato_annuo,
-    'fatturato_annuo_netto' => $invoice_repository->fatturato_annuo_netto,
-    'fatturato_annuo_netto_incassato' => $invoice_repository->fatturato_annuo_netto_incassato,
-    'fatturato_annuo_incassato' => $invoice_repository->fatturato_annuo_incassato,
+  <?php
+
+  include_partial('main/resume', array(
     'conta_fatture_da_incassare' => $invoice_repository->conta_fatture_da_incassare,
-    'iva' => $invoice_repository->iva,
-    'iva_a_debito' => $invoice_repository->iva_a_debito,
     'totale_da_incassare_netto' => $invoice_repository->totale_da_incassare_netto,
     'totale_da_incassare' => $invoice_repository->totale_da_incassare,
     'ritenuta_acconto' => $invoice_repository->ritenuta_acconto,
-  )) ?>
-<?php end_slot('sidebar')?>
+  ));
+
+  include_component('cashflow', 'monitor', array('label_total' => 'fatturato ultimo anno', 'label_taxes' => 'iva ultimo anno'));
+    include_component('cashflow', 'monitor', array(
+        'label_total' => 'fatturato ultimo mese',
+        'label_taxes' => 'iva ultimo mese',
+        'from_date' => date('01/m/Y', strtotime('-1 month')),
+        'to_date' => date('t/m/Y', strtotime('-1 month'))));
+   ?>
+<?php end_slot(); ?>

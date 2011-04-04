@@ -65,6 +65,6 @@
 
 <?php
   slot('infobox-2');
-    include_component('invoice', 'monitor');
+    include_component('cashflow', 'monitor');
   end_slot();
 ?>
