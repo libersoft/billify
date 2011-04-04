@@ -19,8 +19,12 @@ Class CashFlow
 {
   protected $incoming = array();
   protected $outcoming = array();
+  protected $incoming_taxes = array();
+  protected $outcoming_taxes = array();
+  protected $balances = array();
   protected $rows = array();
   protected $with_taxes = true;
+
 
   private static $instance;
 
@@ -50,6 +54,12 @@ Class CashFlow
     $this->outcoming = array();
     $this->rows = array();
     $this->with_taxes = true;
+    $this->resetBalances();
+  }
+
+  public function resetBalances()
+  {
+    $this->balances = array();
   }
 
   /**
@@ -58,16 +68,21 @@ Class CashFlow
    * @param array $rows
    * @return integer
    */
-  private function sum($rows)
+  private function sum($name, $rows, $method = 'getTotal')
   {
-    $balance = 0;
-
-    foreach ($rows as $row)
+    if (!isset($this->balances[$name]))
     {
-      $balance += $row->getTotal();
+      $balance = 0;
+
+      foreach ($rows as $row)
+      {
+        $balance += call_user_func(array($row, $method));
+      }
+
+      $this->balances[$name] = $balance;
     }
 
-    return $balance;
+    return $this->balances[$name];
   }
 
   /**
@@ -77,6 +92,7 @@ Class CashFlow
    */
   public function addOutcoming(ICashFlowAdapter $row)
   {
+    $this->resetBalances();
     $row->setWithTaxes($this->with_taxes);
     $this->outcoming[] = $row;
     $this->rows[] = $row;
@@ -89,13 +105,14 @@ Class CashFlow
    */
   public function addIncoming(ICashFlowAdapter $row)
   {
+    $this->resetBalances();
     $row->setWithTaxes($this->with_taxes);
     $this->incoming[] = $row;
     $this->rows[] = $row;
   }
 
   /**
-   * Get balance of all row added to cash flow
+   * Get balance for all row added to cash flow
    *
    * @return integer
    */
@@ -105,23 +122,53 @@ Class CashFlow
   }
 
   /**
-   * Get incoming of all row added to cash flow
+   * Get balance of taxes for all rows added to cash flow
+   *
+   * @return integer
+   */
+  public function getBalanceTaxes()
+  {
+    return $this->getOutcomingTaxes() - $this->getIncomingTaxes();
+  }
+
+  /**
+   * Get incoming for all row added to cash flow
    *
    * @return integer
    */
   public function getIncoming()
   {
-    return $this->sum($this->incoming);
+    return $this->sum('incoming_total', $this->incoming);
   }
 
   /**
-   * Get outcoming of all row added to cash flow
+   * Get incoming tasex for all row added to cash flow
+   *
+   * @return integer
+   */
+  public function getIncomingTaxes()
+  {
+    return $this->sum('incoming_taxes', $this->incoming, 'getTaxes');
+  }
+
+  /**
+   * Get outcoming for all row added to cash flow
    *
    * @return integer
    */
   public function getOutcoming()
   {
-    return $this->sum($this->outcoming);
+    return $this->sum('outcoming_total', $this->outcoming);
+  }
+
+  /**
+   * Get outcoming taxes for all row added to cash flow
+   * 
+   * @return integer
+   */
+  public function getOutcomingTaxes()
+  {
+    return $this->sum('outcoming_taxes', $this->outcoming, 'getTaxes');
   }
 
   /**

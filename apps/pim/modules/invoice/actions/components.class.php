@@ -13,6 +13,10 @@ class invoiceComponents extends paComponents
       $criteria = $filter->getCriteria();
     }
 
+    $values = $filter->getValues();
+    $this->from_date = $values['data']['from'];
+    $this->to_date = $values['data']['to'];
+
     $this->cf = CashFlow::getInstance();
     $this->cf->setWithTaxes(false);
     $this->cf->addDocuments(FatturaPeer::doSelectJoinAllExceptModoPagamento($criteria));

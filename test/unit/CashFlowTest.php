@@ -9,7 +9,6 @@ include_once(dirname(__FILE__).'/../../lib/model/FatturaPeer.php');
 include_once(dirname(__FILE__).'/../../lib/model/om/BaseFattura.php');
 include_once(dirname(__FILE__).'/../../lib/model/Fattura.php');
 
-include_once(dirname(__FILE__).'/../../lib/model/FinancialDocument.php');
 include_once(dirname(__FILE__).'/../../lib/model/Vendita.php');
 include_once(dirname(__FILE__).'/../../lib/model/Acquisto.php');
 
@@ -19,7 +18,7 @@ include_once(dirname(__FILE__).'/../../lib/adapter/CashFlowPurchaseAdapter.class
 include_once(dirname(__FILE__).'/../../lib/adapter/CashFlowSalesAdapter.class.php');
 include_once(dirname(__FILE__).'/../../lib/CashFlow.class.php');
 
-$test = new lime_test(14, new lime_output_color());
+$test = new lime_test(20, new lime_output_color());
 
 $a1 = new Acquisto();
 $a1->setData(strtotime('-3 days'));;
@@ -88,6 +87,25 @@ $cf->reset();
 
 $cf->setWithTaxes(false);
 $cf->addIncoming(new CashFlowSalesAdapter($v1));
+$cf->addOutcoming(new CashFlowPurchaseAdapter($a1));
 
-$test->is($cf->getBalance(), '2000', '->getBalance() return right balance');
-$test->is($cf->getIncoming(), '2000', '->getIncoming() return right incoming');
+$test->is('0', $cf->getBalance(), '->getBalance() return right balance');
+$test->is('2000', $cf->getIncoming(), '->getIncoming() return right incoming');
+$test->is('2000', $cf->getOutcoming(), '->getOutcoming() return right outcoming');
+
+$test->is('400', $cf->getIncomingTaxes(), '->getOutcomingTaxes() return right incoming taxes');
+$test->is('200', $cf->getOutcomingTaxes(), '->getIncomingTaxes() return right incoming taxes');
+
+$start_time = microtime();
+$test->is('-200', $cf->getBalanceTaxes(), '->getBalance() return right balance');
+$end_time = microtime();
+
+$no_cached_time = $end_time - $start_time;
+
+$start_time = microtime();
+$test->is('-200', $cf->getBalanceTaxes(), '->getBalance() return right balance');
+$end_time = microtime();
+
+$cached_time = $end_time - $start_time;
+
+$test->ok($cached_time < $no_cached_time, 'Cached time is less than no cached time');
