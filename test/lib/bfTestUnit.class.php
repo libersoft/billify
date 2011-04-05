@@ -15,7 +15,7 @@ class bfTestUnit extends lime_test
   public function loadData()
   {
     $data = new sfPropelData();
-    $data->loadData(sfConfig::get('sf_test_dir').'/fixtures/srl/fixtures.yml');
+    $data->loadData(sfConfig::get('sf_test_dir').'/fixtures/companies/srl.yml');
   }
 
   public function signin($username)

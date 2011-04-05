@@ -18,7 +18,7 @@
 
 <?php if ($sf_request->hasErrors()): ?>
 <div class="validate-error">
-  <p><?php echo __('I dati inseriri non sono corretti. Correggi i seguenti errori e salva i dati di nuovo:')?></p>
+  <p><?php echo __('I dati inseriti non sono corretti. Correggi i seguenti errori e salva i dati di nuovo:')?></p>
 </div>
 <?php endif ?>
 
@@ -73,6 +73,12 @@
 
 <table class="edit" id="features" width="100%">
 <tbody>
+<tr>
+  <th>Tipo numero fattura:</th>
+  <td>
+    <?php echo select_tag('invoice_decorator_type', options_for_select(ImpostazionePeer::$available_decorator_classes_text, $impostazione->getInvoiceDecoratorType())); ?>
+  </td>
+</tr>
 <tr>
   <th>Consegna commercialista:</th>
   <td>

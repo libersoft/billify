@@ -31,7 +31,14 @@ class myUser extends sfBasicSecurityUser
 
   public function getSettings()
   {
-    return UtentePeer::getImpostazione();
+    $settings = UtentePeer::getImpostazione();
+
+    if (!$settings)
+    {
+      throw new Exception('User have invalid settings');
+    }
+
+    return $settings;
   }
 
   public function setReferer($referer)
