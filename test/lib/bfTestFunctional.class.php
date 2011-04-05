@@ -17,7 +17,7 @@ Class bfTestFunctional extends sfTestFunctional
     
     if(is_null($fixture))
     {
-      $fixture = sfConfig::get('sf_test_dir').'/fixtures';
+      $fixture = sfConfig::get('sf_test_dir').'/fixtures/srl/fixtures.yml';
     }
     
     $loader = new sfPropelData();

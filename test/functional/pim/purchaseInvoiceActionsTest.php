@@ -2,10 +2,8 @@
 
 include_once(dirname(__FILE__).'/../../bootstrap/functional.php');
 
-$data = new sfPropelData();
-$data->loadData(sfConfig::get('sf_test_dir').'/fixtures/fixtures.yml');
-
-$browser = new sfTestFunctional(new sfBrowser());
+$browser = new bfTestFunctional(new sfBrowser());
+$browser->loadData();
 
 $browser->
   get('/')->

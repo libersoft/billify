@@ -441,6 +441,7 @@ Impostazione:
     deposita_iva: n
     fattura_automatica: s
     codice_cliente: n
+    invoice_decorator_type: plain
     label_imponibile: Imponibile
     label_spese: Spese Anticipate
     label_imponibile_iva: Imponibile ai fini iva

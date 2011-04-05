@@ -3,7 +3,7 @@
 include_once(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new bfTestFunctional(new sfBrowser());
-$browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/fixtures.yml');
+$browser->loadData();
 
 $browser->
   login()->
