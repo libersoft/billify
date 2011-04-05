@@ -239,6 +239,7 @@ CREATE TABLE `impostazione`
 	`deposita_iva` CHAR default 'n' NOT NULL,
 	`fattura_automatica` CHAR default 's' NOT NULL,
 	`codice_cliente` CHAR default 'n' NOT NULL,
+	`invoice_decorator_type` VARCHAR(255) default 'plain',
 	`label_imponibile` VARCHAR(255) default 'Imponibile' NOT NULL,
 	`label_spese` VARCHAR(255) default 'Spese Anticipate' NOT NULL,
 	`label_imponibile_iva` VARCHAR(255) default 'Imponibile ai fini iva' NOT NULL,
