@@ -2,12 +2,11 @@
 
 class Vendita extends Fattura
 {
-
+  
   const PEER = 'VenditaPeer';
 
-  /**
-   * Constructs a new Vendita class, setting the class_key column to FatturaPeer::CLASSKEY_1.
-   */
+  private $pattern;
+
   public function __construct()
   {
     parent::__construct();
@@ -37,4 +36,18 @@ class Vendita extends Fattura
     $cf->addIncoming($cash_flow_vendita);
   }
 
-} // Vendita
+  public function getPlainNumFattura()
+  {
+    return $this->num_fattura;
+  }
+
+  public function  getNumFattura()
+  {
+    if ($this->id_utente)
+    {
+      return $this->getUtente()->getImpostazione()->getInvoiceDecorator($this)->getNumFattura();
+    }
+
+    return $this->num_fattura;
+  }
+}

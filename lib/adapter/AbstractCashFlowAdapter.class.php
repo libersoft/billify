@@ -16,10 +16,21 @@
  */
 abstract class AbstractCashFlowAdapter
 {
-  
+
+  /**
+   * @var boolean
+   */
   protected $with_taxes = true;
+
+  /**
+   * @var Fattura
+   */
   protected $document;
-  
+
+  /**
+   * Create an istance of CashFlowAdapter
+   * @param Fattura $document
+   */
   public function __construct($document) 
   {
     $this->document = $document;

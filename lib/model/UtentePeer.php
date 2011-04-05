@@ -17,6 +17,14 @@ class UtentePeer extends BaseUtentePeer
     return $user;
   }
 
+  public static function retrieveByUsername($username)
+  {
+    $criteria = new Criteria();
+    $criteria->add(UtentePeer::USERNAME, $username);
+
+    return UtentePeer::doSelectOne($criteria);
+  }
+  
   public static function getImpostazione()
   {
     if (!sfContext::getInstance()->getUser()->hasAttribute('impostazioni'))

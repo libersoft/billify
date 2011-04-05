@@ -1,23 +1,14 @@
 <?php
 
-  // include base peer class
-  require_once 'lib/model/om/BaseImpostazionePeer.php';
-  
-  // include object class
-  include_once 'lib/model/Impostazione.php';
+class ImpostazionePeer extends BaseImpostazionePeer
+{
+  static $available_decorator_classes = array(
+      'plain' => 'PlainInvoiceDecorator',
+      'number_and_year' => 'NumberAndYearInvoiceDecorator',
+  );
 
-
-/**
- * Skeleton subclass for performing query and update operations on the 'impostazione' table.
- *
- * 
- *
- * You should add additional methods to this class to meet the
- * application requirements.  This class will only be generated as
- * long as it does not already exist in the output directory.
- *
- * @package model
- */	
-class ImpostazionePeer extends BaseImpostazionePeer {
-
-} // ImpostazionePeer
+  static $available_decorator_classes_text = array(
+      'plain' => 'Plain number',
+      'number_and_year' => 'Number and year',
+  );
+}

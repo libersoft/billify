@@ -193,6 +193,7 @@
     <column name="deposita_iva" type="CHAR" required="true" default="n" />
     <column name="fattura_automatica" type="CHAR" required="true" default="s" />
     <column name="codice_cliente" type="CHAR" required="true" default="n" />
+    <column name="invoice_decorator_type" type="VARCHAR" size="255" default="plain" />
     <column name="label_imponibile" type="VARCHAR" size="255" required="true" default="Imponibile" />
     <column name="label_spese" type="VARCHAR" size="255" required="true" default="Spese Anticipate" />
     <column name="label_imponibile_iva" type="VARCHAR" size="255" required="true" default="Imponibile ai fini iva" />

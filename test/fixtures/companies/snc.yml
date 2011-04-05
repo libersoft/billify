@@ -1,0 +1,13 @@
+Utente:
+  Utente_snc:
+    id_invitation_code:
+    username: user_snc
+    nome: User Snc
+    cognome: User Snc
+    ragione_sociale: Company snc
+    partita_iva: 03727570404
+    codice_fiscale: 03727570404
+    email: snc@example.com
+    password: user_snc
+    stato: attivo
+    fattura: n

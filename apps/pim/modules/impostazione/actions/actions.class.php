@@ -55,6 +55,7 @@ class impostazioneActions extends sfActions
     $impostazione->setTipoRitenuta($this->getRequestParameter('tipo_ritenuta'));
     $impostazione->setConsegnaCommercialista($this->getRequestParameter('consegna_commercialista'));
     $impostazione->setFatturaAutomatica($this->getRequestParameter('fattura_automatica'));
+    $impostazione->setInvoiceDecoratorType($this->getRequestParameter('invoice_decorator_type'));
     $impostazione->setLabelImponibile($this->getRequestParameter('label_imponibile'));
     $impostazione->setLabelSpese($this->getRequestParameter('label_spese'));
     $impostazione->setLabelImponibileIva($this->getRequestParameter('label_imponibile_iva'));

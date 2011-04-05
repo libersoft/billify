@@ -1,53 +1,72 @@
 <?php
 
-require_once 'lib/model/om/BaseImpostazione.php';
+class Impostazione extends BaseImpostazione
+{
 
+  public function getBoolCodiceCliente()
+  {
+    if ($this->codice_cliente == 's')
+    {
+      return true;
+    }
 
-/**
- * Skeleton subclass for representing a row from the 'impostazione' table.
- *
- * 
- *
- * You should add additional methods to this class to meet the
- * application requirements.  This class will only be generated as
- * long as it does not already exist in the output directory.
- *
- * @package model
- */	
-class Impostazione extends BaseImpostazione {
+    return false;
+  }
 
-	public function getBoolCodiceCliente(){
-		if ($this->codice_cliente == 's')
-			return true;
-		else 
-			return false;
-	}
-	
-	public function getBoolDepositaIva(){
-		if ($this->deposita_iva == 's')
-			return true;
-		else 
-			return false;
-	}
-	
-	public function getBoolRiepilogoHome(){
-		if ($this->riepilogo_home == 's')
-			return true;
-		else 
-			return false;
-	}
-	
-	public function getBoolFatturaAutomatica(){
-		if ($this->fattura_automatica == 's')
-			return true;
-		else 
-			return false;
-	}
-	
-	public function getBoolConsegnaCommercialista(){
-		if ($this->consegna_commercialista == 's')
-			return true;
-		else 
-			return false;
-	}
-} // Impostazione
+  public function getBoolDepositaIva()
+  {
+    if ($this->deposita_iva == 's')
+    {
+      return true;
+    }
+    
+    return false;
+  }
+
+  public function getBoolRiepilogoHome()
+  {
+    if ($this->riepilogo_home == 's')
+    {
+      return true;
+    }
+    
+    return false;
+  }
+
+  public function getBoolFatturaAutomatica()
+  {
+    if ($this->fattura_automatica == 's')
+    {
+      return true;
+    }
+    
+    return false;
+  }
+
+  public function getBoolConsegnaCommercialista()
+  {
+    if ($this->consegna_commercialista == 's')
+    {
+      return true;
+    }
+    
+    return false;
+  }
+
+  public function setInvoiceDecoratorType($v)
+  {
+    if (!isset(ImpostazionePeer::$available_decorator_classes[$v]))
+    {
+      throw new Exception('Invalid invoice decorator class');
+    }
+
+    parent::setInvoiceDecoratorType($v);
+  }
+
+  public function getInvoiceDecorator(Vendita $invoice)
+  {
+    $class_name = ImpostazionePeer::$available_decorator_classes[$this->invoice_decorator_type];
+    return new $class_name($invoice);
+  }
+
+}

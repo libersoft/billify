@@ -31,7 +31,7 @@ class contactActions extends sfActions
     $criteria->add(ContattoPeer::CLASS_KEY, $request->getParameter('type', ContattoPeer::CLASSKEY_CLIENTE));
     $criteria->addAscendingOrderByColumn(ContattoPeer::RAGIONE_SOCIALE );
 
-    $this->pager = new sfPropelPager('Contatto', UtentePeer::getImpostazione()->getNumClienti());
+    $this->pager = new sfPropelPager('Contatto', $this->getUser()->getSettings()->getNumClienti());
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->setCriteria($criteria);
     $this->pager->init();

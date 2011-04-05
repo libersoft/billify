@@ -4,7 +4,7 @@ include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 $configuration = ProjectConfiguration::getApplicationConfiguration('pim', 'test', true);
 new sfDatabaseManager($configuration);
 
-$test = new lime_test(16, new lime_output_color());
+$test = new lime_test(17, new lime_output_color());
 
 $dettaglio1 = new DettagliFattura();
 $dettaglio1->setPrezzo(1000);
@@ -77,5 +77,11 @@ $fattura->reload();
 
 $test->is($fattura->getNumFattura(), '123456789012', '->getNumFattura() returns right value');
 
+$user = UtentePeer::retrieveByUsername('user');
 
-?>
+$fattura = new Vendita();
+$fattura->setNumFattura('1');
+$fattura->setData('2011-01-10');
+$fattura->setUtente($user);
+
+$test->is($fattura->getNumFattura(), '1', '->getNumFattura() returns right value');
