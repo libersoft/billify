@@ -304,7 +304,7 @@
     <column name="data_attivazione" type="DATE" required="true" />
     <column name="data_rinnovo" type="DATE" required="true" />
     <column name="tipo" type="VARCHAR" size="255" required="true" />
-    <column name="stato" type="VARCHAR" size="255" required="true" default="attivo" />
+    <column name="stato" type="VARCHAR" size="255" required="false" default="null" />
     <column name="fattura" type="CHAR" required="true" default="" />
     <column name="lastlogin" type="TIMESTAMP" required="true" />
     <column name="approva_contratto" type="INTEGER" required="true" default="0" />

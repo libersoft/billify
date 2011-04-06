@@ -215,8 +215,8 @@
         <target>cash flow</target>
       </trans-unit>
       <trans-unit id="54">
-        <source>welcome %firstname% %lastname%</source>
-        <target>benvenuto %firstname% %lastname%</target>
+        <source>welcome %user%</source>
+        <target>benvenuto %user%</target>
       </trans-unit>
       <trans-unit id="55">
         <source>outcoming invoices</source>

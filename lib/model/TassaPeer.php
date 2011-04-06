@@ -1,29 +1,10 @@
 <?php
 
-  // include base peer class
-  require_once 'lib/model/om/BaseTassaPeer.php';
-  
-  // include object class
-  include_once 'lib/model/Tassa.php';
-
-
-/**
- * Skeleton subclass for performing query and update operations on the 'tassa' table.
- *
- * 
- *
- * You should add additional methods to this class to meet the
- * application requirements.  This class will only be generated as
- * long as it does not already exist in the output directory.
- *
- * @package model
- */	
-class TassaPeer extends BaseTassaPeer {
-	
-	public static function doSelectRS(Criteria $criteria, $conn = null)
-	{	
-		$criteria->add(TassaPeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
-		return parent::doSelectRS($criteria);
-	}
-	
-} // TassaPeer
+class TassaPeer extends BaseTassaPeer
+{
+  public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
+  {
+    $criteria->add(self::ID_UTENTE, FatturaPeer::$user_id);
+    return parent::doSelectStmt($criteria, $con);
+  }
+}

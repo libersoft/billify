@@ -2,6 +2,23 @@
 
 class myUser extends sfBasicSecurityUser
 {
+  private $user;
+
+  public function __toString()
+  {
+    return (string)$this->getUser();
+  }
+
+  public function getUser()
+  {
+    if (!$this->user)
+    {
+      $this->user = UtentePeer::retrieveByPk($this->getAttribute('id_utente'));
+    }
+
+    return $this->user;
+  }
+
   public function getId() 
   {
     return $this->getAttribute('id_utente');
@@ -10,10 +27,10 @@ class myUser extends sfBasicSecurityUser
   public function signin(Utente $utente)
   {
     $this->setAuthenticated(true);
-    $this->setAttribute('id_utente',$utente->getId());
-    $this->setAttribute('nome',$utente->getNome());
-    $this->setAttribute('cognome',$utente->getCognome());
-    $this->setAttribute('tipo_utente',$utente->getTipo());
+    $this->setAttribute('id_utente', $utente->getId());
+    $this->setAttribute('nome', $utente->getNome());
+    $this->setAttribute('cognome', $utente->getCognome());
+    $this->setAttribute('tipo_utente', $utente->getTipo());
 
     FatturaPeer::$user_id = $utente->getId();
 

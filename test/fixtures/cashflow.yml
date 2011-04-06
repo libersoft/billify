@@ -2,6 +2,7 @@ Utente:
   Utente_1: 
     username: user
     password: user
+    stato: attivo
     
 Impostazione: 
   Impostazione: 

@@ -73,7 +73,6 @@ $test->comment('Limite caratteri nel numero di fattura');
 $fattura = new Vendita();
 $fattura->setNumFattura('123456789012');
 $fattura->save();
-$fattura->reload();
 
 $test->is($fattura->getNumFattura(), '123456789012', '->getNumFattura() returns right value');
 

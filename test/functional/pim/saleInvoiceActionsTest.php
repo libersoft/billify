@@ -65,8 +65,8 @@ $browser->click('1')->
     checkElement('table th', 'Scorpora tasse', array('position' => 10))->
     checkElement('#cliente_id option', 20)->
     checkElement('#modo_pagamento_id option', 2)->
-    checkElement('#modo_pagamento_id option', 'Rimessa diretta', array('position' => 0))->
-    checkElement('#modo_pagamento_id option', '10 Giorni', array('position' => 1))->
+    checkElement('#modo_pagamento_id option', '10 Giorni', array('position' => 0))->
+    checkElement('#modo_pagamento_id option', 'Rimessa diretta', array('position' => 1))->
     checkElement('#vat option', 1)->
     checkElement('#vat option', '20%')->
   end()->
@@ -146,8 +146,8 @@ $browser->
     checkElement('input[type="checkbox"][name="proforma"][value="y"]')->
     checkElement('input[type="hidden"][name="num_fattura"][value="1"]')->
     checkElement('input[type="hidden"][name="data"][value="'.date('d/m/y', strtotime('tomorrow')).'"]')->
-    checkElement('select[name="modo_pagamento_id"] option', 'Rimessa diretta')->
-    checkElement('select[name="modo_pagamento_id"] option', '10 Giorni', array('position' => 1))->
+    checkElement('select[name="modo_pagamento_id"] option', '10 Giorni')->
+    checkElement('select[name="modo_pagamento_id"] option', 'Rimessa diretta', array('position' => 1))->
     checkElement('input[type="text"][name="sconto"][value="0"]')->
     checkElement('input[type="text"][name="sconto"][value="0"]')->
     checkElement('select[name="vat"] option', '20%')->

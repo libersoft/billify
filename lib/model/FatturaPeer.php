@@ -6,22 +6,15 @@ class FatturaPeer extends BaseFatturaPeer
   static $instance;
   static $user_id;
 
-  public static function doSelectRS(Criteria $criteria, $conn = null)
+  public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
   {
-    if (sfConfig::get('sf_app') != 'backend')
-    {
-      $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
-    }
-    return parent::doSelectStmt($criteria);
+    $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
+    return parent::doSelectStmt($criteria, $con);
   }
 
   public static function doCount(Criteria $criteria, $distinct = false, PropelPDO $con = null)
   {
-    if (sfConfig::get('sf_app') != 'backend')
-    {
-      $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
-    }
-
+    $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
     return parent::doCount($criteria, $distinct, $con);
   }
 

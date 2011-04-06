@@ -1,24 +1,15 @@
 <?php
 
-/**
- * Subclass for performing query and update operations on the 'contatto' table.
- *
- *
- *
- * @package lib.model
- */
 class ContattoPeer extends BaseContattoPeer
 {
-  /*public static function doSelectRS(Criteria $criteria, PropelPDO $conn = null)
-	{
-		if(sfConfig::get('sf_app') != 'backend') {
-			$criteria->add(ContattoPeer::ID_UTENTE ,sfContext::getInstance()->getUser()->getAttribute('id_utente'));
-    }
-		return parent::doSelectRS($criteria);
-	}*/
+  public static function doSelectStmt(Criteria $criteria, PropelPDO $con = null)
+  {
+    $criteria->add(self::ID_UTENTE, FatturaPeer::$user_id);
+    return parent::doSelectStmt($criteria, $con);
+  }
 
-	public static function doSelectClienti()
-	{
-	  return ClientePeer::doSelect(new Criteria());
-	}
+  public static function doSelectClienti()
+  {
+    return ClientePeer::doSelect(new Criteria());
+  }
 }

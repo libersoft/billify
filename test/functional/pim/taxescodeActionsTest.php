@@ -73,7 +73,6 @@ $browser->
   setField('codice_iva[valore]', '20')->
   setField('codice_iva[descrizione]', 'Iva al 20%')->
   click('Salva')->
-
   followRedirect();
 
 $browser->test()->todo('test tax validation');

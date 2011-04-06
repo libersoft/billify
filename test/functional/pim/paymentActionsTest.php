@@ -28,9 +28,9 @@ $browser->
     checkElement('table th', 'Num giorni', array('position' => 0))->
     checkElement('table th', 'Descrizione', array('position' => 1))->
     checkElement('table th', '', array('position' => 3))->
-    checkElement('table td', '0', array('position' => 0))->
+    checkElement('table td', '10', array('position' => 0))->
     checkElement('table td a', 4)->
-    checkElement('table td', 'Rimessa diretta', array('position' => 1))->
+    checkElement('table td', '10 Giorni', array('position' => 1))->
     checkElement('table td img')->
   end()->
 

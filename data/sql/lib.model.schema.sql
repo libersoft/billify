@@ -405,7 +405,7 @@ CREATE TABLE `utente`
 	`data_attivazione` DATE  NOT NULL,
 	`data_rinnovo` DATE  NOT NULL,
 	`tipo` VARCHAR(255)  NOT NULL,
-	`stato` VARCHAR(255) default 'attivo' NOT NULL,
+	`stato` VARCHAR(255),
 	`fattura` CHAR default '' NOT NULL,
 	`lastlogin` DATETIME  NOT NULL,
 	`approva_contratto` INTEGER default 0 NOT NULL,
