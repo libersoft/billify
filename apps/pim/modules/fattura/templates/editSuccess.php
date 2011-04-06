@@ -32,7 +32,7 @@
     <?php if($sf_user->getAttribute('modifica_num_fattura')):?>
       <tr>
         <th>Num fattura</th>
-        <td><?php echo object_input_tag($fattura,'getNumFattura',array('size' => 4))?></td>
+        <td><?php echo object_input_tag($fattura,'getPlainNumFattura',array('size' => 4))?></td>
         <?php if($sf_request->hasError('num_fattura')):?>
           <td class="validate-error">
             <?php echo image_tag('icons/icon_alert.gif')?>&nbsp;<?php echo $sf_request->getError('num_fattura')?>
@@ -44,12 +44,12 @@
         <th>Num fattura</th>
         <td>
           <?php echo link_to($fattura->getNumFattura(),'fattura/'.($fattura->getId()?'edit':'create').'?modifica_num_fattura=true&id_cliente='.$fattura->getClienteID().($fattura->getID()?'&id='.$fattura->getID():''))?>
-          <?php echo input_hidden_tag('num_fattura',$fattura->getNumFattura());?>
+          <?php echo input_hidden_tag('num_fattura', $fattura->getPlainNumFattura());?>
         </td>
       </tr>
     <?php endif ?>
   <?php else:?>
-    <?php echo input_hidden_tag('num_fattura',$fattura->getNumFattura())?>
+    <?php echo input_hidden_tag('num_fattura', $fattura->getPlainNumFattura())?>
   <?php endif ?>
 
   <tr>
