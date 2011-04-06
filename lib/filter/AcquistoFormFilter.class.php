@@ -17,6 +17,10 @@ class AcquistoFormFilter extends FatturaFormFilter
     parent::configure();
     
     $this->useFields(array('data', 'stato', 'categoria_id'));
+
+    $criteria = new Criteria;
+    $criteria->addAscendingOrderByColumn(CategoriaPeer::NOME);
+    $this->widgetSchema['categoria_id']->setOption('criteria', $criteria);
   }
 
   public function getRoute()
