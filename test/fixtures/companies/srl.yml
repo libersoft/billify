@@ -346,6 +346,7 @@ Acquisto:
     imponibile: '1000'
     imposte: '200'
     stato: 'n'
+    categoria_id: Categoria1
 <?php endfor?>
 <?php for($i = 3; $i < 7; $i++):?>
   Fattura_acquisto_<?php echo $i?>:
@@ -357,6 +358,7 @@ Acquisto:
     imponibile: '1200.34'
     imposte: '200.12'
     stato: 'n'
+    categoria_id: Categoria2
 <?php endfor?>
 <?php for($i = 7; $i < 10; $i++):?>
   Fattura_acquisto_<?php echo $i?>:
@@ -368,6 +370,7 @@ Acquisto:
     imponibile: '11200.34675'
     imposte: '2002.125'
     stato: 'n'
+    categoria_id: Categoria3
 <?php endfor?>
 
 <?php for($i = 1; $i < 10; $i++):?>
