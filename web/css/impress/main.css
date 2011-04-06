@@ -177,3 +177,5 @@ table td.red {background-color: red; color: #000;}
 #col-right .button-block { text-align: right; }
 
 .notice{ color:red; font-size: 70%; }
+
+.hiddenrow { display:none;}

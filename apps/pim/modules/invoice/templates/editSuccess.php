@@ -1,3 +1,5 @@
+<?php use_helper('Asset') ?>
+
 <div class="title">
   <h2>
     <?php echo __('nuova fattura d\'acquisto')?>
@@ -15,6 +17,7 @@
     </tr>
   </table>
 </form>
+<?php include_javascripts_for_form($form); ?>
 
 <?php
   slot('sidebar');
