@@ -32,7 +32,7 @@
     <?php if($sf_user->getAttribute('modifica_num_fattura')):?>
       <tr>
         <th>Num fattura</th>
-        <td><?php echo object_input_tag($fattura,'getPlainNumFattura',array('size' => 4))?></td>
+        <td><?php echo object_input_tag($fattura,'getPlainNumFattura',array('size' => 4, 'control_name' => 'num_fattura'))?></td>
         <?php if($sf_request->hasError('num_fattura')):?>
           <td class="validate-error">
             <?php echo image_tag('icons/icon_alert.gif')?>&nbsp;<?php echo $sf_request->getError('num_fattura')?>
