@@ -6,7 +6,7 @@
 <div class="title">
   <h2><?php echo __('Impostazioni')?>
   <?php if($sf_request->hasParameter('success')):?>
-    <span style="color:red;font-size: 70%;">- <?php echo $sf_request->getParameter('success')?></span>
+    <span class="notice">- <?php echo $sf_request->getParameter('success')?></span>
   <?php endif?>
   </h2>
 </div>
