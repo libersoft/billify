@@ -17,6 +17,7 @@ class AcquistoForm extends FatturaForm
     
     $providerCriteria = new Criteria();
     $providerCriteria->add(ContattoPeer::CLASS_KEY, ContattoPeer::CLASSKEY_FORNITORE);
+    $providerCriteria->addAscendingOrderByColumn(ContattoPeer::RAGIONE_SOCIALE);
 
     $this->widgetSchema['cliente_id']->setOption('criteria', $providerCriteria);
 
