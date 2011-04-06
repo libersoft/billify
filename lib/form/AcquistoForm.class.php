@@ -33,6 +33,7 @@ class AcquistoForm extends FatturaForm
     $this->widgetSchema->setLabel('modo_pagamento_id', 'Modo pagamento');
     $this->widgetSchema->setLabel('cliente_id', 'Fornitore');
     $this->widgetSchema->setLabel('num_fattura', 'N.');
+    $this->widgetSchema->setLabel('data_stato', 'Data pagamento');
 
     $this->setDefault('class_key', FatturaPeer::CLASSKEY_ACQUISTO);
     $this->setDefault('num_fattura', '');
