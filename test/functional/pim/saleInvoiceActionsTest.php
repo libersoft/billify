@@ -165,6 +165,26 @@ $browser->
     checkElement('table.edit th', 'Sconto 10%:', array('position' => 1))->
     checkElement('table.edit td', '-100 €', array('position' => 1))->
   end();
+  
+ $criteria = new Criteria();
+ $criteria->add(UtentePeer::USERNAME, 'user');
+
+ $user = UtentePeer::doSelectOne($criteria);
+ 
+ $settings = $user->getImpostazione();
+ $settings->setInvoiceDecoratorType('number_and_year');
+ $settings->save();
+ 
+ $new_invoice_date = strtotime('+1 year');
+ 
+ $browser->
+  click('modifica')->
+  setField('data', date('d/m/y', $new_invoice_date))->
+  click('Salva e vai ai dettagli')->
+  followRedirect()->
+  with('response')->begin()->
+    checkElement('h2', '/001-'.date('Y', $new_invoice_date).' del/')->
+  end();
 
 
 $browser->test()->todo('Test taxes payment');
