@@ -70,7 +70,7 @@ class invoiceActions extends sfActions
   {
     $factory = new FatturaFactoryForm();
     $this->form = $factory->build($request->getParameter('type'), FatturaPeer::retrieveByPk($request->getParameter('fattura[id]', $request->getParameter('id'))));
-
+    
     if($request->isMethod('post'))
     {
       $invoice = $this->update($request);
