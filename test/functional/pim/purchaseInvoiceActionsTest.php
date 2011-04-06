@@ -113,3 +113,14 @@ $browser->
     checkElement('td', '!/pagata/')->
     checkElement('.fatture tbody tr ', 3)->
   end();
+
+$criteria = new Criteria();
+$criteria->add(CategoriaPeer::NOME, 'Test Categoria 1', Criteria::EQUAL);
+
+$categoria = CategoriaPeer::doSelectOne($criteria);
+
+$browser->info('Filtro le fatture di acquisto per categoria')->
+  get('/invoices/purchase')->
+  setField('fattura_filters[categoria_id]', $categoria->getId())->
+  click('Filtra')->
+  checkResponseElement('table.fatture tbody tr', 2);
