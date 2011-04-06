@@ -16,7 +16,7 @@ class AcquistoFormFilter extends FatturaFormFilter
 
     parent::configure();
     
-    $this->useFields(array('data', 'stato')); 
+    $this->useFields(array('data', 'stato', 'categoria_id'));
   }
 
   public function getRoute()
