@@ -76,6 +76,7 @@ class invoiceActions extends sfActions
       $invoice = $this->update($request);
       if($invoice)
       {
+        $this->getUser()->setFlash('notice', 'invoice updated successfully');
         $this->redirect('invoice/edit?id='.$invoice->getId());
       }
     }

@@ -34,6 +34,7 @@ class AcquistoForm extends FatturaForm
     
     $this->validatorSchema['vat']->setOption('required', true);
     $this->validatorSchema['num_fattura']->setOption('required', true);
+    $this->validatorSchema['cliente_id']->setOption('required', true);
     
     unset(
       $this['id_utente'],

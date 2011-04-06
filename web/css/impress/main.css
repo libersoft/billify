@@ -175,3 +175,5 @@ table td.red {background-color: red; color: #000;}
 #col-right .button { margin-top: 5px; }
 #col-right hr { border: 1px solid #009900; margin-top: 5px; }
 #col-right .button-block { text-align: right; }
+
+.notice{ color:red; font-size: 70%; }

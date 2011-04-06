@@ -434,6 +434,10 @@
         <source>vat from %from_date% to %to_date%</source>
         <target>iva dal %from_date% al %to_date%</target>
       </trans-unit>
+      <trans-unit id="97">
+        <source>invoice updated successfully</source>
+        <target>fattura salvata con successo</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
