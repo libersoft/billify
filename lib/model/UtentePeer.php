@@ -25,6 +25,13 @@ class UtentePeer extends BaseUtentePeer
     return UtentePeer::doSelectOne($criteria);
   }
   
+  /**
+   *
+   * @deprecated
+   * @see myUser::getSettings()
+   * 
+   * @return type 
+   */
   public static function getImpostazione()
   {
     if (!sfContext::getInstance()->getUser()->hasAttribute('impostazioni'))

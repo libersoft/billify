@@ -143,18 +143,17 @@ $browser->
     checkElement('table th:contains("Calcola tasse")')->
     checkElement('table th:contains("Scorpora tasse")')->
     checkElement('table th:contains("Note")')->
-    checkElement('input[type="checkbox"][name="proforma"][value="y"]')->
-    checkElement('input[type="hidden"][name="num_fattura"][value="1"]')->
-    checkElement('input[type="hidden"][name="data"][value="'.date('d/m/y', strtotime('tomorrow')).'"]')->
-    checkElement('select[name="modo_pagamento_id"] option', 'Rimessa diretta')->
-    checkElement('select[name="modo_pagamento_id"] option', '10 Giorni', array('position' => 1))->
-    checkElement('input[type="text"][name="sconto"][value="0"]')->
-    checkElement('input[type="text"][name="sconto"][value="0"]')->
-    checkElement('select[name="vat"] option', '20%')->
-    checkElement('input[type="text"][name="spese_anticipate"][value="0"]')->
-    checkElement('select[name="calcola_ritenuta_acconto"] option[selected="selected"]', 'Auto')->
-    checkElement('select[name="calcola_tasse"] option[selected="selected"]', 'Si')->
-    checkElement('select[name="includi_tasse"] option[selected="selected"]', 'No')->
+    checkElement('input[type="checkbox"][name="vendita[proforma][]"][value="y"]')->
+    checkElement('input[type="hidden"][name="vendita[num_fattura]"][value="1"]')->
+    checkElement('input[type="hidden"][name="vendita[data]"][value="'.date('d/m/y', strtotime('tomorrow')).'"]')->
+    checkElement('select[name="vendita[modo_pagamento_id]"] option', 'Rimessa diretta')->
+    checkElement('select[name="vendita[modo_pagamento_id]"] option', '10 Giorni', array('position' => 1))->
+    checkElement('input[type="text"][name="vendita[sconto]"][value="0"]')->
+    checkElement('select[name="vendita[vat]"] option', '20%')->
+    checkElement('input[type="text"][name="vendita[spese_anticipate]"][value="0"]')->
+    checkElement('select[name="vendita[calcola_ritenuta_acconto]"] option[selected="selected"]', 'Auto')->
+    checkElement('select[name="vendita[calcola_tasse]"] option[selected="selected"]', 'Si')->
+    checkElement('select[name="vendita[includi_tasse]"] option[selected="selected"]', 'No')->
   end()->
   setField('sconto', '10')->
   click('Salva e vai ai dettagli')->
@@ -165,6 +164,28 @@ $browser->
     checkElement('table.edit th', 'Sconto 10%:', array('position' => 1))->
     checkElement('table.edit td', '-100 €', array('position' => 1))->
   end();
+ 
+ $browser->
+  click('fatture')->
+  click('2', array(), array('position' => 2))->
+  click('modifica')->
+  setField('data', date('d/m/y', strtotime('+4 days')))->
+  click('Salva e vai ai dettagli')->
+  with('response')->begin()->
+    checkElement('td[class="validate-error"]', 'La data di fattura deve essere compresa tra  e  ')->
+  end();
+
+ $browser->
+  setField('data', date('d/m/y'))->
+  click('Salva e vai ai dettagli')->
+  with('response')->begin()->
+    checkElement('td[class="validate-error"]', 'La data di fattura deve essere compresa tra e  ')->
+  end();
+
+ $browser->
+  setField('data', date('d/m/y', strtotime('+3 days')))->
+  click('Salva e vai ai dettagli')->
+  isRedirected();
   
  $criteria = new Criteria();
  $criteria->add(UtentePeer::USERNAME, 'user');

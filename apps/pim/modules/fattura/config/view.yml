@@ -41,6 +41,7 @@ editSuccess:
      
 all:
   has_layout: true
+  javascripts: [/sfJQueryUIPlugin/js/jquery-1.3.1.min.js, /sfJQueryUIPlugin/js/jquery-ui.js]
   components:
-       topbar: [main, topBar]
+    topbar: [main, topBar]
        

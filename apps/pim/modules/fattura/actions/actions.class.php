@@ -55,12 +55,13 @@ class fatturaActions extends sfActions
   {
     $this->fattura = VenditaPeer::retrieveByPk($this->getRequestParameter('id'));
     $this->forward404Unless($this->fattura instanceof Fattura);
-    $this->makeFattura();
+    $this->makeFattura($this->fattura);
   }
 
   public function executeUpdate()
   {
     $fattura = $this->getFatturaOrCreate();
+
     return $this->updateFattura($fattura);
   }
 
@@ -204,15 +205,17 @@ class fatturaActions extends sfActions
     return false;
   }
 
-  private function makeFattura()
+  private function makeFattura(Fattura $fattura = null)
   {
+    $this->form = new VenditaForm($fattura, array('user' => $this->getUser()));
+    
     if ($this->getRequestParameter('id_cliente'))
     {
       $this->id_cliente = $this->getRequestParameter('id_cliente');
       $this->cliente = ClientePeer::retrieveByPK($this->getRequestParameter('id_cliente'));
       $this->forward404Unless($this->cliente instanceof Cliente);
 
-      if ($this->fattura->isNew() && UtentePeer::getImpostazione()->getBoolFatturaAutomatica())
+      if ($this->fattura->isNew() && $this->getUser()->getSettings()->getBoolFatturaAutomatica())
       {
         $this->getRequest()->setParameter('cliente_id', $this->cliente->getID());
         $this->getRequest()->setParameter('modo_pagamento_id', $this->cliente->getModoPagamentoID());
