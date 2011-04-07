@@ -438,6 +438,10 @@
         <source>invoice updated successfully</source>
         <target>fattura salvata con successo</target>
       </trans-unit>
+      <trans-unit id="98">
+        <source>No entrances in cash flow.</source>
+        <target>Nessuna entrate nel cash flow.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

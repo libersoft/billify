@@ -84,9 +84,7 @@ $browser->
   followRedirect();
 
 $browser->test()->todo('test bank validation');
-  /*with('form')->begin()->
-
-  end()->*/
+  
 $browser->
   click('Annulla')->
   with('response')->begin()->
@@ -115,4 +113,13 @@ $browser->
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('td:contains("Banca del tempo2")')->
+  end();
+
+$browser->click('esci');
+$browser->
+  login('freelance', 'freelance')->
+  click('impostazioni')->
+  click('lista conti bancari')->
+  with('response')->begin()->
+    checkElement('#col-left p', '/Nessuna banca disponibile/')->
   end();

@@ -4,7 +4,7 @@ include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 $configuration = ProjectConfiguration::getApplicationConfiguration('pim', 'test', true);
 new sfDatabaseManager($configuration);
 
-$test = new lime_test(17, new lime_output_color());
+$test = new lime_test(28, new lime_output_color());
 
 $dettaglio1 = new DettagliFattura();
 $dettaglio1->setPrezzo(1000);
@@ -84,3 +84,35 @@ $fattura->setData('2011-01-10');
 $fattura->setUtente($user);
 
 $test->is($fattura->getNumFattura(), '1', '->getNumFattura() returns right value');
+
+$test->info('Ritenuta d\'acconto');
+
+$fattura = new Vendita();
+$test->is($fattura->getWithHoldingTaxPercentage(), '0/100', '->getWithHoldingTaxPercentage() returns right value');
+$test->is($fattura->getCalcolaRitenutaAcconto(), 'a', '->getCalcolaRitenutaAcconto() returns right value');
+$test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+$fattura->setWithHoldingTaxPercentage('20/100');
+$test->ok($fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$fattura->setCalcolaRitenutaAcconto('n');
+$test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$fattura->setCalcolaRitenutaAcconto('s');
+$test->ok($fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$customer = new Cliente();
+$customer->setAzienda('n');
+$fattura->setCliente($customer);
+$test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$customer->setAzienda('s');
+$test->ok($fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$customer->setCalcolaRitenutaAcconto('n');
+$test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$customer->setCalcolaRitenutaAcconto('s');
+$test->ok($fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$fattura->setWithHoldingTaxPercentage('0/100');
+$test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');

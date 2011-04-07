@@ -66,6 +66,5 @@ $browser->
   login('freelance', 'freelance')->
   with('response')->begin()->
     checkElement('#nav', '/benvenuto freelance/')->
-    checkElement('#col-right ul li', '/0,00/')->
-    checkElement('#col-right ul li', '/0,00\)/')->
+    checkElement('#col-right ul li', 'entrate: € 0,00 (€ 0,00)')->
   end();

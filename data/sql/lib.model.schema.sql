@@ -232,7 +232,7 @@ CREATE TABLE `impostazione`
 	`num_clienti` INTEGER default 20 NOT NULL,
 	`num_fatture` INTEGER default 20 NOT NULL,
 	`righe_dettagli` INTEGER default 5 NOT NULL,
-	`ritenuta_acconto` VARCHAR(255) default '20/100' NOT NULL,
+	`ritenuta_acconto` VARCHAR(255) default '0/100' NOT NULL,
 	`tipo_ritenuta` VARCHAR(255) default 'debito' NOT NULL,
 	`riepilogo_home` CHAR default 's' NOT NULL,
 	`consegna_commercialista` CHAR default 'n' NOT NULL,
