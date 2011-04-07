@@ -33,7 +33,7 @@ $browser->
   click('2')->
   checkResponseElement('table tr td', '10/8', array('position' => 1))->
   click('aggiungi una nuova fattura d\'acquisto')->
-  checkResponseElement('h2', 'nuova fattura d\'acquisto')->
+  checkResponseElement('h2', '/nuova fattura d\'acquisto/')->
   checkResponseElement('label[for="fattura_num_fattura"]', 'N.')->
   checkResponseElement('input[type="text"][id="fattura_num_fattura"]')->
   checkResponseElement('label[for="fattura_cliente_id"]', 'Fornitore')->
@@ -68,10 +68,29 @@ $browser->
     checkElement('select[id="fattura_categoria_id"] option', 'Test Categoria 3', array('position' => 3))->
   end();
 
+$criteria = new Criteria();
+$criteria->add(ContattoPeer::CLASS_KEY, ContattoPeer::CLASSKEY_FORNITORE);
+$provider = ContattoPeer::doSelectOne($criteria);
+
+$browser->
+  setField('fattura[num_fattura]', 'AAABBB11')->
+  setField('fattura[data][day]', '01')->
+  setField('fattura[data][month]', '01')->
+  setField('fattura[data][year]', '2011')->
+  setField('fattura[cliente_id]', $provider->getId())->
+  click('Salva')->
+  with('form')->begin()->
+    hasErrors(false)->
+  end()->
+  followRedirect()->
+  with('response')->begin()->
+    checkElement('span.notice', '/fattura salvata con successo/')->
+  end();
+
 $browser->
   post('/invoices/purchase/create', array('fattura' => array()))->
   with('response')->begin()->
-    checkElement('ul.error_list', 3)->
+    checkElement('ul.error_list', 4)->
   end();
 
 $browser->
@@ -85,7 +104,7 @@ $browser->
   click('Filtra')->
   with('response')->begin()->
     checkElement('td', '!/pagata/')->
-    checkElement('.fatture tbody tr ', 9)->
+    checkElement('.fatture tbody tr ', 10)->
   end()->
   setField('fattura_filters[data][from]', date('d/m/Y', strtotime('-1 month')))->
   setField('fattura_filters[data][to]', date('t/m/Y', strtotime('-1 month')))->
@@ -94,3 +113,14 @@ $browser->
     checkElement('td', '!/pagata/')->
     checkElement('.fatture tbody tr ', 3)->
   end();
+
+$criteria = new Criteria();
+$criteria->add(CategoriaPeer::NOME, 'Test Categoria 1', Criteria::EQUAL);
+
+$categoria = CategoriaPeer::doSelectOne($criteria);
+
+$browser->info('Filtro le fatture di acquisto per categoria')->
+  get('/invoices/purchase')->
+  setField('fattura_filters[categoria_id]', $categoria->getId())->
+  click('Filtra')->
+  checkResponseElement('table.fatture tbody tr', 2);
