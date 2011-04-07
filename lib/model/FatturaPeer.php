@@ -46,4 +46,9 @@ class FatturaPeer extends BaseFatturaPeer
     return self::doSelect($criteria);
   }
 
+  public static function retrieveUserId()
+  {
+    return FatturaPeer::$user_id;
+  }
+
 }

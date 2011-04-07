@@ -27,7 +27,7 @@
 <?php foreach ($pager->getResults() as $invoice): ?>
   <tr>
     <td><input type="checkbox" name="delete[]" value="<?php echo $invoice->getId()?>"></td>
-    <td><?php echo link_to($invoice->getNumFattura(), 'invoice/edit?id='.$invoice->getId()) ?></td>
+    <td><?php echo link_to($invoice->getNumberDecorated(), 'invoice/edit?id='.$invoice->getId()) ?></td>
     <td style="text-align: left"><?php echo link_to($invoice->getCliente()->getRagioneSociale(), 'contact/edit?id='.$invoice->getCliente()->getId()) ?></td>
     <td><?php echo $invoice->getData('d/m/Y') ?></td>
     <td><?php echo format_currency($invoice->getImponibile(), 'EUR'); ?></td>

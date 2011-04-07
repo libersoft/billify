@@ -12,10 +12,15 @@ class bfTestUnit extends lime_test
     $this->context = sfContext::createInstance($this->configuration);
   }
 
-  public function loadData()
+  public function loadData($file = null)
   {
+    if(!$file)
+    {
+      $file = sfConfig::get('sf_test_dir').'/fixtures/companies/srl.yml';
+    }
+
     $data = new sfPropelData();
-    $data->loadData(sfConfig::get('sf_test_dir').'/fixtures/companies/srl.yml');
+    $data->loadData($file);
   }
 
   public function signin($username)
@@ -24,7 +29,14 @@ class bfTestUnit extends lime_test
     $criteria->add(UtentePeer::USERNAME , $username);
     $user = UtentePeer::doSelectOne($criteria);
 
+    if (!$user)
+    {
+      throw new Exception('User '.$username.' does not exists');
+    }
+    
     $this->context->getUser()->signin($user);
+    
+    return $user;
   }
 
   public function getContext()

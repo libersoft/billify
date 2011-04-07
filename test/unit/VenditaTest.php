@@ -1,9 +1,6 @@
 <?php
 include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 
-$configuration = ProjectConfiguration::getApplicationConfiguration('pim', 'test', true);
-new sfDatabaseManager($configuration);
-
 $test = new lime_test(32, new lime_output_color());
 
 $dettaglio1 = new DettagliFattura();
@@ -71,6 +68,7 @@ $test->is($fattura->getFontColorStato(), 'black', '->getFontColorStato() returns
 
 $test->comment('Limite caratteri nel numero di fattura');
 $fattura = new Vendita();
+$fattura->setValidate(false);
 $fattura->setNumFattura('123456789012');
 $fattura->save();
 

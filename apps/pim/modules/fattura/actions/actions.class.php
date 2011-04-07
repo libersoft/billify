@@ -39,8 +39,7 @@ class fatturaActions extends sfActions
     }
 
     $this->fattura = new Vendita();
-    $this->fattura->setData(time());
-    $this->fattura->setNewNumFattura();
+    
     if ($this->id_cliente)
     {
       $this->fattura->setModoPagamentoId($this->cliente->getModoPagamentoID());
@@ -258,7 +257,8 @@ class fatturaActions extends sfActions
     if (date('y', strtotime($fattura->getData())) != date('y', mktime(0, 0, 0, $m, $d, $y)))
     {
       $fattura->setNewNumFattura();
-    } else
+    }
+    else
     {
       $fattura->setNumFattura($this->getRequestParameter('num_fattura'));
     }
