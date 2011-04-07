@@ -60,3 +60,11 @@ $browser->
     checkElement('ul.ul-list li', '/100.802,70/', array('position' => 1))->
     checkElement('ul.ul-list li', '/100.802,70/', array('position' => 2))->
   end();
+
+$browser->click('esci');
+$browser->
+  login('freelance', 'freelance')->
+  with('response')->begin()->
+    checkElement('#nav', '/benvenuto freelance/')->
+    checkElement('#col-right ul li', 'entrate: € 0,00 (€ 0,00)')->
+  end();

@@ -54,6 +54,11 @@ class cashflowActions extends sfActions
     $this->pager = new CashFlowPaginator($this->cf);
     $this->pager->setLimit('10');
     $this->pager->setPage($request->getParameter('page', 1));
+
+    if (!$this->pager->getCountAllResults())
+    {
+      return 'NoResults';
+    }
     
     if ($request->getParameter('page') != 'all')
     {

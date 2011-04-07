@@ -1,6 +1,5 @@
 <?php
 include_once(dirname(__FILE__).'/../bootstrap/unit.php');
-include_once(dirname(__FILE__).'/../../lib/decorator/NumberAndYearInvoiceDecorator.class.php');
 
 $test = new lime_test(4, new lime_output_color());
 

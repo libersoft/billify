@@ -2,10 +2,17 @@ Utente:
   Utente_1: 
     username: user
     password: user
-    
+    stato: attivo
+  freelance:
+    username: freelance
+    password: freelance
+    stato: attivo
+
 Impostazione: 
   Impostazione: 
     id_utente: Utente_1
+  impostazione_freelance:
+    id_utente: freelance
     
 ModoPagamento: 
   ModoPagamento_1: 

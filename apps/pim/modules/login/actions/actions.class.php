@@ -38,7 +38,7 @@ class loginActions extends sfActions
 
     $utente = UtentePeer::doSelectOne($criteria);
 
-    if (!is_null($utente) && $utente->getStato() != 'disattivo')
+    if (!is_null($utente) && $utente->isActive())
     {
       $this->getUser()->signin($utente);
 

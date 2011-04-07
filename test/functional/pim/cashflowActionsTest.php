@@ -1,11 +1,8 @@
 <?php
 include_once(dirname(__FILE__).'/../../bootstrap/functional.php');
 
-$data = new sfPropelData();
-$data->loadData(sfConfig::get('sf_test_dir').'/fixtures/cashflow.yml');
-
-$browser = new sfTestBrowser();
-$browser->initialize();
+$browser = new bfTestFunctional(new sfBrowser());
+$browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/cashflow.yml');
 
 $browser->
   get('/')->
@@ -87,4 +84,10 @@ $browser->
   end()
 ;
 
-?>
+$browser->click('esci');
+$browser->
+  login('freelance', 'freelance')->
+  click('cash flow')->
+  with('response')->begin()->
+    checkElement('#col-left p', '/Nessuna entrate nel cash flow./')->
+  end();

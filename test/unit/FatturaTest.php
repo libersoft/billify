@@ -4,7 +4,7 @@ include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 $configuration = ProjectConfiguration::getApplicationConfiguration('pim', 'test', true);
 new sfDatabaseManager($configuration);
 
-$test = new lime_test(17, new lime_output_color());
+$test = new lime_test(32, new lime_output_color());
 
 $dettaglio1 = new DettagliFattura();
 $dettaglio1->setPrezzo(1000);
@@ -73,7 +73,6 @@ $test->comment('Limite caratteri nel numero di fattura');
 $fattura = new Vendita();
 $fattura->setNumFattura('123456789012');
 $fattura->save();
-$fattura->reload();
 
 $test->is($fattura->getNumFattura(), '123456789012', '->getNumFattura() returns right value');
 
@@ -85,3 +84,47 @@ $fattura->setData('2011-01-10');
 $fattura->setUtente($user);
 
 $test->is($fattura->getNumFattura(), '1', '->getNumFattura() returns right value');
+
+$test->info('Ritenuta d\'acconto');
+
+$fattura = new Vendita();
+$test->is($fattura->getWithHoldingTaxPercentage(), '0/100', '->getWithHoldingTaxPercentage() returns right value');
+$test->is($fattura->getCalcolaRitenutaAcconto(), 'a', '->getCalcolaRitenutaAcconto() returns right value');
+$test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+$fattura->setWithHoldingTaxPercentage('20/100');
+$test->ok($fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$fattura->setCalcolaRitenutaAcconto('n');
+$test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$fattura->setCalcolaRitenutaAcconto('s');
+$test->ok($fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$customer = new Cliente();
+$customer->setAzienda('n');
+$fattura->setCliente($customer);
+$test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$customer->setAzienda('s');
+$test->ok($fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$customer->setCalcolaRitenutaAcconto('n');
+$test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$customer->setCalcolaRitenutaAcconto('s');
+$test->ok($fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$fattura->setWithHoldingTaxPercentage('0/100');
+$test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$fattura->addDettagliFattura($dettaglio1);
+$fattura->addDettagliFattura($dettaglio2);
+$fattura->calcolaFattura(array(), DEBITO, '20/100');
+
+$test->is($fattura->getRitenutaAcconto(), '-800', '->getRitenutaAcconto() returns right value');
+$test->is($fattura->getNettoDaLiquidare(), '3800', '->getNettoDaLiquidare() returns right value');
+
+$fattura->reset();
+$fattura->calcolaFattura(array(), CREDITO, '20/100');
+$test->is($fattura->getRitenutaAcconto(), '800', '->getRitenutaAcconto() returns right value');
+$test->is($fattura->getNettoDaLiquidare(), '5400', '->getNettoDaLiquidare() returns right value');

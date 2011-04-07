@@ -68,6 +68,8 @@ class taxescodeActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
+      $codice_iva = $form->getObject();
+      $codice_iva->setIdUtente($this->getUser()->getId());
       $codice_iva = $form->save();
 
       $this->redirect('taxescode/edit?id='.$codice_iva->getId());
