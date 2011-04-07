@@ -16,22 +16,17 @@ class VenditaPeer extends FatturaPeer
     }
     return self::$instance;
   }
-  
-  public static function doSelect(Criteria $criteria, PropelPDO $con = null)
-  {
-    return VenditaPeer::populateObjects(VenditaPeer::doSelectRS($criteria, $con));
-  }
 
   public static function doCount(Criteria $criteria, $distinct = false, PropelPDO $con = null)
   {
     $criteria->add(VenditaPeer::CLASS_KEY, VenditaPeer::CLASSKEY_VENDITA);
     return parent::doCount($criteria, $distinct, $con);
   }
-  
-  public static function doSelectRS(Criteria $criteria, $conn = null)
+
+  public static function doSelect(Criteria $criteria, PropelPDO $con = null)
   {
     $criteria->add(VenditaPeer::CLASS_KEY, VenditaPeer::CLASSKEY_VENDITA);
-    return parent::doSelectRS($criteria);
+    return parent::doSelect($criteria, $con);
   }
 
   public static function doSelectJoinAllExceptModoPagamento(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
@@ -55,7 +50,7 @@ class VenditaPeer extends FatturaPeer
     $criteria->addSelectColumn('year('.VenditaPeer::DATA.') as year');
     $criteria->setDistinct();
     $criteria->addDescendingOrderByColumn(VenditaPeer::DATA);
-    $rs = VenditaPeer::doSelectRS($criteria);
+    $rs = VenditaPeer::doSelectStmt($criteria);
     $results = $rs->fetchAll(PDO::FETCH_COLUMN);
 
     $anni = array();

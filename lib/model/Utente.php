@@ -1,18 +1,5 @@
 <?php
 
-require_once 'lib/model/om/BaseUtente.php';
-
-/**
- * Skeleton subclass for representing a row from the 'utente' table.
- *
- * 
- *
- * You should add additional methods to this class to meet the
- * application requirements.  This class will only be generated as
- * long as it does not already exist in the output directory.
- *
- * @package model
- */
 class Utente extends BaseUtente
 {
   const DEMO = 'demo';
@@ -22,26 +9,27 @@ class Utente extends BaseUtente
 
   public function __toString()
   {
-    return $this->getUsername();
+    if ($this->nome && $this->cognome)
+    {
+      return $this->nome.' '.$this->cognome;
+    }
+    
+    return (string)$this->getUsername();
   }
 
-  /**
-   * Set the value of [password] column.
-   * 
-   * @param string $v new value
-   * @return void
-   */
+  public function isActive()
+  {
+    return $this->stato == 'attivo';
+  }
+
   public function setPassword($v)
   {
-
     if ($this->password !== $v || $v === '')
     {
       $this->password = md5($v);
       $this->modifiedColumns[] = UtentePeer::PASSWORD;
     }
   }
-
-// setPassword()
 
   public static function generatePassword($length = 8)
   {
@@ -105,10 +93,9 @@ class Utente extends BaseUtente
     if (!is_null($this->getIdInvitationCode()))
     {
       return 'Si';
-    } else
-    {
-      return 'No';
     }
+
+    return 'No';
   }
 
   public function getScontoLabel()
@@ -160,9 +147,11 @@ class Utente extends BaseUtente
   public function checkDemo()
   {
     if ($this->getGiorniDemoRimasti() <= 0)
+    {
       return true;
-    else
-      return false;
+    }
+
+    return false;
   }
 
   public function getDataScadenza()
@@ -171,7 +160,4 @@ class Utente extends BaseUtente
     $data_scadenza = mktime(0, 0, 0, $mese + 1, $giorno, $anno);
     return date('d/m/y', $data_scadenza);
   }
-
 }
-
-// Utente

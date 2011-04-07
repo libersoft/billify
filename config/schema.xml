@@ -186,7 +186,7 @@
     <column name="num_clienti" type="INTEGER" required="true" default="20" />
     <column name="num_fatture" type="INTEGER" required="true" default="20" />
     <column name="righe_dettagli" type="INTEGER" required="true" default="5" />
-    <column name="ritenuta_acconto" type="VARCHAR" size="255" required="true" default="20/100" />
+    <column name="ritenuta_acconto" type="VARCHAR" size="255" required="true" default="0/100" />
     <column name="tipo_ritenuta" type="VARCHAR" size="255" required="true" default="debito" />
     <column name="riepilogo_home" type="CHAR" required="true" default="s" />
     <column name="consegna_commercialista" type="CHAR" required="true" default="n" />
@@ -304,7 +304,7 @@
     <column name="data_attivazione" type="DATE" required="true" />
     <column name="data_rinnovo" type="DATE" required="true" />
     <column name="tipo" type="VARCHAR" size="255" required="true" />
-    <column name="stato" type="VARCHAR" size="255" required="true" default="attivo" />
+    <column name="stato" type="VARCHAR" size="255" required="false" default="null" />
     <column name="fattura" type="CHAR" required="true" default="" />
     <column name="lastlogin" type="TIMESTAMP" required="true" />
     <column name="approva_contratto" type="INTEGER" required="true" default="0" />

@@ -1,0 +1,9 @@
+Utente:
+  freelance:
+    username: freelance
+    password: freelance
+    stato: attivo
+
+Impostazione:
+  impostazione_freelance:
+    id_utente: freelance

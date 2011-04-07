@@ -472,3 +472,4 @@ Tassa:
     nome: tassa
     valore: 20
     descrizione: descrizione
+    id_utente: Utente_1

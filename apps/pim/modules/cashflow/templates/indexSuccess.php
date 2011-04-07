@@ -2,12 +2,7 @@
   <h2><?php echo __('Cash Flow')?></h2>
 </div>
 
-<div class="filter">
-  <form method="get">
-    <?php echo $filter ?>
-    <input type="submit" value="<?php echo __('Filter')?>" />
-  </form>
-</div>
+<?php include_partial('cashflow/filter', array('filter' => $filter))?>
 
 <?php include_partial('cashflow/pager', array('pager' => $pager))?>
 

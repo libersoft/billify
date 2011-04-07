@@ -5,7 +5,7 @@ class Vendita extends Fattura
   
   const PEER = 'VenditaPeer';
 
-  private $pattern;
+  private $with_holding_tax_percentage = '0/100';
 
   public function __construct()
   {
@@ -50,4 +50,51 @@ class Vendita extends Fattura
 
     return $this->num_fattura;
   }
+
+  public function checkWithHoldingTax()
+  {
+    list($percentage,) = explode('/', $this->with_holding_tax_percentage);
+    
+    if ($this->getCalcolaRitenutaAcconto() == 'n' || 
+       ($this->getCliente() && ($this->getCliente()->getAzienda() != 's' || $this->getCliente()->getCalcolaRitenutaAcconto() == 'n')) ||
+       0 === (int)$percentage)
+    {
+      return false;
+    }
+    return true;
+  }
+
+  public function getWithHoldingTaxPercentage()
+  {
+    return $this->with_holding_tax_percentage;
+  }
+
+  public function setWithHoldingTaxPercentage($v)
+  {
+    $this->with_holding_tax_percentage = $v;
+  }
+
+  public function calcolaFattura($tasse_ulteriori = array(), $tipo_ritenuta = null, $ritenuta_acconto = null)
+  {
+    $this->setWithHoldingTaxPercentage($ritenuta_acconto);
+    parent::calcolaFattura($tasse_ulteriori, $tipo_ritenuta, $ritenuta_acconto);
+  }
+
+  public function reset()
+  {
+    $this->calcola = false;
+    $this->imponibile = 0;
+    $this->imponibile_scorporato = 0;
+    $this->imponibile_fine_iva = 0;
+    $this->sconto_totale = 0;
+    $this->tasse_ulteriori = array();
+    $this->tasse_ulteriori_array = array();
+    $this->ritenuta_acconto = 0;
+    $this->iva = 0;
+    $this->totale = 0;
+    $this->calcola = false;
+    $this->tipo_ritenuta;
+    $this->costo_tasse_ulteriori = 0;
+  }
+
 }

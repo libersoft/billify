@@ -1,23 +1,6 @@
 <?php
 include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 
-include_once(dirname(__FILE__).'/../../lib/model/DettagliFatturaPeer.php');
-include_once(dirname(__FILE__).'/../../lib/model/DettagliFattura.php');
-
-include_once(dirname(__FILE__).'/../../lib/model/om/BaseFatturaPeer.php');
-include_once(dirname(__FILE__).'/../../lib/model/FatturaPeer.php');
-include_once(dirname(__FILE__).'/../../lib/model/om/BaseFattura.php');
-include_once(dirname(__FILE__).'/../../lib/model/Fattura.php');
-
-include_once(dirname(__FILE__).'/../../lib/model/Vendita.php');
-include_once(dirname(__FILE__).'/../../lib/model/Acquisto.php');
-
-include_once(dirname(__FILE__).'/../../lib/adapter/ICashFlowAdapter.class.php');
-include_once(dirname(__FILE__).'/../../lib/adapter/AbstractCashFlowAdapter.class.php');
-include_once(dirname(__FILE__).'/../../lib/adapter/CashFlowPurchaseAdapter.class.php');
-include_once(dirname(__FILE__).'/../../lib/adapter/CashFlowSalesAdapter.class.php');
-include_once(dirname(__FILE__).'/../../lib/CashFlow.class.php');
-
 $test = new lime_test(20, new lime_output_color());
 
 $a1 = new Acquisto();
