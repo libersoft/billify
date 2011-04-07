@@ -47,11 +47,26 @@ $browser->
   setField('contatto[ragione_sociale]', 'Lapislazzolo Sas')->
   click('Salva')->
   followRedirect()->
+
+  info('insert new sale invoice')->
   click('nuova fattura')->
   followRedirect()->
+
+  post('dettagliFattura/update',
+      array(
+        'ids_new' => array(''),
+        'qty_new' => array(1),
+        'descrizione_new' => array('Test'),
+        'prezzo_new' => array('1000'),
+        'sconto_new' => array('0'),
+        'iva_new' => array('20'),
+        'fattura_id' => $browser->getRequest()->getParameter('id')
+      )
+  )->
+  get('/')->click('fatture')->click('1')->
   with('response')->begin()->
     checkElement('table.edit th', 'Ritenuta d\'acconto:', array('position' => '4'))->
-    checkElement('table.edit td', '/0,00/', array('position' => '4'))->
+    checkElement('table.edit td', '/200,00/', array('position' => '4'))->
     checkElement('table.edit td', '/-/', array('position' => '4'))->
   end()->
   click('impostazioni')->
@@ -63,8 +78,7 @@ $browser->
   with('response')->begin()->
     checkElement('table.edit th', '!/Ritenuta d\'acconto/', array('position' => '4'))->
   end()->
-
-  info('insert new sale invoice')->
+  
   info('insert new provider')->
   info('insert new purchase invoice')->
   info('insert new entrance')->

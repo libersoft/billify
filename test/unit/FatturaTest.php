@@ -4,7 +4,7 @@ include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 $configuration = ProjectConfiguration::getApplicationConfiguration('pim', 'test', true);
 new sfDatabaseManager($configuration);
 
-$test = new lime_test(28, new lime_output_color());
+$test = new lime_test(32, new lime_output_color());
 
 $dettaglio1 = new DettagliFattura();
 $dettaglio1->setPrezzo(1000);
@@ -116,3 +116,15 @@ $test->ok($fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right
 
 $fattura->setWithHoldingTaxPercentage('0/100');
 $test->ok(!$fattura->checkWithHoldingTax(), '->checkWithHoldingTax() return right value');
+
+$fattura->addDettagliFattura($dettaglio1);
+$fattura->addDettagliFattura($dettaglio2);
+$fattura->calcolaFattura(array(), DEBITO, '20/100');
+
+$test->is($fattura->getRitenutaAcconto(), '-800', '->getRitenutaAcconto() returns right value');
+$test->is($fattura->getNettoDaLiquidare(), '3800', '->getNettoDaLiquidare() returns right value');
+
+$fattura->reset();
+$fattura->calcolaFattura(array(), CREDITO, '20/100');
+$test->is($fattura->getRitenutaAcconto(), '800', '->getRitenutaAcconto() returns right value');
+$test->is($fattura->getNettoDaLiquidare(), '5400', '->getNettoDaLiquidare() returns right value');

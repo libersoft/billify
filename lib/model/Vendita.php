@@ -79,4 +79,22 @@ class Vendita extends Fattura
     $this->setWithHoldingTaxPercentage($ritenuta_acconto);
     parent::calcolaFattura($tasse_ulteriori, $tipo_ritenuta, $ritenuta_acconto);
   }
+
+  public function reset()
+  {
+    $this->calcola = false;
+    $this->imponibile = 0;
+    $this->imponibile_scorporato = 0;
+    $this->imponibile_fine_iva = 0;
+    $this->sconto_totale = 0;
+    $this->tasse_ulteriori = array();
+    $this->tasse_ulteriori_array = array();
+    $this->ritenuta_acconto = 0;
+    $this->iva = 0;
+    $this->totale = 0;
+    $this->calcola = false;
+    $this->tipo_ritenuta;
+    $this->costo_tasse_ulteriori = 0;
+  }
+
 }
