@@ -22,6 +22,12 @@
 </div>
 <?php endif ?>
 
+<?php if (isset($error_message)): ?>
+  <ul class="list-error">
+    <li><?php echo $error_message; ?></li>
+  </ul>
+<?php endif; ?>
+
 <table class="edit" width="100%">
 <tbody>
   <tr>

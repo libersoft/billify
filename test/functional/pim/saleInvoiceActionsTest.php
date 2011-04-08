@@ -128,7 +128,7 @@ $browser->info('Edit invoice of sale');
 
 $browser->
   click('fatture')->
-  click('1')->
+  click('3')->
   click('modifica')->
   with('response')->begin()->
     checkElement('table th:contains("Pro forma")')->
@@ -144,8 +144,8 @@ $browser->
     checkElement('table th:contains("Scorpora tasse")')->
     checkElement('table th:contains("Note")')->
     checkElement('input[type="checkbox"][name="proforma"][value="y"]')->
-    checkElement('input[type="hidden"][name="num_fattura"][value="1"]')->
-    checkElement('input[type="hidden"][name="data"][value="'.date('d/m/y', strtotime('tomorrow')).'"]')->
+    checkElement('input[type="hidden"][name="num_fattura"][value="3"]')->
+    checkElement('input[type="hidden"][name="data"][value="'.date('d/m/y', strtotime('+3 days')).'"]')->
     checkElement('select[name="modo_pagamento_id"] option', '10 Giorni')->
     checkElement('select[name="modo_pagamento_id"] option', 'Rimessa diretta', array('position' => 1))->
     checkElement('input[type="text"][name="sconto"][value="0"]')->
@@ -156,7 +156,14 @@ $browser->
     checkElement('select[name="calcola_tasse"] option[selected="selected"]', 'Si')->
     checkElement('select[name="includi_tasse"] option[selected="selected"]', 'No')->
   end()->
+  click('3')->
   setField('sconto', '10')->
+  setField('num_fattura', '1')->
+  click('Salva e vai ai dettagli')->
+  with('response')->begin()->
+    checkElement('ul.list-error')->
+  end()->
+  setField('num_fattura', '3')->
   click('Salva e vai ai dettagli')->
   followRedirect()->
   with('response')->begin()->
@@ -183,7 +190,7 @@ $browser->
   click('Salva e vai ai dettagli')->
   followRedirect()->
   with('response')->begin()->
-    checkElement('h2', '/001-'.date('Y', $new_invoice_date).' del/')->
+    checkElement('h2', '/003-'.date('Y', $new_invoice_date).' del/')->
   end();
 
 

@@ -26,15 +26,26 @@ class Vendita extends Fattura
     $this->setNewNumFattura();
   }
 
+
   protected function validation($columns = null)
   {
     if (!$this->validate)
     {
       return;
     }
-    
-    $num_fattura_validator = new sfValidatorPropelUnique(array('model' => 'Fattura', 'column' => array('num_fattura', 'anno')));
-    $num_fattura_validator->clean(array('id' => $this->getId(), 'num_fattura' => $this->num_fattura, 'anno' => $this->getAnno()));
+
+    //$num_fattura_validator = new bfValidatorConsecutiveInteger(array('latest' => $this->max));
+    //$num_fattura_validator->clean($this->num_fattura);
+
+    try
+    {
+      $num_fattura_validator = new sfValidatorPropelUnique(array('model' => 'Fattura', 'column' => array('num_fattura', 'anno')));
+      $num_fattura_validator->clean(array('id' => $this->getId(), 'num_fattura' => $this->num_fattura, 'anno' => $this->getAnno()));
+    }
+    catch(sfValidatorError $e)
+    {
+      throw new Exception('Esiste già una fattura con lo stesso numero');
+    }
 
     if ($this->isProForma())
     {
@@ -59,12 +70,13 @@ class Vendita extends Fattura
     
     if (FatturaPeer::doCount($criteria) > 0)
     {
-      throw new Exception('1 - Some errors occured with '.$this->num_fattura);
+      throw new Exception('La data della fattura deve essere consecutiva alle fatture già emesse');
     };
 
     if ($this->max && ($this->num_fattura - $this->max) > 1)
     {
-      throw new Exception('2 - Some errors occurred with '.$this->num_fattura);
+
+      throw new Exception('Il numero della fattura deve essere consecutivo all\'ultimo numero emesso');
     }
     
   }

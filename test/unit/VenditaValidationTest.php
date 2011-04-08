@@ -61,7 +61,7 @@ try
   $fattura->save();
   $test->fail($message);
 }
-catch(sfValidatorError $e)
+catch(Exception $e)
 {
   $test->pass($message);
 }

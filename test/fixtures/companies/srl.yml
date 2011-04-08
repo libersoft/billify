@@ -321,7 +321,7 @@ Vendita:
     id_utente: Utente_1
     num_fattura: '<?php echo $i?>'
     cliente_id: Cliente_2
-    data: '<?php echo date('Y-m-d', strtotime('today'))?>'
+    data: '<?php echo date('Y-m-d', strtotime("+$i days"))?>'
     modo_pagamento_id: ModoPagamento_2
     stato: i
     vat: 20
