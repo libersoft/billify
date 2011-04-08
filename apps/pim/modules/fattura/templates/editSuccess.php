@@ -5,7 +5,7 @@
   <?php if($fattura->isProForma()):?>
     pro-forma
   <?php else:?>
-    n. <?php echo $fattura->getNumFattura() ?>&nbsp;
+    n. <?php echo $fattura->getNumberDecorated() ?>&nbsp;
   <?php endif?>
   del <?php echo format_date($fattura->getData()); ?>
   </h2>
@@ -21,6 +21,12 @@
   Correggi i seguenti errori e salva i dati di nuovo:</p>
 </div>
 <?php endif ?>
+
+<?php if (isset($error_message)): ?>
+  <ul class="list-error">
+    <li><?php echo $error_message; ?></li>
+  </ul>
+<?php endif; ?>
 
 <table class="edit" width="100%">
 <tbody>
@@ -43,7 +49,7 @@
       <tr>
         <th>Num fattura</th>
         <td>
-          <?php echo link_to($fattura->getNumFattura(),'fattura/'.($fattura->getId()?'edit':'create').'?modifica_num_fattura=true&id_cliente='.$fattura->getClienteID().($fattura->getID()?'&id='.$fattura->getID():''))?>
+          <?php echo link_to($fattura->getNumberDecorated(),'fattura/'.($fattura->getId()?'edit':'create').'?modifica_num_fattura=true&id_cliente='.$fattura->getClienteID().($fattura->getID()?'&id='.$fattura->getID():''))?>
           <?php echo input_hidden_tag('num_fattura', $fattura->getPlainNumFattura());?>
         </td>
       </tr>

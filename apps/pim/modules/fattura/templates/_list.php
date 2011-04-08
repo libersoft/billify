@@ -70,7 +70,7 @@ foreach ($fatture_results as $fattura) :
 <?php if($fattura->isProForma()):?>
   <?php echo link_to('Pro-Forma','fattura/show?id='.$fattura->getID())?>
 <?php else:?>
-  <?php echo link_to($fattura->getNumFattura(),'fattura/show?id='.$fattura->getID())?>
+  <?php echo link_to($fattura->getNumberDecorated(), 'fattura/show?id='.$fattura->getID())?>
 <?php endif?>
 </td>
 

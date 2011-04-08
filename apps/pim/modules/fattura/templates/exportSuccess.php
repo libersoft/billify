@@ -8,5 +8,5 @@
 <?php if ($sf_request->getParameter('html')):?>
 <?php echo $html?>
 <?php else: ?>
-<?php pdf($html,'a4','portrait','fattura-'.$fattura->getNumFattura().'-'.$fattura->getData('dmy'));?>
+<?php pdf($html,'a4','portrait','fattura-'.$fattura->getNumberDecorated().'-'.$fattura->getData('dmy'));?>
 <?php endif?>

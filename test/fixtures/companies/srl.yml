@@ -298,37 +298,33 @@ Vendita:
     vat: 20
 <?php endfor?>
 <?php for($i = 1; $i <= 3; $i++):?>
-  Fattura_<?php echo $i?>:
-    id_utente: Utente_1
-    num_fattura: '<?php echo $i?>'
-    cliente_id: Cliente_1
-    data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'')))?>'
-    modo_pagamento_id: ModoPagamento_1
-    vat: 20
-<?php endfor?>
-<?php for($i = 1; $i <= 3; $i++):?>
   Fattura_lastyear_<?php echo $i?>:
     id_utente: Utente_1
-    num_fattura: '<?php echo $i?>'
     cliente_id: Cliente_1
     data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'').' -1 year'))?>'
     modo_pagamento_id: ModoPagamento_1
     stato: p
     vat: 20
 <?php endfor?>
+<?php for($i = 1; $i <= 3; $i++):?>
+  Fattura_<?php echo $i?>:
+    id_utente: Utente_1
+    cliente_id: Cliente_1
+    data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'')))?>'
+    modo_pagamento_id: ModoPagamento_1
+    vat: 20
+<?php endfor?>
 <?php for($i = 4; $i <= 25; $i++):?>
   Fattura_<?php echo $i?>:
     id_utente: Utente_1
-    num_fattura: '<?php echo $i?>'
     cliente_id: Cliente_2
-    data: '<?php echo date('Y-m-d', strtotime('today'))?>'
+    data: '<?php echo date('Y-m-d', strtotime("+$i days"))?>'
     modo_pagamento_id: ModoPagamento_2
     stato: i
     vat: 20
 <?php endfor?>
   Fattura_a:
     id_utente: Utente_1
-    num_fattura: 100
     cliente_id: Cliente_2
     data: '<?php echo date('Y-m-d', strtotime('-1 month'))?>'
     modo_pagamento_id: ModoPagamento_2

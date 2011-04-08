@@ -173,6 +173,7 @@ CREATE TABLE `fattura`
 	`contatto_string` VARCHAR(100),
 	`descrizione` VARCHAR(255),
 	`data` DATE  NOT NULL,
+	`anno` INTEGER  NOT NULL,
 	`data_stato` DATE,
 	`data_scadenza` DATE,
 	`modo_pagamento_id` INTEGER,

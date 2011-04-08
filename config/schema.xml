@@ -127,6 +127,7 @@
     <column name="contatto_string" type="varchar" size="100" />
     <column name="descrizione" type="varchar" size="255" />
     <column name="data" type="date" required="true" />
+    <column name="anno" type="integer" required="true" />
     <column name="data_stato" type="date" />
     <column name="data_scadenza" type="date" />
     <column name="modo_pagamento_id" type="integer" />

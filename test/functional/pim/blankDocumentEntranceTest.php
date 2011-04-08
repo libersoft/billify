@@ -46,6 +46,9 @@ $browser->
   setField('fattura[data_scadenza]', array('day' => '10', 'month' => '2', 'year' => '2008'))->
   click('Salva')->
 
+  with('form')->begin()->
+    hasErrors(false)->
+  end()->
   followRedirect()->
 
   click('cash flow')->
