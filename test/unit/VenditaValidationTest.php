@@ -6,7 +6,7 @@ $test->loadData(__DIR__.'/../fixtures/empty.yml');
 $user = $test->signin('new_user');
 
 $fattura = new Vendita();
-$fattura->setNumFattura('99');
+$fattura->setNumFattura('1');
 $fattura->setData((date('Y')-1).'-12-19');
 $user->addFattura($fattura);
 $user->save();
@@ -142,7 +142,7 @@ $fattura->setData((date('Y')-1).'-12-19');
 $fattura->setNewNumFattura();
 $fattura->save();
 
-$test->is($fattura->getNumFattura(), '100', '->getNumFattura() returns right value');
+$test->is($fattura->getNumFattura(), '2', '->getNumFattura() returns right value');
 
 try
 {

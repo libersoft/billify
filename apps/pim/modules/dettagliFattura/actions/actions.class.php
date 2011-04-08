@@ -116,9 +116,11 @@ class dettagliFatturaActions extends sfActions
       {
         if ($descrizione_new[$i] != "")
         {
+          $fattura = FatturaPeer::retrieveByPK($this->getRequestParameter('fattura_id'));
+          
           $dettagli_fattura = new DettagliFattura();
-          //$dettagli_fattura->setId($ids_new[$i]);
-          $dettagli_fattura->setFatturaId($this->getRequestParameter('fattura_id'));
+          
+          $dettagli_fattura->setFattura($fattura);
           $dettagli_fattura->setDescrizione(($descrizione_new[$i]));
           $dettagli_fattura->setQty($qty_new[$i]);
           $dettagli_fattura->setSconto($sconto_new[$i]);

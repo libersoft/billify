@@ -6,7 +6,7 @@ class Vendita extends Fattura
   const PEER = 'VenditaPeer';
 
   private $with_holding_tax_percentage = '0/100';
-  private $max;
+  private $max = false;
   private $validate = true;
   
   public function __construct()
@@ -33,9 +33,6 @@ class Vendita extends Fattura
     {
       return;
     }
-
-    //$num_fattura_validator = new bfValidatorConsecutiveInteger(array('latest' => $this->max));
-    //$num_fattura_validator->clean($this->num_fattura);
 
     try
     {
@@ -73,10 +70,14 @@ class Vendita extends Fattura
       throw new Exception('La data della fattura deve essere consecutiva alle fatture già emesse');
     };
 
-    if ($this->max && ($this->num_fattura - $this->max) > 1)
+    try
     {
-
-      throw new Exception('Il numero della fattura deve essere consecutivo all\'ultimo numero emesso');
+      $validator = new ValidatorConsecutiveInvoiceNumber(array('latest' => $this->max, 'is_new' => $this->isNew()));
+      $validator->clean($this->num_fattura);
+    }
+    catch(sfValidatorError $e)
+    {
+      throw new Exception('Il numero della fattura '.$this->num_fattura.' deve essere consecutivo all\'ultimo numero emesso '.$this->max);
     }
     
   }
@@ -113,7 +114,7 @@ class Vendita extends Fattura
 
   public function  getNumberDecorated()
   {
-    if ($this->id_utente)
+    if ($this->id_utente && $this->getUtente()->getImpostazione())
     {
       return $this->getUtente()->getImpostazione()->getInvoiceDecorator($this)->getNumFattura();
     }
@@ -189,6 +190,11 @@ class Vendita extends Fattura
     if(FatturaPeer::retrieveUserId())
     {
       $query .= ' AND ' . FatturaPeer::ID_UTENTE . '=' . FatturaPeer::retrieveUserId();
+    }
+
+    if (!$this->isNew())
+    {
+      $query .= ' AND '.FatturaPeer::NUM_FATTURA.' <> '.$this->num_fattura;
     }
 
     $stmt = $con->prepare($query);
