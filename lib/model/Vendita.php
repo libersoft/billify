@@ -29,7 +29,7 @@ class Vendita extends Fattura
 
   protected function validation($columns = null)
   {
-    if (!$this->validate)
+    if (!$this->validate || $this->isProForma())
     {
       return;
     }
@@ -42,11 +42,6 @@ class Vendita extends Fattura
     catch(sfValidatorError $e)
     {
       throw new Exception('Esiste già una fattura con lo stesso numero');
-    }
-
-    if ($this->isProForma())
-    {
-      return;
     }
 
     try
