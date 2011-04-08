@@ -35,7 +35,9 @@ class bfTestUnit extends lime_test
     }
     
     $this->context->getUser()->signin($user);
-    
+
+    FatturaPeer::$user_id = $user->getId();
+
     return $user;
   }
 

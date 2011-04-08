@@ -13,8 +13,8 @@ foreach($values as $value)
   try
   {
     $message = 'Invalid consecutive number';
-    $validator->clean('0');
-    $test->fail($value);
+    $validator->clean($value);
+    $test->fail($message);
   }
   catch(sfValidatorError $e)
   {

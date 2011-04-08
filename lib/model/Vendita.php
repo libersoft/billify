@@ -48,27 +48,17 @@ class Vendita extends Fattura
     {
       return;
     }
-    
-    $criteria = new Criteria();
-    $c1 = $criteria->getNewCriterion(FatturaPeer::NUM_FATTURA, $this->num_fattura-1);
-    $c2 = $criteria->getNewCriterion(FatturaPeer::DATA, $this->getData(), Criteria::GREATER_THAN);
 
-    $c1->addAnd($c2);
-    $criteria->add($c1);
+    try
+    {
+      $validator = new ValidatorDateInvoice();
+      $validator->clean(array('num_fattura' => $this->num_fattura, 'data' => $this->getData(), 'anno' => $this->getData('Y')));
 
-    $c3 = $criteria->getNewCriterion(FatturaPeer::NUM_FATTURA, $this->num_fattura+1);
-    $c4 = $criteria->getNewCriterion(FatturaPeer::DATA, $this->getData(), Criteria::LESS_THAN);
-
-    $c3->addAnd($c4);
-    $criteria->addOr($c3);
-    $criteria->addAnd(FatturaPeer::NUM_FATTURA, 0, Criteria::NOT_EQUAL);
-    $criteria->addAnd(FatturaPeer::ANNO, $this->getData('Y'), Criteria::EQUAL);
-
-    
-    if (FatturaPeer::doCount($criteria) > 0)
+    }
+    catch(sfValidatorError $e)
     {
       throw new Exception('La data della fattura deve essere consecutiva alle fatture già emesse');
-    };
+    }
 
     try
     {
