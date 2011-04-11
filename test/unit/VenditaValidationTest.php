@@ -15,6 +15,7 @@ for($i = 0; $i < 10; $i++)
 {
   $days = $i*2;
   $fattura = new Vendita();
+  $fattura->setNewNumFattura();
   $test->is($fattura->getNumFattura(), $i+1, '->getNumFattura() returns right value');
   $fattura->setData(strtotime("+$days days"));
   $user->addFattura($fattura);
@@ -22,6 +23,7 @@ for($i = 0; $i < 10; $i++)
 }
 
 $fattura = new Vendita();
+$fattura->setNewNumFattura();
 $user->addFattura($fattura);
 $user->save();
 
@@ -33,8 +35,8 @@ $test->ok(!$fattura->isProForma(), '->isProForma() returns right value');
 $test->info('Numero nuova fattura quando la trasformo da pro-forma');
 
 $fattura = new Vendita();
+$fattura->setNewNumFattura();
 $fattura->setNumFattura(0);
-
 $user->addFattura($fattura);
 $test->is($fattura->getNumFattura(), 0);
 $user->save();

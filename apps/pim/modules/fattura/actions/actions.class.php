@@ -39,6 +39,7 @@ class fatturaActions extends sfActions
     }
 
     $this->fattura = new Vendita();
+    $this->fattura->setNewNumFattura();
     
     if ($this->id_cliente)
     {

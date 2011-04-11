@@ -19,13 +19,6 @@ class Vendita extends Fattura
   {
     $this->validate = $v;
   }
-  
-  public function applyDefaultValues()
-  {
-    parent::applyDefaultValues();
-    $this->setNewNumFattura();
-  }
-
 
   protected function validation($columns = null)
   {
