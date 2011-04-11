@@ -307,27 +307,6 @@ class fatturaActions extends sfActions
     return $this->redirect('fattura/show?id=' . $fattura->getId());
   }
 
-  private function checkFatturaExist($fattura)
-  {
-    $id = $fattura->getNumFattura();
-    $anno = $fattura->getData('Y');
-    $this->fattura = $fattura;
-
-    $criteria = new Criteria();
-    $criteria->add(FatturaPeer::NUM_FATTURA, $fattura->getNumFattura());
-    $fatture = VenditaPeer::doSelect($criteria);
-    $trovato = false;
-    foreach ($fatture as $fattura_find)
-    {
-      if ($fattura_find->getNumFattura() != '0' && $fattura_find->getData('Y') == $anno && $fattura_find->getID() != $fattura->getID())
-      {
-        $trovato = true;
-        break;
-      }
-    }
-    return $trovato;
-  }
-
   private function getFatturaOrCreate($id = 'id')
   {
     if (!$this->getRequestParameter($id, 0))

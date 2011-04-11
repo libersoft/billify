@@ -2,7 +2,6 @@
 
 class FatturaPeer extends BaseFatturaPeer
 {
-
   static $instance;
   static $user_id;
 
@@ -25,11 +24,10 @@ class FatturaPeer extends BaseFatturaPeer
       $criteria = new criteria();
     }
 
-    $cr1 = $criteria->getNewCriterion(VenditaPeer::DATA, date('Y-m-d', mktime(0, 0, 0,(!is_null($month) ? $month : 1), 1, $year)), Criteria::GREATER_EQUAL);
-    $cr2 = $criteria->getNewCriterion(VenditaPeer::DATA, date('Y-m-d', mktime(0, 0, 0,(!is_null($month) ? $month : 12), 31, $year)), Criteria::LESS_EQUAL );
+    $cr1 = $criteria->getNewCriterion(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0,(!is_null($month) ? $month : 1), 1, $year)), Criteria::GREATER_EQUAL);
+    $cr2 = $criteria->getNewCriterion(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0,(!is_null($month) ? $month : 12), 31, $year)), Criteria::LESS_EQUAL );
     $cr1->addAnd($cr2);
     $criteria->add($cr1);
-    $criteria->add(VenditaPeer::STATO, array(Fattura::INVIATA, Fattura::PAGATA, Fattura::NON_PAGATA), Criteria::IN);
     $criteria->add(FatturaPeer::NUM_FATTURA, 0, Criteria::NOT_EQUAL);
 
     return $criteria;

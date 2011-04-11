@@ -48,9 +48,14 @@ class contactActions extends sfActions
     $this->contact = ContattoPeer::retrieveByPK($request->getParameter('id'));
 
     $this->criteria = new Criteria();
-    $invoice_repository = VenditaPeer::getInstance();
-    $invoice_repository->filterByYearCriteria($request->getParameter('year', date('Y')), $this->criteria);
-    $invoice_repository->sortCriteria($this->criteria);
+    $year = $request->getParameter('year', date('Y'));
+    if ($year != 'all')
+    {
+      $this->criteria->addAnd(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0, 1, 1, $year)), Criteria::GREATER_EQUAL);
+      $this->criteria->addAnd(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0, 12, 31, $year)), Criteria::LESS_EQUAL);
+    }
+    $this->criteria->addAsColumn('integer_num_fattura', 'CONVERT('.FatturaPeer::NUM_FATTURA.', signed)');
+    $this->criteria->addAscendingOrderByColumn('integer_num_fattura');
     $this->totale = 0;
   }
 

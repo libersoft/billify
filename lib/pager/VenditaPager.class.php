@@ -4,7 +4,6 @@ class VenditaPager extends FatturaPager
 { 
   public function __construct(sfUser $user, $request)
   {
-    $this->peer = VenditaPeer::getInstance();;
     $this->filter = new VenditaFormFilter();
     
     parent::__construct('Vendita', $user->getSettings()->getNumFatture(), $request);
@@ -15,7 +14,8 @@ class VenditaPager extends FatturaPager
 
   public function setCriteria($criteria)
   {
-    $this->peer->sortCriteria($criteria);
+    $criteria->addAsColumn('integer_num_fattura', 'CONVERT('.FatturaPeer::NUM_FATTURA.', signed)');
+    $criteria->addAscendingOrderByColumn('integer_num_fattura');
     parent::setCriteria($criteria);
   }
 
