@@ -14,6 +14,12 @@ class analyticsActions extends sfActions
     $graph->build();
 
     $this->monthly_turnover_graph = new Highcharts($graph);
-    $this->monthly_turnover_graph->setRenderTo('cashflow');
+    $this->monthly_turnover_graph->setRenderTo('monthly_turnover');
+
+    $graph = new CashFlowGraph();
+    $graph->build();
+
+    $this->cashflow_graph = new Highcharts($graph);
+    $this->cashflow_graph->setRenderTo('cashflow');
   }
 }

@@ -18,6 +18,29 @@ class FatturaPeer extends BaseFatturaPeer
     return parent::doCount($criteria, $distinct, $con);
   }
 
+  public static function doSelectTurnoverCriteria($year, $month = null, Criteria $criteria = null)
+  {
+    if (null === $criteria)
+    {
+      $criteria = new criteria();
+    }
+
+    $cr1 = $criteria->getNewCriterion(VenditaPeer::DATA, date('Y-m-d', mktime(0, 0, 0,(!is_null($month) ? $month : 1), 1, $year)), Criteria::GREATER_EQUAL);
+    $cr2 = $criteria->getNewCriterion(VenditaPeer::DATA, date('Y-m-d', mktime(0, 0, 0,(!is_null($month) ? $month : 12), 31, $year)), Criteria::LESS_EQUAL );
+    $cr1->addAnd($cr2);
+    $criteria->add($cr1);
+    $criteria->add(VenditaPeer::STATO, array(Fattura::INVIATA, Fattura::PAGATA, Fattura::NON_PAGATA), Criteria::IN);
+    $criteria->add(FatturaPeer::NUM_FATTURA, 0, Criteria::NOT_EQUAL);
+
+    return $criteria;
+  }
+
+  public static function doSelectTurnover($year, $month = null, Criteria $criteria = null)
+  {
+    $criteria = self::doSelectTurnoverCriteria($year, $month, $criteria);
+    return self::doSelectJoinAllExceptModoPagamento($criteria);
+  }
+  
   public static function doSelectForCashFlow($document_date = null)
   {
     $criteria = new Criteria();
