@@ -43,61 +43,44 @@ class VenditaPeer extends FatturaPeer
     return parent::doCountJoinAllExceptModoPagamento($criteria, $distinct, $con);
   }
   
-  public static function getYearInvoice()
+  public static function getYearInvoice(Criteria $criteria = null)
   {
-    $criteria = new Criteria();
+    if (null === $criteria)
+    {
+      $criteria = new Criteria();
+    }
+    
     $criteria->clearSelectColumns();
     $criteria->addSelectColumn('year('.VenditaPeer::DATA.') as year');
     $criteria->setDistinct();
-    $criteria->addDescendingOrderByColumn(VenditaPeer::DATA);
+
     $rs = VenditaPeer::doSelectStmt($criteria);
     $results = $rs->fetchAll(PDO::FETCH_COLUMN);
 
-    $anni = array();
+    $years = array();
     foreach($results as $result)
     {
-      $anni[$result] = $result;
+      $years[$result] = $result;
     }
 
-    return $anni;
+    return $years;
   }
 
-  // TODO: refactoring with cashflow
-  public static function getFatturato($anno, $mese = null)
+  public static function doSelectTurnover($year, $month = null, Criteria $criteria = null)
   {
-    $criteria = new criteria();
-    $cr1 = $criteria->getNewCriterion(VenditaPeer::DATA,date('Y-m-d',mktime(0,0,0,(!is_null($mese)?$mese:1),1, $anno)),Criteria::GREATER_EQUAL);
-    $cr2 = $criteria->getNewCriterion(VenditaPeer::DATA,date('Y-m-d',mktime(0,0,0,(!is_null($mese)?$mese:12),31, $anno)),Criteria::LESS_EQUAL );
+    if (null === $criteria)
+    {
+      $criteria = new criteria();
+    }
+    
+    $cr1 = $criteria->getNewCriterion(VenditaPeer::DATA, date('Y-m-d', mktime(0, 0, 0,(!is_null($month) ? $month : 1), 1, $year)), Criteria::GREATER_EQUAL);
+    $cr2 = $criteria->getNewCriterion(VenditaPeer::DATA, date('Y-m-d', mktime(0, 0, 0,(!is_null($month) ? $month : 12), 31, $year)), Criteria::LESS_EQUAL );
     $cr1->addAnd($cr2);
     $criteria->add($cr1);
-    $criteria->add(VenditaPeer::STATO, array('i', 'p', 'n'), Criteria::IN);
+    $criteria->add(VenditaPeer::STATO, array(Fattura::INVIATA, Fattura::PAGATA, Fattura::NON_PAGATA), Criteria::IN);
     $criteria->add(FatturaPeer::NUM_FATTURA, 0, Criteria::NOT_EQUAL);
 
-    $fatture = VenditaPeer::doSelect($criteria);
-
-    $fatturato_annuo = 0;
-    $fatturato_annuo_netto = 0;
-    $inps = 0;
-    $ritenuta_acconto = 0;
-    $tasse = TassaPeer::doSelect(new Criteria());
-
-    foreach ($fatture as $fattura)
-    {
-      $fattura->calcolaFattura($tasse, UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
-      $fatturato_annuo = $fatturato_annuo + $fattura->getNettoDaLiquidare();
-      $fatturato_annuo_netto = $fatturato_annuo_netto + $fattura->getImponibile() - $fattura->getRitenutaAcconto();
-
-      $previdenza = 0;
-      $tasse_previdenza = $fattura->getTasseUlteriori();
-      foreach ($tasse_previdenza as $tassa)
-      {
-        $previdenza += $tassa['costo'];
-      }
-      $inps = $inps + $previdenza;
-      $ritenuta_acconto += $fattura->getRitenutaAcconto();
-    }
-
-    return array($fatturato_annuo, $fatturato_annuo_netto, $ritenuta_acconto, $inps);
+    return VenditaPeer::doSelectJoinAllExceptModoPagamento($criteria);
   }
 
   public function fattureDaIncassare()

@@ -75,7 +75,6 @@ class cashflowActions extends sfActions
   {
     $id = null;
 
-
     if(!is_null($request->getParameter('id')))
     {
       $id = $request->getParameter('id');
@@ -86,19 +85,10 @@ class cashflowActions extends sfActions
       $id = $request->getParameter('fattura[id]');
     }
 
-
     $document = FatturaPeer::retrieveByPk($id);
-
 
     $factory = new FatturaFactoryForm();
     $this->form = $factory->build($request->getParameter('type'), $document);
-
-    /*if($request->hasParameter('type') && $request->getParameter('type') == 4)
-    {
-      print_r($document);
-      var_dump($id);
-      die('qui');
-    }*/
 
 
     if($request->isMethod('post'))
