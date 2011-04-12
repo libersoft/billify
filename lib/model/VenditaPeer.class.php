@@ -39,7 +39,7 @@ class VenditaPeer extends FatturaPeer
     $criteria->clearSelectColumns();
     $criteria->addSelectColumn('year('.VenditaPeer::DATA.') as year');
     $criteria->setDistinct();
-
+    $criteria = parent::doSelectTurnoverCriteria(null, null, $criteria);
     $rs = VenditaPeer::doSelectStmt($criteria);
     $results = $rs->fetchAll(PDO::FETCH_COLUMN);
 
