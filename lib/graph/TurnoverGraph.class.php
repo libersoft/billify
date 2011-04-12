@@ -11,7 +11,7 @@ class TurnoverGraph extends Graph
     $this->cash_flow = new CashFlow();
     $this->cash_flow->setWithTaxes(false);
 
-    $this->setTitle('Fatturato');
+    $this->setTitle('Fatturato Annuo');
   }
   
   public function build()
@@ -26,7 +26,7 @@ class TurnoverGraph extends Graph
     $this->setXAxisValues($years);
 
     $serie = new GraphBarSerie();
-    $serie->setName('Fatturato annuo');
+    $serie->setName('Fatturato');
 
     foreach($years as $year)
     {

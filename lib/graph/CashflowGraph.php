@@ -11,7 +11,7 @@ class CashflowGraph extends Graph
   {
     $this->criteria = new Criteria();
     $this->cash_flow = new CashFlow();
-    $this->setTitle('Cashflow mensile');
+    $this->setTitle('Cashflow Mensile');
     $this->current_year = date('Y');
   }
   
@@ -22,11 +22,11 @@ class CashflowGraph extends Graph
 
     $this->setXAxisValues($months);
     
-    foreach(array('incoming', 'outcoming') as $type)
+    foreach(array('incoming' => 'Entrate', 'outcoming' => 'Uscite') as $type => $name)
     {
       $serie = new GraphBarSerie();
 
-      $serie->setName($this->current_year);
+      $serie->setName($name.' '.$this->current_year);
 
       foreach($months as $index => $month)
       {

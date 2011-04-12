@@ -487,14 +487,6 @@ Impostazione:
     label_sconto: Sconto
     id_utente: Utente_1
 
-TagsFattura:
-  TagsFattura_1:
-    id_fattura: Fattura_1
-    id_utente: Utente_1
-    tag: mdg
-    tag_normalizzato: mdg
-    data: 2008-04-01
-
 Tassa:
   Tassa1:
     nome: tassa

@@ -5,9 +5,15 @@ $sf_response->addJavascript('/sfHighchartsPlugin/js/highcharts.js');
 
 ?>
 
-<div id="turnover" style="width: 100%; height: 500px;"></div>
-<div id="monthly_turnover" style="width: 100%; height: 500px"></div>
-<div id="cashflow" style="width: 100%; height: 500px"></div>
+<div class="title">
+  <h2><?php echo __('Analytics')?></h2>
+</div>
+
+<div id="turnover" style="width: 50%; height: 300px; float: left; padding-top: 10px;"></div>
+
+<div id="cashflow" style="width: 50%; height: 300px; float: left; padding-top: 10px;"></div>
+
+<div id="monthly_turnover" style="width: 100%; height: 400px; clear: left; padding-top: 30px;"></div>
 
 <script language="javascript">
 
@@ -19,3 +25,7 @@ $(document).ready(function() {
 });
    
 </script>
+
+<?php slot('sidebar')?>
+  <?php include_partial('main/sidebar') ?>
+<?php end_slot('sidebar')?>
