@@ -44,7 +44,7 @@ class Acquisto extends Fattura
   public function  addToCashFlow(CashFlow $cf)
   {
     $cash_flow_acquisto = new CashFlowPurchaseAdapter($this);
-    $cf->addOutcoming($cash_flow_acquisto);;
+    $cf->addOutcoming($cash_flow_acquisto);
   }
 
 }

@@ -53,10 +53,11 @@ class HighchartsTest extends bfTestUnitFramework
     $options['chart'] = array('renderTo' => 'header');
     $options['title'] = array('text' => 'Fatturato');
     $options['xAxis'] = array('categories' => array('2008', '2009', '2010'));
+    $options['credits']['enabled'] = false;
     $options['series'][0] = array('type' => 'column', 'name' => 'Uscite', 'data' => array(200000, 300000, 400000));
     $options['series'][1] = array('type' => 'area', 'name' => 'Uscite', 'data' => array(200000, 300000, 400000));
     $options['series'][2] = array('type' => 'pie', 'name' => 'Uscite', 'data' => array(200000, 300000, 400000));
-
+    
     $options = json_encode($options);
 
     $this->is($this->adapter->renderOptions(), $options, '->__toString() returns right value');

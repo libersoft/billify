@@ -10,7 +10,6 @@ class MonthlyTurnoverGraph extends Graph
   {
     $this->criteria = new Criteria();
     $this->cash_flow = new CashFlow();
-    $this->cash_flow->setWithTaxes(false);
     $this->setTitle('Fatturato Mensile');
     $this->current_year = date('Y');
   }
@@ -24,7 +23,20 @@ class MonthlyTurnoverGraph extends Graph
 
     $years = $years ? array_reverse($years) : array();
     
-    $months = array("Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic");
+    $months = array(
+        "Gen",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mag",
+        "Giu",
+        "Lug",
+        "Ago",
+        "Set",
+        "Ott",
+        "Nov",
+        "Dic"
+    );
 
     $this->setXAxisValues($months);
 
@@ -41,9 +53,10 @@ class MonthlyTurnoverGraph extends Graph
 
       foreach($months as $index => $month)
       {
-        $documents = VenditaPeer::doSelectTurnover($year, $index);
+        $documents = VenditaPeer::doSelectTurnover($year, $index + 1);
 
         $this->cash_flow->reset();
+        $this->cash_flow->setWithTaxes(false);
         $this->cash_flow->addDocuments($documents);
 
         $serie->addData($this->cash_flow->getIncoming());

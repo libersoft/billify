@@ -9,23 +9,12 @@ Categoria:
     
 Utente:
   Utente_1:
-    id_invitation_code:
     username: user
     nome: User
     cognome: User
-    ragione_sociale: Company
-    partita_iva: 03727570404
-    codice_fiscale: 03727570404
     email: ff@ideato.it
     password: user
-    data_attivazione: 2008-03-26
-    data_rinnovo: 2008-03-26
-    tipo: pro
     stato: attivo
-    fattura: n
-    lastlogin: 2008-12-13 22:04:22
-    approva_contratto: 1
-    approva_policy: 1
 
 ModoPagamento:
   ModoPagamento_1:

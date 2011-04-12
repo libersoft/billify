@@ -17,8 +17,20 @@ class CashflowGraph extends Graph
   
   public function build()
   {
-
-    $months = array("Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic");
+    $months = array(
+        "Gen",
+        "Feb",
+        "Mar",
+        "Apr",
+        "Mag",
+        "Giu",
+        "Lug",
+        "Ago",
+        "Set",
+        "Ott",
+        "Nov",
+        "Dic"
+     );
 
     $this->setXAxisValues($months);
     
@@ -32,7 +44,7 @@ class CashflowGraph extends Graph
       {
         if (!isset($this->documents[$month]))
         {
-          $this->documents[$month] = FinancialDocumentPeer::doSelectTurnover($this->current_year, $index);
+          $this->documents[$month] = FinancialDocumentPeer::doSelectTurnover($this->current_year, $index + 1);
         }
         
         $this->cash_flow->reset();

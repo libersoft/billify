@@ -36,6 +36,7 @@ class Highcharts
     $options['chart'] = array('renderTo' => $this->render_to);
     $options['title'] = array('text' => $this->getTitle());
     $options['xAxis'] = array('categories' => $this->graph->getXAxisValues());
+    $options['credits'] = array('enabled' => false);
 
     foreach($this->graph->getSeries() as $index => $serie)
     {

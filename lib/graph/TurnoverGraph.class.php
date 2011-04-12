@@ -9,7 +9,6 @@ class TurnoverGraph extends Graph
   {
     $this->criteria = new Criteria();
     $this->cash_flow = new CashFlow();
-    $this->cash_flow->setWithTaxes(false);
 
     $this->setTitle('Fatturato Annuo');
   }
@@ -41,6 +40,7 @@ class TurnoverGraph extends Graph
         $this->criteria->add(FatturaPeer::ANNO, $year);
 
         $this->cash_flow->reset();
+        $this->cash_flow->setWithTaxes(false);
         $this->cash_flow->addDocuments($this->documents[$year]);
 
         $method_name = 'get'.ucfirst($type);

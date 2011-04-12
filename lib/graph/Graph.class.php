@@ -40,6 +40,12 @@ class Graph
     $this->series[] = $serie;
   }
 
+  /**
+   * Return GraphSerie
+   * 
+   * @param integet $position
+   * @return GraphSerie
+   */
   public function getSerie($position)
   {
     return $this->series[$position];
