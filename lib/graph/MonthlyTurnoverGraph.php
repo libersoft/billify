@@ -24,7 +24,7 @@ class MonthlyTurnoverGraph extends Graph
 
     $years = $years ? array_reverse($years) : array();
     
-    $months = array("", "Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic");
+    $months = array("Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic");
 
     $this->setXAxisValues($months);
 

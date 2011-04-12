@@ -406,6 +406,19 @@ Acquisto:
     stato: 'p'
 <?php endfor?>
 
+Entrata:
+<?php for($i = 1; $i < 10; $i++):?>
+  entrata_<?php echo $i?>:
+    id_utente: Utente_1
+    descrizione: 'Entrata <?php echo $i; ?>'
+    data: '<?php echo date('Y-m-d', strtotime("+$i days"))?>'
+    data_scadenza: '<?php echo date('Y-m-d', strtotime("+$i days"))?>'
+    imponibile: '1000'
+    imposte: '200'
+    stato: 'p'
+    contatto_string: Test
+<?php endfor?>
+
 DettagliFattura:
 <?php for($i = 2; $i <= 10; $i++):?>
   DettagliFattura_year_ago_<?php echo $i?>:

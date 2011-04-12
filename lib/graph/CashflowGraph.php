@@ -18,7 +18,7 @@ class CashflowGraph extends Graph
   public function build()
   {
 
-    $months = array("", "Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic");
+    $months = array("Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic");
 
     $this->setXAxisValues($months);
     
