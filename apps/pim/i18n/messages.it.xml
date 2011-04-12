@@ -443,8 +443,8 @@
         <target>Nessuna entrate nel cash flow.</target>
       </trans-unit>
       <trans-unit id="99">
-        <source>Analytics</source>
-        <target>Analitiche</target>
+        <source>analytics</source>
+        <target>analitiche</target>
       </trans-unit>
     </body>
   </file>

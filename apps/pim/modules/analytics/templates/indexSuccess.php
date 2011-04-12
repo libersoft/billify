@@ -6,7 +6,7 @@ $sf_response->addJavascript('/sfHighchartsPlugin/js/highcharts.js');
 ?>
 
 <div class="title">
-  <h2><?php echo __('Analytics')?></h2>
+  <h2><?php echo __('analytics')?></h2>
 </div>
 
 <div id="turnover" style="width: 50%; height: 300px; float: left; padding-top: 10px;"></div>

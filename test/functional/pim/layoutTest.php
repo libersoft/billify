@@ -28,7 +28,7 @@ $browser->
     checkElement('#main #header div#nav a', 'impostazioni', array('position' => 2))->
     checkElement('#main #header div#nav a', 'esci', array('position' => 3))->
     checkElement('#main div#tray ul')->
-    checkElement('#main div#tray ul li', 4)->
+    checkElement('#main div#tray ul li', 5)->
     checkElement('#main div#tray ul li#tray-active', 'bacheca')->
     checkElement('#main div#tray ul li', 'rubrica', array('position' => 1))->
     checkElement('#main div#tray ul li', 'fatture', array('position' => 2))->
@@ -52,7 +52,6 @@ $browser->
     checkElement('h4:contains("fatture di vendita")')->
     checkElement('ul li:contains("lista fatture di vendita")')->
     checkElement('ul li:contains("aggiungi una nuova fattura di vendita")')->
-    checkElement('ul li:contains("statistiche")')->
 
     checkElement('h4:contains("fatture d\'acquisto")')->
     checkElement('ul li:contains("lista fatture d\'acquisto")')->

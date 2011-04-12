@@ -5,7 +5,6 @@
 <ul class="ul-list nomb">
   <li>+ <?php echo link_to(__('sales invoices list'), '@invoice')?></li>
   <li>+ <?php echo link_to(__('add new sales invoice'), '@invoice_create')?></li>
-  <li>+ <?php echo link_to(__('statistics'), '@analytics')?></li>
 </ul>
 
 <div class="title">
