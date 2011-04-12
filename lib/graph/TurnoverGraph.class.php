@@ -18,27 +18,36 @@ class TurnoverGraph extends Graph
   {
     $this->criteria->clear();
     $this->criteria->setLimit(5);
-    $this->criteria->addDescendingOrderByColumn(VenditaPeer::DATA);
+    $this->criteria->addDescendingOrderByColumn(FatturaPeer::DATA);
     $years = VenditaPeer::getYearInvoice($this->criteria);
 
     $years = $years ? array_reverse($years) : array();
     
     $this->setXAxisValues($years);
 
-    $serie = new GraphBarSerie();
-    $serie->setName('Fatturato');
-
-    foreach($years as $year)
+    foreach(array('incoming' => 'Entrate', 'outcoming' => 'Uscite') as $type => $name)
     {
-      $this->criteria->clear();
-      $this->criteria->add(VenditaPeer::ANNO, $year);
+      $serie = new GraphBarSerie();
+      $serie->setName($name);
 
-      $this->cash_flow->reset();
-      $this->cash_flow->addDocuments(VenditaPeer::doSelectTurnover($year));
+      foreach($years as $year)
+      {
+        if(!isset($this->documents[$year]))
+        {
+          $this->documents[$year] = FinancialDocumentPeer::doSelectTurnover($year);
+        }
 
-      $serie->addData($this->cash_flow->getIncoming());
+        $this->criteria->clear();
+        $this->criteria->add(FatturaPeer::ANNO, $year);
+
+        $this->cash_flow->reset();
+        $this->cash_flow->addDocuments($this->documents[$year]);
+
+        $method_name = 'get'.ucfirst($type);
+        $serie->addData($this->cash_flow->$method_name());
+      }
+
+      $this->addSerie($serie);
     }
-
-    $this->addSerie($serie);
   }
 }

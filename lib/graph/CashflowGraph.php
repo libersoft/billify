@@ -45,5 +45,4 @@ class CashflowGraph extends Graph
       $this->addSerie($serie);
     }
   }
-
 }
