@@ -2,7 +2,6 @@
 
 class FatturaPeer extends BaseFatturaPeer
 {
-
   static $instance;
   static $user_id;
 
@@ -18,6 +17,41 @@ class FatturaPeer extends BaseFatturaPeer
     return parent::doCount($criteria, $distinct, $con);
   }
 
+  public static function doSelectJoinAllExceptModoPagamento(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+  {
+    $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
+    return parent::doSelectJoinAllExceptModoPagamento($criteria, $con, $join_behavior);
+  }
+  
+  public static function doSelectTurnoverCriteria($year = null, $month = null, Criteria $criteria = null)
+  {
+    if (null === $criteria)
+    {
+      $criteria = new criteria();
+    }
+
+    if ($year)
+    {
+      $cr1 = $criteria->getNewCriterion(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0,(!is_null($month) ? $month : 1), 1, $year)), Criteria::GREATER_EQUAL);
+      $cr2 = $criteria->getNewCriterion(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0,(!is_null($month) ? $month : 12), 31, $year)), Criteria::LESS_EQUAL );
+      $cr1->addAnd($cr2);
+      $criteria->add($cr1);
+    }
+    
+    $criteria->add(FatturaPeer::NUM_FATTURA, '0', Criteria::NOT_EQUAL);
+    $criteria->addOr(FatturaPeer::NUM_FATTURA, null, Criteria::ISNULL);
+
+    return $criteria;
+  }
+
+  
+
+  public static function doSelectTurnover($year, $month = null, Criteria $criteria = null)
+  {
+    $criteria = self::doSelectTurnoverCriteria($year, $month, $criteria);
+    return self::doSelectJoinAllExceptModoPagamento($criteria);
+  }
+  
   public static function doSelectForCashFlow($document_date = null)
   {
     $criteria = new Criteria();
@@ -31,7 +65,8 @@ class FatturaPeer extends BaseFatturaPeer
     }
 
     $criteria->addAscendingOrderByColumn(FatturaPeer::DATA_SCADENZA);
-    return FatturaPeer::doSelect($criteria);
+    $criteria = self::doSelectTurnoverCriteria(null, null, $criteria);
+    return FatturaPeer::doSelectJoinAllExceptModoPagamento($criteria);
   }
 
   public static function doSelectPaid(Criteria $criteria = null)

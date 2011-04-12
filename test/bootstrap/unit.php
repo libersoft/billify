@@ -25,5 +25,6 @@ $autoload->register();
 include $configuration->getSymfonyLibDir().'/vendor/lime/lime.php';
 
 require_once dirname(__FILE__).'/../lib/bfTestUnit.class.php';
+require_once dirname(__FILE__).'/../lib/bfTestUnitFramework.class.php';
 
 new sfDatabaseManager($configuration);

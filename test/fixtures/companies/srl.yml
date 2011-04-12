@@ -288,6 +288,26 @@ CodiceIva:
     descrizione: Iva al 20%
 
 Vendita:
+<?php for($i = 2; $i <= 10; $i++):?>
+  Fattura_year_ago_<?php echo $i?>:
+    id_utente: Utente_1
+    cliente_id: Cliente_1
+    num_fattura: '<?php echo $i-1; ?>'
+    data: '<?php echo date('Y-m-d', strtotime('1/1/'.(date('Y')-$i)))?>'
+    modo_pagamento_id: ModoPagamento_1
+    stato: p
+    vat: 20
+<?php endfor?>
+<?php for($i = 1; $i <= 3; $i++):?>
+  Fattura_lastyear_<?php echo $i?>:
+    id_utente: Utente_1
+    cliente_id: Cliente_1
+    num_fattura: '<?php echo $i; ?>'
+    data: '<?php echo date('Y-m-d', strtotime($i.'/1/'.(date('Y')-1)))?>'
+    modo_pagamento_id: ModoPagamento_1
+    stato: p
+    vat: 20
+<?php endfor?>
 <?php for($i = 1; $i <= 3; $i++):?>
   Fattura_proforma_<?php echo $i?>:
     id_utente: Utente_1
@@ -298,18 +318,10 @@ Vendita:
     vat: 20
 <?php endfor?>
 <?php for($i = 1; $i <= 3; $i++):?>
-  Fattura_lastyear_<?php echo $i?>:
-    id_utente: Utente_1
-    cliente_id: Cliente_1
-    data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'').' -1 year'))?>'
-    modo_pagamento_id: ModoPagamento_1
-    stato: p
-    vat: 20
-<?php endfor?>
-<?php for($i = 1; $i <= 3; $i++):?>
   Fattura_<?php echo $i?>:
     id_utente: Utente_1
     cliente_id: Cliente_1
+    num_fattura: '<?php echo $i; ?>'
     data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'')))?>'
     modo_pagamento_id: ModoPagamento_1
     vat: 20
@@ -318,6 +330,7 @@ Vendita:
   Fattura_<?php echo $i?>:
     id_utente: Utente_1
     cliente_id: Cliente_2
+    num_fattura: '<?php echo $i; ?>'
     data: '<?php echo date('Y-m-d', strtotime("+$i days"))?>'
     modo_pagamento_id: ModoPagamento_2
     stato: i
@@ -326,6 +339,7 @@ Vendita:
   Fattura_a:
     id_utente: Utente_1
     cliente_id: Cliente_2
+    num_fattura: '<?php echo $i+1; ?>'
     data: '<?php echo date('Y-m-d', strtotime('-1 month'))?>'
     modo_pagamento_id: ModoPagamento_2
     stato: p
@@ -393,6 +407,24 @@ Acquisto:
 <?php endfor?>
 
 DettagliFattura:
+<?php for($i = 2; $i <= 10; $i++):?>
+  DettagliFattura_year_ago_<?php echo $i?>:
+    fattura_id: 'Fattura_year_ago_<?php echo $i?>'
+    descrizione: >
+      Consulenza e realizzazione sito web 1
+    qty: 1
+    iva: 20
+    prezzo: '<?php echo 1000*$i; ?>'
+<?php endfor; ?>
+<?php for($i = 1; $i <= 3; $i++):?>
+  DettagliFattura_last_year<?php echo $i?>:
+    fattura_id: 'Fattura_lastyear_<?php echo $i?>'
+    descrizione: >
+      Consulenza e realizzazione sito web 1
+    qty: 1
+    iva: 20
+    prezzo: 1000
+<?php endfor; ?>
 <?php for($i = 1; $i <= 3; $i++):?>
   DettagliFatturaProforma_<?php echo $i?>:
     fattura_id: 'Fattura_proforma_<?php echo $i?>'
@@ -454,14 +486,6 @@ Impostazione:
     label_prezzo_totale: Prezzo Totale
     label_sconto: Sconto
     id_utente: Utente_1
-
-TagsFattura:
-  TagsFattura_1:
-    id_fattura: Fattura_1
-    id_utente: Utente_1
-    tag: mdg
-    tag_normalizzato: mdg
-    data: 2008-04-01
 
 Tassa:
   Tassa1:

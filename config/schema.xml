@@ -222,46 +222,6 @@
     </index>
   </table>
 
-  <table name="prodotto" idMethod="native">
-    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="id_utente" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="id_utente" foreign="id" />
-    </foreign-key>
-    <column name="codice" type="VARCHAR" size="255" />
-    <column name="nome" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="prezzo" type="FLOAT" required="true" default="0" />
-    <index name="codice">
-      <index-column name="codice" />
-    </index>
-    <index name="id_utente">
-      <index-column name="id_utente" />
-    </index>
-  </table>
-
-  <table name="tags_fattura" idMethod="native">
-    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="id_fattura" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="fattura" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="id_fattura" foreign="id" />
-    </foreign-key>
-    <column name="id_utente" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="id_utente" foreign="id" />
-    </foreign-key>
-    <column name="tag" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="tag_normalizzato" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="data" type="DATE" required="true" />
-    <index name="id_utente">
-      <index-column name="id_utente" />
-    </index>
-    <unique name="id_fattura_2">
-      <unique-column name="id_fattura" />
-      <unique-column name="id_utente" />
-      <unique-column name="tag_normalizzato" />
-    </unique>
-  </table>
-
   <table name="tassa" idMethod="native">
     <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
     <column name="id_utente" type="INTEGER" required="true" default="0" />

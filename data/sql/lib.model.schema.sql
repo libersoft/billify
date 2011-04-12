@@ -284,60 +284,6 @@ CREATE TABLE `modo_pagamento`
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
-#-- prodotto
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `prodotto`;
-
-
-CREATE TABLE `prodotto`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`id_utente` INTEGER default 0 NOT NULL,
-	`codice` VARCHAR(255),
-	`nome` VARCHAR(255)  NOT NULL,
-	`prezzo` FLOAT default 0 NOT NULL,
-	PRIMARY KEY (`id`),
-	KEY `codice`(`codice`),
-	KEY `id_utente`(`id_utente`),
-	CONSTRAINT `prodotto_FK_1`
-		FOREIGN KEY (`id_utente`)
-		REFERENCES `utente` (`id`)
-		ON UPDATE CASCADE
-		ON DELETE CASCADE
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
-#-- tags_fattura
-#-----------------------------------------------------------------------------
-
-DROP TABLE IF EXISTS `tags_fattura`;
-
-
-CREATE TABLE `tags_fattura`
-(
-	`id` INTEGER  NOT NULL AUTO_INCREMENT,
-	`id_fattura` INTEGER default 0 NOT NULL,
-	`id_utente` INTEGER default 0 NOT NULL,
-	`tag` VARCHAR(255)  NOT NULL,
-	`tag_normalizzato` VARCHAR(255)  NOT NULL,
-	`data` DATE  NOT NULL,
-	PRIMARY KEY (`id`),
-	UNIQUE KEY `id_fattura_2` (`id_fattura`, `id_utente`, `tag_normalizzato`),
-	KEY `id_utente`(`id_utente`),
-	CONSTRAINT `tags_fattura_FK_1`
-		FOREIGN KEY (`id_fattura`)
-		REFERENCES `fattura` (`id`)
-		ON UPDATE CASCADE
-		ON DELETE CASCADE,
-	CONSTRAINT `tags_fattura_FK_2`
-		FOREIGN KEY (`id_utente`)
-		REFERENCES `utente` (`id`)
-		ON UPDATE CASCADE
-		ON DELETE CASCADE
-)Type=MyISAM;
-
-#-----------------------------------------------------------------------------
 #-- tassa
 #-----------------------------------------------------------------------------
 

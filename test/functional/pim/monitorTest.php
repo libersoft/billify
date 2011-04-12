@@ -44,7 +44,7 @@ $browser->
   with('response')->begin()->
     checkElement('ul.ul-list li', '/0,00/', array('position' => 0))->
     checkElement('ul.ul-list li', '/100.802,70/', array('position' => 1))->
-    checkElement('ul.ul-list li', '/100.802,70/', array('position' => 2))->
+    checkElement('ul.ul-list li', '/97.802,70/', array('position' => 2))->
   end()->
   click('lista fatture d\'acquisto')->
   with('response')->begin()->
@@ -58,7 +58,7 @@ $browser->
   with('response')->begin()->
     checkElement('ul.ul-list li', '/0,00/', array('position' => 0))->
     checkElement('ul.ul-list li', '/100.802,70/', array('position' => 1))->
-    checkElement('ul.ul-list li', '/100.802,70/', array('position' => 2))->
+    checkElement('ul.ul-list li', '/97.802,70/', array('position' => 2))->
   end();
 
 $browser->click('esci');

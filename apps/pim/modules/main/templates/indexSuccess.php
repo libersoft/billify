@@ -6,8 +6,8 @@
 
 <?php
 
-include_partial('fattura/list', array('fatture' => $invoice_repository->fatture_da_inviare,
-                                      'fatture_results'=> $invoice_repository->fatture_da_inviare,
+include_partial('fattura/list', array('fatture' => $fatture_da_inviare,
+                                      'fatture_results'=> $fatture_da_inviare,
                                       'customer' => true,
                                       'checkbox' => false,
                                       'referrer' => 'main',
@@ -20,8 +20,8 @@ include_partial('fattura/list', array('fatture' => $invoice_repository->fatture_
 
 <?php
 
-include_partial('fattura/list', array('fatture' => $invoice_repository->fatture_da_incassare,
-                                      'fatture_results'=> $invoice_repository->fatture_da_incassare,
+include_partial('fattura/list', array('fatture' => $fatture_da_incassare,
+                                      'fatture_results'=> $fatture_da_incassare,
                                       'customer' => true,
                                       'checkbox' => false,
                                       'referrer' => 'main',

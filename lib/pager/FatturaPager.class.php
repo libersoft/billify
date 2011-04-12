@@ -2,7 +2,6 @@
 
 class FatturaPager extends sfPropelPager
 {
-  protected $peer;
   protected $filter;
   protected $request;
 
@@ -13,7 +12,6 @@ class FatturaPager extends sfPropelPager
     parent::__construct($class, $maxPerPage);
 
     $this->setPage($this->request->getParameter('page', 1));
-    
   }
 
   public function filter()
