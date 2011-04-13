@@ -53,7 +53,10 @@ class MonthlyTurnoverGraph extends Graph
 
       foreach($months as $index => $month)
       {
-        $documents = VenditaPeer::doSelectTurnover($year, $index + 1, new TurnoverCriteria());
+        $month = $index + 1;
+        $criteria = new TurnoverCriteria();
+        $criteria->addDateRange($year, $month);
+        $documents = VenditaPeer::doSelectJoinAllExceptModoPagamento($criteria);;
 
         $this->cash_flow->reset();
         $this->cash_flow->setWithTaxes(false);
