@@ -89,6 +89,6 @@ $browser->
   login('freelance', 'freelance')->
   click('cash flow')->
   with('response')->begin()->
-    checkElement('#col-left p', '/Nessuna entrate nel cash flow./')->
+    checkElement('#col-left p', '/Nessuna entrata nel cash flow./')->
   end()->
   click('esci');
