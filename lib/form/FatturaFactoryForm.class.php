@@ -20,8 +20,10 @@ Class FatturaFactoryForm{
         return new EntrataForm($model);
       case FatturaPeer::CLASSKEY_USCITA:
         return new UscitaForm($model);
+      case FatturaPeer::CLASSKEY_ACQUISTO:
+        return new AcquistoForm($model);
       default:
-        return new AcquistoForm($model);    
+        throw new Exception('$class_key not valid');
     }
   }
 }

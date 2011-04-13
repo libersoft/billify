@@ -16,7 +16,7 @@ $browser->
   isRequestParameter('action', 'create')->
   isRequestParameter('type', FatturaPeer::CLASSKEY_ENTRATA)->
 
-  checkResponseElement('h2', 'Nuova entrata')->
+  checkResponseElement('h2', '/Nuova entrata/')->
   checkResponseElement('label[for="fattura_contatto_string"]', 'Contatto')->
   checkResponseElement('input[type="text"][id="fattura_contatto_string"]')->
   checkResponseElement('label[for="fattura_descrizione"]', 'Descrizione')->
@@ -43,6 +43,10 @@ $browser->
   setField('fattura[imposte]', '1000')->
   setField('fattura[stato]', 'n')->
   setField('fattura[data]', array('day' => '10', 'month' => '1', 'year' => '2008'))->
+  click('Salva')->
+  with('form')->begin()->
+    hasErrors(true)->
+  end()->
   setField('fattura[data_scadenza]', array('day' => '10', 'month' => '2', 'year' => '2008'))->
   click('Salva')->
 
@@ -50,7 +54,11 @@ $browser->
     hasErrors(false)->
   end()->
   followRedirect()->
-
+  with('response')->begin()->
+    isStatusCode(200)->
+    checkElement('span.notice', '/documento salvato con successo/')->
+  end()->
+        
   click('cash flow')->
 
   checkResponseElement('table td', '2008-02-10', array('position' => 0))->

@@ -446,6 +446,10 @@
         <source>analytics</source>
         <target>analitiche</target>
       </trans-unit>
+      <trans-unit id="100">
+        <source>document updated successfully</source>
+        <target>documento salvato con successo</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

@@ -22,6 +22,7 @@ class EntrataForm extends FatturaForm
     $this->setDefault('class_key', FatturaPeer::CLASSKEY_ENTRATA);
     
     $this->widgetSchema->setLabel('contatto_string', 'Contatto');
+    $this->validatorSchema['data_scadenza']->setOption('required', true);
     
     unset(
       $this['num_fattura'],
@@ -44,5 +45,10 @@ class EntrataForm extends FatturaForm
   public function getModelName()
   {
     return 'Entrata';
+  }
+  
+  public function getRoute()
+  {
+    return '@document_sales_create';
   }
 }

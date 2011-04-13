@@ -89,13 +89,13 @@ class cashflowActions extends sfActions
 
     $factory = new FatturaFactoryForm();
     $this->form = $factory->build($request->getParameter('type'), $document);
-
-
+    
     if($request->isMethod('post'))
     {
       $contact = $this->update($request);
       if($contact)
       {
+        $this->getUser()->setFlash('notice', 'document updated successfully');
         $this->redirect('cashflow/edit?id='.$contact->getId());
       }
     }

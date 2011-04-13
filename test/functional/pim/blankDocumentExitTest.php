@@ -13,7 +13,7 @@ $browser->
   isRequestParameter('action', 'create')->
   isRequestParameter('type', FatturaPeer::CLASSKEY_USCITA )->
 
-  checkResponseElement('h2', 'Nuova uscita')->
+  checkResponseElement('h2', '/Nuova uscita/')->
   checkResponseElement('label[for="fattura_contatto_string"]', 'Contatto')->
   checkResponseElement('input[type="text"][id="fattura_contatto_string"]')->
   checkResponseElement('label[for="fattura_descrizione"]', 'Descrizione')->
@@ -40,11 +40,21 @@ $browser->
   setField('fattura[imposte]', '200')->
   setField('fattura[stato]', 'n')->
   setField('fattura[data]', array('day' => '12', 'month' => '1', 'year' => '2008'))->
+  click('Salva')->
+  with('form')->begin()->
+    hasErrors(true)->
+  end()->
   setField('fattura[data_scadenza]', array('day' => '9', 'month' => '2', 'year' => '2008'))->
   click('Salva')->
-
+        
+  with('form')->begin()->
+    hasErrors(false)->
+  end()->
   followRedirect()->
-
+  with('response')->begin()->
+    isStatusCode(200)->
+    checkElement('span.notice', '/documento salvato con successo/')->
+  end()->
   click('cash flow')->
 
   checkResponseElement('table td', '2008-02-09', array('position' => 0))->
