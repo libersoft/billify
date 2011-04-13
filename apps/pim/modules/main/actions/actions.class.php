@@ -15,8 +15,8 @@ class mainActions extends sfActions
   {
     $criteria = new Criteria();
     $criteria->addAsColumn('integer_num_fattura', 'CONVERT('.FatturaPeer::NUM_FATTURA.', signed)');
-    $criteria->addAscendingOrderByColumn('integer_num_fattura');
     $criteria->addAscendingOrderByColumn('YEAR(data)');
+    $criteria->addAscendingOrderByColumn('integer_num_fattura');
     $criteria->add(FatturaPeer::STATO, Vendita::INVIATA);
 
     $this->fatture_da_incassare = VenditaPeer::doSelectJoinAllExceptModoPagamento($criteria);
