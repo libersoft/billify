@@ -29,12 +29,8 @@ class VenditaPeer extends FatturaPeer
     return parent::doCountJoinAllExceptModoPagamento($criteria, $distinct, $con);
   }
   
-  public static function getYearInvoice(Criteria $criteria = null)
+  public static function getYearInvoice(TurnoverCriteria $criteria)
   {
-    if (null === $criteria)
-    {
-      $criteria = new Criteria();
-    }
     
     $criteria->clearSelectColumns();
     $criteria->addSelectColumn('year('.VenditaPeer::DATA.') as year');
@@ -52,7 +48,7 @@ class VenditaPeer extends FatturaPeer
     return $years;
   }
 
-  public static function doSelectTurnover($year, $month = null, Criteria $criteria = null)
+  public static function doSelectTurnover($year, $month = null, TurnoverCriteria $criteria)
   {
     $criteria = parent::doSelectTurnoverCriteria($year, $month, $criteria);
     return VenditaPeer::doSelectJoinAllExceptModoPagamento($criteria);

@@ -49,18 +49,14 @@ class FatturaPeer extends BaseFatturaPeer
     return $criteria;
   }
 
-  
-
   public static function doSelectTurnover($year, $month = null, Criteria $criteria = null)
   {
     $criteria = self::doSelectTurnoverCriteria($year, $month, $criteria);
     return self::doSelectJoinAllExceptModoPagamento($criteria);
   }
   
-  public static function doSelectForCashFlow($document_date = null)
+  public static function doSelectForCashFlow($document_date = null, TurnoverCriteria $criteria)
   {
-    $criteria = new Criteria();
-
     if (!is_null($document_date) && $document_date['from']['day'] && $document_date['from']['month'] && $document_date['from']['year'])
     {
       $from = implode('/', array_reverse($document_date['from']));
@@ -71,7 +67,8 @@ class FatturaPeer extends BaseFatturaPeer
 
     $criteria->addAscendingOrderByColumn(FatturaPeer::DATA_SCADENZA);
     $criteria = self::doSelectTurnoverCriteria(null, null, $criteria);
-    return FatturaPeer::doSelectJoinAllExceptModoPagamento($criteria);
+    
+    return self::doSelectJoinAllExceptModoPagamento($criteria);
   }
 
   public static function doSelectPaid(Criteria $criteria = null)

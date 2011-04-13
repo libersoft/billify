@@ -7,7 +7,7 @@ class TurnoverGraph extends Graph
 
   public function __construct()
   {
-    $this->criteria = new Criteria();
+    $this->criteria = new TurnoverCriteria();
     $this->cash_flow = new CashFlow();
 
     $this->setTitle('Fatturato Annuo');
@@ -33,7 +33,7 @@ class TurnoverGraph extends Graph
       {
         if(!isset($this->documents[$year]))
         {
-          $this->documents[$year] = FinancialDocumentPeer::doSelectTurnover($year);
+          $this->documents[$year] = FinancialDocumentPeer::doSelectTurnover($year, null, new TurnoverCriteria());
         }
 
         $this->criteria->clear();

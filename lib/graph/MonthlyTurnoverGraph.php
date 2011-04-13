@@ -8,7 +8,7 @@ class MonthlyTurnoverGraph extends Graph
 
   public function __construct()
   {
-    $this->criteria = new Criteria();
+    $this->criteria = new TurnoverCriteria();
     $this->cash_flow = new CashFlow();
     $this->setTitle('Fatturato Mensile');
     $this->current_year = date('Y');
@@ -53,7 +53,7 @@ class MonthlyTurnoverGraph extends Graph
 
       foreach($months as $index => $month)
       {
-        $documents = VenditaPeer::doSelectTurnover($year, $index + 1);
+        $documents = VenditaPeer::doSelectTurnover($year, $index + 1, new TurnoverCriteria());
 
         $this->cash_flow->reset();
         $this->cash_flow->setWithTaxes(false);
