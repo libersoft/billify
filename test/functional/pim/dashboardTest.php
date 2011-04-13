@@ -15,7 +15,7 @@ $browser->
   checkResponseElement('h2', 'fatture da inviare', array('position' => 0))->
   checkResponseElement('h2', 'fatture da incassare', array('position' => 1))->
   checkResponseElement('table.fatture', 2)->
-  checkResponseElement('table.fatture tr', 37)->
+  checkResponseElement('table.fatture tr', 38)->
   checkResponseElement('table.fatture th', 14)->
   checkResponseElement('table.fatture th', 'N.', array('position' => 0))->
   checkResponseElement('table.fatture th', 'Ragione sociale', array('position' => 1))->
@@ -27,13 +27,13 @@ $browser->
 
   checkResponseElement('table.fatture td', '/Pro-Forma/', array('position' => 0))->
   checkResponseElement('table.fatture td', '01 Azienda', array('position' => 1))->
-  checkResponseElement('table.fatture td', '01/01/'.date('y', strtotime('-10 year')), array('position' => 44))->
-  checkResponseElement('table.fatture td', '9', array('position' => 42))->
-  checkResponseElement('table.fatture td', '01/01/'.date('y', strtotime('-6 year')), array('position' => 72))->
-  checkResponseElement('table.fatture td', '5', array('position' => 70))->
+  checkResponseElement('table.fatture td', '01/01/'.date('y', strtotime('-10 year')), array('position' => 51))->
+  checkResponseElement('table.fatture td', '9', array('position' => 49))->
+  checkResponseElement('table.fatture td', '01/01/'.date('y', strtotime('-6 year')), array('position' => 79))->
+  checkResponseElement('table.fatture td', '5', array('position' => 77))->
   checkResponseElement('table.fatture td', '/1.000,00/', array('position' => 3))->
-  checkResponseElement('table.fatture td', '20/04/'.date('y'), array('position' => 128))->
-  checkResponseElement('table.fatture td', '7', array('position' => 126))->
+  checkResponseElement('table.fatture td', '20/04/'.date('y'), array('position' => 135))->
+  checkResponseElement('table.fatture td', '7', array('position' => 133))->
   checkResponseElement('table.fatture td', '/1.000,00/', array('position' => 3))->
   checkResponseElement('table.fatture td', '/1.440,00/', array('position' => 3))->
   checkResponseElement('table.fatture td', 'non inviata', array('position' => 4))->

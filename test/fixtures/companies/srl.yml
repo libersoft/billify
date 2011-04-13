@@ -333,6 +333,13 @@ Vendita:
     modo_pagamento_id: ModoPagamento_2
     stato: p
     vat: 20
+  Fattura_proforma_futuro:
+    id_utente: Utente_1
+    num_fattura: 0
+    cliente_id: Cliente_1
+    data: '<?php echo date('Y-m-d', strtotime('+1 year'))?>'
+    modo_pagamento_id: ModoPagamento_1
+    vat: 20
 
 Acquisto:
 <?php for($i = 1; $i < 3; $i++):?>

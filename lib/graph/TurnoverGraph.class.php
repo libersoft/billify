@@ -15,7 +15,6 @@ class TurnoverGraph extends Graph
   
   public function build()
   {
-    $this->criteria->clear();
     $this->criteria->setLimit(5);
     $this->criteria->addDescendingOrderByColumn(FatturaPeer::DATA);
     $years = VenditaPeer::getYearInvoice($this->criteria);

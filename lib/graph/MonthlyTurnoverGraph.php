@@ -16,7 +16,7 @@ class MonthlyTurnoverGraph extends Graph
   
   public function build()
   {
-    $this->criteria->clear();
+    //$this->criteria->clear();
     $this->criteria->setLimit(3);
     $this->criteria->addDescendingOrderByColumn(VenditaPeer::DATA);
     $years = VenditaPeer::getYearInvoice($this->criteria);
