@@ -32,25 +32,72 @@ $browser->
     checkElement('#col-right ul li', '/6.006,36/', array('position' => 10))->
     checkElement('#col-right ul li', '/5.806,36/', array('position' => 11))->
   end()->
+
+  
   click('lista fatture di vendita')->
   with('response')->begin()->
-    checkElement('ul.ul-list li', '/12.000,00/', array('position' => 0))->
-    checkElement('ul.ul-list li', '/40.402,26/', array('position' => 1))->
-    checkElement('ul.ul-list li', '/28.402,26/', array('position' => 2))->
+    checkElement('ul.ul-list li', 'entrate: € 1.000,00 (€ 12.000,00)', array('position' => 0))->
+    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 40.402,26)', array('position' => 1))->
+    checkElement('ul.ul-list li', 'utile € 1.000,00 (-€ 28.402,26)', array('position' => 2))->
   end()->
+
+  setField('fattura_filters[data][from]', date('d/m/Y', strtotime('-2 months')))->
+  setField('fattura_filters[data][to]', date('t/m/Y', strtotime('-2 months')))->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('ul.ul-list li', 'entrate: € 0,00 (€ 0,00)', array('position' => 0))->
+    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 0,00)', array('position' => 1))->
+  end()->
+
+  setField('fattura_filters[data][from]', date('d/m/Y', strtotime('-1 month')))->
+  setField('fattura_filters[data][to]', date('t/m/Y', strtotime('-1 month')))->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('ul.ul-list li', 'entrate: € 1.000,00 (€ 1.000,00)', array('position' => 0))->
+    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 33.600,90)', array('position' => 1))->
+  end()->
+
+  setField('fattura_filters[data][from]', date('d/m/Y', strtotime('today')))->
+  setField('fattura_filters[data][to]', date('t/m/Y', strtotime('today')))->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('ul.ul-list li', 'entrate: € 0,00 (€ 11.000,00)', array('position' => 0))->
+    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 6.801,36)', array('position' => 1))->
+  end()->
+
   setField('fattura_filters[data][from]', '01/01/'.date('Y', strtotime('-1 year')))->
   setField('fattura_filters[data][to]', '31/12/'.date('Y', strtotime('-1 year')))->
   click('Filtra')->
   with('response')->begin()->
-    checkElement('ul.ul-list li', '/0,00/', array('position' => 0))->
-    checkElement('ul.ul-list li', '/100.802,70/', array('position' => 1))->
-    checkElement('ul.ul-list li', '/97.802,70/', array('position' => 2))->
+    checkElement('ul.ul-list li', 'entrate: € 3.000,00 (€ 3.000,00)', array('position' => 0))->
+    checkElement('ul.ul-list li', 'uscite: € 100.802,70 (€ 100.802,70)', array('position' => 1))->
+    checkElement('ul.ul-list li', 'utile -€ 97.802,70 (-€ 97.802,70)', array('position' => 2))->
   end()->
+
+  setField('fattura_filters[data][from]', '01/01/'.date('Y', strtotime('-2 year')))->
+  setField('fattura_filters[data][to]', '31/12/'.date('Y', strtotime('-2 year')))->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('ul.ul-list li', 'entrate: € 2.000,00 (€ 2.000,00)', array('position' => 0))->
+    checkElement('ul.ul-list li', 'uscite: € 112.003,00 (€ 112.003,00)', array('position' => 1))->
+    checkElement('ul.ul-list li', 'utile -€ 110.003,00 (-€ 110.003,00)', array('position' => 2))->
+  end()->
+
+  setField('fattura_filters[data][from]', '01/01/'.date('Y', strtotime('-3 year')))->
+  setField('fattura_filters[data][to]', '31/12/'.date('Y', strtotime('-3 year')))->
+  click('Filtra')->
+  with('response')->begin()->
+    checkElement('ul.ul-list li', 'entrate: € 3.000,00 (€ 3.000,00)', array('position' => 0))->
+    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 0,00)', array('position' => 1))->
+    checkElement('ul.ul-list li', 'utile € 3.000,00 (€ 3.000,00)', array('position' => 2))->
+  end()->
+
+
   click('lista fatture d\'acquisto')->
   with('response')->begin()->
-    checkElement('ul.ul-list li', '/12.000,00/', array('position' => 0))->
-    checkElement('ul.ul-list li', '/40.402,26/', array('position' => 1))->
-    checkElement('ul.ul-list li', '/28.402,26/', array('position' => 2))->
+    checkElement('ul.ul-list li', 'entrate: € 1.000,00 (€ 12.000,00)', array('position' => 0))->
+    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 40.402,26)', array('position' => 1))->
+    checkElement('ul.ul-list li', 'utile € 1.000,00 (-€ 28.402,26)', array('position' => 2))->
   end()->
   setField('fattura_filters[data][from]', '01/01/'.date('Y', strtotime('-1 year')))->
   setField('fattura_filters[data][to]', '31/12/'.date('Y', strtotime('-1 year')))->

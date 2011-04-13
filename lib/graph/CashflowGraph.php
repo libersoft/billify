@@ -44,7 +44,15 @@ class CashflowGraph extends Graph
       {
         if (!isset($this->documents[$month]))
         {
-          $this->documents[$month] = FinancialDocumentPeer::doSelectTurnover($this->current_year, $index + 1);
+          $document_data['from']['day'] = 1;
+          $document_data['from']['month'] = $index + 1;
+          $document_data['from']['year'] = date('Y');
+
+          $document_data['to']['day'] = date('t', strtotime($month.'/1/'.date('Y')));
+          $document_data['to']['month'] = $index + 1;
+          $document_data['to']['year'] = date('Y');
+
+          $this->documents[$month] = FinancialDocumentPeer::doSelectForCashFlow($document_data);
         }
         
         $this->cash_flow->reset();

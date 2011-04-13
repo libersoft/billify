@@ -90,4 +90,5 @@ $browser->
   click('cash flow')->
   with('response')->begin()->
     checkElement('#col-left p', '/Nessuna entrate nel cash flow./')->
-  end();
+  end()->
+  click('esci');

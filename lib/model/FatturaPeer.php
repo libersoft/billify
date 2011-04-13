@@ -61,7 +61,7 @@ class FatturaPeer extends BaseFatturaPeer
   {
     $criteria = new Criteria();
 
-    if (!is_null($document_date))
+    if (!is_null($document_date) && $document_date['from']['day'] && $document_date['from']['month'] && $document_date['from']['year'])
     {
       $from = implode('/', array_reverse($document_date['from']));
       $to = implode('/', array_reverse($document_date['to']));
