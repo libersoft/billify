@@ -105,10 +105,25 @@ $browser->
   setField('cash_flow_filters[document_date][to][month]', date('m', strtotime('today')))->
   setField('cash_flow_filters[document_date][to][year]', date('Y'))->
 
-  click('Filtra')->
+  click('Filtra');
 
+$cf = new CashFlow();
+
+$document_data['from']['day'] = 1;
+$document_data['from']['month'] = date('m', strtotime('today'));
+$document_data['from']['year'] = date('Y');
+
+$document_data['to']['day'] = date('t', strtotime('today'));
+$document_data['to']['month'] = date('m', strtotime('today'));
+$document_data['to']['year'] = date('Y');
+
+$documents = FinancialDocumentPeer::doSelectForCashFlow($document_data, new CashFlowCriteria());
+$cf->reset();
+$cf->addDocuments($documents);
+
+$browser->
   with('response')->begin()->
-    checkElement('table.banca td', format_currency('24000', 'EUR'), array('position' => 0))->
-    checkElement('table.banca td', format_currency('8001.84', 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency('15998.16', 'EUR'), array('position' => 2))->
+    checkElement('table.banca td', format_currency($cf->getIncoming(), 'EUR'), array('position' => 0))->
+    checkElement('table.banca td', format_currency($cf->getOutcoming(), 'EUR'), array('position' => 1))->
+    checkElement('table.banca td', format_currency($cf->getBalance(), 'EUR'), array('position' => 2))->
   end();

@@ -48,7 +48,7 @@ class CashflowGraph extends Graph
           $document_data['from']['month'] = $index + 1;
           $document_data['from']['year'] = date('Y');
 
-          $document_data['to']['day'] = date('t', strtotime($month.'/1/'.date('Y')));
+          $document_data['to']['day'] = date('t', strtotime(($index + 1).'/1/'.date('Y')));
           $document_data['to']['month'] = $index + 1;
           $document_data['to']['year'] = date('Y');
 

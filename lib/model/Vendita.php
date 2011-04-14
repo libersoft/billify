@@ -29,8 +29,8 @@ class Vendita extends Fattura
 
     try
     {
-      $num_fattura_validator = new sfValidatorPropelUnique(array('model' => 'Fattura', 'column' => array('num_fattura', 'anno')));
-      $num_fattura_validator->clean(array('id' => $this->getId(), 'num_fattura' => $this->num_fattura, 'anno' => $this->getAnno()));
+      $num_fattura_validator = new sfValidatorPropelUnique(array('model' => 'Vendita', 'column' => array('num_fattura', 'anno', 'class_key')));
+      $num_fattura_validator->clean(array('id' => $this->getId(), 'num_fattura' => $this->num_fattura, 'anno' => $this->getAnno(), 'class_key' => $this->class_key));
     }
     catch(sfValidatorError $e)
     {
@@ -40,7 +40,7 @@ class Vendita extends Fattura
     try
     {
       $validator = new ValidatorDateInvoice();
-      $validator->clean(array('num_fattura' => $this->num_fattura, 'data' => $this->getData(), 'anno' => $this->getData('Y')));
+      $validator->clean(array('num_fattura' => $this->num_fattura, 'data' => $this->getData(), 'anno' => $this->getData('Y'), 'class_key' => $this->class_key));
 
     }
     catch(sfValidatorError $e)
@@ -62,7 +62,6 @@ class Vendita extends Fattura
   
   public function save(PropelPDO $con = null)
   {
-    $this->setAnno(date('Y', $this->getData('U')));
     $this->setDataScadenza($this->getDataPagamento());
 
     $this->validation();

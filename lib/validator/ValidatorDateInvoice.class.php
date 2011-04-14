@@ -9,7 +9,7 @@ class ValidatorDateInvoice extends sfValidatorSchema
       throw new InvalidArgumentException('You must pass an array parameter to the clean() method (this validator can only be used as a post validator).');
     }
 
-    if (!isset($values['num_fattura']) || !isset($values['data']) || !isset($values['anno']))
+    if (!isset($values['num_fattura']) || !isset($values['data']) || !isset($values['anno']) || !isset($values['class_key']))
     {
       throw new InvalidArgumentException('You must pass an array with num_fattura, data and anno key');
 
@@ -28,6 +28,7 @@ class ValidatorDateInvoice extends sfValidatorSchema
     $criteria->addOr($c3);
     $criteria->addAnd(FatturaPeer::NUM_FATTURA, 0, Criteria::NOT_EQUAL);
     $criteria->addAnd(FatturaPeer::ANNO, $values['anno'], Criteria::EQUAL);
+    $criteria->addAnd(FatturaPeer::CLASS_KEY, $values['class_key'], Criteria::EQUAL);
 
     //echo $criteria->toString();
     if (FatturaPeer::doCount($criteria) > 0)

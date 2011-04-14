@@ -336,6 +336,12 @@ abstract class Fattura extends BaseFattura
     $this->setData(date('y-m-d', time()));
   }
 
+  public function setData($v)
+  {
+    parent::setData($v);
+    $this->setAnno(date('Y', $this->getData('U')));
+  }
+
   public function setSpeseAnticipate($v)
   {
     if ($this->spese_anticipate !== $v || $v === '0')
@@ -367,7 +373,9 @@ abstract class Fattura extends BaseFattura
   public function isProForma()
   {
     if ($this->getNumFattura() == 0)
+    {
       return true;
+    }
 
     return false;
   }
@@ -375,16 +383,6 @@ abstract class Fattura extends BaseFattura
   public function checkInRitardo()
   {
     return (strtotime($this->getDataPagamento()) < time() && $this->getStato() == self::INVIATA);
-  }
-
-  public function save(PropelPDO $con = null)
-  {
-    if ($this->getClassKey() == FatturaPeer::CLASSKEY_ACQUISTO || $this->getClassKey() == FatturaPeer::CLASSKEY_VENDITA)
-    {
-      $this->setDataScadenza($this->getDataPagamento());
-    }
-    
-    return parent::save($con);
   }
   
   public function delete(PropelPDO $con = null)

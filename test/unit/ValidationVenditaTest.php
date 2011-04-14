@@ -1,9 +1,17 @@
 <?php
 include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 
-$test = new bfTestUnit(31, new lime_output_color());
+$test = new bfTestUnit(30, new lime_output_color());
 $test->loadData(__DIR__.'/../fixtures/empty.yml');
 $user = $test->signin('new_user');
+
+$test->info('Save new purchase invoice');
+
+$fattura_acquisto = new Acquisto();
+$fattura_acquisto->setNumFattura('1');
+$fattura_acquisto->setData(strtotime("-2 days"));
+$fattura_acquisto->setUtente($user);
+$fattura_acquisto->save();
 
 $fattura = new Vendita();
 $fattura->setNumFattura('1');
@@ -68,7 +76,7 @@ catch(Exception $e)
   $test->pass($message);
 }
 
-$test->todo('Validazione modifica data fattura');
+$test->info('Validazione modifica data fattura');
 
 $fattura->setNewNumFattura();
 
@@ -186,6 +194,16 @@ catch(Exception $e)
 {
   $test->pass($message);
 }
+
+$user->clearFatturas();
+
+$criteria = new Criteria();
+$criteria->add(FatturaPeer::NUM_FATTURA, '1');
+$criteria->add(FatturaPeer::ANNO, date('Y'));
+$fattura = VenditaPeer::doSelectOne($criteria);
+
+$fattura->setCommercialista('s');
+$fattura->save();
 
 $test->loadData(__DIR__.'/../fixtures/companies/srl.yml');
 $test->signin('user', 'user');
