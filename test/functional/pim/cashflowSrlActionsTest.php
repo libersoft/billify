@@ -9,9 +9,9 @@ $browser->
   click('cash flow')->
 
   with('response')->begin()->
-    checkElement('table.banca td', format_currency('21600', 'EUR'), array('position' => 0))->
+    checkElement('table.banca td', format_currency('19200', 'EUR'), array('position' => 0))->
     checkElement('table.banca td', format_currency('8001.84', 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency('13598.16', 'EUR'), array('position' => 2))->
+    checkElement('table.banca td', format_currency('11198.16', 'EUR'), array('position' => 2))->
   end();
 
 $cash_flow_filters = array('document_date' => array(

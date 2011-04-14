@@ -32,7 +32,7 @@ $browser->
   checkResponseElement('table.fatture td', '01/01/'.date('y', strtotime('-6 year')), array('position' => 79))->
   checkResponseElement('table.fatture td', '5', array('position' => 77))->
   checkResponseElement('table.fatture td', '/1.000,00/', array('position' => 3))->
-  checkResponseElement('table.fatture td', '21/04/'.date('y'), array('position' => 135))->
+  checkResponseElement('table.fatture td', date('d/m/y', strtotime('+7 days')), array('position' => 135))->
   checkResponseElement('table.fatture td', '7', array('position' => 133))->
   checkResponseElement('table.fatture td', '/1.000,00/', array('position' => 3))->
   checkResponseElement('table.fatture td', '/1.440,00/', array('position' => 3))->
