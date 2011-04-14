@@ -100,4 +100,21 @@ class cashflowActions extends sfActions
       }
     }
   }
+
+  public function executeRemove(sfWebRequest $request)
+  {
+    $this->forward404Unless($request->hasParameter('id'));
+
+    $criteria = new Criteria();
+    $criteria->add(FatturaPeer::CLASS_KEY, array(FatturaPeer::CLASSKEY_ENTRATA, FatturaPeer::CLASSKEY_USCITA), Criteria::IN);
+    $criteria->add(FatturaPeer::ID, $request->getParameter('id'));
+    $document = FatturaPeer::doSelectOne($criteria);
+
+    $this->forward404Unless($document);
+
+    $document->delete();
+
+    $this->getUser()->setFlash('notice', 'Documento eliminato con successo');
+    $this->redirect('@cashflow');
+  }
 }

@@ -392,7 +392,7 @@ abstract class Fattura extends BaseFattura
     {
       $dettaglio->delete();
     }
-    parent::delete($conn);
+    parent::delete($con);
   }
 
   public function calcolaFattura($tasse_ulteriori = array(), $tipo_ritenuta = null, $ritenuta_acconto = null)

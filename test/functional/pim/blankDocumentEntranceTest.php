@@ -8,7 +8,7 @@ $browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/cashflow.yml');
 $browser->
   login()->
   click('cash flow')->
-  checkResponseElement('h2', 'Cash Flow')->
+  checkResponseElement('h2', '/Cash Flow/')->
 
   info('1 - Nuova entrata')->
   click('aggiungi una nuova entrata')->
@@ -69,3 +69,11 @@ $browser->
   checkResponseElement('table td', '', array('position' => 4))->
   checkResponseElement('table td', 'No', array('position' => 5))->
   checkResponseElement('table td[style="background-color: red; font-weight: bold;"]', 'No');
+
+$browser->
+  click('Nuova riga del 10/01/2008')->
+  click('Elimina')->
+  followRedirect()->
+  with('response')->begin()->
+    checkElement('span.notice', '/Documento eliminato con successo/')->
+  end();

@@ -11,7 +11,10 @@
   <table class="edit" width="100%">
     <?php echo $form; ?>
     <tr>
-      <td colspan="2" align="right"><?php echo submit_tag('Salva')?></td>
+      <td colspan="2" align="right">
+        <?php echo link_to(__('Elimina'), '@document_remove?id='.$form->getObject()->getId(), array('confirm' => 'Vuoi veramente eliminare questo documento?'));?>
+        <?php echo submit_tag(__('Salva'))?>
+      </td>
     </tr>
   </table>
 </form>

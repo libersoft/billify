@@ -11,7 +11,7 @@ $browser->
   click('Entra')->
   followRedirect()->
   click('cash flow')->
-  checkResponseElement('h2', 'Cash Flow')->
+  checkResponseElement('h2', '/Cash Flow/')->
   checkResponseElement('table', 2)->
   checkResponseElement('table th', 9)->
   checkResponseElement('table th', 'Data', array('position' => 0))->

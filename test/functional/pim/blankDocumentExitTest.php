@@ -65,5 +65,12 @@ $browser->
   checkResponseElement('table td', format_currency('5200', 'EUR'), array('position' => 4))->
   checkResponseElement('table td', 'No', array('position' => 5))->
   checkResponseElement('table td[style="background-color: red; font-weight: bold;"]', 'No')
-
   ;
+
+$browser->
+  click('Nuova riga del 12/01/2008')->
+  click('Elimina')->
+  followRedirect()->
+  with('response')->begin()->
+    checkElement('span.notice', '/Documento eliminato con successo/')->
+  end();

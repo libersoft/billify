@@ -60,6 +60,10 @@ document_sales_create:
   url: cashflow/create/document/sales
   param: {module: cashflow, action: create, type: 3}
 
+document_remove:
+  url: document/remove/:id
+  param: { module: cashflow, action: remove }
+
 customer:
   url: /clienti
   param: {module: contact, action: index, type: 1}
