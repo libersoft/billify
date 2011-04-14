@@ -34,7 +34,7 @@ class FatturaPeer extends BaseFatturaPeer
   {
     $criteria->addDateRangeForCashFlow($document_date);
     
-    return self::doSelectJoinAllExceptModoPagamento($criteria);
+    return self::doSelect($criteria);
   }
 
   public static function doSelectPaid(Criteria $criteria = null)

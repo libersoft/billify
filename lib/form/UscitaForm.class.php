@@ -22,7 +22,9 @@ class UscitaForm extends FatturaForm
     $this->setDefault('class_key', FatturaPeer::CLASSKEY_USCITA);
     
     $this->widgetSchema->setLabel('contatto_string', 'Contatto');
-    $this->validatorSchema['data_scadenza']->setOption('required', true);    
+    $this->validatorSchema['data_scadenza']->setOption('required', true);
+    $this->validatorSchema['contatto_string']->setOption('required', true);
+    $this->validatorSchema['descrizione']->setOption('required', true);
     
     unset(
       $this['num_fattura'],
