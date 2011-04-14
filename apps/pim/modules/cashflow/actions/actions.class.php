@@ -30,11 +30,8 @@ class cashflowActions extends sfActions
   {
     $this->filter = new CashFlowFilter();
 
-    if ($request->hasParameter($this->filter->getName()))
-    {
-      $this->getUser()->setAttribute($this->filter->getName(), $request->getParameter($this->filter->getName()));
-    }
-
+    $this->getUser()->setAttribute($this->filter->getName(), $request->getParameter($this->filter->getName(), $this->filter->getDefaultFilter()));
+    
     $this->filter->bind($this->getUser()->getAttribute($this->filter->getName()));
   }
 
@@ -47,23 +44,21 @@ class cashflowActions extends sfActions
   {
     $this->filter($request);
     
-    $this->cf = CashFlow::getInstance();
-    $this->cf->reset();
-    $this->cf->addDocuments(FatturaPeer::doSelectForCashFlow($this->getUser()->getAttribute($this->filter->getName().'[document_date]'), new CashFlowCriteria()));
+    $cf = CashFlow::getInstance();
+    $cf->reset();
+    $cf->addDocuments(FatturaPeer::doSelectForCashFlow($this->getUser()->getAttribute($this->filter->getName().'[document_date]'), new CashFlowCriteria()));
     
-    $this->pager = new CashFlowPaginator($this->cf);
-    $this->pager->setLimit('10');
+    $this->pager = new CashFlowPaginator($cf);
+    $this->pager->setLimit(sfConfig::get('cashflow_paginator_offset', 10));
     $this->pager->setPage($request->getParameter('page', 1));
-
+    $this->pager->init();
+    
     if (!$this->pager->getCountAllResults())
     {
       return 'NoResults';
     }
-    
-    if ($request->getParameter('page') != 'all')
-    {
-      $this->cf = $this->pager;
-    }
+
+    $this->cf = $this->pager;
   }
 
   public function executeCreate($request)

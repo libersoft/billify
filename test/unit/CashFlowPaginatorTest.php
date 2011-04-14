@@ -14,7 +14,7 @@ class CashFlow
   }
 }
 
-$test = new lime_test(15, new lime_output_color());
+$test = new lime_test(18, new lime_output_color());
 
 $cf = new CashFlow();
 $cf->addDocuments(array(1, 2, 3, 4, 5));
@@ -22,6 +22,7 @@ $cf->addDocuments(array(1, 2, 3, 4, 5));
 $paginator = new CashFlowPaginator($cf);
 $paginator->setLimit(2);
 $paginator->setPage(1);
+$paginator->init();
 
 $test->is($paginator->getCountAllResults(), 5, '->getCountAllResults() returns right cashflow rows number');
 $test->is($paginator->getCountPages(), 3, '->getCountPages() return right pages count');
@@ -34,6 +35,7 @@ $test->is($results[1], 2, '->getResults() return right second row');
 
 $paginator->setLimit(2);
 $paginator->setPage(3);
+$paginator->init();
 $results = $paginator->getResults();
 $test->is(count($results), 1, '->getResults() returns right number rows');
 $test->is($results[0], 5, '->getResults() return right first row');
@@ -53,20 +55,33 @@ $cf->addDocuments($documents);
 $paginator = new CashFlowPaginator($cf);
 $paginator->setLimit(10);
 $paginator->setPage(1);
+$paginator->init();
 
 $test->is($paginator->getCountPages(), 101, '->getCountPages() return right pages count');
 $results = $paginator->getResults();
 $test->is(count($results), 10, '->getResults() returns right number rows');
 
 $paginator->setPage(83);
+$paginator->init();
+
 $results = $paginator->getResults();
 $test->is(count($results), 10, '->getResults() returns right number rows');
 $test->is($results[0], 821, '->getResults() return right first row');
 $test->is($results[9], 830, '->getResults() return right second row');
 
 $paginator->setPage(101);
+$paginator->init();
+
 $results = $paginator->getResults();
 $test->is(count($results), 9, '->getResults() returns right number rows');
+$test->is($paginator->haveToPaginate(), true, '->haveToPaginate() returns right value');
+
+$paginator->setPage('all');
+$paginator->init();
+$results = $paginator->getResults();
+$test->is(count($results), 1009, '->getResults() returns right number rows');
+$test->is($paginator->haveToPaginate(), false, '->haveToPaginate() returns right value');
+
 
 
 

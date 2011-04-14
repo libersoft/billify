@@ -11,6 +11,15 @@ $browser->
   click('Entra')->
   followRedirect()->
   click('cash flow')->
+  setField('cash_flow_filters[document_date][from][month]', '')->
+  setField('cash_flow_filters[document_date][from][day]', '')->
+  setField('cash_flow_filters[document_date][from][year]', '')->
+
+  setField('cash_flow_filters[document_date][to][month]', '')->
+  setField('cash_flow_filters[document_date][to][day]', '')->
+  setField('cash_flow_filters[document_date][to][year]', '')->
+  click('Filtra')->
+
   checkResponseElement('h2', '/Cash Flow/')->
   checkResponseElement('table', 2)->
   checkResponseElement('table th', 9)->
@@ -21,7 +30,7 @@ $browser->
   checkResponseElement('table th', 'Uscite', array('position' => 4))->
   checkResponseElement('table th', 'Pagata', array('position' => 5))->
   checkResponseElement('table tr', 6)->
-
+        
   checkResponseElement('table td', date('Y-m-d', strtotime('+8 days')), array('position' => 0))->
   checkResponseElement('table td', 'Cliente', array('position' => 1))->
   checkResponseElement('table td a', 'Cliente', array('position' => 0))->
