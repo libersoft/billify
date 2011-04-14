@@ -32,7 +32,9 @@ class TurnoverGraph extends Graph
       {
         if(!isset($this->documents[$year]))
         {
-          $this->documents[$year] = FinancialDocumentPeer::doSelectTurnover($year, null, new TurnoverCriteria());
+          $this->criteria->clear();
+          $this->criteria->addDateRange($year);
+          $this->documents[$year] = FinancialDocumentPeer::doSelectJoinAllExceptModoPagamento($this->criteria);
         }
 
         $this->criteria->clear();

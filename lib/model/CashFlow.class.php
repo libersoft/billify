@@ -24,8 +24,48 @@ Class CashFlow
   protected $balances = array();
   protected $rows = array();
   protected $with_taxes = true;
-
+  protected $criteria;
+  protected $class = 'Fattura';
+  protected $method = 'doSelectJoinAllExceptModoPagamento';
+  protected $original_documents = array();
+  
   private static $instance;
+
+  public function __construct()
+  {
+    $this->criteria = new CashFlowCriteria();
+  }
+
+  /**
+   * Set Criteria
+   * 
+   * @param Criteria $criteria
+   */
+  public function setCriteria(Criteria $criteria)
+  {
+    $this->criteria = $criteria;  
+  }
+
+  /**
+   * Get Criteria
+   * 
+   * @return Criteria
+   */
+  public function getCriteria()
+  {
+    return $this->criteria;
+  }
+
+  public function init()
+  {
+    $this->original_documents = call_user_func_array(array(constant($this->class.'::PEER'), $this->method), array($this->getCriteria()));
+    $this->addDocuments($this->original_documents);
+  }
+
+  public function getOriginalDocuments()
+  {
+    return $this->original_documents;
+  }
 
   /**
    * Singleton implementation

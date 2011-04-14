@@ -1,28 +1,38 @@
 <?php
 
-class CashFlowPaginator
+class CashFlowPager
 {
   protected $limit;
   protected $page;
   protected $cashflow;
   protected $results;
   protected $count_pages;
-  
-  public function __construct(CashFlow $cashflow)
+
+  public function __construct()
   {
-    $this->cashflow = $cashflow;
+    $this->cashflow = new CashFlow();
   }
-  
+
   public function setLimit($limit)
   {
     $this->limit = $limit;
   }
-  
+
   public function setPage($page)
   {
     $this->page = $page;
   }
-  
+
+  public function setCashFlow(CashFlow $value)
+  {
+    $this->cashflow = $value;
+  }
+
+  public function getCashFlow()
+  {
+    return $this->cashflow;
+  }
+
   public function getCountAllResults()
   {
     return count($this->cashflow->getRows());
@@ -30,6 +40,8 @@ class CashFlowPaginator
 
   public function init()
   {
+    $this->cashflow->init();
+    
     if($this->page == 'all')
     {
       $this->limit = $this->getCountAllResults();
@@ -55,25 +67,30 @@ class CashFlowPaginator
 
     $this->results = $results;
   }
-  
+
   public function getResults()
   {
     return $this->results;
   }
-  
+
   public function getCountPages()
   {
     return $this->count_pages;
   }
-  
+
   public function getPage()
   {
     return $this->page;
   }
-  
+
   public function __call($name, $parameters)
   {
-    return call_user_func(array($this->cashflow, $name), $parameters);
+    return call_user_func_array(array($this->cashflow, $name), $parameters);
+  }
+
+  public function setCriteria($criteria)
+  {
+    $this->cashflow->setCriteria($criteria);
   }
 
   public function haveToPaginate()

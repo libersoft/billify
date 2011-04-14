@@ -117,9 +117,9 @@ $document_data['to']['day'] = date('t', strtotime('today'));
 $document_data['to']['month'] = date('m', strtotime('today'));
 $document_data['to']['year'] = date('Y');
 
-$documents = FinancialDocumentPeer::doSelectForCashFlow($document_data, new CashFlowCriteria());
 $cf->reset();
-$cf->addDocuments($documents);
+$cf->getCriteria()->addDateRangeForCashFlow($document_data);
+$cf->init();
 
 $browser->
   with('response')->begin()->

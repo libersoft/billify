@@ -16,7 +16,17 @@ class TurnoverCriteria extends Criteria
   public function __construct($dbName = null)
   {
     parent::__construct($dbName); 
-    
+    $this->initDefaults();
+  }
+
+  public function clear()
+  {
+    parent::clear();
+    $this->initDefaults();
+  }
+
+  public function initDefaults()
+  {
     $this->add(FatturaPeer::NUM_FATTURA, '0', Criteria::NOT_EQUAL);
     $this->addOr(FatturaPeer::NUM_FATTURA, null, Criteria::ISNULL);
   }

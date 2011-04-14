@@ -31,7 +31,6 @@ class VenditaPeer extends FatturaPeer
   
   public static function getYearInvoice(TurnoverCriteria $criteria)
   {
-    
     $criteria->clearSelectColumns();
     $criteria->addSelectColumn('year('.VenditaPeer::DATA.') as year');
     $criteria->setDistinct();
@@ -46,11 +45,5 @@ class VenditaPeer extends FatturaPeer
     }
 
     return $years;
-  }
-
-  public static function doSelectTurnover($year, $month = null, TurnoverCriteria $criteria)
-  {
-    $criteria->addDateRange($year, $month);
-    return self::doSelectJoinAllExceptModoPagamento($criteria);
   }
 }

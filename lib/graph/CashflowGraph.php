@@ -52,7 +52,9 @@ class CashflowGraph extends Graph
           $document_data['to']['month'] = $index + 1;
           $document_data['to']['year'] = date('Y');
 
-          $this->documents[$month] = FinancialDocumentPeer::doSelectForCashFlow($document_data, new CashFlowCriteria());
+          $this->cash_flow->getCriteria()->addDateRangeForCashFlow($document_data);
+          $this->cash_flow->init();
+          $this->documents[$month] = $this->cash_flow->getOriginalDocuments();
         }
         
         $this->cash_flow->reset();

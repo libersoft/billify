@@ -12,6 +12,13 @@ class CashFlow
   {
     return $this->docs;
   }
+
+  public function setCriteria($criteria)
+  {
+    $this->criteria = $criteria;
+  }
+
+  public function init(){ }
 }
 
 $test = new lime_test(18, new lime_output_color());
@@ -19,7 +26,8 @@ $test = new lime_test(18, new lime_output_color());
 $cf = new CashFlow();
 $cf->addDocuments(array(1, 2, 3, 4, 5));
 
-$paginator = new CashFlowPaginator($cf);
+$paginator = new CashFlowPager();
+$paginator->setCashFlow($cf);
 $paginator->setLimit(2);
 $paginator->setPage(1);
 $paginator->init();
@@ -52,7 +60,8 @@ for($i = 1; $i <= 1009; $i++)
 $cf = new CashFlow();
 $cf->addDocuments($documents);
 
-$paginator = new CashFlowPaginator($cf);
+$paginator = new CashFlowPager($cf);
+$paginator->setCashFlow($cf);
 $paginator->setLimit(10);
 $paginator->setPage(1);
 $paginator->init();
@@ -81,6 +90,8 @@ $paginator->init();
 $results = $paginator->getResults();
 $test->is(count($results), 1009, '->getResults() returns right number rows');
 $test->is($paginator->haveToPaginate(), false, '->haveToPaginate() returns right value');
+
+$paginator->setCriteria(new Criteria());
 
 
 

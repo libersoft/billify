@@ -22,20 +22,6 @@ class FatturaPeer extends BaseFatturaPeer
     $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
     return parent::doSelectJoinAllExceptModoPagamento($criteria, $con, $join_behavior);
   }
-  
-  public static function doSelectTurnover($year, $month = null, TurnoverCriteria $criteria)
-  {
-    $criteria->addDateRange($year, $month);
-    
-    return self::doSelectJoinAllExceptModoPagamento($criteria);
-  }
-  
-  public static function doSelectForCashFlow($document_date = null, CashFlowCriteria $criteria)
-  {
-    $criteria->addDateRangeForCashFlow($document_date);
-    
-    return self::doSelect($criteria);
-  }
 
   public static function doSelectPaid(Criteria $criteria = null)
   {

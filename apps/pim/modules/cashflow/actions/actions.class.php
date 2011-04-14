@@ -51,12 +51,10 @@ class cashflowActions extends sfActions
   public function executeIndex($request)
   {
     $this->filter($request);
+
+    $this->pager = new CashFlowPager();
+    $this->pager->getCriteria()->addDateRangeForCashFlow($this->getUser()->getAttribute($this->filter->getName().'[document_date]'));
     
-    $cf = CashFlow::getInstance();
-    $cf->reset();
-    $cf->addDocuments(FatturaPeer::doSelectForCashFlow($this->getUser()->getAttribute($this->filter->getName().'[document_date]'), new CashFlowCriteria()));
-    
-    $this->pager = new CashFlowPaginator($cf);
     $this->pager->setLimit(sfConfig::get('app_cashflow_paginator_offset', 10));
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->init();

@@ -16,11 +16,9 @@ class FinancialDocumentPeer extends FatturaPeer
     return parent::doSelectPaid($criteria);
   }
 
-  public static function doSelectTurnover($year, $month = null, TurnoverCriteria $criteria)
+  public static function doSelectJoinAllExceptModoPagamento(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
   {
     $criteria->add(FatturaPeer::CLASS_KEY, array(FatturaPeer::CLASSKEY_ACQUISTO, FatturaPeer::CLASSKEY_VENDITA), Criteria::IN);
-    $criteria->addDateRange($year, $month);
-    
-    return parent::doSelectJoinAllExceptModoPagamento($criteria);
+    return parent::doSelectJoinAllExceptModoPagamento($criteria, $con, $join_behavior);
   }
 }

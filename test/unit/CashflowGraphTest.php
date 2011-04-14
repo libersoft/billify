@@ -23,9 +23,9 @@ for($i = 0; $i < 12; $i++)
   $document_data['to']['month'] = $i + 1;
   $document_data['to']['year'] = date('Y');
   
-  $documents = FinancialDocumentPeer::doSelectForCashFlow($document_data, new CashFlowCriteria());
   $cf->reset();
-  $cf->addDocuments($documents);
+  $cf->getCriteria()->addDateRangeForCashFlow($document_data);
+  $cf->init();
 
   $test->is($incoming_serie->getData($i), $cf->getIncoming(), '->getData() returns right data for month '.($i + 1));
 }
@@ -41,9 +41,9 @@ for($i = 0; $i < 12; $i++)
   $document_data['to']['month'] = $i + 1;
   $document_data['to']['year'] = date('Y');
 
-  $documents = FinancialDocumentPeer::doSelectForCashFlow($document_data, new CashFlowCriteria());
   $cf->reset();
-  $cf->addDocuments($documents);
+  $cf->getCriteria()->addDateRangeForCashFlow($document_data);
+  $cf->init();
 
   $test->is($outcoming->getData($i), $cf->getOutcoming(), '->getData() returns right data for month '.($i + 1));
 }
