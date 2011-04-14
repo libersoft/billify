@@ -30,7 +30,15 @@ class cashflowActions extends sfActions
   {
     $this->filter = new CashFlowFilter();
 
-    $this->getUser()->setAttribute($this->filter->getName(), $request->getParameter($this->filter->getName(), $this->filter->getDefaultFilter()));
+    if (!$this->getUser()->hasAttribute($this->filter->getName()))
+    {
+      $this->getUser()->setAttribute($this->filter->getName(), $this->filter->getDefaultFilter());
+    }
+
+    if ($request->hasParameter($this->filter->getName()))
+    {
+      $this->getUser()->setAttribute($this->filter->getName(), $request->getParameter($this->filter->getName()));
+    }
     
     $this->filter->bind($this->getUser()->getAttribute($this->filter->getName()));
   }
@@ -49,7 +57,7 @@ class cashflowActions extends sfActions
     $cf->addDocuments(FatturaPeer::doSelectForCashFlow($this->getUser()->getAttribute($this->filter->getName().'[document_date]'), new CashFlowCriteria()));
     
     $this->pager = new CashFlowPaginator($cf);
-    $this->pager->setLimit(sfConfig::get('cashflow_paginator_offset', 10));
+    $this->pager->setLimit(sfConfig::get('app_cashflow_paginator_offset', 10));
     $this->pager->setPage($request->getParameter('page', 1));
     $this->pager->init();
     

@@ -23,11 +23,11 @@ class CashFlowFilter extends sfFormFilter
   {
     $default_filter = array();
     $default_filter['document_date']['from']['day'] = 1;
-    $default_filter['document_date']['from']['month'] = date('m');
+    $default_filter['document_date']['from']['month'] = date('n');
     $default_filter['document_date']['from']['year'] = date('Y');
 
     $default_filter['document_date']['to']['day']   = date('t');
-    $default_filter['document_date']['to']['month']   = date('m');
+    $default_filter['document_date']['to']['month']   = date('n');
     $default_filter['document_date']['to']['year']   = date('Y');
 
     return $default_filter;
