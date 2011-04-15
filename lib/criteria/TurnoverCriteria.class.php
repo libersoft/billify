@@ -25,12 +25,16 @@ class TurnoverCriteria extends Criteria
     $this->initDefaults();
   }
 
-  public function initDefaults()
+  protected function initDefaults()
   {
     $this->add(FatturaPeer::NUM_FATTURA, '0', Criteria::NOT_EQUAL);
     $this->addOr(FatturaPeer::NUM_FATTURA, null, Criteria::ISNULL);
   }
   
+  public function addPaidState()
+  {
+    $this->add(FatturaPeer::STATO, Fattura::PAGATA);
+  }
   
   public function addDateRange($year = null, $month = null)
   {

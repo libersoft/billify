@@ -23,18 +23,6 @@ class FatturaPeer extends BaseFatturaPeer
     return parent::doSelectJoinAllExceptModoPagamento($criteria, $con, $join_behavior);
   }
 
-  public static function doSelectPaid(Criteria $criteria = null)
-  {
-    if (null === $criteria)
-    {
-      $criteria = new Criteria();
-    }
-
-    $criteria->add(FatturaPeer::STATO, Fattura::PAGATA);
-
-    return self::doSelect($criteria);
-  }
-
   public static function retrieveUserId()
   {
     return FatturaPeer::$user_id;
