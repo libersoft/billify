@@ -27,4 +27,9 @@ class AcquistoFormFilter extends FatturaFormFilter
   {
     return '@invoice_purchase';
   }
+
+  protected function getNewCriteria()
+  {
+    return new AcquistoCriteria();
+  }
 }

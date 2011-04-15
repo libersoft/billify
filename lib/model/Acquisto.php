@@ -3,7 +3,7 @@
 class Acquisto extends Fattura
 {
 
-  const PEER = 'AcquistoPeer';
+  const PEER = 'FatturaPeer';
 
   protected $color_stato = array(self::NON_PAGATA => 'red',
                                  self::PAGATA     => 'green',

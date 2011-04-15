@@ -41,4 +41,9 @@ class VenditaFormFilter extends FatturaFormFilter
   {
     return '@invoice';
   }
+
+  protected function getNewCriteria()
+  {
+    return new Criteria();
+  }
 }

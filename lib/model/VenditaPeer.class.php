@@ -18,14 +18,12 @@ class VenditaPeer extends FatturaPeer
   public static function doSelectJoinAllExceptModoPagamento(Criteria $c, $con = null, $join_behavior = Criteria::LEFT_JOIN)
   {
     $c->add(VenditaPeer::CLASS_KEY, VenditaPeer::CLASSKEY_VENDITA );
-    $c->add(FatturaPeer::ID_UTENTE, FatturaPeer::$user_id);
     return parent::doSelectJoinAllExceptModoPagamento($c);
   }
 
   public static function doCountJoinAllExceptModoPagamento(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
   {
     $criteria->add(VenditaPeer::CLASS_KEY, VenditaPeer::CLASSKEY_VENDITA );
-    $criteria->add(FatturaPeer::ID_UTENTE, FatturaPeer::$user_id);
     return parent::doCountJoinAllExceptModoPagamento($criteria, $distinct, $con);
   }
   

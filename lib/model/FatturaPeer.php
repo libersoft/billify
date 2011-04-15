@@ -17,6 +17,12 @@ class FatturaPeer extends BaseFatturaPeer
     return parent::doCount($criteria, $distinct, $con);
   }
 
+  public static function doCountJoinAllExceptModoPagamento(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
+  {
+    $criteria->add(FatturaPeer::ID_UTENTE, FatturaPeer::$user_id);
+    return parent::doCountJoinAllExceptModoPagamento($criteria, $distinct, $con);
+  }
+  
   public static function doSelectJoinAllExceptModoPagamento(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
   {
     $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
