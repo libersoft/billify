@@ -56,13 +56,8 @@ $browser->
     checkElement('span.notice', '/documento salvato con successo/')->
   end()->
   click('cash flow')->
-  setField('cash_flow_filters[document_date][from][month]', '2')->
-  setField('cash_flow_filters[document_date][from][day]', '9')->
-  setField('cash_flow_filters[document_date][from][year]', '2008')->
-
-  setField('cash_flow_filters[document_date][to][month]', '2')->
-  setField('cash_flow_filters[document_date][to][day]', '9')->
-  setField('cash_flow_filters[document_date][to][year]', '2008')->
+  setField('cash_flow_filters[document_date][from]', '9/2/2008')->
+  setField('cash_flow_filters[document_date][to]', '9/2/2008')->
   click('Filtra')->
 
   checkResponseElement('table td', '2008-02-09', array('position' => 0))->

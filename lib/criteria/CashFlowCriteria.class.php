@@ -29,4 +29,10 @@ class CashFlowCriteria extends TurnoverCriteria
       $this->addAnd(FatturaPeer::DATA_SCADENZA, $to, Criteria::LESS_EQUAL);
     }
   }
+
+  public function addDateTimeRange(DateTime $from, DateTime $to)
+  {
+    $this->add(FatturaPeer::DATA_SCADENZA, $from->format('Y-m-d'), Criteria::GREATER_EQUAL);
+    $this->addAnd(FatturaPeer::DATA_SCADENZA, $to->format('Y-m-d'), Criteria::LESS_EQUAL);
+  }
 }

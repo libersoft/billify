@@ -5,8 +5,8 @@ class CashFlowFilter extends sfFormFilter
   public function setup()
   {
     $this->setWidgets(array(
-      'document_date' => new sfWidgetFormDateRange(array('from_date' => new sfWidgetFormDate(array('format' => '%day%/%month%/%year%')),
-                                                         'to_date' => new sfWidgetFormDate(array('format' => '%day%/%month%/%year%')),
+      'document_date' => new sfWidgetFormDateRange(array('from_date' => new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it')),
+                                                         'to_date' => new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it')),
                                                          'template' => 'da %from_date% a %to_date%')),
     ));
 
@@ -22,13 +22,8 @@ class CashFlowFilter extends sfFormFilter
   public function getDefaultFilter()
   {
     $default_filter = array();
-    $default_filter['document_date']['from']['day'] = 1;
-    $default_filter['document_date']['from']['month'] = date('n');
-    $default_filter['document_date']['from']['year'] = date('Y');
-
-    $default_filter['document_date']['to']['day']   = date('t');
-    $default_filter['document_date']['to']['month']   = date('n');
-    $default_filter['document_date']['to']['year']   = date('Y');
+    $default_filter['document_date']['from'] = date('1/n/Y');
+    $default_filter['document_date']['to']   = date('t/n/Y');
 
     return $default_filter;
   }

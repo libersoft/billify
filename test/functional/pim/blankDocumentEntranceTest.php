@@ -60,13 +60,8 @@ $browser->
   end()->
         
   click('cash flow')->
-  setField('cash_flow_filters[document_date][from][month]', '2')->
-  setField('cash_flow_filters[document_date][from][day]', '10')->
-  setField('cash_flow_filters[document_date][from][year]', '2008')->
-
-  setField('cash_flow_filters[document_date][to][month]', '2')->
-  setField('cash_flow_filters[document_date][to][day]', '10')->
-  setField('cash_flow_filters[document_date][to][year]', '2008')->
+  setField('cash_flow_filters[document_date][from]', '10/2/2008')->
+  setField('cash_flow_filters[document_date][to]', '10/2/2008')->
   click('Filtra')->
         
   checkResponseElement('table td', '2008-02-10', array('position' => 0))->

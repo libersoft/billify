@@ -53,7 +53,16 @@ class cashflowActions extends sfActions
     $this->filter($request);
 
     $this->pager = new CashFlowPager();
-    $this->pager->getCriteria()->addDateRangeForCashFlow($this->getUser()->getAttribute($this->filter->getName().'[document_date]'));
+
+    $data_range = $this->getUser()->getAttribute($this->filter->getName().'[document_date]');
+
+    $from = DateTime::createFromFormat('d/m/Y', $data_range['from']);
+    $to = DateTime::createFromFormat('d/m/Y', $data_range['to']);
+
+    if ($from && $to)
+    {
+      $this->pager->getCriteria()->addDateTimeRange($from, $to);
+    }
     
     $this->pager->setLimit(sfConfig::get('app_cashflow_paginator_offset', 10));
     $this->pager->setPage($request->getParameter('page', 1));

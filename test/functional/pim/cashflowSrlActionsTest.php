@@ -9,17 +9,7 @@ $browser->
   click('cash flow');
 
 $cf = new CashFlow();
-
-$document_data['from']['day'] = 1;
-$document_data['from']['month'] = date('m', strtotime('today'));
-$document_data['from']['year'] = date('Y');
-
-$document_data['to']['day'] = date('t', strtotime('today'));
-$document_data['to']['month'] = date('m', strtotime('today'));
-$document_data['to']['year'] = date('Y');
-
-$cf->reset();
-$cf->getCriteria()->addDateRangeForCashFlow($document_data);
+$cf->getCriteria()->addDateTimeRange(new DateTime(), new DateTime(date('Y-m-t')));
 $cf->init();
 
 $browser->
@@ -30,21 +20,14 @@ $browser->
   end();
 
 $cash_flow_filters = array('document_date' => array(
-    'from' => array('day' => 1, 'month' => 1, 'year' =>  date('Y', strtotime('-2 year'))),
-    'tom'  => array('day' => 31, 'month' => 1, 'year' =>  date('Y', strtotime('-2 year'))),
+    'from' => '1/1/'.date('Y', strtotime('-2 year')),
+    'tom'  => '31/1/'.date('Y', strtotime('-2 year')),
 ));
 
 $browser->
   info('Filtro data cashflow dal 01/01/'.date('Y', strtotime('-2 year')).' al 31/12/'.date('Y', strtotime('-2 year')))->
-  
-  setField('cash_flow_filters[document_date][from][day]', '1')->
-  setField('cash_flow_filters[document_date][from][month]', '1')->
-  setField('cash_flow_filters[document_date][from][year]', date('Y', strtotime('-2 year')))->
-
-  setField('cash_flow_filters[document_date][to][day]', '31')->
-  setField('cash_flow_filters[document_date][to][month]', '12')->
-  setField('cash_flow_filters[document_date][to][year]', date('Y', strtotime('-2 year')))->
-
+  setField('cash_flow_filters[document_date][from]', date('1/1/Y', strtotime('-2 year')))->
+  setField('cash_flow_filters[document_date][to]', date('31/12/Y', strtotime('-2 year')))->
   click('Filtra')->
 
   with('response')->begin()->
@@ -55,14 +38,8 @@ $browser->
 
 $browser->
   info('Filtro data cashflow dal 01/01/'.date('Y', strtotime('-1 year')).' al 31/12/'.date('Y', strtotime('-1 year')))->
-  
-  setField('cash_flow_filters[document_date][from][day]', '1')->
-  setField('cash_flow_filters[document_date][from][month]', '1')->
-  setField('cash_flow_filters[document_date][from][year]', date('Y', strtotime('-1 year')))->
-
-  setField('cash_flow_filters[document_date][to][day]', '31')->
-  setField('cash_flow_filters[document_date][to][month]', '12')->
-  setField('cash_flow_filters[document_date][to][year]', date('Y', strtotime('-1 year')))->
+  setField('cash_flow_filters[document_date][from]', date('1/1/Y', strtotime('-1 year')))->
+  setField('cash_flow_filters[document_date][to]', date('31/12/Y', strtotime('-1 year')))->
 
   click('Filtra')->
 
@@ -74,15 +51,8 @@ $browser->
 
 $browser->
   info('Filtro data cashflow anno corrente mese di gennaio')->
-  
-  setField('cash_flow_filters[document_date][from][day]', '1')->
-  setField('cash_flow_filters[document_date][from][month]', '1')->
-  setField('cash_flow_filters[document_date][from][year]', date('Y'))->
-
-  setField('cash_flow_filters[document_date][to][day]', '31')->
-  setField('cash_flow_filters[document_date][to][month]', '1')->
-  setField('cash_flow_filters[document_date][to][year]', date('Y'))->
-
+  setField('cash_flow_filters[document_date][from]', date('1/1/Y'))->
+  setField('cash_flow_filters[document_date][to]', date('31/1/Y'))->
   click('Filtra')->
 
   with('response')->begin()->
@@ -92,14 +62,8 @@ $browser->
 
 $browser->
   info('Filtro data cashflow anno corrente mese di marzo')->
-  
-  setField('cash_flow_filters[document_date][from][day]', '1')->
-  setField('cash_flow_filters[document_date][from][month]', date('m', strtotime('-1 month')))->
-  setField('cash_flow_filters[document_date][from][year]', date('Y'))->
-
-  setField('cash_flow_filters[document_date][to][day]', date('t', strtotime('today')))->
-  setField('cash_flow_filters[document_date][to][month]', date('m', strtotime('-1 month')))->
-  setField('cash_flow_filters[document_date][to][year]', date('Y'))->
+  setField('cash_flow_filters[document_date][from]', date('1/m/Y', strtotime('-1 month')))->
+  setField('cash_flow_filters[document_date][to]', date('t/m/Y', strtotime('-1 month')))->
 
   click('Filtra')->
 
@@ -111,29 +75,12 @@ $browser->
 
 $browser->
   info('Filtro data cashflow anno corrente mese di aprile')->
-  
-  setField('cash_flow_filters[document_date][from][day]', '1')->
-  setField('cash_flow_filters[document_date][from][month]', date('m', strtotime('today')))->
-  setField('cash_flow_filters[document_date][from][year]', date('Y'))->
-
-  setField('cash_flow_filters[document_date][to][day]', date('t', strtotime('today')))->
-  setField('cash_flow_filters[document_date][to][month]', date('m', strtotime('today')))->
-  setField('cash_flow_filters[document_date][to][year]', date('Y'))->
-
+  setField('cash_flow_filters[document_date][from]', date('1/m/Y', strtotime('today')))->
+  setField('cash_flow_filters[document_date][to]', date('t/m/Y', strtotime('today')))->
   click('Filtra');
 
-$cf = new CashFlow();
-
-$document_data['from']['day'] = 1;
-$document_data['from']['month'] = date('m', strtotime('today'));
-$document_data['from']['year'] = date('Y');
-
-$document_data['to']['day'] = date('t', strtotime('today'));
-$document_data['to']['month'] = date('m', strtotime('today'));
-$document_data['to']['year'] = date('Y');
-
 $cf->reset();
-$cf->getCriteria()->addDateRangeForCashFlow($document_data);
+$cf->getCriteria()->addDateTimeRange(new DateTime(), new DateTime(date('Y-m-t')));
 $cf->init();
 
 $browser->

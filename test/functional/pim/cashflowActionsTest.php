@@ -11,13 +11,8 @@ $browser->
   click('Entra')->
   followRedirect()->
   click('cash flow')->
-  setField('cash_flow_filters[document_date][from][month]', '')->
-  setField('cash_flow_filters[document_date][from][day]', '')->
-  setField('cash_flow_filters[document_date][from][year]', '')->
-
-  setField('cash_flow_filters[document_date][to][month]', '')->
-  setField('cash_flow_filters[document_date][to][day]', '')->
-  setField('cash_flow_filters[document_date][to][year]', '')->
+  setField('cash_flow_filters[document_date][from]', '')->
+  setField('cash_flow_filters[document_date][to]', '')->
   click('Filtra')->
 
   checkResponseElement('h2', '/Cash Flow/')->
@@ -64,28 +59,15 @@ $browser->
   info('Filtro data cashflow')->
   with('response')->begin()->
     checkElement('label[for="cash_flow_filters_document_date"]', 'Data documento')->
-    checkElement('select[name="cash_flow_filters[document_date][from][month]"]')->
-    checkElement('select[name="cash_flow_filters[document_date][from][day]"]')->
-    checkElement('select[name="cash_flow_filters[document_date][from][year]"]')->
-
-    checkElement('select[name="cash_flow_filters[document_date][to][year]"]')->
-    checkElement('select[name="cash_flow_filters[document_date][to][day]"]')->
-    checkElement('select[name="cash_flow_filters[document_date][to][month]"]')->
-
+    checkElement('input[name="cash_flow_filters[document_date][from]"]')->
+    checkElement('input[name="cash_flow_filters[document_date][to]"]')->
   end()->
-  setField('cash_flow_filters[document_date][from][month]', date('m', strtotime('+29 days')))->
-  setField('cash_flow_filters[document_date][from][day]', date('d', strtotime('+29 days')))->
-  setField('cash_flow_filters[document_date][from][year]', date('Y', strtotime('+29 days')))->
-
-  setField('cash_flow_filters[document_date][to][month]', date('m', strtotime('+29 days')))->
-  setField('cash_flow_filters[document_date][to][day]', date('d', strtotime('+29 days')))->
-  setField('cash_flow_filters[document_date][to][year]', date('Y', strtotime('+29 days')))->
+  setField('cash_flow_filters[document_date][from]', date('d/m/Y', strtotime('+29 days')))->
+  setField('cash_flow_filters[document_date][to]', date('d/m/Y', strtotime('+29 days')))->
 
   click('Filtra')->
   with('request')->begin()->
-    isParameter('cash_flow_filters[document_date][to][month]', date('m', strtotime('+29 days')))->
-    isParameter('cash_flow_filters[document_date][to][day]', date('d', strtotime('+29 days')))->
-    isParameter('cash_flow_filters[document_date][to][year]', date('Y', strtotime('+29 days')))->
+    isParameter('cash_flow_filters[document_date][to]', date('d/m/Y', strtotime('+29 days')))->
   end()->
   with('response')->begin()->
     checkElement('table tr', 5)->
