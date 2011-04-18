@@ -7,8 +7,6 @@
   </h2>
 </div>
 
-<?php include_partial('cashflow/filter', array('filter' => $filter))?>
-
 <p><?php echo __('No entrances in cash flow.');?></p>
 
 <?php

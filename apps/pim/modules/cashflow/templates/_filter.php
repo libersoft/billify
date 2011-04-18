@@ -10,6 +10,5 @@
   <hr/>
   <div class="button-block">
     <input class="button" type="submit" value="Filtra" />
-    <a href="<?php echo url_for($filter->getRoute()); ?>" >Reset</a>
   </div>
 </form>
