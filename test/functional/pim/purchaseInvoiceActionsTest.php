@@ -27,7 +27,7 @@ $browser->
   checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
   checkResponseElement('div[class="navigator"]', '/Pagina 1 di 2/')->
   checkResponseElement('table tr td', date('d/m/Y', strtotime('-2 years')), array('position' => 3))->
-  checkResponseElement('table tr td', '/11.200,30/', array('position' => 4))->
+  checkResponseElement('table tr td', '/11.200,34/', array('position' => 4))->
   checkResponseElement('div[class="navigator"]', 2)->
   checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
   click('2')->

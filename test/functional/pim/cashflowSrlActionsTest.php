@@ -6,12 +6,27 @@ $browser->loadData();
 
 $browser->
   login('user', 'user')->
-  click('cash flow')->
+  click('cash flow');
 
+$cf = new CashFlow();
+
+$document_data['from']['day'] = 1;
+$document_data['from']['month'] = date('m', strtotime('today'));
+$document_data['from']['year'] = date('Y');
+
+$document_data['to']['day'] = date('t', strtotime('today'));
+$document_data['to']['month'] = date('m', strtotime('today'));
+$document_data['to']['year'] = date('Y');
+
+$cf->reset();
+$cf->getCriteria()->addDateRangeForCashFlow($document_data);
+$cf->init();
+
+$browser->
   with('response')->begin()->
-    checkElement('table.banca td', format_currency('19200', 'EUR'), array('position' => 0))->
-    checkElement('table.banca td', format_currency('8001.84', 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency('11198.16', 'EUR'), array('position' => 2))->
+    checkElement('table.banca td', format_currency($cf->getIncoming(), 'EUR'), array('position' => 0))->
+    checkElement('table.banca td', format_currency($cf->getOutcoming(), 'EUR'), array('position' => 1))->
+    checkElement('table.banca td', format_currency($cf->getBalance(), 'EUR'), array('position' => 2))->
   end();
 
 $cash_flow_filters = array('document_date' => array(
@@ -34,8 +49,8 @@ $browser->
 
   with('response')->begin()->
     checkElement('table.banca td', format_currency('2400', 'EUR'), array('position' => 0))->
-    checkElement('table.banca td', format_currency('132024.20', 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency('-129624.20', 'EUR'), array('position' => 2))->
+    checkElement('table.banca td', format_currency('132024.71', 'EUR'), array('position' => 1))->
+    checkElement('table.banca td', format_currency('-129624.71', 'EUR'), array('position' => 2))->
   end();
 
 $browser->
@@ -53,8 +68,8 @@ $browser->
 
   with('response')->begin()->
     checkElement('table.banca td', format_currency('3600', 'EUR'), array('position' => 0))->
-    checkElement('table.banca td', format_currency('118821.78', 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency('-115221.78', 'EUR'), array('position' => 2))->
+    checkElement('table.banca td', format_currency('118822.24', 'EUR'), array('position' => 1))->
+    checkElement('table.banca td', format_currency('-115222.24', 'EUR'), array('position' => 2))->
   end();
 
 $browser->
@@ -90,8 +105,8 @@ $browser->
 
   with('response')->begin()->
     checkElement('table.banca td', format_currency('1200', 'EUR'), array('position' => 0))->
-    checkElement('table.banca td', format_currency('39607.26', 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency('-38407.26', 'EUR'), array('position' => 2))->
+    checkElement('table.banca td', format_currency('39607.41', 'EUR'), array('position' => 1))->
+    checkElement('table.banca td', format_currency('-38407.41', 'EUR'), array('position' => 2))->
   end();
 
 $browser->

@@ -16,29 +16,29 @@ $browser->
     checkElement('#col-right ul li', '/1.000,00/')->
     checkElement('#col-right ul li', '/12.000,00/')->
     checkElement('#col-right ul li', '/0,00/', array('position' => 1))->
-    checkElement('#col-right ul li', '/40.402,26/', array('position' => 1))->
+    checkElement('#col-right ul li', '/40.402,40/', array('position' => 1))->
     checkElement('#col-right ul li', '/1.000,00/', array('position' => 2))->
-    checkElement('#col-right ul li', '/28.402,26/', array('position' => 2))->
+    checkElement('#col-right ul li', '/28.402,40/', array('position' => 2))->
     checkElement('#col-right ul li', '/200,00/', array('position' => 3))->
     checkElement('#col-right ul li', '/2.840,00/', array('position' => 3))->
     checkElement('#col-right ul li', '/0,00/', array('position' => 4))->
-    checkElement('#col-right ul li', '/7.206,84/', array('position' => 4))->
+    checkElement('#col-right ul li', '/7.206,85/', array('position' => 4))->
     checkElement('#col-right ul li', '/200,00/', array('position' => 5))->
-    checkElement('#col-right ul li', '/4.366,84/', array('position' => 5))->
+    checkElement('#col-right ul li', '/4.366,85/', array('position' => 5))->
     checkElement('#col-right ul li', '/1.000,00/', array('position' => 6))->
-    checkElement('#col-right ul li', '/33.600,90/', array('position' => 7))->
-    checkElement('#col-right ul li', '/32.600,90/', array('position' => 8))->
+    checkElement('#col-right ul li', '/33.601,04/', array('position' => 7))->
+    checkElement('#col-right ul li', '/32.601,04/', array('position' => 8))->
     checkElement('#col-right ul li', '/200,00/', array('position' => 9))->
-    checkElement('#col-right ul li', '/6.006,36/', array('position' => 10))->
-    checkElement('#col-right ul li', '/5.806,36/', array('position' => 11))->
+    checkElement('#col-right ul li', '/6.006,37/', array('position' => 10))->
+    checkElement('#col-right ul li', '/5.806,37/', array('position' => 11))->
   end()->
 
   
   click('lista fatture di vendita')->
   with('response')->begin()->
     checkElement('ul.ul-list li', 'entrate: € 1.000,00 (€ 12.000,00)', array('position' => 0))->
-    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 40.402,26)', array('position' => 1))->
-    checkElement('ul.ul-list li', 'utile € 1.000,00 (-€ 28.402,26)', array('position' => 2))->
+    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 40.402,40)', array('position' => 1))->
+    checkElement('ul.ul-list li', 'utile € 1.000,00 (-€ 28.402,40)', array('position' => 2))->
   end()->
 
   setField('fattura_filters[data][from]', date('d/m/Y', strtotime('-2 months')))->
@@ -54,7 +54,7 @@ $browser->
   click('Filtra')->
   with('response')->begin()->
     checkElement('ul.ul-list li', 'entrate: € 1.000,00 (€ 1.000,00)', array('position' => 0))->
-    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 33.600,90)', array('position' => 1))->
+    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 33.601,04)', array('position' => 1))->
   end()->
 
   setField('fattura_filters[data][from]', date('d/m/Y', strtotime('today')))->
@@ -70,8 +70,8 @@ $browser->
   click('Filtra')->
   with('response')->begin()->
     checkElement('ul.ul-list li', 'entrate: € 3.000,00 (€ 3.000,00)', array('position' => 0))->
-    checkElement('ul.ul-list li', 'uscite: € 100.802,70 (€ 100.802,70)', array('position' => 1))->
-    checkElement('ul.ul-list li', 'utile -€ 97.802,70 (-€ 97.802,70)', array('position' => 2))->
+    checkElement('ul.ul-list li', 'uscite: € 100.803,12 (€ 100.803,12)', array('position' => 1))->
+    checkElement('ul.ul-list li', 'utile -€ 97.803,12 (-€ 97.803,12)', array('position' => 2))->
   end()->
 
   setField('fattura_filters[data][from]', '01/01/'.date('Y', strtotime('-2 year')))->
@@ -79,8 +79,8 @@ $browser->
   click('Filtra')->
   with('response')->begin()->
     checkElement('ul.ul-list li', 'entrate: € 0,00 (€ 2.000,00)', array('position' => 0))->
-    checkElement('ul.ul-list li', 'uscite: € 112.003,00 (€ 112.003,00)', array('position' => 1))->
-    checkElement('ul.ul-list li', 'utile -€ 112.003,00 (-€ 110.003,00)', array('position' => 2))->
+    checkElement('ul.ul-list li', 'uscite: € 112.003,46 (€ 112.003,46)', array('position' => 1))->
+    checkElement('ul.ul-list li', 'utile -€ 112.003,46 (-€ 110.003,46)', array('position' => 2))->
   end()->
 
   setField('fattura_filters[data][from]', '01/01/'.date('Y', strtotime('-3 year')))->
@@ -96,16 +96,16 @@ $browser->
   click('lista fatture d\'acquisto')->
   with('response')->begin()->
     checkElement('ul.ul-list li', 'entrate: € 1.000,00 (€ 12.000,00)', array('position' => 0))->
-    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 40.402,26)', array('position' => 1))->
-    checkElement('ul.ul-list li', 'utile € 1.000,00 (-€ 28.402,26)', array('position' => 2))->
+    checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 40.402,40)', array('position' => 1))->
+    checkElement('ul.ul-list li', 'utile € 1.000,00 (-€ 28.402,40)', array('position' => 2))->
   end()->
   setField('fattura_filters[data][from]', '01/01/'.date('Y', strtotime('-1 year')))->
   setField('fattura_filters[data][to]', '31/12/'.date('Y', strtotime('-1 year')))->
   click('Filtra')->
   with('response')->begin()->
     checkElement('ul.ul-list li', '/0,00/', array('position' => 0))->
-    checkElement('ul.ul-list li', '/100.802,70/', array('position' => 1))->
-    checkElement('ul.ul-list li', '/97.802,70/', array('position' => 2))->
+    checkElement('ul.ul-list li', '/100.803,12/', array('position' => 1))->
+    checkElement('ul.ul-list li', '/97.803,12/', array('position' => 2))->
   end();
 
 $browser->click('esci');
