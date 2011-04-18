@@ -14,9 +14,9 @@ $cf->init();
 
 $browser->
   with('response')->begin()->
-    checkElement('table.banca td', format_currency($cf->getIncoming(), 'EUR'), array('position' => 0))->
-    checkElement('table.banca td', format_currency($cf->getOutcoming(), 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency($cf->getBalance(), 'EUR'), array('position' => 2))->
+    checkElement('table.monitor td', format_currency($cf->getIncoming(), 'EUR'), array('position' => 0))->
+    checkElement('table.monitor td', format_currency($cf->getOutcoming(), 'EUR'), array('position' => 1))->
+    checkElement('table.monitor td', format_currency($cf->getBalance(), 'EUR'), array('position' => 2))->
   end();
 
 $cash_flow_filters = array('document_date' => array(
@@ -31,9 +31,9 @@ $browser->
   click('Filtra')->
 
   with('response')->begin()->
-    checkElement('table.banca td', format_currency('2400', 'EUR'), array('position' => 0))->
-    checkElement('table.banca td', format_currency('132024.71', 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency('-129624.71', 'EUR'), array('position' => 2))->
+    checkElement('table.monitor td', format_currency('2400', 'EUR'), array('position' => 0))->
+    checkElement('table.monitor td', format_currency('132024.71', 'EUR'), array('position' => 1))->
+    checkElement('table.monitor td', format_currency('-129624.71', 'EUR'), array('position' => 2))->
   end();
 
 $browser->
@@ -44,9 +44,9 @@ $browser->
   click('Filtra')->
 
   with('response')->begin()->
-    checkElement('table.banca td', format_currency('3600', 'EUR'), array('position' => 0))->
-    checkElement('table.banca td', format_currency('118822.24', 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency('-115222.24', 'EUR'), array('position' => 2))->
+    checkElement('table.monitor td', format_currency('3600', 'EUR'), array('position' => 0))->
+    checkElement('table.monitor td', format_currency('118822.24', 'EUR'), array('position' => 1))->
+    checkElement('table.monitor td', format_currency('-115222.24', 'EUR'), array('position' => 2))->
   end();
 
 $browser->
@@ -57,7 +57,7 @@ $browser->
 
   with('response')->begin()->
     checkElement('#col-left p', 'Nessuna entrata nel cash flow.')->
-    checkElement('#col-right div.title', '/cash flow/')->
+    checkElement('#col-right div.title', '/filtro/')->
   end();
 
 $browser->
@@ -68,9 +68,9 @@ $browser->
   click('Filtra')->
 
   with('response')->begin()->
-    checkElement('table.banca td', format_currency('1200', 'EUR'), array('position' => 0))->
-    checkElement('table.banca td', format_currency('39607.41', 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency('-38407.41', 'EUR'), array('position' => 2))->
+    checkElement('table.monitor td', format_currency('1200', 'EUR'), array('position' => 0))->
+    checkElement('table.monitor td', format_currency('39607.41', 'EUR'), array('position' => 1))->
+    checkElement('table.monitor td', format_currency('-38407.41', 'EUR'), array('position' => 2))->
   end();
 
 $browser->
@@ -85,7 +85,7 @@ $cf->init();
 
 $browser->
   with('response')->begin()->
-    checkElement('table.banca td', format_currency($cf->getIncoming(), 'EUR'), array('position' => 0))->
-    checkElement('table.banca td', format_currency($cf->getOutcoming(), 'EUR'), array('position' => 1))->
-    checkElement('table.banca td', format_currency($cf->getBalance(), 'EUR'), array('position' => 2))->
+    checkElement('table.monitor td', format_currency($cf->getIncoming(), 'EUR'), array('position' => 0))->
+    checkElement('table.monitor td', format_currency($cf->getOutcoming(), 'EUR'), array('position' => 1))->
+    checkElement('table.monitor td', format_currency($cf->getBalance(), 'EUR'), array('position' => 2))->
   end();

@@ -50,6 +50,9 @@ class cashflowActions extends sfActions
   */
   public function executeIndex($request)
   {
+    $this->from_date = null;
+    $this->to_date = null;
+
     $this->filter($request);
 
     $this->pager = new CashFlowPager();
@@ -62,6 +65,8 @@ class cashflowActions extends sfActions
     if ($from && $to)
     {
       $this->pager->getCriteria()->addDateTimeRange($from, $to);
+      $this->from_date = $from->format('d/m/Y');
+      $this->to_date = $from->format('d/m/Y');
     }
     
     $this->pager->setLimit(sfConfig::get('app_cashflow_paginator_offset', 10));

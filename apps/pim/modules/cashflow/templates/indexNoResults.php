@@ -16,3 +16,9 @@
     include_partial('cashflow/sidebar');
   end_slot();
 ?>
+
+<?php
+  slot('infobox');
+    include_partial('cashflow/filter', array('filter' => $filter));
+  end_slot();
+?>

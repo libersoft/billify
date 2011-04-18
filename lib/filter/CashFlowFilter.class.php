@@ -7,7 +7,7 @@ class CashFlowFilter extends sfFormFilter
     $this->setWidgets(array(
       'document_date' => new sfWidgetFormDateRange(array('from_date' => new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it')),
                                                          'to_date' => new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it')),
-                                                         'template' => 'da %from_date% a %to_date%')),
+                                                         'template' => 'da %from_date%<br/> a %to_date%')),
     ));
 
     $this->setValidators(array(
@@ -26,5 +26,10 @@ class CashFlowFilter extends sfFormFilter
     $default_filter['document_date']['to']   = date('t/n/Y');
 
     return $default_filter;
+  }
+
+  public function getRoute()
+  {
+    return '@cashflow';
   }
 }

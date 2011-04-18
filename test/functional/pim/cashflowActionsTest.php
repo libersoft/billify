@@ -46,14 +46,14 @@ $browser->
   checkResponseElement('table td', 'Si', array('position' => 11))->
   checkResponseElement('table td[style="background-color: green; font-weight: bold;"]', 'Si')->
 
-  checkResponseElement('table.banca', 1)->
-  checkResponseElement('table.banca th', 3)->
-  checkResponseElement('table.banca th', 'Totale Entrate:', array('position' => 0))->
-  checkResponseElement('table.banca th', 'Totale Uscite:', array('position' => 1))->
-  checkResponseElement('table.banca th', 'Totale:', array('position' => 2))->
-  checkResponseElement('table.banca td', format_currency('1200', 'EUR'), array('position' => 0))->
-  checkResponseElement('table.banca td', format_currency('750', 'EUR'), array('position' => 1))->
-  checkResponseElement('table.banca td', format_currency('450', 'EUR'), array('position' => 2));
+  checkResponseElement('table.monitor', 1)->
+  checkResponseElement('table.monitor th', 3)->
+  checkResponseElement('table.monitor th', 'Totale Entrate:', array('position' => 0))->
+  checkResponseElement('table.monitor th', 'Totale Uscite:', array('position' => 1))->
+  checkResponseElement('table.monitor th', 'Totale:', array('position' => 2))->
+  checkResponseElement('table.monitor td', format_currency('1200', 'EUR'), array('position' => 0))->
+  checkResponseElement('table.monitor td', format_currency('750', 'EUR'), array('position' => 1))->
+  checkResponseElement('table.monitor td', format_currency('450', 'EUR'), array('position' => 2));
 
 $browser->
   info('Filtro data cashflow')->
