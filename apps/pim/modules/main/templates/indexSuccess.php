@@ -4,29 +4,23 @@
   <h2><?php echo __('outcoming invoices')?></h2>
 </div>
 
-<?php
-
-include_partial('fattura/list', array('fatture' => $fatture_da_inviare,
-                                      'fatture_results'=> $fatture_da_inviare,
-                                      'customer' => true,
-                                      'checkbox' => false,
-                                      'referrer' => 'main',
-                                      'copia' => false));
-?>
+<?php include_partial('invoice/list', array(
+    'results' => $fatture_da_inviare,
+    'taxes' => $sf_user->getUser()->getTassas(),
+    'copy'  => false,
+    'batch' => false
+)); ?>
 
 <div class="title">
   <h2><?php echo __('cashing invoices')?></h2>
 </div>
 
-<?php
-
-include_partial('fattura/list', array('fatture' => $fatture_da_incassare,
-                                      'fatture_results'=> $fatture_da_incassare,
-                                      'customer' => true,
-                                      'checkbox' => false,
-                                      'referrer' => 'main',
-                                      'copia' => false));
-?>
+<?php include_partial('invoice/list', array(
+    'results' => $fatture_da_incassare,
+    'taxes'=> $sf_user->getUser()->getTassas(),
+    'copy' => false,
+    'batch' => false
+)); ?>
 
 <?php slot('sidebar')?>
   <?php include_partial('main/sidebar') ?>
