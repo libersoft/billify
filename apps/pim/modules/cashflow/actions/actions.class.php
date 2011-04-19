@@ -59,8 +59,8 @@ class cashflowActions extends sfActions
 
     $data_range = $this->getUser()->getAttribute($this->filter->getName().'[document_date]');
 
-    $from = DateTime::createFromFormat('d/m/Y', $data_range['from']);
-    $to = DateTime::createFromFormat('d/m/Y', $data_range['to']);
+    $from = bfDateTime::createFromFormat($data_range['from']);
+    $to = bfDateTime::createFromFormat($data_range['to']);
 
     if ($from && $to)
     {
