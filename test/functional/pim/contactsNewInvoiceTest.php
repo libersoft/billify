@@ -20,7 +20,7 @@ $browser->
  info(' check if default invoice value is applied for the client')->
  with('response')->begin()->
     isStatusCode(200)->
-    checkElement('#col-left .title h2', '/Fattura n. 101/')->
+    checkElement('#col-left .title h2', '/Fattura n. 28/')->
     checkElement('#col-left h3', '/00 Azienda/')->
     checkElement('#col-right .ul-list li', '/auto/', array('position' => 4))->
     checkElement('#col-right .ul-list li', '/si/', array('position' => 5))->

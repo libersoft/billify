@@ -52,6 +52,13 @@ Contatto:
     email: azienda@example.it
     class_key: '<?php echo ContattoPeer::CLASSKEY_FORNITORE ?>'
     
+CodiceIva:
+  CodiceIva_1:
+    id_utente: Utente_1
+    nome: 20%
+    valore: 20
+    descrizione: Iva al 20%
+    
 Vendita:
   Fattura: 
     id_utente: Utente_1
@@ -69,7 +76,9 @@ Acquisto:
     imponibile: '500'
     imposte: '250'
     stato: '<?php echo Fattura::PAGATA ?>'
+    data_stato: '<?php echo date('Y-m-d', strtotime('-1 days'))?>'
     modo_pagamento_id: ModoPagamento_2
+    vat: 20
     
 DettagliFattura: 
   DettagliFattura: 
@@ -79,3 +88,4 @@ DettagliFattura:
     qty: 1
     iva: 20
     prezzo: 1000
+

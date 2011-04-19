@@ -1,7 +1,7 @@
 <?php
 include_once(dirname(__FILE__).'/../bootstrap/unit.php');
 
-$test = new lime_test(20, new lime_output_color());
+$test = new lime_test(18, new lime_output_color());
 
 $a1 = new Acquisto();
 $a1->setData(strtotime('-3 days'));;
@@ -79,16 +79,6 @@ $test->is('2000', $cf->getOutcoming(), '->getOutcoming() return right outcoming'
 $test->is('400', $cf->getIncomingTaxes(), '->getOutcomingTaxes() return right incoming taxes');
 $test->is('200', $cf->getOutcomingTaxes(), '->getIncomingTaxes() return right incoming taxes');
 
-$start_time = microtime();
-$test->is('-200', $cf->getBalanceTaxes(), '->getBalance() return right balance');
-$end_time = microtime();
 
-$no_cached_time = $end_time - $start_time;
-
-$start_time = microtime();
-$test->is('-200', $cf->getBalanceTaxes(), '->getBalance() return right balance');
-$end_time = microtime();
-
-$cached_time = $end_time - $start_time;
-
-$test->ok($cached_time < $no_cached_time, 'Cached time is less than no cached time');
+$cf = new CashFlow();
+$test->isa_ok($cf->getCriteria(), 'CashFlowCriteria', '->getCriteria() returns right value');

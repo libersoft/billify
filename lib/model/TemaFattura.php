@@ -296,7 +296,7 @@ class TemaFattura extends BaseTemaFattura {
 	}
 
 	private function getLabelProFormaOrNum(){
-		return $this->fattura->isProForma() ? LABEL_PROFORMA : LABEL_NUM_FATTURA.' '.$this->fattura->getNumFattura();
+		return $this->fattura->isProForma() ? LABEL_PROFORMA : LABEL_NUM_FATTURA.' '.$this->fattura->getNumberDecorated();
 	}
 
 	private function getScontoTotale(){

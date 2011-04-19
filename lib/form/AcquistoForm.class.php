@@ -26,8 +26,10 @@ class AcquistoForm extends FatturaForm
     $widgets['vat'] = new sfWidgetFormPropelChoice(array('model' => 'CodiceIva', 'key_method' => 'getValore'));
     $widgets['class_key'] = new sfWidgetFormInputHidden();
     $widgets['stato'] = new sfWidgetFormSelect(array('choices' => self::$states));
-    $widgets['data_stato'] = new sfWidgetFormDate(array('format'  => '%day%/%month%/%year%'));
+    $widgets['data_stato'] = new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it'));
 
+    $widgets['data'] = new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it'));
+    
     $this->widgetSchema->moveField('data_stato', sfWidgetFormSchema::AFTER, 'stato');
 
     $this->widgetSchema->setLabel('modo_pagamento_id', 'Modo pagamento');
@@ -41,6 +43,9 @@ class AcquistoForm extends FatturaForm
     $this->validatorSchema['vat']->setOption('required', true);
     $this->validatorSchema['num_fattura']->setOption('required', true);
     $this->validatorSchema['cliente_id']->setOption('required', true);
+
+    $this->validatorSchema['data']->setOption('date_format', '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~');
+    $this->validatorSchema['data_stato']->setOption('date_format', '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~');
     
     unset(
       $this['id_utente'],
@@ -80,7 +85,7 @@ class AcquistoForm extends FatturaForm
       return;
     }
 
-    $this->setDefault('data_stato', $this->getObject()->getDataPagamento('Y-m-d'));
+    $this->setDefault('data_stato', $this->getObject()->getDataPagamento('d/m/Y'));
 
   }
 

@@ -1,4 +1,3 @@
-
 <div class="title">
    <h4><?php echo __('filtro')?></h4>
 </div>

@@ -13,12 +13,16 @@ class mainActions extends sfActions
   
   public function executeIndex()
   {
-    $this->getUser()->setCulture('it_IT');
+    $criteria = new Criteria();
+    $criteria->addAsColumn('integer_num_fattura', 'CONVERT('.FatturaPeer::NUM_FATTURA.', signed)');
+    $criteria->addAscendingOrderByColumn('YEAR(data)');
+    $criteria->addAscendingOrderByColumn('integer_num_fattura');
+    $criteria->add(FatturaPeer::STATO, Vendita::INVIATA);
 
-    $this->invoice_repository = VenditaPeer::getInstance();
+    $this->fatture_da_incassare = VenditaPeer::doSelectJoinAllExceptModoPagamento($criteria);
 
-    $this->invoice_repository->fattureDaIncassare();
-    $this->invoice_repository->fattureDaInviare();
+    $criteria->add(FatturaPeer::STATO, Vendita::NON_PAGATA);
+    $this->fatture_da_inviare = VenditaPeer::doSelectJoinAllExceptModoPagamento($criteria);
 
   }
 

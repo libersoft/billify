@@ -9,23 +9,12 @@ Categoria:
     
 Utente:
   Utente_1:
-    id_invitation_code:
     username: user
     nome: User
     cognome: User
-    ragione_sociale: Company
-    partita_iva: 03727570404
-    codice_fiscale: 03727570404
     email: ff@ideato.it
     password: user
-    data_attivazione: 2008-03-26
-    data_rinnovo: 2008-03-26
-    tipo: pro
     stato: attivo
-    fattura: n
-    lastlogin: 2008-12-13 22:04:22
-    approva_contratto: 1
-    approva_policy: 1
 
 ModoPagamento:
   ModoPagamento_1:
@@ -288,6 +277,26 @@ CodiceIva:
     descrizione: Iva al 20%
 
 Vendita:
+<?php for($i = 2; $i <= 10; $i++):?>
+  Fattura_year_ago_<?php echo $i?>:
+    id_utente: Utente_1
+    cliente_id: Cliente_1
+    num_fattura: '<?php echo $i-1; ?>'
+    data: '<?php echo date('Y-m-d', strtotime('1/1/'.(date('Y')-$i)))?>'
+    modo_pagamento_id: ModoPagamento_1
+    stato: '<?php echo Fattura::INVIATA ?>'
+    vat: 20
+<?php endfor?>
+<?php for($i = 1; $i <= 3; $i++):?>
+  Fattura_lastyear_<?php echo $i?>:
+    id_utente: Utente_1
+    cliente_id: Cliente_1
+    num_fattura: '<?php echo $i; ?>'
+    data: '<?php echo date('Y-m-d', strtotime($i.'/1/'.(date('Y')-1)))?>'
+    modo_pagamento_id: ModoPagamento_1
+    stato: p
+    vat: 20
+<?php endfor?>
 <?php for($i = 1; $i <= 3; $i++):?>
   Fattura_proforma_<?php echo $i?>:
     id_utente: Utente_1
@@ -300,39 +309,36 @@ Vendita:
 <?php for($i = 1; $i <= 3; $i++):?>
   Fattura_<?php echo $i?>:
     id_utente: Utente_1
-    num_fattura: '<?php echo $i?>'
     cliente_id: Cliente_1
+    num_fattura: '<?php echo $i; ?>'
     data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'')))?>'
     modo_pagamento_id: ModoPagamento_1
-    vat: 20
-<?php endfor?>
-<?php for($i = 1; $i <= 3; $i++):?>
-  Fattura_lastyear_<?php echo $i?>:
-    id_utente: Utente_1
-    num_fattura: '<?php echo $i?>'
-    cliente_id: Cliente_1
-    data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'').' -1 year'))?>'
-    modo_pagamento_id: ModoPagamento_1
-    stato: p
     vat: 20
 <?php endfor?>
 <?php for($i = 4; $i <= 25; $i++):?>
   Fattura_<?php echo $i?>:
     id_utente: Utente_1
-    num_fattura: '<?php echo $i?>'
     cliente_id: Cliente_2
-    data: '<?php echo date('Y-m-d', strtotime('today'))?>'
+    num_fattura: '<?php echo $i; ?>'
+    data: '<?php echo date('Y-m-d', strtotime("+$i days"))?>'
     modo_pagamento_id: ModoPagamento_2
     stato: i
     vat: 20
 <?php endfor?>
   Fattura_a:
     id_utente: Utente_1
-    num_fattura: 100
     cliente_id: Cliente_2
+    num_fattura: '<?php echo $i+1; ?>'
     data: '<?php echo date('Y-m-d', strtotime('-1 month'))?>'
     modo_pagamento_id: ModoPagamento_2
     stato: p
+    vat: 20
+  Fattura_proforma_futuro:
+    id_utente: Utente_1
+    num_fattura: 0
+    cliente_id: Cliente_1
+    data: '<?php echo date('Y-m-d', strtotime('+1 year'))?>'
+    modo_pagamento_id: ModoPagamento_1
     vat: 20
 
 Acquisto:
@@ -396,7 +402,38 @@ Acquisto:
     stato: 'p'
 <?php endfor?>
 
+Entrata:
+<?php for($i = 1; $i < 10; $i++):?>
+  entrata_<?php echo $i?>:
+    id_utente: Utente_1
+    descrizione: 'Entrata <?php echo $i; ?>'
+    data: '<?php echo date('Y-m-d', strtotime("+$i days"))?>'
+    data_scadenza: '<?php echo date('Y-m-d', strtotime("+$i days"))?>'
+    imponibile: '1000'
+    imposte: '200'
+    stato: 'p'
+    contatto_string: Test
+<?php endfor?>
+
 DettagliFattura:
+<?php for($i = 2; $i <= 10; $i++):?>
+  DettagliFattura_year_ago_<?php echo $i?>:
+    fattura_id: 'Fattura_year_ago_<?php echo $i?>'
+    descrizione: >
+      Consulenza e realizzazione sito web 1
+    qty: 1
+    iva: 20
+    prezzo: '<?php echo 1000*$i; ?>'
+<?php endfor; ?>
+<?php for($i = 1; $i <= 3; $i++):?>
+  DettagliFattura_last_year<?php echo $i?>:
+    fattura_id: 'Fattura_lastyear_<?php echo $i?>'
+    descrizione: >
+      Consulenza e realizzazione sito web 1
+    qty: 1
+    iva: 20
+    prezzo: 1000
+<?php endfor; ?>
 <?php for($i = 1; $i <= 3; $i++):?>
   DettagliFatturaProforma_<?php echo $i?>:
     fattura_id: 'Fattura_proforma_<?php echo $i?>'
@@ -458,14 +495,6 @@ Impostazione:
     label_prezzo_totale: Prezzo Totale
     label_sconto: Sconto
     id_utente: Utente_1
-
-TagsFattura:
-  TagsFattura_1:
-    id_fattura: Fattura_1
-    id_utente: Utente_1
-    tag: mdg
-    tag_normalizzato: mdg
-    data: 2008-04-01
 
 Tassa:
   Tassa1:

@@ -6,8 +6,6 @@
   </h2>
 </div>
 
-<?php //include_partial('fattura/tags', array('fattura' => $fattura));?>
-
 <h3><?php echo link_to($fattura->getCliente()->toString(), '@contact_show?id='.$fattura->getClienteID(), array('title' => __('Gestione Cliente')))?></h3>
 <?php include_partial('contact/details',array('cliente'=>$fattura->getCliente(),'margin_left'=> '0px;'));?>
 <?php include_partial('fattura/dettagli_fattura',array('fattura'=>$fattura,'viewSconto'=>$viewSconto))?>

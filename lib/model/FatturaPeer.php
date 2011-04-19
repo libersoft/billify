@@ -2,7 +2,6 @@
 
 class FatturaPeer extends BaseFatturaPeer
 {
-
   static $instance;
   static $user_id;
 
@@ -18,32 +17,21 @@ class FatturaPeer extends BaseFatturaPeer
     return parent::doCount($criteria, $distinct, $con);
   }
 
-  public static function doSelectForCashFlow($document_date = null)
+  public static function doCountJoinAllExceptModoPagamento(Criteria $criteria, $distinct = false, PropelPDO $con = null, $join_behavior = Criteria::LEFT_JOIN)
   {
-    $criteria = new Criteria();
-
-    if (!is_null($document_date))
-    {
-      $from = implode('/', array_reverse($document_date['from']));
-      $to = implode('/', array_reverse($document_date['to']));
-      $criteria->add(FatturaPeer::DATA_SCADENZA, $from, Criteria::GREATER_EQUAL);
-      $criteria->addAnd(FatturaPeer::DATA_SCADENZA, $to, Criteria::LESS_EQUAL);
-    }
-
-    $criteria->addAscendingOrderByColumn(FatturaPeer::DATA_SCADENZA);
-    return FatturaPeer::doSelect($criteria);
+    $criteria->add(FatturaPeer::ID_UTENTE, FatturaPeer::$user_id);
+    return parent::doCountJoinAllExceptModoPagamento($criteria, $distinct, $con);
+  }
+  
+  public static function doSelectJoinAllExceptModoPagamento(Criteria $criteria, $con = null, $join_behavior = Criteria::LEFT_JOIN)
+  {
+    $criteria->add(FatturaPeer::ID_UTENTE, self::$user_id);
+    return parent::doSelectJoinAllExceptModoPagamento($criteria, $con, $join_behavior);
   }
 
-  public static function doSelectPaid(Criteria $criteria = null)
+  public static function retrieveUserId()
   {
-    if (null === $criteria)
-    {
-      $criteria = new Criteria();
-    }
-
-    $criteria->add(FatturaPeer::STATO, Fattura::PAGATA);
-
-    return self::doSelect($criteria);
+    return FatturaPeer::$user_id;
   }
 
 }

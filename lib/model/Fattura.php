@@ -209,18 +209,23 @@ abstract class Fattura extends BaseFattura
 
   public function __toString()
   {
-    return 'Fattura ' . ($this->isProForma() ? 'Pro-Forma' : 'n. ' . $this->getNumFattura());
+    return 'Fattura ' . ($this->isProForma() ? 'Pro-Forma' : 'n. ' . $this->getNumberDecorated());
+  }
+
+  public function getNumberDecorated()
+  {
+    return $this->num_fattura;
   }
 
   public function getShortName()
   {
-    return ($this->isProForma() ? 'Pro-Forma' : $this->getNumFattura());
+    return ($this->isProForma() ? 'Pro-Forma' : $this->getNumberDecorated());
   }
 
   public function getDataPagamento($format = 'd M Y')
   {
     $data_pagamento = $this->getData();
-    $data = date($format, strtotime($this->getData() . ' +' . (is_object($this->getModoPagamento()) ? $this->getModoPagamento()->getNumGiorni() : 0) . ' days'));
+    $data = date($format, strtotime($this->getData('Y-m-d') . ' +' . (is_object($this->getModoPagamento()) ? $this->getModoPagamento()->getNumGiorni() : 0) . ' days'));
     return strftime($data);
   }
 
@@ -331,6 +336,12 @@ abstract class Fattura extends BaseFattura
     $this->setData(date('y-m-d', time()));
   }
 
+  public function setData($v)
+  {
+    parent::setData($v);
+    $this->setAnno(date('Y', $this->getData('U')));
+  }
+
   public function setSpeseAnticipate($v)
   {
     if ($this->spese_anticipate !== $v || $v === '0')
@@ -354,58 +365,6 @@ abstract class Fattura extends BaseFattura
     $this->setClienteId($client->getId());
   }
 
-  public function setNewNumFattura()
-  {
-    $con = Propel::getConnection();
-    $year = date('y', time());
-    $num_fattura = 1;
-
-    //Select Invoice whit max ID
-    if ($this->getData() != "")
-    {
-      $year = date('y', strtotime($this->getData()));
-    }
-
-    $query = 'SELECT MAX(CAST(' . FatturaPeer::NUM_FATTURA . ' AS UNSIGNED)) as max
-		          FROM ' . FatturaPeer::TABLE_NAME . '
-		          WHERE ' . FatturaPeer::ID_UTENTE . '=' . sfContext::getInstance()->getUser()->getAttribute('id_utente') . '
-		          AND ' . FatturaPeer::DATA . '>= "' . date('y-m-d', mktime(0, 0, 0, 1, 1, $year)) . '"
-		          AND ' . FatturaPeer::DATA . ' <= "' . date('y-m-d', mktime(0, 0, 0, 12, 31, $year)) . '"
-		          AND ' . FatturaPeer::CLASS_KEY . ' = ' . FatturaPeer::CLASSKEY_VENDITA;
-
-    $stmt = $con->prepare($query);
-    $stmt->execute();
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    $max = $row['max'];
-
-
-    //Select Num Fattura and date of Invoice with Max ID
-    if ($max != "")
-    {
-      $query2 = 'SELECT ' . VenditaPeer::ID . ' as id,' . VenditaPeer::DATA . ' as data
-			           FROM ' . VenditaPeer::TABLE_NAME . '
-			           WHERE ' . FatturaPeer::ID_UTENTE . '=' . sfContext::getInstance()->getUser()->getAttribute('id_utente') . '
-			           AND ' . FatturaPeer::NUM_FATTURA . '=' . $max . '
-			           AND ' . FatturaPeer::DATA . '>= "' . date('y-m-d', mktime(0, 0, 0, 1, 1, $year)) . '"
-			           AND ' . FatturaPeer::DATA . ' <= "' . date('y-m-d', mktime(0, 0, 0, 12, 31, $year)) . '"
-			           AND ' . FatturaPeer::CLASS_KEY . ' = ' . FatturaPeer::CLASSKEY_VENDITA;
-
-      $stmt = $con->prepare($query2);
-      $stmt->execute();
-
-      $row = $stmt->fetch(PDO::FETCH_ASSOC);
-      $id_fattura = $row['id'];
-      $data_fattura = $row['data'];
-
-      $num_fattura = $max;
-      $data = $data_fattura;
-
-      $num_fattura = $num_fattura + 1;
-    }
-
-    parent::setNumFattura($num_fattura);
-  }
-
   public function toString()
   {
     return $this->__toString();
@@ -414,7 +373,9 @@ abstract class Fattura extends BaseFattura
   public function isProForma()
   {
     if ($this->getNumFattura() == 0)
+    {
       return true;
+    }
 
     return false;
   }
@@ -422,15 +383,6 @@ abstract class Fattura extends BaseFattura
   public function checkInRitardo()
   {
     return (strtotime($this->getDataPagamento()) < time() && $this->getStato() == self::INVIATA);
-  }
-
-  public function save(PropelPDO $con = null)
-  {
-    if ($this->getClassKey() == FatturaPeer::CLASSKEY_ACQUISTO || $this->getClassKey() == FatturaPeer::CLASSKEY_VENDITA)
-    {
-      $this->setDataScadenza($this->getDataPagamento());
-    }
-    return parent::save($con);
   }
   
   public function delete(PropelPDO $con = null)
@@ -440,7 +392,7 @@ abstract class Fattura extends BaseFattura
     {
       $dettaglio->delete();
     }
-    parent::delete($conn);
+    parent::delete($con);
   }
 
   public function calcolaFattura($tasse_ulteriori = array(), $tipo_ritenuta = null, $ritenuta_acconto = null)

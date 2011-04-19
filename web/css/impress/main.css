@@ -179,3 +179,9 @@ table td.red {background-color: red; color: #000;}
 .notice{ color:red; font-size: 70%; }
 
 .hiddenrow { display:none;}
+
+.break { clear: left; }
+
+table.monitor { border: 0; width: 180px; }
+table.monitor td, table.monitor th { padding: 0px; border: 0px;}
+table.monitor th { text-align: left; }

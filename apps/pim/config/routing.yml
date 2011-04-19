@@ -60,6 +60,10 @@ document_sales_create:
   url: cashflow/create/document/sales
   param: {module: cashflow, action: create, type: 3}
 
+document_remove:
+  url: document/remove/:id
+  param: { module: cashflow, action: remove }
+
 customer:
   url: /clienti
   param: {module: contact, action: index, type: 1}
@@ -76,9 +80,9 @@ provider_create:
   url: /fornitori/create
   param: {module: contact, action: create, type: 2}
 
-statistiche:
-  url: /statistiche
-  param: { module: stats, action: index }
+analytics:
+  url: /analytics
+  param: { module: analytics, action: index }
 
 statistiche_mod:
   url: /statistiche/:action/*

@@ -1,8 +1,11 @@
 <div class="title">
-  <h2><?php echo __('Cash Flow')?></h2>
+  <h2>
+    <?php echo __('Cash Flow')?>
+    <?php if ($sf_user->hasFlash('notice')): ?>
+      <span class="notice">- <?php echo __($sf_user->getFlash('notice')); ?></span>
+    <?php endif; ?>
+  </h2>
 </div>
-
-<?php include_partial('cashflow/filter', array('filter' => $filter))?>
 
 <?php include_partial('cashflow/pager', array('pager' => $pager))?>
 
@@ -29,23 +32,20 @@
 
 <?php include_partial('cashflow/pager', array('pager' => $pager))?>
 
-<table class="banca" style="margin: 10px 0px; border: 1px solid #AAA;">
-  <tr>
-    <th><?php echo __('Totale Entrate')?>:</th>
-    <td align="right"><?php echo format_currency($cf->getIncoming(), '&euro;')?></td>
-  </tr>
-  <tr>
-    <th><?php echo __('Totale Uscite')?>:</th>
-    <td align="right"><?php echo format_currency($cf->getOutcoming(), '&euro;')?></td>
-  </tr>
-  <tr>
-    <th><?php echo __('Totale')?>:</th>
-    <td align="right"><?php echo format_currency($cf->getBalance(), '&euro;')?></td>
-  </tr>
-</table>
-
 <?php
   slot('sidebar');
     include_partial('cashflow/sidebar');
+  end_slot();
+?>
+
+<?php
+  slot('infobox');
+    include_partial('cashflow/filter', array('filter' => $filter));
+  end_slot();
+?>
+
+<?php
+  slot('infobox-2');
+    include_partial('cashflow/monitor_cashflow', array('from_date' => $from_date, 'to_date' => $to_date, 'cf' => $cf));
   end_slot();
 ?>

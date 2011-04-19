@@ -39,8 +39,8 @@ class fatturaActions extends sfActions
     }
 
     $this->fattura = new Vendita();
-    $this->fattura->setData(time());
     $this->fattura->setNewNumFattura();
+    
     if ($this->id_cliente)
     {
       $this->fattura->setModoPagamentoId($this->cliente->getModoPagamentoID());
@@ -58,6 +58,11 @@ class fatturaActions extends sfActions
     $this->makeFattura();
   }
 
+  public function validateUpdate()
+  {
+    return true;
+  }
+  
   public function executeUpdate()
   {
     $fattura = $this->getFatturaOrCreate();
@@ -258,7 +263,8 @@ class fatturaActions extends sfActions
     if (date('y', strtotime($fattura->getData())) != date('y', mktime(0, 0, 0, $m, $d, $y)))
     {
       $fattura->setNewNumFattura();
-    } else
+    }
+    else
     {
       $fattura->setNumFattura($this->getRequestParameter('num_fattura'));
     }
@@ -273,49 +279,32 @@ class fatturaActions extends sfActions
       $fattura->setRegolare();
     }
 
-    if ($this->checkFatturaExist($fattura))
+    try
     {
-      return sfView::ERROR;
+      $fattura->setClienteId($this->getRequestParameter('cliente_id'));
+      $fattura->setModoPagamentoId($this->getRequestParameter('modo_pagamento_id'));
+      $fattura->setSconto($this->getRequestParameter('sconto'));
+      $fattura->setVat($this->getRequestParameter('vat'));
+      $fattura->setNote($this->getRequestParameter('note'));
+      $fattura->setSpeseAnticipate($this->getRequestParameter('spese_anticipate'));
+      $fattura->setCalcolaRitenutaAcconto($this->getRequestParameter('calcola_ritenuta_acconto'));
+      $fattura->setIncludiTasse($this->getRequestParameter('includi_tasse'));
+      $fattura->setCalcolaTasse($this->getRequestParameter('calcola_tasse'));
+      $fattura->setIdUtente($this->getUser()->getAttribute('id_utente'));
+      $fattura->save();
     }
-
-    //$fattura->setId($this->getRequestParameter('id'));
-    $fattura->setClienteId($this->getRequestParameter('cliente_id'));
-    $fattura->setModoPagamentoId($this->getRequestParameter('modo_pagamento_id'));
-    $fattura->setSconto($this->getRequestParameter('sconto'));
-    $fattura->setVat($this->getRequestParameter('vat'));
-    $fattura->setNote($this->getRequestParameter('note'));
-    $fattura->setSpeseAnticipate($this->getRequestParameter('spese_anticipate'));
-    $fattura->setCalcolaRitenutaAcconto($this->getRequestParameter('calcola_ritenuta_acconto'));
-    $fattura->setIncludiTasse($this->getRequestParameter('includi_tasse'));
-    $fattura->setCalcolaTasse($this->getRequestParameter('calcola_tasse'));
-    $fattura->setIdUtente($this->getUser()->getAttribute('id_utente'));
-    $fattura->save();
+    catch(Exception $e)
+    {
+      $this->fattura = $fattura;
+      $this->error_message = $e->getMessage();
+      $this->setTemplate('edit');
+      return sfView::SUCCESS;
+    }
 
     $this->getUser()->setAttribute('modifica_data', false);
     $this->getUser()->setAttribute('modifica_num_fattura', false);
 
     return $this->redirect('fattura/show?id=' . $fattura->getId());
-  }
-
-  private function checkFatturaExist($fattura)
-  {
-    $id = $fattura->getNumFattura();
-    $anno = $fattura->getData('Y');
-    $this->fattura = $fattura;
-
-    $criteria = new Criteria();
-    $criteria->add(FatturaPeer::NUM_FATTURA, $fattura->getNumFattura());
-    $fatture = VenditaPeer::doSelect($criteria);
-    $trovato = false;
-    foreach ($fatture as $fattura_find)
-    {
-      if ($fattura_find->getNumFattura() != '0' && $fattura_find->getData('Y') == $anno && $fattura_find->getID() != $fattura->getID())
-      {
-        $trovato = true;
-        break;
-      }
-    }
-    return $trovato;
   }
 
   private function getFatturaOrCreate($id = 'id')
@@ -363,7 +352,8 @@ class fatturaActions extends sfActions
     if (!$this->getRequestParameter('id', 0))
     {
       $this->forward('fattura', 'create');
-    } else
+    }
+    else
     {
       $this->forward('fattura', 'edit');
     }

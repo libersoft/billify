@@ -3,7 +3,7 @@
 class Acquisto extends Fattura
 {
 
-  const PEER = 'AcquistoPeer';
+  const PEER = 'FatturaPeer';
 
   protected $color_stato = array(self::NON_PAGATA => 'red',
                                  self::PAGATA     => 'green',
@@ -44,7 +44,17 @@ class Acquisto extends Fattura
   public function  addToCashFlow(CashFlow $cf)
   {
     $cash_flow_acquisto = new CashFlowPurchaseAdapter($this);
-    $cf->addOutcoming($cash_flow_acquisto);;
+    $cf->addOutcoming($cash_flow_acquisto);
+  }
+
+  public function getData($format = 'd/m/Y')
+  {
+    return parent::getData($format);
+  }
+
+  public function  getDataStato($format = 'd/m/Y')
+  {
+    return parent::getDataStato($format);
   }
 
 }

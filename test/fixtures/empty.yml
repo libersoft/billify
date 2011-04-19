@@ -1,0 +1,31 @@
+Utente:
+  new_user:
+    username: new_user
+    password: new_user
+    stato: attivo
+
+Impostazione:
+  impostazione_new_user:
+    id_utente: new_user
+
+Banca:
+
+Categoria:
+
+CodiceIva:
+
+Contatto:
+
+DettagliFattura:
+
+Fattura:
+
+ModoPagamento:
+
+Tassa:
+
+TemaFattura:
+
+Vendita:
+
+Acquisto:

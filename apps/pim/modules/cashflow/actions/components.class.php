@@ -4,7 +4,7 @@ class cashflowComponents extends paComponents
 {
   public function executeMonitor($request, $callback = null)
   {
-    $criteria = new Criteria;
+    $criteria = new FinancialDocumentCriteria();
 
     $filter = new FinancialDocumentFormFilter();
     $filter->bind($request->getParameter($filter->getName(), $filter->getDefaultFilter($this->from_date, $this->to_date)));
@@ -20,10 +20,12 @@ class cashflowComponents extends paComponents
 
     $this->cf = new CashFlow();
     $this->cf->setWithTaxes(false);
-    $this->cf->addDocuments(FinancialDocumentPeer::doSelect($criteria));
+    $this->cf->addDocuments(FatturaPeer::doSelect($criteria));
 
+    $criteria->addPaidState();
+    
     $this->cf_paid_document = new CashFlow();
     $this->cf_paid_document->setWithTaxes(false);
-    $this->cf_paid_document->addDocuments(FinancialDocumentPeer::doSelectPaid($criteria));
+    $this->cf_paid_document->addDocuments(FatturaPeer::doSelect($criteria));
   }
 }

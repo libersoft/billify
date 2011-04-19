@@ -6,4 +6,9 @@ class FinancialDocumentFormFilter extends FatturaFormFilter
   {
     return;
   }
+
+  protected function getNewCriteria()
+  {
+    return new FinancialDocumentCriteria();
+  }
 }

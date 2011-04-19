@@ -27,7 +27,7 @@ $browser->
   checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
   checkResponseElement('div[class="navigator"]', '/Pagina 1 di 2/')->
   checkResponseElement('table tr td', date('d/m/Y', strtotime('-2 years')), array('position' => 3))->
-  checkResponseElement('table tr td', '/11.200,30/', array('position' => 4))->
+  checkResponseElement('table tr td', '/11.200,34/', array('position' => 4))->
   checkResponseElement('div[class="navigator"]', 2)->
   checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
   click('2')->
@@ -39,9 +39,7 @@ $browser->
   checkResponseElement('label[for="fattura_cliente_id"]', 'Fornitore')->
   checkResponseElement('select[id="fattura_cliente_id"]')->
   checkResponseElement('label[for="fattura_data"]', 'Data')->
-  checkResponseElement('select[id="fattura_data_month"]')->
-  checkResponseElement('select[id="fattura_data_day"]')->
-  checkResponseElement('select[id="fattura_data_year"]')->
+  checkResponseElement('input[id="fattura_data"]')->
   checkResponseElement('label[for="fattura_imponibile"]', 'Imponibile')->
   checkResponseElement('input[type="text"][id="fattura_imponibile"]')->
   checkResponseElement('label[for="fattura_imposte"]', 'Imposte')->
@@ -50,10 +48,7 @@ $browser->
   checkResponseElement('select[id="fattura_modo_pagamento_id"]')->
   checkResponseElement('label[for="fattura_stato"]', 'Stato')->
   checkResponseElement('select[id="fattura_stato"]')->
-  checkResponseElement('input[type="submit"][value="Salva"]')->
-  checkResponseElement('td select[name*="fattura[data]"]', '/28/')->
-  checkResponseElement('td select[name*="fattura[data]"]', '!/28/', array('position' => 1))->
-  checkResponseElement('td select[name*="fattura[data]"]', '/'.date('Y').'/', array('position' => 2));
+  checkResponseElement('input[type="submit"][value="Salva"]');
 
 $browser->
   with('response')->begin()->

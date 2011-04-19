@@ -30,11 +30,16 @@ class cashflowActions extends sfActions
   {
     $this->filter = new CashFlowFilter();
 
+    if (!$this->getUser()->hasAttribute($this->filter->getName()))
+    {
+      $this->getUser()->setAttribute($this->filter->getName(), $this->filter->getDefaultFilter());
+    }
+
     if ($request->hasParameter($this->filter->getName()))
     {
       $this->getUser()->setAttribute($this->filter->getName(), $request->getParameter($this->filter->getName()));
     }
-
+    
     $this->filter->bind($this->getUser()->getAttribute($this->filter->getName()));
   }
 
@@ -45,25 +50,35 @@ class cashflowActions extends sfActions
   */
   public function executeIndex($request)
   {
-    $this->filter($request);
-    
-    $this->cf = CashFlow::getInstance();
-    $this->cf->reset();
-    $this->cf->addDocuments(FatturaPeer::doSelectForCashFlow($this->getUser()->getAttribute($this->filter->getName().'[document_date]')));
-    
-    $this->pager = new CashFlowPaginator($this->cf);
-    $this->pager->setLimit('10');
-    $this->pager->setPage($request->getParameter('page', 1));
+    $this->from_date = null;
+    $this->to_date = null;
 
+    $this->filter($request);
+
+    $this->pager = new CashFlowPager();
+
+    $data_range = $this->getUser()->getAttribute($this->filter->getName().'[document_date]');
+
+    $from = bfDateTime::createFromFormat($data_range['from']);
+    $to = bfDateTime::createFromFormat($data_range['to']);
+
+    if ($from && $to)
+    {
+      $this->pager->getCriteria()->addDateTimeRange($from, $to);
+      $this->from_date = $from->format('d/m/Y');
+      $this->to_date = $from->format('d/m/Y');
+    }
+    
+    $this->pager->setLimit(sfConfig::get('app_cashflow_paginator_offset', 10));
+    $this->pager->setPage($request->getParameter('page', 1));
+    $this->pager->init();
+    
     if (!$this->pager->getCountAllResults())
     {
       return 'NoResults';
     }
-    
-    if ($request->getParameter('page') != 'all')
-    {
-      $this->cf = $this->pager;
-    }
+
+    $this->cf = $this->pager;
   }
 
   public function executeCreate($request)
@@ -75,7 +90,6 @@ class cashflowActions extends sfActions
   {
     $id = null;
 
-
     if(!is_null($request->getParameter('id')))
     {
       $id = $request->getParameter('id');
@@ -86,28 +100,36 @@ class cashflowActions extends sfActions
       $id = $request->getParameter('fattura[id]');
     }
 
-
     $document = FatturaPeer::retrieveByPk($id);
-
 
     $factory = new FatturaFactoryForm();
     $this->form = $factory->build($request->getParameter('type'), $document);
-
-    /*if($request->hasParameter('type') && $request->getParameter('type') == 4)
-    {
-      print_r($document);
-      var_dump($id);
-      die('qui');
-    }*/
-
-
+    
     if($request->isMethod('post'))
     {
       $contact = $this->update($request);
       if($contact)
       {
+        $this->getUser()->setFlash('notice', 'document updated successfully');
         $this->redirect('cashflow/edit?id='.$contact->getId());
       }
     }
+  }
+
+  public function executeRemove(sfWebRequest $request)
+  {
+    $this->forward404Unless($request->hasParameter('id'));
+
+    $criteria = new Criteria();
+    $criteria->add(FatturaPeer::CLASS_KEY, array(FatturaPeer::CLASSKEY_ENTRATA, FatturaPeer::CLASSKEY_USCITA), Criteria::IN);
+    $criteria->add(FatturaPeer::ID, $request->getParameter('id'));
+    $document = FatturaPeer::doSelectOne($criteria);
+
+    $this->forward404Unless($document);
+
+    $document->delete();
+
+    $this->getUser()->setFlash('notice', 'Documento eliminato con successo');
+    $this->redirect('@cashflow');
   }
 }

@@ -127,14 +127,15 @@
     <column name="contatto_string" type="varchar" size="100" />
     <column name="descrizione" type="varchar" size="255" />
     <column name="data" type="date" required="true" />
+    <column name="anno" type="integer" required="true" />
     <column name="data_stato" type="date" />
     <column name="data_scadenza" type="date" />
     <column name="modo_pagamento_id" type="integer" />
     <column name="sconto" type="integer" default="0" />
     <column name="vat" type="integer" default="20" />
     <column name="spese_anticipate" type="float" default="0" />
-    <column name="imposte" type="float" size="20"/>
-    <column name="imponibile" type="float" size="20"/>
+    <column name="imposte" type="double" />
+    <column name="imponibile" type="double" />
     <column name="stato" type="char" default="n" />
     <column name="iva_pagata" type="char" default="n" />
     <column name="iva_depositata" type="char" default="n" />
@@ -219,46 +220,6 @@
     <index name="id_utente">
       <index-column name="id_utente" />
     </index>
-  </table>
-
-  <table name="prodotto" idMethod="native">
-    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="id_utente" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="id_utente" foreign="id" />
-    </foreign-key>
-    <column name="codice" type="VARCHAR" size="255" />
-    <column name="nome" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="prezzo" type="FLOAT" required="true" default="0" />
-    <index name="codice">
-      <index-column name="codice" />
-    </index>
-    <index name="id_utente">
-      <index-column name="id_utente" />
-    </index>
-  </table>
-
-  <table name="tags_fattura" idMethod="native">
-    <column name="id" type="INTEGER" required="true" autoIncrement="true" primaryKey="true" />
-    <column name="id_fattura" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="fattura" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="id_fattura" foreign="id" />
-    </foreign-key>
-    <column name="id_utente" type="INTEGER" required="true" default="0" />
-    <foreign-key foreignTable="utente" onDelete="CASCADE" onUpdate="CASCADE">
-      <reference local="id_utente" foreign="id" />
-    </foreign-key>
-    <column name="tag" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="tag_normalizzato" type="VARCHAR" size="255" required="true" default="null" />
-    <column name="data" type="DATE" required="true" />
-    <index name="id_utente">
-      <index-column name="id_utente" />
-    </index>
-    <unique name="id_fattura_2">
-      <unique-column name="id_fattura" />
-      <unique-column name="id_utente" />
-      <unique-column name="tag_normalizzato" />
-    </unique>
   </table>
 
   <table name="tassa" idMethod="native">

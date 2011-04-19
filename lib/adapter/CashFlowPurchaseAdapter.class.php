@@ -23,9 +23,9 @@ Class CashFlowPurchaseAdapter extends AbstractCashFlowAdapter implements ICashFl
    *
    * @return string
    */
-  public function getDate() 
+  public function getDate($format = 'Y-m-d')
   {
-    return $this->document->getData();
+    return $this->document->getData($format);
   }
   
   /**
