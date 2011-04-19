@@ -225,7 +225,7 @@ abstract class Fattura extends BaseFattura
   public function getDataPagamento($format = 'd M Y')
   {
     $data_pagamento = $this->getData();
-    $data = date($format, strtotime($this->getData() . ' +' . (is_object($this->getModoPagamento()) ? $this->getModoPagamento()->getNumGiorni() : 0) . ' days'));
+    $data = date($format, strtotime($this->getData('Y-m-d') . ' +' . (is_object($this->getModoPagamento()) ? $this->getModoPagamento()->getNumGiorni() : 0) . ' days'));
     return strftime($data);
   }
 

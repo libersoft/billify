@@ -12,9 +12,7 @@ $browser->
   click("10/7")->
 
   with('response')->begin()->
-    checkElement('#fattura_data_stato_month option[selected="selected"][value="'.date('m', strtotime('-1 month + 10 days')).'"]')->
-    checkElement('#fattura_data_stato_day option[selected="selected"][value="'.date('d', strtotime('-1 month + 10 days')).'"]')->
-    checkElement('#fattura_data_stato_year option[selected="selected"][value="'.date('Y', strtotime('-1 month + 10 days')).'"]')->
+    checkElement('input[name="fattura[data_stato]"][value="'.date('d/m/Y', strtotime('-1 month + 10 days')).'"]')->
   end()->
 
   setField('fattura[stato]', 'p')->

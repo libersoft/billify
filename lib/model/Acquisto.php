@@ -47,4 +47,14 @@ class Acquisto extends Fattura
     $cf->addOutcoming($cash_flow_acquisto);
   }
 
+  public function getData($format = 'd/m/Y')
+  {
+    return parent::getData($format);
+  }
+
+  public function  getDataStato($format = 'd/m/Y')
+  {
+    return parent::getDataStato($format);
+  }
+
 }

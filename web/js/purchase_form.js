@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 function get_data_stato_row() {
 
-  return $('#fattura_data_stato_year').parent().parent();
+  return $('#fattura_data_stato').parent().parent();
 }
 
 function is_pagata_selected() {

@@ -3,4 +3,4 @@ saleIndexSuccess:
      breadcrumps: [invoice, breadList]
 
 editSuccess:
-  javascripts:    [/sfJQueryUIPlugin/js/jquery-1.3.1.min.js]
+  javascripts:    [/sfJQueryUIPlugin/js/jquery-1.3.1.min.js, /sfJQueryUIPlugin/js/jquery-ui.js, /sfJQueryUIPlugin/js/i18n/ui.datepicker-it.js]
