@@ -19,17 +19,13 @@ $browser->
   checkResponseElement('label[for="fattura_descrizione"]', 'Descrizione')->
   checkResponseElement('input[type="text"][id="fattura_descrizione"]')->
   checkResponseElement('label[for="fattura_data"]', 'Data')->
-  checkResponseElement('select[id="fattura_data_month"]')->
-  checkResponseElement('select[id="fattura_data_day"]')->
-  checkResponseElement('select[id="fattura_data_year"]')->
+  checkResponseElement('input[id="fattura_data"]')->
   checkResponseElement('label[for="fattura_imponibile"]', 'Imponibile')->
   checkResponseElement('input[type="text"][id="fattura_imponibile"]')->
   checkResponseElement('label[for="fattura_imposte"]', 'Imposte')->
   checkResponseElement('input[type="text"][id="fattura_imposte"]')->
   checkResponseElement('label[for="fattura_data_scadenza"]', 'Data scadenza')->
-  checkResponseElement('select[id="fattura_data_scadenza_month"]')->
-  checkResponseElement('select[id="fattura_data_scadenza_day"]')->
-  checkResponseElement('select[id="fattura_data_scadenza_year"]')->
+  checkResponseElement('input[id="fattura_data_scadenza"]')->
   checkResponseElement('label[for="fattura_stato"]', 'Stato')->
   checkResponseElement('select[id="fattura_stato"]')->
   checkResponseElement('input[type="submit"][value="Salva"]')->
@@ -39,12 +35,12 @@ $browser->
   setField('fattura[imponibile]', '5000')->
   setField('fattura[imposte]', '200')->
   setField('fattura[stato]', 'n')->
-  setField('fattura[data]', array('day' => '12', 'month' => '1', 'year' => '2008'))->
+  setField('fattura[data]', '12/01/2008')->
   click('Salva')->
   with('form')->begin()->
     hasErrors(true)->
   end()->
-  setField('fattura[data_scadenza]', array('day' => '9', 'month' => '2', 'year' => '2008'))->
+  setField('fattura[data_scadenza]', '09/02/2008')->
   click('Salva')->
         
   with('form')->begin()->

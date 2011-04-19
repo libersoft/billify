@@ -1,3 +1,6 @@
+<?php include_stylesheets_for_form($form) ?>
+<?php include_javascripts_for_form($form) ?>
+
 <div class="title">
   <h2>
     <?php echo $form->getObject() instanceof Entrata ? __('Nuova entrata') : __('Nuova uscita') ?>

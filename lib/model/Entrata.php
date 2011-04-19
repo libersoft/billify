@@ -32,4 +32,14 @@ class Entrata extends Fattura
     $cash_flow_entrance = new CashFlowEntranceAdapter($this);
     $cf->addIncoming($cash_flow_entrance);
   }
+
+  public function getData($format = 'd/m/Y')
+  {
+    return parent::getData($format);
+  }
+
+  public function  getDataScadenza($format = 'd/m/Y')
+  {
+    return parent::getDataScadenza($format);
+  }
 }
