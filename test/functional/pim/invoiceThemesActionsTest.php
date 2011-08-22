@@ -4,7 +4,6 @@ include(dirname(__FILE__).'/../../bootstrap/functional.php');
 
 $browser = new bfTestFunctional(new sfBrowser());
 $browser->loadData();
-
 $browser->
   login()->
   info('1. invoice themes list')->
@@ -23,13 +22,13 @@ $browser->
     checkElement('#breadcrumps ul li', 'Sei in:', array('position' => 0))->
     checkElement('#breadcrumps ul li', '/Home/', array('position' => 1))->
     checkElement('#breadcrumps ul li', '/Temi Fattura/', array('position' => 2))->
-    checkElement('table', 1)->
-    checkElement('table th', 2)->
-    checkElement('table th', 'Nome', array('position' => 0))->
-    checkElement('table td', 'ideato srl', array('position' => 0))->
-    checkElement('table td img[alt="delete"]')->
-  end()->
+    checkElement('#lista_temi', 1)->
+    checkElement('#lista_temi li', '/temaa doc/', array('position' => 0))->
+    checkElement('#lista_temi li', '/ideato srl/', array('position' => 1))->
+    checkElement('#lista_temi li span img[alt="delete"]', 2)->
+  end();
 
+$browser->
   info('2. delete invoice theme')->
   click('delete')->
 
@@ -39,7 +38,10 @@ $browser->
   end()->
   followRedirect()->
   isForwardedTo('temafattura', 'list')->
-
+        
+  click('delete')-> 
+  followRedirect()->
+        
   with('response')->begin()->
     isStatusCode(200)->
     checkElement('table', 0)->
@@ -83,7 +85,7 @@ $browser->test()->todo('test bank validation');
 $browser->click('Temi Fattura')->
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('td:contains("tema test")')->
+    checkElement('#lista_temi li', "/tema test/")->
   end()->
 
   info('4. edit bank')->
@@ -104,7 +106,7 @@ $browser->click('Temi Fattura')->
   click('Temi Fattura')->
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('td:contains("tema test 2")')->
+    checkElement('#lista_temi li', "/tema test 2/")->
   end();
 
 ;

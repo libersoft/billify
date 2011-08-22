@@ -8,24 +8,16 @@
 </div>
 
 <?php if(count($tema_fatturas) > 0):?>
-  <table width="100%">
-  <thead>
-  <tr>
-    <th>Nome</th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
+<h2><?php echo __('Lista dei temi'); ?></h2>
+  <ul id="lista_temi">
   <?php foreach ($tema_fatturas as $tema_fattura): ?>
-  <tr>
-      <td><?php echo link_to($tema_fattura->getNome(), 'temafattura/edit?id='.$tema_fattura->getId()) ?></td>
-      <td class="trash"><?php echo link_to(image_tag('icons_tango/trash-full.png', array('alt' => 'delete')), 'temafattura/delete?id='.$tema_fattura->getId(), 'post=true&confirm=Vuoi eliminiare questo tema?') ?></td>
-    </tr>
+      <li><?php echo link_to($tema_fattura->getNome(), 'temafattura/edit?id='.$tema_fattura->getId()) ?>
+      <span class="trash"><?php echo link_to(image_tag('icons_tango/trash-full.png', array('alt' => 'delete')), 'temafattura/delete?id='.$tema_fattura->getId(), 'post=true&confirm=Vuoi eliminiare questo tema?') ?></span>
+      </li>
   <?php endforeach; ?>
-  </tbody>
-  </table>
+  </ul>
 <?php else:?>
-  <p>Nessun tema disponibile, <?php echo link_to('crea il tuo tema fattura','temafattura/create')?>.</p>
+<p><?php echo __('Nessun tema disponibile, <a href="%url%">crea il tuo tema fattura</a>', array( '%url%' => url_for('temafattura/create'))); ?>.</p>
 <?php endif?>
 
 <?php

@@ -1,4 +1,4 @@
-<table class="fatture" width="100%" style="margin-bottom: 5px;">
+<table class="fatture <?php echo (isset($invoice_type))?$invoice_type:''; ?>" width="100%" style="margin-bottom: 5px;">
 <thead>
 <tr>
   <?php if (!isset($batch) || $batch): ?>
@@ -22,7 +22,7 @@
 </thead>
 <tbody>
 <?php foreach ($results as $invoice): $invoice->calcolaFattura($taxes, $sf_user->getSettings()->getTipoRitenuta(), $sf_user->getSettings()->getRitenutaAcconto()); ?>
-  <tr>
+  <tr class="invoice-<?php echo strtolower($invoice->getShortName()); ?>">
     <?php if (!isset($batch) || $batch): ?>
       <td><input type="checkbox" name="delete[]" value="<?php echo $invoice->getId()?>"></td>
     <?php endif; ?>
@@ -31,11 +31,11 @@
     <td><?php echo $invoice->getData('d/m/Y'); ?></td>
     <td align="right"><?php echo format_currency($invoice->getImponibile(), 'EUR'); ?></td>
     <td align="right"><?php echo format_currency($invoice->getTotale(), 'EUR'); ?></td>
-    <td style="font-weight: bold; background-color: <?php echo $invoice->getColorStato()?>; color: <?php echo $invoice->getFontColorStato()?>"><?php echo $invoice->getStato(true)?></td>
+    <td class="centered" style="font-weight: bold; background-color: <?php echo $invoice->getColorStato()?>; color: <?php echo $invoice->getFontColorStato()?>"><?php echo $invoice->getStato(true)?></td>
     <?php if($sf_user->getSettings()->getBoolConsegnaCommercialista()):?>
       <td><?php echo link_to($invoice->getCommercialista()=='s'?'si':'no','fattura/consegnaCommercialista?id='.$invoice->getID().'&redirect=list')?></td>
     <?php endif?>
-    <td class="<?php echo $invoice->checkInRitardo()?'red':'none'?>"><?php echo $invoice->checkInRitardo()?'<strong>si</strong>':'no'?></td>
+    <td class="centered <?php echo $invoice->checkInRitardo()?'red':'none'?>"><?php echo $invoice->checkInRitardo()?'<strong>si</strong>':'no'?></td>
 
     <?php if (!isset($copy) || $copy): ?>
       <td><?php echo link_to(image_tag('/images/icons_tango/copy.png',array('alt'=>'crea copia fattura')), 'fattura/copia?id='.$invoice->getID())?></td>

@@ -29,6 +29,6 @@ $pager->filter();
 $pager->init();
 
 $test->ok(!$pager->haveToPaginate(), '->haveToPaginate() is false');
-$test->is($pager->count(), 19, '->count() returns right value');
+$test->is($pager->count(), 20, '->count() returns right value');
 
 

@@ -8,7 +8,8 @@
     'results' => $fatture_da_inviare,
     'taxes' => $sf_user->getUser()->getTassas(),
     'copy'  => false,
-    'batch' => false
+    'batch' => false,
+    'invoice_type' => 'da_inviare'
 )); ?>
 
 <div class="title">
@@ -19,7 +20,8 @@
     'results' => $fatture_da_incassare,
     'taxes'=> $sf_user->getUser()->getTassas(),
     'copy' => false,
-    'batch' => false
+    'batch' => false,
+    'invoice_type' => 'da_incassare'
 )); ?>
 
 <?php slot('sidebar')?>

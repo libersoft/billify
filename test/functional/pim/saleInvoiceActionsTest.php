@@ -155,6 +155,7 @@ $browser->
     checkElement('select[name="calcola_ritenuta_acconto"] option[selected="selected"]', 'Auto')->
     checkElement('select[name="calcola_tasse"] option[selected="selected"]', 'Si')->
     checkElement('select[name="includi_tasse"] option[selected="selected"]', 'No')->
+    checkElement('select[name="id_tema_fattura"] option[selected="selected"]', 'ideato srl')->
   end()->
   click('3')->
   setField('sconto', '10')->

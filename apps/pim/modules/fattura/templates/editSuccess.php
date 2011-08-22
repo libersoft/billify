@@ -133,6 +133,10 @@
     <td><?php echo select_tag('includi_tasse',options_for_select(array('s'=>'Si','n'=>'No'),$fattura->getIncludiTasse()))?></td>
   </tr>
   <tr>
+	<th>Tema fattura</th>
+	<td><?php echo object_select_tag($fattura, 'getIdTemaFattura', array('related_class' => 'TemaFattura')); ?></td>
+  </tr>
+  <tr>
     <th>Note</th>
     <td><?php echo object_textarea_tag($fattura, 'getNote', array('cols' => '50', 'rows' => '5')) ?></td>
   </tr>

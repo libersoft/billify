@@ -148,13 +148,20 @@ CREATE TABLE `dettagli_fattura`
 	`sconto` VARCHAR(10) default '0' NOT NULL,
 	`iva` INTEGER default 0 NOT NULL,
 	`prezzo` VARCHAR(50) default '0' NOT NULL,
+	`id_tema_fattura` INTEGER,
 	PRIMARY KEY (`id`),
 	KEY `dettagli_fattura_FI_1`(`fattura_id`),
 	CONSTRAINT `dettagli_fattura_FK_1`
 		FOREIGN KEY (`fattura_id`)
 		REFERENCES `fattura` (`id`)
 		ON UPDATE CASCADE
-		ON DELETE CASCADE
+		ON DELETE CASCADE,
+	INDEX `dettagli_fattura_FI_2` (`id_tema_fattura`),
+	CONSTRAINT `dettagli_fattura_FK_2`
+		FOREIGN KEY (`id_tema_fattura`)
+		REFERENCES `tema_fattura` (`id`)
+		ON UPDATE CASCADE
+		ON DELETE SET NULL
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------

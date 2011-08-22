@@ -54,6 +54,7 @@ abstract class Fattura extends BaseFattura
   protected $calcola = false;
   protected $tipo_ritenuta;
   protected $costo_tasse_ulteriori = 0;
+  protected $id_tema_fattura = null; 
 
   private function calcScontoTotale()
   {
@@ -423,6 +424,40 @@ abstract class Fattura extends BaseFattura
       $this->calcNettoDaLiquidare();
       $this->calcola = true;
     }
+  }
+
+  public function setIdTemaFattura($tema)
+  {
+  	$dettagli = $this->getDettagliFatturas();
+    
+    if (count($dettagli))
+    {
+      $dettaglio = $dettagli[0];
+    }
+	else {
+      $dettaglio = new DettagliFattura();
+      $dettaglio->setFatturaId($this->getId());
+    }
+    
+    $dettaglio->setIdTemaFattura($tema);
+    return $dettaglio->save();
+  }
+
+  public function getIdTemaFattura()
+  {
+    if ($this->isNew())
+    {      
+      return TemaFatturaPeer::doSelect(new Criteria());
+    }
+    
+	$dettagli = $this->getDettagliFatturas();
+
+    if ($dettagli && $dettagli[0]->getTemaFattura())
+    {
+	  return $dettagli[0]->getTemaFattura()->getId();
+	}
+
+	return $this->getCliente()->getTemaFattura()->getId();
   }
 
   abstract public function addToCashFlow(CashFlow $cf);

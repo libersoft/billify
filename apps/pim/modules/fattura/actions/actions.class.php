@@ -38,6 +38,9 @@ class fatturaActions extends sfActions
       return sfView::SUCCESS;
     }
 
+    //$this->fattura = FatturaPeer::getFatturaOrCreate(0, $this->cliente);
+    
+    /* cancellare da qui */
     $this->fattura = new Vendita();
     $this->fattura->setNewNumFattura();
     
@@ -45,7 +48,8 @@ class fatturaActions extends sfActions
     {
       $this->fattura->setModoPagamentoId($this->cliente->getModoPagamentoID());
     }
-
+    /* cancellare a qui */
+    
     $this->makeFattura();
 
     $this->setTemplate('edit');
@@ -53,7 +57,9 @@ class fatturaActions extends sfActions
 
   public function executeEdit()
   {
+        
     $this->fattura = VenditaPeer::retrieveByPk($this->getRequestParameter('id'));
+    
     $this->forward404Unless($this->fattura instanceof Fattura);
     $this->makeFattura();
   }
@@ -155,7 +161,7 @@ class fatturaActions extends sfActions
   public function executeExport()
   {
     $this->fattura = $this->getFatturaOrCreate();
-    if ($this->fattura->getCliente()->getIdTemaFattura())
+    if ($this->fattura->getIdTemaFattura())
     {
       $this->fattura->calcolaFattura(TassaPeer::doSelect(new Criteria()), UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
       return sfView::SUCCESS;
@@ -229,6 +235,7 @@ class fatturaActions extends sfActions
         $this->getRequest()->setParameter('calcola_tasse', $this->cliente->getCalcolaTasse());
         $this->getRequest()->setParameter('data', date("d/m/Y", time()));
         $this->getRequest()->setParameter('num_fattura', $this->fattura->getNumFattura());
+		$this->getRequest()->setParameter('id_tema_fattura', $this->fattura->getIdTemaFattura());
         $this->updateFattura($this->fattura);
       }
     }
@@ -291,6 +298,9 @@ class fatturaActions extends sfActions
       $fattura->setIncludiTasse($this->getRequestParameter('includi_tasse'));
       $fattura->setCalcolaTasse($this->getRequestParameter('calcola_tasse'));
       $fattura->setIdUtente($this->getUser()->getAttribute('id_utente'));
+      $fattura->save();
+      
+      $fattura->setIdTemaFattura($this->getRequestParameter('id_tema_fattura'));
       $fattura->save();
     }
     catch(Exception $e)

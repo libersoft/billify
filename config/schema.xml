@@ -114,9 +114,15 @@
     <column name="sconto" type="VARCHAR" size="10" required="true" default="0" />
     <column name="iva" type="INTEGER" required="true" default="0" />
     <column name="prezzo" type="VARCHAR" size="50" required="true" default="0" />
+    <column name="id_tema_fattura" type="INTEGER" />
     <index name="dettagli_fattura_FI_1">
       <index-column name="fattura_id" />
     </index>
+
+	<foreign-key foreignTable="tema_fattura" onDelete="SET NULL" onUpdate="CASCADE">                                
+    	<reference local="id_tema_fattura" foreign="id" />
+  	</foreign-key>
+
   </table>
 
   <table name="fattura" idMethod="native">

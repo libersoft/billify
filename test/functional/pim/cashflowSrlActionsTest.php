@@ -61,7 +61,7 @@ $browser->
   end();
 
 $browser->
-  info('Filtro data cashflow anno corrente mese di marzo')->
+  info('Filtro data cashflow anno corrente mese di '.date('M', strtotime('-1 month')))->
   setField('cash_flow_filters[document_date][from]', date('1/m/Y', strtotime('-1 month')))->
   setField('cash_flow_filters[document_date][to]', date('t/m/Y', strtotime('-1 month')))->
 
@@ -74,7 +74,7 @@ $browser->
   end();
 
 $browser->
-  info('Filtro data cashflow anno corrente mese di aprile')->
+  info('Filtro data cashflow anno corrente mese di '.date('M'))->
   setField('cash_flow_filters[document_date][from]', date('1/m/Y', strtotime('today')))->
   setField('cash_flow_filters[document_date][to]', date('t/m/Y', strtotime('today')))->
   click('Filtra');
