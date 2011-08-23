@@ -28,7 +28,7 @@
 </tr>
 </thead>
 <tbody>
-<?php foreach($contact->getFatturas($criteria) as $invoice): $invoice->calcolaFattura(); ?>
+<?php foreach($invoices as $invoice): $invoice->calcolaFattura(); ?>
   <tr>
     <td align="center"><?php echo link_to($invoice->getShortName(), $invoice->getRoutingRule().'?id='.$invoice->getId()) ?></td>
     <td align="center"><?php echo $invoice->getData('d/m/Y') ?></td>
@@ -36,13 +36,16 @@
     <td style="font-weight: bold; background-color: <?php echo $invoice->getColorStato()?>; color: <?php echo $invoice->getFontColorStato()?>"><?php echo $invoice->getStato(true)?></td>
     <td align="center" class="<?php echo $invoice->checkInRitardo()?'red':'none'?>"><?php echo $invoice->checkInRitardo()?'<strong>si</strong>':'no'?></td>
   </tr>
-<?php $totale += $invoice->getTotale(); endforeach; ?>
+  <?php if (!$invoice->isProForma()) { $totale += $invoice->getTotale(); } ?>
+  <?php if ($invoice->isProForma()) { $totale_proforma += $invoice->getTotale(); } ?>
+<?php endforeach; ?>
 </tbody>
 </table>
 
 <?php slot('sidebar'); ?>
   <div class="total">
     <?php echo format_currency($totale, '&euro;') ?>
+    <div class="stimato"><?php echo __('previsione su pro-forma:'); ?> <strong><?php echo format_currency($totale_proforma+$totale, '&euro;') ?></strong></div>
   </div>
 
   <div class="title">

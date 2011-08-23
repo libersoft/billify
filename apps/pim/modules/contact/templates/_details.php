@@ -12,6 +12,6 @@
 <?php endif ?>
 
 <?php else:?>
-<p>Indirizzo del cliente incompleto, <?php echo link_to('compila tutti i dati','cliente/edit?id='.$cliente->getId())?>.</p>
+<p><?php echo __('Indirizzo del cliente incompleto, <a href="%url%">compila tutti i dati</a>', array('%url%' => url_for('cliente/edit?id='.$cliente->getId()))); ?>.</p>
 <?php endif?>
 </div>

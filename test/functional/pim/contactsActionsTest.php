@@ -21,11 +21,11 @@ $browser->
   checkResponseElement('table tr th', 'Telefono', array('position' => 3))->
   checkResponseElement('table tr th', 'Fax', array('position' => 4))->
 
-  checkResponseElement('table tr td', '00 Azienda', array('position' => 0))->
-  checkResponseElement('table tr td', 'Utente utente', array('position' => 1))->
-  checkResponseElement('table tr td', 'azienda@example.it', array('position' => 2))->
-  checkResponseElement('table tr td', '35989805', array('position' => 3))->
-  checkResponseElement('table tr td', '36064127', array('position' => 4))->
+  checkResponseElement('.rubrica td', '00 Azienda', array('position' => 0))->
+  checkResponseElement('.rubrica td', 'Utente utente', array('position' => 1))->
+  checkResponseElement('.rubrica td', 'azienda@example.it', array('position' => 2))->
+  checkResponseElement('.rubrica td', '35989805', array('position' => 3))->
+  checkResponseElement('.rubrica td', '36064127', array('position' => 4))->
 
   checkResponseElement('div.navigator', 1)->
   checkResponseElement('div.navigator a', '«', array('position' => 0))->
@@ -35,6 +35,29 @@ $browser->
   checkResponseElement('div.navigator a', '>', array('position' => 3))->
   checkResponseElement('div.navigator a', '»', array('position' => 4))
 ;
+
+$browser->
+  info('check for single contact page')->
+  click('rubrica')->
+  click('01 Azienda')->
+  checkResponseElement('.fatture tr', 7)->        
+  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 0))->        
+  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 5))->        
+  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 10))->        
+  checkResponseElement('.fatture td', '1', array('position' => 15))->        
+  checkResponseElement('.fatture td', '2', array('position' => 20))->        
+  checkResponseElement('.fatture td', '3', array('position' => 25))->        
+  checkResponseElement('.title h2', '/01 Azienda/')->
+  checkResponseElement('#contatti', '/via degli ulivi, 19/')->
+  checkResponseElement('#contatti', '/60100 Milano \(MI\)/')->
+  checkResponseElement('#contatti', '/Tel. 35989805/')->
+  checkResponseElement('#contatti', '/Referente: Utente utente/')->
+  checkResponseElement('#contatti', '/E-Mail: azienda@example.it/')->
+  checkResponseElement('#contatti', '/P.IVA: 343810309/')->
+  checkResponseElement('select[name="year"] option[selected]', '/2011/')->
+  checkResponseElement('.total .stimato', '/7.200/')->
+  checkResponseElement('.total', '/3.600/');
+      
 
 $browser->
   get('/')->

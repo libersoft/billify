@@ -47,16 +47,11 @@ class contactActions extends sfActions
   {
     $this->contact = ContattoPeer::retrieveByPK($request->getParameter('id'));
 
-    $this->criteria = new Criteria();
     $year = $request->getParameter('year', date('Y'));
-    if ($year != 'all')
-    {
-      $this->criteria->addAnd(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0, 1, 1, $year)), Criteria::GREATER_EQUAL);
-      $this->criteria->addAnd(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0, 12, 31, $year)), Criteria::LESS_EQUAL);
-    }
-    $this->criteria->addAsColumn('integer_num_fattura', 'CONVERT('.FatturaPeer::NUM_FATTURA.', signed)');
-    $this->criteria->addAscendingOrderByColumn('integer_num_fattura');
+    $this->invoices = FatturaPeer::getInvoicesForContactByYear($this->contact, $year);
+        
     $this->totale = 0;
+    $this->totale_proforma = 0;
   }
 
   public function executeEdit($request)

@@ -85,5 +85,34 @@ class FatturaPeer extends BaseFatturaPeer
     return $criteria;
   }
   
+  public static function getInvoicesForContactByYear(Contatto $contact, $year = 'all', Criteria $criteria = null)
+  {
+    if (!$criteria) {
+      $criteria = new Criteria();
+    }    
+    
+    $criteria = new Criteria();
+    $criteria->add(FatturaPeer::CLIENTE_ID, $contact->getId());
+
+    if ($year != 'all')
+    {
+      $criteria->addAnd(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0, 1, 1, $year)), Criteria::GREATER_EQUAL);
+      $criteria->addAnd(FatturaPeer::DATA, date('Y-m-d', mktime(0, 0, 0, 12, 31, $year)), Criteria::LESS_EQUAL);
+    }
+    
+    $criteria->addAsColumn('integer_num_fattura', 'CONVERT('.FatturaPeer::NUM_FATTURA.', signed)');
+    $criteria->addAscendingOrderByColumn('integer_num_fattura');
+    
+    FatturaPeer::addSelectColumns($criteria);    
+    return FatturaPeer::doSelect($criteria);
+  }
+  
+  public static function getEmittedInvoicesForContactByYear(Contatto $contact, $year = 'all')
+  {
+    $criteria = new Criteria();
+    $criteria->add(FatturaPeer::NUM_FATTURA, 0, '<>');
+
+    return FatturaPeer::getInvoicesForContactByYear($contact, $year, $criteria);
+  }
 
 }

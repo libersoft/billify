@@ -4,7 +4,7 @@
   <h2><?php echo $sf_request->getParameter('type') == ContattoPeer::CLASSKEY_FORNITORE ? __('Fornitori') : __('Clienti')?></h2>
 </div>
 
-<table class="fatture" width="100%" >
+<table class="fatture rubrica" width="100%" >
 <thead>
 <tr>
   <th><?php echo __('Ragione Sociale') ?></th>
