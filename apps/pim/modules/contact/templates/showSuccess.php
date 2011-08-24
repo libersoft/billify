@@ -1,3 +1,5 @@
+<?php include_component('analytics', 'contact', array('contact' => $contact, 'total' => $totale, 'year' => $year)); ?>
+
 <div class="title">
     <h2><?php echo $contact ?></h2>
 </div>
@@ -12,7 +14,7 @@
     <select name="year" onchange="this.form.submit()">
       <option value="all"><?php echo __('All')?></option>
     <?php for($i = date('Y'); $i >= date('Y') - 4; $i--): ?>
-        <option value="<?php echo $i?>" <?php if($i == $sf_request->getParameter('year', date('Y'))):?>selected="selected"<?php endif?>><?php echo $i ?></option>
+        <option value="<?php echo $i?>" <?php if($i == $year):?>selected="selected"<?php endif?>><?php echo $i ?></option>
     <?php endfor; ?>
     </select>
 </form>
@@ -36,16 +38,14 @@
     <td style="font-weight: bold; background-color: <?php echo $invoice->getColorStato()?>; color: <?php echo $invoice->getFontColorStato()?>"><?php echo $invoice->getStato(true)?></td>
     <td align="center" class="<?php echo $invoice->checkInRitardo()?'red':'none'?>"><?php echo $invoice->checkInRitardo()?'<strong>si</strong>':'no'?></td>
   </tr>
-  <?php if (!$invoice->isProForma()) { $totale += $invoice->getTotale(); } ?>
-  <?php if ($invoice->isProForma()) { $totale_proforma += $invoice->getTotale(); } ?>
 <?php endforeach; ?>
 </tbody>
 </table>
 
 <?php slot('sidebar'); ?>
   <div class="total">
-    <?php echo format_currency($totale, '&euro;') ?>
-    <div class="stimato"><?php echo __('previsione su pro-forma:'); ?> <strong><?php echo format_currency($totale_proforma+$totale, '&euro;') ?></strong></div>
+    <span title="il totale è calcolato al netto di IVA"><?php echo format_currency($totale, '&euro;') ?></span>
+    <div class="stimato"><?php echo __('previsione su pro-forma:'); ?> <strong><?php echo format_currency($totale_proforma, '&euro;') ?></strong></div>
   </div>
 
   <div class="title">
@@ -55,7 +55,11 @@
   <ul class="ul-list nomb">
     <li>+ <?php echo link_to(__('edit'),'@contact_edit?id='.$contact->getID())?></li>
     <li>+ <?php echo link_to(__('delete'), '@contact_delete?id='.$contact->getId(), 'post=true&confirm='.__('vuoi cancellare questo contatto?').' title=delete') ?></li>
-    <li>+ <?php echo link_to(__('new invoice'),'@invoice_create_for_client?id_cliente='.$contact->getId()); ?></li>
+    <?php if ($contact->getClassKey() == 2): ?>      
+      <li>+ <?php echo link_to(__('new invoice'),'@invoice_purchase_create?fornitore='.$contact->getId()); ?></li>
+    <?php else: ?>
+      <li>+ <?php echo link_to(__('new invoice'),'@invoice_create_for_client?id_cliente='.$contact->getId()); ?></li>
+    <?php endif; ?>
   </ul>
 <?php
     include_partial('contact/sidebar');

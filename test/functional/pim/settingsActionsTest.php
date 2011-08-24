@@ -28,7 +28,7 @@ $browser->
     checkElement('#paginazione th', 'Num fatture:', array('position' => 1))->
     checkElement('#paginazione th', 'Righe dettagli:', array('position' => 2))->
     checkElement('#paginazione td input[id="num_clienti"]')->
-    checkElement('#paginazione td input[name="num_fatture"][value="20"]')->
+    checkElement('#paginazione td input[id="num_fatture"][value="20"]')->
     checkElement('#paginazione td input[id="righe_dettagli"]')->
 
     checkElement('#features th', 5)->
@@ -48,8 +48,8 @@ $browser->
     checkElement('#features td input[id="consegna_commercialista_n"]')->
     checkElement('#features td input[id="fattura_automatica_s"]')->
     checkElement('#features td input[id="fattura_automatica_n"]')->
-    checkElement('#features td input[id="percentuale_ra"]')->
-    checkElement('#features td input[id="percentuale_imponibile_ra"]')->
+    checkElement('#features td input[id="impostazione_percentuale_ra"]')->
+    checkElement('#features td input[id="impostazione_percentuale_imponibile_ra"]')->
     checkElement('#features td select[id="tipo_ritenuta"]')->
 
     checkElement('#label-fattura th', 7)->
@@ -83,8 +83,9 @@ $browser->
     checkElement('#label-dettagli-fattura td input[id="label_sconto"][value="Sconto"]')->
   end()->
 
-  setField('label_quantita', 'Quantità')->
-  setField('invoice_decorator_type', 'number_and_year')->
+  setField('impostazione[label_quantita]', 'Quantità')->
+  setField('impostazione[invoice_decorator_type]', 'number_and_year')->
+  setField('impostazione[consegna_commercialista]', 'n')->
   click('Salva')->
 
   with('response')->begin()->

@@ -71,6 +71,11 @@ class invoiceActions extends sfActions
     $factory = new FatturaFactoryForm();
     $this->form = $factory->build($request->getParameter('type'), FatturaPeer::retrieveByPk($request->getParameter('fattura[id]', $request->getParameter('id'))));
     
+    if ($request->getParameter('fornitore', null))
+    {
+      $this->form->setDefault('cliente_id', $request->getParameter('fornitore'));
+    }
+    
     if($request->isMethod('post'))
     {
       $invoice = $this->update($request);

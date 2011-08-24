@@ -114,5 +114,25 @@ class FatturaPeer extends BaseFatturaPeer
 
     return FatturaPeer::getInvoicesForContactByYear($contact, $year, $criteria);
   }
+  
+  public static function calculateTotalFromInvoices( array $invoices, $exclude_pro_forma = true, $net_price = true)
+  {
+    $total = 0;
+    
+    $method = ($net_price)?'getImponibile':'getTotale';
+    
+    foreach ($invoices as $invoice)
+    {            
+      $invoice->calcolaFattura();
+      
+      if (!($exclude_pro_forma && $invoice->isProForma())) 
+      {
+          $total += $invoice->$method();
+      }
+    }
+    
+    return $total;
+  }
 
 }
+

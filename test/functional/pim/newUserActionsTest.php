@@ -10,8 +10,8 @@ $browser->
 
   info('set withholding tax')->
   click('impostazioni')->
-  setField('percentuale_ra', '20')->
-  setField('percentuale_imponibile_ra', '100')->
+  setField('impostazione[percentuale_ra]', '20')->
+  setField('impostazione[percentuale_imponibile_ra]', '100')->
   click('Salva')->
 
   info('insert new tax code')->
@@ -70,8 +70,8 @@ $browser->
     checkElement('table.edit td', '/-/', array('position' => '4'))->
   end()->
   click('impostazioni')->
-  setField('percentuale_ra', '0')->
-  setField('percentuale_imponibile_ra', '100')->
+  setField('impostazione[percentuale_ra]', '0')->
+  setField('impostazione[percentuale_imponibile_ra]', '100')->
   click('Salva')->
   click('fatture')->
   click('1')->

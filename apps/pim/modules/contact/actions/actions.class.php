@@ -47,11 +47,12 @@ class contactActions extends sfActions
   {
     $this->contact = ContattoPeer::retrieveByPK($request->getParameter('id'));
 
-    $year = $request->getParameter('year', date('Y'));
-    $this->invoices = FatturaPeer::getInvoicesForContactByYear($this->contact, $year);
+    $this->year = $request->getParameter('year', date('Y'));
+    $this->invoices = FatturaPeer::getInvoicesForContactByYear( $this->contact, $this->year );
         
-    $this->totale = 0;
-    $this->totale_proforma = 0;
+    $this->totale = FatturaPeer::calculateTotalFromInvoices( $this->invoices );
+    $this->totale_proforma = FatturaPeer::calculateTotalFromInvoices( $this->invoices, false );
+    
   }
 
   public function executeEdit($request)

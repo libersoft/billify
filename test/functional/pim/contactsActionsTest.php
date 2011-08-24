@@ -55,8 +55,8 @@ $browser->
   checkResponseElement('#contatti', '/E-Mail: azienda@example.it/')->
   checkResponseElement('#contatti', '/P.IVA: 343810309/')->
   checkResponseElement('select[name="year"] option[selected]', '/2011/')->
-  checkResponseElement('.total .stimato', '/7.200/')->
-  checkResponseElement('.total', '/3.600/');
+  checkResponseElement('.total .stimato', '/6.000/')->
+  checkResponseElement('.total', '/3.000/');
       
 
 $browser->

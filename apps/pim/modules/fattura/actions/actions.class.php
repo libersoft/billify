@@ -2,7 +2,8 @@
 
 class fatturaActions extends sfActions
 {
-
+  var $cliente = null;
+  
   public function executeIndex()
   {
     $this->forward('invoice', 'indexSale');
@@ -38,17 +39,7 @@ class fatturaActions extends sfActions
       return sfView::SUCCESS;
     }
 
-    //$this->fattura = FatturaPeer::getFatturaOrCreate(0, $this->cliente);
-    
-    /* cancellare da qui */
-    $this->fattura = new Vendita();
-    $this->fattura->setNewNumFattura();
-    
-    if ($this->id_cliente)
-    {
-      $this->fattura->setModoPagamentoId($this->cliente->getModoPagamentoID());
-    }
-    /* cancellare a qui */
+    $this->fattura = FatturaPeer::getFatturaOrCreate(0, $this->cliente);
     
     $this->makeFattura();
 
@@ -71,7 +62,8 @@ class fatturaActions extends sfActions
   
   public function executeUpdate()
   {
-    $fattura = $this->getFatturaOrCreate();
+    $id = $this->getRequestParameter('id', 0);
+    $fattura = FatturaPeer::getFatturaOrCreate($id, $this->cliente);
     return $this->updateFattura($fattura);
   }
 
@@ -96,7 +88,8 @@ class fatturaActions extends sfActions
 
   public function executeStato()
   {
-    $fattura = $this->getFatturaOrCreate();
+    $id = $this->getRequestParameter('id', 0);
+    $fattura = FatturaPeer::getFatturaOrCreate(0, $this->cliente);
     $fattura->setStato($this->getRequestParameter('stato', 'n'));
 
     if ($this->getRequestParameter('data_stato'))
@@ -115,7 +108,8 @@ class fatturaActions extends sfActions
 
   public function executeConsegnaCommercialista($forward=true)
   {
-    $fattura = $this->getFatturaOrCreate();
+    $id = $this->getRequestParameter('id', 0);
+    $fattura = FatturaPeer::getFatturaOrCreate($id, $this->cliente);
     $fattura->setCommercialista($fattura->getCommercialista() == 'n' ? 's' : 'n');
     $fattura->save();
 
@@ -127,7 +121,9 @@ class fatturaActions extends sfActions
 
   public function executeCalcolaRitenuta()
   {
-    $fattura = $this->getFatturaOrCreate();
+    $id = $this->getRequestParameter('id', 0);
+    $fattura = FatturaPeer::getFatturaOrCreate($id, $this->cliente);
+    
     if ($fattura->getCalcolaRitenutaAcconto() == 's')
       $fattura->setCalcolaRitenutaAcconto('n');
     elseif ($fattura->getCalcolaRitenutaAcconto() == 'n')
@@ -142,7 +138,9 @@ class fatturaActions extends sfActions
 
   public function executeIncludiTasse()
   {
-    $fattura = $this->getFatturaOrCreate();
+    $id = $this->getRequestParameter('id', 0);
+    $fattura = FatturaPeer::getFatturaOrCreate($id, $this->cliente);
+    
     $fattura->setIncludiTasse($fattura->getIncludiTasse() == 'n' ? 's' : 'n');
     $fattura->save();
 
@@ -151,7 +149,9 @@ class fatturaActions extends sfActions
 
   public function executeCalcolaTasse()
   {
-    $fattura = $this->getFatturaOrCreate();
+    $id = $this->getRequestParameter('id', 0);
+    $fattura = FatturaPeer::getFatturaOrCreate($id, $this->cliente);
+    
     $fattura->setCalcolaTasse($fattura->getCalcolaTasse() == 'n' ? 's' : 'n');
     $fattura->save();
 
@@ -160,7 +160,8 @@ class fatturaActions extends sfActions
 
   public function executeExport()
   {
-    $this->fattura = $this->getFatturaOrCreate();
+    $id = $this->getRequestParameter('id', 0);
+    $this->fattura = FatturaPeer::getFatturaOrCreate($id, $this->cliente);
     if ($this->fattura->getIdTemaFattura())
     {
       $this->fattura->calcolaFattura(TassaPeer::doSelect(new Criteria()), UtentePeer::getImpostazione()->getTipoRitenuta(), UtentePeer::getImpostazione()->getRitenutaAcconto());
@@ -220,7 +221,7 @@ class fatturaActions extends sfActions
     if ($this->getRequestParameter('id_cliente'))
     {
       $this->id_cliente = $this->getRequestParameter('id_cliente');
-      $this->cliente = ClientePeer::retrieveByPK($this->getRequestParameter('id_cliente'));
+      $this->cliente = ClientePeer::retrieveByPK($this->id_cliente);
       $this->forward404Unless($this->cliente instanceof Cliente);
 
       if ($this->fattura->isNew() && UtentePeer::getImpostazione()->getBoolFatturaAutomatica())
@@ -315,26 +316,6 @@ class fatturaActions extends sfActions
     $this->getUser()->setAttribute('modifica_num_fattura', false);
 
     return $this->redirect('fattura/show?id=' . $fattura->getId());
-  }
-
-  private function getFatturaOrCreate($id = 'id')
-  {
-    if (!$this->getRequestParameter($id, 0))
-    {
-      $fattura = new Vendita();
-      $fattura->setData(time());
-      $fattura->setNewNumFattura();
-      if ($this->id_cliente)
-      {
-        $fattura->setModoPagamentoId($this->cliente->getModoPagamentoID());
-      }
-    } else
-    {
-      $fattura = VenditaPeer::retrieveByPk($this->getRequestParameter($id));
-      $this->forward404Unless($fattura instanceof Fattura);
-    }
-
-    return $fattura;
   }
 
   private function getViewSconto()

@@ -119,3 +119,23 @@ $browser->info('Filtro le fatture di acquisto per categoria')->
   setField('fattura_filters[categoria_id]', $categoria->getId())->
   click('Filtra')->
   checkResponseElement('table.fatture tbody tr', 2);
+
+$criteria = new Criteria();
+$criteria->add(ContattoPeer::RAGIONE_SOCIALE, '01 Fornitore');
+$fornitore = ContattoPeer::doSelectOne($criteria);
+
+$browser->
+  info('registro una nuova fattura di acquisto per il fornitore')->
+  get('/fornitori')->
+  click('01 Fornitore')->
+  click('nuova fattura')->
+  with('request')->begin()->
+        isParameter('module', 'invoice')->
+        isParameter('action', 'create')->
+        isParameter('type', '2')->
+        isParameter('fornitore', $fornitore->getId())->
+  end()->
+  with('response')->begin()->
+        checkElement('select[id="fattura_cliente_id"] option[selected]', '/01 Fornitore/')->
+  end()        
+;
