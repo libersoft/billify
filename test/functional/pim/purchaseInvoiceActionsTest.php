@@ -119,3 +119,12 @@ $browser->info('Filtro le fatture di acquisto per categoria')->
   setField('fattura_filters[categoria_id]', $categoria->getId())->
   click('Filtra')->
   checkResponseElement('table.fatture tbody tr', 2);
+
+
+$browser->info('Link alle informazioni sul fornitore')->
+   get('/invoices/purchase')->
+   click('03 Fornitore')->
+   with('request')->begin()->
+        isParameter('module', 'contact')->
+        isParameter('action', 'show')->
+   end();       
