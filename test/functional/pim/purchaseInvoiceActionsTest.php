@@ -139,3 +139,11 @@ $browser->
         checkElement('select[id="fattura_cliente_id"] option[selected]', '/01 Fornitore/')->
   end()        
 ;
+
+$browser->info('Link alle informazioni sul fornitore')->
+   get('/invoices/purchase')->
+   click('03 Fornitore')->
+   with('request')->begin()->
+        isParameter('module', 'contact')->
+        isParameter('action', 'show')->
+   end();  
