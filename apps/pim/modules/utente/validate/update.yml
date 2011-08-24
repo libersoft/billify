@@ -45,7 +45,7 @@ partitaIvaValidator:
     min_error:    Partita iva non valida.
     max:          11
     max_error:    Partita iva non valida. 
-    		 
+    
 codiceFiscaleValidator:
   class:          sfStringValidator
   param:
