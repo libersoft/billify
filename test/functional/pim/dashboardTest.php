@@ -38,7 +38,7 @@ $browser->
   checkResponseElement('.invoice-5 td', '01/01/'.date('Y', strtotime('-6 year')), array('position' => 2))->
   
   checkResponseElement('.invoice-7', 2)->
-  checkResponseElement('.invoice-7 td', date('d/m/Y', strtotime('+7 days')), array('position' => 10))->
+  checkResponseElement('.invoice-7 td', date('d/m/Y', strtotime('+7 days',  strtotime('first day of this month'))), array('position' => 10))->
         
   checkResponseElement('.invoice-pro-forma td', '/1.000,00/', array('position' => 11))->
   checkResponseElement('.invoice-pro-forma td', '/1.440,00/', array('position' => 12))->

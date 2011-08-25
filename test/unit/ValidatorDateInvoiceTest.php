@@ -11,7 +11,7 @@ $validator = new ValidatorDateInvoice();
 try
 {
   $message = 'Invalid invoice date';
-  $validator->clean(array('num_fattura' => '3', 'data' => date('Y-m-d', strtotime('today')), 'anno' => date('Y'), 'class_key' => FatturaPeer::CLASSKEY_VENDITA));
+  $validator->clean(array('num_fattura' => '3', 'data' => date('Y-m-d', strtotime('first day of this month')), 'anno' => date('Y'), 'class_key' => FatturaPeer::CLASSKEY_VENDITA));
   $test->fail($message);
 }
 catch(sfValidatorError $e)
@@ -22,7 +22,7 @@ catch(sfValidatorError $e)
 try
 {
   $message = 'Invalid invoice date';
-  $validator->clean(array('num_fattura' => '3', 'data' => date('Y-m-d', strtotime('tomorrow')), 'anno' => date('Y'), 'class_key' => FatturaPeer::CLASSKEY_VENDITA));
+  $validator->clean(array('num_fattura' => '3', 'data' => date('Y-m-d', strtotime('+1 day', strtotime('first day of this month'))), 'anno' => date('Y'), 'class_key' => FatturaPeer::CLASSKEY_VENDITA));
   $test->fail($message);
 }
 catch(sfValidatorError $e)
@@ -30,13 +30,13 @@ catch(sfValidatorError $e)
   $test->pass($message);
 }
 
-$validator->clean(array('num_fattura' => '3', 'data' => date('Y-m-d', strtotime('+3 days')), 'anno' => date('Y'), 'class_key' => FatturaPeer::CLASSKEY_VENDITA));
-$validator->clean(array('num_fattura' => '3', 'data' => date('Y-m-d', strtotime('+4 days')), 'anno' => date('Y'), 'class_key' => FatturaPeer::CLASSKEY_VENDITA));
+$validator->clean(array('num_fattura' => '3', 'data' => date('Y-m-d', strtotime('+3 days', strtotime('first day of this month'))), 'anno' => date('Y'), 'class_key' => FatturaPeer::CLASSKEY_VENDITA));
+$validator->clean(array('num_fattura' => '3', 'data' => date('Y-m-d', strtotime('+4 days', strtotime('first day of this month'))), 'anno' => date('Y'), 'class_key' => FatturaPeer::CLASSKEY_VENDITA));
 
 try
 {
   $message = 'Invalid invoice date';
-  $validator->clean(array('num_fattura' => '3', 'data' => date('Y-m-d', strtotime('+5 days')), 'anno' => date('Y'), 'class_key' => FatturaPeer::CLASSKEY_VENDITA));
+  $validator->clean(array('num_fattura' => '3', 'data' => date('Y-m-d', strtotime('+5 days', strtotime('first day of this month'))), 'anno' => date('Y'), 'class_key' => FatturaPeer::CLASSKEY_VENDITA));
   $test->fail($message);
 }
 catch(sfValidatorError $e)

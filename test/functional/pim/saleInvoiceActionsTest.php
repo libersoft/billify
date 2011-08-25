@@ -145,7 +145,7 @@ $browser->
     checkElement('table th:contains("Note")')->
     checkElement('input[type="checkbox"][name="proforma"][value="y"]')->
     checkElement('input[type="hidden"][name="num_fattura"][value="3"]')->
-    checkElement('input[type="hidden"][name="data"][value="'.date('d/m/y', strtotime('+3 days')).'"]')->
+    checkElement('input[type="hidden"][name="data"][value="'.date('d/m/y', strtotime('+3 days',  strtotime('first day of this month'))).'"]')->
     checkElement('select[name="modo_pagamento_id"] option', '10 Giorni')->
     checkElement('select[name="modo_pagamento_id"] option', 'Rimessa diretta', array('position' => 1))->
     checkElement('input[type="text"][name="sconto"][value="0"]')->

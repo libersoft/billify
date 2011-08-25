@@ -315,7 +315,7 @@ Vendita:
     id_utente: Utente_1
     cliente_id: Cliente_1
     num_fattura: '<?php echo $i; ?>'
-    data: '<?php echo date('Y-m-d', strtotime('+'.$i.' day'.($i > 1?'s':'')))?>'
+    data: '<?php echo date('Y-m-d', strtotime("+ $i day".($i > 1?'s':'') , strtotime('first day of this month')))?>'
     modo_pagamento_id: ModoPagamento_1
     vat: 20
 <?php endfor?>
@@ -324,7 +324,7 @@ Vendita:
     id_utente: Utente_1
     cliente_id: Cliente_2
     num_fattura: '<?php echo $i; ?>'
-    data: '<?php echo date('Y-m-d', strtotime("+$i days"))?>'
+    data: '<?php echo date('Y-m-d', strtotime("+ $i day".($i > 1?'s':'') , strtotime('first day of this month')))?>'
     modo_pagamento_id: ModoPagamento_2
     stato: i
     vat: 20
@@ -358,7 +358,7 @@ Acquisto:
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
     cliente_id: Fornitore_2
-    data: '<?php echo date('Y-m-d', strtotime('+3 days'))?>'
+    data: '<?php echo date('Y-m-d', strtotime('+3 days', strtotime('first day of this month')))?>'
     modo_pagamento_id: ModoPagamento_2
     imponibile: '1000'
     imposte: '200'
@@ -370,7 +370,7 @@ Acquisto:
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
     cliente_id: Fornitore_1
-    data: '<?php echo date('Y-m-d', strtotime('+3 days'))?>'
+    data: '<?php echo date('Y-m-d', strtotime('+3 days', strtotime('first day of this month')))?>'
     modo_pagamento_id: ModoPagamento_2
     imponibile: '1200.34'
     imposte: '200.12'

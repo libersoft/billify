@@ -57,7 +57,7 @@ $browser->
     checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 33.601,04)', array('position' => 1))->
   end()->
 
-  setField('fattura_filters[data][from]', date('d/m/Y', strtotime('today')))->
+  setField('fattura_filters[data][from]', date('d/m/Y', strtotime('first day of this month')))->
   setField('fattura_filters[data][to]', date('t/m/Y', strtotime('today')))->
   click('Filtra')->
   with('response')->begin()->
