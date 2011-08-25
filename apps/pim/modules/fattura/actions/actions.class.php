@@ -47,7 +47,7 @@ class fatturaActions extends sfActions
     $this->fattura = VenditaPeer::retrieveByPk($this->getRequestParameter('id'));
     
     $this->forward404Unless($this->fattura instanceof Fattura);
-    $this->forwardUnless($this->fattura->getStato() == Vendita::NON_PAGATA, 'fattura', 'show');
+    $this->redirectUnless($this->fattura->isEditable(), 'fattura/show?id='.$this->fattura->getId());
     
     $this->makeFattura();
   }
@@ -107,9 +107,9 @@ class fatturaActions extends sfActions
   public function executeDelete($forward = true)
   {
     $fattura = VenditaPeer::retrieveByPk($this->getRequestParameter('id'));
-
     $this->forward404Unless($fattura instanceof Fattura);
-
+    $this->redirectUnless($fattura->isEditable(), 'fattura/show?id='.$fattura->getId());
+    
     $fattura->delete();
 
     if ($this->getRequestParameter('cliente_id') && $forward)

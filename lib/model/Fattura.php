@@ -448,6 +448,16 @@ abstract class Fattura extends BaseFattura
 
   }
 
+  /**
+   * Se la fattura è stata spedita allora non è più editabile
+   * 
+   * @return boolean
+   */
+  public function isEditable()
+  {
+    return !(in_array($this->getStato(), array(Vendita::INVIATA, Vendita::PAGATA, Vendita::RIFIUTATA)));
+  }
+  
   abstract public function addToCashFlow(CashFlow $cf);
 }
 

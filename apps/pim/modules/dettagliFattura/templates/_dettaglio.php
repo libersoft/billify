@@ -30,10 +30,18 @@
         <?php if($dettaglio->getFattura()->getIncludiTasse() == 's'  && $fattura->getCalcolaTasse() == 's'):?><td><?php echo format_currency($dettaglio->getTotale(),'EUR')?></td><?php endif?>
         <td><?php echo $dettaglio->getFattura()->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'?format_currency(fattura::calcDettaglioScorporato($dettaglio->getTotale(),$fattura->getCalcolaTasse() == 's',$fattura->getTasseUlterioriArray()),'EUR'):format_currency($dettaglio->getTotale(),'EUR')?></td>
         <td><?php echo $dettaglio->getIva()?>%</td>
-        <td><?php echo link_to_remote(image_tag('/images/icons/page_delete.gif',array('alt'=>'Aggiungi Dettaglio')),array('url'=>'dettagliFattura/delete?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
-      										   'update' => 'dettaglio_edit',
-      										   'loading' => "Element.show('indicator')",
-      								 		   'complete' => "Element.hide('indicator');".visual_effect('highlight', 'tabella_dettagli')))?></td>
+        <td>
+                <?php if ($fattura->isEditable()) : ?>
+                    <?php echo link_to_remote(
+                                    image_tag('/images/icons/page_delete.gif', array('alt'=>'Rimuovi Dettaglio', 'class' => 'delete')),
+                                    array(
+                                        'url'=>'dettagliFattura/delete?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
+                                        'update' => 'dettaglio_edit',
+                                        'loading' => "Element.show('indicator')",
+                                        'complete' => "Element.hide('indicator');".visual_effect('highlight', 'tabella_dettagli')
+                                    )); ?>
+                <?php endif; ?>
+        </td>
       </tr>
     <?php endforeach;?>
   <?php else: ?>
