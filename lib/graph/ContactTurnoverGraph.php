@@ -48,7 +48,7 @@ class ContactTurnoverGraph extends Graph
     {
       if ($fatturato)
       {
-        $percentage = 100 * $value / $fatturato; 
+        $percentage = round (100 * $value / $fatturato, 2); 
         $data[] = array('name' => $name .' ('.$percentage. '%)', 'y' => $value, 'sliced' => true);
       }
     }

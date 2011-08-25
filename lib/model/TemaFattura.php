@@ -199,10 +199,15 @@ class TemaFattura extends BaseTemaFattura {
 	private function parseFatturaDettagli($content){
 		$re = "/<FOREACHDETTAGLI>.*(<\\/FOREACHDETTAGLI>.?)/smU";
 		preg_match($re, $content, $aMatch);
-		$content_dettagli = $aMatch[0];
-		$content_dettagli = str_replace('<FOREACHDETTAGLI>','',$content_dettagli);
-		$content_dettagli = str_replace('</FOREACHDETTAGLI>','',$content_dettagli);
-
+        
+        $content_dettagli = '';
+        if (isset($aMatch[0]))
+        {  
+          $content_dettagli = $aMatch[0];
+          $content_dettagli = str_replace('<FOREACHDETTAGLI>','',$content_dettagli);
+          $content_dettagli = str_replace('</FOREACHDETTAGLI>','',$content_dettagli);
+        }
+        
 		$new_content_dettagli = '';
 		foreach($this->fattura->getDettagliFatturas() as $dettaglio){
 			$patterns = array();
@@ -232,10 +237,15 @@ class TemaFattura extends BaseTemaFattura {
 		if($this->fattura->getCalcolaTasse() == SI){
 			$re = "/<FOREACHTASSE>.*(<\\/FOREACHTASSE>.?)/smU";
 			preg_match($re, $content, $aMatch);
-			$content_tasse = $aMatch[0];
-			$content_tasse = str_replace('<FOREACHTASSE>','',$content_tasse);
-			$content_tasse = str_replace('</FOREACHTASSE>','',$content_tasse);
-
+			
+            $content_tasse= '';
+            if (isset($aMatch[0]))
+            {
+              $content_tasse = $aMatch[0];
+              $content_tasse = str_replace('<FOREACHTASSE>','',$content_tasse);
+              $content_tasse = str_replace('</FOREACHTASSE>','',$content_tasse);
+            }
+            
 			$new_content_tasse = '';
 			foreach($this->fattura->getTasseUlteriori() as $tassa_ulteriore){
 				$patterns = array();

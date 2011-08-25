@@ -114,14 +114,10 @@
     <column name="sconto" type="VARCHAR" size="10" required="true" default="0" />
     <column name="iva" type="INTEGER" required="true" default="0" />
     <column name="prezzo" type="VARCHAR" size="50" required="true" default="0" />
-    <column name="id_tema_fattura" type="INTEGER" />
+
     <index name="dettagli_fattura_FI_1">
       <index-column name="fattura_id" />
     </index>
-
-	<foreign-key foreignTable="tema_fattura" onDelete="SET NULL" onUpdate="CASCADE">                                
-    	<reference local="id_tema_fattura" foreign="id" />
-  	</foreign-key>
 
   </table>
 
@@ -157,7 +153,8 @@
       <inheritance key="2" class="Acquisto" extends="pim.Fattura"/>
       <inheritance key="1" class="Vendita" extends="pim.Fattura"/>
     </column>
-
+    <column name="id_tema_fattura" type="INTEGER" />
+    
     <foreign-key foreignTable="modo_pagamento" onDelete="SET NULL" onUpdate="CASCADE">
       <reference local="modo_pagamento_id" foreign="id" />
     </foreign-key>
@@ -167,7 +164,10 @@
     <foreign-key foreignTable="contatto" onDelete="CASCADE" onUpdate="CASCADE">
       <reference local="cliente_id" foreign="id" />
     </foreign-key>
-
+	<foreign-key foreignTable="tema_fattura" onDelete="SET NULL" onUpdate="CASCADE">                                
+    	<reference local="id_tema_fattura" foreign="id" />
+  	</foreign-key>
+    
     <index name="fattura_num_fattura_index">
       <index-column name="num_fattura" />
     </index>

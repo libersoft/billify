@@ -351,6 +351,7 @@ Vendita:
     data: '<?php echo date('Y-m-d', strtotime('-1 year'))?>'
     modo_pagamento_id: ModoPagamento_1
     vat: 20
+    id_tema_fattura: TemaFattura_2
 
 Acquisto:
 <?php for($i = 1; $i < 3; $i++):?>
@@ -429,7 +430,6 @@ Entrata:
 DettagliFattura:
   DettaglioFattura_con_tema:
     fattura_id: Fattura_con_tema
-    id_tema_fattura: TemaFattura_2
 <?php for($i = 2; $i <= 10; $i++):?>
   DettagliFattura_year_ago_<?php echo $i?>:
     fattura_id: 'Fattura_year_ago_<?php echo $i?>'

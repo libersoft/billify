@@ -41,10 +41,12 @@ class FatturaPeer extends BaseFatturaPeer
       $fattura = new Vendita();
       $fattura->setData(time());
       $fattura->setNewNumFattura();
+      $fattura->setNew(true);
       
       if ($cliente)               
       {
         $fattura->setModoPagamentoId($cliente->getModoPagamentoID());
+        $fattura->setIdTemaFattura($cliente->getIdTemaFattura());
       }
       
     } 

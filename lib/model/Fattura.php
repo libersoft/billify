@@ -426,38 +426,26 @@ abstract class Fattura extends BaseFattura
     }
   }
 
-  public function setIdTemaFattura($tema)
-  {
-  	$dettagli = $this->getDettagliFatturas();
-    
-    if (count($dettagli))
-    {
-      $dettaglio = $dettagli[0];
-    }
-	else {
-      $dettaglio = new DettagliFattura();
-      $dettaglio->setFatturaId($this->getId());
-    }
-    
-    $dettaglio->setIdTemaFattura($tema);
-    return $dettaglio->save();
-  }
-
   public function getIdTemaFattura()
   {
-    if ($this->isNew())
-    {      
+    
+    if (parent::getIdTemaFattura())
+    {
+      return parent::getIdTemaFattura();
+    }
+    
+    if (!$this->getCliente())
+    {
       return TemaFatturaPeer::doSelect(new Criteria());
     }
     
-	$dettagli = $this->getDettagliFatturas();
-
-    if ($dettagli && $dettagli[0]->getTemaFattura())
+    if ($this->getCliente()->getTemaFattura())
     {
-	  return $dettagli[0]->getTemaFattura()->getId();
-	}
+      return $this->getCliente()->getTemaFattura()->getId();
+    }
+    
+    return null;
 
-	return $this->getCliente()->getTemaFattura()->getId();
   }
 
   abstract public function addToCashFlow(CashFlow $cf);

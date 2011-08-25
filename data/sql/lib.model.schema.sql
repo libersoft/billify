@@ -148,20 +148,13 @@ CREATE TABLE `dettagli_fattura`
 	`sconto` VARCHAR(10) default '0' NOT NULL,
 	`iva` INTEGER default 0 NOT NULL,
 	`prezzo` VARCHAR(50) default '0' NOT NULL,
-	`id_tema_fattura` INTEGER,
 	PRIMARY KEY (`id`),
 	KEY `dettagli_fattura_FI_1`(`fattura_id`),
 	CONSTRAINT `dettagli_fattura_FK_1`
 		FOREIGN KEY (`fattura_id`)
 		REFERENCES `fattura` (`id`)
 		ON UPDATE CASCADE
-		ON DELETE CASCADE,
-	INDEX `dettagli_fattura_FI_2` (`id_tema_fattura`),
-	CONSTRAINT `dettagli_fattura_FK_2`
-		FOREIGN KEY (`id_tema_fattura`)
-		REFERENCES `tema_fattura` (`id`)
-		ON UPDATE CASCADE
-		ON DELETE SET NULL
+		ON DELETE CASCADE
 )Type=MyISAM;
 
 #-----------------------------------------------------------------------------
@@ -199,6 +192,7 @@ CREATE TABLE `fattura`
 	`includi_tasse` CHAR default 'n',
 	`calcola_tasse` CHAR default 's',
 	`class_key` INTEGER default 1,
+	`id_tema_fattura` INTEGER,
 	PRIMARY KEY (`id`),
 	KEY `fattura_num_fattura_index`(`num_fattura`),
 	KEY `fattura_cliente_id`(`cliente_id`),
@@ -220,7 +214,13 @@ CREATE TABLE `fattura`
 		REFERENCES `contatto` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE,
+	INDEX `fattura_FI_4` (`id_tema_fattura`),
 	CONSTRAINT `fattura_FK_4`
+		FOREIGN KEY (`id_tema_fattura`)
+		REFERENCES `tema_fattura` (`id`)
+		ON UPDATE CASCADE
+		ON DELETE SET NULL,
+	CONSTRAINT `fattura_FK_5`
 		FOREIGN KEY (`id_utente`)
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE
