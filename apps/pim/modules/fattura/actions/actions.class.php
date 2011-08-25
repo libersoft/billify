@@ -47,6 +47,7 @@ class fatturaActions extends sfActions
     $this->fattura = VenditaPeer::retrieveByPk($this->getRequestParameter('id'));
     
     $this->forward404Unless($this->fattura instanceof Fattura);
+    $this->forwardUnless($this->fattura->getStato() == Vendita::NON_PAGATA, 'fattura', 'show');
     
     $this->makeFattura();
   }
@@ -122,19 +123,19 @@ class fatturaActions extends sfActions
     }
   }
 
-  public function executeStato()
+  public function executeStato($request)
   {
     $id = $this->getRequestParameter('id', 0);
-    $fattura = FatturaPeer::getFatturaOrCreate(0, $this->cliente);
-    $fattura->setStato($this->getRequestParameter('stato', 'n'));
+    $fattura = FatturaPeer::getFatturaOrCreate($id, $this->cliente);
+    $fattura->setStato($request->getParameter('stato', 'n'));
 
-    if ($this->getRequestParameter('data_stato'))
+    if ($request->getParameter('data_stato'))
     {
-      list($d, $m, $y) = $this->getContext()->getI18N()->getDateForCulture($this->getRequestParameter('data_stato'), $this->getUser()->getCulture());
+      list($d, $m, $y) = $this->getContext()->getI18N()->getDateForCulture($request->getParameter('data_stato'), $this->getUser()->getCulture());
       $fattura->setDataStato("$y-$m-$d");
     }
 
-    if ($fattura->isProForma() && $this->getRequestParameter('regolare') == 'y')
+    if ($fattura->isProForma() && $request->getParameter('regolare') == 'y')
       $fattura->setRegolare();
 
     $fattura->save();
