@@ -25,7 +25,7 @@ $test->is($acf1->getTaxable(), '1000', '->getTaxable() return right taxable valu
 $test->is($acf1->getTaxes(), '200', '->getTaxes() return right taxes value');
 $test->is($acf1->getTotal(), '1200', '->getTotal() return right total value');
 $test->is($acf1->getContact(), 'Provider', '->getTotal() return right total value');
-$test->is($acf1->getContactUrl(), 'contact/edit?id=100', '->getTotal() return right total value');
+$test->is($acf1->getContactUrl(), 'contact/show?id=100', '->getTotal() return right total value');
 $test->is($acf1->isPaid(), false, '->getTotal() return right total value');
 $test->is($acf1->getDocumentUrl(), 'invoice/edit?id=100', '->getTotal() return right total value');
 

@@ -30,7 +30,7 @@ $test->is($vcf1->getTaxable(), '1000', '->getTaxable() return right taxable valu
 $test->is($vcf1->getTaxes(), '200', '->getTaxes() return right taxes value');
 $test->is($vcf1->getTotal(), '1200', '->getTotal() return right total');
 $test->is($vcf1->getContact(), 'Customer', '->getContact() returns right value');
-$test->is($vcf1->getContactUrl(), 'contact/edit?id=100', '->getContact() returns right value');
+$test->is($vcf1->getContactUrl(), 'contact/show?id=100', '->getContact() returns right value');
 $test->is($vcf1->isPaid(), false, '->getContact() returns right value');
 
 $vcf1->setWithTaxes(false);

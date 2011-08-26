@@ -17,7 +17,7 @@ class ContactTurnoverGraph extends Graph
     
     $this->year = $year;
     $this->contact_incoming = $contact_total_incoming;
-    $this->contact_name = $contact->getRagioneSociale();
+    $this->contact = $contact;
     
     
   }
@@ -41,10 +41,16 @@ class ContactTurnoverGraph extends Graph
     $this->cash_flow->setWithTaxes(false);
     $this->cash_flow->addDocuments($this->documents[$this->year]);
 
-    $fatturato = $this->cash_flow->getIncoming();
+    $method = 'getIncoming';
+    if ($this->contact instanceof Fornitore) 
+    {
+      $method = 'getOutcoming';
+    }
+    
+    $fatturato = $this->cash_flow->$method();
     
     $data = array();   
-    foreach(array('Altro fatturato' => $fatturato - $this->contact_incoming, $this->contact_name => $this->contact_incoming) as $name => $value)
+    foreach(array('Altro fatturato' => $fatturato - $this->contact_incoming, $this->contact->getRagioneSociale() => $this->contact_incoming) as $name => $value)
     {
       if ($fatturato)
       {

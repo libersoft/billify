@@ -65,11 +65,20 @@ class invoiceActions extends sfActions
 
     $this->redirect($request->getReferer($this->getUser()->getReferer('@invoices')));
   }
+  
+  public function executeDelete($request)
+  {    
+    $this->forward404Unless(FatturaPeer::doDelete($request->getParameter('id')), 'non trovo la fattura da cancellare');
+    
+    $this->redirect('@invoice_purchase');
+            
+  }
 
   public function executeEdit($request)
   {
     $factory = new FatturaFactoryForm();
     $this->form = $factory->build($request->getParameter('type'), FatturaPeer::retrieveByPk($request->getParameter('fattura[id]', $request->getParameter('id'))));
+    unset($this->form['id_tema_fattura']);
     
     if ($request->getParameter('fornitore', null))
     {
@@ -82,7 +91,7 @@ class invoiceActions extends sfActions
       if($invoice)
       {
         $this->getUser()->setFlash('notice', 'invoice updated successfully');
-        $this->redirect('invoice/edit?id='.$invoice->getId());
+        $this->redirect('contact/show?id='.$invoice->getClienteId());
       }
     }
   }

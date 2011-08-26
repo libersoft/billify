@@ -75,7 +75,7 @@ Class CashFlowPurchaseAdapter extends AbstractCashFlowAdapter implements ICashFl
    */
   public function getContactUrl()
   {
-    return 'contact/edit?id='.$this->document->getClienteId();
+    return 'contact/show?id='.$this->document->getClienteId();
   }
   
   /**

@@ -2,6 +2,10 @@
 
 <div class="title">
     <h2><?php echo $contact ?></h2>
+    
+    <?php if ($sf_user->hasFlash('notice')): ?>
+      <span class="notice">- <?php echo __($sf_user->getFlash('notice')); ?></span>
+    <?php endif; ?>
 </div>
 
 <?php include_partial('contact/info', array('contact' => $contact)); ?>

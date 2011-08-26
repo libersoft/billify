@@ -137,7 +137,16 @@ $browser->
   end()->
   with('response')->begin()->
         checkElement('select[id="fattura_cliente_id"] option[selected]', '/01 Fornitore/')->
-  end()        
+        setField('fattura[num_fattura]', 'birubiru')->
+        setField('fattura[data]', date('d/m/Y'))->
+  end()->
+  click('Salva')->
+  followRedirect()->
+  with('request')->begin()->
+        isParameter('module', 'contact')->
+        isParameter('action', 'show')->
+        isParameter('id', $fornitore->getId())->  
+  end()
 ;
 
 $browser->info('Link alle informazioni sul fornitore')->
@@ -146,4 +155,25 @@ $browser->info('Link alle informazioni sul fornitore')->
    with('request')->begin()->
         isParameter('module', 'contact')->
         isParameter('action', 'show')->
-   end();  
+   end()
+;  
+
+$criteria = new Criteria;
+$criteria->add(FatturaPeer::NUM_FATTURA, 'birubiru');
+$purchase = FatturaPeer::doSelectOne($criteria);
+
+$browser->info('cancello una fattura di un fornitore')->
+         get('/invoices/purchase')->
+  with('response')->begin()->
+    checkElement('a[title="delete"]', 11)->    
+    checkElement('a[title="delete"][href="/index.php/invoice/delete/id/'.$purchase->getId().'"]', 1)->
+  end()->        
+  get('/invoice/delete/id/'.$purchase->getId())->
+  followRedirect()->
+  with('request')->begin()->
+      isParameter('module', 'invoice')->
+      isParameter('action', 'indexPurchase')->
+  end()->
+  with('response')->begin()->
+    checkElement('a[title="delete"][href="/index.php/invoice/delete/id/'.$purchase->getId().'"]', 0)->
+  end();
