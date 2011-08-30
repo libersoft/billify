@@ -1,23 +1,34 @@
 <?php
 
-class ContactTurnoverGraph extends Graph
+class ClientsSummaryTurnoverGraph extends Graph
 {
   private $criteria;
   private $cash_flow;
   private $current_year;
   private $documents;
 
-  public function __construct($contact, $contact_total_incoming = 0, $year = null)
+  public function __construct($supplier = false)
   {
-    $year = ($year)?$year:date('Y');
-        
     $this->criteria = new FinancialDocumentCriteria();
     $this->cash_flow = new CashFlow();
     $this->setTitle('% Fatturato');
     
-    $this->year = $year;
-    $this->contact_incoming = $contact_total_incoming;
-    $this->contact = $contact;
+    $this->supplier = $supplier;
+    $this->year = date('Y');
+    
+    if ($this->supplier)
+    {
+      $this->contact = FornitorePeer::doSelect(new Criteria());  
+    }
+    else {
+      $this->contact = ClientePeer::doSelect(new Criteria());  
+    }
+    
+    
+    if (!is_array($this->contact))
+    {
+       $this->contact = array($this->contact);
+    }
     
     
   }
@@ -25,7 +36,7 @@ class ContactTurnoverGraph extends Graph
   public function build()
   {
     $serie = new GraphPieSerie();
-    $serie->setName('% Fatturato');
+  
      
     if(!isset($this->documents[$this->year]))
     {
@@ -42,20 +53,25 @@ class ContactTurnoverGraph extends Graph
     $this->cash_flow->addDocuments($this->documents[$this->year]);
 
     $method = 'getIncoming';
-    if ($this->contact instanceof Fornitore) 
+    $name = '% Fatturato';
+       
+    if ($this->supplier) 
     {
       $method = 'getOutcoming';
+      $name = 'Uscite %';
     }
     
+    $serie->setName($name);
     $fatturato = $this->cash_flow->$method();
     
     $data = array();   
-    foreach(array('Altro fatturato' => $fatturato - $this->contact_incoming, $this->contact->getRagioneSociale() => $this->contact_incoming) as $name => $value)
+    foreach($this->contact as $contact)
     {
       if ($fatturato)
       {
+        $value = $contact->getTotaleFatture($this->year);
         $percentage = round (100 * $value / $fatturato, 2); 
-        $data[] = array('name' => $name .' ('.$percentage. '%)', 'y' => $value, 'sliced' => true);
+        $data[] = array('name' => $contact->getRagioneSociale() .' ('.$percentage. '%)', 'y' => $value);
       }
     }
     

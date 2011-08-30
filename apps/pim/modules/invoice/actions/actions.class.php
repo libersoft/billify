@@ -14,7 +14,7 @@ class invoiceActions extends sfActions
   private function update($request)
   {
     $this->form->bind($request->getParameter('fattura'));
-
+   
     if ($this->form->isValid())
     {
       $invoice = $this->form->save();

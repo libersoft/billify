@@ -21,5 +21,17 @@ class analyticsActions extends sfActions
 
     $this->cashflow_graph = new Highcharts($graph);
     $this->cashflow_graph->setRenderTo('cashflow');
+
+    $graph = new ClientsSummaryTurnoverGraph();
+    $graph->build();
+
+    $this->clients_graph = new Highcharts($graph);
+    $this->clients_graph->setRenderTo('clients_graph');
+
+    $graph = new ClientsSummaryTurnoverGraph(true);
+    $graph->build();
+
+    $this->supplier_graph = new Highcharts($graph);
+    $this->supplier_graph->setRenderTo('supplier_graph');
   }
 }

@@ -148,7 +148,36 @@ $browser->
         isParameter('id', $fornitore->getId())->  
   end()
 ;
-
+/*
+$browser->
+  info('provo a registrare una fattura di acquisto con numero già registrato per il fornitore')->
+  get('/fornitori')->
+  click('01 Fornitore')->
+  click('nuova fattura')->
+  with('request')->begin()->
+        isParameter('module', 'invoice')->
+        isParameter('action', 'create')->
+        isParameter('type', '2')->
+        isParameter('fornitore', $fornitore->getId())->
+  end()->
+  with('response')->begin()->
+        checkElement('select[id="fattura_cliente_id"] option[selected]', '/01 Fornitore/')->
+        setField('fattura[num_fattura]', 'birubiru')->
+        setField('fattura[data]', date('d/m/Y'))->
+  end()->
+  click('Salva')->
+  with('request')->begin()->
+        isParameter('module', 'invoice')->
+        isParameter('action', 'edit')->
+        isParameter('type', '2')->
+        isParameter('fornitore', $fornitore->getId())->
+  end()->
+  with('response')->begin()->
+        checkElement('.notice', 'Il numero fattura è già stato registrato')->
+  end();      
+*/        
+        
+        
 $browser->info('Link alle informazioni sul fornitore')->
    get('/invoices/purchase')->
    click('03 Fornitore')->
