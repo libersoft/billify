@@ -15,8 +15,8 @@ $sf_response->addJavascript('/sfHighchartsPlugin/js/highcharts.js');
 
 <div id="monthly_turnover" style="width: 100%; height: 400px; clear: left; padding-top: 30px;"></div>
 
-<div id="clients_graph" style="width: 50%; height: 300px; float: left; padding-top: 30px;"></div>
-<div id="supplier_graph" style="width: 50%; height: 300px; float: left; padding-top: 30px;"></div>
+<div id="clients_graph" style="width: 100%; height: 400px; float: left; padding-top: 30px;"></div>
+<div id="supplier_graph" style="width: 100%; height: 400px; clear: left; padding-top: 30px;"></div>
 
 <script language="javascript">
 

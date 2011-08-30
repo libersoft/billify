@@ -11,19 +11,22 @@ class ClientsSummaryTurnoverGraph extends Graph
   {
     $this->criteria = new FinancialDocumentCriteria();
     $this->cash_flow = new CashFlow();
-    $this->setTitle('% Fatturato');
+    
     
     $this->supplier = $supplier;
     $this->year = date('Y');
     
+    $this->title = 'Ripartizione Fatturato % '.$this->year;
     if ($this->supplier)
     {
+      $this->title = 'Ripartizione Spesa % '.$this->year;
       $this->contact = FornitorePeer::doSelect(new Criteria());  
     }
     else {
       $this->contact = ClientePeer::doSelect(new Criteria());  
     }
     
+    $this->setTitle($this->title);
     
     if (!is_array($this->contact))
     {
@@ -36,7 +39,6 @@ class ClientsSummaryTurnoverGraph extends Graph
   public function build()
   {
     $serie = new GraphPieSerie();
-  
      
     if(!isset($this->documents[$this->year]))
     {
@@ -53,15 +55,13 @@ class ClientsSummaryTurnoverGraph extends Graph
     $this->cash_flow->addDocuments($this->documents[$this->year]);
 
     $method = 'getIncoming';
-    $name = '% Fatturato';
        
     if ($this->supplier) 
     {
       $method = 'getOutcoming';
-      $name = 'Uscite %';
     }
     
-    $serie->setName($name);
+    $serie->setName($this->title);
     $fatturato = $this->cash_flow->$method();
     
     $data = array();   
@@ -70,8 +70,12 @@ class ClientsSummaryTurnoverGraph extends Graph
       if ($fatturato)
       {
         $value = $contact->getTotaleFatture($this->year);
-        $percentage = round (100 * $value / $fatturato, 2); 
-        $data[] = array('name' => $contact->getRagioneSociale() .' ('.$percentage. '%)', 'y' => $value);
+        
+        if ($value > 0)
+        {  
+          $percentage = round (100 * $value / $fatturato, 2); 
+          $data[] = array('name' => '<a href="/contact/show/'.$contact->getId().'">'.$contact->getRagioneSociale() .' ('.$percentage. '%)</a>', 'y' => $value);
+        }
       }
     }
     
