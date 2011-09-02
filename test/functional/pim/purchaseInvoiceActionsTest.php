@@ -101,8 +101,8 @@ $browser->
     checkElement('td', '!/pagata/')->
     checkElement('.fatture tbody tr ', 10)->
   end()->
-  setField('fattura_filters[data][from]', date('d/m/Y', strtotime('-1 month')))->
-  setField('fattura_filters[data][to]', date('t/m/Y', strtotime('-1 month')))->
+  setField('fattura_filters[data][from]', date('d/m/Y', strtotime('first day of last month')))->
+  setField('fattura_filters[data][to]', date('t/m/Y', strtotime('first day of last month')))->
   click('Filtra')->
   with('response')->begin()->
     checkElement('td', '!/pagata/')->

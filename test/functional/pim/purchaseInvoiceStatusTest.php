@@ -12,7 +12,7 @@ $browser->
   click("10/7")->
 
   with('response')->begin()->
-    checkElement('input[name="fattura[data_stato]"][value="'.date('d/m/Y', strtotime('-1 month + 10 days')).'"]')->
+    checkElement('input[name="fattura[data_stato]"][value="'.date('d/m/Y', strtotime('+ 10 days', strtotime('first day of last month'))).'"]')->
   end()->
 
   setField('fattura[stato]', 'p')->

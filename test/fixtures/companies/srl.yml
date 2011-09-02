@@ -383,7 +383,7 @@ Acquisto:
     id_utente: Utente_1
     num_fattura: '10/<?php echo $i?>'
     cliente_id: Fornitore_3
-    data: '<?php echo date('Y-m-d', strtotime('-1 month'))?>'
+    data: '<?php echo date('Y-m-d', strtotime('first day of last month'))?>'
     modo_pagamento_id: ModoPagamento_2
     imponibile: '11200.34675'
     imposte: '2002.125'

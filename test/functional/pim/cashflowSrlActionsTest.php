@@ -65,9 +65,10 @@ $browser->
   end();
 
 $start = new DateTime();
-$start->modify('-1 month');
+$start->modify('first day of last month');
         
 $interval = new DateInterval("P1M"); 
+
 $period = new DatePeriod($start, $interval, 1);
 
 $check_date = array();
@@ -83,9 +84,9 @@ $browser->
   click('Filtra')->
 
   with('response')->begin()->
-    checkElement('table.monitor td', format_currency('14400.00', 'EUR'), array('position' => 0))->
-    checkElement('table.monitor td', format_currency('47609.25', 'EUR'), array('position' => 1))->
-    checkElement('table.monitor td', format_currency('-33209.25', 'EUR'), array('position' => 2))->
+    checkElement('table.monitor td', format_currency('1200.00', 'EUR'), array('position' => 0))->
+    checkElement('table.monitor td', format_currency('39607.41', 'EUR'), array('position' => 1))->
+    checkElement('table.monitor td', format_currency('-38407.41', 'EUR'), array('position' => 2))->
   end();
 
 /* il test dipende dalla data di esecuzione... dopo il 20 del mese non funziona

@@ -49,8 +49,8 @@ $browser->
     checkElement('ul.ul-list li', 'uscite: € 0,00 (€ 0,00)', array('position' => 1))->
   end()->
 
-  setField('fattura_filters[data][from]', date('d/m/Y', strtotime('-1 month')))->
-  setField('fattura_filters[data][to]', date('t/m/Y', strtotime('-1 month')))->
+  setField('fattura_filters[data][from]', date('d/m/Y', strtotime('first day of last month')))->
+  setField('fattura_filters[data][to]', date('t/m/Y', strtotime('first day of last month')))->
   click('Filtra')->
   with('response')->begin()->
     checkElement('ul.ul-list li', 'entrate: € 1.000,00 (€ 1.000,00)', array('position' => 0))->
