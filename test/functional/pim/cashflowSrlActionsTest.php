@@ -9,7 +9,7 @@ $browser->
   click('cash flow');
 
 $cf = new CashFlow();
-$cf->getCriteria()->addDateTimeRange(new DateTime(), new DateTime(date('Y-m-t')));
+$cf->getCriteria()->addDateTimeRange(new DateTime('first day of this month'), new DateTime(date('Y-m-t')));
 $cf->init();
 
 // il test non funzia dal 20 al 31 del mese
