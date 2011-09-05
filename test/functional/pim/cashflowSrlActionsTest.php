@@ -12,16 +12,13 @@ $cf = new CashFlow();
 $cf->getCriteria()->addDateTimeRange(new DateTime('first day of this month'), new DateTime(date('Y-m-t')));
 $cf->init();
 
-// il test non funzia dal 20 al 31 del mese
-if (date('d') < 20)
-{
   $browser->
     with('response')->begin()->
       checkElement('table.monitor td', format_currency($cf->getIncoming(), 'EUR'), array('position' => 0))->
       checkElement('table.monitor td', format_currency($cf->getOutcoming(), 'EUR'), array('position' => 1))->
       checkElement('table.monitor td', format_currency($cf->getBalance(), 'EUR'), array('position' => 2))->
     end();
-}
+
 
 $cash_flow_filters = array('document_date' => array(
     'from' => '1/1/'.date('Y', strtotime('-2 year')),
