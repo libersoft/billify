@@ -1,7 +1,7 @@
 <?php use_helper('Pdf');?>
 <?php ob_start()?>
-<?php $fattura->getCliente()->getTemaFattura()->setFattura($fattura)?>
-<?php echo $fattura->getCliente()->getTemaFattura()->getViewHeader()?>
+<?php $fattura->getTemaFattura()->setFattura($fattura)?>
+<?php echo $fattura->getTemaFattura()->getViewHeader()?>
 <?php ob_end_flush()?>
 <?php $html = ob_get_contents();?>
 <?php ob_end_clean()?>

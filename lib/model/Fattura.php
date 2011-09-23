@@ -429,25 +429,26 @@ abstract class Fattura extends BaseFattura
   public function getIdTemaFattura()
   {
     
-    if (parent::getIdTemaFattura())
+    if (!parent::getIdTemaFattura())
     {
-      return parent::getIdTemaFattura();
+    
+      if (!$this->getCliente())
+      {
+        $this->setIdTemaFattura(TemaFatturaPeer::doSelect(new Criteria()));
+      }
+
+      if ($this->getCliente()->getTemaFattura())
+      {
+        $this->setIdTemaFattura($this->getCliente()->getTemaFattura()->getId());
+      }
+    
+      $this->save();
     }
     
-    if (!$this->getCliente())
-    {
-      return TemaFatturaPeer::doSelect(new Criteria());
-    }
-    
-    if ($this->getCliente()->getTemaFattura())
-    {
-      return $this->getCliente()->getTemaFattura()->getId();
-    }
-    
-    return null;
+    return parent::getIdTemaFattura();
 
   }
-
+  
   /**
    * Se la fattura è stata spedita allora non è più editabile
    * 

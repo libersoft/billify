@@ -31,6 +31,7 @@
   <th><?php echo __('totale')?></th>
   <th><?php echo __('stato')?></th>
   <th><?php echo __('ritardo')?></th>
+  <th></th>
 </tr>
 </thead>
 <tbody>
@@ -41,6 +42,7 @@
     <td align="right"><?php echo format_currency($invoice->getTotale(), '&euro;') ?></td>
     <td style="font-weight: bold; background-color: <?php echo $invoice->getColorStato()?>; color: <?php echo $invoice->getFontColorStato()?>"><?php echo $invoice->getStato(true)?></td>
     <td align="center" class="<?php echo $invoice->checkInRitardo()?'red':'none'?>"><?php echo $invoice->checkInRitardo()?'<strong>si</strong>':'no'?></td>
+    <td><a href="<?php echo url_for('fattura/export?id='.$invoice->getID()); ?>" target="_blank"><img src="/images/icons/file_acrobat.gif" alt="<?php echo __('esporta in pdf'); ?>" /></a></td>
   </tr>
 <?php endforeach; ?>
 </tbody>
