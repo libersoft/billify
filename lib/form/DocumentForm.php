@@ -38,7 +38,8 @@ abstract class DocumentForm extends FatturaForm
       $this['calcola_ritenuta_acconto'],
       $this['includi_tasse'],
       $this['calcola_tasse'],
-      $this['data_stato']
+      $this['data_stato'],
+      $this['id_tema_fattura']            
     );
   }
 

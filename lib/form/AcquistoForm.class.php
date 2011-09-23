@@ -47,6 +47,11 @@ class AcquistoForm extends FatturaForm
     $this->validatorSchema['data']->setOption('date_format', '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~');
     $this->validatorSchema['data_stato']->setOption('date_format', '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~');
     
+    $categoriaCriteria = new Criteria;
+    $categoriaCriteria->addAscendingOrderByColumn(CategoriaPeer::NOME);
+    $this->widgetSchema['categoria_id']->setOption('criteria', $categoriaCriteria);
+    
+    
     unset(
       $this['id_utente'],
       $this['contatto_string'],
@@ -59,7 +64,8 @@ class AcquistoForm extends FatturaForm
       $this['commercialista'],
       $this['calcola_ritenuta_acconto'],
       $this['includi_tasse'],
-      $this['calcola_tasse']
+      $this['calcola_tasse'],
+      $this['id_tema_fattura']
     );
 
     $this->validatorSchema->setPostValidator(new ValidatorPaidInvoce());
