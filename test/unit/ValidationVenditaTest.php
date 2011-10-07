@@ -114,7 +114,7 @@ $fattura = FatturaPeer::doSelectOne($criteria);
 try
 {
   $message = 'Impossible to move an exisistance invoice';
-  $fattura->setData(strtotime('+100 days'));
+  $fattura->setData(strtotime("+60 days"));
   $fattura->save();
   $test->fail($message);
 }
