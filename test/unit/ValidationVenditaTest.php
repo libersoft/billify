@@ -113,8 +113,8 @@ $fattura = FatturaPeer::doSelectOne($criteria);
 
 try
 {
-  $message = 'Impossible to move an exisistance invoice';
-  $fattura->setData(strtotime('+100 days'));
+  $message = 'Impossible to move an exisistance invoice in the future if other are present';
+  $fattura->setData(strtotime('last day of year'));
   $fattura->save();
   $test->fail($message);
 }
@@ -125,7 +125,7 @@ catch(Exception $e)
 
 try
 {
-  $message = 'Impossible to move an exisistance invoice';
+  $message = 'Impossible to move an exisistance invoice in the past';
   $fattura->setData(strtotime('-30 days'));
   $fattura->save();
   $test->fail($message);
@@ -138,7 +138,7 @@ catch(Exception $e)
 
 try
 {
-  $message = 'Impossible to move an exisistance invoice';
+  $message = 'Impossible to move an exisistance invoice in the past';
   $fattura->setData(strtotime('-1 day'));
   $fattura->save();
   $test->fail($message);

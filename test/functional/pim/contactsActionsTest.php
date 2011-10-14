@@ -42,11 +42,11 @@ $browser->
   click('01 Azienda')->
   checkResponseElement('.fatture tr', 7)->        
   checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 0))->        
-  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 5))->        
-  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 10))->        
-  checkResponseElement('.fatture td', '1', array('position' => 15))->        
-  checkResponseElement('.fatture td', '2', array('position' => 20))->        
-  checkResponseElement('.fatture td', '3', array('position' => 25))->        
+  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 6))->        
+  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 12))->        
+  checkResponseElement('.fatture td', '1', array('position' => 18))->        
+  checkResponseElement('.fatture td', '2', array('position' => 24))->        
+  checkResponseElement('.fatture td', '3', array('position' => 30))->        
   checkResponseElement('.title h2', '/01 Azienda/')->
   checkResponseElement('#contatti', '/via degli ulivi, 19/')->
   checkResponseElement('#contatti', '/60100 Milano \(MI\)/')->
