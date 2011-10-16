@@ -10,7 +10,7 @@ $browser->
   setField('password', 'user')->
   click('Entra')->
   followRedirect()->
-  click('cash flow')->
+  get('@cashflow')->
   setField('cash_flow_filters[document_date][from]', '')->
   setField('cash_flow_filters[document_date][to]', '')->
   click('Filtra')->
@@ -23,7 +23,7 @@ $browser->
   checkResponseElement('table th', 'Descrizione', array('position' => 2))->
   checkResponseElement('table th', 'Entrate', array('position' => 3))->
   checkResponseElement('table th', 'Uscite', array('position' => 4))->
-  checkResponseElement('table th', 'Pagata', array('position' => 5))->
+  checkResponseElement('table th', 'Stato', array('position' => 5))->
   checkResponseElement('table tr', 6)->
         
   checkResponseElement('table td', date('Y-m-d', strtotime('+8 days')), array('position' => 0))->
@@ -33,8 +33,7 @@ $browser->
   checkResponseElement('table td a', 'Fattura n. 1 del '.date('d/m/Y', strtotime('-2 days')), array('position' => 1))->
   checkResponseElement('table td', format_currency('1200', 'EUR'), array('position' => 3))->
   checkResponseElement('table td', '', array('position' => 4))->
-  checkResponseElement('table td', 'No', array('position' => 5))->
-  checkResponseElement('table td[style="background-color: yellow; font-weight: bold;"]', 'No')->
+  checkResponseElement('table td span.warning', 'non inviata')->
 
   checkResponseElement('table td', date('Y-m-d', strtotime('+29 days')), array('position' => 6))->
   checkResponseElement('table td', 'Fornitore', array('position' => 7))->
@@ -43,8 +42,7 @@ $browser->
   checkResponseElement('table td a', 'Fattura n. 10/1 del '.date('d/m/Y', strtotime('-1 days')), array('position' => 3))->
   checkResponseElement('table td', '', array('position' => 9))->
   checkResponseElement('table td', format_currency('750', 'EUR'), array('position' => 10))->
-  checkResponseElement('table td', 'Si', array('position' => 11))->
-  checkResponseElement('table td[style="background-color: green; font-weight: bold;"]', 'Si')->
+  checkResponseElement('table td span.success', 'pagata')->
 
   checkResponseElement('table.monitor', 1)->
   checkResponseElement('table.monitor th', 3)->
@@ -78,7 +76,7 @@ $browser->
 $browser->click('esci');
 $browser->
   login('freelance', 'freelance')->
-  click('cash flow')->
+  get('@cashflow')->
   with('response')->begin()->
     checkElement('#col-left p', '/Nessuna entrata nel cash flow./')->
   end()->

@@ -2,32 +2,32 @@
 
 
 <?php if ($fatture instanceof sfPager && $fatture->haveToPaginate()): ?>
-<div class="navigator">Pagina <?php echo $fatture->getPage()?> di <?php echo $fatture->getLastPage();?>&nbsp;&nbsp;
-  <?php echo link_to_remote('&laquo;',array('url'=>$form_action.'page='.$fatture->getFirstPage().'&tag='.$tag,
+<div class="pagination">
+  <li><?php echo link_to_remote('&laquo;',array('url'=>$form_action.'page='.$fatture->getFirstPage().'&tag='.$tag,
   											'update'=>$div_to_update,
   											'loading' => "Element.show('indicator')",
-								 			'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?>
+								 			'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?></li>
 
-  <?php echo link_to_remote('&lt;',array('url' => $form_action.'page='.$fatture->getPreviousPage().'&tag='.$tag,
+  <li><?php echo link_to_remote('&lt;',array('url' => $form_action.'page='.$fatture->getPreviousPage().'&tag='.$tag,
   										 'update'=>$div_to_update,
   										 'loading' => "Element.show('indicator')",
-								 		 'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?>
+								 		 'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?></li>
 
   <?php $links = $fatture->getLinks(); foreach ($links as $page): ?>
-    <?php echo ($page == $fatture->getPage()) ? "<strong>$page</strong>" : link_to_remote($page, array('url' => $form_action.'page='.$page.'&tag='.$tag,
+    <li class="<?php echo ($page == $fatture->getPage()) ? 'active':null; ?>"><?php echo link_to_remote($page, array('url' => $form_action.'page='.$page.'&tag='.$tag,
     																			  'update'=>$div_to_update,
   										 										  'loading' => "Element.show('indicator')",
-								 		 										  'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?>
+								 		 										  'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?></li>
     <?php if ($page != $fatture->getCurrentMaxLink()): ?><?php endif ?>
   <?php endforeach ?>
-  <?php echo link_to_remote('&gt;',array('url' => $form_action.'page='.$fatture->getNextPage().'&tag='.$tag,
+  <li><?php echo link_to_remote('&gt;',array('url' => $form_action.'page='.$fatture->getNextPage().'&tag='.$tag,
   										 'update'=> $div_to_update,
   										 'loading' => "Element.show('indicator')",
-								 		 'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?>
-  <?php echo link_to_remote('&raquo;',array('url' => $form_action.'page='.$fatture->getLastPage().'&tag='.$tag,
+								 		 'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?></li>
+  <li><?php echo link_to_remote('&raquo;',array('url' => $form_action.'page='.$fatture->getLastPage().'&tag='.$tag,
   										 'update'=> $div_to_update,
   										 'loading' => "Element.show('indicator')",
-								 		 'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?>
+								 		 'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?></li>
 </div>
 <?php endif ?>
 

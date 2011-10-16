@@ -190,4 +190,5 @@ table.monitor th { text-align: left; }
 #lista_temi li span { float: right}
 
 .centered { text-align: center; }
-.total .stimato {font-size: 40%; background-color: #F7CF07}
+.total .stimato {font-size: 40%; background-color: #F7CF07; margin-top: 15px;}
+.total { font-family: 'droid sans'; padding-top: 15px; }

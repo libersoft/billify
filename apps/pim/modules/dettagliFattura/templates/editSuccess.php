@@ -80,11 +80,12 @@
 <?php endif ?>
 </table>
 
-<?php echo submit_tag('Salva',array('class'=>'button_submit','onclick'=>"this.form.insert_page.value='no'")) ?>&nbsp;
+<?php echo submit_tag('Salva',array('class'=>'button_submit large btn primary','onclick'=>"this.form.insert_page.value='no'")) ?>&nbsp;
 <?php echo link_to_remote('Annulla',array('url'=>'dettagliFattura/show?fattura_id='.$fattura_id,
 										   'update' => 'dettaglio_edit',
 										   'loading' => "Element.show('indicator')",
 								 		   'complete' => "Element.hide('indicator');".visual_effect('highlight', 'tabella_dettagli')))?>
+
 </div>
 
 <div id="indicator" style="display: none;"></div>

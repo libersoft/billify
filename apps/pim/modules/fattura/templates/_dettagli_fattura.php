@@ -7,10 +7,13 @@
   <?php echo input_hidden_tag('insert_page', 'no');?>
 
   <?php if ($fattura->isEditable()): ?>
-    <div class="actions dettagli-add" >
-      <ul>
+    <div class="dettagli-add" >
+      <ul style="list-style-type: none">
         <li>
-          <input type="image" src="<?php echo $sf_request->getRelativeUrlRoot()?>/images/icons/page_new.gif" onClick="this.form.insert_page.value = 'yes'"/>
+          <div class="input-prepend">
+            <span class="add-on"><img src="<?php echo $sf_request->getRelativeUrlRoot()?>/images/icons/page_new.gif" /></span>
+            <input class="tiny" type="submit" value="<?php echo __('add lines'); ?>" onClick="this.form.insert_page.value = 'yes'"/>
+          </div>
         </li>
       </ul>
     </div>

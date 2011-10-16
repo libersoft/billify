@@ -61,7 +61,7 @@ a:hover {color:#000;}
 #cols3 .col h3 a:hover {color:#000;}
 #cols3 .col-more {background:#F5F5F5;}
 
-#cols2 #col-left .title h2, #cols2 #col-left .title h4, #cols2 #col-right h4 {color:#090;}
+#cols2 #col-left .title h2, #cols2 #col-left .title h4, #cols2 #col-right h4 {color:#090; font-family: "Droid Serif", sans-serif}
 #cols2 #col-left .title h2, #cols2 #col-left .title h4, #cols2 #col-left .title span {background-color:#FFF;}
 #cols2 #col-left .article {color:#090;}
 #cols2 #col-left a:hover.article {color:#000;}

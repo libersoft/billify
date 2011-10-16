@@ -25,7 +25,7 @@ $browser->
     checkElement('table.fatture td:contains("2")')->
   end();
 
-$browser->click('1')->
+$browser->click('1', array(), array('position' => 2))->
   with('request')->begin()->
     isParameter('module', 'fattura')->
     isParameter('action', 'show')->
@@ -127,9 +127,9 @@ $browser->
 $browser->info('Edit invoice of sale');
 
 $browser->
-  click('fatture')->
+  click('lista fatture di vendita')->
   click('3')->
-  click('modifica')->
+  click('modifica', array(), array('position' => 2))->
   with('response')->begin()->
     checkElement('table th:contains("Pro forma")')->
     checkElement('table th:contains("Num fattura")')->
@@ -186,7 +186,7 @@ $browser->
  $new_invoice_date = strtotime('+1 year');
  
  $browser->
-  click('modifica')->
+  click('modifica', array(), array('position' => 2))->
   setField('data', date('d/m/y', $new_invoice_date))->
   click('Salva e vai ai dettagli')->
   followRedirect()->

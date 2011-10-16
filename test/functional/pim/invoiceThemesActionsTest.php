@@ -60,9 +60,9 @@ $browser->
     checkElement('#breadcrumps ul li', '/Temi Fattura/', array('position' => 2))->
     checkElement('#breadcrumps ul li', '/Nuovo tema Fattura/', array('position' => 3))->
     checkElement('h2', '/Nuovo Tema/')->
-    checkElement('h3', '/Nome Tema/', array('position'))->
-    checkElement('h3', '/Modello Fattura/', array('position' => 1))->
-    checkElement('h3', '/Stile Fattura/', array('position' => 2))->
+    checkElement('.title h3', '/Nome Tema/', array('position'))->
+    checkElement('.title h3', '/Modello Fattura/', array('position' => 1))->
+    checkElement('.title h3', '/Stile Fattura/', array('position' => 2))->
     checkElement('#nome table.banca', 1)->
     checkElement('#nome table th', 'Nome*:', array('position' => 0))->
     checkElement('#nome table th', 'Logo Ditta:', array('position' => 1))->

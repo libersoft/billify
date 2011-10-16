@@ -5,10 +5,10 @@ class Acquisto extends Fattura
 
   const PEER = 'FatturaPeer';
 
-  protected $color_stato = array(self::NON_PAGATA => 'red',
-                                 self::PAGATA     => 'green',
-                                 self::RIFIUTATA  => 'white',
-                                 self::INVIATA    => 'white');
+  protected $color_stato = array(self::NON_PAGATA => 'important',
+                                 self::PAGATA     => 'success',
+                                 self::RIFIUTATA  => 'warning',
+                                 self::INVIATA    => 'info');
 
   /**
    * Constructs a new Acquisto class, setting the class_key column to FatturaPeer::CLASSKEY_2.

@@ -8,7 +8,7 @@ function pager($pager, $request, $options = array())
     $class = ' '.$options['class'];
   } 
 
-  $output = '<div class="paging'.$class.'">';
+  $output = '<div class="'.$class.'">';
 
   if ($pager->haveToPaginate()) {
 
@@ -30,15 +30,15 @@ function pager($pager, $request, $options = array())
 
     $url = $module.'/'.$action.'?'.http_build_query($parameters).'&page=';
     
-    $output .= link_to(__('&laquo;'), $url.$pager->getFirstPage(), array('class' => 'first'));
-    $output .= link_to(__('&lt;'), $url.$pager->getPreviousPage(), array('class' => 'prev'));
+    $output .= '<li>'.link_to(__('&laquo;'), $url.$pager->getFirstPage(), array('class' => 'first').'</li>');
+    $output .= '<li>'.link_to(__('&lt;'), $url.$pager->getPreviousPage(), array('class' => 'prev')).'</li>';
     
     foreach ($pager->getLinks() as $page) {
-      $output .= link_to_unless($page == $pager->getPage(), $page, $url.$page, array('title' => $page));
+      $output .= '<li class="'. (($page == $pager->getPage())?' active ': null ).'">'.link_to($page, $url.$page, array('title' => $page)).'</li>';
     }
 
-    $output .= link_to(__('&gt;'), $url.$pager->getNextPage(), array('class' => 'next'));
-    $output .= link_to(__('&raquo;'), $url.$pager->getLastPage(), array('class' => 'next'));
+    $output .= '<li>'.link_to(__('&gt;'), $url.$pager->getNextPage(), array('class' => 'next')).'</li>';
+    $output .= '<li>'.link_to(__('&raquo;'), $url.$pager->getLastPage(), array('class' => 'next')).'</li>';
 
   }
   $output .= '</div>';

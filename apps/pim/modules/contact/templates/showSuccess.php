@@ -23,30 +23,12 @@
     </select>
 </form>
 
-<table class="fatture" width="100%" style="margin-bottom: 5px;">
-<thead>
-<tr>
-  <th><?php echo __('n.')?></th>
-  <th><?php echo __('data')?></th>
-  <th><?php echo __('totale')?></th>
-  <th><?php echo __('stato')?></th>
-  <th><?php echo __('ritardo')?></th>
-  <th></th>
-</tr>
-</thead>
-<tbody>
-<?php foreach($invoices as $invoice): $invoice->calcolaFattura(); ?>
-  <tr>
-    <td align="center"><?php echo link_to($invoice->getShortName(), $invoice->getRoutingRule().'?id='.$invoice->getId()) ?></td>
-    <td align="center"><?php echo $invoice->getData('d/m/Y') ?></td>
-    <td align="right"><?php echo format_currency($invoice->getTotale(), '&euro;') ?></td>
-    <td style="font-weight: bold; background-color: <?php echo $invoice->getColorStato()?>; color: <?php echo $invoice->getFontColorStato()?>"><?php echo $invoice->getStato(true)?></td>
-    <td align="center" class="<?php echo $invoice->checkInRitardo()?'red':'none'?>"><?php echo $invoice->checkInRitardo()?'<strong>si</strong>':'no'?></td>
-    <td><a href="<?php echo url_for('fattura/export?id='.$invoice->getID()); ?>" target="_blank"><img src="/images/icons/file_acrobat.gif" alt="<?php echo __('esporta in pdf'); ?>" /></a></td>
-  </tr>
-<?php endforeach; ?>
-</tbody>
-</table>
+<?php include_partial('invoice/list', array(
+    'results' => $invoices,
+    'taxes' => $sf_user->getUser()->getTassas(),
+    'copy'  => false,
+    'batch' => false
+)); ?>
 
 <?php slot('sidebar'); ?>
   <div class="total">
@@ -67,6 +49,7 @@
       <li>+ <?php echo link_to(__('new invoice'),'@invoice_create_for_client?id_cliente='.$contact->getId()); ?></li>
     <?php endif; ?>
   </ul>
+
 <?php
     include_partial('contact/sidebar');
     end_slot();

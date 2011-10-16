@@ -8,7 +8,7 @@
 <?php include_partial('pager', array('pager' => $pager, 'route' => '@invoice_purchase')); ?>
 
 <form action="<?php echo url_for('invoice/batch')?>" method="post">
-<table class="fatture" width="100%" style="margin-bottom: 5px;">
+<table class="fatture  zebra-striped" width="100%" style="margin-bottom: 5px;">
 <thead>
 <tr>
   <th></th>
@@ -19,7 +19,6 @@
   <th><?php echo __('totale')?></th>
   <th><?php echo __('stato')?></th>
   <th><?php echo __('ritardo')?></th>
-  <th></th>
   <th></th>
 </tr>
 </thead>
@@ -32,8 +31,8 @@
     <td><?php echo $invoice->getData('d/m/Y') ?></td>
     <td><?php echo format_currency($invoice->getImponibile(), 'EUR'); ?></td>
     <td><?php echo format_currency($invoice->getTotale(), 'EUR') ?></td>
-    <td style="font-weight: bold; background-color: <?php echo $invoice->getColorStato()?>; color: <?php echo $invoice->getFontColorStato()?>"><?php echo $invoice->getStato(true)?></td>
-    <td class="<?php echo $invoice->checkInRitardo()?'red':'none'?>"><?php echo $invoice->checkInRitardo()?'<strong>si</strong>':'no'?></td>
+    <td class="centered"><span class="label <?php echo $invoice->getColorStato()?>"><?php echo $invoice->getStato(true)?></span></td>
+    <td class="centered"><span class="label <?php echo $invoice->checkInRitardo()?'warning':'success'?>"><?php echo $invoice->checkInRitardo()?'si':'no'?></span></td>
     <td><?php echo link_to(image_tag('icons_tango/trash-full.png', 'alt=delete'), 'invoice/delete?id='.$invoice->getId(), 'post=true&confirm=vuoi cancellare questa fattura? title=delete') ?></td>
   </tr>
 <?php endforeach; ?>

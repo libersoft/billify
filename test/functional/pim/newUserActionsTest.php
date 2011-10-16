@@ -39,7 +39,7 @@ $browser->
   followRedirect()->
 
   info('insert new contact')->
-  click('rubrica')->
+  click('lista clienti')->
   with('response')->begin()->
     checkElement('#col-left p', '/Nessun contatto disponibile/')->
   end()->
@@ -63,7 +63,7 @@ $browser->
         'fattura_id' => $browser->getRequest()->getParameter('id')
       )
   )->
-  get('/')->click('fatture')->click('1')->
+  get('/')->click('lista fatture di vendita')->click('1')->
   with('response')->begin()->
     checkElement('table.edit th', 'Ritenuta d\'acconto:', array('position' => '4'))->
     checkElement('table.edit td', '/200,00/', array('position' => '4'))->
@@ -73,7 +73,7 @@ $browser->
   setField('impostazione[percentuale_ra]', '0')->
   setField('impostazione[percentuale_imponibile_ra]', '100')->
   click('Salva')->
-  click('fatture')->
+  click('lista fatture di vendita')->
   click('1')->
   with('response')->begin()->
     checkElement('table.edit th', '!/Ritenuta d\'acconto/', array('position' => '4'))->

@@ -116,4 +116,9 @@ Class CashFlowPurchaseAdapter extends AbstractCashFlowAdapter implements ICashFl
   {
     return $this->document->getDataPagamento($format);
   }
+  
+  public function getStato()
+  {
+    return $this->document->getStato(true);
+  }
 }

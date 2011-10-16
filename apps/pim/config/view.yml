@@ -9,9 +9,9 @@ default:
     keywords:     php, invoice, account
     language:     it
 
-  stylesheets:    [impress/reset, impress/main, impress/style ]
+  stylesheets:    [impress/reset, impress/main, impress/style, bootstrap.min.css ]
 
-  javascripts:    []
+  javascripts:    [bootstrap-dropdown.js, bootstrap-tabs.js, bootstrap-alerts.js, bootstrap-scrollspy.js]
 
   has_layout:     true
   layout:         layout

@@ -10,10 +10,10 @@ class Entrata extends Fattura
   );
 
   protected $color_stato = array(
-    self::NON_PAGATA => 'red',
-    self::PAGATA     => 'green',
-    self::RIFIUTATA  => 'white',
-    self::INVIATA    => 'white'
+    self::NON_PAGATA => 'warning',
+    self::PAGATA     => 'success',
+    self::RIFIUTATA  => 'important',
+    self::INVIATA    => 'info'
   );
 
   public function __construct()

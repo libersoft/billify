@@ -51,7 +51,7 @@ $browser->
     isStatusCode(200)->
     checkElement('span.notice', '/documento salvato con successo/')->
   end()->
-  click('cash flow')->
+  get('@cashflow')->
   setField('cash_flow_filters[document_date][from]', '9/2/2008')->
   setField('cash_flow_filters[document_date][to]', '9/2/2008')->
   click('Filtra')->
@@ -62,8 +62,7 @@ $browser->
   checkResponseElement('table td a', 'Nuova riga del 12/01/2008', array('position' => 1))->
   checkResponseElement('table td', '', array('position' => 3))->
   checkResponseElement('table td', format_currency('5200', 'EUR'), array('position' => 4))->
-  checkResponseElement('table td', 'No', array('position' => 5))->
-  checkResponseElement('table td[style="background-color: red; font-weight: bold;"]', 'No')
+  checkResponseElement('table td span.label', 'non pagata')
   ;
 
 $browser->

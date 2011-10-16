@@ -61,7 +61,7 @@ $test->is($fattura->getStato(), 'n', '->getStato() returns right value');
 $test->is($fattura->getStato(true), 'non inviata', '->getStato() returns right value');
 
 $test->comment('getColorStato()');
-$test->is($fattura->getColorStato(), 'yellow', '->getColorStato() returns right value');
+$test->is($fattura->getColorStato(), 'warning', '->getColorStato() returns right value');
 
 $test->comment('getFontColorStato()');
 $test->is($fattura->getFontColorStato(), 'black', '->getFontColorStato() returns right value');

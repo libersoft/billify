@@ -6,7 +6,7 @@ $browser->loadData();
 
 $browser->
   login('user', 'user')->
-  click('cash flow');
+  get('@cashflow');
 
 $cf = new CashFlow();
 $cf->getCriteria()->addDateTimeRange(new DateTime('first day of this month'), new DateTime(date('Y-m-t')));

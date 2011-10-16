@@ -10,29 +10,23 @@ $browser->
   with('response')->begin()->
     checkElement('title', 'Billify - simplify your business management')->
     checkElement('#main')->
-    checkElement('#main #header')->
-    checkElement('#main #header h1#logo')->
-    checkElement('#main #header h1#logo a[title="[vai alla homepage]"]')->
-    checkElement('#main #header h1#logo a[title="[vai alla homepage]"] img[src~="logo.gif"]')->
-    checkElement('#main #header div#nav', false)->
-    checkElement('#main #header div#tray')->
-    checkElement('#main #header div#tray ul', false)->
-    checkElement('#main #footer p', 2)->
-    checkElement('#main #footer p.f-right')->
+    checkElement('div.topbar h3 a', '/Billify/')->
+    checkElement('#main #footer p', 1)->
   end()->
   login()->
   with('response')->begin()->
-    checkElement('#main #header div#nav a', 4)->
-    checkElement('#main #header div#nav a#nav-active', '/benvenuto User User/')->
-    checkElement('#main #header div#nav a', 'profilo', array('position' => 1))->
-    checkElement('#main #header div#nav a', 'impostazioni', array('position' => 2))->
-    checkElement('#main #header div#nav a', 'esci', array('position' => 3))->
-    checkElement('#main div#tray ul')->
-    checkElement('#main div#tray ul li', 5)->
-    checkElement('#main div#tray ul li#tray-active', 'bacheca')->
-    checkElement('#main div#tray ul li', 'rubrica', array('position' => 1))->
-    checkElement('#main div#tray ul li', 'fatture', array('position' => 2))->
-    checkElement('#main div#tray ul li', 'cash flow', array('position' => 3))->
+	checkElement('div.topbar h3 a', '/Billify/')->
+    checkElement('div.topbar ul.nav li.active', 1)->
+    checkElement('div.topbar ul.nav li.dropdown', 4)->
+	checkElement('div.topbar ul.secondary-nav', 1)->
+	checkElement('div.topbar ul.secondary-nav', '/benvenuto User User/')->
+    checkElement('div.topbar ul.secondary-nav li.dropdown li', '/profilo/', array('position' => 0))->
+    checkElement('div.topbar ul.secondary-nav li.dropdown li', '/impostazioni/', array('position' => 1))->
+    checkElement('div.topbar ul.secondary-nav li.dropdown li', '/esci/', array('position' => 2))->
+    checkElement('div.topbar ul.nav li.active', 'bacheca')->
+    checkElement('ul.nav li', '/rubrica/', array('position' => 1))->
+    checkElement('ul.nav li.dropdown', '/fatture/', array('position' => 1))->
+    checkElement('ul.nav li.dropdown', '/cash flow/', array('position' => 2))->
     checkElement('#main div#breadcrumps')->
     checkElement('#main div#cols2')->
     checkElement('#main div#cols2 #col-right')->
@@ -87,7 +81,7 @@ $browser->
     isParameter('action', 'indexPurchase')->
   end()->
   back()->
-  click('cash flow')->
+  click('cash flow', array(), array('position' => 2))->
   with('request')->begin()->
     isParameter('module', 'cashflow')->
     isParameter('action', 'index')->

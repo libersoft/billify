@@ -11,7 +11,7 @@ $browser->
   setField('password', 'user')->
   click('Entra')->
   followRedirect()->
-  click('rubrica')->
+  click('lista clienti')->
   checkResponseElement('table', 1)->
   checkResponseElement('table tr', 11)->
   checkResponseElement('table tr th', 6)->
@@ -27,26 +27,26 @@ $browser->
   checkResponseElement('.rubrica td', '35989805', array('position' => 3))->
   checkResponseElement('.rubrica td', '36064127', array('position' => 4))->
 
-  checkResponseElement('div.navigator', 1)->
-  checkResponseElement('div.navigator a', '«', array('position' => 0))->
-  checkResponseElement('div.navigator a', '<', array('position' => 1))->
-  checkResponseElement('div.navigator', '/1/')->
-  checkResponseElement('div.navigator a', '2', array('position' => 2))->
-  checkResponseElement('div.navigator a', '>', array('position' => 3))->
-  checkResponseElement('div.navigator a', '»', array('position' => 4))
+  checkResponseElement('div.pagination', 1)->
+  checkResponseElement('div.pagination a', '«', array('position' => 0))->
+  checkResponseElement('div.pagination a', '<', array('position' => 1))->
+  checkResponseElement('div.pagination a', '/1/', array('position' => 2))->
+  checkResponseElement('div.pagination a', '/2/', array('position' => 3))->
+  checkResponseElement('div.pagination a', '/>/', array('position' => 4))->
+  checkResponseElement('div.pagination a', '/»/', array('position' => 5))
 ;
 
 $browser->
   info('check for single contact page')->
-  click('rubrica')->
+  click('lista clienti')->
   click('01 Azienda')->
   checkResponseElement('.fatture tr', 7)->        
   checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 0))->        
-  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 6))->        
-  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 12))->        
-  checkResponseElement('.fatture td', '1', array('position' => 18))->        
-  checkResponseElement('.fatture td', '2', array('position' => 24))->        
-  checkResponseElement('.fatture td', '3', array('position' => 30))->        
+  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 8))->        
+  checkResponseElement('.fatture td', 'Pro-Forma', array('position' => 16))->        
+  checkResponseElement('.fatture td', '1', array('position' => 24))->        
+  checkResponseElement('.fatture td', '2', array('position' => 32))->        
+  checkResponseElement('.fatture td', '3', array('position' => 40))->        
   checkResponseElement('.title h2', '/01 Azienda/')->
   checkResponseElement('#contatti', '/via degli ulivi, 19/')->
   checkResponseElement('#contatti', '/60100 Milano \(MI\)/')->

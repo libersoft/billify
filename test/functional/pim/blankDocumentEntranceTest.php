@@ -7,7 +7,7 @@ $browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/cashflow.yml');
 
 $browser->
   login()->
-  click('cash flow')->
+  get('@cashflow')->
   checkResponseElement('h2', '/Cash Flow/')->
 
   info('1 - Nuova entrata')->
@@ -55,7 +55,7 @@ $browser->
     checkElement('span.notice', '/documento salvato con successo/')->
   end()->
         
-  click('cash flow')->
+  get('@cashflow')->
   setField('cash_flow_filters[document_date][from]', '10/2/2008')->
   setField('cash_flow_filters[document_date][to]', '10/2/2008')->
   click('Filtra')->
@@ -66,8 +66,8 @@ $browser->
   checkResponseElement('table td a', 'Nuova riga del 10/01/2008', array('position' => 1))->
   checkResponseElement('table td', format_currency('11000', 'EUR'), array('position' => 3))->
   checkResponseElement('table td', '', array('position' => 4))->
-  checkResponseElement('table td', 'No', array('position' => 5))->
-  checkResponseElement('table td[style="background-color: red; font-weight: bold;"]', 'No');
+  checkResponseElement('table td', 'non pagata', array('position' => 5))->
+  checkResponseElement('table td span.warning', 'non pagata');
 
 $browser->
   click('Nuova riga del 10/01/2008')->

@@ -91,7 +91,7 @@ $browser->
   with('response')->begin()->
     checkElement('#label-dettagli-fattura td input[id="label_quantita"][value="Quantità"]')->
   end()->
-  click('fatture')->
+  click('lista fatture di vendita')->
   with('response')->begin()->
     checkElement('table.fatture td', '001-'.date('Y'), array('position' => 31))->
   end();

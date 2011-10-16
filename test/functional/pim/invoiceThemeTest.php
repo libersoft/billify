@@ -8,9 +8,9 @@ $browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/invoice-themes.yml');
 $browser->
   login()->
   info('check default invoice theme for customer')->
-  click('rubrica')->
+  click('lista clienti')->
   click('01 Azienda')->
-  click('modifica')->
+  click('modifica', array(), array('position'=>2))->
   with('request')->begin()->
     isParameter('module', 'contact')->
     isParameter('action', 'edit')->
@@ -26,7 +26,7 @@ $browser->
   end()->
   
   info('create a new invoice for customer')->
-  click('rubrica')->
+  click('lista clienti')->
   click('01 Azienda')->        
   click('nuova fattura')->      
   followRedirect()->
@@ -34,7 +34,7 @@ $browser->
     checkElement('div.title h2', '/Fattura n. 1/')->
         
   end()->      
-  click('modifica')->        
+  click('modifica', array(), array('position' => 2))->        
   with('response')->begin()->
     checkElement('#id_tema_fattura option[selected]', 'ideato srl')->
   end()->
@@ -43,9 +43,9 @@ $browser->
         
 $browser->        
   info('edit invoice default theme for customer')->   
-  click('rubrica')->
+  click('lista clienti')->
   click('01 Azienda')->
-  click('modifica')->
+  click('modifica', array(), array('position' => 2))->
   with('response')->begin()->
     checkElement('#contatto_id_tema_fattura option[selected]', 'ideato srl')->
     setField('contatto[id_tema_fattura]', $rimessa->getId())->    
@@ -55,24 +55,24 @@ $browser->
         
 $browser->        
   info('previous invoices for a customer must have old theme')->              
-  click('rubrica')->
+  click('lista clienti')->
   click('01 Azienda')->
   click('1')->
-  click('modifica')->        
+  click('modifica', array(), array('position' => 2))->        
   with('response')->begin()->
     checkElement('#id_tema_fattura option[selected]', 'ideato srl')->
   end();
         
 $browser->         
   info('new invoices for customer must have new theme')->     
-  click('rubrica')->
+  click('lista clienti')->
   click('01 Azienda')->    
   click('nuova fattura')->        
   followRedirect()->        
   with('response')->begin()->
     checkElement('div.title h2', '/Fattura n. 2/')->
   end()->      
-  click('modifica')->        
+  click('modifica', array(), array('position' => 2))->        
   with('response')->begin()->
     checkElement('#id_tema_fattura option[selected]', 'ideato rimessa')->
   end()->
@@ -81,13 +81,9 @@ $browser->
         
 $browser->        
   info('other customers themes are untouched')->     
-  click('rubrica')->
+  click('lista clienti')->
   click('02 Azienda')->    
-  click('modifica')->        
+  click('modifica', array(), array('position' => 2))->        
   with('response')->begin()->
     checkElement('#contatto_id_tema_fattura option[selected]', 'ideato srl')->
   end();
-
-
-  //-> responseContains('zott');
-        

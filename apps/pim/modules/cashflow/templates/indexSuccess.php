@@ -16,7 +16,7 @@
     <th><?php echo __('Descrizione')?></th>
     <th><?php echo __('Entrate')?></th>
     <th><?php echo __('Uscite')?></th>
-    <th><?php echo __('Pagata')?></th>
+    <th><?php echo __('Stato')?></th>
   </tr>
   <?php foreach ($cf->getResults() as $row) : ?>
     <tr>
@@ -25,7 +25,7 @@
       <td><?php echo link_to($row->getDescription().' '.__('del').' '.format_date($row->getDate(), 'dd/MM/yyyy'), $row->getDocumentUrl()) ?></td>
       <td><?php echo $row instanceof  CashFlowSalesAdapter ? format_currency($row->getTotal(), 'EUR') : '' ?></td>
       <td><?php echo $row instanceof CashFlowPurchaseAdapter ? format_currency($row->getTotal(), 'EUR') : ''?></td>
-      <td style="background-color: <?php echo $row->getColorStato() ?>; font-weight: bold;" ><?php echo $row->isPaid() ? __('Si') : __('No') ?></td>
+      <td class="centered"><span class="label <?php echo $row->getColorStato() ?>" style="font-weight: bold;" ><?php echo $row->getStato() ?></span></td>
     </tr>
   <?php endforeach; ?>
 </table>

@@ -36,10 +36,10 @@ abstract class Fattura extends BaseFattura
   );
 
   protected $color_stato = array(
-      self::NON_PAGATA => 'yellow',
-      self::PAGATA => 'green',
-      self::RIFIUTATA => 'red',
-      self::INVIATA => 'blue'
+      self::NON_PAGATA => 'warning',
+      self::PAGATA => 'success',
+      self::RIFIUTATA => 'important',
+      self::INVIATA => 'info'
   );
   
   protected $imponibile = 0;

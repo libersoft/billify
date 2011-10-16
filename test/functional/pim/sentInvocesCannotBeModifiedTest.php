@@ -8,7 +8,7 @@ $browser->loadData();
 $browser->
   login()->
   info('Open a sent invoce and check if is editable')->
-  click('fatture')->
+  click('lista fatture di vendita')->
   click('4')->
   with('response')->begin()->
     checkElement('.title h2', '/Fattura n. 4/')->
@@ -17,7 +17,7 @@ $browser->
     checkElement('.dettagli_fattura tr', 2)->
     checkElement('.dettagli_add', 0)->
   end()->        
-  click('modifica')->
+  click('modifica', array(), array('position' => 2))->
   followRedirect()->
   with('request')->begin()->
     isParameter('action', 'show')->
