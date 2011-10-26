@@ -35,6 +35,10 @@ invoice_purchase_create:
 invoice_purchase:
   url: invoices/purchase/*
   param: {module: invoice, action: indexPurchase, type: 2}
+  
+invoice_edit:
+  url: invoices/edit/:id
+  param: {module: invoice, action: edit}
 
 cashflow:
   url: cashflow

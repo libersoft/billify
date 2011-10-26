@@ -22,11 +22,14 @@
 </thead>
 <tbody>
 <?php foreach ($results as $invoice): $invoice->calcolaFattura($taxes, $sf_user->getSettings()->getTipoRitenuta(), $sf_user->getSettings()->getRitenutaAcconto()); ?>
+
+  <?php $routing_url = ($invoice instanceof Acquisto)? '@invoice_edit':'@invoice_show'; ?>
+  
   <tr class="invoice-<?php echo strtolower($invoice->getShortName()); ?>">
     <?php if (!isset($batch) || $batch): ?>
       <td><input type="checkbox" name="delete[]" value="<?php echo $invoice->getId()?>"></td>
     <?php endif; ?>
-    <td><?php echo link_to($invoice->getShortName(), '@invoice_show?id='.$invoice->getId()); ?></td>
+      <td><a href="<?php echo url_for($routing_url.'?id='.$invoice->getId()); ?>"><?php echo $invoice->getShortName(); ?></a></td>
     <td style="text-align: left"><?php echo link_to($invoice->getCliente()->getRagioneSociale(), '@contact_show?id='.$invoice->getCliente()->getId()) ?></td>
     <td><?php echo $invoice->getData('d/m/Y'); ?></td>
     <td align="right"><?php echo format_currency($invoice->getImponibile(), 'EUR'); ?></td>
