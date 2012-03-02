@@ -11,15 +11,8 @@ test:
 prod:
   propel:
     param:
-      username:   ideato
-      password:   ideato123qwe
-
-vetrina:
-  propel:
-    param:
-      dsn:        mysql:dbname=demo_billify;host=localhost
-      username:   demo_billify
-      password:   billify
+      username:   <username>
+      password:   <password>
 
 all:
   propel:
