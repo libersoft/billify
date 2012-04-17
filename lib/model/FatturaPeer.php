@@ -82,7 +82,8 @@ class FatturaPeer extends BaseFatturaPeer
     
     $criteria->addAsColumn('integer_num_fattura', 'CONVERT('.FatturaPeer::NUM_FATTURA.', signed)');
     $criteria->addAscendingOrderByColumn('YEAR(data)');
-    $criteria->addAscendingOrderByColumn('integer_num_fattura');
+    //$criteria->addAscendingOrderByColumn('integer_num_fattura');
+    $criteria->addDescendingOrderByColumn('integer_num_fattura');
 
     return $criteria;
   }
