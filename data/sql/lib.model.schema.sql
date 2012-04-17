@@ -27,7 +27,7 @@ CREATE TABLE `banca`
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
-)Type=MyISAM;
+)Engine=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- contatto
@@ -93,7 +93,7 @@ CREATE TABLE `contatto`
 		REFERENCES `banca` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE SET NULL
-)Type=MyISAM;
+)Engine=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- codice_iva
@@ -116,7 +116,7 @@ CREATE TABLE `codice_iva`
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
-)Type=MyISAM;
+)Engine=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- categoria
@@ -130,7 +130,7 @@ CREATE TABLE `categoria`
 	`id` INTEGER  NOT NULL AUTO_INCREMENT,
 	`nome` VARCHAR(255)  NOT NULL,
 	PRIMARY KEY (`id`)
-)Type=MyISAM;
+)Engine=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- dettagli_fattura
@@ -155,7 +155,7 @@ CREATE TABLE `dettagli_fattura`
 		REFERENCES `fattura` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
-)Type=MyISAM;
+)Engine=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- fattura
@@ -225,7 +225,7 @@ CREATE TABLE `fattura`
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
-)Type=MyISAM;
+)Engine=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- impostazione
@@ -266,7 +266,7 @@ CREATE TABLE `impostazione`
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
-)Type=MyISAM;
+)Engine=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- modo_pagamento
@@ -288,7 +288,7 @@ CREATE TABLE `modo_pagamento`
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
-)Type=MyISAM;
+)Engine=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- tassa
@@ -311,7 +311,7 @@ CREATE TABLE `tassa`
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
-)Type=MyISAM;
+)Engine=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- tema_fattura
@@ -335,7 +335,7 @@ CREATE TABLE `tema_fattura`
 		REFERENCES `utente` (`id`)
 		ON UPDATE CASCADE
 		ON DELETE CASCADE
-)Type=MyISAM;
+)Engine=MyISAM;
 
 #-----------------------------------------------------------------------------
 #-- utente
@@ -368,7 +368,7 @@ CREATE TABLE `utente`
 	PRIMARY KEY (`id`),
 	UNIQUE KEY `username` (`username`),
 	KEY `id_invitation_code`(`id_invitation_code`)
-)Type=MyISAM;
+)Engine=MyISAM;
 
 # This restores the fkey checks, after having unset them earlier
 SET FOREIGN_KEY_CHECKS = 1;
