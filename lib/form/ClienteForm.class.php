@@ -37,7 +37,19 @@ class ClienteForm extends ContattoForm
     $this->widgetSchema->setLabel('id_banca', 'Banca');
 
     $this->validatorSchema['ragione_sociale']->setOption('required', true);
-
+    
+    //valori di default
+		
+		$this->setDefault('calcola_tasse', 'n');
+				
+		$default_tema_fattura = TemaFatturaPeer::retrieveByPk(sfConfig::get('app_contact_default_tema_fattura_id'));
+		if($default_tema_fattura != null)
+			$this->setDefault('id_tema_fattura', sfConfig::get('app_contact_default_tema_fattura_id'));      
+			
+		$default_banca = BancaPeer::retrieveByPk(sfConfig::get('app_contact_default_banca_id'));
+		if($default_banca != null)
+			$this->setDefault('id_banca', sfConfig::get('app_contact_default_banca_id'));		
+		                 
     unset(
       $this['id_utente'],
       $this['stato'],

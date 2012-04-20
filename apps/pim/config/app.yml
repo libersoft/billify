@@ -14,6 +14,8 @@ all:
     gratis: 24,25,27
   prezzo:
     base: 5.9
-
   cashflow:
     paginator_offset: 50
+  contact:
+    default_tema_fattura_id: 2
+    default_banca_id: 2
