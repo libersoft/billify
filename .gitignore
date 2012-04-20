@@ -1,8 +1,23 @@
-cache/*
-lib/filter/base/*
-lib/form/base/*
-lib/model/map/*
-lib/model/om/*
-log/*
-nbproject/
+# Project files
+/cache/*
+/log/*
+/web/*_dev.php
+/web/uploads/*
+/nbproject/
+
+# Templates
+ProjectConfiguration.class.php
+databases.yml
+/config/propel.ini
+
+# Generated code
+/data/sql/
+/lib/filter/base/*
+/lib/form/base/*
+/lib/model/map/*
+/lib/model/om/*
 /build
+
+# Plugins
+/plugins/.*
+/web/sf*
