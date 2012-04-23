@@ -63,11 +63,9 @@
       <td>
       <?php if ($fattura->getClienteId()) : ?>
         <?php echo link_to($fattura->getCliente(), '@contact_show?id='.$fattura->getClienteId())?>
-        <?php echo input_hidden_tag('cliente_id', $fattura->getClienteId());?>
-      <?php else : ?>
-        <?php echo object_select_tag($fattura, 'getClienteId', array('related_class' => 'Cliente', 'peer_method' => 'doSelectClienti')) ?>
       <?php endif ?>
-    </td>
+      <?php echo object_select_tag($fattura, 'getClienteId', array('related_class' => 'Cliente', 'peer_method' => 'doSelectClienti')) ?>
+      </td>
   </tr>
 
   <?php if($sf_user->getAttribute('modifica_data')):?>
