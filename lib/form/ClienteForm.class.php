@@ -40,6 +40,8 @@ class ClienteForm extends ContattoForm
     
     //valori di default
 		
+		$this->setDefault('nazione', 'IT');
+		
 		$this->setDefault('calcola_tasse', 'n');
 				
 		$default_tema_fattura = TemaFatturaPeer::retrieveByPk(sfConfig::get('app_contact_default_tema_fattura_id'));
