@@ -16,6 +16,8 @@ class ContattoPeer extends BaseContattoPeer
 
   public static function doSelectClienti()
   {
-    return ClientePeer::doSelect(new Criteria());
+    $c = new Criteria();
+    $c->addAscendingOrderByColumn(ContattoPeer::RAGIONE_SOCIALE);
+    return ClientePeer::doSelect($c);
   }
 }
