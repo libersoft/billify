@@ -36,6 +36,13 @@ class fatturaActions extends sfActions
   {
     $this->cliente = ContattoPeer::retrieveByPK($request->getParameter('id_cliente'));
     $this->fattura = FatturaPeer::getFatturaOrCreate(0, $this->cliente);
+
+    $this->modifica_data = true;
+    $this->getUser()->setAttribute('modifica_data', true);
+
+    $this->modifica_num_fattura = true;
+    $this->getUser()->setAttribute('modifica_num_fattura', true);
+
     $this->makeFattura();
 
     $this->setTemplate('edit');
@@ -72,7 +79,7 @@ class fatturaActions extends sfActions
         $this->getRequest()->setParameter('calcola_tasse', $this->cliente->getCalcolaTasse());
         $this->getRequest()->setParameter('data', date("d/m/Y", time()));
         $this->getRequest()->setParameter('num_fattura', $this->fattura->getNumFattura());
-		$this->getRequest()->setParameter('id_tema_fattura', $this->fattura->getIdTemaFattura());
+        $this->getRequest()->setParameter('id_tema_fattura', $this->fattura->getIdTemaFattura());
         
         $this->updateFattura($this->fattura);
         
