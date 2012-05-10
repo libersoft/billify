@@ -26,8 +26,16 @@ class FornitoreForm extends ContattoForm{
     $this->widgetSchema->setLabel('modo_pagamento_id', 'Modo pagamento');
 
     $this->validatorSchema['ragione_sociale']->setOption('required', true);
-    $this->validatorSchema['piva']->setOption('required', true);
 
+    $this->validatorSchema->setPostValidator(new sfValidatorOr(
+    array(
+      new sfValidatorSchemaFilter('piva', new sfValidatorString(array('required' => true))),
+      new sfValidatorSchemaFilter('cf', new sfValidatorString(array('required' => true))),
+        ),
+			array(),
+			array('invalid' => 'PIVA or CF required')
+		));
+    
     unset(
       $this['id_utente'],
       $this['azienda'],
@@ -39,8 +47,7 @@ class FornitoreForm extends ContattoForm{
       $this['calcola_tasse'],
       $this['cod'],
       $this['nome'],
-      $this['cognome'],
-      $this['cf']
+      $this['cognome']
     );
   }
 
