@@ -8,30 +8,34 @@ $browser->loadData(sfConfig::get('sf_test_dir').'/fixtures/cashflow.yml');
 $browser->
   login()->
   get('@cashflow')->
-  checkResponseElement('h2', '/Cash Flow/')->
+  checkElement('h2', '/Cash Flow/')->
 
   info('1 - Nuova entrata')->
   click('aggiungi una nuova entrata')->
-  isRequestParameter('module', 'cashflow')->
-  isRequestParameter('action', 'create')->
-  isRequestParameter('type', FatturaPeer::CLASSKEY_ENTRATA)->
+  with('request')->
+  begin()->
+  isParameter('module', 'cashflow')->
+  isParameter('action', 'create')->
+  isParameter('type', FatturaPeer::CLASSKEY_ENTRATA)->
 
-  checkResponseElement('h2', '/Nuova entrata/')->
-  checkResponseElement('label[for="fattura_contatto_string"]', 'Contatto')->
-  checkResponseElement('input[type="text"][id="fattura_contatto_string"]')->
-  checkResponseElement('label[for="fattura_descrizione"]', 'Descrizione')->
-  checkResponseElement('input[type="text"][id="fattura_descrizione"]')->
-  checkResponseElement('label[for="fattura_data"]', 'Data')->
-  checkResponseElement('input[id="fattura_data"]')->
-  checkResponseElement('label[for="fattura_imponibile"]', 'Imponibile')->
-  checkResponseElement('input[type="text"][id="fattura_imponibile"]')->
-  checkResponseElement('label[for="fattura_imposte"]', 'Imposte')->
-  checkResponseElement('input[type="text"][id="fattura_imposte"]')->
-  checkResponseElement('label[for="fattura_data_scadenza"]', 'Data scadenza')->
-  checkResponseElement('input[id="fattura_data_scadenza"]')->
-  checkResponseElement('label[for="fattura_stato"]', 'Stato')->
-  checkResponseElement('select[id="fattura_stato"]')->
-  checkResponseElement('input[type="submit"][value="Salva"]')->
+  with('response')->
+  begin()->
+  checkElement('h2', '/Nuova entrata/')->
+  checkElement('label[for="fattura_contatto_string"]', 'Contatto')->
+  checkElement('input[type="text"][id="fattura_contatto_string"]')->
+  checkElement('label[for="fattura_descrizione"]', 'Descrizione')->
+  checkElement('input[type="text"][id="fattura_descrizione"]')->
+  checkElement('label[for="fattura_data"]', 'Data')->
+  checkElement('input[id="fattura_data"]')->
+  checkElement('label[for="fattura_imponibile"]', 'Imponibile')->
+  checkElement('input[type="text"][id="fattura_imponibile"]')->
+  checkElement('label[for="fattura_imposte"]', 'Imposte')->
+  checkElement('input[type="text"][id="fattura_imposte"]')->
+  checkElement('label[for="fattura_data_scadenza"]', 'Data scadenza')->
+  checkElement('input[id="fattura_data_scadenza"]')->
+  checkElement('label[for="fattura_stato"]', 'Stato')->
+  checkElement('select[id="fattura_stato"]')->
+  checkElement('input[type="submit"][value="Salva"]')->
 
   setField('fattura[contatto_string]', 'Azienda Custom')->
   setField('fattura[descrizione]', 'Nuova riga')->
@@ -59,15 +63,17 @@ $browser->
   setField('cash_flow_filters[document_date][from]', '10/2/2008')->
   setField('cash_flow_filters[document_date][to]', '10/2/2008')->
   click('Filtra')->
-        
-  checkResponseElement('table td', '2008-02-10', array('position' => 0))->
-  checkResponseElement('table td', 'Azienda Custom', array('position' => 1))->
-  checkResponseElement('table td', 'Nuova riga del 10/01/2008', array('position' => 2))->
-  checkResponseElement('table td a', 'Nuova riga del 10/01/2008', array('position' => 1))->
-  checkResponseElement('table td', format_currency('11000', 'EUR'), array('position' => 3))->
-  checkResponseElement('table td', '', array('position' => 4))->
-  checkResponseElement('table td', 'non pagata', array('position' => 5))->
-  checkResponseElement('table td span.warning', 'non pagata');
+  
+  with('response')->
+  begin()->   
+  checkElement('table td', '2008-02-10', array('position' => 0))->
+  checkElement('table td', 'Azienda Custom', array('position' => 1))->
+  checkElement('table td', 'Nuova riga del 10/01/2008', array('position' => 2))->
+  checkElement('table td a', 'Nuova riga del 10/01/2008', array('position' => 1))->
+  checkElement('table td', format_currency('11000', 'EUR'), array('position' => 3))->
+  checkElement('table td', '', array('position' => 4))->
+  checkElement('table td', 'non pagata', array('position' => 5))->
+  checkElement('table td span.warning', 'non pagata');
 
 $browser->
   click('Nuova riga del 10/01/2008')->

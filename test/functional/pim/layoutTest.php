@@ -35,26 +35,26 @@ $browser->
     checkElement('#main div#cols2 #col-left div.title h2', 'fatture da inviare')->
     checkElement('#main div#cols2 #col-left div.title h2', 'fatture da incassare', array('position' => 1))->
 
-    checkElement('h4:contains("rubrica clienti")')->
-    checkElement('ul li:contains("lista clienti")')->
-    checkElement('ul li:contains("aggiungi un nuovo cliente")')->
+    checkElement('h4:matches("rubrica clienti")')->
+    checkElement('ul li:matches("lista clienti")')->
+    checkElement('ul li:matches("aggiungi un nuovo cliente")')->
 
-    checkElement('h4:contains("rubrica fornitori")')->
-    checkElement('ul li:contains("lista fornitori")')->
-    checkElement('ul li:contains("aggiungi un nuovo fornitore")')->
+    checkElement('h4:matches("rubrica fornitori")')->
+    checkElement('ul li:matches("lista fornitori")')->
+    checkElement('ul li:matches("aggiungi un nuovo fornitore")')->
 
-    checkElement('h4:contains("fatture di vendita")')->
-    checkElement('ul li:contains("lista fatture di vendita")')->
-    checkElement('ul li:contains("aggiungi una nuova fattura di vendita")')->
+    checkElement('h4:matches("fatture di vendita")')->
+    checkElement('ul li:matches("lista fatture di vendita")')->
+    checkElement('ul li:matches("aggiungi una nuova fattura di vendita")')->
 
-    checkElement('h4:contains("fatture d\'acquisto")')->
-    checkElement('ul li:contains("lista fatture d\'acquisto")')->
-    checkElement('ul li:contains("aggiungi una nuova fattura d\'acquisto")')->
+    checkElement('h4:matches("fatture d\'acquisto")')->
+    checkElement('ul li:matches("lista fatture d\'acquisto")')->
+    checkElement('ul li:matches("aggiungi una nuova fattura d\'acquisto")')->
 
-    checkElement('h4:contains("cash flow")')->
-    checkElement('ul li:contains("cash flow")')->
-    checkElement('ul li:contains("aggiungi una nuova entrata")')->
-    checkElement('ul li:contains("aggiungi una nuova uscita")')->
+    checkElement('h4:matches("cash flow")')->
+    checkElement('ul li:matches("cash flow")')->
+    checkElement('ul li:matches("aggiungi una nuova entrata")')->
+    checkElement('ul li:matches("aggiungi una nuova uscita")')->
 
   end()->
   click('lista clienti')->

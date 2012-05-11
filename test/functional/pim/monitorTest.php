@@ -9,10 +9,10 @@ $browser->
   login()->
   info('Dashboard')->
   with('response')->begin()->
-    checkElement('#col-right h4:contains("fatturato ultimo anno")')->
-    checkElement('#col-right h4:contains("fatturato ultimo mese")')->
-    checkElement('#col-right h4:contains("iva ultimo anno")')->
-    checkElement('#col-right h4:contains("iva ultimo mese")')->
+    checkElement('#col-right h4:matches("fatturato ultimo anno")')->
+    checkElement('#col-right h4:matches("fatturato ultimo mese")')->
+    checkElement('#col-right h4:matches("iva ultimo anno")')->
+    checkElement('#col-right h4:matches("iva ultimo mese")')->
     checkElement('#col-right ul li', '/1.000,00/')->
     checkElement('#col-right ul li', '/12.000,00/')->
     checkElement('#col-right ul li', '/0,00/', array('position' => 1))->

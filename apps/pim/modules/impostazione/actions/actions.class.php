@@ -43,8 +43,9 @@ class impostazioneActions extends sfActions
 
   public function executeUpdate()
   {
+    $impostazione = $this->request->getParameter('impostazione', 0);
+    $id_utente = $impostazione['id_utente'];
     
-    $id_utente = $this->getRequestParameter('impostazione[id_utente]', 0);
     $this->forward404Unless($this->getUser()->getAttribute('id_utente') == $id_utente, $this->getUser()->getAttribute('id_utente'). '<>'. $id_utente);
     
     if (!$id_utente)
@@ -94,7 +95,10 @@ class impostazioneActions extends sfActions
   
   public function handleErrorUpdate()
   {
-    if (!$this->getRequestParameter('impostazione[id_utente]', 0))
+    $impostazione = $this->request->getParameter('impostazione', 0);
+    $impostazionebyId = $impostazione['id_utente'];
+    
+    if (!$impostazionebyId)
     {
       $this->forward('impostazione', 'create');
     } 

@@ -169,6 +169,11 @@ class sfImageMagickAdapter
     return ob_get_clean();
   }
 
+  public function toResource()
+  {
+    throw new Exception('The ImageMagick adapter does not support the toResource method.');
+  }
+
   public function loadFile($thumbnail, $image)
   {
     // try and use getimagesize()
@@ -223,21 +228,31 @@ class sfImageMagickAdapter
     $width  = $this->sourceWidth;
     $height = $this->sourceHeight;
     $x = $y = 0;
-    switch (@$this->options['method']) {
+    switch (@$this->options['method']) 
+    {
       case "shave_all":
-        if ($width > $height)
+        $proportion['source'] = $width / $height;
+        $proportion['thumb'] = $thumbnail->getThumbWidth() / $thumbnail->getThumbHeight();
+        
+        if ($proportion['source'] > 1 && $proportion['thumb'] < 1)
         {
-          $x = ceil(($width - $height) / 2 );
-          $width = $height;
+          $x = ($width - $height * $proportion['thumb']) / 2;
         }
-        elseif ($height > $width)
+        else
         {
-          $y = ceil(($height - $width) / 2);
-          $height = $width;
+          if ($proportion['source'] > $proportion['thumb'])
+          {
+            $x = ($width - $height * $proportion['thumb']) / 2;
+          }
+          else
+          {
+            $y = ($height - $width / $proportion['thumb']) / 2;
+          }
         }
 
         $command = sprintf(" -shave %dx%d", $x, $y);
         break;
+
       case "shave_bottom":
         if ($width > $height)
         {
@@ -276,6 +291,40 @@ class sfImageMagickAdapter
         }
 
         break;
+      case 'custom':
+      	$coords = $this->options['coords'];
+      	if (empty($coords)) break;
+      	
+      	$x = $coords['x1'];
+      	$y = $coords['y1'];
+      	$width = $coords['x2'] - $coords['x1'];
+      	$height = $coords['y2'] - $coords['y1'];
+      	
+        if (is_null($thumbDest))
+        {
+          $command = sprintf(
+            " -crop %dx%d+%d+%d %s '-' | %s",
+            $width, $height,
+            $x, $y,
+            escapeshellarg($this->image),
+            $this->magickCommands['convert']
+          );
+
+          $this->image = '-';
+        }
+        else
+        {
+          $command = sprintf(
+            " -crop %dx%d+%d+%d %s %s && %s",
+            $width, $height,
+            $x, $y,
+            escapeshellarg($this->image), escapeshellarg($thumbDest),
+            $this->magickCommands['convert']
+          );
+
+          $this->image = $thumbDest;
+        }
+      	break;
     } // end switch
 
     $command .= ' -thumbnail ';
@@ -287,7 +336,7 @@ class sfImageMagickAdapter
       $command .= '!';
     }
 
-    if ($this->quality && $thumbnail->getMime() == 'image/jpeg')
+    if ($this->quality && $targetMime == 'image/jpeg')
     {
       $command .= ' -quality '.$this->quality.'% ';
     }

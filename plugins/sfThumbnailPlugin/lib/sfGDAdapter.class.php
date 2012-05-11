@@ -184,6 +184,11 @@ class sfGDAdapter
     return ob_get_clean();
   }
 
+  public function toResource()
+  {
+    return $this->thumb;
+  }
+
   public function freeSource()
   {
     if (is_resource($this->source))

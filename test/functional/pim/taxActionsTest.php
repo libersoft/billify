@@ -82,8 +82,8 @@ $browser->
   click('Annulla')->
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('td:contains("Tassa 2")')->
-    checkElement('td:contains("20")')->
+    checkElement('td:matches("Tassa 2")')->
+    checkElement('td:matches("20")')->
   end()->
 
   info('4. edit tax')->
@@ -104,5 +104,5 @@ $browser->
 
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('td:contains("Tassa 3")')->
+    checkElement('td:matches("Tassa 3")')->
   end();

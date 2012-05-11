@@ -83,8 +83,8 @@ $browser->
   click('Annulla')->
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('td:contains("90")')->
-    checkElement('td:contains("90gg")')->
+    checkElement('td:matches("90")')->
+    checkElement('td:matches("90gg")')->
   end()->
 
   info('4. edit payment')->
@@ -105,6 +105,6 @@ $browser->
 
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('td:contains("90ggg")')->
+    checkElement('td:matches("90ggg")')->
   end();
 ;

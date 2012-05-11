@@ -89,9 +89,9 @@ $browser->
   click('Annulla')->
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('td:contains("Banca del tempo")')->
-    checkElement('td:contains("IT 0034 90234 789")')->
-    checkElement('td:contains("98765400")')->
+    checkElement('td:matches("Banca del tempo")')->
+    checkElement('td:matches("IT 0034 90234 789")')->
+    checkElement('td:matches("98765400")')->
   end()->
 
   info('4. edit bank')->
@@ -112,7 +112,7 @@ $browser->
 
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('td:contains("Banca del tempo2")')->
+    checkElement('td:matches("Banca del tempo2")')->
   end();
 
 $browser->click('esci');

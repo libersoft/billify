@@ -95,9 +95,12 @@ class cashflowActions extends sfActions
       $id = $request->getParameter('id');
     }
 
-    if(!is_null($request->getParameter('fattura[id]')))
+    $fattura = $request->getParameter('fattura');
+    $fatturabyId = $fattura['id'];
+    
+    if(!is_null($fatturabyId))
     {
-      $id = $request->getParameter('fattura[id]');
+      $id = $fatturabyId;
     }
 
     $document = FatturaPeer::retrieveByPk($id);

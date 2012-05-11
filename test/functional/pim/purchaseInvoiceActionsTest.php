@@ -15,40 +15,46 @@ $browser->
   setField('fattura_filters[data][from]', '')->
   setField('fattura_filters[data][to]', '')->
   click('Filtra')->
-  checkResponseElement('table', 1)->
-  checkResponseElement('table tr th', 9)->
-  checkResponseElement('table tr th', 'n.', array('position' => 1))->
-  checkResponseElement('table tr th', 'ragione sociale', array('position' => 2))->
-  checkResponseElement('table tr th', 'data', array('position' => 3))->
-  checkResponseElement('table tr th', 'imponibile', array('position' => 4))->
-  checkResponseElement('table tr th', 'totale', array('position' => 5))->
-  checkResponseElement('table tr th', 'stato', array('position' => 6))->
-  checkResponseElement('table tr th', 'ritardo', array('position' => 7))->
-  checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
-  checkResponseElement('div[class="pagination"]', '/2/')->
-  checkResponseElement('table tr td', date('d/m/Y', strtotime('-2 years')), array('position' => 3))->
-  checkResponseElement('table tr td', '/11.200,34/', array('position' => 4))->
-  checkResponseElement('div[class="pagination"]', 2)->
-  checkResponseElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
+  with('response')->
+  begin()->
+  checkElement('table', 1)->
+  checkElement('table tr th', 9)->
+  checkElement('table tr th', 'n.', array('position' => 1))->
+  checkElement('table tr th', 'ragione sociale', array('position' => 2))->
+  checkElement('table tr th', 'data', array('position' => 3))->
+  checkElement('table tr th', 'imponibile', array('position' => 4))->
+  checkElement('table tr th', 'totale', array('position' => 5))->
+  checkElement('table tr th', 'stato', array('position' => 6))->
+  checkElement('table tr th', 'ritardo', array('position' => 7))->
+  checkElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
+  checkElement('div[class="pagination"]', '/2/')->
+  checkElement('table tr td', date('d/m/Y', strtotime('-2 years')), array('position' => 3))->
+  checkElement('table tr td', '/11.200,34/', array('position' => 4))->
+  checkElement('div[class="pagination"]', 2)->
+  checkElement('table tr', UtentePeer::getImpostazione()->getNumFatture() + 1)->
   click('2')->
-  checkResponseElement('table tr td', '10/8', array('position' => 1))->
+  with('response')->
+  begin()->
+  checkElement('table tr td', '10/8', array('position' => 1))->
   click('aggiungi una nuova fattura d\'acquisto')->
-  checkResponseElement('h2', '/nuova fattura d\'acquisto/')->
-  checkResponseElement('label[for="fattura_num_fattura"]', 'N.')->
-  checkResponseElement('input[type="text"][id="fattura_num_fattura"]')->
-  checkResponseElement('label[for="fattura_cliente_id"]', 'Fornitore')->
-  checkResponseElement('select[id="fattura_cliente_id"]')->
-  checkResponseElement('label[for="fattura_data"]', 'Data')->
-  checkResponseElement('input[id="fattura_data"]')->
-  checkResponseElement('label[for="fattura_imponibile"]', 'Imponibile')->
-  checkResponseElement('input[type="text"][id="fattura_imponibile"]')->
-  checkResponseElement('label[for="fattura_imposte"]', 'Imposte')->
-  checkResponseElement('input[type="text"][id="fattura_imposte"]')->
-  checkResponseElement('label[for="fattura_modo_pagamento_id"]', 'Modo pagamento')->
-  checkResponseElement('select[id="fattura_modo_pagamento_id"]')->
-  checkResponseElement('label[for="fattura_stato"]', 'Stato')->
-  checkResponseElement('select[id="fattura_stato"]')->
-  checkResponseElement('input[type="submit"][value="Salva"]');
+  with('response')->
+  begin()->
+  checkElement('h2', '/nuova fattura d\'acquisto/')->
+  checkElement('label[for="fattura_num_fattura"]', 'N.')->
+  checkElement('input[type="text"][id="fattura_num_fattura"]')->
+  checkElement('label[for="fattura_cliente_id"]', 'Fornitore')->
+  checkElement('select[id="fattura_cliente_id"]')->
+  checkElement('label[for="fattura_data"]', 'Data')->
+  checkElement('input[id="fattura_data"]')->
+  checkElement('label[for="fattura_imponibile"]', 'Imponibile')->
+  checkElement('input[type="text"][id="fattura_imponibile"]')->
+  checkElement('label[for="fattura_imposte"]', 'Imposte')->
+  checkElement('input[type="text"][id="fattura_imposte"]')->
+  checkElement('label[for="fattura_modo_pagamento_id"]', 'Modo pagamento')->
+  checkElement('select[id="fattura_modo_pagamento_id"]')->
+  checkElement('label[for="fattura_stato"]', 'Stato')->
+  checkElement('select[id="fattura_stato"]')->
+  checkElement('input[type="submit"][value="Salva"]');
 
 $browser->
   with('response')->begin()->
@@ -118,7 +124,7 @@ $browser->info('Filtro le fatture di acquisto per categoria')->
   get('/invoices/purchase')->
   setField('fattura_filters[categoria_id]', $categoria->getId())->
   click('Filtra')->
-  checkResponseElement('table.fatture tbody tr', 2);
+  checkElement('table.fatture tbody tr', 2);
 
 $criteria = new Criteria();
 $criteria->add(ContattoPeer::RAGIONE_SOCIALE, '01 Fornitore');

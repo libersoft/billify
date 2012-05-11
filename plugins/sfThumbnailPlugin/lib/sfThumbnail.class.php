@@ -62,16 +62,16 @@ class sfThumbnail
   }
 
   /**
-   * Loads an image from a file and creates an internal thumbnail out of it
+   * Loads an image from a file or URL and creates an internal thumbnail out of it
    *
-   * @param string filename (with absolute path) of the image to load
+   * @param string filename (with absolute path) of the image to load. If the filename is a http(s) URL, then an attempt to download the file will be made.
    *
    * @return boolean True if the image was properly loaded
    * @throws Exception If the image cannot be loaded, or if its mime type is not supported
    */
   public function loadFile($image)
   {
-    if (eregi('http(s)?://', $image))
+    if (preg_match('#http(s)?\://#', $image))
     {
       if (class_exists('sfWebBrowser'))
       {
@@ -104,6 +104,14 @@ class sfThumbnail
         throw new Exception("Source image is a URL but sfWebBrowserPlugin is not installed");
       }
     }
+    else
+    {
+      if (!is_readable($image))
+      {
+        throw new Exception(sprintf('The file "%s" is not readable.', $image));
+      }
+    }
+
 
     $this->adapter->loadFile($this, $image);
   }
@@ -151,6 +159,11 @@ class sfThumbnail
   public function toString($targetMime = null)
   {
     return $this->adapter->toString($this, $targetMime);
+  }
+
+  public function toResource()
+  {
+    return $this->adapter->toResource($this);
   }
 
   public function freeSource()

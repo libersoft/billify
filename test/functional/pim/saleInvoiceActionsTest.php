@@ -21,8 +21,8 @@ $browser->
     checkElement('table.fatture th', 'stato', array('position' => 6))->
     checkElement('table.fatture th', 'ritardo', array('position' => 7))->
     checkElement('table.fatture tr', 21)->
-    checkElement('table.fatture td:contains("1")')->
-    checkElement('table.fatture td:contains("2")')->
+    checkElement('table.fatture td:matches("1")')->
+    checkElement('table.fatture td:matches("2")')->
   end();
 
 $browser->click('1', array(), array('position' => 2))->
@@ -121,7 +121,7 @@ $browser->
   setField('fattura_filters[cliente_id]', 'test')->
   click('Filtra')->
   with('response')->begin()->
-    checkElement('p:contains("Nessuna fattura disponibile.")')->
+    checkElement('p:matches("Nessuna fattura disponibile.")')->
   end();
 
 $browser->info('Edit invoice of sale');
@@ -131,18 +131,18 @@ $browser->
   click('3')->
   click('modifica', array(), array('position' => 2))->
   with('response')->begin()->
-    checkElement('table th:contains("Pro forma")')->
-    checkElement('table th:contains("Num fattura")')->
-    checkElement('table th:contains("Cliente")')->
-    checkElement('table th:contains("Data")')->
-    checkElement('table th:contains("Modo pagamento")')->
-    checkElement('table th:contains("Sconto")')->
-    checkElement('table th:contains("Iva")')->
-    checkElement('table th:contains("Spese anticipate")')->
-    checkElement('table th:contains("Calcola ritenuta")')->
-    checkElement('table th:contains("Calcola tasse")')->
-    checkElement('table th:contains("Scorpora tasse")')->
-    checkElement('table th:contains("Note")')->
+    checkElement('table th:matches("Pro forma")')->
+    checkElement('table th:matches("Num fattura")')->
+    checkElement('table th:matches("Cliente")')->
+    checkElement('table th:matches("Data")')->
+    checkElement('table th:matches("Modo pagamento")')->
+    checkElement('table th:matches("Sconto")')->
+    checkElement('table th:matches("Iva")')->
+    checkElement('table th:matches("Spese anticipate")')->
+    checkElement('table th:matches("Calcola ritenuta")')->
+    checkElement('table th:matches("Calcola tasse")')->
+    checkElement('table th:matches("Scorpora tasse")')->
+    checkElement('table th:matches("Note")')->
     checkElement('input[type="checkbox"][name="proforma"][value="y"]')->
     checkElement('input[type="hidden"][name="num_fattura"][value="3"]')->
     checkElement('input[type="hidden"][name="data"][value="'.date('d/m/y', strtotime('+3 days',  strtotime('first day of this month'))).'"]')->

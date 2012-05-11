@@ -23,7 +23,7 @@ class ClienteForm extends ContattoForm
     $widgets['includi_tasse'] = new sfWidgetFormSelect(array('choices' => self::$choices));
     $widgets['calcola_tasse'] = new sfWidgetFormSelect(array('choices' => self::$choices));
     $widgets['azienda'] = new sfWidgetFormSelectRadio(array('choices' => self::$choices));
-    $widgets['nazione'] = new sfWidgetFormI18nSelectCountry(array('culture' => self::$culture));
+    $widgets['nazione'] = new sfWidgetFormI18nChoiceCountry(array('culture' => self::$culture));
 
     $this->setDefault('class_key', ContattoPeer::CLASSKEY_CLIENTE);
     $this->setDefault('azienda', 's');

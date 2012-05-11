@@ -183,9 +183,9 @@ class dettagliFatturaActions extends sfActions
     return $dettagli_fattura;
   }
 
-  public function handleError()
+  /*public function handleError()
   {
     $this->forward('dettagliFattura', 'edit');
-  }
+  }*/
 
 }

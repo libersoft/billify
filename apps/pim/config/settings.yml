@@ -4,7 +4,7 @@ prod:
     error_reporting:        '<?php echo E_ALL | E_STRICT ?>'
     no_script_name:		off
     cache: off
-    standard_helpers:       [Number, Partial, Cache, Form, Date, I18N, Javascript, Object]
+    standard_helpers:       [Number, Partial, Cache, Form, Date, I18N, JavascriptBase, Object]
 
 dev:
   .settings:
@@ -13,7 +13,7 @@ dev:
     cache:                  off
     stats:                  off
     no_script_name:         off
-    standard_helpers:       [Number, Partial, Cache, Form, Date, I18N, Javascript, Object]
+    standard_helpers:       [Number, Partial, Cache, Form, Date, I18N, JavascriptBase, Object]
 
 test:
   .settings:
@@ -40,7 +40,7 @@ all:
     compat_10: on
     default_culture: it
     i18n: on
-    standard_helpers:       [Number, Partial, Cache, Form, Date, I18N, Javascript, Object]
+    standard_helpers:       [Number, Partial, Cache, Form, Date, I18N, JavascriptBase, Object]
     cache:                  off
     rich_text_fck_js_dir:  js/FCKeditor
     rich_text_fck_base_dir:  progetti/pimonline/web/js/FCKeditor

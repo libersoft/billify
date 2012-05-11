@@ -81,9 +81,9 @@ $browser->
   click('Annulla')->
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('td:contains("20%")')->
-    checkElement('td:contains("20")')->
-    checkElement('td:contains("Iva al 20%")')->
+    checkElement('td:matches("20%")')->
+    checkElement('td:matches("20")')->
+    checkElement('td:matches("Iva al 20%")')->
   end()->
 
   info('4. edit tax code')->
@@ -105,6 +105,6 @@ $browser->
 
   with('response')->begin()->
     isStatusCode(200)->
-    checkElement('td:contains("25%")')->
-    checkElement('td:contains("25")')->
+    checkElement('td:matches("25%")')->
+    checkElement('td:matches("25")')->
   end();
