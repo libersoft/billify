@@ -38,8 +38,7 @@ class ClienteForm extends ContattoForm
 
     $this->validatorSchema['ragione_sociale']->setOption('required', true);
     
-    //valori di default
-		
+    //default values
 		$this->setDefault('nazione', 'IT');
 		
 		$this->setDefault('calcola_tasse', 'n');
