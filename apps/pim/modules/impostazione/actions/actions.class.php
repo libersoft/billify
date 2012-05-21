@@ -16,6 +16,20 @@
 class impostazioneActions extends sfActions
 {
 
+  private function update($request)
+  {
+    $this->form->bind($request->getParameter('impostazione', 0));
+    if ($this->form->isValid()) 
+    {
+      $impostazione = $this->form->save();
+      $impostazione->setRitenutaAcconto($request->getPostParameter('impostazione[ritenuta_acconto]').'/100');
+      $impostazione->setIdUtente($this->getUser()->getAttribute('id_utente'));
+      $impostazione->save();
+      return $impostazione;
+    }
+    return false;
+  }
+  
   public function executeIndex()
   {
     return $this->forward('impostazione', 'edit');
@@ -23,11 +37,9 @@ class impostazioneActions extends sfActions
 
   public function executeCreate()
   {
-    $this->impostazione = new Impostazione();
-    $this->impostazione_form = new ImpostazioneForm($this->impostazione);
-    $this->setTemplate('edit');
+    return $this->forward('impostazione', 'edit');
   }
-
+  /*
   public function executeEdit()
   {
     $this->impostazione = ImpostazionePeer::retrieveByIdUtente($this->getUser()->getAttribute('id_utente'));
@@ -39,8 +51,33 @@ class impostazioneActions extends sfActions
     
     $this->impostazione_form = new ImpostazioneForm($this->impostazione);
     
-  }
+  }*/
+  
+  public function executeEdit($request)
+  {
+    $this->impostazione = ImpostazionePeer::retrieveByIdUtente($this->getUser()->getAttribute('id_utente'));
+    
+    if (!$this->impostazione)
+    {
+      $impostazione = new Impostazione();
+    } 
 
+    $this->impostazione->setRitenutaAcconto(explode('/', $this->impostazione->getRitenutaAcconto())[0]);
+    
+    $this->form = new ImpostazioneForm($this->impostazione);
+    
+    if($request->isMethod('post')) 
+    {
+      $impostazione = $this->update($request);
+      if($impostazione) 
+      {
+        $this->getRequest()->setParameter('success', 'Impostazioni modificate con successo.');
+        $this->getUser()->setAttribute('impostazioni', $impostazione);
+      }
+    }
+  }
+  
+  /*
   public function executeUpdate()
   {
     $impostazione = $this->request->getParameter('impostazione', 0);
@@ -58,10 +95,19 @@ class impostazioneActions extends sfActions
       $this->forward404Unless($impostazione);
     }
     
+    $this->impostazione_form = new ImpostazioneForm($impostazione);
+    $this->impostazione_form->bind($this->request->getParameter('impostazione'));
+    
+    if ($this->impostazione_form->isValid())
+    {
+      $this->impostazione_form->save();
+      $this->getRequest()->setParameter('success', 'Impostazioni modificate con successo.');
+      $this->getUser()->setAttribute('impostazioni', $impostazione);
+    }
+    
     $impostazioni_results = $this->getRequestParameter('impostazione', array());
     $impostazioni_results['ritenuta_acconto'] = $impostazioni_results['percentuale_ra'] . '/' . $impostazioni_results['percentuale_imponibile_ra'];
     unset($impostazioni_results['percentuale_ra'], $impostazioni_results['percentuale_imponibile_ra']);
-    
     $impostazione->setIdUtente($this->getUser()->getAttribute('id_utente'));
     $impostazione->setNumClienti($impostazioni_results['num_clienti']);
     $impostazione->setNumFatture($impostazioni_results['num_fatture']);
@@ -84,15 +130,11 @@ class impostazioneActions extends sfActions
     $impostazione->setLabelPrezzoTotale($impostazioni_results['label_prezzo_totale']);
     $impostazione->setLabelSconto($impostazioni_results['label_sconto']);
     $impostazione->save();
-   
     
-    $this->getRequest()->setParameter('success', 'Impostazioni modificate con successo.');
-    $this->getUser()->setAttribute('impostazioni', $impostazione);
     
     return $this->forward('impostazione', 'edit');
   }
 
-  
   public function handleErrorUpdate()
   {
     $impostazione = $this->request->getParameter('impostazione', 0);
@@ -106,6 +148,6 @@ class impostazioneActions extends sfActions
     {
       $this->forward('impostazione', 'edit');
     }
-  }
+  }*/
 
 }

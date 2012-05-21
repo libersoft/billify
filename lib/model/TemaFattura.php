@@ -329,7 +329,8 @@ class TemaFattura extends BaseTemaFattura {
 		}
 	}
 
-	private function getRitenutaAcconto(){
+	private function getRitenutaAcconto()
+  {
 		if(($this->fattura->getCliente()->getAzienda()==SI && $this->fattura->getCalcolaRitenutaAcconto() == 'a') || $this->fattura->getCalcolaRitenutaAcconto() == SI){
 			$string = ($this->fattura->getTipoRitenuta()==CREDITO || $this->fattura->getRitenutaAcconto() < 0 ?'':'-');
 			$string.= ($this->fattura->getRitenutaAcconto() < 0?-1*$fthis->attura->getRitenutaAcconto():$this->fattura->getRitenutaAcconto());
@@ -339,5 +340,10 @@ class TemaFattura extends BaseTemaFattura {
 			return '';
 		}
 	}
+  
+  public function generateLogoFileName($file)
+  {
+    return $this->getNome().$file->getExtension();
+  }
 
-} // TemaFattura
+}

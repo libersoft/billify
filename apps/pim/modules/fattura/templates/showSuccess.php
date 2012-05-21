@@ -1,4 +1,4 @@
-<?php use_helper('JavascriptBase', 'Object');?>
+<?php use_helper('JavascriptBase', 'Object', 'Javascript');?>
 
 <div class="title">
   <h2>

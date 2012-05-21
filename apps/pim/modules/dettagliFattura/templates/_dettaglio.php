@@ -1,4 +1,5 @@
 <?php use_helper('JavascriptBase');?>
+<?php use_helper('Javascript');?>
 <table class="dettagli_fattura" width="100%">
   <tr>
     <th><?php echo stripcslashes(UtentePeer::getImpostazione()->getLabelQuantita());?></th>

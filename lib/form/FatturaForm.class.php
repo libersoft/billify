@@ -16,6 +16,5 @@ class FatturaForm extends BaseFatturaForm
     $widget_schema['data_scadenza'] = new sfWidgetFormDate(array('format' => '%day%/%month%/%year%'));
 
     unset($this['anno']);
-
-  }
+    }
 }

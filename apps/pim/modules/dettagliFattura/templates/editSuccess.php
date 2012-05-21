@@ -2,6 +2,7 @@
 <?php javascript_tag('window.name="fattura"')?>
 <?php use_helper('Object') ?>
 <?php use_helper('JavascriptBase') ?>
+<?php use_helper('Javascript') ?>
 
 <table class="dettagli_fattura" width="100%">
   <tr>

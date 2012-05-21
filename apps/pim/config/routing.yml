@@ -25,7 +25,7 @@ invoice_create:
   param: {module: fattura, action: create}
 
 invoice_create_for_client:
-  url: invoices/sale/new/:id_cliente
+  url: invoices/sale/new/:id_cliente  
   param: {module: fattura, action: create}
 
 invoice_purchase_create:

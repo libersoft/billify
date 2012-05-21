@@ -429,7 +429,7 @@ abstract class Fattura extends BaseFattura
   public function getIdTemaFattura()
   {
     
-    if (!parent::getIdTemaFattura() && $this->class_key == FatturaPeer::CLASSKEY_VENDITA)
+    /*if (!parent::getIdTemaFattura() && $this->class_key == FatturaPeer::CLASSKEY_VENDITA)
     {
     
       if (!$this->getCliente())
@@ -442,7 +442,7 @@ abstract class Fattura extends BaseFattura
       }
     
       $this->save();
-    }
+    }*/
     
     return parent::getIdTemaFattura();
 

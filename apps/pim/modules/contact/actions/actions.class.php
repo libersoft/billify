@@ -22,7 +22,6 @@ class contactActions extends sfActions
     }
 
     return false;
-
   }
 
   public function executeIndex($request)
@@ -40,7 +39,6 @@ class contactActions extends sfActions
     {
       return 'NoResults';
     }
-
   }
 
   public function executeShow($request)
@@ -52,20 +50,16 @@ class contactActions extends sfActions
         
     $this->totale = FatturaPeer::calculateTotalFromInvoices( $this->invoices );
     $this->totale_proforma = FatturaPeer::calculateTotalFromInvoices( $this->invoices, false );
-    
   }
 
   public function executeEdit($request)
   {
     $factory = new ContactFactoryForm();
     
-    $paramsbyClass = $request->getParameter('contatto', $request->getParameter('type'));
-    $contattobyClass = $paramsbyClass['class_key'];
+    $contattoClass = $request->getPostParameter('contatto[class_key]', $request->getParameter('type'));
+    $contattoId = $request->getPostParameter('contatto[id]', $request->getParameter('id'));
     
-    $paramsbyId = $request->getParameter('contatto', $request->getParameter('id'));
-    $contattobyId= $paramsbyId['id'];
-    
-    $this->form = $factory->build($contattobyClass, ContattoPeer::retrieveByPk($contattobyId));
+    $this->form = $factory->build($contattoClass, ContattoPeer::retrieveByPk($contattoId));
 
     if($request->isMethod('post')) {
       $contact = $this->update($request);

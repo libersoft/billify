@@ -15,7 +15,6 @@ class AcquistoForm extends FatturaForm
   {
     parent::configure();
 
-
     $providerCriteria = new Criteria();
     $providerCriteria->add(ContattoPeer::CLASS_KEY, ContattoPeer::CLASSKEY_FORNITORE);
     $providerCriteria->addAscendingOrderByColumn(ContattoPeer::RAGIONE_SOCIALE);
@@ -27,7 +26,6 @@ class AcquistoForm extends FatturaForm
     $widgets['class_key'] = new sfWidgetFormInputHidden();
     $widgets['stato'] = new sfWidgetFormSelect(array('choices' => self::$states));
     $widgets['data_stato'] = new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it'));
-
     $widgets['data'] = new sfWidgetFormDateJQueryUI(array("change_month" => true, "change_year" => true, 'culture' => 'it'));
     
     $this->widgetSchema->moveField('data_stato', sfWidgetFormSchema::AFTER, 'stato');

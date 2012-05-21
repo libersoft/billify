@@ -121,7 +121,7 @@ function object_select_tag($object, $method, $options = array(), $default_value 
 
   $key_method = _get_option($options, 'key_method', 'getPrimaryKey');
 
-  $select_options = _get_options_from_objects(sfContext::getInstance()->retrieveObjects($related_class, $peer_method), $text_method, $key_method);
+  $select_options = _get_options_from_objects(sfContext::getInstance()->getObjects($related_class, $peer_method), $text_method, $key_method);
 
   if ($value = _get_option($options, 'include_custom'))
   {

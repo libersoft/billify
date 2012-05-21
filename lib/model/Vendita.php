@@ -211,5 +211,4 @@ class Vendita extends Fattura
     $this->setData($data);
     $this->setNumFattura($num_fattura);
   }
-
 }

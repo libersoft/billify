@@ -14,6 +14,20 @@
  */
 class temafatturaActions extends sfActions
 {
+  private function update($request)
+  {
+    $this->form->bind($request->getParameter('tema_fattura'), $request->getFiles('tema_fattura'));
+
+    if ($this->form->isValid()) 
+    {
+      $tema_fattura = $this->form->save();
+      $tema_fattura->setIdUtente($this->getUser()->getAttribute('id_utente'));
+      $tema_fattura->save();
+      return $tema_fattura;
+    }
+    return false;
+  }
+  
   public function executeIndex ()
   {
     return $this->forward('temafattura', 'list');
@@ -32,36 +46,74 @@ class temafatturaActions extends sfActions
 
   public function executeCreate ()
   {
+    $this->form = new TemaFatturaForm($this->tema_fattura);
     $this->tema_fattura = new TemaFattura();
 	  $this->tema_fattura->setTemplate(file_get_contents(sfConfig::get('sf_data_dir').DIRECTORY_SEPARATOR.'template_fattura'.DIRECTORY_SEPARATOR.'template.htm'));
 	  $this->tema_fattura->setCss(file_get_contents(sfConfig::get('sf_data_dir').DIRECTORY_SEPARATOR.'template_fattura'.DIRECTORY_SEPARATOR.'stile.css'));
     $this->setTemplate('edit');
   }
-
+  /*
   public function executeEdit ()
   {
     $this->tema_fattura = TemaFatturaPeer::retrieveByPk($this->getRequestParameter('id'));
+    
+    $this->form = new TemaFatturaForm($this->tema_fattura);
+    
     $this->forward404Unless($this->tema_fattura);
-  }
-
-  public function executeUpdate ()
+  }*/
+  
+  public function executeEdit ($request)
   {
-    if (!$this->getRequestParameter('id', 0))
+    $temafatturaId = $request->getPostParameter('tema_fattura[id]', $request->getParameter('id'));
+
+    $this->form = new TemaFatturaForm();
+  
+    if (!$temafatturaId)
     {
       $tema_fattura = new TemaFattura();
     }
     else
     {
-      $tema_fattura = TemaFatturaPeer::retrieveByPk($this->getRequestParameter('id'));
+      $tema_fattura = TemaFatturaPeer::retrieveByPk($temafatturaId);
       $this->forward404Unless($tema_fattura);
     }
 
-    //$tema_fattura->setId($this->getRequestParameter('id'));
+    $this->form = new TemaFatturaForm($tema_fattura);
+    
+    if($request->isMethod('post')) 
+    {
+      $tema_fattura = $this->update($request);
+    
+      if ($tema_fattura)
+      {
+        $this->getRequest()->setAttribute('success','Tema salvato con successo');
+        $this->getRequest()->setParameter('id',$tema_fattura->getId());
+        return $this->redirect('temafattura/edit?id='.$tema_fattura->getId().'&success=1');
+      }
+    }
+  }
+  
+  public function executeUpdate ($request)
+  {
+    $temafatturaId = $request->getPostParameter('tema_fattura[id]', $request->getParameter('id'));
+    
+    if (!$temafatturaId)
+    {
+      $tema_fattura = new TemaFattura();
+    }
+    else
+    {
+      $tema_fattura = TemaFatturaPeer::retrieveByPk($temafatturaId);
+      $this->forward404Unless($tema_fattura);
+    }
+
+    /*
+    $tema_fattura->setId($this->getRequestParameter('id'));
     $tema_fattura->setIdUtente($this->getUser()->getAttribute('id_utente'));
     $tema_fattura->setNome($this->getRequestParameter('nome'));
     $tema_fattura->setTemplate($this->getRequestParameter('template'));
     $tema_fattura->setCss($this->getRequestParameter('css'));
-
+    
     if(!$this->getRequest()->hasFileError('logo')){
     	$extension = $this->getRequest()->getFileExtension('logo');
 
@@ -72,13 +124,21 @@ class temafatturaActions extends sfActions
 
   		$this->getRequest()->moveFile('logo', sfConfig::get('sf_upload_dir').'/'.$this->getUser()->getAttribute('id_utente').'_logo.jpeg');
   		$tema_fattura->setLogo($this->getUser()->getAttribute('id_utente').'_logo.jpeg');
+    }*/
+
+  	//$tema_fattura->save();
+
+    $this->form = new TemaFatturaForm($tema_fattura);
+    
+    $tema_fattura = $this->update($request);
+    
+    if ($tema_fattura)
+    {
+      $this->getRequest()->setAttribute('success','Tema salvato con successo');
+      $this->getRequest()->setParameter('id',$tema_fattura->getId());
+      return $this->redirect('temafattura/edit?id='.$tema_fattura->getId().'&success=1');
     }
-
-  	$tema_fattura->save();
-
-    $this->getRequest()->setAttribute('success','Tema salvato con successo');
-    $this->getRequest()->setParameter('id',$tema_fattura->getId());
-    return $this->redirect('temafattura/edit?id='.$tema_fattura->getId().'&success=1');
+    return $this->redirect('temafattura/create');
   }
 
   public function executeDelete ()

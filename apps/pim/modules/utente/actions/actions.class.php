@@ -36,10 +36,10 @@ class utenteActions extends sfActions
   	/*if($this->getUser()->isAuthenticated())
   	return $this->forward('main','index');*/
 
-  	require_once sfConfig::get('sf_app_dir').DIRECTORY_SEPARATOR.'lib/jpgraph/src/jpgraph_antispam.php';
-    $antispam = new AntiSpam();
-    $antispam_string = $antispam->rand(5);
-    $this->getUser()->setAttribute('antispam', $antispam_string);
+  	//require_once sfConfig::get('sf_app_dir').DIRECTORY_SEPARATOR.'lib/jpgraph/src/jpgraph_antispam.php';
+    //$antispam = new AntiSpam();
+    //$antispam_string = $antispam->rand(5);
+    //$this->getUser()->setAttribute('antispam', $antispam_string);
 
     $this->utente = new Utente();
 
@@ -50,6 +50,7 @@ class utenteActions extends sfActions
   {
     $this->utente = UtentePeer::retrieveByPk($this->getUser()->getAttribute('id_utente'));
     $this->forward404Unless($this->utente);
+    $this->form = new UtenteForm($this->utente);
   }
 
   public function executeUpdate ()
@@ -296,7 +297,7 @@ AutoMailer PIM On-Line Password Request');
   }
 }
 
-
+/*
 class myCharactersValidator extends sfValidator
 {
 	public function execute (&$value, &$error)
@@ -350,3 +351,4 @@ class usernameValidator extends sfValidator
 		return true;
 	}
 }
+*/

@@ -47,6 +47,7 @@ class FatturaPeer extends BaseFatturaPeer
       {
         $fattura->setModoPagamentoId($cliente->getModoPagamentoID());
         $fattura->setIdTemaFattura($cliente->getIdTemaFattura());
+        $fattura->setCliente($cliente);
       }
       
     } 

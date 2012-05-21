@@ -78,10 +78,9 @@ class invoiceActions extends sfActions
   {
     $factory = new FatturaFactoryForm();
     
-    $fattura = $request->getParameter('fattura');
-    $fatturabyId = $fattura['id'];
+    $fatturaId = $request->getPostParameter('fattura[id]', $request->getParameter('id'));
     
-    $this->form = $factory->build($request->getParameter('type'), FatturaPeer::retrieveByPk($fatturabyId, $request->getParameter('id')));
+    $this->form = $factory->build($request->getParameter('type'), FatturaPeer::retrieveByPk($fatturaId));
     unset($this->form['id_tema_fattura']);
     
     if ($request->getParameter('fornitore', null))

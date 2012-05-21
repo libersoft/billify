@@ -68,5 +68,4 @@ class Impostazione extends BaseImpostazione
     $class_name = ImpostazionePeer::$available_decorator_classes[$this->invoice_decorator_type];
     return new $class_name($invoice);
   }
-
 }

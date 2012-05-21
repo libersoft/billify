@@ -4,7 +4,7 @@
 ?>
 
 <div class="title">
-  <h2><?php if($tema_fattura->isNew()):?><?php echo __('Nuovo Tema')?><?php else:?><?php echo __('Modifica Tema')?><?php endif?>
+  <h2><?php if($form->isNew()):?><?php echo __('Nuovo Tema')?><?php else:?><?php echo __('Modifica Tema')?><?php endif?>
 </div>
 
 
@@ -13,120 +13,15 @@
 <?php endif?>
 
 </h2>
-<div id="edit-options">
-<?php use_helper('Object') ?>
 
-<?php echo form_tag('temafattura/update', 'multipart=true') ?>
-
-<?php echo object_input_hidden_tag($tema_fattura, 'getId') ?>
-
-<?php if ($sf_request->hasErrors()): ?>
-<div class="validate-error">
-  <p>I dati inseriri non sono corretti.
-  Correggi i seguenti errori e salva i dati di nuovo:</p>
-</div>
-<?php endif ?>
-
-<div class="title">
-  <h3><?php echo __('Nome Tema') ?></h3>
-</div>
-
-<div class="fieldset tema-fattura <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="nome">
-
-<table class="banca">
-<tr>
-<th>Nome*:</th>
-<td><?php echo object_input_tag($tema_fattura,'getNome')?>
-</td>
-<?php if($sf_request->hasError('nome')):?>
-<td class="validate-error">
-<?php echo image_tag('icons/icon_alert.gif')?>&nbsp;<?php echo $sf_request->getError('nome')?>
-</td>
-<?php endif?>
-</tr>
-<tr>
-<th>Logo Ditta:</th>
-<td>
-
-<?php if($tema_fattura->getLogo()):?>
-<table style="margin-bottom: 5px;margin-top: 5px;">
-<tr>
-<td>
-<?php echo image_tag('/uploads/thumbnail/'.$tema_fattura->getLogo()) ?>
-
-</td>
-</tr>
-</table>
-<?php endif?>
-
-<?php echo input_file_tag('logo') ?>
-
-</td>
-<?php if($sf_request->hasError('logo')):?>
-<td class="validate-error">
-<?php echo image_tag('icons/icon_alert.gif')?>&nbsp;<?php echo $sf_request->getError('logo')?>
-</td>
-<?php endif?>
-</tr>
-<tr>
-<td align="right" colspan="2"><?php echo submit_tag('Salva')?></td>
-</tr>
-</table>
-
-</div>
-
-<div class="title">
-  <h3><?php echo __('Modello Fattura') ?></h3>
-</div>
-
-<div class="fieldset tema-fattura <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="theme_header">
-
-<table class="banca">
-<tr>
-  <th>Modello Fattura*:</th>
-  <td><?php echo object_textarea_tag($tema_fattura, 'getTemplate',array('rich'=>false,'size'=>'80x27')
-) ?></td>
-<?php if($sf_request->hasError('template')):?>
-<td class="validate-error">
-<?php echo image_tag('icons/icon_alert.gif')?>&nbsp;<?php echo $sf_request->getError('template')?>
-</td>
-<?php endif?>
-</tr>
-<tr>
-<td align="right" colspan="2"><?php echo submit_tag('Salva')?></td>
-</tr>
-</table>
-
-</div>
-
-<div class="title">
-  <h3><?php echo __('Stile Fattura') ?></h3>
-</div>
-
-<div class="fieldset tema-fattura <?php echo $sf_request->hasErrors()?'tema-validate-error':''?>" id="css">
-
-<table class="banca">
-<tr>
-  <th>Stile Fattura*:</th>
-  <td><?php echo object_textarea_tag($tema_fattura, 'getCss', array (
-  'size' => '80x27',
-)) ?></td>
-<?php if($sf_request->hasError('css')):?>
-<td class="validate-error">
-<?php echo image_tag('icons/icon_alert.gif')?>&nbsp;<?php echo $sf_request->getError('css')?>
-</td>
-<?php endif?>
-</tr>
-<tr>
-<td align="right" colspan="2"><?php echo submit_tag('Salva')?></td>
-</tr>
-</table>
-
-</div>
-
+<form action="<?php echo url_for('temafattura/edit')?>" method="post" enctype="multipart/form-data">
+  <table class="edit" width="100%">
+    <?php echo $form; ?>
+    <tr>
+      <td colspan="2" align="right"><?php echo submit_tag('Salva')?></td>
+    </tr>
+  </table>
 </form>
-
-</div>
 
 <?php
   slot('sidebar');

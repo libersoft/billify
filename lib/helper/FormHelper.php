@@ -645,7 +645,7 @@ function input_date_range_tag($name, $value, $options = array())
  * @return string XHTML compliant <input> tag with optional JS calendar integration
  * @see input_date_range_tag
  */
-/*function input_date_tag($name, $value = null, $options = array())
+function input_date_tag($name, $value = null, $options = array())
 {
   $options = _parse_attributes($options);
 
@@ -795,7 +795,7 @@ function input_date_range_tag($name, $value, $options = array())
 
   return $html;
 }
-*/
+
 /**
  * Returns an XHTML compliant <input> tag with type="submit".
  * 
