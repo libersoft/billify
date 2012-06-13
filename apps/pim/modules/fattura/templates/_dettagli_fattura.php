@@ -1,10 +1,11 @@
-<?php echo form_remote_tag(array('url'      => 'dettagliFattura/update',
+<?php echo jq_form_remote_tag(array('url'      => 'dettagliFattura/update',
 								                 'update'   => 'dettaglio_edit',
-								                 'loading'  => 'Element.show(\'indicator\')',
-								                 'complete' => 'Element.hide(\'indicator\');'.visual_effect('highlight', 'tabella_dettagli')), array('name'=>'fattura')) ?>
+								                 'loading'  => "$('#indicator').fadeIn();",
+								                 'complete' => jq_visual_effect('fadeOut', '#indicator', array('duration' => 0)).jq_visual_effect('highlight', 'tabella_dettagli')), array('name'=>'fattura')) ?>
 
-  <?php echo input_hidden_tag('fattura_id', $fattura->getID());?>
-  <?php echo input_hidden_tag('insert_page', 'no');?>
+  
+  <input type="hidden" name="fattura_id" id="fattura_id" value="<?php echo $fattura->getID();?>"/>
+  <input type="hidden" name="insert_page" id="insert_page" value="no" />
 
   <?php if ($fattura->isEditable()): ?>
     <div class="dettagli-add" >

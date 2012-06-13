@@ -1,4 +1,4 @@
-<?php use_helper('JavascriptBase', 'Object', 'Javascript');?>
+<?php use_helper('jQuery');?>
 
 <div class="title">
   <h2>
@@ -26,14 +26,13 @@
 
       <li>+ <?php echo link_to_function(
       __('edit state'),
-      'if(Element.getStyle(\'stato-fattura\',\'display\') == \'none\')
-      {'.visual_effect('appear','stato-fattura',array('duration'=>0.2)).';
-        Element.removeClassName(\'link-stato\',\'menu-expand\');
-        Element.addClassName(\'link-stato\',\'menu-collapse\');
+      'if($(\'element\').css(\'stato-fattura\',\'display\') == \'none\')
+      {
+        $(\'#stato-fattura\').toggle();
       }
       else
-      {'.visual_effect('fade','stato-fattura',array('duration'=>0.2)).';
-        Element.removeClassName(\'link-stato\',\'menu-collapse\');Element.addClassName(\'link-stato\',\'menu-expand\');
+      { 
+        $(\'#stato-fattura\').toggle();
       }',
       array(
         'title' => 'Cambia Stato Fattura',
@@ -44,7 +43,7 @@
 
       <li>+ <?php echo link_to(__('copy'),'fattura/copia?id='.$fattura->getID().'&actions=show',array('title'=>'Copia Fattura'))?></li>
       <li>+ <?php echo link_to(__('print'),'fattura/export?id='.$fattura->getID(),array('title'=>'Crea PDF Fattura','target'=>'_blank'))?></li>
-      <li>+  <?php echo link_to(__('delete'),'fattura/delete?id='.$fattura->getID(),array('title'=>'Elimina fattura','confirm' => 'Vuoi veramente eliminare la '.$fattura->toString().'?'))?></li>
+      <li>+ <?php echo link_to(__('delete'),'fattura/delete?id='.$fattura->getID(),array('title'=>'Elimina fattura','confirm' => 'Vuoi veramente eliminare la '.$fattura->toString().'?'))?></li>
     </ul>
 <?php
   include_partial('invoice/sidebar');

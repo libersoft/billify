@@ -1,5 +1,3 @@
-<?php use_helper('Number','Date')?>
-
 <div class="title">
   <h2><?php echo __('outcoming invoices')?></h2>
 </div>

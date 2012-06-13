@@ -3,7 +3,7 @@
 // date: 2006/08/15 03:52:09
 ?>
 
-<?php echo object_input_hidden_tag($utente, 'getId') ?>
+<input type="hidden" name="id" id="id" value="<?php echo $utente->getID();?>" />
 
 <div class="title">
   <h2><?php echo $utente->isNew()?'Registrazione Nuovo Utente':'Modifica il tuo profilo'?>
@@ -26,7 +26,7 @@
   <table class="edit" width="100%">
     <?php echo $form; ?>
     <tr>
-      <td colspan="2" align="right"><?php echo submit_tag('Salva')?></td>
+      <td colspan="2" align="right"><input type="submit" value="Salva" /></td>
     </tr>
   </table>
 </form>

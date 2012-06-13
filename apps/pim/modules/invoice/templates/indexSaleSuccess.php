@@ -12,7 +12,7 @@
 
 <?php include_partial('invoice/list', array('results' => $pager->getResults(), 'taxes' => $taxes)); ?>
   
-<?php echo submit_tag('Elimina', array('name' => 'delete_button', 'confirm' => __('Vuoi eliminare le fatture selezionate')))?>
+<input type="submit" name="delete_button" value="Elimina" onclick="return confirm('Vuoi eliminare le fatture selezionate');" />
 </form>
 
 <?php include_partial('pager', array('pager' => $pager, 'route' => '@invoice')); ?>

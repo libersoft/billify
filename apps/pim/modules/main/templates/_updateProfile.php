@@ -32,8 +32,9 @@
 <?php endif?>
 
 <?php echo form_tag('main/updateProfile')?>
-<?php echo input_hidden_tag('referrer',$_SERVER['SCRIPT_URI'])?>
-<p align="right"><small>Non visualizzare questa finestra <?php echo checkbox_tag('noview',1,false,array('onclick'=>'form.submit();'))?></small></p>
+<input type="hidden" name="referrer" value="<?php echo $_SERVER['SCRIPT_URI']?>">
+<p align="right"><small>Non visualizzare questa finestra 
+<input type="checkbox" name="noview" value="1" id="<?php echo get_id_from_name('noview', '1')?>" onclick="form.submit()"></small></p>
 </form>
 </div>
 <?endif?>

@@ -38,7 +38,7 @@
 <?php endforeach; ?>
 </tbody>
 </table>
-<?php echo submit_tag('Elimina', array('name' => 'delete_button', 'confirm' => __('Vuoi eliminare le fatture selezionate')))?>
+<input type="submit" name="delete_button" value="Elimina" onclick="return confirm('Vuoi eliminare le fatture selezionate');" />
 </form>
 
 <?php include_partial('pager', array('pager' => $pager, 'route' => '@invoice_purchase')); ?>

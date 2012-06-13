@@ -3,31 +3,31 @@
 
 <?php if ($fatture instanceof sfPager && $fatture->haveToPaginate()): ?>
 <div class="pagination">
-  <li><?php echo link_to_remote('&laquo;',array('url'=>$form_action.'page='.$fatture->getFirstPage().'&tag='.$tag,
+  <li><?php echo jq_link_to_remote('&laquo;',array('url'=>$form_action.'page='.$fatture->getFirstPage().'&tag='.$tag,
   											'update'=>$div_to_update,
-  											'loading' => "Element.show('indicator')",
-								 			'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?></li>
+  											'loading' => "$('#indicator').show()",
+								 			'complete' => "$('#indicator').hide()";".jq_visual_effect('highlight', $div_to_update))) ?></li>
 
-  <li><?php echo link_to_remote('&lt;',array('url' => $form_action.'page='.$fatture->getPreviousPage().'&tag='.$tag,
+  <li><?php echo jq_link_to_remote('&lt;',array('url' => $form_action.'page='.$fatture->getPreviousPage().'&tag='.$tag,
   										 'update'=>$div_to_update,
-  										 'loading' => "Element.show('indicator')",
-								 		 'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?></li>
+  										 'loading' => "$('#indicator').show()",
+								 		 'complete' => "$('#indicator').hide()";".jq_visual_effect('highlight', $div_to_update))) ?></li>
 
   <?php $links = $fatture->getLinks(); foreach ($links as $page): ?>
-    <li class="<?php echo ($page == $fatture->getPage()) ? 'active':null; ?>"><?php echo link_to_remote($page, array('url' => $form_action.'page='.$page.'&tag='.$tag,
+    <li class="<?php echo ($page == $fatture->getPage()) ? 'active':null; ?>"><?php echo jq_link_to_remote($page, array('url' => $form_action.'page='.$page.'&tag='.$tag,
     																			  'update'=>$div_to_update,
-  										 										  'loading' => "Element.show('indicator')",
-								 		 										  'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?></li>
+  										 										  'loading' => "$('#indicator').show()",
+								 		 										  'complete' => "$('#indicator').hide()";".jq_visual_effect('highlight', $div_to_update))) ?></li>
     <?php if ($page != $fatture->getCurrentMaxLink()): ?><?php endif ?>
   <?php endforeach ?>
-  <li><?php echo link_to_remote('&gt;',array('url' => $form_action.'page='.$fatture->getNextPage().'&tag='.$tag,
+  <li><?php echo jq_link_to_remote('&gt;',array('url' => $form_action.'page='.$fatture->getNextPage().'&tag='.$tag,
   										 'update'=> $div_to_update,
-  										 'loading' => "Element.show('indicator')",
-								 		 'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?></li>
-  <li><?php echo link_to_remote('&raquo;',array('url' => $form_action.'page='.$fatture->getLastPage().'&tag='.$tag,
+  										 'loading' => "$('#indicator').show()",
+								 		 'complete' => "$('#indicator').hide()";".jq_visual_effect('highlight', $div_to_update))) ?></li>
+  <li><?php echo jq_link_to_remote('&raquo;',array('url' => $form_action.'page='.$fatture->getLastPage().'&tag='.$tag,
   										 'update'=> $div_to_update,
-  										 'loading' => "Element.show('indicator')",
-								 		 'complete' => "Element.hide('indicator');".visual_effect('highlight', $div_to_update))) ?></li>
+  										 'loading' => "$('#indicator').show()",
+								 		 'complete' => "$('#indicator').hide()";".jq_visual_effect('highlight', $div_to_update))) ?></li>
 </div>
 <?php endif ?>
 
@@ -64,7 +64,7 @@ foreach ($fatture_results as $fattura) :
 ?>
 
 <tr>
-<?php if($checkbox):?><td><?php echo checkbox_tag('ids[]',$fattura->getID())?></td><?php endif?>
+<?php if($checkbox):?><td><input type="checkbox" name="ids[]" id="<?php echo get_id_from_name('ids', $fattura->getID())?>"  value="<?php echo $fattura->getID()?>"></td><?php endif?>
 <td>
 
 <?php if($fattura->isProForma()):?>

@@ -1,8 +1,7 @@
-<?php //use_helper('Number','JavascriptBase','Date')?>
+<?php use_helper('jQuery')?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/2000/REC-xhtml1-200000126/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
 <head>
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.4.min.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Sans+Mono|Sansita+One' rel='stylesheet' type='text/css'>
 
 <?php include_http_metas() ?>

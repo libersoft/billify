@@ -12,7 +12,7 @@
 <td><?php echo input_tag('username',null,array('size'=>40))?>
 </td>
 <td>
-<?php echo submit_tag('Invia')?></td>
+<input type="submit" value="Invia" /></td>
 <?php if($sf_request->hasError('username')):?>
 <td class="validate-error">
 <?php echo image_tag('icons/icon_alert.gif')?>&nbsp;<?php echo $sf_request->getError('username')?>

@@ -1,5 +1,5 @@
-<?php use_helper('JavascriptBase');?>
-<?php use_helper('Javascript');?>
+<?php use_helper('jQuery');?>
+
 <table class="dettagli_fattura" width="100%">
   <tr>
     <th><?php echo stripcslashes(UtentePeer::getImpostazione()->getLabelQuantita());?></th>
@@ -19,10 +19,10 @@
     <?php foreach ($dettagli_fattura as $dettaglio) : ?>
       <tr>
         <td><?php echo $dettaglio->getQty()?></td>
-        <td class="align-left"><?php echo link_to_remote(stripcslashes($dettaglio->getDescrizione()),array('url'=>'dettagliFattura/edit?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
+        <td class="align-left"><?php echo jq_link_to_remote(stripcslashes($dettaglio->getDescrizione()),array('url'=>'dettagliFattura/edit?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
       										   'update' => 'dettaglio_edit',
-      										   'loading' => "Element.show('indicator')",
-      								 		   'complete' => "Element.hide('indicator');".visual_effect('highlight', 'tabella_dettagli')),array('title'=>'Modifica dettaglio fattura'))?></td>
+      										   'loading' => "$('#indicator').fadeIn();",
+      								 		   'complete' => jq_visual_effect('fadeOut', '#indicator', array('duration' => 0)).jq_visual_effect('highlight', 'tabella_dettagli')),array('title'=>'Modifica dettaglio fattura'))?></td>
 
         <td><?php echo $fattura->getIncludiTasse() == 's'  && $fattura->getCalcolaTasse() == 's'?format_currency(fattura::calcDettaglioScorporato($dettaglio->getPrezzo(),$fattura->getCalcolaTasse() == 's',$fattura->getTasseUlterioriArray()),'EUR'):format_currency($dettaglio->getPrezzo(),'EUR')?></td>
         <?php if($viewSconto):?>
@@ -33,13 +33,13 @@
         <td><?php echo $dettaglio->getIva()?>%</td>
         <td>
                 <?php if ($fattura->isEditable()) : ?>
-                    <?php echo link_to_remote(
+                    <?php echo jq_link_to_remote(
                                     image_tag('/images/icons/page_delete.gif', array('alt'=>'Rimuovi Dettaglio', 'class' => 'delete')),
                                     array(
                                         'url'=>'dettagliFattura/delete?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
                                         'update' => 'dettaglio_edit',
-                                        'loading' => "Element.show('indicator')",
-                                        'complete' => "Element.hide('indicator');".visual_effect('highlight', 'tabella_dettagli')
+                                        'loading' => "$('#indicator').fadeIn();",
+                                        'complete' => jq_visual_effect('fadeOut', '#indicator', array('duration' => 0)).jq_visual_effect('highlight', 'tabella_dettagli')
                                     )); ?>
                 <?php endif; ?>
         </td>

@@ -11,14 +11,14 @@
   
 <tr>
 <th width="10%"><label for="login"><strong>Login:</strong></label></th>
-<td><?php echo input_tag('login', $sf_params->get('login'),array('size'=>15)) ?></td>
+<td><input type="text" name="login" id="login" value="" size="15" /></td>
 <tr>
 <th><label for="password"><strong>Password:</strong></label></th>
-<td><?php echo input_password_tag('password',null,array('size'=>15)) ?></td>
+<td><input type="password" name="password" id="password" value="" size="15" /></td>
 </tr>
 <tr>
 <td colspan="2" align="center">
-<?php echo submit_tag('Entra', 'class=default') ?></td>
+<input type="submit" value="Entra" /></td>
 </tr>
 <tr>
 <td colspan="2" align="center">

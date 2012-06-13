@@ -19,24 +19,24 @@
 		<li class="non_inviata">+ <?php echo link_to('non inviata', 'fattura/stato?stato=n&id='.$fattura->getID(), array('title' => 'Segna come non inviata'))?></li>
 		<li class="inviata">
 		  + <?php echo link_to_function('inviata', 
-		                                visual_effect('fade', 'data_stato_rifiutata', array('duration' => 0)).
-		                                visual_effect('fade','data_stato_pagata', array('duration' => 0)).
-		                                visual_effect('appear', 'data_stato_inviata', array('duration' => 0)),
-		                                array('title'=>'Segna come inviata'))?>
+                                    jq_visual_effect('fadeOut', '#data_stato_rifiutata', array('duration' => 0)).
+                                    jq_visual_effect('fadeOut', '#data_stato_pagata', array('duration' => 0)).
+                                    jq_visual_effect('fadeIn', '#data_stato_inviata', array('duration' => 0)),
+                                    array('title'=>'Segna come inviata'))?>
 		</li>
 		<li class="pagata">
 		  + <?php echo link_to_function('pagata',
-		                                visual_effect('fade','data_stato_rifiutata', array('duration' => 0)).
-		                                visual_effect('fade','data_stato_inviata', array('duration' => 0)).
-		                                visual_effect('appear','data_stato_pagata', array('duration' => 0)),
-		                                array('title'=>'Segna come pagata'))?>
+                                    jq_visual_effect('fadeOut', '#data_stato_rifiutata', array('duration' => 0)).
+                                    jq_visual_effect('fadeOut', '#data_stato_inviata', array('duration' => 0)).		                                
+                                    jq_visual_effect('fadeIn', '#data_stato_pagata', array('duration' => 0)),
+                                    array('title'=>'Segna come pagata'))?>
     </li>
 		<li class="rifiutata">
 		  + <?php echo link_to_function('rifiutata',
-		                                visual_effect('fade','data_stato_pagata', array('duration' => 0)).
-		                                visual_effect('fade','data_stato_inviata', array('duration' => 0)).
-		                                visual_effect('appear','data_stato_rifiutata', array('duration' => 0)),
-		                                array('title' => 'Segna come rifiutata'))?>
+                                    jq_visual_effect('fadeOut', '#data_stato_inviata', array('duration' => 0)).
+                                    jq_visual_effect('fadeOut', '#data_stato_pagata', array('duration' => 0)).       
+                                    jq_visual_effect('fadeIn', '#data_stato_rifiutata', array('duration' => 0)),
+                                    array('title' => 'Segna come rifiutata'))?>
     </li>
 	</ul>
 </div>
@@ -47,17 +47,26 @@
   </div>
   <?php echo form_tag('fattura/stato')?>
     <small class="nomargin">Pagata il</small>
-    <?php echo object_input_date_tag($fattura, 'getDataStato',array('rich'=>true, 'id' => 'button_data_stato_pagata'))?> <small class="nomargin">(dd/mm/yy)</small>
-
+    <input type="text" name="data_stato" id="button_data_stato_pagata" value="<?php echo $fattura->getDataStato()?>" size="12" />
+    <script type="text/javascript">
+      $(function() {
+        var params = $.datepicker.regional['it'];
+        params.changeMonth = true;
+        params.changeYear = true;
+        params.numberOfMonths = 1;
+        params.showButtonPanel = false;
+        $("#data_stato").datepicker(params);
+	});
+</script><small class="nomargin">(dd/mm/yy)</small>
     <div align="<?php echo $fattura->isProForma()?'left':'right'; ?>" class="data">
       <?php if($fattura->isProForma()):?>
         <input type="checkbox" name="regolare" value="y"><small style="margin-left: 5px">Trasforma in fattura regolare</small>
       <?php endif?>
-      <?php echo submit_tag('Salva')?>&nbsp;
-      <input type="button" value="Annulla" onclick="<?php echo visual_effect('blind_up','data_stato_pagata',array('duration'=>0.5))?>">
+      <input type="submit" value="Salva" />&nbsp;
+      <input type="button" value="Annulla" onclick="<?php echo jq_visual_effect('slideUp','#data_stato_pagata',array('duration'=>0.5))?>">
     </div>
     <input type="hidden" name="stato" value="p">
-    <?php echo input_hidden_tag('id',$fattura->getID())?>
+    <input type="hidden" name="id" id="id" value="<?php echo $fattura->getID();?>" /> 
   </form>
 </div>
 
@@ -67,13 +76,23 @@
   </div>
   <?php echo form_tag('fattura/stato')?>
     <small class="nomargin">Rifiutata il</small>
-    <?php echo object_input_date_tag($fattura, 'getDataStato', array('rich' => true, 'id' => 'button_data_stato_rifiutata'))?> <small class="nomargin">(dd/mm/yy)</small>
+    <input type="text" name="data_stato" id="button_data_stato_rifiutata" value="<?php echo $fattura->getDataStato()?>" size="12" />
+    <script type="text/javascript">
+      $(function() {
+        var params = $.datepicker.regional['it'];
+        params.changeMonth = true;
+        params.changeYear = true;
+        params.numberOfMonths = 1;
+        params.showButtonPanel = false;
+        $("#data_stato").datepicker(params);
+	});
+</script><small class="nomargin">(dd/mm/yy)</small>
     <div align="right" class="data">
-      <?php echo submit_tag('Salva')?>&nbsp;
-      <input type="button" value="Annulla" onclick="<?php echo visual_effect('blind_up','data_stato_rifiutata',array('duration'=>0.5))?>">
+      <input type="submit" value="Salva" />&nbsp;
+      <input type="button" value="Annulla" onclick="<?php echo jq_visual_effect('slideUp','#data_stato_rifiutata',array('duration'=>0.5))?>">
     </div>
     <input type="hidden" name="stato" value="r">
-    <?php echo input_hidden_tag('id',$fattura->getID())?>
+    <input type="hidden" name="id" id="id" value="<?php echo $fattura->getID();?>" /> 
   </form>
 </div>
 
@@ -83,12 +102,22 @@
   </div>
   <?php echo form_tag('fattura/stato')?>
     <small class="nomargin">Inviata il</small>
-    <?php echo object_input_date_tag($fattura, 'getDataStato', array('rich' => true, 'id' => 'button_data_stato_inviata'))?> <small class="nomargin">(dd/mm/yy)</small>
+    <input type="text" name="data_stato" id="button_data_stato_inviata" value="<?php echo $fattura->getDataStato()?>" size="12" />
+    <script type="text/javascript">
+      $(function() {
+        var params = $.datepicker.regional['it'];
+        params.changeMonth = true;
+        params.changeYear = true;
+        params.numberOfMonths = 1;
+        params.showButtonPanel = false;
+        $("#data_stato").datepicker(params);
+	});
+</script><small class="nomargin">(dd/mm/yy)</small>
     <div align="right" class="data">
-      <?php echo submit_tag('Salva')?>&nbsp;
-      <input type="button" value="Annulla" onclick="<?php echo visual_effect('blind_up','data_stato_inviata',array('duration'=>0.5))?>">
+      <input type="submit" value="Salva" />&nbsp;
+      <input type="button" value="Annulla" onclick="<?php echo jq_visual_effect('slideUp','#data_stato_inviata',array('duration'=>0.5))?>">
     </div>
     <input type="hidden" name="stato" value="i">
-    <?php echo input_hidden_tag('id',$fattura->getID())?>
+    <input type="hidden" name="id" id="id" value="<?php echo $fattura->getID();?>" /> 
   </form>
 </div>

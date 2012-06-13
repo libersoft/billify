@@ -10,7 +10,7 @@
   <table class="edit" width="100%">
     <?php echo $form; ?>
     <tr>
-      <td colspan="2" align="right"><?php echo submit_tag('Salva e vai ai dettagli',array('class' => 'button_submit'))?></td>
+      <td colspan="2" align="right"><input type="submit" value="Salva e vai ai dettagli" class='button_submit'/></td>
     </tr>
   </table>
 </form>

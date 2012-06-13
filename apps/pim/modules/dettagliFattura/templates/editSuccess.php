@@ -1,8 +1,6 @@
 <div id="tabella_dettagli">
 <?php javascript_tag('window.name="fattura"')?>
-<?php use_helper('Object') ?>
-<?php use_helper('JavascriptBase') ?>
-<?php use_helper('Javascript') ?>
+<?php use_helper('jQuery');?>
 
 <table class="dettagli_fattura" width="100%">
   <tr>
@@ -22,38 +20,43 @@
     <?php if(in_array($dettaglio->getID(),$sf_user->getAttribute('dettagli_in_modifica'))):?>
       <tr>
         <input type="hidden" name="ids[]" value="<?php echo $dettaglio->getID();?>"/>
-        <td><?php echo object_input_tag($dettaglio, 'getQty', array('id'=>'qty'.$dettaglio->getID(),'size' => 3, 'name' => 'qty[]')) ?></td>
-        <td valign="top"><?php echo object_textarea_tag($dettaglio, 'getDescrizioneEditing', array('id'=>'desc'.$dettaglio->getID(),'size' => '50x5','name' => 'descrizione[]')) ?>&nbsp;
+        <td><input type="text" name="qty[]" id="qty<?php echo $dettaglio->getId()?>" value="<?php echo $dettaglio->getQty()?>" size="3"></td>
+        <td valign="top"><textarea name="descrizione[]" id="desc<?php echo $dettaglio->getId()?>" rows="5" cols="50"><?php echo $dettaglio->getDescrizioneEditing()?></textarea>
         <?php echo link_to(image_tag('icons_tango/open.png',array('align'=>'top')),'/#',array('title'=>'Seleziona Prodotto','onClick'=>"window.open('".url_for('prodotto/choose?id='.$dettaglio->getID())."','chooseProdotto','width=600,height=500 ,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=yes')"))?></td>
-        <td><?php echo object_input_tag($dettaglio, 'getPrezzo', array('id'=>'prezzo'.$dettaglio->getID(),'size' => 5,'name'=>'prezzo[]')) ?> &euro;</td>
-        <td><?php echo object_input_tag($dettaglio, 'getSconto', array('size' => 3,'name'=>'sconto[]')) ?>%</td>
+        <td><input type="text" name="prezzo[]" id="prezzo<?php echo $dettaglio->getId()?>" value="<?php echo $dettaglio->getPrezzo()?>" size="5">&euro;</td>
+        <td><input type="text" name="sconto[]" id="sconto" value="<?php echo $dettaglio->getSconto()?>" size="3">%</td>
         <?php if($dettaglio->getFattura()->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'):?>
-        <td><?php echo input_tag('',$dettaglio->getTotale(),array('disabled'=>'disabled','size'=>5,'name'=>'prezzo_totale[]'))?> &euro;
+        <td><input type="text" name="prezzo_totale[]" id="" value="<?php echo $dettaglio->getTotale()?>" disabled="disabled" size="5">&euro;</td>
         <?php endif?>
-        <td><?php echo input_tag('',$dettaglio->getFattura()->getIncludiTasse()=='s' && $fattura->getCalcolaTasse() == 's'?fattura::calcDettaglioScorporato($dettaglio->getTotale(),$fattura->getCalcolaTasse() == 's'):$dettaglio->getTotale(),array('disabled'=>'disabled','size'=>5,'name'=>'prezzo_totale[]'))?> &euro;</td>
-        <td><?php echo select_tag('iva[]',objects_for_select(CodiceIvaPeer::doSelect(new Criteria),'getValore','getNome',$dettaglio->getIva()))?></td>
-        <td><?php echo link_to_remote(image_tag('/images/icons/page_delete.gif',array('alt'=>'Elimina Dettaglio')),array('url'=>'dettagliFattura/delete?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
+        <td><input type="text" name="prezzo_totale[]" id="" value="<?php echo $dettaglio->getFattura()->getIncludiTasse()=='s' && $fattura->getCalcolaTasse() == 's'?fattura::calcDettaglioScorporato($dettaglio->getTotale(),$fattura->getCalcolaTasse() == 's'):$dettaglio->getTotale()?>" disabled="disabled" size="5">&euro;</td>
+        <td><select name="iva[]" id=iva>
+        <?php $options = CodiceIvaPeer::doSelect(new Criteria());
+          foreach ($options as $option):?>
+          <option value ="<?php echo $option?>"<?php if ($option->getValore() == $dettaglio->getIva()):?> selected <?php endif?>><?php echo $option?></option>
+        <?php endforeach;?>
+        </td>
+        <td><?php echo jq_link_to_remote(image_tag('/images/icons/page_delete.gif',array('alt'=>'Elimina Dettaglio')),array('url'=>'dettagliFattura/delete?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
         										   'update' => 'dettaglio_edit',
-        										   'loading' => "Element.show('indicator')",
-        								 		   'complete' => "Element.hide('indicator');".visual_effect('highlight', 'tabella_dettagli')))?></td>
+        										   'loading' => "$('element').show('indicator')",
+        								 		   'complete' => "$('element').hide('indicator');".jq_visual_effect('highlight', 'tabella_dettagli')))?></td>
 
       </tr>
     <?php else:?>
       <tr>
         <td><?php echo $dettaglio->getQty()?></td>
-        <td class="align-left"><?php echo link_to_remote(stripcslashes($dettaglio->getDescrizione()),array('url'=>'dettagliFattura/edit?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
+        <td class="align-left"><?php echo jq_link_to_remote(stripcslashes($dettaglio->getDescrizione()),array('url'=>'dettagliFattura/edit?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
         										   'update' => 'dettaglio_edit',
-        										   'loading' => "Element.show('indicator')",
-        								 		   'complete' => "Element.hide('indicator');".visual_effect('highlight', 'dettaglio_edit')),array('title'=>'Modifica dettaglio fattura'))?></td>
+        										   'loading' => "$('element').show('indicator')",
+        								 		   'complete' => "$('element').hide('indicator');".jq_visual_effect('highlight', 'dettaglio_edit')),array('title'=>'Modifica dettaglio fattura'))?></td>
         <td><?php echo $dettaglio->getFattura()->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'?format_currency(fattura::calcDettaglioScorporato($dettaglio->getPrezzo(),$fattura->getCalcolaTasse() == 's'),'EUR'):format_currency($dettaglio->getPrezzo(),'EUR')?></td>
         <td><?php echo $dettaglio->getSconto()?>%</td>
         <?php if($dettaglio->getFattura()->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'):?><td><?php echo format_currency($dettaglio->getTotale(),'EUR')?></td><?php endif?>
         <td><?php echo $dettaglio->getFattura()->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'?format_currency(fattura::calcDettaglioScorporato($dettaglio->getTotale(),$fattura->getCalcolaTasse() == 's'),'EUR'):format_currency($dettaglio->getTotale(),'EUR')?></td>
         <td><?php echo $dettaglio->getIva()?>%</td>
-        <td><?php echo link_to_remote(image_tag('/images/icons/page_delete.gif',array('alt'=>'Elimina Dettaglio')),array('url'=>'dettagliFattura/delete?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
+        <td><?php echo jq_link_to_remote(image_tag('/images/icons/page_delete.gif',array('alt'=>'Elimina Dettaglio')),array('url'=>'dettagliFattura/delete?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
         										   'update' => 'dettaglio_edit',
-        										   'loading' => "Element.show('indicator')",
-        								 		   'complete' => "Element.hide('indicator');".visual_effect('highlight', 'tabella_dettagli')))?></td>
+        										   'loading' => "$('element').show('indicator')",
+        								 		   'complete' => "$('element').hide('indicator');".jq_visual_effect('highlight', 'tabella_dettagli')))?></td>
       </tr>
     <?php endif ?>
   <?php endforeach;?>
@@ -61,19 +64,26 @@
   <?php for($i=0;$i < $sf_user->getAttribute('conta_dettagli');$i++):$dettaglio = new DettagliFattura()?>
 
     <tr>
-      <?php echo input_hidden_tag('ids_new[]','')?>
-      <td><?php echo input_tag('qty_new[]','0',array('id'=>'qty'.$i,'size'=>3))?></td>
+      <input type="hidden" name="ids_new[]" id="ids_new" value="">
+      <td><input type="text" name="qty_new[]" id="qty<?php echo $i?>" value="0" size="3"></td>
       <td valign="top" width="50%">
-      <?php echo textarea_tag('descrizione_new[]', null, array('id' => 'desc'.$i, 'size' => '40x3'))?>&nbsp;
-      <td><?php echo input_tag('prezzo_new[]','0',array('id'=>'prezzo'.$i,'size'=>5))?> &euro;</td>
-      <td><?php echo input_tag('sconto_new[]','0',array('size'=>3))?>%</td>
-      <?php if($fattura->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'):?><td width="10%"><?php echo input_tag('','',array('disabled' => 'disabled', 'size'=>5))?> &euro;</td><?php endif?>
-      <td><?php echo input_tag('','',array('disabled' => 'disabled', 'size'=>5))?> &euro;</td>
-      <td><?php echo select_tag('iva_new[]',objects_for_select(CodiceIvaPeer::doSelect(new Criteria),'getValore','getNome',$fattura->getVat()))?></td>
-      <td><?php echo link_to_remote(image_tag('/images/icons/page_delete.gif',array('alt'=>'Elimina Dettaglio')),array('url'=>'dettagliFattura/delete?fattura_id='.$fattura_id,
+      <textarea name="descrizione_new[]" id="desc<?php echo $i?>" rows="3" cols="40"></textarea>&nbsp;</td>
+      <td><input type="text" name="prezzo_new[]" id="prezzo<?php echo $i?>" value="0" size="5"> &euro;</td>
+      <td><input type="text" name="sconto_new[]" id="sconto_new_<?php echo $i?>" value="0" size="3">%</td>
+      <?php if($fattura->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'):?>
+      <td width="10%"><input type="text" name="" id="" value="" disabled="disabled" size="5"> &euro;</td>
+      <?php endif ?>
+      <td><input type="text" name="" id="" value="" disabled="disabled" size="5"> &euro;</td>
+      <td><select name="iva_new[]" id=iva_new>
+        <?php $options = CodiceIvaPeer::doSelect(new Criteria());
+          foreach ($options as $option):?>
+          <option value ="<?php echo $option?>"<?php if ($option->getValore() == $fattura->getVat()):?> selected <?php endif?>><?php echo $option?></option>
+        <?php endforeach;?>
+      </td>
+      <td><?php echo jq_link_to_remote(image_tag('/images/icons/page_delete.gif',array('alt'=>'Elimina Dettaglio')),array('url'=>'dettagliFattura/delete?fattura_id='.$fattura_id,
       										   'update' => 'dettaglio_edit',
-      										   'loading' => "Element.show('indicator')",
-      								 		   'complete' => "Element.hide('indicator');".visual_effect('highlight', 'tabella_dettagli')))?></td>
+      										   'loading' => "$('element').show('indicator')",
+      								 		   'complete' => "$('element').hide('indicator');".jq_visual_effect('highlight', 'tabella_dettagli')))?></td>
     </tr>
   <?php endfor;?>
 <?php else: ?>
@@ -81,11 +91,11 @@
 <?php endif ?>
 </table>
 
-<?php echo submit_tag('Salva',array('class'=>'button_submit large btn primary','onclick'=>"this.form.insert_page.value='no'")) ?>&nbsp;
-<?php echo link_to_remote('Annulla',array('url'=>'dettagliFattura/show?fattura_id='.$fattura_id,
+<input type="submit" name="commit" value="Salva" class="button_submit large btn primary" onclick="this.form.insert_page.value='no'">&nbsp;
+<?php echo jq_link_to_remote('Annulla',array('url'=>'dettagliFattura/show?fattura_id='.$fattura_id,
 										   'update' => 'dettaglio_edit',
-										   'loading' => "Element.show('indicator')",
-								 		   'complete' => "Element.hide('indicator');".visual_effect('highlight', 'tabella_dettagli')))?>
+										   'loading' => "$('element').show('indicator')",
+								 		   'complete' => "$('element').hide('indicator');".jq_visual_effect('highlight', 'tabella_dettagli')))?>
 
 </div>
 

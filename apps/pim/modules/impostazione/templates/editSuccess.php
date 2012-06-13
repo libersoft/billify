@@ -15,7 +15,7 @@
   <table class="edit" width="100%">
     <?php echo $form; ?>
     <tr>
-      <td colspan="2" align="right"><?php echo submit_tag('Salva')?></td>
+      <td colspan="2" align="right"><input type="submit" value="Salva" /></td>
     </tr>
   </table>
 </form>

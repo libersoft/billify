@@ -18,7 +18,7 @@
         <?php if (!$form->getObject()->isNew()):?>
           <?php echo link_to(__('Elimina'), '@document_remove?id='.$form->getObject()->getId(), array('confirm' => 'Vuoi veramente eliminare questo documento?'));?>
         <?php endif;?>
-        <?php echo submit_tag(__('Salva'))?>
+        <input type="submit" value="Salva" />
       </td>
     </tr>
   </table>
