@@ -62,7 +62,9 @@ class impostazioneActions extends sfActions
       $impostazione = new Impostazione();
     } 
 
-    $this->impostazione->setRitenutaAcconto(explode('/', $this->impostazione->getRitenutaAcconto())[0]);
+    $ritenutaAcconto = explode('/', $this->impostazione->getRitenutaAcconto());
+    
+    $this->impostazione->setRitenutaAcconto($ritenutaAcconto[0]);
     
     $this->form = new ImpostazioneForm($this->impostazione);
     
