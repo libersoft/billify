@@ -1,3 +1,8 @@
+<?php
+$sf_response->addJavascript('/sfJQueryUIPlugin/js/i18n/ui.datepicker-it.js');
+$sf_response->addJavascript('/sfJQueryUIPlugin/js/jquery-ui.js');
+?>
+
 <div class="title">
   <h4><?php echo __('info fattura')?></h4>
 </div>
@@ -48,16 +53,7 @@
   <?php echo form_tag('fattura/stato')?>
     <small class="nomargin">Pagata il</small>
     <input type="text" name="data_stato" id="button_data_stato_pagata" value="<?php echo $fattura->getDataStato()?>" size="12" />
-    <script type="text/javascript">
-      $(function() {
-        var params = $.datepicker.regional['it'];
-        params.changeMonth = true;
-        params.changeYear = true;
-        params.numberOfMonths = 1;
-        params.showButtonPanel = false;
-        $("#data_stato").datepicker(params);
-	});
-</script><small class="nomargin">(dd/mm/yy)</small>
+    <small class="nomargin">(dd/mm/yy)</small>
     <div align="<?php echo $fattura->isProForma()?'left':'right'; ?>" class="data">
       <?php if($fattura->isProForma()):?>
         <input type="checkbox" name="regolare" value="y"><small style="margin-left: 5px">Trasforma in fattura regolare</small>
@@ -77,16 +73,7 @@
   <?php echo form_tag('fattura/stato')?>
     <small class="nomargin">Rifiutata il</small>
     <input type="text" name="data_stato" id="button_data_stato_rifiutata" value="<?php echo $fattura->getDataStato()?>" size="12" />
-    <script type="text/javascript">
-      $(function() {
-        var params = $.datepicker.regional['it'];
-        params.changeMonth = true;
-        params.changeYear = true;
-        params.numberOfMonths = 1;
-        params.showButtonPanel = false;
-        $("#data_stato").datepicker(params);
-	});
-</script><small class="nomargin">(dd/mm/yy)</small>
+    <small class="nomargin">(dd/mm/yy)</small>
     <div align="right" class="data">
       <input type="submit" value="Salva" />&nbsp;
       <input type="button" value="Annulla" onclick="<?php echo jq_visual_effect('slideUp','#data_stato_rifiutata',array('duration'=>0.5))?>">
@@ -103,16 +90,7 @@
   <?php echo form_tag('fattura/stato')?>
     <small class="nomargin">Inviata il</small>
     <input type="text" name="data_stato" id="button_data_stato_inviata" value="<?php echo $fattura->getDataStato()?>" size="12" />
-    <script type="text/javascript">
-      $(function() {
-        var params = $.datepicker.regional['it'];
-        params.changeMonth = true;
-        params.changeYear = true;
-        params.numberOfMonths = 1;
-        params.showButtonPanel = false;
-        $("#data_stato").datepicker(params);
-	});
-</script><small class="nomargin">(dd/mm/yy)</small>
+    <small class="nomargin">(dd/mm/yy)</small>
     <div align="right" class="data">
       <input type="submit" value="Salva" />&nbsp;
       <input type="button" value="Annulla" onclick="<?php echo jq_visual_effect('slideUp','#data_stato_inviata',array('duration'=>0.5))?>">
