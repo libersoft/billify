@@ -1,7 +1,7 @@
 <?php echo jq_form_remote_tag(array('url'      => 'dettagliFattura/update',
 								                 'update'   => 'dettaglio_edit',
-								                 'loading'  => "$('#indicator').fadeIn();",
-								                 'complete' => jq_visual_effect('fadeOut', '#indicator', array('duration' => 0)).jq_visual_effect('highlight', 'tabella_dettagli')), array('name'=>'fattura')) ?>
+								                 'loading' => jq_visual_effect('fadeIn', '#indicator'),
+								                 'complete' => jq_visual_effect('fadeOut', '#indicator')."$(tabella_dettagli).effect('highlight', {}, 1000);"), array('name'=>'fattura')) ?>
 
   
   <input type="hidden" name="fattura_id" id="fattura_id" value="<?php echo $fattura->getID();?>"/>

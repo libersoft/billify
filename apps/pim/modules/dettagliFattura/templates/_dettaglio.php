@@ -21,9 +21,9 @@
         <td><?php echo $dettaglio->getQty()?></td>
         <td class="align-left"><?php echo jq_link_to_remote(stripcslashes($dettaglio->getDescrizione()),array('url'=>'dettagliFattura/edit?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
       										   'update' => 'dettaglio_edit',
-      										   'loading' => "$('#indicator').fadeIn();",
-      								 		   'complete' => jq_visual_effect('fadeOut', '#indicator', array('duration' => 0)).jq_visual_effect('highlight', 'tabella_dettagli')),array('title'=>'Modifica dettaglio fattura'))?></td>
-
+      										   'loading' => jq_visual_effect('fadeIn', '#indicator'), 
+                             'complete' => jq_visual_effect('fadeOut', '#indicator')."$(tabella_dettagli).effect('highlight', {}, 1000);",array('title'=>'Modifica dettaglio fattura')))?></td>   
+        
         <td><?php echo $fattura->getIncludiTasse() == 's'  && $fattura->getCalcolaTasse() == 's'?format_currency(fattura::calcDettaglioScorporato($dettaglio->getPrezzo(),$fattura->getCalcolaTasse() == 's',$fattura->getTasseUlterioriArray()),'EUR'):format_currency($dettaglio->getPrezzo(),'EUR')?></td>
         <?php if($viewSconto):?>
           <td><?php echo $dettaglio->getSconto()?>%</td>
@@ -38,8 +38,8 @@
                                     array(
                                         'url'=>'dettagliFattura/delete?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
                                         'update' => 'dettaglio_edit',
-                                        'loading' => "$('#indicator').fadeIn();",
-                                        'complete' => jq_visual_effect('fadeOut', '#indicator', array('duration' => 0)).jq_visual_effect('highlight', 'tabella_dettagli')
+                                        'loading' => jq_visual_effect('fadeIn', '#indicator'),
+                                        'complete' => jq_visual_effect('fadeOut', '#indicator')."$(tabella_dettagli).effect('highlight', {}, 1000);"
                                     )); ?>
                 <?php endif; ?>
         </td>

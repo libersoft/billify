@@ -1,8 +1,3 @@
-<?php
-$sf_response->addJavascript('/sfJQueryUIPlugin/js/i18n/ui.datepicker-it.js');
-$sf_response->addJavascript('/sfJQueryUIPlugin/js/jquery-ui.js');
-?>
-
 <div class="title">
   <h4><?php echo __('info fattura')?></h4>
 </div>
@@ -24,23 +19,23 @@ $sf_response->addJavascript('/sfJQueryUIPlugin/js/jquery-ui.js');
 		<li class="non_inviata">+ <?php echo link_to('non inviata', 'fattura/stato?stato=n&id='.$fattura->getID(), array('title' => 'Segna come non inviata'))?></li>
 		<li class="inviata">
 		  + <?php echo link_to_function('inviata', 
-                                    jq_visual_effect('fadeOut', '#data_stato_rifiutata', array('duration' => 0)).
-                                    jq_visual_effect('fadeOut', '#data_stato_pagata', array('duration' => 0)).
-                                    jq_visual_effect('fadeIn', '#data_stato_inviata', array('duration' => 0)),
+                                    jq_visual_effect('fadeOut', '#data_stato_rifiutata').
+                                    jq_visual_effect('fadeOut', '#data_stato_pagata').
+                                    jq_visual_effect('fadeIn', '#data_stato_inviata'),
                                     array('title'=>'Segna come inviata'))?>
 		</li>
 		<li class="pagata">
 		  + <?php echo link_to_function('pagata',
-                                    jq_visual_effect('fadeOut', '#data_stato_rifiutata', array('duration' => 0)).
-                                    jq_visual_effect('fadeOut', '#data_stato_inviata', array('duration' => 0)).		                                
-                                    jq_visual_effect('fadeIn', '#data_stato_pagata', array('duration' => 0)),
+                                    jq_visual_effect('fadeOut', '#data_stato_rifiutata').
+                                    jq_visual_effect('fadeOut', '#data_stato_inviata').		                                
+                                    jq_visual_effect('fadeIn', '#data_stato_pagata'),
                                     array('title'=>'Segna come pagata'))?>
     </li>
 		<li class="rifiutata">
 		  + <?php echo link_to_function('rifiutata',
-                                    jq_visual_effect('fadeOut', '#data_stato_inviata', array('duration' => 0)).
-                                    jq_visual_effect('fadeOut', '#data_stato_pagata', array('duration' => 0)).       
-                                    jq_visual_effect('fadeIn', '#data_stato_rifiutata', array('duration' => 0)),
+                                    jq_visual_effect('fadeOut', '#data_stato_inviata').
+                                    jq_visual_effect('fadeOut', '#data_stato_pagata').       
+                                    jq_visual_effect('fadeIn', '#data_stato_rifiutata'),
                                     array('title' => 'Segna come rifiutata'))?>
     </li>
 	</ul>

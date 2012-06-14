@@ -1,4 +1,5 @@
 <?php use_helper('jQuery');?>
+<?php $sf_response->addJavascript('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js');?>
 
 <div class="title">
   <h2>

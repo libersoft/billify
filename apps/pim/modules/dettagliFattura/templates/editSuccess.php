@@ -37,8 +37,8 @@
         </td>
         <td><?php echo jq_link_to_remote(image_tag('/images/icons/page_delete.gif',array('alt'=>'Elimina Dettaglio')),array('url'=>'dettagliFattura/delete?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
         										   'update' => 'dettaglio_edit',
-        										   'loading' => "$('element').show('indicator')",
-        								 		   'complete' => "$('element').hide('indicator');".jq_visual_effect('highlight', 'tabella_dettagli')))?></td>
+        										   'loading' => jq_visual_effect('fadeIn', '#indicator'),
+        								 		    'complete' => jq_visual_effect('fadeOut', '#indicator')."$(tabella_dettagli).effect('highlight', {}, 1000);"))?></td>
 
       </tr>
     <?php else:?>
@@ -46,8 +46,8 @@
         <td><?php echo $dettaglio->getQty()?></td>
         <td class="align-left"><?php echo jq_link_to_remote(stripcslashes($dettaglio->getDescrizione()),array('url'=>'dettagliFattura/edit?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
         										   'update' => 'dettaglio_edit',
-        										   'loading' => "$('element').show('indicator')",
-        								 		   'complete' => "$('element').hide('indicator');".jq_visual_effect('highlight', 'dettaglio_edit')),array('title'=>'Modifica dettaglio fattura'))?></td>
+        										   'loading' => jq_visual_effect('fadeIn', '#indicator'),
+        								 		    'complete' => jq_visual_effect('fadeOut', '#indicator')/*.jq_visual_effect('highlight', 'dettaglio_edit')*/),array('title'=>'Modifica dettaglio fattura'))?></td>
         <td><?php echo $dettaglio->getFattura()->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'?format_currency(fattura::calcDettaglioScorporato($dettaglio->getPrezzo(),$fattura->getCalcolaTasse() == 's'),'EUR'):format_currency($dettaglio->getPrezzo(),'EUR')?></td>
         <td><?php echo $dettaglio->getSconto()?>%</td>
         <?php if($dettaglio->getFattura()->getIncludiTasse() == 's' && $fattura->getCalcolaTasse() == 's'):?><td><?php echo format_currency($dettaglio->getTotale(),'EUR')?></td><?php endif?>
@@ -55,8 +55,8 @@
         <td><?php echo $dettaglio->getIva()?>%</td>
         <td><?php echo jq_link_to_remote(image_tag('/images/icons/page_delete.gif',array('alt'=>'Elimina Dettaglio')),array('url'=>'dettagliFattura/delete?id='.$dettaglio->getID().'&fattura_id='.$dettaglio->getFatturaID(),
         										   'update' => 'dettaglio_edit',
-        										   'loading' => "$('element').show('indicator')",
-        								 		   'complete' => "$('element').hide('indicator');".jq_visual_effect('highlight', 'tabella_dettagli')))?></td>
+        										   'loading' => jq_visual_effect('fadeIn', '#indicator'),
+        								 		    'complete' => jq_visual_effect('fadeOut', '#indicator')."$(tabella_dettagli).effect('highlight', {}, 1000);"))?></td>
       </tr>
     <?php endif ?>
   <?php endforeach;?>
@@ -82,8 +82,8 @@
       </td>
       <td><?php echo jq_link_to_remote(image_tag('/images/icons/page_delete.gif',array('alt'=>'Elimina Dettaglio')),array('url'=>'dettagliFattura/delete?fattura_id='.$fattura_id,
       										   'update' => 'dettaglio_edit',
-      										   'loading' => "$('element').show('indicator')",
-      								 		   'complete' => "$('element').hide('indicator');".jq_visual_effect('highlight', 'tabella_dettagli')))?></td>
+      										   'loading' => jq_visual_effect('fadeIn', '#indicator'),
+      								 		    'complete' => jq_visual_effect('fadeOut', '#indicator')."$(tabella_dettagli).effect('highlight', {}, 1000);"))?></td>
     </tr>
   <?php endfor;?>
 <?php else: ?>
@@ -94,8 +94,8 @@
 <input type="submit" name="commit" value="Salva" class="button_submit large btn primary" onclick="this.form.insert_page.value='no'">&nbsp;
 <?php echo jq_link_to_remote('Annulla',array('url'=>'dettagliFattura/show?fattura_id='.$fattura_id,
 										   'update' => 'dettaglio_edit',
-										   'loading' => "$('element').show('indicator')",
-								 		   'complete' => "$('element').hide('indicator');".jq_visual_effect('highlight', 'tabella_dettagli')))?>
+										   'loading' => jq_visual_effect('fadeIn', '#indicator'),
+								 		    'complete' => jq_visual_effect('fadeOut', '#indicator')."$(tabella_dettagli).effect('highlight', {}, 1000);"))?>
 
 </div>
 
