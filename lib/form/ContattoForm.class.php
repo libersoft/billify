@@ -27,7 +27,7 @@ class ContattoForm extends BaseContattoForm
     $unicity = new sfValidatorAnd(
     array(
       new sfValidatorPropelUniqueContatto(array('model' => 'Contatto', 'column' => array('piva'))), 
-      new sfValidatorPropelUniqueContatto(array('model' => 'Contatto', 'column' => array('cd'))),
+      new sfValidatorPropelUniqueContatto(array('model' => 'Contatto', 'column' => array('cf'))),
     ),
     array(),
     array('invalid'=>'existent PIVA / CF')

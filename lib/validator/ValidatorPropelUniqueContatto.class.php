@@ -27,19 +27,15 @@ class sfValidatorPropelUniqueContatto extends sfValidatorPropelUnique
     foreach ($columns as $i => $column)
     {
       $name = isset($fields[$i]) ? $fields[$i] : $column;
-      if (!array_key_exists($name, $values))
+      if (!array_key_exists($name, $values) || empty($values[$name]))
       {
-        // one of the columns has be removed from the form
+        // one of the columns has be removed from the form or an empty value is inserted
         return $values;
       }
 
       $colName = call_user_func(array(constant($this->getOption('model').'::PEER'), 'translateFieldName'), $column, BasePeer::TYPE_FIELDNAME, BasePeer::TYPE_COLNAME);
 
-      if(!empty($values[$name]))
-      {
-        // validation only on non empty values
-        $criteria->add($colName, $values[$name]);
-      }
+      $criteria->add($colName, $values[$name]);
     }
 
     $object = call_user_func(array(constant($this->getOption('model').'::PEER'), 'doSelectOne'), $criteria, $this->getOption('connection'));
