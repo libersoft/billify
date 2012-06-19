@@ -18,4 +18,4 @@ all:
     paginator_offset: 50
   contact:
     default_tema_fattura_id: 2
-    default_banca_id: 2
+    default_banca_id: 3

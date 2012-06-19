@@ -37,6 +37,9 @@ class VenditaForm extends FatturaForm
     $widgets['includi_tasse'] = new sfWidgetFormSelect(array('choices' => self::$choices));
     $widgets['calcola_tasse'] = new sfWidgetFormSelect(array('choices' => self::$choices));
 
+    $this->setDefault('calcola_ritenuta_acconto', 'n');
+    $this->setDefault('includi tasse', 'n');
+    $this->setDefault('calcola_tasse', 'n');
     $this->setDefault('class_key', FatturaPeer::CLASSKEY_VENDITA);
   
     $this->widgetSchema->moveField('pro_forma', sfWidgetFormSchema::FIRST);
