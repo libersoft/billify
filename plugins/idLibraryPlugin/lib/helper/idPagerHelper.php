@@ -30,7 +30,7 @@ function pager($pager, $request, $options = array())
 
     $url = $module.'/'.$action.'?'.http_build_query($parameters).'&page=';
     
-    $output .= '<li>'.link_to(__('&laquo;'), $url.$pager->getFirstPage(), array('class' => 'first').'</li>');
+    $output .= '<li>'.link_to(__('&laquo;'), $url.$pager->getFirstPage(), array('class' => 'first')).'</li>';
     $output .= '<li>'.link_to(__('&lt;'), $url.$pager->getPreviousPage(), array('class' => 'prev')).'</li>';
     
     foreach ($pager->getLinks() as $page) {
