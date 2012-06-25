@@ -38,29 +38,14 @@ class temafatturaActions extends sfActions
     $this->tema_fatturas = TemaFatturaPeer::doSelect(new Criteria());
   }
 
-  /*public function executeShow ()
-  {
-    $this->tema_fattura = TemaFatturaPeer::retrieveByPk($this->getRequestParameter('id'));
-    $this->forward404Unless($this->tema_fattura);
-  }*/
-
   public function executeCreate ()
   {
     $this->form = new TemaFatturaForm($this->tema_fattura);
     $this->tema_fattura = new TemaFattura();
-	  $this->tema_fattura->setTemplate(file_get_contents(sfConfig::get('sf_data_dir').DIRECTORY_SEPARATOR.'template_fattura'.DIRECTORY_SEPARATOR.'template.htm'));
-	  $this->tema_fattura->setCss(file_get_contents(sfConfig::get('sf_data_dir').DIRECTORY_SEPARATOR.'template_fattura'.DIRECTORY_SEPARATOR.'stile.css'));
+    $this->tema_fattura->setTemplate(file_get_contents(sfConfig::get('sf_data_dir').DIRECTORY_SEPARATOR.'template_fattura'.DIRECTORY_SEPARATOR.'template.htm'));
+    $this->tema_fattura->setCss(file_get_contents(sfConfig::get('sf_data_dir').DIRECTORY_SEPARATOR.'template_fattura'.DIRECTORY_SEPARATOR.'stile.css'));
     $this->setTemplate('edit');
   }
-  /*
-  public function executeEdit ()
-  {
-    $this->tema_fattura = TemaFatturaPeer::retrieveByPk($this->getRequestParameter('id'));
-    
-    $this->form = new TemaFatturaForm($this->tema_fattura);
-    
-    $this->forward404Unless($this->tema_fattura);
-  }*/
   
   public function executeEdit ($request)
   {
@@ -106,27 +91,6 @@ class temafatturaActions extends sfActions
       $tema_fattura = TemaFatturaPeer::retrieveByPk($temafatturaId);
       $this->forward404Unless($tema_fattura);
     }
-
-    /*
-    $tema_fattura->setId($this->getRequestParameter('id'));
-    $tema_fattura->setIdUtente($this->getUser()->getAttribute('id_utente'));
-    $tema_fattura->setNome($this->getRequestParameter('nome'));
-    $tema_fattura->setTemplate($this->getRequestParameter('template'));
-    $tema_fattura->setCss($this->getRequestParameter('css'));
-    
-    if(!$this->getRequest()->hasFileError('logo')){
-    	$extension = $this->getRequest()->getFileExtension('logo');
-
-    	$thumbnail = new sfThumbnail(150, 150);
-  		$thumbnail->loadFile($this->getRequest()->getFilePath('logo'));
-  		$thumbnail->save(sfConfig::get('sf_upload_dir').'/thumbnail/'.$this->getUser()->getAttribute('id_utente').'_logo.jpeg', 'image/png');
-
-
-  		$this->getRequest()->moveFile('logo', sfConfig::get('sf_upload_dir').'/'.$this->getUser()->getAttribute('id_utente').'_logo.jpeg');
-  		$tema_fattura->setLogo($this->getUser()->getAttribute('id_utente').'_logo.jpeg');
-    }*/
-
-  	//$tema_fattura->save();
 
     $this->form = new TemaFatturaForm($tema_fattura);
     

@@ -39,19 +39,6 @@ class impostazioneActions extends sfActions
   {
     return $this->forward('impostazione', 'edit');
   }
-  /*
-  public function executeEdit()
-  {
-    $this->impostazione = ImpostazionePeer::retrieveByIdUtente($this->getUser()->getAttribute('id_utente'));
-   
-    if (!$this->impostazione)
-    {
-      $this->forward('impostazione', 'create'); 
-    }
-    
-    $this->impostazione_form = new ImpostazioneForm($this->impostazione);
-    
-  }*/
   
   public function executeEdit($request)
   {
@@ -78,78 +65,4 @@ class impostazioneActions extends sfActions
       }
     }
   }
-  
-  /*
-  public function executeUpdate()
-  {
-    $impostazione = $this->request->getParameter('impostazione', 0);
-    $id_utente = $impostazione['id_utente'];
-    
-    $this->forward404Unless($this->getUser()->getAttribute('id_utente') == $id_utente, $this->getUser()->getAttribute('id_utente'). '<>'. $id_utente);
-    
-    if (!$id_utente)
-    {
-      $impostazione = new Impostazione();
-    } 
-    else
-    {
-      $impostazione = ImpostazionePeer::retrieveByIdUtente($id_utente);
-      $this->forward404Unless($impostazione);
-    }
-    
-    $this->impostazione_form = new ImpostazioneForm($impostazione);
-    $this->impostazione_form->bind($this->request->getParameter('impostazione'));
-    
-    if ($this->impostazione_form->isValid())
-    {
-      $this->impostazione_form->save();
-      $this->getRequest()->setParameter('success', 'Impostazioni modificate con successo.');
-      $this->getUser()->setAttribute('impostazioni', $impostazione);
-    }
-    
-    $impostazioni_results = $this->getRequestParameter('impostazione', array());
-    $impostazioni_results['ritenuta_acconto'] = $impostazioni_results['percentuale_ra'] . '/' . $impostazioni_results['percentuale_imponibile_ra'];
-    unset($impostazioni_results['percentuale_ra'], $impostazioni_results['percentuale_imponibile_ra']);
-    $impostazione->setIdUtente($this->getUser()->getAttribute('id_utente'));
-    $impostazione->setNumClienti($impostazioni_results['num_clienti']);
-    $impostazione->setNumFatture($impostazioni_results['num_fatture']);
-    $impostazione->setRigheDettagli($impostazioni_results['righe_dettagli']);
-    $impostazione->setRitenutaAcconto($impostazioni_results['ritenuta_acconto']);
-    $impostazione->setTipoRitenuta($impostazioni_results['tipo_ritenuta']);
-    $impostazione->setConsegnaCommercialista($impostazioni_results['consegna_commercialista']);
-    $impostazione->setFatturaAutomatica($impostazioni_results['fattura_automatica']);
-    $impostazione->setInvoiceDecoratorType($impostazioni_results['invoice_decorator_type']);
-    $impostazione->setLabelImponibile($impostazioni_results['label_imponibile']);
-    $impostazione->setLabelSpese($impostazioni_results['label_spese']);
-    $impostazione->setLabelImponibileIva($impostazioni_results['label_imponibile_iva']);
-    $impostazione->setLabelIva($impostazioni_results['label_iva']);
-    $impostazione->setLabelTotaleFattura($impostazioni_results['label_totale_fattura']);
-    $impostazione->setLabelRitenutaAcconto($impostazioni_results['label_ritenuta_acconto']);
-    $impostazione->setLabelNettoLiquidare($impostazioni_results['label_netto_liquidare']);
-    $impostazione->setLabelQuantita($impostazioni_results['label_quantita']);
-    $impostazione->setLabelDescrizione($impostazioni_results['label_descrizione']);
-    $impostazione->setLabelPrezzoSingolo($impostazioni_results['label_prezzo_singolo']);
-    $impostazione->setLabelPrezzoTotale($impostazioni_results['label_prezzo_totale']);
-    $impostazione->setLabelSconto($impostazioni_results['label_sconto']);
-    $impostazione->save();
-    
-    
-    return $this->forward('impostazione', 'edit');
-  }
-
-  public function handleErrorUpdate()
-  {
-    $impostazione = $this->request->getParameter('impostazione', 0);
-    $impostazionebyId = $impostazione['id_utente'];
-    
-    if (!$impostazionebyId)
-    {
-      $this->forward('impostazione', 'create');
-    } 
-    else
-    {
-      $this->forward('impostazione', 'edit');
-    }
-  }*/
-
 }
