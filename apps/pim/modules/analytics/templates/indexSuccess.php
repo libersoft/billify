@@ -1,4 +1,4 @@
-<?php $sf_response->addJavascript('/sfHighchartsPlugin/js/highcharts.js');?>
+<?php use_javascript('/sfHighchartsPlugin/js/highcharts.js');?>
 
 <div class="title">
   <h2><?php echo __('analytics')?></h2>
