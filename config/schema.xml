@@ -222,7 +222,7 @@
       <reference local="id_utente" foreign="id" />
     </foreign-key>
     <column name="num_giorni" type="INTEGER" required="true" default="0" />
-    <column name="descrizione" type="VARCHAR" size="50" />
+    <column name="descrizione" type="VARCHAR" size="500" />
     <index name="id_utente">
       <index-column name="id_utente" />
     </index>
