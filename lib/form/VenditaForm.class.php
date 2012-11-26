@@ -81,8 +81,7 @@ class VenditaForm extends FatturaForm
       $this['stato'],
       $this['iva_pagata'],
       $this['iva_depositata'],
-      $this['commercialista'],
-      $this['categoria_id']
+      $this['commercialista']
       );
   }
 
