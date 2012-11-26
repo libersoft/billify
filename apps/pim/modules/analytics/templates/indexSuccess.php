@@ -12,6 +12,8 @@
 
 <div id="clients_graph" style="width: 100%; height: 400px; float: left; padding-top: 30px;"></div>
 <div id="supplier_graph" style="width: 100%; height: 400px; clear: left; padding-top: 30px;"></div>
+<div id="category_income_graph" style="width: 100%; height: 400px; float: left; padding-top: 30px;"></div>
+<div id="category_outcome_graph" style="width: 100%; height: 400px; clear: left; padding-top: 30px;"></div>
 
 <script language="javascript">
 
@@ -22,6 +24,8 @@ $(document).ready(function() {
   cashflow = <?php echo $cashflow_graph; ?>;
   clients_graph = <?php echo $clients_graph; ?>;
   supplier_graph = <?php echo $supplier_graph; ?>;
+  category_income_graph = <?php echo $category_income_graph; ?>;
+  category_outcome_graph = <?php echo $category_outcome_graph; ?>;
 });
    
 </script>

@@ -33,5 +33,17 @@ class analyticsActions extends sfActions
 
     $this->supplier_graph = new Highcharts($graph);
     $this->supplier_graph->setRenderTo('supplier_graph');
+  
+    $graph = new CategorySummaryTurnoverGraph();
+    $graph->build();
+
+    $this->category_income_graph = new Highcharts($graph);
+    $this->category_income_graph->setRenderTo('category_income_graph');
+
+    $graph = new CategorySummaryTurnoverGraph(true);
+    $graph->build();
+
+    $this->category_outcome_graph = new Highcharts($graph);
+    $this->category_outcome_graph->setRenderTo('category_outcome_graph');
   }
 }
