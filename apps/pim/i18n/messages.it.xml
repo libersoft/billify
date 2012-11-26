@@ -450,6 +450,46 @@
         <source>document updated successfully</source>
         <target>documento salvato con successo</target>
       </trans-unit>
+      <trans-unit id="101">
+        <source>Category</source>
+        <target>Categoria</target>
+      </trans-unit>
+      <trans-unit id="102">
+        <source>categories</source>
+        <target>categorie</target>
+      </trans-unit>
+      <trans-unit id="103">
+        <source>new category</source>
+        <target>nuova categoria</target>
+      </trans-unit>
+      <trans-unit id="104">
+        <source>categories list</source>
+        <target>lista categorie</target>
+      </trans-unit>
+      <trans-unit id="105">
+        <source>insert a new category</source>
+        <target>inserisci una nuova categoria</target>
+      </trans-unit>
+      <trans-unit id="106">
+        <source>Edit category</source>
+        <target>Modifica categoria</target>
+      </trans-unit>
+      <trans-unit id="107">
+        <source>Edit category</source>
+        <target>Modifica categoria</target>
+      </trans-unit>
+      <trans-unit id="108">
+        <source>No categories available, %insert_category%.</source>
+        <target>Nessuna categoria disponbile, %insert_category%.</target>
+      </trans-unit>
+      <trans-unit id="109">
+        <source>New Category</source>
+        <target>Nuova Categoria</target>
+      </trans-unit>
+      <trans-unit id="110">
+        <source>Name</source>
+        <target>Nome</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

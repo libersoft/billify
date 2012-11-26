@@ -1,0 +1,11 @@
+editSuccess:
+  components:
+    breadcrumps: [categoria, editBread]
+
+newSuccess:
+  components:
+    breadcrumps: [categoria, createBread]
+
+indexSuccess:
+  components:
+    breadcrumps: [categoria, bread]
