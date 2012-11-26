@@ -24,6 +24,8 @@ abstract class FatturaFormFilter extends BaseFatturaFormFilter
             'with_empty'  => false));
 
     $this->widgetSchema['stato'] = new sfWidgetFormChoice(array('choices' => $this->choices));
+    $this->widgetSchema['categoria_id'] = new sfWidgetFormPropelChoice(array('model' => 'Categoria', 'add_empty' => true));
+
 
     $this->validatorSchema['cliente_id'] = new sfValidatorPass(array('required' => false));
     $this->validatorSchema['data'] = new sfValidatorDateRange(
@@ -31,6 +33,7 @@ abstract class FatturaFormFilter extends BaseFatturaFormFilter
                   'from_date' => new sfValidatorDate(array('required' => false, 'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~')),
                   'to_date'   => new sfValidatorDate(array('required' => false, 'date_format' => '~(?P<day>\d{2})/(?P<month>\d{2})/(?P<year>\d{4})~'))));
 
+    $this->validatorSchema['categoria_id'] = new sfValidatorPropelChoice(array('required' => false, 'model' => 'Categoria', 'column' => 'id'));
   }
 
   public function addStatoColumnCriteria(Criteria $criteria, $field, $value)
@@ -65,7 +68,7 @@ abstract class FatturaFormFilter extends BaseFatturaFormFilter
     $default_filter['data']['from'] = $from_date;
     $default_filter['data']['to']   = $to_date;
     $default_filter['stato']        = '';
-
+    
     return $default_filter;
   }
 

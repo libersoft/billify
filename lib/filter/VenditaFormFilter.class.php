@@ -20,8 +20,8 @@ class VenditaFormFilter extends FatturaFormFilter
 
     $this->widgetSchema->setLabel('num_fattura', 'Tipo');
 
-    $this->useFields(array('data', 'stato', 'num_fattura', 'cliente_id'));
-    $this->widgetSchema->setPositions(array('data', 'cliente_id', 'stato', 'num_fattura'));
+    $this->useFields(array('data', 'stato', 'num_fattura', 'cliente_id', 'categoria_id'));
+    $this->widgetSchema->setPositions(array('data', 'cliente_id', 'stato', 'num_fattura', 'categoria_id'));
   }
 
   public function addNumFatturaColumnCriteria(Criteria $criteria, $field, $value)
